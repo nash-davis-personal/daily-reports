@@ -1,5 +1,25 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-06-14",
+    "title": "Another quiet fixes window — the keepers are a hook path-matching fix and a worktree branch-tracking fix",
+    "summary": "One release (2.1.176) since the last brief, almost all bug fixes; the few that matter to a solo operator are hook Read/Edit/Write path matching, stale git-branch reporting after /cd and worktree moves, and background-agent PR-URL search.",
+    "highlights": 4,
+    "path": "reports/claude-changelog/2026-06-14.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-13",
+    "title": "Moonshot ships an open 1T-param coding model as physical-AI money keeps pouring in; Fable 5's free window closes June 22",
+    "summary": "Moonshot AI released Kimi K2.7 Code, a 1-trillion-parameter open-weight coding model reporting a 21.8% jump over its predecessor, days after Google's open DiffusionGemma — open weights keep closing on frontier coding. NEURA Robotics raised a record $1.4B for physical AI, and free access to Anthropic's strongest public model, Claude Fable 5, ends June 22.",
+    "highlights": 3,
+    "path": "reports/general-ai/2026-06-13.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

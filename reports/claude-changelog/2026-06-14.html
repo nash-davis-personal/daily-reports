@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-14" />
+  <meta name="report:title" content="Another quiet fixes window — the keepers are a hook path-matching fix and a worktree branch-tracking fix" />
+  <meta name="report:summary" content="One release (2.1.176) since the last brief, almost all bug fixes; the few that matter to a solo operator are hook Read/Edit/Write path matching, stale git-branch reporting after /cd and worktree moves, and background-agent PR-URL search." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Another quiet fixes window — the keepers are a hook path-matching fix and a worktree branch-tracking fix — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, June 14, 2026</span>
+        <span>◆</span><span>Covers 2.1.176 (the one release filed since the June 12 brief)</span>
+      </div>
+      <h1>Another quiet fixes window. The keepers: hook path matching and worktree branch tracking.</h1>
+      <p class="standfirst">Only one release landed since the last briefing — 2.1.176, dated June 12 — and it is almost entirely bug fixes. Nothing here changes what you can build or sell, but three fixes touch tooling you actually use day to day: hooks, worktrees, and background agents.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 12 → June 14 (one release)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last brief (2.1.176)</div></div>
+      <div class="stat"><div class="num">~20</div><div class="lbl">Bug fixes</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Small new settings, no marquee feature</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hook path conditions now match</h4><p>Documented patterns like <code>Edit(src/**)</code>, <code>Read(.env)</code>, and <code>Read(~/.ssh/**)</code> finally fire correctly.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Worktree / <code>/cd</code> branch fix</h4><p>Moving a session no longer leaves it reporting the previous directory's git branch.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background-agent PR search works</h4><p>PRs opened during scheduled wakeups or while a job was blocked now show up in <code>claude agents</code> search.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Two small settings, no headline feature</h4><p>Session titles follow the conversation language; <code>footerLinksRegexes</code> adds footer link badges via managed settings.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes that touch how you actually run Claude Code</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.176 · Jun 12</span>
+            <h3>Hook <code>if</code> conditions for Read/Edit/Write paths now match the documented patterns</h3>
+          </div>
+          <div class="story-body">
+            <p>Hook conditions written the way the docs show them — <code>Edit(src/**)</code>, <code>Read(~/.ssh/**)</code>, <code>Read(.env)</code> — were not matching. They are now. If you ever wrote a hook to guard secrets or scope a check to a directory and quietly gave up because it never triggered, it was this bug.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth a 10-minute pass. A <code>Read(.env)</code> / <code>Read(**/.env.local)</code> deny-or-warn hook across the client repos (Bisque, Studio C, the funnels) is cheap insurance against pasting a Supabase or Resend key into a transcript. If you tried this before and it silently failed, retry it now.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.176</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.176 · Jun 12</span>
+            <h3><code>/cd</code> and worktree moves no longer report the old directory's git branch</h3>
+          </div>
+          <div class="story-body">
+            <p>After a <code>/cd</code> or a worktree switch, the session kept showing the branch from the directory you left. That fed a wrong branch into the statusline and anything that reads current-branch state. Fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant given how much you lean on worktrees for the parallel-build pattern across Praxis, Catena, and the funnels. One less way to commit or push against the branch you think you're on. No action needed beyond the update.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.176</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.176 · Jun 12</span>
+            <h3>Background-agent search by PR URL now finds PRs opened during scheduled wakeups</h3>
+          </div>
+          <div class="story-body">
+            <p>If a background job opened a PR during a scheduled wakeup, or while the job was blocked, that PR didn't surface when you searched <code>claude agents</code> by its URL. It does now.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly useful for the scheduled-task pattern you already run (the daily-reports scout, Frontier lessons). When an overnight job ships a PR, you can now find its session by pasting the PR link instead of hunting the list.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.176</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The two new settings (minor)</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.176 · Jun 12</span>
+            <h3>Session titles in the conversation language; <code>footerLinksRegexes</code> footer badges</h3>
+          </div>
+          <div class="story-body">
+            <p>Session titles are now generated in whatever language your conversation is in — pin one with the <code>language</code> setting if you want. Separately, <code>footerLinksRegexes</code> lets user or managed settings add regex-matched link badges to the footer row.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Skip both for now. Neither moves throughput. <code>footerLinksRegexes</code> is the kind of thing a larger team uses to surface internal dashboards; note it exists, no reason to wire it up solo.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.176</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/copy</code> and mouse-selection copy now reach the system clipboard inside tmux over SSH; tmux paste buffer loads on versions older than 3.2 <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Auto mode no longer fails on Fable 5 for orgs without Opus 4.8 — the classifier falls back to the best available Opus model <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>availableModels</code> enforcement tightened: alias picks can't be redirected to a blocked model via <code>ANTHROPIC_DEFAULT_*_MODEL</code>, and <code>/fast</code> refuses to toggle outside the allowlist <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Bedrock credentials from <code>awsCredentialExport</code> are now cached until their <code>Expiration</code> instead of a fixed 1 hour <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Linux sandbox no longer fails to start when <code>.claude/settings.json</code> is a symlink with an absolute target <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A batch of Remote Control fixes: silent model switching when connecting from web/mobile, disconnect notifications showing a bare numeric code, sessions not disconnecting on account switch <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions no longer fail with "Could not resolve authentication method" after sitting idle too long before being claimed <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Several background-session respawn / Windows-daemon hardening fixes (malformed resume IDs, ReadOnly <code>~/.claude/daemon</code>, network-path neutralization) <span class="ver">2.1.176</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Backgrounded sessions no longer show "Working" forever when <code>/bg</code> mid-turn had nothing left to continue <span class="ver">2.1.176</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
