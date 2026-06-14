@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-14",
+    "title": "SpaceX pops 25% on its first day; the Fed meets this week and is expected to hold as oil and the Iran war steer rates; Charlotte lands a 2,000-job HQ",
+    "summary": "SpaceX closed its Nasdaq debut up about 25% at $168.70 — roughly a $1.77T value — and index inclusion is set to add structural buying. The FOMC meets June 16–17 and is widely expected to hold, with markets now pricing one cut or none by December as the Iran war keeps oil elevated and Treasury yields in the 4–4.5% range. Charlotte landed SMBC Group's second US headquarters, about 2,000 jobs.",
+    "highlights": 4,
+    "path": "reports/america/2026-06-14.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release (2.1.176) since the last brief, almost all bug fixes; the few that matter to a solo operator are hook Read/Edit/Write path matching, stale git-branch reporting after /cd and worktree moves, and background-agent PR-URL search.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-06-14.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-14",
+    "title": "Anthropic now leads OpenAI in US business adoption — the vendor TSD builds on is the one enterprises are standardizing on",
+    "summary": "Ramp's AI Index shows Anthropic passed OpenAI in US business adoption for the first time — 34.4% of businesses to OpenAI's 32.3% — the same week Anthropic's $965B Series H and an October IPO path put it ahead of OpenAI in the public-market race. June's flagship wave (Gemini 3.5 Pro GA, a rumored Claude Sonnet 4.8, Grok 5) is still loading, with Opus 4.8 holding the top of the intelligence rankings.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-06-14.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-14",
+    "title": "Anthropic is now the enterprise default — turn 'we build on Claude' into a closing line, and patch-readiness into a retainer",
+    "summary": "The week's biggest shift for Nash is that Anthropic passed OpenAI in US business adoption — the model TSD already builds on is the one enterprises are standardizing on, which is a sales asset he can use this week. Two compliance clocks (Supabase's Oct 30 security cutover, the steady Next.js advisory cadence) turn directly into recurring 'managed security' revenue, and Charlotte's incoming HQs widen the local SMB pool Grant can work.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-14.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-14",
+    "title": "A PeopleSoft extortion campaign and a fresh Splunk flaw lead the week; Supabase sets an Oct 30 security cutover; chip sales run toward $1.5T",
+    "summary": "Google's security units flagged an active compromise-and-extortion campaign hitting Oracle PeopleSoft, and a new Splunk Enterprise vulnerability landed June 13 — enterprise-app patching is the week's theme. On Nash's stack, Supabase will enforce new access-security defaults on all existing projects Oct 30 and is flagging affected tables now, while Next.js holds at 16.2.9 LTS. Worldwide chip sales hit $110.5B in April, up 11%, on the AI-datacenter buildout.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-14.html"
   },
   {
     "source": "general-ai",

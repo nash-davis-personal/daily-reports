@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-14" />
+  <meta name="report:title" content="A PeopleSoft extortion campaign and a fresh Splunk flaw lead the week; Supabase sets an Oct 30 security cutover; chip sales run toward $1.5T" />
+  <meta name="report:summary" content="Google's security units flagged an active compromise-and-extortion campaign hitting Oracle PeopleSoft, and a new Splunk Enterprise vulnerability landed June 13 — enterprise-app patching is the week's theme. On Nash's stack, Supabase will enforce new access-security defaults on all existing projects Oct 30 and is flagging affected tables now, while Next.js holds at 16.2.9 LTS. Worldwide chip sales hit $110.5B in April, up 11%, on the AI-datacenter buildout." />
+  <meta name="report:highlights" content="5" />
+
+  <title>PeopleSoft extortion and a Splunk flaw lead the week — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, June 14, 2026</span>
+        <span>◆</span><span>What's new since June 12</span>
+      </div>
+      <h1>A quiet weekend for releases, a loud one for patching</h1>
+      <p class="standfirst">Google's security teams flagged an active extortion campaign targeting Oracle PeopleSoft, and a fresh Splunk Enterprise flaw dropped June 13 — enterprise software is taking the hits this week. On your stack the actionable item is Supabase: new access-security defaults get enforced on every existing project October 30, and the Security Advisor is flagging affected tables right now.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Weekend edition ◆ June 12–14</span>
+        <span>◆</span><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Oct 30</div><div class="lbl">Supabase enforces new access-security defaults on all existing projects</div></div>
+      <div class="stat"><div class="num">16.2.9</div><div class="lbl">Next.js current stable (LTS) — confirm your client sites are on it</div></div>
+      <div class="stat"><div class="num">$110.5B</div><div class="lbl">Worldwide chip sales in April, up 11% month-over-month</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase security cutover set for Oct 30</h4><p>New access-security behavior will be enforced on all existing projects. The Security Advisor is already flagging affected tables and Supabase is emailing project owners.</p></div>
+        <div class="signal"><div class="n">02</div><h4>PeopleSoft extortion campaign is live</h4><p>Google's security units tied an active compromise-and-extortion campaign against Oracle PeopleSoft to the group ShinyHunters.</p></div>
+        <div class="signal"><div class="n">03</div><h4>New Splunk Enterprise flaw</h4><p>A vulnerability hitting Splunk Enterprise 10.0.0–10.0.6 and 10.2.0–10.2.3 was disclosed June 13.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chips keep climbing on the AI buildout</h4><p>April global chip sales hit $110.5B (+11% MoM); 2026 industry sales are projected to top $1.5T.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch first — your stack and the enterprise apps around it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Action item</span>
+            <span class="ver">Effective Oct 30, 2026</span>
+            <h3>Supabase will enforce new access-security defaults on all existing projects</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase has announced that new security behavior around table access will be enforced on every existing project starting October 30. Between now and then, the built-in Security Advisor flags affected tables, and Supabase is emailing project owners so they can review access, add the right grants, and verify their app still works under the stricter defaults.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every client site you've shipped on Supabase needs a once-over before October. Open the Security Advisor on each project this week, fix anything it flags, and confirm the app still reads/writes correctly. Do it now while it's a 20-minute check — not in late October when a missed grant silently breaks a client's booking form.</p></div>
+          <div class="refs"><a href="https://github.com/orgs/supabase/discussions/44713" target="_blank" rel="noopener">Supabase developer update ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Heads-up</span>
+            <span class="ver">16.2.9 LTS ◆ June 9</span>
+            <h3>Next.js holds at 16.2.9 — confirm every client site is actually on it</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js 16.2.9 (LTS) remains the current stable release after this month's security-and-stability work, which backported fixes across Server Components, the App Router, Middleware/Proxy, route handlers, and cache handling. No newer stable has shipped since last week's briefing — the job is making sure your deployed sites are pinned to it, not still on an earlier 16.2.x.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run a quick audit: for each Next.js client project, check the locked version and bump anything below 16.2.9, then redeploy. The recent advisories touch DoS, middleware/proxy bypass, SSRF, cache poisoning, and XSS — exactly the surface a client-facing site exposes.</p></div>
+          <div class="refs"><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">June 13</span>
+            <h3>Active PeopleSoft extortion campaign and a fresh Splunk Enterprise flaw</h3>
+          </div>
+          <div class="story-body">
+            <p>Google's security units identified an active compromise-and-extortion campaign targeting Oracle PeopleSoft, attributed to the group ShinyHunters. Separately, a vulnerability in Splunk Enterprise (versions 10.0.0–10.0.6 and 10.2.0–10.2.3) was disclosed June 13. In parallel, an INTERPOL-led operation took down the Sniper Dz phishing-as-a-service platform, with 201 arrests across 13 countries.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run PeopleSoft or Splunk, but your SMB clients' larger vendors might — and phishing-as-a-service is the threat that reaches them directly. It's a clean reason to add a basic "security hygiene" line to a managed retainer: dependency patching, 2FA, and a phishing-aware contact form are cheap to deliver and easy to sell after a week of headlines like these.</p></div>
+          <div class="refs"><a href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The buildout behind the models</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Hardware</span>
+            <span class="ver">April data</span>
+            <h3>Global chip sales hit $110.5B, up 11%, on AI-datacenter demand</h3>
+          </div>
+          <div class="story-body">
+            <p>Worldwide semiconductor sales reached $110.5B in April, up 11% from March, with full-year 2026 sales projected to top $1.5 trillion, per the Semiconductor Industry Association. A separate SIA-Deloitte study estimates annual revenue from chips deployed in AI data centers could exceed $1.2 trillion by 2028. Meanwhile Microsoft kept widening its in-house model family (MAI-Code-1-Flash, MAI-Thinking-1) to reduce its dependence on OpenAI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The supply side of the AI boom is still accelerating, which means the API prices you build on aren't going to fall to zero — capacity is being bought, not given away. Keep designing client AI features to be cost-aware (cache aggressively, route cheap models for easy turns) so your margins don't depend on prices that the buildout is keeping firm.</p></div>
+          <div class="refs"><a href="https://www.semiconductors.org/news-events/latest-news/" target="_blank" rel="noopener">SIA latest news ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Defense</span><span class="txt">INTERPOL's "Operation Ramz" dismantled the Sniper Dz phishing-as-a-service platform — 201 arrests across 13 countries. <span class="ver">Oct 2025–Feb 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Business</span><span class="txt">Microsoft kept expanding its in-house MAI model family to cut reliance on OpenAI; Zuckerberg publicly admitted missteps in Meta's AI restructuring. <span class="ver">June 13</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
