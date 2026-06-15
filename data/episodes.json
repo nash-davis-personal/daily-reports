@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-06-15",
+    "title": "TSD Daily — Monday, June 15, 2026",
+    "summary": "The US pulled Anthropic's Fable 5 offline worldwide, a leaked 120K-char system prompt becomes an agent-design manual, Nvidia raises $20B in bonds, the Fed meets with inflation at 4.2%, and this week's money moves are all about selling AI uptime.",
+    "file": "audio/2026-06-15.mp3",
+    "durationSec": 365,
+    "bytes": 4381389
+  },
+  {
     "date": "2026-06-14",
     "title": "TSD Daily — Sunday, June 14, 2026",
     "summary": "Anthropic overtakes OpenAI in US business adoption, a Supabase security cutover lands on the to-do list, the Fed meets this week, and Charlotte books another big HQ.",
