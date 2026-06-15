@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-15" />
+  <meta name="report:title" content="No new patch on your stack this week — but Nvidia's first bond sale in five years turns the AI buildout into a credit story" />
+  <meta name="report:summary" content="Nash's stack is quiet on security: no fresh critical Next.js/React/Supabase advisory since the May 16.2.6 release, and the one dated action remains Supabase's Oct 30 access-default cutover. The bigger signal is financial — Nvidia is raising $20B in its first corporate bond sale since 2021, drawing roughly $85B in orders, as the AI datacenter boom becomes a debt-financed credit story. Chip geopolitics and a GeForce NOW breach round out the week." />
+  <meta name="report:highlights" content="6" />
+
+  <title>No new stack patch this week; Nvidia turns to debt — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23052e2b' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, June 15, 2026</span>
+        <span>◆</span><span>Since the June 14 edition</span>
+      </div>
+      <h1>No new patch on your stack — but the AI buildout just became a credit story</h1>
+      <p class="standfirst">Good news first: there's no fresh critical advisory on Next.js, React, or Supabase since the May release, so this is a verify-don't-scramble week. The headline elsewhere is financial — Nvidia is raising $20B in its first bond sale since 2021, drawing about $85B in orders, as AI infrastructure shifts from cash-funded to debt-financed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Stack status + the buildout's financing</span>
+        <span>◆</span><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$20B</div><div class="lbl">Nvidia's targeted bond raise</div></div>
+      <div class="stat"><div class="num">~$85B</div><div class="lbl">orders the offering drew</div></div>
+      <div class="stat"><div class="num">Oct 30</div><div class="lbl">Supabase access-default cutover</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Your stack is quiet</h4><p>No new critical Next.js/React/Supabase advisory since the May 16.2.6 security release — verify clients are on it.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase Oct 30 cutover stands</h4><p>New access-security defaults enforced on all existing projects — the one dated action item.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Nvidia goes to the bond market</h4><p>$20B raise, first since 2021, ~$85B in orders, seven tranches out to 2056.</p></div>
+        <div class="signal"><div class="n">04</div><h4>China questions Nvidia/AMD chip security</h4><p>A fresh geopolitical overhang on AI-chip exports.</p></div>
+        <div class="signal"><div class="n">05</div><h4>"Hardware sovereignty" momentum</h4><p>The Fable 5 pull is pushing enterprises toward local / multi-vendor model deployment.</p></div>
+        <div class="signal"><div class="n">06</div><h4>GeForce NOW breach confirmed</h4><p>Nvidia's cloud-gaming service disclosed an incident; most users reported unaffected.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack — the only items that touch client sites</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Status</span>
+            <span class="ver">Next.js 16.2.6 · May 7</span>
+            <h3>No new critical advisory this week — confirm everyone's already patched</h3>
+          </div>
+          <div class="story-body">
+            <p>There's no fresh critical Next.js, React, or Supabase advisory since the May coordinated release (16.2.6 patched 13 issues across middleware bypass, DoS, SSRF, cache poisoning, and XSS). The December RSC remote-code-execution chain (CVE-2025-55182 / CVE-2025-66478) is also old news — fixed months ago. So nothing new to chase; the risk this week is a client site still sitting on an unpatched older build.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm ls next react</code> across every client repo and confirm each is on a patched 16.2.x (or has the relevant 15.x/16.0.x fix). Any site below the May release is exposed to known, public exploits — patch those before doing anything else.</p></div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Next.js May 2026 security release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Calendar</span>
+            <span class="ver">Effective Oct 30</span>
+            <h3>Supabase's access-default cutover is still the one dated thing on your stack</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase will enforce new access-security defaults on all existing projects on October 30 and is already flagging affected tables in the dashboard. Carried forward from last week because it's a hard deadline that will silently change behavior on projects you haven't touched in months.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open each Supabase project now, check for the flagged-tables warning, and fix RLS/access before the cutover so no client app breaks on Oct 30. This is also a billable "we future-proofed your backend" task — bundle it into a managed-care touch.</p></div>
+          <div class="refs"><a href="https://supabase.com/docs" target="_blank" rel="noopener">Supabase docs</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI buildout becomes a credit story</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Markets</span>
+            <span class="ver">Jun 15</span>
+            <h3>Nvidia raises $20B in bonds — its first sale in five years, $85B in orders</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia kicked off its first investment-grade bond offering since 2021 (when it raised $5B), targeting at least $20B across seven tranches maturing as far out as 2056, with Goldman, JPMorgan, and Morgan Stanley as bookrunners. Demand was enormous — roughly $85B in orders — and proceeds go to general corporate purposes including refinancing. It's the clearest sign yet that the AI datacenter boom is now being financed with debt, not just cash flow, alongside Goldman's $7.6T 2026–31 capex forecast.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long-dated debt funding this much compute means inference prices keep trending down for years. Price client AI features (Concierge, Front Desk) assuming token costs fall — promise generous usage in fixed plans and let margin expand as the cost curve drops.</p></div>
+          <div class="refs"><a href="https://www.investing.com/news/stock-market-news/nvidia-to-raise-20-billion-source-says-in-first-corporate-bond-issuance-in-five-years-4742424" target="_blank" rel="noopener">Reuters via Investing.com</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips &amp; security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Geopolitics</span>
+            <span class="ver">Jun 2026</span>
+            <h3>China publicly questions the security of Nvidia and AMD AI chips</h3>
+          </div>
+          <div class="story-body">
+            <p>Chinese regulators raised security concerns over Nvidia and AMD AI accelerators, the latest move in an escalating chip-export standoff that already includes US export controls (and, this week, the export-control pull of Anthropic's Fable 5). The throughline: AI compute is now a national-security asset, and access to both chips and models is increasingly governed by policy, not just price.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Indirect, but real — model and chip availability can shift on policy. Keep your client AI stack portable across providers so a single export action can't strand a deployment.</p></div>
+          <div class="refs"><a href="https://www.darkreading.com/cyber-risk/china-questions-security-ai-chips-nvidia-amd" target="_blank" rel="noopener">Dark Reading</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Nvidia confirmed a <b>GeForce NOW data breach</b>; most users reported unaffected, but worth noting if you use the service. <span class="ver">Jun 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Hardware</span><span class="txt">"Hardware sovereignty" chatter is up — enterprises floating <b>local / multi-vendor model deployment</b> after the Fable 5 blackout. <span class="ver">Jun 15</span></span></li>
+            <li><span class="tag breaking qh-tag">Legal</span><span class="txt">Meta faces a <b>lawsuit over AI training data</b> — another data-provenance flashpoint for model builders. <span class="ver">Jun 15</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Mistral reportedly raising <b>~€3B at a ~€20B valuation</b> to fund data centers and frontier training. <span class="ver">Jun 12</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

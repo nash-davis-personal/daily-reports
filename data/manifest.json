@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-06-15",
+    "title": "The Fed meets this week with inflation back up to 4.2% — and Washington pulled a live AI product offline for the first time",
+    "summary": "The FOMC meets June 16–17 and is widely expected to hold at 3.50–3.75% as May CPI came in hot — up 0.5% on the month and 4.2% over the year. In a first, the Commerce Department used an export-control order to pull a live, deployed US AI product (Anthropic's Fable 5) offline worldwide. SpaceX's stock holds its IPO-week premium ahead of index inclusion, Nvidia returns to the bond market with a $20B raise, and fire-weather risk runs across the Southwest and West Coast.",
+    "highlights": 6,
+    "path": "reports/america/2026-06-15.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-15",
+    "title": "Fable 5 is still dark worldwide — and its leaked 120K-character system prompt is now the best long-running-agent manual you can read",
+    "summary": "Six days after shipping its most capable public model, Anthropic still has Claude Fable 5 and Mythos 5 offline for every user on earth — the first export-control pull of a live US AI product, with no restore date. A leaked ~120K-character system prompt and a fresh 'global pause' paper (80% of Anthropic's code is now written by Claude) reframe what frontier AI is, while Goldman pegs 2026–31 AI capex at $7.6T. For a Claude-built shop, the lesson is concentration risk: route around single points of failure.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-06-15.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-15",
+    "title": "A government order took the best AI model offline overnight — sell uptime, not just intelligence",
+    "summary": "The Fable 5 blackout proved a single-vendor AI can vanish without notice, which turns reliability into a product TSD can sell on top of Front Desk and Concierge. Pair that with a quiet-but-deadlined stack (Supabase Oct 30) and a leak-driven appetite for better agent prompts, and this week's best moves are recurring-revenue resilience plays you can start with existing clients.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-15.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-15",
+    "title": "No new patch on your stack this week — but Nvidia's first bond sale in five years turns the AI buildout into a credit story",
+    "summary": "Nash's stack is quiet on security: no fresh critical Next.js/React/Supabase advisory since the May 16.2.6 release, and the one dated action remains Supabase's Oct 30 access-default cutover. The bigger signal is financial — Nvidia is raising $20B in its first corporate bond sale since 2021, drawing roughly $85B in orders, as the AI datacenter boom becomes a debt-financed credit story. Chip geopolitics and a GeForce NOW breach round out the week.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-06-15.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-06-14",
     "title": "SpaceX pops 25% on its first day; the Fed meets this week and is expected to hold as oil and the Iran war steer rates; Charlotte lands a 2,000-job HQ",
     "summary": "SpaceX closed its Nasdaq debut up about 25% at $168.70 — roughly a $1.77T value — and index inclusion is set to add structural buying. The FOMC meets June 16–17 and is widely expected to hold, with markets now pricing one cut or none by December as the Iran war keeps oil elevated and Treasury yields in the 4–4.5% range. Charlotte landed SMBC Group's second US headquarters, about 2,000 jobs.",
