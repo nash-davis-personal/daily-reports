@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-16" />
+  <meta name="report:title" content="2.1.178 tightens per-directory config, subagents, and permission rules" />
+  <meta name="report:summary" content="One release since the last briefing: nested .claude config now scopes to your working directory, permission rules can match tool parameters, and a stack of subagent and long-session reliability fixes land." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.178 tightens per-directory config, subagents, and permission rules — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, June 16, 2026</span>
+        <span>◆</span><span>Covers 2.1.178 (June 15)</span>
+      </div>
+      <h1>2.1.178 sharpens per-directory config, subagents, and permission rules</h1>
+      <p class="standfirst">A single release shipped since the June 14 briefing, and it is a quiet but useful one if you run many projects out of one machine. Nested <code>.claude/</code> config now resolves to the directory you are working in, permission rules can match a tool's input parameters, and a long list of subagent and long-session bugs got cleared.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 15 → 16</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2.1.178</div><div class="lbl">Only release this window</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Signals worth your time</div></div>
+      <div class="stat"><div class="num">~21</div><div class="lbl">Changes shipped</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nested <code>.claude/</code> follows your working dir</h4><p>The agent, workflow, skill, and output-style closest to the file you are editing now wins on a name clash.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Permission rules match parameters</h4><p><code>Tool(param:value)</code> with <code>*</code> wildcards — e.g. block Opus subagents with <code>Agent(model:opus)</code>.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Auto mode vets subagents pre-launch</h4><p>The classifier now reviews a subagent spawn before it runs, closing a gap where it could request a blocked action.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Subagent debugging actually works</h4><p>Transcripts show tool results + live progress, mid-turn messages stick, and ctrl+b no longer restarts a running subagent.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chrome account-mismatch fixed</h4><p>Claude in Chrome no longer silently fails to connect when its OAuth token belongs to a different account than your login.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Compaction honors <code>--fallback-model</code></h4><p>An overloaded primary model no longer kills compaction — it now falls back down your configured chain.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Config scoping &amp; permissions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.178</span>
+            <h3>Per-directory <code>.claude/</code> now resolves to the closest config</h3>
+          </div>
+          <div class="story-body">
+            <p>When a name collides, the agent, workflow, and output-style nearest the working directory wins, and project-scope workflow saves now target the closest existing <code>.claude/workflows/</code>. Skills in nested <code>.claude/skills</code> directories load when you work on files there; on a clash the nested one appears as <code>&lt;dir&gt;:&lt;name&gt;</code> so both stay reachable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a dozen project folders out of <code>~/Documents</code>, each with its own <code>.claude/</code>. A skill or workflow named the same thing in Praxis and the TSD app will no longer step on each other — the one in the folder you are in takes priority. Worth dropping client-specific skills (e.g. a Bisque catalog helper) straight into that repo's <code>.claude/skills</code> now that scoping is reliable.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.178</span>
+            <h3>Permission rules can match a tool's input parameters</h3>
+          </div>
+          <div class="story-body">
+            <p>New <code>Tool(param:value)</code> syntax (with <code>*</code> wildcard) lets a permission rule key off what the tool is actually called with. The documented example is <code>Agent(model:opus)</code> to block Opus subagents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cost control for your scheduled tasks and multi-agent runs. If a routine should never burn Opus on a subagent, a single deny rule now enforces it instead of trusting the prompt. Same lever for pinning which models your daily-report and Macroscope automations are allowed to reach.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents &amp; subagents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.178</span>
+            <h3>Auto mode evaluates a subagent before it launches</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagent spawns now pass through the classifier before launch. That closes a gap where a subagent could request a blocked action without ever being reviewed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ever run the fleet in auto mode for unattended builds, this is the difference between trusting and verifying. A spawned agent can no longer route around your permission setup by being a child process. Safer to leave overnight workflows running.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.178</span>
+            <h3>Subagent transcripts, messages, and ctrl+b backgrounding all repaired</h3>
+          </div>
+          <div class="story-body">
+            <p>Three fixes in one: viewing a subagent's transcript now shows tool results and live progress, messages you send while it finishes its turn are no longer dropped, and backgrounding a running subagent with ctrl+b no longer restarts it from scratch.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on subagents and the Workflow tool for fan-out (the 66-agent Macroscope build, fleet security sweeps). Being able to actually watch a subagent's tool calls and background it without losing progress makes those runs debuggable instead of a black box.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long-session &amp; auth reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.178</span>
+            <h3>Compaction falls back instead of failing</h3>
+          </div>
+          <div class="story-body">
+            <p>Compaction now honors <code>--fallback-model</code>: on an overload or model-availability error it walks the configured fallback chain instead of dying. A separate fix stops model requests from continuing to fail with auth errors after credentials were refreshed outside the session (a stale cached request config).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long marathon sessions — Carolina Ring, the RV master plans, anything where context fills up — used to risk a dead compaction when Opus was busy. They now degrade gracefully. Set a <code>fallbackModel</code> chain if you have not, so the overnight builds ride through capacity blips.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.178</span>
+            <h3>Claude in Chrome stops silently failing on the wrong account</h3>
+          </div>
+          <div class="story-body">
+            <p>When the Chrome OAuth token belonged to a different account than your Claude Code login, the connection would silently never establish. That now surfaces correctly. A related crash — an out-of-memory exit when the CLI inherited a stale websocket/OAuth file descriptor from a parent process — is also fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You verify front-end work through the browser preview and Chrome tools. A silent Chrome connect failure reads as "the tool is broken" when it is really an account mismatch — now you get told. If Chrome automation has been flaky, update before re-debugging.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.178</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Workflow keyword now triggers only on explicit phrases ("run a workflow", "workflow:") and gets a purple shimmer — fewer accidental workflow launches <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> workers no longer 401 with "Invalid bearer token" when started from a shell using a custom gateway (<code>ANTHROPIC_BASE_URL</code> + <code>ANTHROPIC_AUTH_TOKEN</code>) <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP server-level specs (<code>mcp__server</code>, <code>mcp__server__*</code>, <code>mcp__*</code>) in subagent <code>disallowedTools</code> are no longer silently ignored <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background sessions started with <code>/bg</code> after a turn finished no longer show "Working" forever in the agents list <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/bug</code> now requires a description before submitting and stops using model-refusal text as the GitHub issue title <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Remote Control errors now say whether a failure is a gate, a check failure, a stale entitlement, or org policy; footer shows a persistent "/rc failed" indicator <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode undo: <code>u</code> now steps through NORMAL/VISUAL commands one at a time instead of merging fast commands into one undo <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/doctor</code> gets a consistent flat tree layout, clearer status icons, and highlighted command names <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Statusline links with custom URI schemes (e.g. <code>vscode://</code>) now open when clicked in <code>claude agents</code> <span class="ver">2.1.178</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Pressing Esc to dismiss a CJK IME candidate window no longer cancels the running Claude task <span class="ver">2.1.178</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
