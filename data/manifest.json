@@ -3,6 +3,16 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-06-17",
+    "title": "2.1.179 is a maintenance release: dropped connections keep partial output, remote background tasks unstick",
+    "summary": "One release since yesterday and it is all fixes — interrupted responses now preserve partial output, remote background tasks stop showing as stuck, and subagent transcript and focus bugs are cleaned up.",
+    "highlights": 4,
+    "path": "reports/claude-changelog/2026-06-17.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-06-16",
     "title": "2.1.178 tightens per-directory config, subagents, and permission rules",
     "summary": "One release since the last briefing: nested .claude config now scopes to your working directory, permission rules can match tool parameters, and a stack of subagent and long-session reliability fixes land.",

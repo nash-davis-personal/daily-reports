@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-17" />
+  <meta name="report:title" content="2.1.179 is a maintenance release: dropped connections keep partial output, remote background tasks unstick" />
+  <meta name="report:summary" content="One release since yesterday and it is all fixes — interrupted responses now preserve partial output, remote background tasks stop showing as stuck, and subagent transcript and focus bugs are cleaned up." />
+  <meta name="report:highlights" content="4" />
+
+  <title>2.1.179 is a maintenance release: dropped connections keep partial output, remote background tasks unstick — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, June 17, 2026</span>
+        <span>◆</span><span>One release · 2.1.179 · all fixes</span>
+      </div>
+      <h1>A maintenance day: dropped connections keep their output, remote background tasks stop lying about their status</h1>
+      <p class="standfirst">Just one release since yesterday's 2.1.178 briefing, and 2.1.179 ships zero new features — every line is a fix. Nothing here changes what you can build or sell, but two of these remove daily friction in long agent runs and remote/background work, which is most of how you operate.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.179 (since 2.1.178, covered yesterday)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">new release</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">new features</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">fixes shipped</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Interrupted responses survive</h4><p>A mid-stream connection drop now preserves the partial response instead of throwing a raw error, and the spinner stops freezing on "running tool."</p></div>
+        <div class="signal"><div class="n">02</div><h4>Remote background tasks stop lying</h4><p>Background tasks in remote sessions no longer show as "still running" forever between turns.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Subagent transcripts work again</h4><p>Ctrl+O now opens the subagent's transcript, and clicking the prompt input returns focus from the subagent/footer panel.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Faster remote plugin loading</h4><p>Plugin loading performance in remote sessions is improved.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Reliability in long and remote runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.179</span>
+            <h3>A dropped connection no longer torches the response</h3>
+          </div>
+          <div class="story-body">
+            <p>When the stream drops mid-response, Claude Code now keeps whatever it had already generated instead of replacing it with a raw connection error, and the spinner no longer gets stuck on "running tool." On flaky Wi-Fi or during a long agent turn, you keep the partial work and the session stays usable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The most common annoyance in your long build/agent sessions just got cheaper — a hiccup costs you a partial answer to re-prompt from, not a dead turn. No action needed beyond updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.179</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.179</span>
+            <h3>Remote background tasks report their real status</h3>
+          </div>
+          <div class="story-body">
+            <p>Background tasks in remote sessions were appearing stuck as "still running" between turns even after they finished. That's fixed, so the agents list reflects what's actually happening.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on background and scheduled work constantly — the daily reports, the macro brain, the trading tasks. A status list you can trust means you stop second-guessing whether a run actually completed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.179</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.179</span>
+            <h3>Plugin loading is faster in remote sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Remote sessions now load plugins faster. No detail on the size of the gain, but it's a startup-cost reduction for remote work.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Marginal, but it shaves dead time off remote-session spin-up. Nothing to change on your end.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.179</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Subagent and input polish</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.179</span>
+            <h3>Subagent transcript and focus bugs cleaned up</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related fixes: Ctrl+O now actually shows the subagent's transcript while you're viewing a subagent, and clicking the prompt input now returns focus from the subagent/footer panel instead of leaving you stuck.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run multi-agent work (workflows, the macro and review fleets) routinely — being able to read a subagent's transcript and type again without fighting focus is real day-to-day friction removed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.179</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Mouse-wheel scrolling in WSL2 under Windows Terminal and VS Code works again (regression in 2.1.172) — Windows-only, doesn't touch your macOS setup <span class="ver">2.1.179</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A sandbox <code>denyRead</code>/<code>allowRead</code> glob over a large directory tree no longer bloats the Bash tool description and breaks the session on Linux <span class="ver">2.1.179</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The feedback survey no longer grabs a single-digit reply as a session rating right after a turn completes <span class="ver">2.1.179</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The welcome screen stops stacking multiple promo banners — at most one promo per session <span class="ver">2.1.179</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
