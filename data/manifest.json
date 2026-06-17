@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-17",
+    "title": "The Fed decides today in Warsh's first meeting as chair, with inflation back at 4.2%",
+    "summary": "The Federal Reserve concludes its June meeting today at 2pm ET — Kevin Warsh's first as chair — with markets pricing ~97% odds of no rate change and the focus on the dot plot and his first press conference, as May CPI hit 4.2% on higher energy costs. A B-52 bomber on a test flight crashed at Edwards Air Force Base on June 15, killing eight, the deadliest such crash since 1982. Closer to home, Charlotte landed a Japanese bank's second US headquarters and a wealth-management East Coast hub, adding thousands of jobs.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-17.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since yesterday and it is all fixes — interrupted responses now preserve partial output, remote background tasks stop showing as stuck, and subagent transcript and focus bugs are cleaned up.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-06-17.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-17",
+    "title": "SpaceX buys Cursor for $60B and the AI-coding tool market just consolidated under a $2T owner",
+    "summary": "In a single day SpaceX agreed to buy Cursor's parent Anysphere for $60 billion in stock, putting the most popular AI coding tool under a rocket company days after its $2T IPO. OpenAI shipped 'Deployment Simulation' — replaying real conversations through a candidate model to predict misbehavior before release — and Anthropic's Fable 5 stayed dark worldwide with no return date as an unofficial 48-hour-restore rumor went nowhere. The through-line for a Claude-built shop: don't anchor your delivery to one vendor whose ownership or availability can change overnight.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-06-17.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-17",
+    "title": "A live KEV deadline and a model going dark hand you two things to sell this week",
+    "summary": "Today's shifts are unusually actionable: a federal cPanel patch deadline lands June 18 and the May Next.js advisories still need patching — a clean reason to sell a fast, low-effort 'patch and harden' sprint to clients on legacy hosting. Meanwhile Fable 5 going dark a second week and OpenAI's new pre-deploy testing method both point at a recurring 'managed AI reliability' add-on. With inflation back at 4.2%, your existing money-saver pitch also converts better right now.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-17.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-17",
+    "title": "Snap bets $2,195 on AR glasses, Intel's most-advanced chip hits production, and there's a fresh KEV deadline this week",
+    "summary": "Snap unveiled standalone $2,195 'Specs' AR glasses on June 16 as Evan Spiegel bets on a post-smartphone future, while Intel began producing its most-advanced chip amid renewed Apple-deal chatter. On the must-do side: CISA gave federal agencies a June 18 deadline to patch an actively exploited LiteSpeed cPanel flaw, and the May Next.js/React coordinated security release is still the only complete fix for 13 advisories you should already be on. Patch first, gadget-watch second.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-17.html"
   },
   {
     "source": "claude-changelog",
