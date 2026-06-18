@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-18" />
+  <meta name="report:title" content="A North Korean crew backdoors 144 npm packages overnight" />
+  <meta name="report:summary" content="The Mastra npm scope was hijacked and backdoored in an 88-minute campaign — patch and audit your lockfiles — plus Supabase's $500M raise and a Defender zero-day." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A North Korean crew backdoors 144 npm packages overnight — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/06/144-mastra-npm-packages-compromised-via.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, June 18, 2026</span>
+        <span>◆</span><span>Since the June 17 edition</span>
+      </div>
+      <h1>A North Korean crew backdoors 144 npm packages overnight</h1>
+      <p class="standfirst">The entire <code>@mastra</code> npm scope was hijacked and weaponized in an 88-minute automated campaign — if you've installed Mastra packages, audit your lockfiles now. Underneath the security noise, Supabase closed a $500M round that says exactly where the build economy is headed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 17–18, 2026</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/06/144-mastra-npm-packages-compromised-via.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">144</div><div class="lbl">npm packages backdoored</div></div>
+      <div class="stat"><div class="num">~918K</div><div class="lbl">weekly downloads of @mastra/core alone</div></div>
+      <div class="stat"><div class="num">$10.5B</div><div class="lbl">Supabase post-money valuation</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Mastra npm scope hijacked</h4><p>144 packages backdoored via a forgotten contributor account; audit lockfiles.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase raises $500M</h4><p>Series F at $10.5B; agents now deploy the majority of new databases.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Defender zero-day</h4><p>Microsoft patching "RoguePlanet" (CVE-2026-50656, CVSS 7.8).</p></div>
+        <div class="signal"><div class="n">04</div><h4>Oracle June CPU</h4><p>Quarterly Critical Patch Update lands across Oracle's product line.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Next.js maintenance release</h4><p>Backported bug + security fixes; make sure you're on a patched 15.5.x / 16.2.x.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — patch and audit</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">June 17, 2026</span>
+            <h3>Entire Mastra npm scope backdoored in an 88-minute campaign</h3>
+          </div>
+          <div class="story-body">
+            <p>An attacker hijacked a forgotten <code>@mastra</code> contributor account whose publish access was never revoked, then republished 142 packages under the scope — including <code>@mastra/core</code> (~918K weekly downloads) — each with a single injected dependency: <code>easy-day-js</code>, a typosquat of <code>dayjs</code>. A clean version was published first to build trust, then weaponized as v1.11.22 minutes before the mass-publish; semver ranges (<code>^1.11.21</code>) pulled the malicious build automatically. The payload disabled TLS verification, beaconed to attacker C2, fetched a second-stage RAT, and self-deleted. Snyk and Orca link the tradecraft to the North Korean group Sapphire Sleet (BlueNoroff).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct action item. If any TSD project touches the Mastra AI framework, treat installs from the June 17 window as compromised: pin to known-good versions, delete <code>node_modules</code> and lockfiles, reinstall clean, rotate any credentials that lived on a dev machine that ran <code>npm install</code> in that window, and grep for <code>easy-day-js</code>. Broader lesson: pin exact versions and turn off install scripts (<code>npm config set ignore-scripts true</code>) for agent-built repos.</p>
+          <div class="refs"><a href="https://thehackernews.com/2026/06/144-mastra-npm-packages-compromised-via.html" target="_blank" rel="noopener">The Hacker News ↗</a> <a href="https://snyk.io/blog/a-forgotten-contributor-account-compromised-the-entire-mastra-npm-package-scope/" target="_blank" rel="noopener">Snyk ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">June 2026</span>
+            <h3>Microsoft Defender zero-day and Oracle's quarterly patch</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft disclosed it's patching a Defender zero-day codenamed RoguePlanet (CVE-2026-50656, CVSS 7.8). Separately, Oracle shipped its June 2026 Critical Patch Update fixing flaws across Communications, E-Business Suite, Enterprise Manager and more.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Low direct exposure (no Oracle stack, Defender auto-updates), but if Nash or a client runs Windows endpoints, make sure Defender definitions are current.</p>
+          <div class="refs"><a href="https://www.techrepublic.com/article/news-apple-security-roundup-june-2026/" target="_blank" rel="noopener">TechRepublic ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The build economy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">June 4, 2026</span>
+            <h3>Supabase raises $500M at a $10.5B valuation</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase closed a $500M Series F led by GIC (with Accel, Y Combinator, Coatue, Stripe and Salesforce Ventures), roughly doubling its valuation to $10.5B in eight months. The tell is in the metrics: databases are up 600% year-over-year, Claude Code is the single largest source of new projects this year, and AI agents now deploy the majority of new databases on the platform.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Supabase is the backbone of nearly every TSD app, so its momentum and funding runway are good news for stability. More to the point: "agents deploy most new databases" is the exact wave Nash is already riding. The platform he's standardized on is now the default substrate for AI-built software — that's a selling point, not just plumbing.</p>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/04/database-startup-supabase-raises-500-million-10point5-billion-valuation.html" target="_blank" rel="noopener">CNBC ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">June 1, 2026</span>
+            <h3>Nvidia jumps into the PC with the RTX Spark "N1X" superchip</h3>
+          </div>
+          <div class="story-body">
+            <p>At Computex, Nvidia unveiled the RTX Spark (N1X) — an Arm-based PC superchip with up to 20 CPU cores and a 6,144-core Blackwell GPU sharing memory, built on TSMC's 3nm process. It ships this fall in Windows laptops from Dell, HP, Asus, Lenovo, MSI and Microsoft, and pushes Nvidia squarely into Intel/AMD/Qualcomm/Apple territory; AMD, Intel and Qualcomm shares fell on the news.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to buy now, but local on-device AI is coming to mainstream laptops. Worth tracking for a future "runs offline / on your own machine" angle if a privacy-sensitive client ever asks.</p>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/02/nvidias-new-pc-chips-are-ceos-bid-to-own-every-part-of-ai-stack.html" target="_blank" rel="noopener">CNBC ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Standing reminder: confirm TSD's Next.js apps are on a patched line (15.5.x / 16.2.x) covering this spring's RSC DoS and SSRF advisories. <span class="ver">CVE-2026-23864/23869</span></span></li>
+            <li><span class="tag improve qh-tag">Update</span><span class="txt">Google's June Android update adds passkey portability, WhatsApp backup controls and Play Store AI search. <span class="ver">June</span></span></li>
+            <li><span class="tag new qh-tag">Note</span><span class="txt">create-next-app now defaults to Tailwind + TypeScript-first config out of the box. <span class="ver">June</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
