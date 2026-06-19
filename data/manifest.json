@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-19",
+    "title": "Fed holds but flips hawkish under Warsh; Charlotte lands two financial-sector employers",
+    "summary": "The Fed kept rates at 3.50–3.75% in Kevin Warsh's first meeting but raised its inflation outlook and now projects a hike; Charlotte added an SMBC second U.S. headquarters and an AssetMark hub; NASA is investigating a worsened ISS air leak and researchers floated a new Alzheimer's trigger.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-19.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since the last briefing: 2.1.183 blocks unrequested destructive git and infra-destroy commands in auto mode, stops scheduled-task and webhook deliveries from approving actions, fixes WebSearch returning empty in subagents, and adds a setting to drop the claude.ai link from your commits.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-06-19.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-19",
+    "title": "Anthropic turns Claude into an admin-managed platform while OpenAI and Google ship agent stacks",
+    "summary": "Anthropic added enterprise-managed MCP connectors, made Workload Identity Federation generally available, and put Artifacts and design-sync into Claude Code; OpenAI shipped AgentKit and Google's I/O builder stack landed; open-weight GLM-5.2 keeps pressuring price.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-06-19.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-19",
+    "title": "Meter shock, AI breaches, and higher-for-longer rates all point at the same wedge: cut the leak",
+    "summary": "Six opportunities tied to today's shifts — a Copilot-cost / AI-spend audit as the best bet, a security-hardening sprint off the new top breach vector, an edtech modernization push behind the Columbia lead, faster branded sites via Claude Design, managed-connector retainers, and a higher-for-longer cost-cut positioning play.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-19.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-19",
+    "title": "AI-driven exploits become the top breach cause as coding tools go metered",
+    "summary": "Verizon's 2026 DBIR says AI-driven exploits have overtaken credential theft as the leading breach cause, an edtech ransomware wave is spreading, GitHub Copilot's usage-based billing is biting agentic users, and the Next.js patch baseline (16.2.6+/15.5.18+) still stands.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-19.html"
   },
   {
     "source": "america",

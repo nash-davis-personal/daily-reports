@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-19" />
+  <meta name="report:title" content="AI-driven exploits become the top breach cause as coding tools go metered" />
+  <meta name="report:summary" content="Verizon's 2026 DBIR says AI-driven exploits have overtaken credential theft as the leading breach cause, an edtech ransomware wave is spreading, GitHub Copilot's usage-based billing is biting agentic users, and the Next.js patch baseline (16.2.6+/15.5.18+) still stands." />
+  <meta name="report:highlights" content="5" />
+
+  <title>AI-driven exploits become the top breach cause — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://techstartups.com/2026/06/18/top-tech-news-today-june-18-2026/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, June 19, 2026</span>
+        <span>◆</span><span>Dev tools, security, hardware, deals</span>
+      </div>
+      <h1>Security shifts under everyone's feet while AI coding goes metered</h1>
+      <p class="standfirst">No fresh advisory on Nash's stack this cycle — but two security stories matter to anyone shipping for SMBs: AI-driven exploits just passed credential theft as the top breach cause, and ransomware crews are hammering education providers. Meanwhile GitHub Copilot's metered billing is delivering real sticker shock.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>New since the June 18 edition</span>
+        <span>◆</span><a href="https://techstartups.com/2026/06/18/top-tech-news-today-june-18-2026/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>AI exploits now #1</h4><p>Verizon's 2026 DBIR: AI-driven exploits have overtaken credential theft as the leading breach cause.</p></div>
+        <div class="signal"><div class="n">02</div><h4>EdTech under ransomware</h4><p>A wave of attacks on schools and learning platforms; one hit on GSF disrupted classes for tens of thousands.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Copilot meter shock</h4><p>Usage-based AI Credits (live June 1) are posting 10x–50x cost jumps for heavy agentic users.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Next.js patch baseline holds</h4><p>Latest is 16.2.9; the May coordinated fix means stay at 16.2.6+ / 15.5.18+ or newer.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Quantum-security SPAC</h4><p>EigenQ goes public via a ~$3B SPAC merger on post-quantum cryptography demand.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: patch the stack, watch the new attack surface</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Heads-up</span>
+            <span class="ver">2026 DBIR</span>
+            <h3>AI-driven exploits pass credential theft as the top breach cause</h3>
+          </div>
+          <div class="story-body">
+            <p>Verizon's 2026 Data Breach Investigations Report finds AI-driven exploits have become the single leading cause of breaches — ahead of stolen credentials. In parallel, security researchers reported attackers manipulating AI-powered support systems to take over accounts, a reminder that an AI agent with access is itself an attack surface.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your concierge and receptionist agents touch real client systems. Treat every tool/connector an agent can call as a privilege to scope tightly — least-privilege keys (now easier with Claude's Workload Identity Federation), input validation on anything that reaches a function, and no secrets in client repos. This is also a sellable line: "we build AI that's hardened against the #1 breach vector of 2026."</div>
+          <div class="refs"><a href="https://techstartups.com/2026/06/18/top-tech-news-today-june-18-2026/" target="_blank" rel="noopener">Tech Startups: June 18 roundup ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">Next.js 16.2.9</span>
+            <h3>Next.js patch baseline still 16.2.6+ / 15.5.18+</h3>
+          </div>
+          <div class="story-body">
+            <p>No new Next.js security advisory landed this cycle — the June releases (16.2.8 and 16.2.9, both June 9) were housekeeping to fix npm dist-tags. The action item from the May coordinated release of 13 advisories (DoS, SSRF, middleware bypass, cache poisoning, XSS; CVE-2026-23870) still stands: anything below the patched lines is vulnerable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run a one-line audit across every client repo — <code>npx next@latest --version</code> won't tell you the installed version, so check each <code>package.json</code> and bump anything under <b>16.2.6</b> (or <b>15.5.18</b> on the 15.x line). Patching is the only complete fix; a WAF rule won't cover it.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel: Next.js security release ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Threat</span>
+            <span class="ver">Jun 2026</span>
+            <h3>Ransomware crews are targeting education providers</h3>
+          </div>
+          <div class="story-body">
+            <p>A Resecurity investigation details a surge of ransomware against schools, learning platforms, and edtech vendors; a June hit on GSF, which runs schools across several countries, encrypted core systems and disrupted classes for tens of thousands. Resecurity expects edtech breaches to roughly double year-over-year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct tailwind for the Columbia IBC education lead and any local private-school pitch — "secure, modern, and you own the code" lands hard right now. Lead education conversations with data handling and access control, not just the chatbot.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/06/18/top-tech-news-today-june-18-2026/" target="_blank" rel="noopener">Tech Startups: June 18 roundup ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Dev economics</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Pricing</span>
+            <span class="ver">Live Jun 1</span>
+            <h3>GitHub Copilot's metered billing is biting</h3>
+          </div>
+          <div class="story-body">
+            <p>Copilot's shift to usage-based "AI Credits" (1 credit = 1 cent, billed on input/output/cached tokens by model) is producing 10x–50x cost increases for power users running agentic sessions, per developer reports. Pro stays $10/mo with 1,500 credits; a new Copilot Max tier launched at $100/mo for heavy users. Microsoft's in-house Project Polaris model is slated to replace GPT-4 Turbo as Copilot's default in August.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two takeaways. First, watch your own AI tool spend — agentic coding can quietly run a metered bill into real money; track it. Second, this is a sales opening: small software teams getting hit with meter shock are a prospect list for a "cut your AI tool spend" audit (see today's Money Moves).</div>
+          <div class="refs"><a href="https://www.abhs.in/blog/github-copilot-usage-based-billing-ai-credits-cost-developer-teams-june-2026" target="_blank" rel="noopener">Copilot AI Credits cost math ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">IPO</span><span class="txt">EigenQ (post-quantum cryptography, hardware-rooted trust) going public via a ~$3B SPAC merger, closing Q4. <span class="ver">Jun 18</span></span></li>
+            <li><span class="tag improve qh-tag">Hardware</span><span class="txt">Nvidia's Vera data-center CPU is in full production; hyperscaler 2026 capex tops $700B. <span class="ver">Jun 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Consumer</span><span class="txt">Apple reportedly weighing iPhone price hikes as AI-driven memory shortages raise component costs. <span class="ver">Jun 18</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
