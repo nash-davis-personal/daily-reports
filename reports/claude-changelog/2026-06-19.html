@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-19" />
+  <meta name="report:title" content="2.1.183 puts guardrails on auto mode and stops scheduled tasks from hijacking the prompt" />
+  <meta name="report:summary" content="One release since the last briefing: 2.1.183 blocks unrequested destructive git and infra-destroy commands in auto mode, stops scheduled-task and webhook deliveries from approving actions, fixes WebSearch returning empty in subagents, and adds a setting to drop the claude.ai link from your commits." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.183 puts guardrails on auto mode and stops scheduled tasks from hijacking the prompt — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, June 19, 2026</span>
+        <span>◆</span><span>1 release · v2.1.183</span>
+      </div>
+      <h1>Auto mode grows a safety brake, and your scheduled tasks stop acting like a person at the keyboard</h1>
+      <p class="standfirst">One release landed since the 2.1.181 briefing. 2.1.183 is a guardrails-and-cleanup drop: it blocks destructive git and <code>terraform/pulumi/cdk destroy</code> commands in auto mode when you didn't ask for them, and it closes a real hole where a scheduled task or webhook firing could approve a pending action or rename your session. It also un-breaks WebSearch inside subagents and re-prompts turns that finished silently with only a thinking block.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers v2.1.183 (June 19, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Auto mode blocks unrequested destructive commands</h4><p><code>git reset --hard</code>, <code>checkout -- .</code>, <code>clean -fd</code>, <code>stash drop</code>, and <code>*destroy</code> are now blocked unless you asked.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Scheduled tasks can't hijack the prompt</h4><p>Scheduled-task and webhook deliveries no longer count as keyboard input — they can't approve actions or set the session title in auto mode.</p></div>
+        <div class="signal"><div class="n">03</div><h4>WebSearch in subagents works again</h4><p>Subagents that called WebSearch were silently getting empty results. Fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Deprecated-model warning covers agent frontmatter</h4><p>Pinning a dead or auto-updated model ID in a subagent file now warns you on stderr in <code>-p</code> mode.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Drop the claude.ai link from commits</h4><p>New <code>attribution.sessionUrl</code> setting omits the session URL from commits and PRs in web and Remote Control sessions.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Silent thinking-only turns now re-prompt</h4><p>A turn that returned only a thinking block used to complete with no output; Claude now re-prompts once.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Auto mode got a safety brake</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.183</span>
+            <h3>Destructive git and infra-destroy commands are blocked unless you ask for them</h3>
+          </div>
+          <div class="story-body">
+            <p>In auto mode, Claude will no longer run <code>git reset --hard</code>, <code>git checkout -- .</code>, <code>git clean -fd</code>, or <code>git stash drop</code> when you didn't ask to throw away local work. <code>git commit --amend</code> is blocked when the commit wasn't made by the agent this session, and <code>terraform destroy</code> / <code>pulumi destroy</code> / <code>cdk destroy</code> are blocked unless you named the specific stack.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run auto mode across a fleet of repos — TSD app, Praxis, the renters funnels, the demo sites. This is the failure mode that wipes uncommitted work on the wrong checkout. It's now a default backstop, so you can leave auto mode on for the overnight demo builds without babysitting the git surface. Don't treat it as a license to skip commits, but it removes the worst tail risk.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.183</span>
+            <h3>Scheduled-task and webhook deliveries are no longer treated as keyboard input</h3>
+          </div>
+          <div class="story-body">
+            <p>Previously a scheduled task or webhook trigger arriving mid-session was processed like something you typed — which meant it could approve a pending permission prompt or set the session title in auto mode. They now classify as task notifications and can do neither.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the same machinery that runs your daily reports, the Macroscope captures, the Frontier lessons, and the agentic-account manager — all local scheduled tasks firing into sessions. The old behavior was a quiet way for an automated delivery to rubber-stamp an action nobody reviewed. Worth a mental note that your unattended jobs are now safer by default; no config change needed.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation reliability fixes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.183</span>
+            <h3>WebSearch returned empty results inside subagents</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagents that called WebSearch were getting empty results back. Fixed in this release. The same drop also re-prompts a turn that returned only a thinking block instead of completing silently with no visible output.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your research-heavy automations lean on subagent WebSearch — the daily money-moves report, Macroscope's web reads, anything using the deep-research harness. If a recent run came back thin or oddly generic, this is a likely cause. Re-run anything that searched-via-subagent in the last few days and compare. The thinking-only re-prompt fix matters for unattended jobs that occasionally produced nothing.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.183</span>
+            <h3>Subagent spawns hitting a thinking-config 400, and headless MCP auth stubs</h3>
+          </div>
+          <div class="story-body">
+            <p>Two more headless-path fixes: subagent spawns and session-title generation no longer throw <code>thinking.disabled.display: Extra inputs are not permitted</code> 400 errors on affected configs, and MCP servers that require authentication no longer expose auth-stub tools to the model in headless/SDK mode.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both bite the SDK / <code>-p</code> path, which is exactly how your scheduled tasks and any programmatic runs execute. The MCP auth-stub fix means a half-authenticated connector no longer dangles a useless tool in front of the model — cleaner tool lists and fewer wasted calls in your automated runs.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models &amp; commit attribution</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">v2.1.183</span>
+            <h3>Deprecated-model warning now also covers models pinned in agent frontmatter</h3>
+          </div>
+          <div class="story-body">
+            <p>When a requested model is deprecated or silently updated to a newer one, Claude Code now warns on stderr in print mode — and the check now also covers models set in agent frontmatter, not just the top-level model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You pin specific models in subagent files — Sonnet 4.6 on the receptionist, Fable 5 on the Field handoff, model overrides scattered through your workflows. A pinned ID that quietly got redirected is the kind of thing you'd never notice until output drifted. Watch your scheduled-task logs for the new stderr warning and clean up any stale IDs it flags.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">v2.1.183</span>
+            <h3><code>attribution.sessionUrl</code> drops the claude.ai link from commits and PRs</h3>
+          </div>
+          <div class="story-body">
+            <p>A new setting omits the claude.ai session link from commits and PRs in web and Remote Control sessions. Alongside it, <code>/config --help</code> now lists every shorthand key for the <code>/config key=value</code> syntax added in 2.1.181, and the <code>/config</code> toggle now saves on Esc instead of reverting.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You already strip Claude co-author trailers on the Vercel-Hobby private repos because they block deploys. This is the matching control for the session URL — one more bit of agent metadata you can keep out of client-facing git history. Set it once if you do any web or Remote Control commits into repos a client will see.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background tasks started by a teammate are no longer killed when that teammate finishes its turn <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fullscreen TUI corruption (statusline mid-screen, duplicated spinner rows, merged text) under heavy nested-subagent load in Windows Terminal <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">User-level skills no longer appear multiple times in slash-command autocomplete when several plugins are enabled <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">tmux teammate panes failing to launch under slow rc-file init, and keystrokes leaking into the new pane during agent spawn <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Focus mode no longer prints "Ran N PostToolUse hooks" timing lines under each response <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim-mode native cursor no longer stranded above the prompt after navigating history <span class="ver">v2.1.183</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The startup "setup issues" line under the logo is gone — run <code>/doctor</code> or <code>--debug</code> to see config issues instead <span class="ver">v2.1.183</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
