@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-20" />
+  <meta name="report:title" content="Quiet window — no new Claude Code release since 2.1.183" />
+  <meta name="report:summary" content="Nothing shipped since yesterday's briefing. The changelog still tops out at 2.1.183, so the action item is the same: leave auto mode on for overnight builds, and watch scheduled-task logs for the new deprecated-model warning." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Quiet window — no new Claude Code release since 2.1.183 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, June 20, 2026</span>
+        <span>◆</span><span>Quiet window · no new release</span>
+      </div>
+      <h1>No new Claude Code release today — the changelog still tops out at 2.1.183</h1>
+      <p class="standfirst">Nothing shipped since yesterday's briefing. Both the docs changelog and the GitHub <code>CHANGELOG.md</code> still list 2.1.183 (June 19) as the newest version, so there is nothing new to act on. This is a short honest empty-day note instead of padding.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>No release between June 19 and June 20</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> What carried over from 2.1.183</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Still current</span>
+            <span class="ver">v2.1.183</span>
+            <h3>Yesterday's guardrails are the live action items</h3>
+          </div>
+          <div class="story-body">
+            <p>The last drop blocked unrequested destructive git and <code>*destroy</code> commands in auto mode, stopped scheduled-task and webhook deliveries from approving actions or renaming sessions, fixed WebSearch returning empty inside subagents, extended the deprecated-model warning to agent frontmatter, and added <code>attribution.sessionUrl</code> to drop the claude.ai link from commits. Full writeup is in <a href="2026-06-19.html">yesterday's briefing</a>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two things still worth doing if you haven't. One, watch your scheduled-task logs (daily reports, Macroscope, Frontier, agentic-account) for the new stderr deprecated-model warning and clean up any stale pinned IDs it flags. Two, if a subagent-WebSearch run came back thin in the last few days, re-run it — that bug is fixed now. No upgrade pressure beyond staying current.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.183</a></div>
+        </article>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
