@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-20",
+    "title": "Higher-for-longer settles in as energy keeps prices sticky; Charlotte logs its best recruitment year in a decade",
+    "summary": "With the Fed's hawkish turn now priced, the weekend story is the why: PCE inflation was revised up to 3.6% on higher energy costs, keeping a possible rate hike on the table. Against that, Charlotte logged its best business-recruitment year in a decade, and a stubborn Southwest heat wave kept strengthening into June.",
+    "highlights": 4,
+    "path": "reports/america/2026-06-20.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing shipped since yesterday's briefing. The changelog still tops out at 2.1.183, so the action item is the same: leave auto mode on for overnight builds, and watch scheduled-task logs for the new deprecated-model warning.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-06-20.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-20",
+    "title": "The inference money keeps moving while coding agents quietly grow hands",
+    "summary": "A quiet Saturday with no new frontier model, but the week's real story is the money: Baseten is closing $1.5B at up to a $13B valuation as inference becomes its own infrastructure war, while OpenAI and Anthropic keep hardening the agent tooling underneath everything Nash ships.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-06-20.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-20",
+    "title": "Charlotte's boom is your lead list; falling inference costs are your margin",
+    "summary": "Six moves tuned to today's shifts — a record Charlotte recruitment year that hands Grant and Bishop a relocation-fueled outbound list, an inference-price war that lets you sell fixed-price retainers with widening margins, and a breach-heavy week that makes a simple patch-and-monitor add-on an easy retainer upsell.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-20.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-20",
+    "title": "A breach-heavy weekend — confirm your stack is patched, then watch the silicon race",
+    "summary": "FortiBleed has compromised 86,644 FortiGate devices and a PeopleSoft zero-day is being exploited in the wild, a reminder to confirm Nash's own Next.js apps carry the React Server Components RCE patch; underneath, the AI-silicon race tightened with Qualcomm's Tenstorrent talks, Intel 18A-P risk production, and a new constraint nobody priced — water.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-20.html"
   },
   {
     "source": "america",

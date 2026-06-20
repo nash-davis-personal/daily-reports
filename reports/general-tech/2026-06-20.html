@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-20" />
+  <meta name="report:title" content="A breach-heavy weekend — confirm your stack is patched, then watch the silicon race" />
+  <meta name="report:summary" content="FortiBleed has compromised 86,644 FortiGate devices and a PeopleSoft zero-day is being exploited in the wild, a reminder to confirm Nash's own Next.js apps carry the React Server Components RCE patch; underneath, the AI-silicon race tightened with Qualcomm's Tenstorrent talks, Intel 18A-P risk production, and a new constraint nobody priced — water." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A breach-heavy weekend — confirm your stack is patched, then watch the silicon race — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, June 20, 2026</span>
+        <span>◆</span><span>Security first, then the silicon race</span>
+      </div>
+      <h1>A breach-heavy weekend — patch first, then watch the silicon race</h1>
+      <p class="standfirst">Active campaigns are running hot: FortiBleed has hit 86,644 FortiGate devices and a PeopleSoft zero-day is being exploited in the wild. None touch Nash's stack directly, but they make this the right weekend to confirm every Next.js app he runs carries the standing React Server Components RCE patch. Underneath the noise, the AI-silicon race tightened.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers what's new since the June 19 edition</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">86,644</div><div class="lbl">FortiGate devices hit (June 19)</div></div>
+      <div class="stat"><div class="num">16.0.7</div><div class="lbl">patched Next.js (RSC RCE line)</div></div>
+      <div class="stat"><div class="num">$10B</div><div class="lbl">Qualcomm–Tenstorrent talks</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch check on your stack</h4><p>The React Server Components / Next.js RCE is patched — confirm your apps are on a fixed version.</p></div>
+        <div class="signal"><div class="n">02</div><h4>FortiBleed spreading</h4><p>CISA flagged a campaign that compromised 86,644 FortiGate appliances as of June 19.</p></div>
+        <div class="signal"><div class="n">03</div><h4>PeopleSoft zero-day in the wild</h4><p>ShinyHunters is exploiting an unpatched Oracle PeopleSoft flaw; universities hit hard.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Silicon race tightens</h4><p>Qualcomm eyes Tenstorrent (~$10B); Intel 18A-P enters risk production; HBM4E samples ship.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The constraint nobody priced</h4><p>SpaceX's IPO amendment names water access as a limit on large-scale AI infrastructure.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — do this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">Standing advisory</span>
+            <h3>Confirm your Next.js apps carry the RSC remote-code-execution fix</h3>
+          </div>
+          <div class="story-body">
+            <p>With multiple active campaigns running this weekend, treat it as a prompt to verify the one advisory that actually touches your stack. The critical React Server Components / Next.js RCE — CVE-2025-55182 (React) and CVE-2025-66478 (Next.js) — comes from insecure deserialization in the RSC "Flight" protocol and allows unauthenticated remote code execution. It affects Next.js App Router from 14.3.0-canary.77 through 16.0.6 and React 19.0–19.2. It cannot be reliably blocked at the WAF layer; upgrading is the only complete fix.</p>
+            <p>Patched lines: Next.js 15.5.7 and 16.0.7 (plus 15.0.5 / 15.1.9 / 15.2.6 / 15.3.6 / 15.4.8 on older branches); React 19.0.1 / 19.1.2 / 19.2.1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Action item, today — run <code>npm ls next react</code> across the live apps (tsd-modernization-app, the funnels, the demos). Anything on Next ≤ 16.0.6 with App Router needs to move to ≥ 16.0.7 (or the matching 15.x patch) and redeploy. Then check indirect deps for a vulnerable React. This is unauthenticated RCE — it's the highest-priority chore on the list.</div>
+          <div class="refs"><a href="https://www.stepsecurity.io/blog/critical-remote-code-execution-vulnerabilities-discovered-in-react-server-components-and-next-js" target="_blank" rel="noopener">StepSecurity — RSC/Next.js RCE ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Active campaign</span>
+            <span class="ver">June 19, 2026</span>
+            <h3>FortiBleed and a PeopleSoft zero-day are live this weekend</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA urged Fortinet customers to secure FortiGate appliances against a campaign codenamed FortiBleed, attributed to Russian-speaking actors; the compromised count stood at 86,644 devices as of June 19. Separately, ShinyHunters is exploiting an unpatched Oracle PeopleSoft zero-day to break into enterprise systems, steal data, and extort, with universities hit particularly hard.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Neither product is in your stack, so no direct action — but if any client runs a FortiGate or PeopleSoft, a one-line heads-up is the kind of touch that turns a website vendor into a trusted advisor. Cheap goodwill.</div>
+          <div class="refs"><a href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News — weekend roundup ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI-silicon race</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Semiconductors</span>
+            <span class="ver">June 2026</span>
+            <h3>Qualcomm goes after data-center silicon; Intel 18A-P enters risk production</h3>
+          </div>
+          <div class="story-body">
+            <p>Qualcomm is pushing beyond mobile — launching custom AI data-center silicon and in talks to acquire AI-chip startup Tenstorrent for as much as $10 billion. Intel's 18A-P node entered risk production with reported interest from Apple and Google and a UMC partnership aimed at TSMC's foundry lead, while Samsung and SK Hynix began shipping seventh-generation HBM4E memory samples to major customers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action, but this is why your inference bill keeps falling — more competition in chips and memory feeds straight through to cheaper model serving, which is the cost base under every AI product you sell. Tailwind for the Managed-AI model.</div>
+          <div class="refs"><a href="https://ts2.tech/en/june-2026-semiconductor-news-roundup-u-s-chip-controls-sandboxaq-funding-and-intel-18a-p/" target="_blank" rel="noopener">TS2 — June 2026 semiconductor roundup ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Infrastructure</span>
+            <span class="ver">June 2026</span>
+            <h3>SpaceX names water as an AI-infrastructure constraint</h3>
+          </div>
+          <div class="story-body">
+            <p>In an amendment to its IPO filing, SpaceX warned investors that access to water — for cooling large-scale compute — is becoming a critical factor in operating and expanding AI infrastructure. It's an early sign the data-center buildout is bumping into physical limits beyond power and chips.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do, but worth filing — the "AI is constrained by physical resources" narrative will shape what clients believe about cost and reliability over the next year. Useful context for the honest-about-AI pitch.</div>
+          <div class="refs"><a href="https://cybernews.com/news/" target="_blank" rel="noopener">Cybernews — tech roundup ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Apple</span><span class="txt">A critical, reportedly unfixable hardware vulnerability lets attackers take over iPhone XS / XR / 11 and older iPad models — older client devices are the exposure. <span class="ver">June 2026</span></span></li>
+            <li><span class="tag breaking qh-tag">AI attacks</span><span class="txt">Hackers manipulated AI-powered Instagram support systems to seize accounts — attackers increasingly target the AI layer, not just the software. <span class="ver">June 2026</span></span></li>
+            <li><span class="tag feature qh-tag">Hardware</span><span class="txt">Qualcomm and EssilorLuxottica showed a Snapdragon Reality Elite chipset and integrated visuals for smart glasses, pushing the AR hardware race forward. <span class="ver">June 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
