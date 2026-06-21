@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-06-21" />
+  <meta name="report:title" content="Quiet Sunday: the agent plumbing hardens while power becomes AI's real ceiling" />
+  <meta name="report:summary" content="No new frontier model dropped over the weekend. The live stories are the connector and design layers Anthropic keeps hardening under everything a solo builder ships, a cheaper Google model aimed straight at agents and coding, and a federal regulator moving to fast-track AI data centers because electricity — not chips — is now the binding constraint on inference." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Quiet Sunday: the agent plumbing hardens while power becomes AI's real ceiling — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Sunday, June 21, 2026</span>
+        <span>◆</span><span>Quiet weekend · tooling &amp; infrastructure, no new model</span>
+      </div>
+      <h1>Quiet Sunday: the agent plumbing hardens while power becomes AI's real ceiling</h1>
+      <p class="standfirst">Nothing frontier shipped this weekend — the June launch wave is already behind us. The signal underneath is steady: Anthropic keeps tightening the connector and design layers Nash builds on, Google has a cheaper model aimed at agents, and a federal regulator just moved to fast-track AI data centers because the buildout has hit a power wall, not a chip wall.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers what's new since the June 20 edition</span>
+        <span>◆</span><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1M+</div><div class="lbl">used Claude Design in week one</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">grid operators put on notice by FERC</div></div>
+      <div class="stat"><div class="num">~200M</div><div class="lbl">Americans in the affected grid regions</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Connectors get a control plane</h4><p>Anthropic shipped enterprise-managed MCP connectors, starting with Okta — centralized auth across Claude chat, Code, and Cowork.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Design crosses a million</h4><p>Over 1M people used Claude Design in its first week; it now syncs tighter with Claude Code and allows direct canvas edits.</p></div>
+        <div class="signal"><div class="n">03</div><h4>A cheap model for agents</h4><p>Google's Gemini 3.5 Flash targets "frontier performance for agents and coding" at Flash-tier pricing.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Power is the new ceiling</h4><p>FERC moved to fast-track AI data centers onto the grid — the bottleneck on inference is now electricity, not silicon.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The builder layer Nash ships on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Tooling</span>
+            <span class="ver">June 2026 release notes</span>
+            <h3>Anthropic puts a control plane over MCP connectors, starting with Okta</h3>
+          </div>
+          <div class="story-body">
+            <p>Per Anthropic's June release notes, Claude now supports enterprise-managed MCP connector access — an admin can centrally authorize which connectors are available across Claude chat, Claude Code, and Cowork, beginning with Okta. It's a governance layer on top of the same Model Context Protocol that lets Claude reach external tools and data.</p>
+            <p>MCP crossing into managed, audited territory is the quiet tell that the connector layer is maturing from hobby plumbing into something an IT department will sign off on.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every Concierge and Front Desk build sits on this connector layer. When a bigger SMB or a regulated client asks "who controls what the AI can touch," the answer is now a real feature, not a hand-wave — that removes a real objection from the sales conversation.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/anthropic/claude" target="_blank" rel="noopener">Anthropic / Claude release notes, June 2026</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Tooling</span>
+            <span class="ver">June 2026</span>
+            <h3>Claude Design crosses 1M users in week one, tightens its Claude Code sync</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic says over a million people used Claude Design in its first week. The June update keeps generated work aligned with a project's design system across files, adds direct canvas editing, stronger layout controls, and a tighter handoff into Claude Code.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Design-system-aware generation that round-trips into Claude Code is exactly the loop Nash runs solo — mock a client site, keep it on-brand, ship it. Faster front-end iteration is more demo sites built per night without hiring anyone.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/anthropic" target="_blank" rel="noopener">Anthropic release notes, June 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models &amp; the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model</span>
+            <span class="ver">June 2026</span>
+            <h3>Google's Gemini 3.5 Flash aims a cheap model at agents and coding</h3>
+          </div>
+          <div class="story-body">
+            <p>Google is pitching Gemini 3.5 Flash as "frontier performance for agents and coding" at Flash-tier pricing — part of the same agentic push that included its Antigravity tooling. It's a fast, low-cost option for high-volume agent calls rather than a reasoning flagship.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A genuinely cheap, capable model is the right tool for the chatty, high-call-count paths in a RAG Concierge where Claude's depth is overkill. Worth a head-to-head on cost-per-conversation for the demo concierges — multi-model routing protects margin on fixed-price retainers.</div>
+          <div class="refs"><a href="https://qverlabs.com/blog/openai-vs-google-deepmind-vs-anthropic-2026" target="_blank" rel="noopener">2026 model landscape overview</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Infrastructure</span>
+            <span class="ver">June 18, 2026</span>
+            <h3>FERC moves to fast-track AI data centers — power, not chips, is the ceiling</h3>
+          </div>
+          <div class="story-body">
+            <p>In a unanimous 5-0 vote on June 18, FERC issued "show-cause" orders to the six largest U.S. grid operators — PJM, MISO, SPP, CAISO, ISO New England, and NYISO — giving them 60 days to justify or rewrite how large loads like AI data centers connect to the grid. The orders touch regions serving about 200 million Americans across 30+ states. Texas, on its own grid, is exempt.</p>
+            <p>The framing matters: the constraint on AI capacity has shifted from GPU supply to whether the grid can deliver the megawatts. Last week's briefings flagged water as a data-center input nobody priced; this is the same story for electricity.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not directly actionable, but it's the macro reason inference prices won't fall forever — power is the floor under token costs. Lock clients into fixed-price Managed retainers now while serving costs are still drifting down; you keep the margin if they later tick back up.</div>
+          <div class="refs"><a href="https://www.powermag.com/ferc-sets-june-deadline-to-rewrite-large-load-grid-rules-for-ai-era-power-demand/" target="_blank" rel="noopener">POWER Magazine</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Talent</span><span class="txt">Andrej Karpathy is now at Anthropic, standing up a team that uses Claude to accelerate pre-training research — a sign of where elite AI talent is pooling. <span class="ver">started late May 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Money</span><span class="txt">Inference-infra spend keeps climbing (Baseten's ~$1.5B round, covered June 20) — cheaper, more reliable serving is the through-line for anyone selling AI products. <span class="ver">June 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

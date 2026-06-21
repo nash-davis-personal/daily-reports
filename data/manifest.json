@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-21",
+    "title": "A green but jumpy week for stocks, oil stuck near $80, and a federal push to wire up AI's power demand",
+    "summary": "Stocks closed a holiday-shortened week higher — the S&P's 11th up week in 12 — led by chips clawing back from the Fed sell-off, even as oil hovers near $80 with Strait of Hormuz traffic still slow and a U.S.-Iran meeting postponed. The week's structural story: FERC ordered the six biggest grid operators to rework how large power users, including AI data centers, connect to the grid.",
+    "highlights": 3,
+    "path": "reports/america/2026-06-21.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Only 2.1.185 shipped since yesterday — a calmer retry hint that waits 20s instead of 10s before nagging. Nothing to act on.",
     "highlights": 1,
     "path": "reports/claude-changelog/2026-06-21.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-21",
+    "title": "Quiet Sunday: the agent plumbing hardens while power becomes AI's real ceiling",
+    "summary": "No new frontier model dropped over the weekend. The live stories are the connector and design layers Anthropic keeps hardening under everything a solo builder ships, a cheaper Google model aimed straight at agents and coding, and a federal regulator moving to fast-track AI data centers because electricity — not chips — is now the binding constraint on inference.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-06-21.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-21",
+    "title": "This week's Next.js patch is a retainer hook; the model price war is your margin",
+    "summary": "Six moves tuned to today's shifts — a 13-advisory Next.js security release that turns patch-and-monitor into an easy recurring upsell, a new enterprise control plane that lets your AI products move upmarket, a cheap Google model that widens margin on fixed-price retainers, and higher-for-longer prices that make TSD's money-saver pitch land harder.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-21.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-21",
+    "title": "Confirm the Next.js patch landed, then your serverless functions can run a half hour",
+    "summary": "The weekend's must-do is housekeeping: make sure every TSD Next.js app carries the June coordinated security release that fixes a high-severity React Server Components DoS and a self-hosted SSRF hole. The upside is real too — Vercel Functions can now run up to 30 minutes on its Fluid microVMs, which directly helps long AI and RAG jobs.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-06-21.html"
   },
   {
     "source": "america",
