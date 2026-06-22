@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-22",
+    "title": "The Fed drops its rate-cut plan as inflation runs hot, even as stocks sit near records",
+    "summary": "The dominant domestic story is the inflation-and-rates regime shift: at its June meeting the Fed held at 3.50–3.75%, removed its prior outlook for a 2026 cut, and now flags a possible hike, with May CPI at 4.2%. Yet the S&P 500 sits near an all-time high around 7,420. Meanwhile severe storms and flooding hit the Plains and Ohio Valley as the first heat of summer builds across the South and West.",
+    "highlights": 4,
+    "path": "reports/america/2026-06-22.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing shipped since 2.1.185 on June 20, which the last briefing already covered. The changelog is unchanged. Nothing to do.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-06-22.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-22",
+    "title": "Anthropic's best models stay dark, GPT-5.6 looms, and a fake bug report can hijack a coding agent",
+    "summary": "Fable 5 and Mythos 5 are still offline a week into the export ban, with Dario Amodei leaving a White House meeting empty-handed and a cybersecurity open letter now past 100 names. Meanwhile GPT-5.6 is being spotted in ChatGPT Pro, ChatGPT's market share dipped under 50% for the first time, and the new 'agentjacking' attack turns a single fake Sentry error into remote code execution inside Claude Code and Cursor.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-06-22.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-22",
+    "title": "Salesforce just paid $3.6B for what you already sell — lean into it while money's tight",
+    "summary": "The week hands you two tailwinds at once: the platforms are paying billions to validate AI customer-service agents (Salesforce/Fin) exactly as TSD sells them, and a hot-inflation, higher-for-longer macro makes the money-saver pitch land harder. Plus the agentjacking disclosure and the Next.js patch cycle open a clean security-audit offer.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-22.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-22",
+    "title": "Agentjacking puts AI coding agents in the crosshairs; confirm your Next.js is patched",
+    "summary": "The week's load-bearing tech story is a security one: the 'agentjacking' attack turns a fake Sentry error into code execution inside Claude Code and Cursor, so audit your MCP surface now. If you skipped the May Next.js coordinated security release, upgrade to 15.5.18 or 16.2.6. On the hardware side Intel's 18A-P entered risk production with Apple and Google interested, and Samsung and SK Hynix are sampling HBM4E.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-06-22.html"
   },
   {
     "source": "america",

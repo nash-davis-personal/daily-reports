@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-06-22" />
+  <meta name="report:title" content="Anthropic's best models stay dark, GPT-5.6 looms, and a fake bug report can hijack a coding agent" />
+  <meta name="report:summary" content="Fable 5 and Mythos 5 are still offline a week into the export ban, with Dario Amodei leaving a White House meeting empty-handed and a cybersecurity open letter now past 100 names. Meanwhile GPT-5.6 is being spotted in ChatGPT Pro, ChatGPT's market share dipped under 50% for the first time, and the new 'agentjacking' attack turns a single fake Sentry error into remote code execution inside Claude Code and Cursor." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Anthropic's best models stay dark, GPT-5.6 looms, agentjacking hits coding agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#8b5cf6; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Monday, June 22, 2026</span>
+        <span>◆</span><span>Window since the June 21 edition</span>
+      </div>
+      <h1>Anthropic's top models stay dark, GPT-5.6 looms, and a fake bug report can hijack a coding agent</h1>
+      <p class="standfirst">No new frontier model dropped over the weekend, so the live stories are about access and trust: Fable 5 and Mythos 5 are still offline a week into the US export ban, GPT-5.6 is being spotted ahead of launch, and a new attack class turns AI coding agents into the soft target. The throughline for a solo builder is that the model layer keeps shuffling while the plumbing under your agents quietly becomes the thing that bites you.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Quiet-release weekend; access &amp; security in focus</span>
+        <span>◆</span><a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">100+</div><div class="lbl">Signatures on the letter to lift the Fable/Mythos ban</div></div>
+      <div class="stat"><div class="num">46.4%</div><div class="lbl">ChatGPT's AI-assistant market share — under half for the first time</div></div>
+      <div class="stat"><div class="num">85%</div><div class="lbl">Agentjacking exploitation rate against injected errors</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Fable 5 / Mythos 5 still offline</h4><p>A week into the export ban, no restoration date; Amodei met the administration June 21 with no deal.</p></div>
+        <div class="signal"><div class="n">02</div><h4>GPT-5.6 is imminent</h4><p>OpenAI's chief scientist calls it a "meaningful improvement"; already spotted in ChatGPT Pro.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Agentjacking</h4><p>One crafted Sentry error makes Claude Code / Cursor run attacker code. Patch your MCP exposure.</p></div>
+        <div class="signal"><div class="n">04</div><h4>ChatGPT dips under 50%</h4><p>46.4% assistant market share — the first sub-majority reading since 2022.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Salesforce buys Fin for $3.6B</h4><p>The agentic-customer-service land grab is real money now — and aimed at exactly what TSD sells.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Access &amp; policy: the best models you can't get</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">June 12–21</span>
+            <h3>Fable 5 and Mythos 5 remain suspended worldwide; no agreement after a White House meeting</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic pulled its two most capable models globally on June 12–13 to comply with a Commerce Department directive that bars access by any foreign national, including its own non-American staff, citing a claimed jailbreak. A week on, the models are still dark with no restoration timeline. Dario Amodei met the administration June 21 and left without a deal. An open letter organized by former Facebook security chief Alex Stamos has climbed past 100 signatures — names from Nvidia, Google, and Adobe — arguing the ban strips defenders of a tool while doing nothing to slow attackers. Researcher Katie Moussouris, who reviewed the underlying paper, says the alleged "jailbreak" was essentially rephrasing a prompt as "fix this code."</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your production stack is fine — Opus 4.8 and Sonnet 4.6 are unaffected and still the right default for everything TSD ships. Don't architect a client product around a model that can be pulled by directive overnight; this is the case for keeping a provider-swappable layer (e.g. an env-flagged model id) so a future ban or outage is a one-line change, not a rebuild.</p>
+          <div class="refs"><a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Anthropic statement</a> · <a href="https://www.technology.org/2026/06/16/cybersecurity-experts-open-letter-anthropic-fable-mythos-export-ban/" target="_blank" rel="noopener">Open letter coverage</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">June 20–21</span>
+            <h3>GPT-5.6 spotted in ChatGPT Pro ahead of a late-June launch</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI's chief scientist called GPT-5.6 a "meaningful improvement" over 5.5, and the model has already been seen inside ChatGPT Pro, pointing to a launch before month-end. Separately, China's Zhipu shipped GLM-5.2, which now leads GPT-5.5 on the FrontierSWE coding benchmark and trails only the offline Fable 5 by a point — a reminder the coding-model race is genuinely four-way now.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action, just don't over-commit. If you ever need a fallback or cost lever for code-heavy automation, the open-weight GLM line is now competitive enough to keep on the radar — but Claude stays the default for client work where reliability beats benchmark points.</div>
+          <div class="refs"><a href="https://unrot.co/blogs/ai-news-today-june-21-2026" target="_blank" rel="noopener">AI news roundup, June 21</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The agent layer: where the risk moved</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Disclosed June 2026</span>
+            <h3>"Agentjacking": a fake Sentry error report can make your coding agent run attacker code</h3>
+          </div>
+          <div class="story-body">
+            <p>Tenet Security disclosed an attack that abuses the seam between Sentry's open event ingestion (anyone with the DSN can post a payload) and the Sentry MCP server (which feeds those events to AI agents as trusted system output). A crafted error event gets read by Claude Code or Cursor as a legitimate "fix this" step and executes attacker-controlled code — exposing env vars, Git credentials, private repo URLs, and developer identity, no phishing required. Researchers found 2,388 organizations with injectable DSNs and hit an 85% success rate in testing, including a Fortune 100 agent. Sentry acknowledged it but declined a root fix, leaning on model-vendor middleware.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant — you run Claude Code daily. Treat any MCP server that ingests untrusted external data (error trackers, ticketing, email, web content) as a prompt-injection surface, not a trusted source. Audit which MCP servers your agents can read from, lock down or rotate any public Sentry DSNs, and never let an agent auto-execute steps sourced from third-party event data without a human gate.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/06/agentjacking-attack-tricks-ai-coding.html" target="_blank" rel="noopener">The Hacker News</a> · <a href="https://tenetsecurity.ai/blog/agentjacking-coding-agents-with-fake-sentry-errors/" target="_blank" rel="noopener">Tenet Security writeup</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The market: agents become acquisition targets</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Business</span>
+            <span class="ver">June 15</span>
+            <h3>Salesforce buys Fin (formerly Intercom) for $3.6B to bolster Agentforce</h3>
+          </div>
+          <div class="story-body">
+            <p>Salesforce signed a definitive deal for Fin, the AI customer-service company that rebranded from Intercom, for about $3.6B. Fin's agent resolves customer queries end-to-end across chat, email, WhatsApp, SMS, phone, and Slack — closing roughly 76% of incoming support requests without a human — and brings 30,000+ business customers. Also notable on the talent side: Noam Shazeer joined OpenAI as Lead for Architecture Research (June 18).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The big platforms are validating exactly TSD's wedge — an AI agent that resolves SMB customer requests across channels. That's tailwind, not threat: Salesforce/Fin chase enterprise seats, while the Charlotte HVAC shop or salon wants a phone receptionist and a website concierge that someone local will set up and own. Use "even Salesforce just paid $3.6B for this" as social proof in the pitch.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/06/15/salesforce-acquires-ai-customer-service-platform-fin-for-3-6b/" target="_blank" rel="noopener">TechCrunch</a> · <a href="https://www.cnbc.com/2026/06/15/salesforce-ai-customer-service-fin-acquistion.html" target="_blank" rel="noopener">CNBC</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Shift</span><span class="txt">ChatGPT's AI-assistant market share fell to 46.4% by late May — the first time under half since its 2022 launch (Sensor Tower). <span class="ver">June 21</span></span></li>
+            <li><span class="tag feature qh-tag">Infra</span><span class="txt">Anthropic reportedly signed 12+ US data-center leases topping 1 gigawatt — power, not chips, is the binding constraint on inference now. <span class="ver">June 21</span></span></li>
+            <li><span class="tag new qh-tag">Watch</span><span class="txt">Google's Gemini 3.5 Pro is still expected this month per Sundar Pichai's "give us until next month" comment; no firm date yet. <span class="ver">June</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

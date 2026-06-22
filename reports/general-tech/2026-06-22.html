@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-22" />
+  <meta name="report:title" content="Agentjacking puts AI coding agents in the crosshairs; confirm your Next.js is patched" />
+  <meta name="report:summary" content="The week's load-bearing tech story is a security one: the 'agentjacking' attack turns a fake Sentry error into code execution inside Claude Code and Cursor, so audit your MCP surface now. If you skipped the May Next.js coordinated security release, upgrade to 15.5.18 or 16.2.6. On the hardware side Intel's 18A-P entered risk production with Apple and Google interested, and Samsung and SK Hynix are sampling HBM4E." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Agentjacking hits coding agents; patch Next.js — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/06/agentjacking-attack-tricks-ai-coding.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, June 22, 2026</span>
+        <span>◆</span><span>Window since the June 21 edition</span>
+      </div>
+      <h1>Agentjacking puts AI coding agents in the crosshairs — and confirm your Next.js is patched</h1>
+      <p class="standfirst">The biggest developer-facing story this week is security, not a shiny launch: a new attack class makes a single fake error report enough to hijack a coding agent. Underneath that, the May Next.js coordinated security release is still the patch a lot of shops haven't applied, and the chip world keeps moving with Intel's 18A-P and next-gen AI memory.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Lead item is a patch instruction</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/06/agentjacking-attack-tricks-ai-coding.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2,388</div><div class="lbl">Orgs found with injectable Sentry DSNs (agentjacking)</div></div>
+      <div class="stat"><div class="num">15.5.18 / 16.2.6</div><div class="lbl">Patched Next.js versions you must be on</div></div>
+      <div class="stat"><div class="num">18A-P</div><div class="lbl">Intel node now in risk production</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Agentjacking</h4><p>Fake Sentry error → code execution in Claude Code / Cursor. Audit your MCP read surface.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Patch Next.js</h4><p>May's 13-advisory release is fixed only in 15.5.18 / 16.2.6. Confirm every TSD app is on one.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase key migration</h4><p>Legacy API keys deprecate end of 2026 — move to sb_publishable_ / sb_secret_ keys.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chips keep moving</h4><p>Intel 18A-P in risk production (Apple/Google interest); Samsung &amp; SK Hynix sampling HBM4E.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — do this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch now</span>
+            <span class="ver">Disclosed June 2026</span>
+            <h3>"Agentjacking": a crafted Sentry error report can run code inside your AI coding agent</h3>
+          </div>
+          <div class="story-body">
+            <p>Tenet Security disclosed an attack that exploits the gap between Sentry's open event ingestion — anyone with the project DSN can post a payload — and the Sentry MCP server, which hands those events to AI agents as trusted system output. A malicious error event gets read by Claude Code or Cursor as a legitimate diagnostic step and executes attacker-controlled code, exposing environment variables, Git credentials, private repo URLs, and developer identity, with no phishing or prior compromise. Researchers found 2,388 orgs with injectable DSNs and achieved an 85% success rate in testing, including a Fortune 100 company's agent. Sentry acknowledged the issue June 3 but declined a root fix.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You use Claude Code every day, so this is your problem too. Action this week: (1) inventory which MCP servers your agents can read from; (2) treat any that ingest external data — error trackers, ticketing, email, scraped web — as untrusted prompt-injection surfaces; (3) if any TSD or client project exposes a public Sentry DSN, rotate it and lock ingestion; (4) keep a human gate on any agent step sourced from third-party event data.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/06/agentjacking-attack-tricks-ai-coding.html" target="_blank" rel="noopener">The Hacker News</a> · <a href="https://tenetsecurity.ai/blog/agentjacking-coding-agents-with-fake-sentry-errors/" target="_blank" rel="noopener">Tenet Security</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Stack patch</span>
+            <span class="ver">May 6–7, still load-bearing</span>
+            <h3>Next.js coordinated security release: be on 15.5.18 or 16.2.6, not an older minor</h3>
+          </div>
+          <div class="story-body">
+            <p>The Next.js and React teams disclosed 13 advisories — denial of service, middleware/proxy bypass, SSRF, cache poisoning, and XSS — patched only in 15.5.18 and 16.2.6. Earlier 15.x and 16.x minors will not be patched, so affected projects must upgrade to a patched minor rather than waiting for a backport. Named CVEs include SSRF via crafted WebSocket upgrade requests (CVE-2026-44578) and a Pages Router i18n issue (CVE-2026-44573).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run a quick sweep across the fleet — every Next.js app (tsd-modernization-app, the client sites, the demo repos) should report 15.5.18+ or 16.2.6+. Vercel auto-deploys mean the fix ships the moment you bump and push. If any repo is pinned to an older minor, that's a same-day upgrade, not a maybe.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack: Supabase key migration</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Heads-up</span>
+            <span class="ver">Through 2026</span>
+            <h3>Supabase legacy API keys deprecate by end of 2026 — move to publishable/secret keys</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase is retiring its legacy anon/service_role API keys by the end of 2026 in favor of the new <code>sb_publishable_…</code> and <code>sb_secret_…</code> format. It's not an emergency, but every TSD project on Supabase will eventually need the swap, and doing it deliberately beats a scramble in December.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Add "rotate to new Supabase key format" to the maintenance backlog for every Supabase-backed app (the portal, Cohors, GrantWell, the RAG demos, the renters funnel). Batch it into the next time you're already touching each repo's env vars so it's free work, not a separate project.</div>
+          <div class="refs"><a href="https://supabase.com/docs/guides/api/api-keys" target="_blank" rel="noopener">Supabase API keys docs</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware &amp; the broader buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Chips</span>
+            <span class="ver">June 2026</span>
+            <h3>Intel 18A-P enters risk production; Samsung and SK Hynix sample HBM4E</h3>
+          </div>
+          <div class="story-body">
+            <p>Intel's 18A-P process node moved into risk production with reported interest from Apple and Google, a real sign of life for its foundry ambitions. In memory, Samsung and SK Hynix are accelerating their rivalry by shipping seventh-generation HBM4E samples — the memory that feeds AI accelerators. Analysts peg the AI-chip market near $500B in 2026 inside a roughly $975B total semiconductor year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action — this is the supply side of why inference keeps getting cheaper and why "power, not chips" is the new bottleneck. The practical read for a builder: keep assuming token costs trend down over the next year, which makes always-on AI features (concierge, receptionist) cheaper to run and easier to price as retainers.</div>
+          <div class="refs"><a href="https://www.eetimes.com/tag/semiconductors/" target="_blank" rel="noopener">EE Times semiconductors</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">M&amp;A</span><span class="txt">Salesforce signed a $3.6B deal for Fin (formerly Intercom), folding its 76%-resolution support agent into Agentforce. <span class="ver">June 15</span></span></li>
+            <li><span class="tag feature qh-tag">IPO</span><span class="txt">SpaceX's IPO raised about $75B at a ~$1.77T valuation, setting a template the market expects Anthropic to follow. <span class="ver">Early June</span></span></li>
+            <li><span class="tag improve qh-tag">Threat</span><span class="txt">Attackers reportedly manipulated AI-powered support systems to take over Instagram accounts — the AI layer itself is now the target, not just the app. <span class="ver">June</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
