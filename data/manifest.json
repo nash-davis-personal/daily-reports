@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-06-23",
+    "title": "2.1.186 lands: bash output talks back, CLI MCP login, agent prompts route to you",
+    "summary": "The big 2.1.186 release makes ! bash output auto-prompt Claude, adds CLI MCP login/logout, and stops background subagents from auto-denying permissions.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-06-23.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
