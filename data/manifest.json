@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-23",
+    "title": "The Russell 2000 closes at 3,000 for the first time as oil falls on Mideast peace talks; PCE looms Thursday",
+    "summary": "Small caps led Monday's tape: the Russell 2000 closed at 3,000 for the first time ever, up 2.1%, while the S&P 500 and Dow edged up and the Nasdaq slipped. Oil traded below $77 after Iran cited major progress in talks with the U.S. and both sides pointed to a peace deal within two months. A western heat wave and a High Plains-to-Mid-Atlantic storm threat run through the week, SpaceX flew its first Starfall cargo capsule this morning, and Thursday's May PCE print is the next inflation read.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-23.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "The big 2.1.186 release makes ! bash output auto-prompt Claude, adds CLI MCP login/logout, and stops background subagents from auto-denying permissions.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-06-23.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-23",
+    "title": "GPT-5.6's launch window opens, Fable 5 stays dark past its billing flip, and Cursor's agents quietly get scarier",
+    "summary": "OpenAI's GPT-5.6 entered its predicted launch window on Monday — prediction markets put 83% on a June 22–28 ship — but there's still no system card, so treat it as imminent, not shipped. June 22 was also the day Anthropic's free Fable 5 access was meant to flip to usage credits; instead both Fable 5 and Mythos 5 remain offline under the export-control directive, with no new movement as of today. Meanwhile Cursor pushed 3.8 with an /automate skill and cloud subagents, and Composer 2.5 now reviews code in ~90 seconds.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-06-23.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-23",
+    "title": "The heat wave is your sales calendar; ride peak trades season with Front Desk before the phones stop ringing",
+    "summary": "Today's shifts point at the trades: a western heat wave plus a broad storm corridor mean HVAC, restoration, and roofing phones are ringing right now, which is exactly when a money-saving AI receptionist sells itself. Charlotte's hiring boom (SMBC, SoFi, AssetMark) widens the local SMB base, the AI-customer-service category keeps getting validated in billions, and Supabase's new one-click Stripe Sync makes a billed product faster to stand up.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-06-23.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-23",
+    "title": "Supabase is sunsetting legacy API keys — rotate before year-end; SpaceX flies its Starfall cargo capsule",
+    "summary": "The stack item to action: Supabase is deprecating legacy API keys by the end of 2026 in favor of publishable (sb_publishable_) and secret (sb_secret_) keys, so plan the rotation across your projects now. Supabase also became a Tailwind partner and shipped one-click Stripe Sync. On deep tech, SpaceX launched its first uncrewed Starfall reentry capsule this morning to test point-to-point cargo delivery through space, and TSMC is ramping 2nm/3nm while phasing out 28nm.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-23.html"
   },
   {
     "source": "america",

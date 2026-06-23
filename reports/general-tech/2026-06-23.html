@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-23" />
+  <meta name="report:title" content="Supabase is sunsetting legacy API keys — rotate before year-end; SpaceX flies its Starfall cargo capsule" />
+  <meta name="report:summary" content="The stack item to action: Supabase is deprecating legacy API keys by the end of 2026 in favor of publishable (sb_publishable_) and secret (sb_secret_) keys, so plan the rotation across your projects now. Supabase also became a Tailwind partner and shipped one-click Stripe Sync. On deep tech, SpaceX launched its first uncrewed Starfall reentry capsule this morning to test point-to-point cargo delivery through space, and TSMC is ramping 2nm/3nm while phasing out 28nm." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Supabase sunsets legacy API keys; SpaceX flies Starfall — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, June 23, 2026</span>
+        <span>◆</span><span>Since the June 22 edition</span>
+      </div>
+      <h1>Supabase is retiring legacy API keys — plan the rotation; SpaceX flies its Starfall cargo capsule</h1>
+      <p class="standfirst">The load-bearing item for your stack is a quiet one: Supabase is deprecating legacy API keys by the end of 2026, so every project you run needs to move to the new publishable/secret key scheme. Off the keyboard, SpaceX launched its first Starfall reentry capsule this morning — an early bet on delivering cargo through space.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h since the last edition</span>
+        <span>◆</span><a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase keys sunsetting</h4><p>Legacy API keys deprecated by end of 2026 — move to sb_publishable_ / sb_secret_.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase × Tailwind</h4><p>Now an official Tailwind partner, plus one-click Stripe Sync Engine in the dashboard.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Starfall flies</h4><p>SpaceX launched its first uncrewed reentry cargo capsule at 6:53 a.m. EDT today.</p></div>
+        <div class="signal"><div class="n">04</div><h4>TSMC node shift</h4><p>2nm/3nm ramping while 28nm wafer starts at Fab 15A drop 25%+ this year.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Cursor 3.8</h4><p>Automation skill and cloud subagents land in the editor — agents move toward shipping code.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack — action items</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Migrate</span>
+            <span class="ver">Deadline: end of 2026</span>
+            <h3>Supabase is deprecating legacy API keys — start rotating now</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase is retiring its legacy API keys by the end of 2026. The replacement is a two-key scheme: publishable keys (<code>sb_publishable_…</code>) for client-side use and secret keys (<code>sb_secret_…</code>) for server-side. The old <code>anon</code> and <code>service_role</code> JWTs keep working until the cutoff, but new projects and any hardening pass should use the new keys.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This touches every Supabase project you run — Cohors, GrantWell, the portal, the renters funnel, the RAG demos. Don't scramble in December: open each project, generate the new publishable/secret keys, update the Vercel env vars, and confirm client vs. server usage is split correctly. Do it in one focused pass while it's a non-event, before it's an outage.</div>
+          <div class="refs"><a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">Supabase releases</a> · <a href="https://supabase.com/blog/using-supabase-with-vercel" target="_blank" rel="noopener">Supabase + Vercel</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Ecosystem</span>
+            <span class="ver">June 2026</span>
+            <h3>Supabase joins Tailwind as a partner and ships one-click Stripe Sync</h3>
+          </div>
+          <div class="story-body">
+            <p>Two smaller but useful Supabase moves: it's now an official Tailwind partner, and the dashboard added a one-click integration for the Stripe Sync Engine — letting you query customers, subscriptions, invoices, and payments as standard SQL right alongside your app data.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Stripe Sync piece is the one to file away. Any client build with subscriptions or invoices (a Managed-AI retainer dashboard, a booking product) gets a built-in revenue table without you wiring a webhook pipeline by hand. That's an afternoon saved per billing-aware project.</div>
+          <div class="refs"><a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">Supabase releases</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deep tech &amp; hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Space</span>
+            <span class="ver">Launch: today, 6:53 a.m. EDT</span>
+            <h3>SpaceX flies its first Starfall reentry capsule</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX launched its first uncrewed Starfall capsule this morning on a Falcon 9 from Cape Canaveral. The cylindrical vehicle — about 2.5 ft tall, 10.2 ft across, ~4,600 lb, carrying up to 1,000 kg of cargo — is a demo of point-to-point cargo delivery through space and an in-space manufacturing play, with recovery in the Pacific under parachutes like Dragon. Forecasters gave it 95% favorable conditions. SpaceX hasn't disclosed payload contents or how many capsules are aboard.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct line to a client build, but it's the kind of "what's now physically possible" shift worth tracking — logistics and manufacturing markets are where the next wave of operational software demand shows up. File it; don't act on it.</div>
+          <div class="refs"><a href="https://spaceflightnow.com/2026/06/23/live-coverage-spacex-to-launch-reentry-capsule-demo-mission-called-starfall/" target="_blank" rel="noopener">Spaceflight Now — Starfall coverage</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Semiconductors</span>
+            <span class="ver">June 2026</span>
+            <h3>TSMC ramps 2nm/3nm and accelerates the 28nm phaseout</h3>
+          </div>
+          <div class="story-body">
+            <p>As TSMC ramps 2nm and 3nm production, it's pulling back on legacy nodes: monthly wafer starts at Fab 15A, its main 28nm site, have fallen more than 25% since the start of the year. China continues to strengthen its domestic toolchain even while it stays far from ASML's most advanced lithography.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Leading-edge capacity going to AI silicon while legacy nodes shrink keeps the cost curve for inference moving the right way over time — your AI products get cheaper to run as the buildout matures. Nothing to do today; it's a tailwind under your margins.</div>
+          <div class="refs"><a href="https://www.trendforce.com/news/" target="_blank" rel="noopener">TrendForce</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Dev tools</span><span class="txt">Cursor 3.8 (June 18) adds an /automate skill plus GitHub/Slack triggers; 3.7 added cloud subagents and a pre-push /review with Bugbot + Security Review. <span class="ver">June 17–18</span></span></li>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Reminder from the May Next.js coordinated release: if you haven't upgraded to 15.5.18 / 16.2.6, do it — the fixes cover RSC cache poisoning and middleware/proxy redirect poisoning. <span class="ver">ongoing</span></span></li>
+            <li><span class="tag new qh-tag">Crypto/infra</span><span class="txt">Post-quantum security plays are heating up: EigenQ is going public via a ~$3B SPAC (Nasdaq: EIGQ) and WISeKey launched its WISeSat 4.0 with an on-board cryptographic chip. <span class="ver">June 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
