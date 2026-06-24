@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-24" />
+  <meta name="report:title" content="2.1.187: sandbox secrets lockdown, workflow schema loop fixed, MCP hangs now time out" />
+  <meta name="report:summary" content="A single hardening-and-fixes release: a new setting walls secrets off from sandboxed commands, structured-output workflows stop looping, and hung remote MCP calls now abort instead of blocking for five minutes." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.187: sandbox secrets lockdown, workflow schema loop fixed, MCP hangs now time out — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, June 24, 2026</span>
+        <span>◆</span><span>One release: 2.1.187</span>
+      </div>
+      <h1>2.1.187: a secrets wall for the sandbox, a fixed workflow-schema loop, and MCP calls that finally fail loud</h1>
+      <p class="standfirst">Quiet window — one release since yesterday's briefing, and it's mostly fixes. The three changes worth your attention all touch how your agents and workflows behave when they misfire: secrets stay out of sandboxed commands, structured-output runs stop spinning forever, and a dead remote MCP tool now errors out instead of eating five minutes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.187 (June 23) — the only release since 2.1.186</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release since last briefing</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">additions</div></div>
+      <div class="stat"><div class="num">~18</div><div class="lbl">fixes shipped</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS (4–6) ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Secrets walled off from the sandbox</h4><p>New <code>sandbox.credentials</code> setting blocks sandboxed commands from reading credential files and secret env vars.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Workflow schema loop fixed</h4><p><code>--json-schema</code> and workflow <code>agent({schema})</code> can no longer re-call StructuredOutput forever; follow-up turns return structure reliably.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Hung MCP calls now abort</h4><p>A remote MCP tool that hangs for 5 minutes now errors out instead of blocking the turn. Tunable via <code>CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT</code>.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Background agents stop wedging</h4><p>Jobs stuck in "working" forever are fixed, leaked worktree locks get cleaned up, and dropped channel connections reconnect.</p></div>
+        <div class="signal"><div class="n">05</div><h4>GitHub App install got simpler</h4><p><code>/install-github-app</code> now lets you install just the app and skip the Actions workflow/secret steps.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent &amp; workflow reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.187</span>
+            <h3>Structured-output workflows stop looping forever</h3>
+          </div>
+          <div class="story-body">
+            <p>Two structured-output bugs are closed. With <code>--json-schema</code> and workflow <code>agent({schema})</code>, the model could keep re-calling the <code>StructuredOutput</code> tool indefinitely after it had already succeeded, and follow-up turns sometimes failed to return structured output at all. Both are fixed — the call resolves once and later turns stay structured.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run multi-agent workflows that force a JSON schema (the RAG-demo eval passes, any pipeline that returns validated objects), this removes a class of runs that silently burned tokens or returned junk. Worth re-running any workflow you'd shelved as flaky.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.187</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.187</span>
+            <h3>Hung remote MCP calls now abort instead of blocking the turn</h3>
+          </div>
+          <div class="story-body">
+            <p>A remote MCP tool call that hangs with no response used to block for a full 5 minutes before anything happened. It now aborts with an error, and you can tune the threshold with <code>CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT</code>. Paired fixes also stop background jobs from getting stuck in "working" when an agent ends a turn without structured output, and clean up leaked worktree locks left by killed agents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on remote MCP connectors (Vercel, Notion, Supabase tooling) across builds. A flaky connector now fails fast and you retry, instead of a scheduled or background run silently stalling for five minutes. Direct win for unattended scout/automation runs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.187</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; access control</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.187</span>
+            <h3>New setting keeps secrets out of sandboxed commands</h3>
+          </div>
+          <div class="story-body">
+            <p>The new <code>sandbox.credentials</code> setting blocks sandboxed commands from reading credential files and secret environment variables. Separately, organizations can now restrict which models appear in the picker, <code>--model</code>, <code>/model</code>, and <code>ANTHROPIC_MODEL</code>, with a clear "restricted by your organization's settings" message when a blocked model is picked.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run agents against repos full of live keys (Resend, Supabase service-role, LemonSqueezy webhook secrets). Turning this on is cheap insurance that a sandboxed shell step can't slurp a <code>.env</code> — set it before the next unattended fleet run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.187</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Workflow &amp; UI quality-of-life</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.187</span>
+            <h3>GitHub App install no longer forces the Actions setup</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/install-github-app</code> now makes the GitHub Actions workflow setup optional — you can install just the GitHub App and skip the workflow and secret steps. Alongside it, select menus (permission prompts, <code>/model</code>, <code>/config</code>) gained mouse-click support in fullscreen mode.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When you wire the GitHub App onto a client repo (Bisque, the renters funnel) you don't need the full CI workflow scaffolding to get App-level access. Fewer steps to skip, less to clean up afterward.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.187</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--resume</code> no longer fails with "No conversation found" when the original <code>-p</code> run produced no model turns <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent stop notifications now attribute who stopped the agent and read "finished"/"stopped" instead of "came to rest" <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagent depth tracking: resumed subagents restore their spawn depth and forked subagents count toward the depth cap <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Pasted Korean/CJK text no longer turns into mojibake in terminals that deliver paste as per-byte extended-key events <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/update</code> over Remote Control no longer hangs when a startup trust dialog would have shown <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote sessions start ~2.7s faster (agent-proxy CA trust install regression) <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cmd+click opens URLs again in fullscreen mode in Ghostty on macOS <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude --help</code> now lists the <code>--bg</code>/<code>--background</code> flag <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Esc, Ctrl-C, and Ctrl-D work again while <code>/share</code> is uploading <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/btw</code> gains ←/→ arrow navigation to step through earlier answers <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/plugin</code> surfaces plugins you haven't used recently so you can clean them up <span class="ver">2.1.187</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Extension no longer becomes unresponsive when resuming a large session <span class="ver">2.1.187</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
