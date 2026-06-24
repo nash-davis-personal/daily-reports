@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-24",
+    "title": "Congress sends a landmark housing-supply bill to the President as tech stocks sell off ahead of Thursday's inflation read",
+    "summary": "The '21st Century Road to Housing Act' cleared the House 358–32, a day after the Senate passed it, and heads to the President's desk — a bipartisan, supply-focused package aimed at the cost of building homes. Markets meanwhile took a tech-led hit Tuesday, with the Nasdaq off 2.2% and semiconductors down about 6%, as traders brace for May PCE inflation data on Thursday that could harden the Fed's hawkish turn.",
+    "highlights": 4,
+    "path": "reports/america/2026-06-24.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "A single hardening-and-fixes release: a new setting walls secrets off from sandboxed commands, structured-output workflows stop looping, and hung remote MCP calls now abort instead of blocking for five minutes.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-06-24.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-24",
+    "title": "The frontier's three flagships are all in limbo as June's deadlines run out",
+    "summary": "A waiting-room day at the model layer: GPT-5.6 still has no system card with a June 25 ship now floated, Gemini 3.5 Pro is inside its June 23–30 GA window but still preview-only, and Claude Fable 5 is on its twelfth day offline under the US export-control order. The real movement is in tooling and money — AI coding tools have flipped to usage billing while Claude Code keeps taking share, and warnings about an agent-startup funding squeeze are getting louder.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-06-24.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-24",
+    "title": "A security scare is a retainer pitch; a housing bill is a Charlotte build pipeline",
+    "summary": "Today's shifts hand you two fast moves and a few slower ones: a critical FFmpeg flaw plus AI-found vulnerabilities give you a concrete reason to call existing clients this week and convert them to a recurring maintenance retainer, and a landmark housing-supply bill opens a timely Charlotte wedge for manufactured-home dealers, contractors, and ADU builders. Both lean on assets you already have.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-06-24.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-24",
+    "title": "Patch FFmpeg now — a single malicious video can own your machine; an AI-found 29-year-old proxy bug",
+    "summary": "The action item that touches your stack: 'PixelSmash' (CVE-2026-8461) is a critical heap overflow in FFmpeg's MagicYUV decoder that needs no user interaction — fixed in FFmpeg 8.1.2, so check the binary your podcast pipeline shells out to. Separately, 'Squidbleed' is a 29-year-old Squid proxy memory leak surfaced with the help of Claude Mythos Preview, and Skymizer showed a 240W PCIe card that claims to run 700B-parameter models locally.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-24.html"
   },
   {
     "source": "america",

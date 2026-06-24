@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-24" />
+  <meta name="report:title" content="Patch FFmpeg now — a single malicious video can own your machine; an AI-found 29-year-old proxy bug" />
+  <meta name="report:summary" content="The action item that touches your stack: 'PixelSmash' (CVE-2026-8461) is a critical heap overflow in FFmpeg's MagicYUV decoder that needs no user interaction — fixed in FFmpeg 8.1.2, so check the binary your podcast pipeline shells out to. Separately, 'Squidbleed' is a 29-year-old Squid proxy memory leak surfaced with the help of Claude Mythos Preview, and Skymizer showed a 240W PCIe card that claims to run 700B-parameter models locally." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch FFmpeg now; an AI-found 29-year-old proxy bug — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://jfrog.com/blog/pixelsmash-critical-ffmpeg-vulnerability-turns-media-files-into-weapons/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, June 24, 2026</span>
+        <span>◆</span><span>Since the June 23 edition</span>
+      </div>
+      <h1>Patch FFmpeg now — a single malicious video can own your machine</h1>
+      <p class="standfirst">The load-bearing tech story this week is on a tool you ship with: "PixelSmash" is a critical FFmpeg flaw that needs no user interaction and is already proven to give remote code execution. The rest of the day is an AI security milestone and a power-efficient chip swing at Nvidia.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h since the last edition</span>
+        <span>◆</span><a href="https://jfrog.com/blog/pixelsmash-critical-ffmpeg-vulnerability-turns-media-files-into-weapons/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">8.8</div><div class="lbl">PixelSmash CVSS severity (CVE-2026-8461)</div></div>
+      <div class="stat"><div class="num">8.1.2</div><div class="lbl">FFmpeg version that patches it</div></div>
+      <div class="stat"><div class="num">29 yrs</div><div class="lbl">Squidbleed bug went undetected (since 1997)</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>FFmpeg "PixelSmash"</h4><p>Critical heap overflow in the MagicYUV decoder, no interaction needed, RCE proven against Jellyfin. Patched in 8.1.2.</p></div>
+        <div class="signal"><div class="n">02</div><h4>AI found "Squidbleed"</h4><p>A 29-year-old Squid proxy memory leak, surfaced with Claude Mythos Preview. Workaround: turn FTP off.</p></div>
+        <div class="signal"><div class="n">03</div><h4>700B LLMs at 240W</h4><p>Skymizer's HTX301 PCIe card claims 384GB and 700B-model inference at under half a Blackwell's power.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Qualcomm circles Tenstorrent</h4><p>Reported $8–10B talks for Jim Keller's RISC-V AI-chip startup — a direct play at Nvidia's stack.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Tata Electronics breach</h4><p>World Leaks ransomware published 200k+ files tied to Apple and Tesla manufacturing.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — patch these</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">CVE-2026-8461 · fixed in FFmpeg 8.1.2 (June 17)</span>
+            <h3>"PixelSmash" turns a single video file into remote code execution</h3>
+          </div>
+          <div class="story-body">
+            <p>FFmpeg shipped 8.1.2 with an urgent fix for a critical heap out-of-bounds write in its MagicYUV lossless-video decoder, nicknamed PixelSmash and rated CVSS 8.8. Exploitation needs no user interaction — opening a file in VLC, streaming via Jellyfin or Kodi, or merely letting a Linux file manager generate a thumbnail can trigger it. Researchers confirmed crashes against Kodi, mpv, ffmpegthumbnailer, Jellyfin, Emby, Nextcloud, Immich, PhotoPrism, and OBS, and demonstrated full RCE against Jellyfin. The blast radius is huge because FFmpeg is embedded in hundreds of downstream apps.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your daily-podcast pipeline shells out to FFmpeg, and so does any image/video tooling you run. Action today: <code>ffmpeg -version</code> on every machine and CI runner that touches media; if it's below 8.1.2, upgrade. On macOS that's <code>brew upgrade ffmpeg</code>. If a build can't be bumped right away, the interim fix is disabling the MagicYUV decoder. Never let an uploaded or untrusted video hit an unpatched FFmpeg.</div>
+          <div class="refs"><a href="https://jfrog.com/blog/pixelsmash-critical-ffmpeg-vulnerability-turns-media-files-into-weapons/" target="_blank" rel="noopener">JFrog — PixelSmash analysis</a> · <a href="https://cybernews.com/security/critical-ffmpeg-vulnerability-enables-complete-compromise/" target="_blank" rel="noopener">Cybernews — complete compromise</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Memory leak</span>
+            <span class="ver">CVE-2026-47729 · disclosed June 23</span>
+            <h3>"Squidbleed" — a 29-year-old proxy bug, found with help from a Claude model</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers disclosed Squidbleed, a heap over-read in the Squid proxy that can leak other users' cleartext HTTP requests — credentials, sessions — from shared memory, in the style of Heartbleed. The bug traces to a 1997 FTP-parsing change and is still live in Squid's default config. The notable part for builders: it was surfaced with the aid of Claude Mythos Preview, a concrete example of frontier models finding decades-old vulnerabilities humans missed. The fix landed in the Squid 7.x line; the cleaner mitigation is to turn FTP support off, which most modern networks don't need anyway.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You almost certainly don't run Squid, so this isn't a patch chore — it's a positioning signal. AI-assisted vulnerability discovery is real now, and it cuts both ways: defenders and attackers both get it. Worth folding an automated security-review pass into your own pre-deploy routine, since the bar for "what a tool can find" just moved.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/06/29-year-old-squid-proxy-bug-squidbleed.html" target="_blank" rel="noopener">The Hacker News — Squidbleed</a> · <a href="https://www.theregister.com/security/2026/06/23/mythos-discovers-squidbleed-a-memory-leak-thats-gone-undetected-since-clinton-era/5260367" target="_blank" rel="noopener">The Register — Mythos finds it</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips &amp; hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Hardware</span>
+            <span class="ver">Computex preview</span>
+            <h3>A 240W PCIe card claims to run 700B-parameter models locally</h3>
+          </div>
+          <div class="story-body">
+            <p>Taiwan's Skymizer showed the HTX301, a PCIe add-in card with up to 384GB of standard LPDDR4/LPDDR5 memory that claims to run 700B-parameter model inference at roughly 240W — under half the ~600W of an Nvidia RTX PRO 6000 Blackwell or AMD MI350P. It leans on cheap, mature memory and process nodes rather than cutting-edge silicon. Numbers are vendor-stated and unproven in the wild; a fuller preview is due at Computex, where model compatibility and software-stack maturity will get scrutiny.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If on-prem inference at a power budget a small office can run pans out, it changes the pitch for privacy-sensitive SMB clients — law offices, clinics, anyone who won't send data to a cloud API. Don't build on it yet (vendor claims, no independent benchmarks), but it's a card worth tracking for a future "your data never leaves the building" Managed-AI offer.</div>
+          <div class="refs"><a href="https://www.digitalcitizen.life/skymizers-htx301-pcie-ai-card-claims-700b-model-inference-with-384gb-memory-at-240w/" target="_blank" rel="noopener">Digital Citizen — HTX301</a> · <a href="https://wccftech.com/this-pcie-ai-accelerator-card-packs-384-gb-memory-run-700b-llms-240w/" target="_blank" rel="noopener">Wccftech — specs</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items &amp; signals</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">M&amp;A</span><span class="txt">Qualcomm is reportedly in talks to buy Jim Keller's RISC-V AI-chip startup Tenstorrent for $8–10B — a bid for non-Nvidia AI silicon and talent. No deal is certain. <span class="ver">reported June 16</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Tata Electronics confirmed a security incident after the World Leaks ransomware group published 200k+ files allegedly tied to Apple and Tesla manufacturing records and drawings. <span class="ver">June 2026</span></span></li>
+            <li><span class="tag fix qh-tag">Reminder</span><span class="txt">If you skipped May's coordinated Next.js/React security release (the CVE-2026-2386x Server Components issues), make sure you're on Next.js 15.5.16+ / 16.2.6+. Still the right patch baseline. <span class="ver">May 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
