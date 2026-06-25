@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-25" />
+  <meta name="report:title" content="2.1.191: /rewind survives /clear, streaming CPU down ~37%, comma-matcher hooks finally fire" />
+  <meta name="report:summary" content="One big release lands a conversation-recovery path through /clear, cuts streaming CPU by about a third, and fixes a silent hook-matcher bug that could have been killing comma-separated matchers all along." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.191: /rewind survives /clear, streaming CPU down ~37%, comma-matcher hooks finally fire — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, June 25, 2026</span>
+        <span>◆</span><span>Covers 2.1.190 – 2.1.191</span>
+      </div>
+      <h1>2.1.191 lands a real recovery path through <code>/clear</code>, cuts streaming CPU by about a third, and fixes a hook bug that was failing silently</h1>
+      <p class="standfirst">Two releases dropped June 24 after yesterday's briefing went out. 2.1.190 is bug-fixes-only; 2.1.191 is the substance — a long maintenance release heavy on agent reliability, MCP resilience, and one genuinely useful new escape hatch.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: releases dated after the 2026-06-24 briefing (which covered 2.1.186–2.1.187)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">releases since last briefing</div></div>
+      <div class="stat"><div class="num">~37%</div><div class="lbl">less CPU during streaming</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">silent hook bug squashed</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>/rewind now reaches past /clear</h4><p>You can resume a conversation from before you ran <code>/clear</code> — the context you wiped is recoverable.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Streaming CPU down ~37%</h4><p>Text updates now coalesce to 100ms windows. Tangible on a laptop running several sessions and agents at once.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Comma-separated hook matchers finally fire</h4><p>Matchers like <code>"Bash,PowerShell"</code> were silently never firing. If you wrote one, it was dead.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Stopped agents stay stopped</h4><p>Killing a background agent from the tasks panel is now permanent — no more resurrection after you stop it.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Sandbox network "Yes" sticks for the session</h4><p>Allow a host once and it stops re-prompting on every connection for the rest of the session.</p></div>
+        <div class="signal"><div class="n">06</div><h4>MCP gets more resilient</h4><p>Capability discovery and OAuth now retry transient network errors with backoff instead of just failing.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Workflow &amp; throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.191</span>
+            <h3>/rewind can now resume from before a /clear</h3>
+          </div>
+          <div class="story-body">
+            <p>Previously <code>/clear</code> was a one-way door — wipe the context and the prior conversation was gone. Now <code>/rewind</code> reaches back across the clear and lets you pick up where you were before you ran it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your safety net when you clear too aggressively mid-build. When you've been deep in a Bisque or Studio C session, clear to free up context, then realize you needed the earlier thread, <code>/rewind</code> recovers it instead of forcing a cold restart.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.191</span>
+            <h3>Streaming uses ~37% less CPU; long sessions leak less memory</h3>
+          </div>
+          <div class="story-body">
+            <p>Text updates during a streaming response now coalesce into 100ms batches instead of painting on every token, cutting CPU by roughly 37%. A separate fix reduces memory growth from the terminal output cache over long sessions.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly helps your default working pattern — multiple concurrent sessions and background agents on one machine. Less fan-spin and less slowdown on the long all-day sessions you run for delivery work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hooks &amp; permissions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.191</span>
+            <h3>Hooks with comma-separated matchers were silently never firing</h3>
+          </div>
+          <div class="story-body">
+            <p>A matcher like <code>"Bash,PowerShell"</code> would register without error and then never run. No warning, no failure — it just quietly did nothing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Audit your hook configs. If you ever grouped multiple tools into one matcher with a comma, that hook has been dead and any guardrail or automation it enforced was never running. Split-or-verify it now that the fix is in.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.191</span>
+            <h3>/permissions "Recently denied": approvals now persist on close</h3>
+          </div>
+          <div class="story-body">
+            <p>Approving a previously denied tool from the Recently-denied tab used to be silently discarded when you closed the panel. It now sticks.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When you reverse a denial to unblock a build step, it actually saves now — no need to re-approve the same tool every session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents &amp; sandboxes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.191</span>
+            <h3>Stopped background agents no longer come back to life</h3>
+          </div>
+          <div class="story-body">
+            <p>Background agents could resurrect themselves after being stopped. Stopping an agent from the tasks panel is now permanent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Real control over your agent fleet. When you spin up overnight build runs and kill one that's going sideways, it stays dead instead of quietly restarting and burning tokens.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.191</span>
+            <h3>Sandbox network "Yes" is remembered for the session</h3>
+          </div>
+          <div class="story-body">
+            <p>Allowing a host in the sandbox network permission dialog with "Yes" now remembers it for the rest of the session, instead of re-prompting on every single connection to that host.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Far fewer interruptions during sandboxed builds that hit the same APIs repeatedly (Supabase, Vercel, an Anthropic or OpenAI endpoint). Approve the host once and the build keeps moving.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.191</span>
+            <h3>MCP capability discovery and OAuth now retry transient errors</h3>
+          </div>
+          <div class="story-body">
+            <p>Capability discovery (<code>tools/list</code>, <code>prompts/list</code>, <code>resources/list</code>) now retries transient network errors with short backoff. MCP OAuth discovery and token requests retry once after a transient failure, and headless environments skip the browser popup and go straight to the paste-the-URL prompt. HTTP 404 errors now show the offending URL and point to your MCP config.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a lot of MCP servers (Notion, Vercel, Robinhood, Calendar, Gmail). Fewer servers will fail to connect on a flaky network hiccup, and when one does misconfigure, the 404 now tells you which URL to fix instead of leaving you guessing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.191</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Scroll position no longer jumps to the bottom while you read earlier output during a streaming response <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/voice</code> now explains the org-policy restriction instead of a generic "not available" message <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code>: builtin slash commands like <code>/usage</code> now show a hint instead of being sent to background sessions as prompt text <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> job rows now show the <code>[Image #N]</code> placeholder for pasted images instead of full filesystem paths <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cmd+click on links now works in fullscreen mode for Ghostty over ssh/tmux; <code>/login</code> URL no longer truncates when it wraps in Windows Terminal <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent panel no longer jumps by a row when scrolling the roster past the overflow cap; welcome splash art no longer overflows an 80×24 Terminal window <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Managed settings: <code>forceRemoteSettingsRefresh</code> now takes effect via MDM/file policy and sends <code>Cache-Control: no-cache</code> to dodge stale proxy responses <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Vim-mode prompt-history search (NORMAL <code>/</code>) now hints how to reach slash commands <span class="ver">2.1.191</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">2.1.190 — bug fixes and reliability improvements (no detailed notes) <span class="ver">2.1.190</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
