@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-25",
+    "title": "Markets brace for Friday's PCE inflation read; the landmark housing bill clears Congress but its signing is on hold",
+    "summary": "Wall Street drifted ahead of Friday's May PCE report, which forecasters expect to show headline inflation near 4.1% year-over-year — the hottest since 2023 — keeping a freshly hawkish Fed on alert. The 21st Century ROAD to Housing Act passed both chambers by wide margins, the biggest housing-supply bill since 1990, but the planned signing ceremony was postponed, so it is not yet law.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-25.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One big release lands a conversation-recovery path through /clear, cuts streaming CPU by about a third, and fixes a silent hook-matcher bug that could have been killing comma-separated matchers all along.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-06-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-25",
+    "title": "Anthropic accuses Alibaba of scraping Claude as Claude Tag turns Slack into an AI teammate; GPT-5.6 slips to July",
+    "summary": "The model layer is still stuck — GPT-5.6's June window has collapsed to July odds and Gemini 3.5 Pro is preview-only with days left in its GA window — so the real moves are around the models: Anthropic says Alibaba's Qwen lab ran ~25,000 fake accounts to extract Claude's coding and agent skills, Claude Tag put a persistent multiplayer Claude inside Slack channels, and two key Gemini researchers are leaving Google for Anthropic.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-06-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-25",
+    "title": "Sell the security patch sprint this week; ride the 'AI teammate' wave Anthropic just validated",
+    "summary": "Two of today's shifts hand you fast cash with a customer you already have: the Next.js June security release means every client site needs a patch-and-harden pass you can bill for, and Claude Tag launching in Slack validates the exact 'AI employee' offer you sell — minus the Slack lock-in your SMB clients don't have.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-25",
+    "title": "Patch Next.js to 16.2.6 — June security release lands; OpenAI's first custom chip and a broad TSMC price hike",
+    "summary": "The action item for your stack: Next.js shipped a June security release (DoS, SSRF, XSS, cache poisoning, middleware/proxy bypass) with fixes in 15.5.18 and 16.2.6 — pin your sites to the patched line. In hardware, OpenAI unveiled 'Jalapeño,' its first custom inference chip built with Broadcom, and TSMC told customers it's raising prices across all advanced nodes, which flows downstream to every device maker.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-25.html"
   },
   {
     "source": "america",

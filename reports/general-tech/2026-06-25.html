@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-25" />
+  <meta name="report:title" content="Patch Next.js to 16.2.6 — June security release lands; OpenAI's first custom chip and a broad TSMC price hike" />
+  <meta name="report:summary" content="The action item for your stack: Next.js shipped a June security release (DoS, SSRF, XSS, cache poisoning, middleware/proxy bypass) with fixes in 15.5.18 and 16.2.6 — pin your sites to the patched line. In hardware, OpenAI unveiled 'Jalapeño,' its first custom inference chip built with Broadcom, and TSMC told customers it's raising prices across all advanced nodes, which flows downstream to every device maker." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js to 16.2.6; OpenAI's custom chip; TSMC price hike — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog/summary-of-cve-2026-23869" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, June 25, 2026</span>
+        <span>◆</span><span>Since the June 24 edition</span>
+      </div>
+      <h1>Patch Next.js now; OpenAI ships its first custom chip; TSMC raises prices across the board</h1>
+      <p class="standfirst">Yesterday's action item was FFmpeg — today it's your web framework. Next.js shipped a June security release covering denial-of-service, SSRF, XSS, cache poisoning, and a middleware/proxy bypass, with fixes in 15.5.18 and 16.2.6. On the hardware side, OpenAI unveiled "Jalapeño," its first custom inference chip with Broadcom, while TSMC quietly told customers prices are going up across every advanced node.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h since the last edition</span>
+        <span>◆</span><a href="https://vercel.com/changelog/summary-of-cve-2026-23869" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.2.6</div><div class="lbl">Next.js patched line to pin to (also 15.5.18)</div></div>
+      <div class="stat"><div class="num">5–10%</div><div class="lbl">TSMC price hike now extending to all advanced nodes</div></div>
+      <div class="stat"><div class="num">$27B</div><div class="lbl">Meta–Nebius multiyear compute deal announced this week</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security release</h4><p>DoS, SSRF, XSS, cache poisoning, and a middleware/proxy bypass. Patched in 15.5.18 and 16.2.6 (with 15.5.16 / 16.2.5 backports). Upgrade your sites.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OpenAI's first custom chip</h4><p>"Jalapeño," an inference processor co-designed with Broadcom, claims much better performance-per-watt than current state of the art.</p></div>
+        <div class="signal"><div class="n">03</div><h4>TSMC raises all advanced-node prices</h4><p>Hikes now extend past 3nm/2nm to 5nm and 7nm — roughly 5–10%. Nvidia, AMD, Apple, Qualcomm all face higher wafer costs.</p></div>
+        <div class="signal"><div class="n">04</div><h4>NVIDIA + SK hynix team on memory</h4><p>A multiyear partnership to co-develop next-gen memory for "AI factories" — the supply chain consolidating around the compute buildout.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Meta locks in $27B of compute</h4><p>A five-year deal with Nebius, including $12B of dedicated infrastructure on Nvidia's Vera Rubin platform.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this — your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">June 2026 release</span>
+            <h3>Next.js June security release: upgrade to 15.5.18 or 16.2.6</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js shipped security fixes spanning Server Components, App Router, middleware, and proxy — covering denial-of-service (CVE-2026-23869), SSRF, XSS, cache poisoning, and a middleware/proxy bypass via segment-prefetch routes (GHSA-267c-6grr-h53f). All issues are patched in 15.5.18 and 16.2.6, with backports for 15.5.16 and 16.2.5. These are described as June backports of fixes first shipped in May, so anything you didn't patch then is still exposed. Patching is the only complete fix.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Concrete action this week. Most of your client and demo sites run Next.js on Vercel. Run <code>npm ls next</code> (or check package.json) across every site and bump any below 16.2.6 / 15.5.18, then redeploy. Vercel-hosted apps still need the dependency bumped — the platform doesn't auto-patch your lockfile. While you're in there, confirm FFmpeg ≥ 8.1.2 on the podcast pipeline from yesterday's note.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/summary-of-cve-2026-23869" target="_blank" rel="noopener">Vercel — Summary of CVE-2026-23869</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">June 2026</span>
+            <h3>Node.js also shipped June security releases</h3>
+          </div>
+          <div class="story-body">
+            <p>Node.js published its own June 2026 security releases. Since your Vercel functions and local tooling run on Node, it's worth bumping to the patched runtime line at the same time you do the Next.js upgrade — one maintenance pass, two fixes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Pin your Vercel project Node version to the latest patched LTS and update local nvm. Batch it with the Next.js bump so you only redeploy once.</div>
+          <div class="refs"><a href="https://www.digitalapplied.com/blog/nodejs-june-2026-security-releases-cve-patch-guide" target="_blank" rel="noopener">Node.js June 2026 security releases — patch guide</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon — the buildout keeps reshaping the supply chain</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Tue, June 24</span>
+            <h3>OpenAI unveils "Jalapeño," its first custom inference chip with Broadcom</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI unveiled its first custom-built inference processor, "Jalapeño," designed and manufactured with Broadcom for its own inference systems. Early results claim significantly better performance-per-watt than current state-of-the-art parts. It's the latest big lab to go vertical on silicon to cut the cost of serving models, following the path Google (TPU) and Amazon (Trainium) already took.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Indirect but it points one way: inference costs keep falling as labs build their own chips. That's tailwind for your margins on AI products — the per-call cost of an AI receptionist or RAG concierge trends down over time, so retainer pricing you set today gets cheaper to serve.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/" target="_blank" rel="noopener">TechCrunch — OpenAI unveils its first custom chip, built by Broadcom</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Costs</span>
+            <span class="ver">June 2026</span>
+            <h3>TSMC raises prices across all advanced nodes</h3>
+          </div>
+          <div class="story-body">
+            <p>TSMC told clients that "all advanced nodes" are getting more expensive — extending hikes beyond 3nm and 2nm to 5nm and 7nm, roughly in the 5–10% range. Those nodes are about 74% of TSMC's wafer business, so Nvidia, AMD, Apple, and Qualcomm all eat higher costs, which eventually shows up in device and GPU pricing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct hit, but it's a reason hardware (laptops, phones, GPUs) won't get cheaper near-term. If you're advising clients on hardware refreshes or planning your own gear buys, lean toward "buy what you need now" rather than waiting for price drops.</div>
+          <div class="refs"><a href="https://www.tomshardware.com/tech-industry/semiconductors/tsmc-is-reportedly-hiking-prices-for-all-advanced-nodes-accounting-for-74-percent-of-the-companys-wafer-business-nvidia-amd-apple-qualcomm-and-others-will-face-higher-wafer-costs" target="_blank" rel="noopener">Tom's Hardware — TSMC hikes prices for all advanced nodes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Compute</span><span class="txt">NVIDIA and SK hynix announced a multiyear partnership to co-develop next-gen memory for AI data centers — the memory supply chain consolidating around the buildout. <span class="ver">June 2026</span></span></li>
+            <li><span class="tag new qh-tag">Compute</span><span class="txt">Meta signed a five-year, $27B compute deal with Nebius, including $12B of dedicated infrastructure on Nvidia's Vera Rubin platform. <span class="ver">June 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Security chip</span><span class="txt">STMicroelectronics launched the ST54M — NFC + secure element + eSIM with hardware post-quantum crypto (ML-KEM, ML-DSA) for phones. <span class="ver">June 24</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">SandboxAQ signed a definitive $500M CHIPS R&amp;D award for AI-aided materials discovery; Neura Robotics closed up to a $1.4B Series C (Nvidia, Amazon, Qualcomm, Bosch). <span class="ver">June 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
