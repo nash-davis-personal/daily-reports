@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-26",
+    "title": "Chip stocks rally on Micron's record while megacap tech sinks on Apple and Microsoft price hikes; US sends aid to quake-hit Venezuela",
+    "summary": "Markets split on June 25 — Micron's record quarter rocketed memory and chip-equipment names higher while the megacap tech leaders fell after Apple and Microsoft announced consumer price increases on iPhone and Xbox. The US is deploying search-and-rescue and humanitarian aid after two major earthquakes struck Venezuela, with Puerto Rico briefly under a tsunami advisory, and the West faces extreme fire-weather conditions.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-26.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release tightens auto-mode shell gating and makes denials legible, lets background agents keep working while the main turn runs, and quietly flips on full model-response logging for anyone whose OpenTelemetry already captures prompts.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-06-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-26",
+    "title": "Voice AI mints a unicorn while the frontier stays frozen: Assort hits $1.2B, ByteDance ships Seed 2.1, Gemini 3.5 Pro runs out of June",
+    "summary": "Still no new frontier model from the big three, so the money is moving into applied AI: healthcare voice-AI shop Assort Health crossed a $1.2B valuation and voice-testing startup Coval raised $28M, ByteDance shipped Seed 2.1 Pro and Turbo, Anthropic's Fable 5 and Mythos 5 hit day 14 offline under the export-control ban, and Google has four days left to ship Gemini 3.5 Pro on its own June promise.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-06-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-26",
+    "title": "A clinic phone agent just hit $1.2B — package Front Desk for one Charlotte vertical now",
+    "summary": "Today's shifts all point one way: voice AI for the SMB front desk is venture-validated (Assort Health at $1.2B), Next.js 16.3 hands you a free speed-upgrade to resell, and a Next.js/React security wave plus the Tata breach open a fast-cash patch-and-secure sprint. Six moves ranked by fit, lead with a productized TSD Front Desk for clinics.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-26",
+    "title": "Next.js 16.3 makes navigations instant; IBM ships a sub-1nm chip; Micron prints a record on the AI memory crunch",
+    "summary": "Vercel's Next.js 16.3 preview adds Instant Navigations and Partial Prefetching that bring SPA-speed routing to the App Router — a direct, free upgrade to every TSD site. IBM unveiled the first manufacturable sub-1nm chip, Micron posted a record $41.5B quarter on AI memory demand, and a Tata Electronics breach leaked 200,000+ files tied to Apple and Tesla.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-26.html"
   },
   {
     "source": "america",

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-26" />
+  <meta name="report:title" content="Next.js 16.3 makes navigations instant; IBM ships a sub-1nm chip; Micron prints a record on the AI memory crunch" />
+  <meta name="report:summary" content="Vercel's Next.js 16.3 preview adds Instant Navigations and Partial Prefetching that bring SPA-speed routing to the App Router — a direct, free upgrade to every TSD site. IBM unveiled the first manufacturable sub-1nm chip, Micron posted a record $41.5B quarter on AI memory demand, and a Tata Electronics breach leaked 200,000+ files tied to Apple and Tesla." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js 16.3 makes navigations instant; IBM goes sub-1nm — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, June 26, 2026</span>
+        <span>◆</span><span>Since the June 25 edition</span>
+      </div>
+      <h1>Next.js 16.3 makes navigations instant; IBM goes sub-1nm; Micron prints a record</h1>
+      <p class="standfirst">The headline for Nash's stack is sitting in the changelog: Next.js 16.3 preview lands Instant Navigations and Partial Prefetching, a no-cost speed upgrade to every site he ships. Underneath it, the hardware layer is on fire — IBM unveiled the first manufacturable sub-1nm chip, Micron posted a record quarter on the AI memory crunch, and a Tata Electronics breach spilled 200,000+ files tied to Apple and Tesla.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h since the last edition</span>
+        <span>◆</span><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3</div><div class="lbl">Next.js preview with Instant Navigations &amp; Partial Prefetching</div></div>
+      <div class="stat"><div class="num">0.7nm</div><div class="lbl">IBM's "NanoStack" — the first manufacturable sub-1nm node</div></div>
+      <div class="stat"><div class="num">$41.5B</div><div class="lbl">Micron Q3 revenue, a record, up sharply on AI memory demand</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js 16.3 = instant routing</h4><p>Stream / Cache / Block controls and a reusable per-route shell make clicks render instantly while the rest streams in. Direct upgrade for every TSD site.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Patch your Next.js apps</h4><p>The May security wave fixed 13 advisories (DoS, SSRF, XSS, cache poisoning). Safe versions: Next 16.2.5 / 15.5.16, React server packages 19.2.6. Check yours.</p></div>
+        <div class="signal"><div class="n">03</div><h4>IBM breaks the 1nm barrier</h4><p>0.7nm "NanoStack" claims up to 50% more performance or 70% less energy vs 2nm — a real extension of Moore's Law, shares up 6%.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Micron's record quarter</h4><p>$41.5B revenue, ~85% gross margin, August guide of $49–51B. Memory is the chokepoint of the AI buildout and the stock jumped ~16%.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Tata Electronics breach</h4><p>200,000+ leaked files reportedly include Apple and Tesla technical drawings and employee passport scans — a fresh supply-chain reminder.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack: ship faster, then patch</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Jun 25, 2026</span>
+            <h3>Next.js 16.3 preview brings SPA-speed navigation to the App Router</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel announced the Next.js 16.3 preview with two features aimed squarely at perceived speed. <b>Instant Navigations</b> lets you mark a route Stream, Cache, or Block to make a link click feel immediate. <b>Partial Prefetching</b> caches a reusable shell per route on the client, so a click renders that shell instantly while the rest of the page streams in. It's the responsiveness of a client-side SPA without leaving the App Router.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a free conversion lever. Test 16.3 on the portfolio first, then roll Instant Navigations into the highest-traffic routes on client sites (Bisque, Studio C, the demos). "Your site now feels instant" is a real upgrade you can show a client, and it costs you a config change, not a rebuild.</p></div>
+          <div class="refs"><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch</span>
+            <span class="ver">Active</span>
+            <h3>Confirm every TSD app is on the patched Next.js / React versions</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's coordinated security release fixed 13 advisories across denial of service, SSRF in the self-hosted WebSocket upgrade handler, App Router XSS, Image Optimization DoS, and cache poisoning in RSC responses and middleware redirects. Patched releases: Next.js 16.2.5 and 15.5.16; React server packages react-server-dom-webpack / -parcel / -turbopack at 19.0.6, 19.1.7, and 19.2.6. The DoS issues (CVE-2026-23869/23870) hit App Router server functions on Next 13.x–16.x.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Spend 20 minutes today. Run <code>npm ls next react-server-dom-webpack</code> across the fleet and bump anything below 16.2.5 / 19.2.6. Vercel-hosted apps inherit some WAF mitigations, but self-hosted or older client sites are the exposure. This is also a sellable security-patch sprint (see today's Money Moves).</p></div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel security release ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware: the AI buildout keeps printing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jun 25, 2026</span>
+            <h3>IBM unveils the first manufacturable sub-1nm chip</h3>
+          </div>
+          <div class="story-body">
+            <p>IBM announced "NanoStack," a 0.7nm (7-angstrom) architecture it calls the world's first manufacturable sub-1nm chip technology, claiming up to a 50% performance gain or a 70% energy reduction versus the 2nm node. Shares rose more than 6%. Practically, it's a credibility marker that the transistor-scaling roadmap still has road left — production silicon is years out, but the direction matters for everyone building on compute.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No near-term effect on what you ship, but it's the long-run tailwind under the whole business: cheaper, more efficient compute keeps pushing inference costs down, which is what makes Front Desk and Concierge affordable for a small clinic. Cheaper silicon = fatter margins on managed-AI retainers.</p></div>
+          <div class="refs"><a href="https://www.investing.com/news/company-news/ibm-unveils-sub1-nanometer-chip-with-new-architecture-93CH-4760029" target="_blank" rel="noopener">IBM sub-1nm chip ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Jun 24, 2026</span>
+            <h3>Micron posts a record quarter as AI memory demand explodes</h3>
+          </div>
+          <div class="story-body">
+            <p>Micron reported fiscal Q3 revenue of $41.5B with gross margin near 85% — a company record — and guided the August quarter to $49–51B. The stock jumped roughly 16% and dragged the rest of the memory complex up with it (Sandisk +22%, Applied Materials +13%). The read-through: high-bandwidth memory, not just GPUs, is now a hard bottleneck in the AI buildout, and pricing power has shifted to the suppliers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action — this is backdrop. But it confirms the AI infrastructure cycle is still accelerating, which keeps demand high for the applied layer Nash actually sells. When the picks-and-shovels guys are printing records, the "help my SMB use this stuff" market is healthy.</p></div>
+          <div class="refs"><a href="https://www.investing.com/news/company-news/micron-q3-fy2026-slides-record-415b-revenue-85-margins-93CH-4759286" target="_blank" rel="noopener">Micron Q3 results ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Tata Electronics confirmed a cyberattack; hackers leaked 200,000+ files reportedly including Apple and Tesla drawings and passport scans <span class="ver">Jun 22</span></span></li>
+            <li><span class="tag fix qh-tag">CVE</span><span class="txt">CVE-2026-20245 — the 7th Cisco SD-WAN flaw exploited in 2026 — was abused for months before disclosure; patch if you touch any Cisco edge gear <span class="ver">Jun</span></span></li>
+            <li><span class="tag new qh-tag">Tooling</span><span class="txt">Vercel's open-source <b>eve</b> agent framework (filesystem-first TypeScript) keeps maturing — "Next.js for agents" <span class="ver">Jun 17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
