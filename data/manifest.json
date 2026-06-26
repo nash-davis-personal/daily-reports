@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-06-26",
+    "title": "2.1.193: auto mode can gate every shell command, background agents stop stalling, and an OTEL logging change to watch on upgrade",
+    "summary": "One release tightens auto-mode shell gating and makes denials legible, lets background agents keep working while the main turn runs, and quietly flips on full model-response logging for anyone whose OpenTelemetry already captures prompts.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-06-26.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

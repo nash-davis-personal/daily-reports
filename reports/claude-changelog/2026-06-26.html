@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-26" />
+  <meta name="report:title" content="2.1.193: auto mode can gate every shell command, background agents stop stalling, and an OTEL logging change to watch on upgrade" />
+  <meta name="report:summary" content="One release tightens auto-mode shell gating and makes denials legible, lets background agents keep working while the main turn runs, and quietly flips on full model-response logging for anyone whose OpenTelemetry already captures prompts." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.193: auto mode can gate every shell command, background agents stop stalling, and an OTEL logging change to watch on upgrade — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, June 26, 2026</span>
+        <span>◆</span><span>1 release since the last briefing ◆ 2.1.193</span>
+      </div>
+      <h1>2.1.193 tightens auto mode, unblocks background agents, and slips in a telemetry change worth a glance</h1>
+      <p class="standfirst">Yesterday's briefing closed on 2.1.191; 2.1.193 shipped the same day (June 25) and is the one release not yet covered. It is a meaty point release — auto mode can now classify every shell command instead of just code-exec patterns, denials finally tell you why, and background agents no longer get told to wrap up the second they spawn.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.193 (June 25, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release covered</div></div>
+      <div class="stat"><div class="num">15</div><div class="lbl">changes in 2.1.193</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">top signals</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Auto mode can gate every shell command</h4><p>New <code>autoMode.classifyAllShell</code> routes all Bash/PowerShell through the classifier, not just arbitrary-code-exec patterns.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Denials now say why</h4><p>Auto-mode denial reasons show up in the transcript, the denial toast, and <code>/permissions</code> recent denials.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background agents keep working</h4><p>Spawning one no longer instructs Claude to "end your response" — the main turn keeps going on other tasks.</p></div>
+        <div class="signal"><div class="n">04</div><h4>OTEL can start logging responses on upgrade</h4><p>A new <code>assistant_response</code> log event ships model output if your telemetry already logs prompts. Set <code>OTEL_LOG_ASSISTANT_RESPONSES=0</code> to keep prompts-only.</p></div>
+        <div class="signal"><div class="n">05</div><h4>MCP auth self-heals on 401/403</h4><p><code>headersHelper</code> re-runs and reconnects automatically, so an expired token stops killing tools mid-task.</p></div>
+        <div class="signal"><div class="n">06</div><h4>File-path autocomplete in bash mode</h4><p>Live path completion landed in <code>!</code> bash mode.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Auto mode gets stricter and more legible</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.193</span>
+            <h3>Every shell command can now go through the auto-mode classifier</h3>
+          </div>
+          <div class="story-body">
+            <p>The new <code>autoMode.classifyAllShell</code> setting routes all Bash and PowerShell commands through the auto-mode classifier instead of only the ones matching arbitrary-code-execution patterns. The old heuristic let plenty of ordinary-looking commands skip the safety check; this closes that gap when you want a tighter net for unattended work.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run scheduled, unattended jobs under auto mode — this very changelog briefing is one, alongside the daily-reports scout and the ALGC grant-metric runs. Turn <code>classifyAllShell</code> on for those so a malformed or surprising shell command gets classified before it executes, instead of slipping through on a pattern miss.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.193</span>
+            <h3>Denials now explain themselves</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto-mode denial reasons are now written to the transcript, the denial toast, and the recent-denials list in <code>/permissions</code>. When auto mode blocks something, you can read the reason instead of guessing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When a scheduled run stalls or quietly skips a step, check <code>/permissions</code> recent denials to see exactly which command got blocked and why — far faster than re-running the whole job to reproduce the snag.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Background agents and throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.193</span>
+            <h3>Spawning a background agent no longer halts the main turn</h3>
+          </div>
+          <div class="story-body">
+            <p>The launch result for a background agent used to instruct Claude to "end your response," so the main thread stopped dead while the agent ran. Now it keeps working on other tasks while the agent churns in the background.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Real parallelism for solo delivery — kick off a verify or build agent and keep editing the next client file in the same turn instead of waiting on it. Pairs with the bash-mode and long-session fixes below to keep a marathon session moving.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.193</span>
+            <h3>Bash mode gets path autocomplete; idle background shells get reaped</h3>
+          </div>
+          <div class="story-body">
+            <p>Two quality-of-life wins: <code>!</code> bash mode now has live file-path autocomplete, and idle background shell commands are reaped automatically under memory pressure (disable with <code>CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1</code>).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Less mistyped-path friction when you drop to a shell across the dozen-plus repos you bounce between, and long Vercel/Supabase build sessions are less likely to balloon memory from forgotten background tails.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.193</span>
+            <h3>MCP auth recovers on its own, and tells you upfront what needs login</h3>
+          </div>
+          <div class="story-body">
+            <p>The MCP <code>headersHelper</code> auth flow now re-runs and reconnects automatically when a tool call returns 401 or 403, so an expired token stops silently breaking a server mid-session. There is also a new startup notice when MCP servers need authentication, pointing you at <code>/mcp</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your stack leans hard on MCP — Vercel, Notion, the Robinhood and Calendly servers. Tokens timing out used to mean a dead tool you only noticed when a call failed. Now it reconnects, and the startup notice flags any server that needs a fresh login before you waste a turn on it.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Telemetry heads-up</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Watch</span>
+            <span class="ver">2.1.193</span>
+            <h3>OpenTelemetry can begin shipping full model responses after this upgrade</h3>
+          </div>
+          <div class="story-body">
+            <p>A new <code>claude_code.assistant_response</code> OTEL log event carries the model's response text. It is redacted unless <code>OTEL_LOG_ASSISTANT_RESPONSES=1</code> — but when that variable is unset it follows <code>OTEL_LOG_USER_PROMPTS</code>. So any deployment that already logs prompt content will start receiving response content on upgrade. Set <code>OTEL_LOG_ASSISTANT_RESPONSES=0</code> to stay prompts-only.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Almost certainly a no-op for a solo setup with no OTEL exporter. The one scenario to check: if you ever wire Claude Code telemetry into a dashboard and turn on prompt logging, full model output (which can echo client data) starts flowing to that backend by default. Decide that on purpose, not by upgrade.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.193</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> and other client-data-gated UI no longer show stale/empty state right after <code>/login</code> <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Backgrounding (←←) no longer spuriously cancels with "N background tasks would be abandoned" when every task carries over <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Pinned background agents stop being re-prompted to "Continue from where you left off" after every auto-update <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Backgrounding the main turn no longer spawns a phantom "general-purpose (resumed)" subagent that re-runs the conversation <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent panel no longer hides sibling agents while you view a subagent <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Plugin auto-rename now follows marketplace <code>renames</code> maps automatically, updating your settings to the new name <span class="ver">2.1.193</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Clearer <code>/add-dir</code> message when the directory is already a working directory <span class="ver">2.1.193</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
