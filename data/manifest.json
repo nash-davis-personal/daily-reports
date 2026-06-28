@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-28",
+    "title": "Money rotates out of megacap tech as inflation stays sticky; the West burns under a historic fire warning and a heat dome heads east",
+    "summary": "Stocks closed a losing week on June 26 as investors rotated out of megacap tech, even as advancing shares outnumbered decliners. The Fed held rates a fourth straight time amid an April PCE running well above target, the interior West faces extreme fire weather — including the first 'particularly dangerous situation' red-flag warning in Salt Lake City NWS history — and a widespread heat dome is forecast to hit the eastern U.S. next week. FedEx capped a strong fiscal year with a $4.15B cash tender offer.",
+    "highlights": 5,
+    "path": "reports/america/2026-06-28.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One maintenance release since the last briefing; the thing to actually check is that hook matchers now exact-match, so hyphenated names like mcp__brave-search or code-reviewer that relied on substring matching stop firing until you switch to a regex.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-06-28.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-28",
+    "title": "The frontier goes behind a government gate: OpenAI ships GPT-5.6 partner-only, Anthropic's Fable 5 stays dark, Google misses June for Gemini 3.5 Pro",
+    "summary": "OpenAI previewed its new GPT-5.6 family (Sol, Terra, Luna) on June 26 but limited it to a small set of trusted partners at the U.S. government's request, the same posture that has kept Anthropic's Fable 5 and Mythos 5 offline since June 12. A new White House executive order creates a federal framework to designate 'covered frontier models,' Google's promised June launch of Gemini 3.5 Pro lapsed with reports of a July slip, and xAI quietly shipped Grok 4.3 to general availability on Amazon Bedrock.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-06-28.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-28",
+    "title": "Inference got cheaper and the frontier got gated — sell the applied layer this week",
+    "summary": "GPT-5.6 Terra arrived at roughly half the cost of GPT-5.5 and Grok 4.3 hit general availability on Bedrock, even as top models went behind government gates and inflation kept SMBs cost-conscious. Seven opportunities ranked by fit, led by re-pricing TSD's AI products onto cheaper inference and launching a lower-priced 'Lite' tier Grant and Bishop can sell now.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-06-28.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-28",
+    "title": "Patch-by-Sunday: CISA flags actively-exploited Cisco and PTC flaws; Washington starts gating the models you build on; Supabase quietly changes a logging default",
+    "summary": "CISA added an actively-exploited Cisco Unified Communications Manager SSRF flaw and a PTC Windchill RCE to its Known Exploited Vulnerabilities catalog with a June 28 federal patch deadline. A new federal framework for 'covered frontier models' is reshaping the AI platforms developers depend on, xAI's Grok 4.3 reached general availability on Amazon Bedrock, and Supabase turned off connection logging by default for new projects.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-06-28.html"
   },
   {
     "source": "america",

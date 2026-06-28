@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-28" />
+  <meta name="report:title" content="Patch-by-Sunday: CISA flags actively-exploited Cisco and PTC flaws; Washington starts gating the models you build on; Supabase quietly changes a logging default" />
+  <meta name="report:summary" content="CISA added an actively-exploited Cisco Unified Communications Manager SSRF flaw and a PTC Windchill RCE to its Known Exploited Vulnerabilities catalog with a June 28 federal patch deadline. A new federal framework for 'covered frontier models' is reshaping the AI platforms developers depend on, xAI's Grok 4.3 reached general availability on Amazon Bedrock, and Supabase turned off connection logging by default for new projects." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch-by-Sunday: CISA flags actively-exploited flaws — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cisa.gov/news-events/alerts/2026/06/25/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, June 28, 2026</span>
+        <span>◆</span><span>Since the June 26 edition</span>
+      </div>
+      <h1>Patch-by-Sunday, and the platform beneath you keeps shifting</h1>
+      <p class="standfirst">A quieter stretch for pure gadgetry, but a loud one for the plumbing a builder actually stands on: federal patch deadlines on actively-exploited flaws, a government framework that can pull the AI models under your products, and small platform changes on your own stack. The throughline is supply chain — keep the things you depend on patched and swappable.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 26–28, 2026</span>
+        <span>◆</span><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>CISA: patch by June 28</h4><p>Actively-exploited Cisco Unified Comms Manager SSRF + PTC Windchill RCE added to the KEV catalog.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Models become regulated supply</h4><p>A federal "covered frontier models" framework now decides which AI you're allowed to build on.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Grok 4.3 GA on Bedrock</h4><p>A dependable, no-waitlist frontier model is now one AWS console away.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Supabase logging default flips</h4><p>New projects get <code>log_connections</code> off — quieter logs, fewer surprises in your dashboard.</p></div>
+        <div class="signal"><div class="n">05</div><h4>24B credentials dumped</h4><p>A massive infostealer compilation resurfaces the basics: rotate, enforce 2FA, kill password reuse.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — patch first, read later</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Jun 25 · deadline Jun 28</span>
+            <h3>CISA flags actively-exploited Cisco and PTC flaws with a Sunday federal deadline</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA added two vulnerabilities to its Known Exploited Vulnerabilities catalog on June 25 based on evidence of active exploitation: <b>CVE-2026-20230</b>, a server-side request forgery flaw in Cisco Unified Communications Manager, and <b>CVE-2026-12569</b>, an improper-input-validation issue in PTC Windchill and FlexPLM. Federal civilian agencies have until <b>Sunday, June 28</b> to remediate both. Neither is in your stack, but "actively exploited, patch within days" is the bar that should trigger a quick dependency check.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two-minute hygiene pass — confirm your own dependencies are current (you're on Next.js 16.x; the big May Next.js/React security release should already be applied) and flag any client running Cisco UC phone systems or PTC PLM so they get patched. This is also the seed of a paid "patch &amp; secure" sprint — see today's Money Moves.</p>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/06/25/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA alert</a> · <a href="https://www.bleepingcomputer.com/news/security/cisa-splunk-enterprise-flaw-actively-exploited-patch-by-sunday/" target="_blank" rel="noopener">BleepingComputer</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Hygiene</span>
+            <span class="ver">June 2026</span>
+            <h3>A 24-billion-record credential dump resurfaces the boring basics</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers flagged a compilation exposing roughly 24 billion records — usernames, emails, plaintext passwords, and login URLs — largely assembled from infostealer-malware logs, prior breaches, and Telegram dumps. Nothing exotic; the danger is password reuse and the long tail of credentials sitting in old logins.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your client portals already run Supabase passkeys + magic-link, so you're ahead of the curve. Use this as the prompt to enforce 2FA on any client admin dashboard that still allows passwords, and rotate any shared service credentials older than a few months.</p>
+          <div class="refs"><a href="https://cybernews.com/security/24-billion-credentials-data-leak/" target="_blank" rel="noopener">Cybernews</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The platforms you build on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">June 2026</span>
+            <h3>AI models are becoming regulated supply, not just a product you buy</h3>
+          </div>
+          <div class="story-body">
+            <p>A June executive order on AI and cybersecurity directs the federal government to build a framework for evaluating model capabilities and designating the most powerful as "covered frontier models." In practice that already means OpenAI shipping GPT-5.6 to vetted partners only and Anthropic's Fable 5/Mythos 5 sitting offline. For a developer, the platform layer just got a new failure mode: the model behind your app can be reclassified and pulled.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Treat your AI provider like any other dependency that can have an outage — abstract it. A thin routing layer that can swap Claude → Grok 4.3 → an OpenAI tier without a rewrite is cheap insurance, and it doubles as a feature you can sell.</p>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/26/openai-limits-new-ai-models-to-trusted-partners-request-us-government.html" target="_blank" rel="noopener">CNBC</a> · <a href="../general-ai/2026-06-28.html">Today's General AI brief</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">GA</span>
+            <span class="ver">June 2026</span>
+            <h3>Grok 4.3 hits general availability on Amazon Bedrock</h3>
+          </div>
+          <div class="story-body">
+            <p>xAI made Grok 4.3 generally available on Amazon Bedrock — lowest reported hallucination rate among frontier models, a 1M-token context window, and configurable reasoning effort. The business angle that matters here is distribution: a strong model now sits inside the AWS console with no waitlist, billed through an account most agencies already have.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the swap target for the routing layer above. A GA, low-hallucination model on Bedrock is a credible fallback for TSD Concierge — and "fewer wrong answers" is something an SMB owner actually understands.</p>
+          <div class="refs"><a href="https://releasebot.io/updates/xai" target="_blank" rel="noopener">xAI release notes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Stack</span>
+            <span class="ver">June 2026</span>
+            <h3>Supabase turns off connection logging by default for new projects</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase changed the default Postgres logging setup for new projects, switching <code>log_connections</code> off to cut log noise and volume, and is migrating existing Free and Pro projects to the new default. Small change, but it touches every project you spin up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect quieter connection logs on new and migrated projects — that's intended, not a bug. If you ever relied on connection-log lines for debugging a client's auth issue, flip the setting back on for that project explicitly.</p>
+          <div class="refs"><a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Supabase release notes</a></div>
+        </article>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
