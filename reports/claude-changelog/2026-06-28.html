@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-28" />
+  <meta name="report:title" content="2.1.195 is a fixes-only release, but the hook-matcher change can silently kill your hyphenated MCP and agent hooks on upgrade" />
+  <meta name="report:summary" content="One maintenance release since the last briefing; the thing to actually check is that hook matchers now exact-match, so hyphenated names like mcp__brave-search or code-reviewer that relied on substring matching stop firing until you switch to a regex." />
+  <meta name="report:highlights" content="4" />
+
+  <title>2.1.195 is a fixes-only release, but the hook-matcher change can silently kill your hyphenated MCP and agent hooks on upgrade — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, June 28, 2026</span>
+        <span>◆</span><span>One release since the 2.1.193 briefing</span>
+      </div>
+      <h1>2.1.195 is a fixes-only release — but one line in it can silently kill your hyphenated hooks</h1>
+      <p class="standfirst">Quiet window. A single maintenance release (2.1.195) landed since the last briefing, and it ships no new features. The one item that can actually break a running setup is the hook-matcher fix: matchers now exact-match, so anything you wrote against a hyphenated MCP server or named agent stops firing on upgrade until you rewrite it as a regex.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.195 (June 26, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New features</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Behavior change to check on upgrade</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hook matchers now exact-match</h4><p>Hyphenated names like <code>mcp__brave-search</code> or <code>code-reviewer</code> stop substring-matching. Use <code>mcp__brave-search__.*</code> instead, or the hook never fires.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Background jobs stop losing data across versions</h4><p>Jobs written by a newer Claude Code no longer vanish or lose data when read back. Relevant for anyone running loops across auto-updates.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Dead background daemons no longer block restarts</h4><p>When the control socket failed to start, daemons ran unreachable and you couldn't restart them. Fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Project-enabled plugins now need install consent</h4><p>Plugins turned on only by a repo's <code>.claude/settings.json</code> now require explicit consent on every loader path. A supply-chain tightening.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hooks &amp; plugins — two behavior changes worth a config pass</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.195</span>
+            <h3>Hook matchers exact-match instead of substring-matching</h3>
+          </div>
+          <div class="story-body">
+            <p>Hook matchers with hyphenated identifiers were accidentally substring-matching. They now exact-match. The changelog calls out <code>code-reviewer</code> and <code>mcp__brave-search</code> as examples, and tells you to write <code>mcp__brave-search__.*</code> to match every tool from a hyphenated MCP server.</p>
+            <p>This fails silently. A matcher that used to fire on a partial name will simply stop firing — no error, no warning. If a hook was your guardrail, the guardrail is just gone after the upgrade.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep your <code>settings.json</code> and any loop/Fleet-Steward hook configs for hyphenated matchers before you let auto-update run. Anything pointed at a hyphenated MCP server or a named agent needs to become a regex (<code>name__.*</code>). The loops run unattended, so a hook that quietly stops firing is exactly the failure you won't notice until something it was supposed to catch slips through.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.195</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.195</span>
+            <h3>Plugins enabled only by project settings now require explicit install consent</h3>
+          </div>
+          <div class="story-body">
+            <p>External plugins switched on solely through a project's <code>.claude/settings.json</code> previously skipped the install-consent step on some loader paths. Now they require explicit consent on every path. A second <code>/plugin</code> fix lands alongside it: Enable/Disable now works when a plugin's <code>plugin.json</code> <code>name</code> differs from its marketplace entry name.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cloning a client repo or a template that ships a <code>.claude/settings.json</code> can no longer auto-enable a plugin behind your back — you get prompted. Good default. Just expect a consent prompt the first time you open repos that bundle plugin config.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.195</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Background agents &amp; remote sessions hold together better</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.195</span>
+            <h3>Background-job durability across version upgrades</h3>
+          </div>
+          <div class="story-body">
+            <p>Three reliability fixes land in the same area. Background jobs no longer disappear from <code>claude agents</code> or lose data when they were written by a newer Claude Code version. Background agent daemons no longer run unreachable when the control socket fails to start, which had been blocking restarts entirely. And reopening a crashed background task now shows its restart instead of a blank screen for up to five seconds.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the release for anyone leaning on background agents and scheduled loops. The cross-version data-loss and unreachable-daemon bugs are the kind that bite unattended automation specifically. Worth upgrading the machine that runs your loops, then confirming the daemons come back cleanly.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.195</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.195</span>
+            <h3>Agents list and Remote startup get small polish</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>claude agents</code> completed list now fills available vertical space, and on short terminals the header compacts so live sessions stay visible. Remote session startup shows a provisioning checklist while the container spins up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cosmetic, no action needed. The provisioning checklist makes Remote startup feel less like a hang, which matters if you ever demo Remote sessions to a client.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.195</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Voice dictation</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.195</span>
+            <h3>Three dictation fixes across macOS, Linux, and non-spaced languages</h3>
+          </div>
+          <div class="story-body">
+            <p>On macOS, voice dictation stopped capturing silence in long sessions after the default input device changes. Auto-submit now fires for languages written without spaces (Japanese, Chinese, Thai). On Linux, voice mode now distinguishes "no microphone" from "SoX not installed" when SoX is present but there's no capture device.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only relevant if you dictate. The macOS device-switch fix is the useful one — swapping between AirPods and a desk mic mid-session no longer silently breaks dictation.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.195</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_DISABLE_MOUSE_CLICKS</code> disables click/drag/hover in fullscreen while keeping wheel scroll <span class="ver">2.1.195</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background jobs no longer disappear or lose data when written by a newer Claude Code version <span class="ver">2.1.195</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/plugin</code> Enable/Disable now works when <code>plugin.json</code> name differs from the marketplace entry name <span class="ver">2.1.195</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
