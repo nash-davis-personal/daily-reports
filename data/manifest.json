@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-06-29",
+    "title": "Markets rebound to open a holiday-shortened week as a reported pause in US–Iran strikes calms the tape; jobs report moved up to Thursday and a 92,000-acre Utah fire burns at 0% containment",
+    "summary": "US stock futures rose Monday after reports that the US and Iran agreed to halt the weekend's tit-for-tat strikes, recovering from sharp prior-week losses. The June jobs report was moved up to Thursday July 2 ahead of the July 4 holiday close, core PCE ticked up to 3.4% with the Fed holding rates at 3.50–3.75%, the Cottonwood Fire in Utah grew past 92,000 acres at 0% containment, and a severe-storm outbreak battered the Midwest.",
+    "highlights": 6,
+    "path": "reports/america/2026-06-29.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No Claude Code releases shipped since 2.1.195 on June 26, so this is a short briefing: nothing new to adopt, and the only live caveat is still the 2.1.195 hook-matcher change flagged last time.",
     "highlights": 2,
     "path": "reports/claude-changelog/2026-06-29.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-06-29",
+    "title": "Quiet on model releases — the action moved to talent and silicon: Anthropic keeps poaching DeepMind, OpenAI tapes out its own inference chip, and spies warn about over-permissioned agents",
+    "summary": "No new frontier model shipped over the weekend — GPT-5.6 is still the freshest release and remains government-gated. The real motion is one layer down: Anthropic is reportedly pulling two more senior Gemini researchers after landing Nobel laureate John Jumper, OpenAI and Broadcom revealed their first custom inference chip 'Jalapeño' targeting ~50% lower cost, and Five Eyes cyber agencies warned that AI agents inside critical systems are routinely over-permissioned.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-06-29.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-06-29",
+    "title": "Turn this week's security scare into a paid offer: an AI agent least-privilege review, a Next.js 16.3 speed upsell, and a get-paid-online setup for SMBs",
+    "summary": "The Five Eyes warning that AI agents are routinely over-permissioned is a ready-made TSD offer — sell a least-privilege security review of the AI tools your clients already run. Next.js 16.3's Instant Navigations turns a free speed bump into a paid tune-up upsell, the stablecoin/payments deadlines plus your own payment-rail pain point to a get-paid-online service, and cheaper inference makes now the moment to push Managed AI retainers.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-06-29.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-06-29",
+    "title": "A self-propagating npm worm is live and hunting dev secrets — and Next.js 16.3 previews instant navigations plus a built-in agent toolset",
+    "summary": "No new CVE landed on Next.js, React, Vercel, Tailwind, or Supabase this window, but the 'Miasma' npm supply-chain worm poisoned 20+ more packages on June 24 by hijacking a maintainer account and is actively hunting developer credentials — tighten lockfile discipline now. On the upside, Vercel previewed Next.js 16.3 with Instant Navigations and an agent-focused toolset, Rivian began R2 deliveries, and TSMC locked a 10-year US packaging deal with Amkor.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-06-29.html"
   },
   {
     "source": "america",

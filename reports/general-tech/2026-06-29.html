@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-06-29" />
+  <meta name="report:title" content="A self-propagating npm worm is live and hunting dev secrets — and Next.js 16.3 previews instant navigations plus a built-in agent toolset" />
+  <meta name="report:summary" content="No new CVE landed on Next.js, React, Vercel, Tailwind, or Supabase this window, but the 'Miasma' npm supply-chain worm poisoned 20+ more packages on June 24 by hijacking a maintainer account and is actively hunting developer credentials — tighten lockfile discipline now. On the upside, Vercel previewed Next.js 16.3 with Instant Navigations and an agent-focused toolset, Rivian began R2 deliveries, and TSMC locked a 10-year US packaging deal with Amkor." />
+  <meta name="report:highlights" content="6" />
+
+  <title>An npm worm is hunting dev secrets — and Next.js 16.3 previews instant navigations — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.theregister.com/security/2026/06/26/miasma-campaign-poisons-20-plus-npm-packages-hunts-for-developer-secrets/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, June 29, 2026</span>
+        <span>◆</span><span>Since the June 28 edition</span>
+      </div>
+      <h1>An npm worm is hunting dev secrets — and Next.js 16.3 previews instant navigations</h1>
+      <p class="standfirst">Good news first: no fresh CVE hit Next.js, React, Vercel, Tailwind, or Supabase this window. The live threat is one level up — a self-propagating npm campaign called "Miasma" poisoned 20-plus more packages by hijacking a maintainer account and is actively scraping developer credentials. On the build side, Vercel previewed Next.js 16.3 with Instant Navigations and an agent toolset aimed squarely at the Claude Code workflow.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 24–29, 2026</span>
+        <span>◆</span><a href="https://www.theregister.com/security/2026/06/26/miasma-campaign-poisons-20-plus-npm-packages-hunts-for-developer-secrets/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">20+</div><div class="lbl">npm packages poisoned by the Miasma worm</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New CVEs on your stack this window</div></div>
+      <div class="stat"><div class="num">16.3</div><div class="lbl">Next.js preview with Instant Navigations</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Miasma npm worm is live</h4><p>20+ more packages poisoned June 24 via a hijacked maintainer account; the malware hunts dev secrets. Lock your deps.</p></div>
+        <div class="signal"><div class="n">02</div><h4>No new stack CVE</h4><p>Nothing new hit Next.js/React/Vercel/Tailwind/Supabase in-window. The real backlog is the May Next.js upgrade if you skipped it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Next.js 16.3 preview</h4><p>Instant Navigations + partial prefetch for snappy clicks, plus a first-party agent toolset and slimmer MCP server.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Rivian R2 deliveries begin</h4><p>The mass-market EV starts shipping: up to 330 mi range, 656 hp dual-motor, 2–6 week delivery windows.</p></div>
+        <div class="signal"><div class="n">05</div><h4>TSMC + Amkor, 10 years</h4><p>A decade-long US advanced-packaging deal in Arizona reshapes the chip-packaging map that gates AI hardware.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Figure hits 1 robot/hour</h4><p>Figure AI's BotQ factory reached one humanoid per hour — humanoids crossing from pilot to real volume.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch &amp; protect — do this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply chain</span>
+            <span class="ver">Attack Jun 24 ◆ reported Jun 26</span>
+            <h3>"Miasma" npm worm poisons 20+ more packages, hunts developer secrets</h3>
+          </div>
+          <div class="story-body">
+            <p>The self-propagating Miasma campaign claimed new victims late June 24: attackers compromised a maintainer account ("czirker") and pushed poisoned updates into 20-plus packages across the Leo Platform / RStreams ecosystems in a fully automated push reported to finish in under three seconds. The payload scrapes developer secrets and credentials. It follows the @mastra AI-framework compromise (June 17, a typosquat dropper that exposed 1.1M+ weekly downloads) and the earlier Red Hat package hit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Action this week. Commit your lockfiles, install with <code>npm ci</code> only (never a bare <code>npm install</code> that floats versions), and be suspicious of brand-new patch releases of transitive dependencies. If Mastra is anywhere in your projects, audit it now. A scraped <code>.env</code> on a client build is your worst-case day.</div>
+          <div class="refs"><a href="https://www.theregister.com/security/2026/06/26/miasma-campaign-poisons-20-plus-npm-packages-hunts-for-developer-secrets/" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Carryover</span>
+            <span class="ver">Patched May 6–7</span>
+            <h3>No new stack CVE — but the May Next.js upgrade is the real backlog</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new hit Next.js, React, Vercel, Tailwind, or Supabase inside the window. The last big coordinated Next.js/React advisory was patched May 6–7 in 15.5.18 and 16.2.6. Node.js also shipped a multi-line security release June 18 (22.23.0 / 24.17.0 / 26.3.1) covering two HIGH CVEs in WebCrypto and TLS.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client project is still on a pre-May Next.js, you're carrying unpatched advisories — bump to 16.2.6 (or 15.5.18 on the older line) and bump Node to the current patch. Do it between deliveries, not mid-build. And confirm RLS is on for every Supabase project; the "RLS off = public database" mistake keeps burning teams.</div>
+          <div class="refs"><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases" target="_blank" rel="noopener">Node.js security release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> What's new on your build stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Preview</span>
+            <span class="ver">Jun 25–26</span>
+            <h3>Next.js 16.3 previews Instant Navigations and a built-in agent toolset</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel previewed Next.js 16.3 across two posts. The headline is <b>Instant Navigations + partial prefetching</b>: cache a per-route shell on the client so a click renders instantly while the rest streams in. The other half is an agent layer — version-matched docs via <code>AGENTS.md</code>, first-party Skills, an Agent Browser with React state introspection, actionable errors with paste-ready fix prompts, and a slimmer MCP server. Preview only for now.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Instant Navigations is a near-free perceived-speed win on the SMB sites you ship — exactly the kind of polish that makes a small-business site feel premium. The agent tooling is built for your Claude Code workflow. Worth a preview branch on one project; don't put it on a client production build until it's stable.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-16-3-instant-navigations" target="_blank" rel="noopener">Instant Navigations</a> ◆ <a href="https://nextjs.org/blog/next-16-3-ai-improvements" target="_blank" rel="noopener">AI improvements</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Framework</span>
+            <span class="ver">through Jun 2026</span>
+            <h3>TanStack Start keeps surging as the client-first React alternative</h3>
+          </div>
+          <div class="story-body">
+            <p>TanStack Start — the type-safe, client-first full-stack React framework — is now near 6M weekly npm downloads off its stable 1.x, described as the fastest-growing full-stack JS framework, with roughly 15% React-dev adoption. Its "additive, opt-in server" model is a genuinely different bet from Next.js for app-like, interactive builds.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth a weekend eval for your more app-like client work (dashboards, internal tools). It is not a Next.js replacement for content/SEO sites — keep those on Next. Knowing both lets you pick the right tool per pitch.</div>
+          <div class="refs"><a href="https://byteiota.com/tanstack-start-v1-0-type-safe-react-framework-2026/" target="_blank" rel="noopener">byteiota</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware, chips &amp; the wider buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jun 2026</span>
+            <h3>Rivian R2 deliveries begin; TSMC and Amkor lock a 10-year US packaging deal</h3>
+          </div>
+          <div class="story-body">
+            <p>Rivian started delivering the R2 midsize electric SUV — its mass-market play — with up to 330 miles of EPA range, 656 hp dual-motor AWD, and 2–6 week delivery windows; Rivian projects 53% higher deliveries in 2026 on its back. Separately, TSMC and Amkor signed a 10-year agreement (announced June 16) for advanced packaging and test in Arizona, with TSMC procuring CoWoS-class packaging — the bottleneck for AI accelerators — from Amkor's campus.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both are macro tailwinds, not action items. The packaging deal means more AI-hardware supply onshore, which over time keeps compute cheaper for everyone building on these models — including you. File and move on.</div>
+          <div class="refs"><a href="https://ir.amkor.com/news-releases/news-release-details/tsmc-and-amkor-technology-announce-long-term-partnership" target="_blank" rel="noopener">Amkor IR</a> ◆ <a href="https://evtech.news/news/rivian-r2-deliveries-begin-in-june-2026-330-mile-range-electric-suv-challenges-tesla-model-y-with-656-hp-and-rapid-delivery-times.html" target="_blank" rel="noopener">EV Tech</a></div>
+        </article>
+
+        <div class="quickhits" style="margin-top:18px">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">ServiceNow confirmed an unauthenticated API endpoint exposed some customer data (patched June 5) — a reminder to check that nothing in your APIs sits behind <code>requires_authentication=false</code>. <span class="ver">Jun</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">SpaceX launched 24 Starlink V2 Mini + 5 CubeSats from Vandenberg on June 28; SXM-11 also flew from the Cape — sustaining a record 2026 cadence. <span class="ver">Jun 28</span></span></li>
+            <li><span class="tag improve qh-tag">Payments</span><span class="txt">EU MiCA full stablecoin-authorization deadline is July 1; US GENIUS Act framework is live with market cap &gt;$310B — relevant if a client wants payment integrations. <span class="ver">Jul 1</span></span></li>
+            <li><span class="tag new qh-tag">AR</span><span class="txt">Snap unveiled "Specs" AR glasses ($2,195, fall 2026) betting on its Lens Studio dev base; EssilorLuxottica partnered with Applied Materials to scale AR optics. <span class="ver">Jun 16</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
