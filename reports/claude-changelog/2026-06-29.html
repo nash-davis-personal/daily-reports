@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-06-29" />
+  <meta name="report:title" content="Quiet window — no new Claude Code releases since 2.1.195; nothing in your setup needs to change" />
+  <meta name="report:summary" content="No Claude Code releases shipped since 2.1.195 on June 26, so this is a short briefing: nothing new to adopt, and the only live caveat is still the 2.1.195 hook-matcher change flagged last time." />
+  <meta name="report:highlights" content="2" />
+
+  <title>Quiet window — no new Claude Code releases since 2.1.195; nothing in your setup needs to change — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Monday, June 29, 2026</span>
+        <span>◆</span><span>0 new releases</span>
+      </div>
+      <h1>Quiet window — nothing has shipped since 2.1.195, so nothing in your setup needs to change today</h1>
+      <p class="standfirst">The changelog is unchanged since the June 28 briefing. The topmost release is still 2.1.195 (June 26), which the last report already covered, so there is no new version to adopt and no reason to upgrade today.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: June 27–29 ◆ source unchanged since June 26</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">New releases this window</div></div>
+      <div class="stat"><div class="num">2.1.195</div><div class="lbl">Latest version</div></div>
+      <div class="stat"><div class="num">Jun 26</div><div class="lbl">Last ship date</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new shipped</h4><p>The changelog top is still 2.1.195 (June 26). No release landed between the last briefing and today.</p></div>
+        <div class="signal"><div class="n">02</div><h4>One carryover still live</h4><p>If you upgrade to 2.1.195, the hook-matcher change can still silently break hyphenated MCP and agent hooks. That caveat from June 28 has not been superseded.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> State of play</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">No change</span>
+            <span class="ver">2.1.195</span>
+            <h3>The changelog has not moved since June 26</h3>
+          </div>
+          <div class="story-body">
+            <p>Checked the live changelog twice. The topmost entry is 2.1.195, dated June 26, with 2.1.193 (June 25) and 2.1.191 / 2.1.190 (June 24) below it. All of that was already covered in the June 28 briefing, so there is no new version to read up on and no upgrade to plan around.</p>
+            <p>An honest empty day is worth recording: it means your pinned setup is current and you are not behind on anything Anthropic has shipped.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do nothing. Keep building on Bisque, Studio C, and Sonderwerks as-is. If you are still on a version below 2.1.195, hold the upgrade until you have a free minute to audit your hook matchers — see the carryover below — rather than upgrading mid-delivery on a client build.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Carryover from June 28 — still worth knowing before you upgrade</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Watch</span><span class="txt">2.1.195 changed hook matching: hyphenated MCP and agent hook matchers can stop firing silently after the upgrade. Test your hooks right after bumping. <span class="ver">2.1.195</span></span></li>
+            <li><span class="tag fix qh-tag">Context</span><span class="txt">2.1.195 was a fixes-only release with no new capability to adopt — the only thing that bites is the matcher change above. <span class="ver">2.1.195</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
