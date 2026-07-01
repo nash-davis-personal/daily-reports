@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-01",
+    "title": "Best quarter for stocks in six years closes, jobs report pulled to Thursday, and a dangerous heat wave grips the East",
+    "summary": "The S&P and Nasdaq wrapped their strongest quarter in six years as an early June jobs report and sticky 3.4% core inflation set up the week; a dangerous heat wave covers the Midwest and East; and Charlotte's building boom keeps colliding with a worker shortage.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-01.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Sonnet 5 shipped as Claude Code's default in 2.1.197 with a native 1M-token window and promotional pricing; the 2.1.196 release the prior briefing missed also lands here, led by a 25% cheaper /code-review and tougher background-session reliability.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-01.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-01",
+    "title": "Sonnet 5 lands as a cheap 1M-context frontier model while the most powerful models get gated behind a federal review",
+    "summary": "Anthropic shipped Claude Sonnet 5 with a native 1M-token window and promo pricing, Wix's Base44 launched its own model for defensibility, and OpenAI's GPT-5.6 plus Anthropic's Mythos now sit behind a US government access review.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-01.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-01",
+    "title": "Ride the Sonnet 5 price window: sell a 1M-context AI Concierge before the promo ends",
+    "summary": "A cheap 1M-context frontier model, WebSockets on Vercel, and a Charlotte trades boom all point the same way this week — package what you already built and let Grant and Bishop sell it before the pricing window closes.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-01.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-01",
+    "title": "Patch your Next.js apps, then ship realtime on Vercel — plus a rough week for enterprise security",
+    "summary": "Next.js 16.3 ships security fixes and Instant Navigations, Vercel Functions now handle WebSockets, and a run of breaches (Oracle PeopleSoft via ShinyHunters, a Microsoft Defender zero-day) makes patching and vendor hygiene the story of the week.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-01.html"
   },
   {
     "source": "america",

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-07-01" />
+  <meta name="report:title" content="Sonnet 5 lands as a cheap 1M-context frontier model while the most powerful models get gated behind a federal review" />
+  <meta name="report:summary" content="Anthropic shipped Claude Sonnet 5 with a native 1M-token window and promo pricing, Wix's Base44 launched its own model for defensibility, and OpenAI's GPT-5.6 plus Anthropic's Mythos now sit behind a US government access review." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Sonnet 5 lands cheap with 1M context while top models get gated — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, July 1, 2026</span>
+        <span>◆</span><span>Since the June 29 edition</span>
+      </div>
+      <h1>A cheap frontier model in your hands, the strongest ones behind a federal gate</h1>
+      <p class="standfirst">Anthropic dropped Claude Sonnet 5 with a native 1M-token window and promotional $2/$10 pricing through August 31, which is the kind of price-and-context jump that changes what a solo shop can afford to ship. At the same time the very top of the stack — OpenAI's GPT-5.6 and Anthropic's Mythos — is now released only to a handful of government-approved partners, a split worth understanding before you build.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Model releases, tooling &amp; access policy</span>
+        <span>◆</span><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1M</div><div class="lbl">Sonnet 5 context window</div></div>
+      <div class="stat"><div class="num">$2/$10</div><div class="lbl">Sonnet 5 promo per-MTok (to Aug 31)</div></div>
+      <div class="stat"><div class="num">~20</div><div class="lbl">Partners cleared for GPT-5.6</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sonnet 5 is the new default</h4><p>Frontier-class model, native 1M context, promo pricing through Aug 31.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Frontier access gets gated</h4><p>GPT-5.6 and Mythos limited to government-approved partners under a US review.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Platforms build their own models</h4><p>Wix's Base44 launched Base1 to cut cost and own its stack against Lovable.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Coding agents keep compounding</h4><p>Microsoft's Polaris replaces GPT-4 in Copilot; Devin now writes ~89% of Cognition's code.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models you can actually use got better and cheaper</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jun 30, 2026</span>
+            <h3>Claude Sonnet 5 ships with a native 1M-token window and promo pricing</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic released Claude Sonnet 5 and made it the default across Claude Code, with a native 1M-token context window and promotional pricing of roughly $2 in / $10 out per million tokens running through August 31. That is frontier-level reasoning at a mid-tier price, with enough context to hold an entire client site, docs set, or codebase in a single call.</p>
+            <p>For anyone building RAG or agent features, the win is the pairing: a bigger window that used to mean the priciest models, now at a promo rate that makes it cheap to prototype and cheap to run in production for a while.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the model to rebuild the TSD Concierge and Front Desk on right now. A 1M window lets a concierge ingest a client's whole website and document set at once, and the promo pricing gives you a hard deadline to ship a premium "Managed AI Concierge" tier before Aug 31 and lock in margin.</div>
+          <div class="refs"><a href="https://llm-stats.com/llm-updates" target="_blank" rel="noopener">llm-stats — AI model updates</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jun 29, 2026</span>
+            <h3>Wix's Base44 launches its own model, Base1, to cut cost and own the stack</h3>
+          </div>
+          <div class="story-body">
+            <p>Base44, the vibe-coding platform Wix acquired, started rolling out Base1, a proprietary model trained on tens of millions of real app-building interactions on the platform. Founder Maor Shlomo framed it as cheaper inference than frontier models like Claude Opus, better tuned for app generation, and — the real point — defensibility from owning distribution, data, and infrastructure end to end. Base44 is at ~$150M ARR, still trailing Lovable's ~$500M.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two lessons. First, the "own your stack" argument is exactly the pitch to SMB clients — a site and AI they own beats renting a platform that can change terms on them. Second, cheaper app-gen tooling keeps lowering your build cost per client, so lean into fixed-price rebuilds.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/06/29/vibe-coding-platform-base44-launches-own-model-as-ai-startups-seek-defensibility/" target="_blank" rel="noopener">TechCrunch — Base44 launches own model</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The top of the stack goes behind a gate</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jun 26–27, 2026</span>
+            <h3>GPT-5.6 and Anthropic's Mythos released only to government-approved partners</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI limited its new GPT-5.6 family (Sol, Terra, Luna) to a preview for roughly 20 government-approved companies after the Commerce Department asked it to hold a public release pending a cybersecurity review. Anthropic's Mythos 5 and Fable 5 are under the same regime — Anthropic had already suspended both in mid-June under an export-control directive. OpenAI said publicly it does not think this kind of case-by-case government access should become the long-term default; both labs are now working with the White House on a repeatable framework.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The models you sell on — Sonnet 5, Opus, GPT-4-class — are unaffected and publicly available, so nothing you ship today breaks. What's worth watching: a future where the strongest models require "approved partner" status could fragment what's buildable, and it may become a talking point with security-conscious clients.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/" target="_blank" rel="noopener">TechCrunch — OpenAI limits GPT-5.6 rollout</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Trend</span>
+            <span class="ver">Jun 2026</span>
+            <h3>Coding agents keep eating the work: Polaris in Copilot, Devin writing its makers' code</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft is replacing GPT-4 Turbo with its own in-house coding model, Project Polaris, as the default for every GitHub Copilot subscriber starting in August, running on Microsoft's Maia chips with a three-month fallback to GPT-4 Turbo. Separately, Cognition — makers of the Devin agent — closed a $1B round at a $26B valuation and says Devin now writes ~89% of the code its own engineers commit. The direction is one-way: AI-built software is becoming the norm, not the exception.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your edge isn't that you use agents — everyone will. It's that you point them at real SMB problems and deliver a finished, owned product. Package that as a fixed-price "rebuild your outdated site in a week" offer Grant and Bishop can pitch.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/" target="_blank" rel="noopener">TechCrunch — Cognition raises $1B</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">OpenAI plans to serve GPT-5.6 Sol on Cerebras at up to ~750 tokens/sec in July — ultra-fast inference that could unlock new real-time voice and agent products. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag feature qh-tag">Compute</span><span class="txt">Google reportedly restricted Meta's access to its Gemini models over capacity, and SpaceX flagged water access as a constraint for AI infrastructure — signs the compute buildout is straining. <span class="ver">Jun 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

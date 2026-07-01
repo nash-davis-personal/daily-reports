@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-01" />
+  <meta name="report:title" content="Patch your Next.js apps, then ship realtime on Vercel — plus a rough week for enterprise security" />
+  <meta name="report:summary" content="Next.js 16.3 ships security fixes and Instant Navigations, Vercel Functions now handle WebSockets, and a run of breaches (Oracle PeopleSoft via ShinyHunters, a Microsoft Defender zero-day) makes patching and vendor hygiene the story of the week." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Patch Next.js, ship realtime on Vercel, watch the breaches — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, July 1, 2026</span>
+        <span>◆</span><span>Since the June 29 edition</span>
+      </div>
+      <h1>Patch first, then build the fun stuff</h1>
+      <p class="standfirst">Next.js 16.3 pairs a real speed upgrade — Instant Navigations — with security fixes you should apply, and Vercel Functions can now hold WebSocket connections, which puts realtime features within reach without extra infrastructure. The backdrop is an ugly stretch for enterprise security, so this week's job is boring and important: update, then ship.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Web platform, infra &amp; security</span>
+        <span>◆</span><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security fixes</h4><p>16.3 ships fixes across Server Components, Middleware/Proxy and Cache Components — update.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Instant Navigations</h4><p>Per-route stream / cache / block for SPA-fast page transitions on your stack.</p></div>
+        <div class="signal"><div class="n">03</div><h4>WebSockets on Vercel</h4><p>Vercel Functions now handle WebSocket connections — realtime without a side service.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Rough week for security</h4><p>Oracle PeopleSoft breach hits 100+ orgs; a Microsoft Defender zero-day was exploited.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack: Next.js and Vercel</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch</span>
+            <span class="ver">Next.js 16.3</span>
+            <h3>Next.js 16.3 ships security fixes alongside Instant Navigations</h3>
+          </div>
+          <div class="story-body">
+            <p>The 16.3 line ships security fixes spanning Server Components, the App Router, and Middleware/Proxy — the reported classes include denial of service, auth bypass, XSS, SSRF, and cache poisoning, with a specific DoS advisory tied to connection exhaustion in apps using Cache Components. It also previews Instant Navigations: per-route control to <em>stream</em> with Suspense, <em>cache</em> with <code>use cache</code>, or <em>block</em>, making first-click navigation feel like a single-page app while keeping the server-centric model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today — check the Next.js version pinned in every client repo and TSD app, bump to the latest 16.x patch, and if any project uses Cache Components, prioritize it. Then, on high-traffic client sites, trial Instant Navigations on the money pages (booking, contact) for a snappier feel at no infra cost.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-16-3-instant-navigations" target="_blank" rel="noopener">Next.js 16.3 — Instant Navigations</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Vercel</span>
+            <h3>Vercel Functions can now handle WebSocket connections</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel added WebSocket support to Functions, so realtime features — live chat, streaming AI responses, collaborative or live-status UI — can run natively on the platform instead of requiring a separate always-on server or a third-party realtime vendor.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a sellable add-on. Build a live-chat or live-availability widget once, then resell it to existing clients as a paid upgrade. It also tightens the AI Concierge — streaming responses over a WebSocket feel faster than request/response polling.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel Changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: a bad week worth learning from</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Jun 2026</span>
+            <h3>ShinyHunters hit 100+ orgs via Oracle PeopleSoft; a Defender zero-day was exploited</h3>
+          </div>
+          <div class="story-body">
+            <p>The ShinyHunters group claimed to have compromised Oracle PeopleSoft servers at more than 100 organizations, including colleges, allegedly stealing hundreds of thousands of student records. Separately, a Microsoft Defender vulnerability tracked as CVE-2026-33825 was reported exploited in the wild as a zero-day before a patch shipped, and Tata Electronics confirmed an incident after the World Leaks group posted 200,000+ files. Attackers are also targeting AI support systems directly — one report describes manipulating an AI support flow to hijack Instagram accounts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two moves. Patch anything Microsoft Defender related on your machines now. And use the headlines as a soft sales hook — offer existing clients a free 15-minute "is your site current and safe" check, then upsell a managed-updates retainer. Recurring revenue that also keeps your builds patched.</div>
+          <div class="refs"><a href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Bigger picture</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Business</span>
+            <span class="ver">Build 2026</span>
+            <h3>Microsoft swaps GPT-4 for its own coding model on its own chips</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft is making Project Polaris, an in-house coding model running on its Maia chips, the default for every GitHub Copilot subscriber in August, displacing GPT-4 Turbo (with a three-month fallback). It's a business/hardware story more than a capability one: Microsoft cutting its dependence on OpenAI for its highest-volume developer product, and proving out its own silicon.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you or a client leans on Copilot, expect the default engine to change in August — test your workflows before it flips. The broader signal: platforms are verticalizing onto their own models and chips, which over time should push developer-tool pricing down.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html" target="_blank" rel="noopener">CNBC — Microsoft's own AI models</a></div>
+        </article>
+
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Infra</span><span class="txt">SpaceX warned in an IPO filing that water access is becoming a constraint on large-scale AI infrastructure, and reportedly signed to rent extra cloud capacity — the physical limits of the buildout are surfacing. <span class="ver">Jun 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
