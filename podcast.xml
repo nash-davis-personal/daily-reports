@@ -15,12 +15,22 @@
     <itunes:owner><itunes:name>TSD Modernization Solutions</itunes:name><itunes:email>nashdavis@tsd-ventures.com</itunes:email></itunes:owner>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://nashyd.github.io/daily-reports/podcast.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>TSD Daily — Wednesday, July 1, 2026</title>
+      <description>Cheap 1M-context Sonnet 5 on a promo clock while top models get gated, a patch-your-Next.js security week, a record quarter into Thursday&apos;s jobs report, and money moves that repackage what TSD already ships.</description>
+      <itunes:summary>Cheap 1M-context Sonnet 5 on a promo clock while top models get gated, a patch-your-Next.js security week, a record quarter into Thursday&apos;s jobs report, and money moves that repackage what TSD already ships.</itunes:summary>
+      <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-07-01.mp3" length="4931181" type="audio/mpeg"/>
+      <guid isPermaLink="false">tsd-daily-2026-07-01</guid>
+      <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
+      <itunes:duration>6:51</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+    <item>
       <title>TSD Daily — Monday, June 29, 2026</title>
       <description>A quiet week for new AI models but a loud one underneath: Anthropic keeps poaching DeepMind, an npm worm is stealing developer secrets, Next.js 16.3 previews instant navigations, and markets rebound on a reported US–Iran pause.</description>
       <itunes:summary>A quiet week for new AI models but a loud one underneath: Anthropic keeps poaching DeepMind, an npm worm is stealing developer secrets, Next.js 16.3 previews instant navigations, and markets rebound on a reported US–Iran pause.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-29.mp3" length="4329549" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-29</guid>
-      <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
+      <pubDate>Mon, 29 Jun 2026 12:00:01 GMT</pubDate>
       <itunes:duration>6:01</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -30,7 +40,7 @@
       <itunes:summary>The frontier goes behind a government gate as OpenAI ships GPT-5.6 partner-only and Anthropic&apos;s Fable 5 stays dark, cheaper inference reshapes TSD&apos;s AI products, markets rotate out of megacap tech amid sticky inflation, and the West burns under a historic fire warning.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-28.mp3" length="4652397" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-28</guid>
-      <pubDate>Sun, 28 Jun 2026 12:00:01 GMT</pubDate>
+      <pubDate>Sun, 28 Jun 2026 12:00:02 GMT</pubDate>
       <itunes:duration>6:28</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -40,7 +50,7 @@
       <itunes:summary>Voice AI mints a clinic-phone unicorn while the frontier stays frozen, Next.js 16.3 makes navigations instant, Micron&apos;s record quarter splits the market, and the day&apos;s best money move is packaging TSD Front Desk for one Charlotte vertical.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-26.mp3" length="4423725" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-26</guid>
-      <pubDate>Fri, 26 Jun 2026 12:00:02 GMT</pubDate>
+      <pubDate>Fri, 26 Jun 2026 12:00:03 GMT</pubDate>
       <itunes:duration>6:09</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -50,7 +60,7 @@
       <itunes:summary>Three frontier models stuck in limbo, a critical FFmpeg flaw to patch today, an AI-found 29-year-old bug, and a landmark housing-supply bill headed to the President — plus two money moves.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-24.mp3" length="4252653" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-24</guid>
-      <pubDate>Wed, 24 Jun 2026 12:00:03 GMT</pubDate>
+      <pubDate>Wed, 24 Jun 2026 12:00:04 GMT</pubDate>
       <itunes:duration>5:54</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -60,7 +70,7 @@
       <itunes:summary>GPT-5.6 hits its launch window but isn&apos;t out, Fable 5 stays dark, Supabase is retiring legacy API keys, the Russell 2000 closes at a record 3,000, and a heat wave turns peak trades season into a sales calendar.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-23.mp3" length="4618701" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-23</guid>
-      <pubDate>Tue, 23 Jun 2026 12:00:04 GMT</pubDate>
+      <pubDate>Tue, 23 Jun 2026 12:00:05 GMT</pubDate>
       <itunes:duration>6:25</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -70,7 +80,7 @@
       <itunes:summary>Anthropic&apos;s top models stay offline a week into the export ban, the agentjacking attack hijacks AI coding agents, the Fed drops its rate-cut plan as inflation runs hot, and Salesforce&apos;s .6B Fin deal validates TSD&apos;s own AI receptionist offer.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-22.mp3" length="4642029" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-22</guid>
-      <pubDate>Mon, 22 Jun 2026 12:00:05 GMT</pubDate>
+      <pubDate>Mon, 22 Jun 2026 12:00:06 GMT</pubDate>
       <itunes:duration>6:27</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -80,7 +90,7 @@
       <itunes:summary>Quiet weekend: Anthropic hardens its connector and design layers, a Next.js security patch becomes a retainer hook, oil sticks near $80, and FERC moves to fast-track AI&apos;s power demand.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-21.mp3" length="3902733" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-21</guid>
-      <pubDate>Sun, 21 Jun 2026 12:00:06 GMT</pubDate>
+      <pubDate>Sun, 21 Jun 2026 12:00:07 GMT</pubDate>
       <itunes:duration>5:25</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -90,7 +100,7 @@
       <itunes:summary>Inference&apos;s funding war means cheaper AI products, a breach-heavy week makes patching your Next.js apps the top chore, and Charlotte&apos;s record recruitment year becomes TSD&apos;s best local lead list.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-20.mp3" length="3946797" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-20</guid>
-      <pubDate>Sat, 20 Jun 2026 12:00:07 GMT</pubDate>
+      <pubDate>Sat, 20 Jun 2026 12:00:08 GMT</pubDate>
       <itunes:duration>5:29</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -100,7 +110,7 @@
       <itunes:summary>Anthropic makes Claude admin-manageable, AI-driven exploits become the top breach cause, the Fed flips hawkish under Warsh, and the day&apos;s best money move is a software-spend audit.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-19.mp3" length="4277997" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-19</guid>
-      <pubDate>Fri, 19 Jun 2026 12:00:08 GMT</pubDate>
+      <pubDate>Fri, 19 Jun 2026 12:00:09 GMT</pubDate>
       <itunes:duration>5:56</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -110,7 +120,7 @@
       <itunes:summary>SpaceX buys Cursor and AI coding consolidates, a North Korean crew backdoors 144 npm packages, and the Fed holds rates but signals a hike as inflation hits 4.2%.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-18.mp3" length="4190157" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-18</guid>
-      <pubDate>Thu, 18 Jun 2026 12:00:09 GMT</pubDate>
+      <pubDate>Thu, 18 Jun 2026 12:00:10 GMT</pubDate>
       <itunes:duration>5:49</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -120,7 +130,7 @@
       <itunes:summary>SpaceX buys Cursor for $60B, OpenAI ships pre-deploy model testing, a June 18 patch deadline, the Fed decides today under a new chair, and a security sprint you can sell by lunch.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-17.mp3" length="4634541" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-17</guid>
-      <pubDate>Wed, 17 Jun 2026 12:00:10 GMT</pubDate>
+      <pubDate>Wed, 17 Jun 2026 12:00:11 GMT</pubDate>
       <itunes:duration>6:26</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -130,7 +140,7 @@
       <itunes:summary>The US pulled Anthropic&apos;s Fable 5 offline worldwide, a leaked 120K-char system prompt becomes an agent-design manual, Nvidia raises $20B in bonds, the Fed meets with inflation at 4.2%, and this week&apos;s money moves are all about selling AI uptime.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-15.mp3" length="4381389" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-15</guid>
-      <pubDate>Mon, 15 Jun 2026 12:00:11 GMT</pubDate>
+      <pubDate>Mon, 15 Jun 2026 12:00:12 GMT</pubDate>
       <itunes:duration>6:05</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -140,7 +150,7 @@
       <itunes:summary>Anthropic overtakes OpenAI in US business adoption, a Supabase security cutover lands on the to-do list, the Fed meets this week, and Charlotte books another big HQ.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-14.mp3" length="4122477" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-14</guid>
-      <pubDate>Sun, 14 Jun 2026 12:00:12 GMT</pubDate>
+      <pubDate>Sun, 14 Jun 2026 12:00:13 GMT</pubDate>
       <itunes:duration>5:43</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -150,7 +160,7 @@
       <itunes:summary>A record SpaceX IPO opens, Bezos pours $12B into physical AI and an open-weight coder closes on the frontier, Next.js and an npm supply-chain attack make a security retainer the week&apos;s easiest sale, and wholesale inflation runs hot as the Fed prepares to hold.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-12.mp3" length="4448205" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-12</guid>
-      <pubDate>Fri, 12 Jun 2026 12:00:13 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 12:00:14 GMT</pubDate>
       <itunes:duration>6:11</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -160,7 +170,7 @@
       <itunes:summary>DiffusionGemma&apos;s open text-diffusion model, Supabase&apos;s .5B raise and a Postgres-17 self-host heads-up, May inflation at a 3-year high on an energy spike, the record SpaceX IPO, and money moves that sell TSD as a cost-cutter.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-11.mp3" length="4766445" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-11</guid>
-      <pubDate>Thu, 11 Jun 2026 12:00:14 GMT</pubDate>
+      <pubDate>Thu, 11 Jun 2026 12:00:15 GMT</pubDate>
       <itunes:duration>6:37</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -170,7 +180,7 @@
       <itunes:summary>Anthropic ships Fable 5 to the public, Google starts a .99 AI price war, a record Patch Tuesday and live Next.js advisories mean patch now, May CPI is forecast hot, and the week&apos;s best money move is a fixed-price site-security sprint.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-10.mp3" length="4290093" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-10</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:15 GMT</pubDate>
+      <pubDate>Wed, 10 Jun 2026 12:00:16 GMT</pubDate>
       <itunes:duration>5:57</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -180,7 +190,7 @@
       <itunes:summary>Apple puts a Gemini-powered Siri and Claude on the iPhone, Anthropic files to go public, a Next.js security patch you need to ship, a hot jobs report and an NC jobs boom, plus this week&apos;s money moves.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-09.mp3" length="4533453" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-09</guid>
-      <pubDate>Tue, 09 Jun 2026 12:00:16 GMT</pubDate>
+      <pubDate>Tue, 09 Jun 2026 12:00:17 GMT</pubDate>
       <itunes:duration>6:18</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -190,7 +200,7 @@
       <itunes:summary>Microsoft ships seven in-house models and a Copilot coder, DeepSeek&apos;s first raise, a Next.js patch that becomes a recurring Site Care offer, an ISS shelter scare, and two championship series swinging.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-07.mp3" length="4405581" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-07</guid>
-      <pubDate>Sun, 07 Jun 2026 12:00:17 GMT</pubDate>
+      <pubDate>Sun, 07 Jun 2026 12:00:18 GMT</pubDate>
       <itunes:duration>6:07</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
@@ -200,7 +210,7 @@
       <itunes:summary>Anthropic nears a trillion and Opus 4.8 ships, a Next.js security patch you need, a steady US jobs report against four-year-high gas, and a quiet week for Claude Code.</itunes:summary>
       <enclosure url="https://nashyd.github.io/daily-reports/audio/2026-06-05.mp3" length="2498157" type="audio/mpeg"/>
       <guid isPermaLink="false">tsd-daily-2026-06-05</guid>
-      <pubDate>Fri, 05 Jun 2026 12:00:18 GMT</pubDate>
+      <pubDate>Fri, 05 Jun 2026 12:00:19 GMT</pubDate>
       <itunes:duration>3:28</itunes:duration>
       <itunes:episodeType>full</itunes:episodeType>
     </item>
