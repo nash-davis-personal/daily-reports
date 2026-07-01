@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-01" />
+  <meta name="report:title" content="Claude Sonnet 5 is now the default model — 1M context, $2/$10 promo pricing through Aug 31" />
+  <meta name="report:summary" content="Sonnet 5 shipped as Claude Code's default in 2.1.197 with a native 1M-token window and promotional pricing; the 2.1.196 release the prior briefing missed also lands here, led by a 25% cheaper /code-review and tougher background-session reliability." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Claude Sonnet 5 is now the default model — 1M context, $2/$10 promo pricing through Aug 31 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, July 1, 2026</span>
+        <span>◆</span><span>Releases 2.1.196–2.1.197</span>
+      </div>
+      <h1>Sonnet 5 is the new default, and it comes cheaper and with 1M context</h1>
+      <p class="standfirst">Update to 2.1.197 and Claude Code runs on Claude Sonnet 5 by default, with a native 1M-token window and promo pricing of $2/$10 per Mtok through August 31. The June 29 briefing filed as a quiet window before 2.1.196 posted, so that release lands here too — headlined by a 25% cheaper <code>/code-review</code> and background sessions that finally survive a restart.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers June 29–30, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases since last briefing (2.1.196–197)</div></div>
+      <div class="stat"><div class="num">Sonnet 5</div><div class="lbl">New default model, 1M context</div></div>
+      <div class="stat"><div class="num">$2 / $10</div><div class="lbl">Per Mtok promo through Aug 31</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sonnet 5 is now default</h4><p>Native 1M context and $2/$10 per-Mtok promo pricing through Aug 31. Update to 2.1.197 to get it.</p></div>
+        <div class="signal"><div class="n">02</div><h4>/code-review 25% cheaper</h4><p>Five cleanup finders merged into one, cutting token spend on every review you run.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background jobs survive a restart</h4><p>Long-running commands and workflows now carry over a process stop, restart, or update; killed workers auto-resume.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Stream watchdog on by default</h4><p>A stalled response stream (no events for 5 min) now aborts and retries on its own, for every provider.</p></div>
+        <div class="signal"><div class="n">05</div><h4>MCP self-approval loophole closed</h4><p><code>claude mcp list/get</code> no longer auto-spawn servers a cloned repo approved for itself.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Background-job data-loss fix</h4><p>Waking a background job no longer deletes its conversation and re-runs the original prompt.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The model swap</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.197 · June 30</span>
+            <h3>Claude Sonnet 5 becomes the default model</h3>
+          </div>
+          <div class="story-body">
+            <p>Sonnet 5 ships as Claude Code's default model with a native 1M-token context window, and promotional pricing of $2/$10 per Mtok (input/output) running through August 31. You get it by updating to 2.1.197. This session is on Opus 4.8 with 1M context; the point of the change is that the everyday default now carries the big window without you reaching for Opus.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cheaper token economics on the model you'll hit most, plus a 1M window means you can drop whole client repos (Bisque, Studio C) into context without pruning. Try Sonnet 5 as the default for routine build work and keep Opus for the gnarly reasoning passes. Reassess before Aug 31, when promo pricing ends.</p>
+          <div class="refs"><a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">anthropic.com — Claude Sonnet 5 announcement</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs got sturdier</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.196 · June 29</span>
+            <h3>Background sessions survive a stop, restart, or update</h3>
+          </div>
+          <div class="story-body">
+            <p>Long-running commands and workflows now keep going when the session's process is stopped, restarted, or updated — including on Windows, where background shells are handed off instead of killed. Separately, background-agent workers killed by a daemon restart auto-resume from where they left off the next time you open the agents view.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your nightly loops (TSD site loop, sales loop, Fleet Steward, the daily scout that files this report) are exactly the workloads a mid-run auto-update used to kill. This makes unattended cadence more reliable without you babysitting the daemon.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.196</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.196 · June 29</span>
+            <h3>Streaming idle watchdog is on by default</h3>
+          </div>
+          <div class="story-body">
+            <p>The watchdog that aborts and retries when a response stream produces no events for 5 minutes is now enabled for all providers, not just an opt-in. Set <code>CLAUDE_ENABLE_STREAM_WATCHDOG=0</code> to turn it off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A hung stream on an overnight run used to sit dead until you noticed the next morning. Now it self-heals. No action needed; just know the retry is happening for you.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.196</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.196 · June 29</span>
+            <h3>Waking a background job no longer deletes its conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>A bug where waking a background job could permanently delete its conversation and silently re-run the original prompt — triggered when a transcript probe misread a real transcript — is fixed. The transcript file is now set aside instead of deleted, and mid-turn crash recovery for Remote sessions auto-resumes on the next worker.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the kind of silent data-loss bug that eats a night's work with no error message. If you lean on background jobs and Remote Control (Desk Mac), take the update for this fix alone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.196</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; workflow economics</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">2.1.196 · June 29</span>
+            <h3>Cloned repos can no longer self-approve their MCP servers</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude mcp list</code> and <code>claude mcp get</code> no longer spawn <code>.mcp.json</code> servers that a repo self-approved via a committed <code>.claude/settings.json</code>. In untrusted workspaces those servers now show <code>⏸ Pending approval</code> until you say yes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You clone client and prospect repos constantly. This closes a path where a repo could quietly stand up an MCP server just by you listing its config. Treat every fresh clone as untrusted and let the pending-approval gate do its job.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.196</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.196 · June 29</span>
+            <h3><code>/code-review</code> uses roughly 25% fewer tokens</h3>
+          </div>
+          <div class="story-body">
+            <p>The review workflow merged five separate cleanup finders into one, cutting token usage by about a quarter. A companion fix corrected <code>/deep-research</code> misreporting verifier failures as "all claims refuted" when the right label was <code>unverified</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run <code>/code-review</code> on nearly every loop cycle and PR. A 25% cut compounds fast across a week of automated reviews. The deep-research fix matters too — you use that skill for prospect and market work, and a false "all refuted" verdict could have you tossing good sources.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.196</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Org admins can set a default model, shown as "Org default" in <code>/model</code>; readable default session names at start. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Clickable file attachments in chat — Cmd/Ctrl-click reveals the file in Finder/Explorer. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rate-limit warning no longer flickers off, and rate-limit telemetry is no longer over-counted with parallel requests in flight. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/context</code> no longer shows 0 tokens for all tool groups on Bedrock. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">PowerShell <code>git diff</code>/<code>git grep</code>, <code>egrep</code>/<code>fgrep</code>, and quoted <code>|</code> patterns exiting 1 are no longer reported as failures. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> panel: keyboard focus no longer sticks, subagent types survive reopen, completed rows stop flip-flopping, PR results show a clickable link. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--dangerously-skip-permissions</code> now actually shows the bypass disclaimer and applies bypass to spawned agents instead of falling back to auto mode. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP OAuth no longer requests the full <code>scopes_supported</code> catalog, fixing <code>invalid_scope</code> failures on GitLab self-hosted and other enterprise IdPs. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Voice dictation no longer swallows spaces or starts a stray recording during fast typing. <span class="ver">2.1.196</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Remote Control is disabled when <code>ANTHROPIC_BASE_URL</code> points at a non-Anthropic host; per-frame terminal rendering trimmed during streaming. <span class="ver">2.1.196</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

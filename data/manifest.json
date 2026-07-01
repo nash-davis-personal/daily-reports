@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-01",
+    "title": "Claude Sonnet 5 is now the default model — 1M context, $2/$10 promo pricing through Aug 31",
+    "summary": "Sonnet 5 shipped as Claude Code's default in 2.1.197 with a native 1M-token window and promotional pricing; the 2.1.196 release the prior briefing missed also lands here, led by a 25% cheaper /code-review and tougher background-session reliability.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-07-01.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
