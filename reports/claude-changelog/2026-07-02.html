@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-02" />
+  <meta name="report:title" content="Background agents now ship a draft PR on their own; Claude in Chrome goes GA" />
+  <meta name="report:summary" content="Release 2.1.198 lets background agents commit, push, and open a draft PR when they finish worktree code work, ships Claude in Chrome to general availability, and upgrades the delegation stack — Explore now runs on your session model and subagents inherit extended thinking." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Background agents now ship a draft PR on their own; Claude in Chrome goes GA — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, July 2, 2026</span>
+        <span>◆</span><span>One release since the last briefing: 2.1.198</span>
+      </div>
+      <h1>Background agents now commit, push, and open a draft PR on their own</h1>
+      <p class="standfirst">Version 2.1.198 closes the loop on unattended agents: finish code work in a worktree and the agent ships a draft PR instead of stopping to ask. Same release makes Claude in Chrome generally available and quietly upgrades the whole delegation stack — Explore now runs on your session model, and subagents inherit your extended-thinking config.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers release 2.1.198 (July 1), filed after yesterday's Sonnet 5 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2.1.198</div><div class="lbl">Version shipped July 1</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Signals worth your time</div></div>
+      <div class="stat"><div class="num">GA</div><div class="lbl">Claude in Chrome</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Background agents open their own draft PR</h4><p>Finish worktree code work and the agent commits, pushes, and opens a draft PR instead of stopping to ask.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Claude in Chrome is GA</h4><p>Browser control graduates out of preview — real page-driven verification and automation you can lean on for client work.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Explore runs on your model now</h4><p>The built-in Explore agent inherits the session model (capped at opus) instead of running on haiku — sharper searches.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Subagents inherit extended thinking</h4><p>Delegated tasks and context compaction now use your thinking config, lifting output quality on everything you fan out.</p></div>
+        <div class="signal"><div class="n">05</div><h4>New /dataviz skill</h4><p>Chart and dashboard design guidance plus a runnable color-palette validator — a direct assist for the dashboards you build.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Background agent notifications</h4><p>Sessions that need input or finish now fire the Notification hook (agent_needs_input / agent_completed) so loops can page you.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents that finish the job</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.198</span>
+            <h3>Background agents commit, push, and open a draft PR when they're done</h3>
+          </div>
+          <div class="story-body">
+            <p>Background agents launched from <code>claude agents</code> now finish code work in a worktree by committing, pushing, and opening a draft PR — no more stopping mid-run to ask what to do with the changes. Paired with this: agents that need input or complete now fire the <code>Notification</code> hook (<code>agent_needs_input</code> / <code>agent_completed</code>), so you get pinged rather than having to babysit the agents view.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the missing piece for your propose-only loops. The TSD site loop, sales loop, and Fleet Steward can now hand you a reviewable draft PR each cycle instead of leaving work parked in a worktree waiting for you to notice. Wire the new <code>agent_completed</code> hook to a notification you actually see, then let the overnight loops surface as a stack of draft PRs you triage in the morning.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.198</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Delegation quality goes up for free</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.198</span>
+            <h3>Explore inherits your model; subagents inherit extended thinking</h3>
+          </div>
+          <div class="story-body">
+            <p>Two quiet upgrades that touch every agent-heavy task. The built-in Explore agent now inherits the main session's model, capped at opus, instead of running on haiku — codebase searches and file discovery get materially smarter. Separately, subagents and context compaction now inherit the session's extended-thinking configuration, so anything you delegate reasons at the same depth as your main turn.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your fleet work leans hard on subagents and Explore — the loops, the security sweeps, the multi-repo audits. This is a straight quality bump with zero config change, but it also means delegated tasks now cost more tokens per run. Worth it on the hard audits; if you have a cheap mechanical loop, consider pinning it to a smaller model explicitly.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.198</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> New capabilities to use and sell</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.198</span>
+            <h3>Claude in Chrome hits general availability</h3>
+          </div>
+          <div class="story-body">
+            <p>Browser control is out of preview and generally available. That means DOM-aware navigation, clicking, and form-filling you can rely on for real work — verifying a deployed client site behaves, walking a checkout flow, or driving a web app that has no API.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Use it to smoke-test client launches end to end — click through Bisque's Clay embed, run Studio C's booking path, confirm the State Farm renters funnel actually submits — before you tell a client it's live. It also opens a service line: automating the repetitive browser chores your SMB clients still do by hand.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.198</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.198</span>
+            <h3>/dataviz skill for charts and dashboards</h3>
+          </div>
+          <div class="story-body">
+            <p>A new <code>/dataviz</code> skill gives chart and dashboard design guidance and ships a runnable color-palette validator, so the visualizations you generate come out legible and on-palette rather than default-AI garish.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You build dashboards constantly — the Bisque analytics page, Grant's sales dashboard, the ARENA macro board. Run <code>/dataviz</code> before the next one so the color choices and chart types are deliberate, and use the palette validator to keep client dashboards inside their brand colors instead of eyeballing it.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.198</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">The <code>/agents</code> wizard is removed — create/manage subagents by asking Claude or editing <code>.claude/agents/</code> directly. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Transient network drops mid-response (ECONNRESET) now retry with backoff instead of aborting the turn. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background tasks in web, desktop, and VS Code panels no longer get stuck on "Running" after they finish or after a resume. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent teams: a teammate that dies on an API error now reports "failed" to the lead, and messaging a stuck teammate wakes it to retry. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>/diff</code> panel now refreshes when you switch branches or commit outside the session. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Subagents launched in a turn now appear in its focus-mode activity summary; completed background notifications fold into a single count. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Syntax highlighting in code blocks, diffs, and file previews upgraded to highlight.js 11. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude --bg</code> combined with <code>--print</code>/<code>-p</code> now rejects the conflicting flags up front instead of silently creating an unattachable session. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>.claude/rules/</code> conditional rules now load when the target file is reached via a symlinked path. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plan mode now auto-allows read-only tool calls when a session starts in plan mode. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/branch</code> now derives its default fork name from the first real prompt instead of the compaction summary. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">API retry UX: the error reason shows after the second attempt, and an overloaded API swaps the spinner tip for a status-page link. <span class="ver">2.1.198</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Markdown tables no longer overflow and wrap their right border in fullscreen mode. <span class="ver">2.1.198</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
