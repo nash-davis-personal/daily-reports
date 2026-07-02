@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-02" />
+  <meta name="report:title" content="Supabase is auto-upgrading old Postgres this week — plus SpaceX heads for the Nasdaq-100" />
+  <meta name="report:summary" content="Supabase deprecated Postgres 14 on July 1 and is changing self-hosted and logging defaults over the next week; SpaceX joins the Nasdaq-100 on July 7 as the chip supercycle rolls on." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Supabase auto-upgrades Postgres 14, SpaceX heads for the Nasdaq-100 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, July 2, 2026</span>
+        <span>◆</span><span>Since the July 1 edition</span>
+      </div>
+      <h1>Supabase is auto-upgrading old Postgres this week — plus SpaceX heads for the Nasdaq-100</h1>
+      <p class="standfirst">The stack item to act on: Supabase deprecated Postgres 14 on July 1 and will auto-upgrade any project still on it, with self-hosted URL and logging defaults changing over the next week. Beyond the toolchain, SpaceX joins the Nasdaq-100 on July 7 and the chip supercycle keeps setting records.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Dev platforms, chips &amp; big-tech moves</span>
+        <span>◆</span><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Jul 1</div><div class="lbl">Postgres 14 deprecated on Supabase</div></div>
+      <div class="stat"><div class="num">Jul 7</div><div class="lbl">SpaceX joins the Nasdaq-100</div></div>
+      <div class="stat"><div class="num">$298.5B</div><div class="lbl">Q1 2026 chip sales, up 25%</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase changes defaults this week</h4><p>Postgres 14 deprecated Jul 1 (auto-upgrade); self-hosted API URL path and connection logging defaults shift Jul 6–9.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Patch reminder: Next.js SSRF</h4><p>CVE-2026-44578 hits self-hosted Next.js on the built-in server — upgrade to 15.5.16 / 16.2.5. Vercel-hosted apps unaffected.</p></div>
+        <div class="signal"><div class="n">03</div><h4>SpaceX enters the Nasdaq-100</h4><p>Fresh off a $1.77T IPO, SPCX joins the index Jul 7 under a special fast-track rule.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chips keep breaking records</h4><p>Q1 2026 sales hit $298.5B (+25%); the industry is tracking toward ~$975B for the year.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chipmakers dragged the tape</h4><p>The Nasdaq slipped 0.66% on July 1 as semiconductor names cooled after a record quarter.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack — do this</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Action</span>
+            <span class="ver">Jul 1–9, 2026</span>
+            <h3>Supabase deprecated Postgres 14 and is changing self-hosted + logging defaults</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase's changelog lands three dated changes in a one-week window. <b>Postgres 14 is deprecated as of July 1</b>, and any project still on a deprecated version gets auto-upgraded to the latest available Postgres. <b>The week of July 6</b>, the default self-hosted config for <code>API_EXTERNAL_URL</code> changes to include the <code>/auth/v1</code> path prefix. And <b>for new projects created after July 9</b>, the Postgres <code>log_connections</code> default flips from on to off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check every client Supabase project's Postgres version this week — a surprise auto-upgrade can break a live client site if you're pinned to old behavior. If you run any self-hosted Supabase, the <code>API_EXTERNAL_URL</code> path change will bite auth flows; update it before the 6th.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">CVE-2026-44578</span>
+            <h3>Next.js WebSocket SSRF — a standing patch item for any self-hosted deploy</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-44578 (published May 11, CVSS 8.6) lets an unauthenticated attacker use a crafted WebSocket upgrade request to make a self-hosted Next.js server issue an internal GET to any host reachable on port 80 — cloud metadata endpoints, internal APIs, admin panels — and read the response. It affects the built-in Node.js server on 13.4.13+ through <15.5.16 and 16.0.0 through <16.2.5. Roughly 79,000 exposed instances were still reachable in scans. <b>Vercel-hosted apps are not affected.</b></p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Vercel-hosted client sites are in the clear. But if any prospect or client runs Next.js on their own box (a common find when you audit a lead's site), this is a clean, credible reason to reach out: "you're one version behind on a high-severity CVE — I can patch it." Upgrade path is 15.5.16 or 16.2.5.</div>
+          <div class="refs"><a href="https://github.com/advisories/GHSA-c4j6-fc7j-m34r" target="_blank" rel="noopener">GitHub Advisory ↗</a> · <a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel security release ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business &amp; hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Markets</span>
+            <span class="ver">Jul 7, 2026</span>
+            <h3>SpaceX joins the Nasdaq-100 three weeks after a record IPO</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX, which went public June 12 in the largest IPO ever at a $1.77T valuation and closed its first day up 19%, joins the Nasdaq-100 on July 7 under a special rule Nasdaq adopted for faster inclusion. The IPO raised roughly $86B, explicitly earmarked in part for orbital AI-compute infrastructure to serve xAI. It's now among the most valuable US-listed firms.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Mostly a signal, not an action — but "space company raising $86B to build AI data centers in orbit" is the clearest sign yet that AI compute, not launch, is where the money is pooling. The buildout keeps pulling capital toward anything AI-infra adjacent.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html" target="_blank" rel="noopener">CNBC ↗</a> · <a href="https://en.wikipedia.org/wiki/Initial_public_offering_of_SpaceX" target="_blank" rel="noopener">IPO overview ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Chips</span>
+            <span class="ver">Q1/H1 2026</span>
+            <h3>The semiconductor supercycle keeps setting records — and dragging the tape when it wobbles</h3>
+          </div>
+          <div class="story-body">
+            <p>Global chip sales hit $298.5B in Q1 2026, up 25% year over year, with the industry tracking toward roughly $975B for the full year on AI-infrastructure demand. Supply stays tight through at least year-end. The flip side showed on July 1: the Nasdaq slipped 0.66% as chipmakers cooled after the strongest quarter since 2020, a reminder of how concentrated the market has become in a handful of AI names.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Tight supply and rising compute cost is why cheaper model tiers (Terra, Sonnet 5 promo) matter for your margins — inference isn't getting free, so price AI retainers with headroom for token costs.</div>
+          <div class="refs"><a href="https://www.semiconductors.org/news-events/latest-news/" target="_blank" rel="noopener">SIA latest news ↗</a> · <a href="https://www.thestreet.com/stock-market-today/stock-market-today-july-1-2026-nasdaq-futures-slip-after-strongest-quarter-since-2020" target="_blank" rel="noopener">TheStreet ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Research</span><span class="txt">A Univ. of Illinois team demonstrated <b>3D-stacked single-crystal silicon</b> at 98–100% device yield — a possible density lever for Moore's Law. <span class="ver">May 2026</span></span></li>
+            <li><span class="tag feature qh-tag">Partner</span><span class="txt"><b>Supabase joined the Tailwind partner program</b>, tightening two tools already central to your stack. <span class="ver">Jun 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

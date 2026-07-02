@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-02",
+    "title": "A record heat dome bakes the East into July 4 as the Fed leans toward hikes",
+    "summary": "More than 100 million Americans are under heat warnings as a dome peaks July 2-3, the Fed held rates a fourth time under new Chair Warsh, and the nation heads into its 250th July 4.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-02.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Release 2.1.198 lets background agents commit, push, and open a draft PR when they finish worktree code work, ships Claude in Chrome to general availability, and upgrades the delegation stack — Explore now runs on your session model and subagents inherit extended thinking.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-02.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-02",
+    "title": "Fable 5 comes back, OpenAI splits its flagship into three, and agent spend goes vertical",
+    "summary": "The US lifted export controls on Anthropic's Fable 5 and Mythos 5 on July 1, OpenAI previewed a three-model GPT-5.6 family, and Gartner put 2026 AI-agent software spend at $206B.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-02.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-02",
+    "title": "Sell into the heat wave, price for cheaper inference, and mine a CVE for cold leads",
+    "summary": "Six ranked opportunities for July 2: a heat-wave AI-receptionist push for slammed home-services shops, a Managed AI retainer repriced for cheaper models, and a Next.js CVE turned into an outbound lead magnet.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-02.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-02",
+    "title": "Supabase is auto-upgrading old Postgres this week — plus SpaceX heads for the Nasdaq-100",
+    "summary": "Supabase deprecated Postgres 14 on July 1 and is changing self-hosted and logging defaults over the next week; SpaceX joins the Nasdaq-100 on July 7 as the chip supercycle rolls on.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-02.html"
   },
   {
     "source": "america",
