@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-03" />
+  <meta name="report:title" content="Next.js 16.3 makes navigations instant, Supabase Auth gets native passkeys, and a federal network gets breached" />
+  <meta name="report:summary" content="Next.js 16.3 Preview adds instant navigations and a persistent Turbopack cache, Supabase ships beta passkeys in Auth, VC hit a record $510B in H1, and DHS confirmed a breach of a federal information-sharing network." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js 16.3 makes navigations instant, Supabase Auth gets native passkeys, and a federal network gets breached — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23052e2b' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, July 3, 2026</span>
+        <span>◆</span><span>What moved since Jul 2</span>
+      </div>
+      <h1>Nash's stack got faster this week — and one big reminder to stay patched</h1>
+      <p class="standfirst">Two updates land right on TSD's build stack: Next.js 16.3 makes route changes feel instant, and Supabase Auth finally does passkeys natively. Around them, record capital is still pouring into AI infrastructure, and a federal breach is a reminder that patch hygiene isn't optional.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Jun 30–Jul 3, 2026</span>
+        <span>◆</span><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3</div><div class="lbl">Next.js Preview shipping now</div></div>
+      <div class="stat"><div class="num">$510B</div><div class="lbl">H1 2026 VC, a record half</div></div>
+      <div class="stat"><div class="num">Passkeys</div><div class="lbl">Now beta in Supabase Auth</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js 16.3 Preview</h4><p>Instant Navigations + partial prefetching make routes feel SPA-fast; Turbopack gets a persistent build cache.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase passkeys</h4><p>WebAuthn passkeys land in Supabase Auth (beta) — passwordless sign-in as a first-class feature.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Record VC half</h4><p>$510B in H1 2026, AI-led; SiFive raised $400M for custom chips, TwelveLabs $100M for video AI.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Federal breach</h4><p>DHS confirmed hackers breached its Homeland Security Information Network — a shared federal/state platform.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Patch floor reminder</h4><p>React2Shell fixes (Dec '25) are still the minimum: Next.js ≥16.0.10 / ≥15.5.7. Check every live app.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> On Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Next.js 16.3 Preview</span>
+            <h3>Next.js 16.3 adds Instant Navigations and a persistent Turbopack cache</h3>
+          </div>
+          <div class="story-body">
+            <p>The 16.3 Preview brings Instant Navigations (Stream or Cache to make a route change instant, or Block to opt out) and Partial Prefetching — a reusable per-route shell cached on the client so a click renders immediately while the rest streams in, giving multi-page apps an SPA feel. Turbopack picks up memory eviction, a persistent build cache, Rust React Compiler support, and <code>import.meta.glob</code>. There's also an AI-facing pass: bundled docs, Skills, browser introspection, and more actionable errors.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Free perceived-speed win for client sites. Test Instant Navigations on a demo (the marketing front-door or a client portal) — snappier page-to-page transitions read as "premium build" to an SMB owner, at zero design cost. Keep it on a preview branch until 16.3 goes stable before shipping to a paying client.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js updates (Releasebot) ↗</a> · <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Supabase · Jun 2026</span>
+            <h3>Supabase Auth ships beta passkeys (WebAuthn)</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase added passwordless, phishing-resistant passkeys to Supabase Auth in beta — users register biometrics, device PINs, or security keys, and admins manage them via Dashboard, CLI, and Management API. Separately, Supabase moved the default self-hosted Docker image from Postgres 15 to Postgres 17 (existing PG15 users can pin or upgrade in place with rollback).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nash already hand-rolled native passkeys on the TSD client portal. If Auth now supports them first-class, he can likely simplify that custom code and lean on the platform — less to maintain, same phishing-resistant login. And it becomes a clean upsell: "passwordless sign-in for your customers" is now a checkbox, not a project.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Supabase release notes ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — stay patched</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Incident</span>
+            <span class="ver">Jul 2, 2026</span>
+            <h3>DHS confirms a breach of its Homeland Security Information Network</h3>
+          </div>
+          <div class="story-body">
+            <p>The Department of Homeland Security confirmed hackers breached the Homeland Security Information Network, the platform used to share sensitive information among federal, state, local, and private-sector partners. It lands amid a hot cyber-M&A market — more than 50 acquisitions involving Israeli security startups in H1 2026, with AI now the strategic driver of those deals.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not Nash's system, but the prompt is: when a federal network gets breached, a client's WordPress or unpatched Next.js app is a soft target too. Do a 15-minute pass across live projects — confirm every app is above the React2Shell patch floor (Next.js ≥16.0.10 / ≥15.5.7), dependencies current, and secrets rotated on any app that predates December's fixes.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/02/top-tech-news-today-july-2-2026/" target="_blank" rel="noopener">Top Tech News (Jul 2) ↗</a> · <a href="https://vercel.com/react2shell" target="_blank" rel="noopener">React2Shell bulletin ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Where the money is going</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Money</span>
+            <span class="ver">H1 2026</span>
+            <h3>A record $510B venture half, still AI-led — chips, infra, dev tools</h3>
+          </div>
+          <div class="story-body">
+            <p>Global venture funding hit $510B in H1 2026, a record for any half-year, overwhelmingly on AI-related deals. Recent rounds skew to the picks-and-shovels: SiFive raised $400M for custom chip designs, TwelveLabs $100M for video-intelligence models (with AWS as preferred cloud), and Oxmiq Labs $35M for AI hardware under ex-Intel chief architect Raja Koduri. Capital is concentrating in semiconductors, developer infrastructure, security, and labor-saving software.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is demand weather, not a stock tip. Record money into AI infra means more, cheaper capability flowing down to builders — and a rising tide of SMBs who now expect an "AI answer." The businesses funding this can't sell to a Gastonia HVAC shop; TSD can. Watch for the cheaper tools these rounds produce and fold them into the delivery stack.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/02/venture-capital-startup-funding-roundup-july-2-2026/" target="_blank" rel="noopener">VC roundup (Jul 2) ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Deal</span><span class="txt">Qualcomm to buy AI-software firm Modular (~$4B, all-stock) to push from phones into data-center and edge AI. <span class="ver">Jun 25</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Oxmiq Labs raised $35M Series A (Samsung Catalyst, MediaTek) for AI hardware; semiconductor startup funding stays hot. <span class="ver">Jul 2</span></span></li>
+            <li><span class="tag improve qh-tag">Space</span><span class="txt">Quantum-infra firm EigenQ to go public via a $3B SPAC, listing on Nasdaq as EIGQ later in 2026. <span class="ver">Jul 2</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
