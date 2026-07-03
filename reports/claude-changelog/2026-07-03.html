@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-03" />
+  <meta name="report:title" content="Subagents stop reporting API errors as success; SSH cold-start regression fixed" />
+  <meta name="report:summary" content="Release 2.1.199 is a reliability pass on the parts of Claude Code you run unattended: subagents no longer report usage-limit errors as clean successes, partial work survives mid-stream failures, the macOS SSH background-agent cold-start regression is fixed, and transient 429s now auto-retry for subscribers." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Subagents stop reporting API errors as success; SSH cold-start regression fixed — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, July 3, 2026</span>
+        <span>◆</span><span>Release 2.1.199</span>
+      </div>
+      <h1>The unattended stack gets honest and durable</h1>
+      <p class="standfirst">Release 2.1.199 landed on July 2 as a fixes-only pass, but the fixes cluster in exactly the place your business lives: background agents and subagents that run overnight with no one watching. The headline is a correctness fix — subagents that hit a usage limit or server error used to report a clean success to the parent, and now they report the error.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>One release since yesterday's briefing (2.1.198)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2.1.199</div><div class="lbl">Only release in window</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New features (all fixes)</div></div>
+      <div class="stat"><div class="num">300</div><div class="lbl">New default retry ceiling</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Subagents stop faking success</h4><p>A subagent that hit a rate limit or server error used to return as if it succeeded. It now reports the error to the parent.</p></div>
+        <div class="signal"><div class="n">02</div><h4>SSH cold-start fixed on macOS</h4><p>The "Could not switch to audit session" failure starting background agents over SSH — a 2.1.196 regression — is fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Transient 429s auto-retry</h4><p>Capacity-side 429s unrelated to your usage limit now retry with backoff for subscribers instead of failing the turn.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Hooks stop swallowing errors</h4><p>SessionStart, Setup, and SubagentStart hooks that exit with code 2 now show their stderr in the transcript.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Stacked skills all load</h4><p><code>/skill-a /skill-b do XYZ</code> now loads every leading skill (up to 5), not just the first one.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The overnight fleet stops lying to itself</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.199</span>
+            <h3>Subagents no longer report API errors as clean successes</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related fixes. A subagent cut off by a rate limit or server error used to fail silently instead of handing its partial work back to the parent — that partial is now returned. Worse, a subagent that hit an error like "usage limit reached" used to report it to the parent as a <em>successful</em> result. The parent then acted on a lie. Both are fixed: the error is now surfaced up the chain.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the most load-bearing fix in the release for you. Your Fleet Steward, sales loop, and site loop all fan work out to subagents overnight, then a skeptic or a state ledger acts on what comes back. A subagent silently returning "success" with no work done could corrupt a loop's state and you'd never see it. Update every machine that runs a loop before tonight's cycles fire.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.199</span>
+            <h3>Partial streaming output is kept when the API errors mid-response</h3>
+          </div>
+          <div class="story-body">
+            <p>When the API emitted an overloaded or server error after already streaming part of a response, the whole partial output used to be discarded. It's now kept with an incomplete-response notice. Paired with the streaming idle watchdog that shipped on by default in 2.1.197, mid-turn capacity hiccups now degrade instead of wiping the turn.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer wasted long turns during peak-hours capacity blips — the model keeps whatever it produced instead of starting over. Marginal during the day, real for a loop grinding through a large diff at 5am when Anthropic capacity is tight.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The headless desk Mac gets unblocked</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.199</span>
+            <h3>Background agents cold-starting over SSH on macOS ("Could not switch to audit session")</h3>
+          </div>
+          <div class="story-body">
+            <p>A regression introduced in 2.1.196 made background agents fail to cold-start over SSH on macOS with "Could not switch to audit session." That's fixed. Separately, <code>claude stop</code> racing a background-agent respawn used to be silently undone — the respawn now honors the stop.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your desk Mac is the always-on headless Remote Control host you drive from your phone, and you launch background agents on it over SSH. If any of those have been flaky since late June, this is why — the fix is here. Update the desk Mac specifically, not just your laptop.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.199</span>
+            <h3>Transient 429s auto-retry, and the retry ceiling jumps to 300</h3>
+          </div>
+          <div class="story-body">
+            <p>Capacity-side 429s that have nothing to do with your own usage limit now retry automatically with backoff for subscribers, instead of failing the turn. And <code>CLAUDE_CODE_RETRY_WATCHDOG</code> now raises the default retry count for non-capacity transient errors to 300 and lifts the old cap of 15 on <code>CLAUDE_CODE_MAX_RETRIES</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Unattended loops survive capacity turbulence without you babysitting them. If you'd set <code>CLAUDE_CODE_MAX_RETRIES</code> manually to work around the old 15 cap, you can drop that override now — the default watchdog covers it.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller wins you'll actually feel</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.199</span>
+            <h3>Hooks stop hiding their own errors, and stacked skills all load</h3>
+          </div>
+          <div class="story-body">
+            <p>SessionStart, Setup, and SubagentStart hooks that exited with code 2 used to swallow their stderr — a silent failure that's brutal to debug. The error now shows in the transcript. And stacked slash-skill invocations like <code>/skill-a /skill-b do XYZ</code> now load every leading skill (up to 5), where before only the first one loaded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two friction removers. Your loops lean on SessionStart/hook wiring — a broken hook will now tell you why instead of failing blank. And you can chain skills in one line (say a humanizer pass after a sales draft) and trust they all fire.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.199</span>
+            <h3>Plan mode now prompts for state-changing browser tool calls</h3>
+          </div>
+          <div class="story-body">
+            <p>With Claude in Chrome now generally available (shipped yesterday in 2.1.198), plan mode wasn't prompting before state-changing browser actions. It now does, while read-only <code>browser_batch</code> calls are correctly auto-allowed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you start using Chrome automation for client research or QA, plan mode is now a real guardrail — it won't let a browser session click or submit something without asking, but read-only inspection stays frictionless.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.199</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">SSL cert errors (TLS-inspecting proxies, missing <code>NODE_EXTRA_CA_CERTS</code>, expired certs) now fail immediately with a fix hint instead of burning retries <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>SendMessage</code> no longer misroutes when a re-spawned agent reuses a previous agent's name — it detects the mismatch and asks you to retarget <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resetting a corrupted config from the startup recovery dialog now backs up the file first instead of destroying it unrecoverably <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude --dangerously-skip-permissions daemon &lt;subcommand&gt;</code> now runs the subcommand instead of treating it as a chat prompt <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Linux background-agent daemon no longer kills itself and every running agent every ~50s after an unclean shutdown left a corrupted worker record <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background job progress indicators no longer stall for minutes during long commands; low-memory background sessions now say so and suggest freeing resources <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Idle subagents no longer vanish from the agent panel while others work — surplus idle agents collapse into an expandable summary row <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Typing <code>/model</code> or <code>/fast</code> while viewing a subagent now shows a notice that the command applies to the lead, instead of silently opening the lead's picker <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Opening or resuming a session with no new messages no longer needlessly grows the transcript file <span class="ver">2.1.199</span></span></li>
+            <li><span class="tag improve qh-tag">Chg</span><span class="txt"><code>claude agents</code> session rows now show PR links as bare <code>#N</code> without the redundant "PR" label <span class="ver">2.1.199</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

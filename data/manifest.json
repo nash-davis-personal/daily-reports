@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-03",
+    "title": "Subagents stop reporting API errors as success; SSH cold-start regression fixed",
+    "summary": "Release 2.1.199 is a reliability pass on the parts of Claude Code you run unattended: subagents no longer report usage-limit errors as clean successes, partial work survives mid-stream failures, the macOS SSH background-agent cold-start regression is fixed, and transient 429s now auto-retry for subscribers.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-07-03.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
