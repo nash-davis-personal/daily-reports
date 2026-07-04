@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-04",
+    "title": "A record-setting heat dome bakes the Fourth as markets sit out the holiday on a fresh Dow high",
+    "summary": "More than 160 million Americans are under heat alerts over a dangerous July 4 weekend with highs near 105F straining power grids and slowing Amtrak; U.S. markets are closed for the holiday after the Dow set a record on July 2; and a weak June jobs report plus a data-only Fed keep rate-hike odds low as oil eases toward $67 on US-Iran de-escalation.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-04.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Releases 2.1.200 and 2.1.201 change two defaults that touch every unattended run — AskUserQuestion dialogs no longer auto-continue unless you set an idle timeout, and the 'default' permission mode is now called 'Manual' — on top of a heavy background-session reliability pass fixing sleep/wake stalls and stale daemon-lock restart failures.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-04.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-04",
+    "title": "Claude Fable 5 is back worldwide as Washington starts gating frontier releases customer-by-customer",
+    "summary": "Anthropic's Fable 5 returned globally on July 1 after 18 days offline under federal export controls, the White House is now slow-rolling OpenAI's GPT-5.6 through a customer-by-customer approval preview, Anthropic's run-rate revenue passed a reported $47B, and Together AI raised $800M at an $8.3B valuation for cheaper open-model inference.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-04.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-04",
+    "title": "Sell the heat wave, then sell reliability: a trades phone blitz plus a Managed-AI retainer",
+    "summary": "A record heat dome has HVAC and plumbing phones ringing off the hook — point TSD Front Desk at overflow calls this week — while the Fable 5 blackout and Supabase's config changes make a recurring Managed-AI + site-health retainer an easy honest sell. Six moves ranked by fit, plus a watch list.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-04.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-04",
+    "title": "A Tata Electronics breach spills iPhone 18 Pro secrets as Supabase changes ship into a holiday-thin week",
+    "summary": "A cyberattack on Apple supplier Tata Electronics leaked iPhone 18 Pro engineering files plus Tesla, Qualcomm and TSMC documents; Supabase is rolling out self-hosted config and Postgres logging default changes the week of July 6; and CISA is flagging active exploitation of SharePoint and NetScaler flaws — patch-cadence week more than launch week.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-04.html"
   },
   {
     "source": "america",

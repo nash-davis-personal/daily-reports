@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-04" />
+  <meta name="report:title" content="A Tata Electronics breach spills iPhone 18 Pro secrets as Supabase changes ship into a holiday-thin week" />
+  <meta name="report:summary" content="A cyberattack on Apple supplier Tata Electronics leaked iPhone 18 Pro engineering files plus Tesla, Qualcomm and TSMC documents; Supabase is rolling out self-hosted config and Postgres logging default changes the week of July 6; and CISA is flagging active exploitation of SharePoint and NetScaler flaws — patch-cadence week more than launch week." />
+  <meta name="report:highlights" content="4" />
+
+  <title>A Tata Electronics breach spills iPhone 18 Pro secrets as Supabase changes ship into a holiday-thin week — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thetechportal.com/2026/07/03/india-probes-tata-electronics-data-breach-that-exposed-apple-iphone-18-pro-photos-supplier-details/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, July 4, 2026</span>
+        <span>◆</span><span>Patch-cadence week</span>
+      </div>
+      <h1>A supplier breach, a Supabase deploy heads-up, and a short patch list</h1>
+      <p class="standfirst">The holiday kept product news quiet, so the signal this week is operational. A cyberattack on Apple assembler Tata Electronics dumped unreleased iPhone 18 Pro files, and Supabase is changing config and logging defaults you should read before your next push. Nothing new landed on Nash's stack as a fresh advisory — but there's a short patch-now list worth a Saturday check.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers the ~72h since the July 3 edition</span>
+        <span>◆</span><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Tata Electronics breach</h4><p>Unreleased iPhone 18 Pro engineering docs, prototype photos and supplier lists leaked — with Tesla, Qualcomm and TSMC files caught up too.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase defaults change</h4><p>Self-hosted API_EXTERNAL_URL now expects an /auth/v1 prefix; Postgres log_connections flips to off for projects from July 9.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Actively exploited holes</h4><p>CISA flags a SharePoint RCE (CVE-2026-45659) under active attack; NetScaler appliances hit with public PoC memory-read code.</p></div>
+        <div class="signal"><div class="n">04</div><h4>On-stack: patch, don't panic</h4><p>No new Next.js advisory this week — but if you skipped the April RSC/Next.js release, get onto a patched build now.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Supply chain under siege</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">July 3, 2026</span>
+            <h3>Tata Electronics breach leaks unreleased Apple iPhone 18 Pro secrets</h3>
+          </div>
+          <div class="story-body">
+            <p>India is investigating a cyberattack on Tata Electronics — now a major node in Apple's supply chain as production shifts from China to India — after confidential files leaked online. The dump reportedly includes iPhone 18 Pro / Pro Max engineering documents, prototype photos, component specs, manufacturing records, and at least six internal documents naming which companies make hundreds of individual iPhone components. Files tied to Tesla, Qualcomm and TSMC were reportedly caught up in the same leak.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Even Apple's suppliers get popped. When you sell an SMB an AI product that touches their data, the vendor conversation is now part of the pitch: name where data lives (Supabase, Vercel, Anthropic), keep secrets out of the repo, and put a one-page "here's how your data is handled" in every proposal. Trust is a differentiator you can charge for.</div>
+          <div class="refs"><a href="https://thetechportal.com/2026/07/03/india-probes-tata-electronics-data-breach-that-exposed-apple-iphone-18-pro-photos-supplier-details/" target="_blank" rel="noopener">The Tech Portal — India probes Tata Electronics breach ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Heads-up</span>
+            <span class="ver">week of July 6</span>
+            <h3>Supabase is changing config and logging defaults — read before your next deploy</h3>
+          </div>
+          <div class="story-body">
+            <p>Two changes land this week. For self-hosted setups, the default <code>API_EXTERNAL_URL</code> now includes an <code>/auth/v1</code> path prefix, <code>GOTRUE_JWT_ISSUER</code> shifts to <code>${API_EXTERNAL_URL}</code>, and SAML SSO gateway routes move from <code>/sso/saml/*</code> to <code>/auth/v1/sso/saml/*</code>. Separately, new projects created after July 9 get <code>log_connections=off</code> by default, and existing Free/Pro projects will have it flipped off starting July 9 to cut log noise. Supabase's next Launch Week is July 26.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> TSD's apps run on hosted Supabase, so the self-hosted URL change likely doesn't bite you — but if any client project is self-hosted or has hard-coded auth callback paths, verify them before the next push. The <code>log_connections=off</code> flip is benign but will change what you see in logs; don't chase a "missing" connection log as a bug on July 9+.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase — Changelog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">this week</span>
+            <h3>A short patch-now list — and a reminder for your own repos</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA says threat actors are actively exploiting a recently patched Microsoft SharePoint RCE (CVE-2026-45659), and attackers are using public proof-of-concept code against NetScaler appliances to read arbitrary memory from HTTP responses. Neither is on TSD's stack directly. What is on-stack: the coordinated April Next.js / React Server Components release (DoS CVE-2026-23869 plus the earlier RSC RCE fixes) — patched in Next.js 15.5.15 / 16.2.3 and later.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No new framework advisory dropped this week, so this is a hygiene check, not a fire drill. Run <code>npm ls next react</code> across the fleet and confirm every app is on a patched Next build (16.2.5+ is safe). If a client site has been sitting untouched since spring, it's the one to check.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/summary-of-cve-2026-23869" target="_blank" rel="noopener">Vercel — Summary of CVE-2026-23869 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Chips</span><span class="txt">Data-center GPU ramp continues — AMD's <b>Helios</b> rack guided to Q3, Nvidia's <b>Rubin</b> to Q4; Nvidia's <b>RTX Spark</b> PC superchip debuts this fall in Windows laptops. <span class="ver">2026 roadmap</span></span></li>
+            <li><span class="tag improve qh-tag">Infra</span><span class="txt"><b>Together AI</b>'s $800M round is an infrastructure signal: cheaper open-model inference is coming to market. <span class="ver">Jul 1</span></span></li>
+            <li><span class="tag fix qh-tag">Exploit</span><span class="txt"><b>SharePoint</b> (CVE-2026-45659) and <b>NetScaler</b> are under active exploitation — patch if you run either for a client. <span class="ver">Jul 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
