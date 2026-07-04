@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-04" />
+  <meta name="report:title" content="AskUserQuestion stops auto-continuing; default permission mode renamed to Manual" />
+  <meta name="report:summary" content="Releases 2.1.200 and 2.1.201 change two defaults that touch every unattended run — AskUserQuestion dialogs no longer auto-continue unless you set an idle timeout, and the 'default' permission mode is now called 'Manual' — on top of a heavy background-session reliability pass fixing sleep/wake stalls and stale daemon-lock restart failures." />
+  <meta name="report:highlights" content="5" />
+
+  <title>AskUserQuestion stops auto-continuing; default permission mode renamed to Manual — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, July 4, 2026</span>
+        <span>◆</span><span>Releases 2.1.200–2.1.201</span>
+      </div>
+      <h1>Two defaults changed that touch every unattended run — plus a heavy background-session repair</h1>
+      <p class="standfirst">The July 3 releases are short on features and long on plumbing. The two things worth a minute: <code>AskUserQuestion</code> dialogs no longer auto-continue by default, and the "default" permission mode has been renamed "Manual." Both matter more to your scheduled loops than to interactive work. The rest is a large reliability pass on background sessions and the agent daemon.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything since the 2.1.199 briefing (July 3)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">releases (2.1.200–201)</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">default-behavior changes</div></div>
+      <div class="stat"><div class="num">~15</div><div class="lbl">fixes, mostly background agents</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>AskUserQuestion no longer auto-continues</h4><p>Dialogs now wait indefinitely unless you opt into an idle timeout via <code>/config</code>. An unattended loop that hits one will stall.</p></div>
+        <div class="signal"><div class="n">02</div><h4>"default" permission mode is now "Manual"</h4><p>Renamed across CLI, <code>--help</code>, VS Code, and JetBrains. The old <code>default</code> string still works, so nothing breaks.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Sleep/wake no longer kills background turns</h4><p>Background sessions silently stopping mid-turn after your Mac sleeps or a stalled session reopens is fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Stale daemon.lock restart bug fixed</h4><p>A crash that left a lock file whose PID the OS reused could stop background agents from ever starting again.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Rate-limited subagents fail cleanly</h4><p>A subagent cut off by a rate limit before producing any text now fails properly instead of returning an empty result.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Two defaults that touch your scheduled fleet</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking default</span>
+            <span class="ver">2.1.200</span>
+            <h3>AskUserQuestion dialogs no longer auto-continue</h3>
+          </div>
+          <div class="story-body">
+            <p>Previously an <code>AskUserQuestion</code> dialog would auto-continue on its own after a wait. As of 2.1.200 it doesn't — it sits and waits for a real answer unless you opt into an idle timeout through <code>/config</code>. In an interactive session that's fine. In an unattended run it means a session that pops one of these dialogs can hang until it hits the OS timeout instead of picking a default and moving on.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled loops run headless with no one to answer a dialog — the nightly Sales Loop, the site loop, the Grant lead-scout, the daily-reports scout, the agentic-account steward. If any of their prompts or skills can surface an <code>AskUserQuestion</code>, set an idle timeout in <code>/config</code> so an unattended run auto-advances instead of stalling to the hard OS-timeout brake. Worth a one-time <code>/config</code> pass on the desk Mac that hosts the Remote Control fleet.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Rename</span>
+            <span class="ver">2.1.200</span>
+            <h3>The "default" permission mode is now called "Manual"</h3>
+          </div>
+          <div class="story-body">
+            <p>The permission mode formerly shown as "default" is now labeled "Manual" everywhere — the CLI, <code>--help</code> output, VS Code, and JetBrains. Both <code>--permission-mode manual</code> and <code>"defaultMode": "manual"</code> are now accepted, and the old <code>default</code> spelling still works alongside them. This is a naming clarification, so existing configs and scripts keep running untouched.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to fix. When you next read <code>--help</code> or a settings doc and see "Manual" where you expected "default," it's the same mode. If you ever standardize the fleet's <code>settings.json</code>, "manual" is now the clearer canonical spelling to write.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Background-agent reliability — the unattended stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.200</span>
+            <h3>Sleep/wake and stalled-session stalls fixed</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related bugs: background sessions could silently stop mid-turn after the machine slept and woke or when a stalled session was reopened, and a session that respawned after a stall could re-run a turn you had already cancelled with Esc. Both are fixed in 2.1.200.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct hit on the always-on desk Mac. <code>caffeinate</code> keeps it awake, but any sleep/wake edge — laptop lid, power blip — could previously drop a background turn on the floor. Update the desk Mac to 2.1.200+ so the Remote Control host survives wake events without eating a run.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.200</span>
+            <h3>Stale daemon.lock and roster hardening</h3>
+          </div>
+          <div class="story-body">
+            <p>A crash could leave a stale <code>daemon.lock</code> whose PID the OS had since reused, which stopped background agents from ever starting again. Alongside it: daemon handover now judges build recency by an embedded build timestamp so a reinstalled older build can't seize the daemon, and a batch of roster bugs are fixed — transient corruption permanently disabling orphan cleanup, older binaries clobbering fields newer versions wrote, and socket auth tokens being stripped on daemon restart.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The whole point of your scheduled fleet is that it recovers on its own overnight. A stale lock that silently bricks the daemon is the exact failure that turns a "propose-only heartbeat" into a dead loop you don't notice for days. This closes it — worth the update on every Mac running launchd-scheduled agents.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.200</span>
+            <h3>Rate-limited subagents return real errors, not empty results</h3>
+          </div>
+          <div class="story-body">
+            <p>A subagent cut off by a rate limit before it produced any text output used to return an empty result, which reads to the parent as a clean-but-blank success. Now it fails cleanly. This is the same class of bug the 2.1.199 pass targeted — subagents laundering API errors into false successes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Workflow fan-outs and parallel-agent reviews trust what subagents hand back. A blank "success" from a rate-limited agent means a silently skipped file in a code review or a missing lead in a scout batch. With this fix the parent sees the failure and you can retry, instead of shipping on incomplete coverage.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Sonnet 5 harness + startup</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.201</span>
+            <h3>Sonnet 5 drops the mid-conversation system role for harness reminders</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Sonnet 5 sessions no longer inject harness reminders using the mid-conversation system role. This is an internal prompt-plumbing change aimed at how reminders land inside a Sonnet 5 conversation.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Marginal for you day-to-day — you run Opus on the important builds. But Sonnet 5's promo pricing ($2/$10 per Mtok through Aug 31) makes it the right model for the high-volume, low-stakes loop work, and cleaner reminder handling means fewer odd mid-run behaviors when you point a scout or a lead-scout batch at Sonnet 5.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.201</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.200</span>
+            <h3>Startup no longer crashes on a malformed MCP-server config</h3>
+          </div>
+          <div class="story-body">
+            <p>Setting <code>disabledMcpServers</code> or <code>enabledMcpServers</code> in <code>.claude.json</code> to a non-array value (a string or object instead of a list) used to crash Claude Code at startup. It now handles the bad value gracefully.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You hand-edit <code>.claude.json</code> and the git-synced <code>~/.claude</code> config across two Macs. A fat-fingered non-array in an MCP toggle used to brick startup silently; now it won't take the whole CLI down with it.</p></div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.200</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Control bytes from background-agent output no longer leak into the terminal in the agent view <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents --plugin-dir &lt;dir&gt;</code> now shows the plugin's agents and skills when the flag follows <code>agents</code> <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Project-scoped plugins now load correctly from git worktrees of the same repository <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/mcp</code> server list now tracks focus for screen readers and magnifiers <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Voice dictation no longer shows a misleading "Voice connection failed" when a recording captures no audio <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rendering flicker under tmux 3.4+ fixed by enabling synchronized terminal output <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Screen-reader output: decorative glyphs hidden, transcript symbols read as short labels, nested tables read as <code>Header: value.</code> lines <span class="ver">2.1.200</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Install script now explains when installation is killed by the system running out of memory <span class="ver">2.1.200</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
