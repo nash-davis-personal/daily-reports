@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-05" />
+  <meta name="report:title" content="A SharePoint RCE hits the federal patch list while the compute buildout adds a Meta cloud and an OpenAI chip" />
+  <meta name="report:summary" content="CISA forces agencies to patch an actively exploited SharePoint RCE, Meta stands up a cloud business and OpenAI reveals a custom inference chip, and Next.js's standing RSC advisory is the one on your own stack to double-check." />
+  <meta name="report:highlights" content="4" />
+
+  <title>A SharePoint RCE hits the federal patch list while the compute buildout adds a Meta cloud and an OpenAI chip — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042420' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/07/sharepoint-rce-cve-2026-45659-added-to.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, July 5, 2026</span>
+        <span>◆</span><span>Patch-now ◆ then the compute buildout</span>
+      </div>
+      <h1>A SharePoint RCE hits the federal patch list as the compute buildout adds a Meta cloud and an OpenAI chip</h1>
+      <p class="standfirst">Lead with security: CISA added an actively exploited SharePoint remote-code-execution bug to its Known Exploited Vulnerabilities catalog with a July 4 federal deadline. It's not your stack, but the class of bug is — so this doubles as a reminder to confirm your Next.js sites are on the patched React Server Components release.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the July 4 edition</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/07/sharepoint-rce-cve-2026-45659-added-to.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">8.8</div><div class="lbl">SharePoint RCE CVSS (CVE-2026-45659)</div></div>
+      <div class="stat"><div class="num">~$650B</div><div class="lbl">Big Tech 2026 AI capex</div></div>
+      <div class="stat"><div class="num">$975B</div><div class="lbl">2026 semiconductor sales est.</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch: SharePoint RCE exploited</h4><p>CISA added CVE-2026-45659 (CVSS 8.8) to KEV after active exploitation; agencies had to patch by July 4.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Check your own stack</h4><p>The standing Next.js RSC advisory (DoS/RCE class) is the load-bearing one for TSD — verify every site is patched.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Meta becomes a cloud</h4><p>Meta launched a cloud business selling excess compute (July 1); shares jumped ~9%.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chips keep running hot</h4><p>OpenAI revealed a custom "Jalapeño" inference chip; semiconductor startup funding is ~$10.7B in 2026.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch &amp; secure</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch now</span>
+            <span class="ver">CVE-2026-45659</span>
+            <h3>Actively exploited SharePoint RCE lands on CISA's KEV list</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA added a Microsoft SharePoint Server remote-code-execution flaw (CVE-2026-45659, CVSS 8.8) to its Known Exploited Vulnerabilities catalog after confirmed exploitation, with a federal patch deadline of July 4. The bug is a deserialization-of-untrusted-data RCE: an authenticated attacker with only Site Member permissions can run code on the server — no admin needed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> None of your builds run SharePoint, so there's no direct action. But if any client hosts an on-prem SharePoint/Microsoft server, flag it — this is the kind of thing that becomes a ransomware entry point within days. Use it as the hook for a paid "are you patched?" security check.</p></div>
+          <div class="refs"><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV catalog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Your stack</span>
+            <span class="ver">Next.js / RSC</span>
+            <h3>The Next.js advisory to actually confirm is patched</h3>
+          </div>
+          <div class="story-body">
+            <p>No fresh Next.js or Vercel advisory dropped this week. The one that still matters for TSD is the May 2026 coordinated release, which fixed 13 advisories including a high-severity React Server Components denial-of-service (an upstream RSC issue, CVE-2026-23870). Vercel's guidance was blunt: patching is the only complete mitigation, and WAF rules can't reliably block it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same bug class as the SharePoint story — untrusted input deserialized on the server. Confirm every client Next.js app is on the patched release; a specially crafted request to any App Router Server Function can spike CPU and take a site down. Run <code>npm ls next</code> across your repos this week.</p></div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel changelog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The compute buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New entrant</span>
+            <span class="ver">Jul 1</span>
+            <h3>Meta stands up a cloud business and sells its spare compute</h3>
+          </div>
+          <div class="story-body">
+            <p>Meta said it will launch a cloud business and resell excess computing power; the stock rose nearly 9% on the July 1 news. It's a new hyperscale-adjacent supplier entering a market where Alphabet, Microsoft, Amazon and Meta are collectively on track to spend $635–665B on AI infrastructure in 2026.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> More compute supply and more competition among sellers points the same direction — cheaper inference over time. That's a tailwind for margins on anything you run on client behalf. It doesn't change your stack today, but it strengthens the case for locking clients into fixed-price AI now while your unit costs trend down.</p></div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/06/30/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC Markets ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Silicon</span>
+            <span class="ver">2026</span>
+            <h3>OpenAI's custom chip and a still-hot semiconductor market</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI revealed a custom "Jalapeño" inference chip (July 1), the latest lab to move to in-house silicon to cut inference cost. The broader chip market stays frothy: ~$10.7B has gone into semiconductor startups in 2026, Cerebras IPO'd last month after a $1B pre-IPO round, and industry sales are projected to hit ~$975B for the year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background, not action. The signal is durable: the whole industry is racing to make inference cheaper, which keeps pushing API prices down. Build assuming today's per-token cost is a ceiling, not a floor.</p></div>
+          <div class="refs"><a href="https://news.crunchbase.com/semiconductors-and-5g/chip-startup-funding-2026-cerebras-matx-ayar-labs-ipos-nvda/" target="_blank" rel="noopener">Crunchbase News ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deals &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">IPO</span><span class="txt">Bending Spoons (owner of AOL, Vimeo and other legacy web brands) had its first US trading session July 1. <span class="ver">Jul 1</span></span></li>
+            <li><span class="tag improve qh-tag">M&amp;A</span><span class="txt">Datadog acquired Adaptive ML (AI agent deployment); terms undisclosed — observability moving into the agent stack. <span class="ver">Jul 2</span></span></li>
+            <li><span class="tag fix qh-tag">Hygiene</span><span class="txt">Data breaches disclosed July 3 hit a logistics firm, a Georgia municipality, an industrial manufacturer, and a website SaaS — rotate any shared creds and enable MFA on client dashboards. <span class="ver">Jul 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

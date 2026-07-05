@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-05",
+    "title": "A stormy, record-hot Fourth caps a week where hiring cooled to its weakest since 2024",
+    "summary": "Severe storms forced a National Mall evacuation amid record July 4 heat, June payrolls rose just 57,000 as the labor force shrank, and a Falcon Heavy readies NASA's Dragonfly for Titan with a launch window opening today.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-05.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing shipped to the Claude Code changelog since 2.1.201 on July 3, already covered in prior briefings — a genuine quiet day, so this is a short honest note rather than padded importance.",
     "highlights": 1,
     "path": "reports/claude-changelog/2026-07-05.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-05",
+    "title": "Google makes generative media cheap while token bills become a boardroom line item",
+    "summary": "Nano Banana 2 Lite and Gemini Omni Flash drop the price of AI images and video to pennies as Tesla joins the companies capping employee AI spend and H1 funding hits a record $510B.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-05.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-05",
+    "title": "Turn 3-cent AI images into a same-day visual-refresh offer, then sell reliability into a cooling job market",
+    "summary": "Google's sub-penny image and short-video models make a productized visual-refresh service near-free to deliver, while weak June hiring and enterprise AI-spend caps hand TSD two clean pitches: automation as a hiring substitute and predictable fixed-price AI.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-05.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-05",
+    "title": "A SharePoint RCE hits the federal patch list while the compute buildout adds a Meta cloud and an OpenAI chip",
+    "summary": "CISA forces agencies to patch an actively exploited SharePoint RCE, Meta stands up a cloud business and OpenAI reveals a custom inference chip, and Next.js's standing RSC advisory is the one on your own stack to double-check.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-05.html"
   },
   {
     "source": "america",
