@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-06",
+    "title": "Still quiet: no new Claude Code releases since July 3",
+    "summary": "The Claude Code changelog has published nothing since 2.1.201 on July 3 — three days with no release, all prior versions already briefed. A short honest note instead of manufactured importance.",
+    "highlights": 1,
+    "path": "reports/claude-changelog/2026-07-06.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
