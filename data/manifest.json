@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-06",
+    "title": "Markets reopen after the holiday off a record first half, with a light data week and a Fed split on rates",
+    "summary": "U.S. markets return Monday after the July 4 holiday, closing the best first half since the early 1990s for small caps; the week's calendar is light ahead of Wednesday's FOMC minutes and next week's CPI; the Fed is evenly split on whether to hike or hold; and a G3 solar storm lit auroras across 30 states with more expected.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-06.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "The Claude Code changelog has published nothing since 2.1.201 on July 3 — three days with no release, all prior versions already briefed. A short honest note instead of manufactured importance.",
     "highlights": 1,
     "path": "reports/claude-changelog/2026-07-06.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-06",
+    "title": "California puts Claude on every state agency's desk as the AI fight shifts from models to distribution",
+    "summary": "California switched on the largest state-government AI deployment in US history — Claude at a 50% discount for every agency and any city or county that opts in — while Nvidia started financing GPUs by revenue-share, OpenAI detailed a three-tier GPT-5.6 lineup, and Anthropic opened a drug-discovery lab beside its new Claude Science workbench.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-06.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-06",
+    "title": "Sell cheap AI video to the clients you already have, then borrow California's credibility for the retainer pitch",
+    "summary": "Generative video keeps getting cheaper and you've already shipped AI ad reels, so a monthly video add-on for existing TSD clients is the fastest dollar this week; meanwhile California standardizing on Claude hands you a government-grade trust line for the Managed-AI retainer, and a quiet security week is the moment to sell a site-health audit. Six moves ranked by fit, plus a watch list.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-06.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-06",
+    "title": "A Linux root-escalation flaw lands on the patch list as the AI buildout strains power grids",
+    "summary": "A new Linux kernel use-after-free (Bad Epoll, CVE-2026-46242) lets unprivileged users get root on Linux and Android; Anthropic is in talks with Samsung for 2nm custom chips; Google's electricity use jumped 37% on AI data centers as a Virginia project got cancelled over local opposition; and China's physical-AI names line up for IPOs. Your own Next.js stack is quiet on security this window.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-06.html"
   },
   {
     "source": "america",

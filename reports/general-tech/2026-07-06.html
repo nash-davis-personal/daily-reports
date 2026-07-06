@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-06" />
+  <meta name="report:title" content="A Linux root-escalation flaw lands on the patch list as the AI buildout strains power grids" />
+  <meta name="report:summary" content="A new Linux kernel use-after-free (Bad Epoll, CVE-2026-46242) lets unprivileged users get root on Linux and Android; Anthropic is in talks with Samsung for 2nm custom chips; Google's electricity use jumped 37% on AI data centers as a Virginia project got cancelled over local opposition; and China's physical-AI names line up for IPOs. Your own Next.js stack is quiet on security this window." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A Linux root-escalation flaw lands on the patch list — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cybersecuritydive.com/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, July 6, 2026</span>
+        <span>◆</span><span>Since the July 5 edition ◆ holiday-thin window</span>
+      </div>
+      <h1>A Linux root-escalation flaw hits the patch list while the AI buildout strains power grids</h1>
+      <p class="standfirst">Quiet holiday week, one thing to patch: a new Linux kernel use-after-free lets unprivileged users become root, and it reaches Android. Underneath, the compute story got heavier — Anthropic courting Samsung for 2nm chips, Google's power draw up 37%, a data center cancelled over community pushback, and China's physical-AI companies queuing for IPOs.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Developments since July 5</span>
+        <span>◆</span><a href="https://www.cybersecuritydive.com/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">CVE-2026-46242</div><div class="lbl">Linux "Bad Epoll" root escalation</div></div>
+      <div class="stat"><div class="num">+37%</div><div class="lbl">Google electricity use on AI data centers</div></div>
+      <div class="stat"><div class="num">2nm</div><div class="lbl">Anthropic–Samsung custom-chip talks</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch this: Linux "Bad Epoll"</h4><p>CVE-2026-46242 is a kernel use-after-free that gives unprivileged users root on Linux and Android — update your servers.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your Next.js stack is quiet</h4><p>No new Next.js security advisory this window; latest is 16.2.10. The standing fix to be current on is the 16.2.6 security release.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Anthropic courts Samsung for chips</h4><p>Talks for custom AI silicon on a 2nm process — the labs keep vertically integrating down to the wafer.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The grid is the bottleneck</h4><p>Google's power use jumped 37% on AI; a Virginia data center got cancelled amid community opposition.</p></div>
+        <div class="signal"><div class="n">05</div><h4>China's physical-AI IPO queue</h4><p>Unitree cleared a $619M Shanghai listing and Kling raised $2.8B ahead of a Hong Kong IPO.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — the one to patch</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">Early July 2026</span>
+            <h3>"Bad Epoll" gives unprivileged users root on Linux and Android</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-46242 is a race-condition use-after-free in the Linux kernel's epoll subsystem that lets an unprivileged local process escalate to root. It was demonstrated in Google's kernelCTF with high reliability, and the impact extends to Android devices. Any server you run that a low-privilege process can touch is in scope.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your client apps live on Vercel and Supabase (managed, patched for you), so the direct exposure is low — but if you run <em>any</em> Linux box you SSH into (the desk Mac's remote host, a VPS, a self-hosted job), run your package manager's update and reboot into the patched kernel this week. Confirm your Supabase/hosting providers have rolled the fix; managed platforms usually do it silently.</div>
+          <div class="refs"><a href="https://www.cybersecbrief.com/news/cybersec/cybersec-2026-07-04" target="_blank" rel="noopener">Daily Cybersecurity Briefing, July 4 ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Stack watch</span>
+            <span class="ver">Next.js 16.2.10 · Jul 1</span>
+            <h3>Next.js, Vercel, and Supabase are quiet on security this window</h3>
+          </div>
+          <div class="story-body">
+            <p>No new Next.js security advisory dropped over the holiday. The most recent releases (16.2.10 and 15.5.20 on July 1) were housekeeping — republishing a WASM package that had been missing since 16.2.4. The security release you should already be past is 16.2.6 (May 7), which fixed 12 advisories including DoS via Server Components and middleware/proxy bypasses. The 16.3 preview is adding Turbopack persistent build cache and first-party Skills.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing urgent, but confirm every client repo is on 16.2.6 or later — that's the line that matters. If any project is still on 16.2.4/16.2.5, bump it while it's quiet rather than during the next scramble.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js release history ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The compute buildout keeps getting heavier</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Chips</span>
+            <span class="ver">July 2–3, 2026</span>
+            <h3>Anthropic in talks with Samsung for 2nm custom AI chips</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic has entered discussions with Samsung to manufacture custom AI silicon on a 2nm process. It follows OpenAI's own inference-chip reveal last week — every major lab is now trying to own its compute stack down to the wafer to escape Nvidia pricing and supply.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> More custom silicon means cheaper, more plentiful inference over the next 18 months — good for your unit economics on every AI product. No action, but it's why betting your retainers on per-seat AI value (not per-token markup) is the durable model.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/03/top-tech-news-today-july-3-2026/" target="_blank" rel="noopener">Tech Startups, July 3 ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Infrastructure</span>
+            <span class="ver">Early July 2026</span>
+            <h3>Google's power use jumps 37% as a Virginia data center gets cancelled</h3>
+          </div>
+          <div class="story-body">
+            <p>Google reported a record 37% surge in electricity consumption driven by AI data-center expansion. At the same time, QTS cancelled a Virginia data center project amid community opposition — the first signs that local politics and the grid, not chips, are becoming the binding constraint on the buildout.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the macro backdrop, not a to-do. But it's a useful honesty point with skeptical clients: AI has real physical costs and limits, which is exactly why a focused, cheap, single-purpose tool (a receptionist, a concierge) beats "put AI on everything." Sell the scoped win.</div>
+          <div class="refs"><a href="https://dig.watch/newsletters/dw-weekly/dw-weekly-269" target="_blank" rel="noopener">Digital Watch Weekly #269 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money and machines</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">IPOs &amp; funding</span>
+            <span class="ver">Early July 2026</span>
+            <h3>China's physical-AI companies line up for public markets</h3>
+          </div>
+          <div class="story-body">
+            <p>Unitree Robotics was approved for a $619M IPO on Shanghai's STAR Market, and Kling's AI-video unit raised $2.8B at roughly an $18B valuation ahead of a Hong Kong listing. Germany's drone maker Quantum Systems also raised $1.2B at an $8B valuation. Capital is flooding into robotics and generative video — the "physical AI" and media-generation categories are where the next wave of money is going.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Generative video is the adjacent category worth watching for your business. You already run ffmpeg pipelines and have shipped AI UGC ads for Gallant. As Kling-class video keeps getting cheaper, a productized "AI video ad" add-on for existing clients is a real upsell — no new core skill required.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/03/top-tech-news-today-july-3-2026/" target="_blank" rel="noopener">Tech Startups, July 3 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">ShinyHunters breached Medtronic's corporate IT, exposing data on 3.8M people; AdaptHealth disclosed a social-engineering breach via a contractor. <span class="ver">Recent</span></span></li>
+            <li><span class="tag fix qh-tag">Antitrust</span><span class="txt">Google lost its final appeal of the EU's €4.1B Android antitrust fine. <span class="ver">Early July</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Swiss chipmaker SEALSQ is moving into post-quantum automotive security silicon. <span class="ver">Early July</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
