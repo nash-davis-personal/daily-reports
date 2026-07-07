@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-07" />
+  <meta name="report:title" content="2.1.202 lands: /review splits from /code-review, and a wall of Remote Control and worktree fixes" />
+  <meta name="report:summary" content="Version 2.1.202 shipped July 6 with a big fix-heavy release: /review is a fast single pass again while /code-review keeps the multi-agent path, Remote Control phone workflows get three fixes, worktree-heavy resume is fast again, and re-invoking a skill stops bloating context." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.202 lands: /review splits from /code-review, plus Remote Control and worktree fixes — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, July 7, 2026</span>
+        <span>◆</span><span>One release: 2.1.202</span>
+      </div>
+      <h1>2.1.202 breaks the quiet window — one big fix-heavy release</h1>
+      <p class="standfirst">After three empty days, 2.1.202 shipped July 6 with a single line of new behavior and a long list of fixes. Most of it hits workflows you actually run: the <code>/review</code> and <code>/code-review</code> commands split apart, Remote Control from your phone got three fixes, and resuming sessions in worktree-heavy loop repos is fast again.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.202 (July 6), the first release since 2.1.201 on July 3</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">18</div><div class="lbl">Changes in 2.1.202</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Behavior change to relearn (/review)</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>/review is fast again; /code-review is the deep pass</h4><p>Plain <code>/review &lt;pr&gt;</code> reverts to a single fast pass. Multi-agent review now lives only at <code>/code-review &lt;level&gt; &lt;pr#&gt;</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Remote Control phone workflow gets three fixes</h4><p>Commands sent from mobile/web no longer fail with "Unknown command," uncaptioned images and files stop getting dropped, and the permission mode shown is correct.</p></div>
+        <div class="signal"><div class="n">03</div><h4>New "Dynamic workflow size" knob in /config</h4><p>Advisory small/medium/large setting for how many agents dynamic workflows spin up. Not a hard cap.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Worktree-heavy resume is fast again</h4><p>Resuming a session by name (or opening the resume picker) no longer takes minutes and eats memory in repos with many git worktrees.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Re-invoking a skill stops bloating context</h4><p>Loading an already-loaded skill no longer appends a second copy of its instructions to the context window.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Reviews &amp; workflows</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.202</span>
+            <h3>/review is a fast single pass again — /code-review keeps the multi-agent path</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog reverts <code>/review &lt;pr&gt;</code> to "a fast single-pass review" and says to use <code>/code-review &lt;level&gt; &lt;pr#&gt;</code> for "the multi-agent review at a chosen effort level." Two commands, two jobs: quick gut-check versus the thorough sweep you pick the depth on.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Retrain the muscle memory. For a fast look at a client PR, <code>/review</code>. When you want the real audit before a Bisque or Studio C push, reach for <code>/code-review high</code> (or <code>ultra</code> for the cloud multi-agent pass). Don't expect a bare <code>/review</code> to do the deep work anymore.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.202</span>
+            <h3>"Dynamic workflow size" setting lands in /config</h3>
+          </div>
+          <div class="story-body">
+            <p>A new <code>/config</code> setting controls how large Claude generally makes dynamic workflows — small, medium, or large agent counts. The changelog is explicit that it is "an advisory guideline, not an enforced cap," so it nudges default fan-out without hard-limiting a run that genuinely needs more agents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a lot of loop and workflow automation. Set this to "small" for the cheap propose-only heartbeats (the sales and site loops) so they don't over-spawn, and bump it up only for the occasional deep audit. Cheap governance on token spend without rewriting any loop specs.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.202</span>
+            <h3>Workflow scripts stop getting corrupted by unicode quotes; parse errors point at the line</h3>
+          </div>
+          <div class="story-body">
+            <p>Workflow scripts with unicode quote escapes in strings were being mangled before parsing. That's fixed, and workflow parse errors now show the offending line instead of always blaming TypeScript. The <code>/workflows</code> agent list also got a cleaner layout: wider titles, a dedicated time column, shorter model names, no per-row tool-call counts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you hand-author a Workflow script and it choked before, the fix plus the pointed error message means faster debugging. Minor, but it removes a papercut from the one area where you write agent orchestration by hand.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Remote Control from your phone</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.202</span>
+            <h3>Three Remote Control bugs squashed: dropped commands, dropped files, wrong permission mode</h3>
+          </div>
+          <div class="story-body">
+            <p>Three separate fixes for the mobile/web Remote Control app: commands sent into an interactive session no longer fail with "Unknown command"; images and files sent without a caption are no longer silently dropped; and <code>/remote-control</code> sessions no longer show the wrong permission mode in the mobile and web apps.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is your desk-Mac-from-phone setup directly. The silent file-drop and wrong-permission-mode bugs were the kind that quietly bite when you're driving the headless host from the road. Update the desk Mac's Claude Code to 2.1.202 so the phone workflow is trustworthy again — the wrong-permission-mode display especially matters given your workspace-scoped trade-confirm gate.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Sessions, skills, and context</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.202</span>
+            <h3>Resuming sessions in worktree-heavy repos is fast again</h3>
+          </div>
+          <div class="story-body">
+            <p>Resuming a session by name, or opening the resume picker, was "taking minutes and using a large amount of memory in repositories with many git worktrees." Fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your loops fix things in isolated worktrees, so your active repos accumulate them. If session resume had gotten sluggish on the TSD app or vault repos, this is why — and it's gone in 2.1.202.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.202</span>
+            <h3>Re-invoking a loaded skill no longer duplicates its instructions in context</h3>
+          </div>
+          <div class="story-body">
+            <p>Calling a skill that was already loaded appended a second copy of its instructions to the context window. That's fixed — the instructions load once. Related: the earlier stacked-skill support (2.1.199) means <code>/skill-a /skill-b</code> loads up to five leading skills, so this cleanup matters more when you chain them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You stack skills constantly — sales-psychology chaining the-humanizer, the advisor skills, refresh-vault. Duplicate instruction blocks were quietly eating context budget and could muddy behavior. Cleaner context per session for free after the update.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.202</span>
+            <h3>Background-session naming and open-chat crash loops fixed</h3>
+          </div>
+          <div class="story-body">
+            <p>Two background-agent fixes: <code>/rename</code> on a background session no longer gets reverted when the job restarts (so you can still address the session by its new name), and opening a chat from <code>claude agents</code> no longer sometimes fails with "currently running as a background agent" followed by a worker crash/respawn loop.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled loops and stewards run as background agents. The crash/respawn loop was a reliability hole in exactly that surface — worth the update on both Macs if you drive background jobs from the agents view.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.202</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Voice dictation stops retrying in an unbounded loop when the mic or recorder fails — repeated failures now pause voice input <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Installer/updater downloads no longer fail instantly with "aborted" when a proxy drops mid-download — transient drops now retry <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sign-in URLs from <code>claude auth login</code> / <code>claude mcp login --no-browser</code> are now emitted as a single clickable hyperlink when they wrap over SSH <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Inline Ctrl+R history search no longer crashes when you accept or cancel while it's still scanning the history file <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Transient mTLS handshake failures during in-place client-certificate rotation resolved <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Clearer MCP error when a server config has <code>url</code> but no <code>type</code> — it now suggests <code>"type": "http"</code> instead of the misleading "command: expected string" <span class="ver">2.1.202</span></span></li>
+            <li><span class="tag feature qh-tag">Telemetry</span><span class="txt">New <code>workflow.run_id</code> and <code>workflow.name</code> OpenTelemetry attributes on workflow-spawned agents, so a run can be reconstructed from OTel data <span class="ver">2.1.202</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
