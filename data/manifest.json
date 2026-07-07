@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-07",
+    "title": "A rare moderate flood risk hits the Ark-La-Tex as markets set fresh records and households get surveyed on inflation",
+    "summary": "A life-threatening flash-flood setup dumped 3–8 inches on the Texas–Louisiana border on July 7, days after the one-year mark of the deadly Central Texas floods; the Dow topped 53,000 for a record close on July 6 with chips leading; and the NY Fed's consumer-expectations survey lands as the economy shows solid business investment against slowing hiring.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-07.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Version 2.1.202 shipped July 6 with a big fix-heavy release: /review is a fast single pass again while /code-review keeps the multi-agent path, Remote Control phone workflows get three fixes, worktree-heavy resume is fast again, and re-invoking a skill stops bloating context.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-07.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-07",
+    "title": "Claude Sonnet 5 lands near-Opus quality at agent prices — the cheap-agent race is now the whole game",
+    "summary": "Anthropic's Claude Sonnet 5 hits close to Opus 4.8 quality at $2/$10 intro pricing and is now the default in Claude Code, while Google finally starts rolling out Gemini 3.5 Pro (2M context), OpenAI confirms GPT-5.6 pricing but keeps it government-gated, and ships a faster gpt-realtime-2.1 voice model.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-07.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-07",
+    "title": "Sonnet 5's price cut just widened your AI margins — sell the retainer before Aug 31",
+    "summary": "Claude Sonnet 5 dropped near-Opus quality to $2/$10 intro pricing, a faster voice model landed, and a hiring slowdown is pushing labor-scarce SMBs toward automation — six moves to turn this week's shifts into TSD revenue, led by a Managed AI retainer push while the cost of goods is at its lowest.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-07.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-07",
+    "title": "Qualcomm circles Tenstorrent as the chip world reshuffles — and Next.js 16.3 preview lands features for your stack",
+    "summary": "Qualcomm is in early talks to buy Jim Keller's RISC-V chip startup Tenstorrent for $8–10B, Nvidia and SK hynix locked a multiyear memory partnership, IBM showed sub-1nm transistors, and Cadence rolled out an autonomous chip-design engineer — while Next.js 16.3 previews Turbopack persistent caching and first-party agent tooling.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-07.html"
   },
   {
     "source": "america",
