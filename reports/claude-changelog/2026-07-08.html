@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-08" />
+  <meta name="report:title" content="A reliability wall for background agents: worktree isolation, session recovery, and one small follow-on fix" />
+  <meta name="report:summary" content="2.1.203 is a heavy hardening pass on the exact machinery Nash's nightly loops and Remote Control host run on; 2.1.204 adds one hook-streaming fix on top." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A reliability wall for background agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, July 8, 2026</span>
+        <span>◆</span><span>2 releases · v2.1.203–204</span>
+      </div>
+      <h1>A reliability wall for background agents — plus one small fix on top</h1>
+      <p class="standfirst">2.1.203 is not a headline-feature release. It is a long, unglamorous hardening pass on background agents and git-worktree isolation — the exact machinery your nightly loops and the Remote Control desk Mac depend on. 2.1.204, filed today, adds a single hook-streaming fix that kept remote workers from being killed mid-hook.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after v2.1.202</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases covered (v2.1.203–204)</div></div>
+      <div class="stat"><div class="num">20+</div><div class="lbl">Bug fixes in 2.1.203</div></div>
+      <div class="stat"><div class="num">~7 MB</div><div class="lbl">Smaller binary + startup memory</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS (4–6) ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Worktree subagents stop leaking into the parent checkout</h4><p>Isolated subagents that were sometimes running shell commands in the parent repo now stay in their own worktree.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Reopening <code>claude agents</code> no longer nukes running work</h4><p>Returning to the agents view used to silently stop subagents and re-run the prompt from scratch. Their work now carries over.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Stuck background sessions self-recover</h4><p>Sessions that went permanently unresponsive on a stale daemon token now recover on their own; a bad auto-upgrade no longer silently kills every running session.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Login-expiry warning before background sessions break</h4><p>You now get warned to re-authenticate before an expiring login interrupts a running background session.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Lighter and less chatty</h4><p>~7 MB off the binary and startup memory, plus subagents are less likely to re-delegate their whole task to another subagent.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Background agents and worktree isolation got hardened</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.203</span>
+            <h3>Worktree-isolated subagents were sometimes editing the wrong checkout</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related worktree bugs are fixed: isolated subagents that occasionally ran shell commands in the parent checkout instead of their own worktree, and worktree creation rejecting nested repositories in multi-repo workspaces (which left background sessions unable to isolate and edit).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is load-bearing for your loop fleet. The Fleet Steward, TSD site loop, and sales loop all fix work in isolated worktrees — a subagent silently running against the parent checkout is exactly the kind of quiet corruption that's hard to notice in a propose-only nightly run. Update the Macs that run those loops before the next cycle.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.203</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.203</span>
+            <h3>Returning to the agents view no longer throws away in-flight work</h3>
+          </div>
+          <div class="story-body">
+            <p>Reopening <code>claude agents</code> used to silently stop running subagents and re-run the prompt from scratch; their work now carries over. Alongside it: <code>TaskStop</code> and <code>TaskOutput</code> now find background agents spawned by another agent (errors list running agents by id and description), and the agent list stopped showing "Needs input" after a question was already answered.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you drive background agents from the phone via Remote Control, popping in and out of the agents view was quietly resetting them. That tax is gone — check on a long-running build without paying for it in lost progress.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.203</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.203</span>
+            <h3>Sessions recover from stale tokens and survive a bad auto-upgrade</h3>
+          </div>
+          <div class="story-body">
+            <p>Background sessions that became permanently unresponsive to attach, reply, and stop when the daemon's session token went stale now recover automatically. Separately, a background-daemon auto-upgrade failure that was silently killing every running background session is fixed, as is a 15–20 second stall opening or switching background sessions on macOS (a regression from 2.1.196).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These are the failure modes that turn the always-on desk Mac into a dead host you don't notice until a report doesn't ship. Self-recovery and a survivable upgrade path mean fewer mornings spent finding the daemon face-down. Worth the update on the Remote Control host specifically.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.203</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Auth, footprint, and agent quality</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">v2.1.203</span>
+            <h3>A warning before an expiring login interrupts a running session</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code now warns you when your login is about to expire so you can re-authenticate before a background session gets interrupted mid-run.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your unattended loops die silently when auth lapses. A heads-up beats discovering a stalled overnight run at 7am — but it still needs a human at the keyboard, so it does not replace the scheduled-task health checks.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.203</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.203</span>
+            <h3>Smaller footprint, and subagents that re-delegate less</h3>
+          </div>
+          <div class="story-body">
+            <p>Loading a large bundled dependency lazily instead of inlining it cut ~7 MB off the binary and ~7 MB off startup memory. And subagents are now less likely to re-delegate their entire task to another subagent — a recurring pattern that burned tokens and muddied the trail of who did what.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Less re-delegation is real money on multi-agent workflows and reviews. When you fan out a job now, expect the worker to actually do it instead of spawning a copy of itself.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.203</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hook events now stream during <code>SessionStart</code> hooks in headless sessions, so remote workers are no longer idle-reaped mid-hook <span class="ver">v2.1.204</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background/agent-view sessions no longer drop a shell-exported <code>ANTHROPIC_BASE_URL</code>, which had sent API keys to the default endpoint and failed with 401 <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash no longer fails with "argument list too long" in repos with many git worktrees <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background agents no longer crash-loop when their working directory is deleted, replaced by a file, or becomes invalid — they fail once with a clear error <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Memory and per-turn CPU regression fixed: the context-usage indicator no longer re-analyzes the whole transcript after every turn <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background agents no longer inherit a stale <code>PATH</code> from the daemon (Windows) <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Session's additional working directories now appear in MCP <code>roots/list</code>, with a <code>list_changed</code> notification when the set changes <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">A grey ⏸ badge in the footer now marks manual permission mode so the active mode is always visible <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag improve qh-tag">VSCode</span><span class="txt">New Settings toggle: "Enable Remote Control for all sessions" <span class="ver">v2.1.203</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Left arrow no longer closes the background-tasks, diff, and workflow detail views — press Esc instead <span class="ver">v2.1.203</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

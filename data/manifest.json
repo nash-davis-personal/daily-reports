@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-08",
+    "title": "A reliability wall for background agents: worktree isolation, session recovery, and one small follow-on fix",
+    "summary": "2.1.203 is a heavy hardening pass on the exact machinery Nash's nightly loops and Remote Control host run on; 2.1.204 adds one hook-streaming fix on top.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-07-08.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
