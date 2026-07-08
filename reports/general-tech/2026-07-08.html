@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-08" />
+  <meta name="report:title" content="A rough stretch for GitHub security as the AI-infrastructure debt boom hits $25B — and a stack-patch reminder" />
+  <meta name="report:summary" content="GitHub is fielding a run of serious flaws — a critical RCE (CVE-2026-3854), a 'GitLost' prompt-injection leak in its new agentic workflows, and the 'Cordyceps' CI/CD supply-chain weakness across 300+ repos — while Amazon launched a $25B+ bond sale to fund AI infrastructure and semiconductor startup funding stayed hot; on Nash's stack, note that July's Next.js releases were maintenance-only, so verify you're on May's patched versions." />
+  <meta name="report:highlights" content="5" />
+
+  <title>GitHub security run and a $25B AI-infra debt boom — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://techstartups.com/2026/07/07/top-tech-news-today-july-7-2026/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, July 8, 2026</span>
+        <span>◆</span><span>Dev tools, chips, and the platforms Nash ships on</span>
+      </div>
+      <h1>A rough stretch for GitHub security — and a $25B bond sale that shows where the AI money is really going</h1>
+      <p class="standfirst">The developer supply chain took a beating this week: a critical GitHub RCE, a prompt-injection leak in GitHub's own agentic workflows, and a CI/CD weakness hitting hundreds of repos. Meanwhile Amazon borrowed Wall Street–sized money to keep building AI capacity, and the chip-funding boom rolled on.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: developments of July 7–8, 2026</span>
+        <span>◆</span><a href="https://techstartups.com/2026/07/07/top-tech-news-today-july-7-2026/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$25B+</div><div class="lbl">Amazon bond sale for AI infrastructure</div></div>
+      <div class="stat"><div class="num">300+</div><div class="lbl">repos exposed by the "Cordyceps" CI/CD flaw</div></div>
+      <div class="stat"><div class="num">$10.7B</div><div class="lbl">poured into chip startups in 2026 so far</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch your pipeline</h4><p>A critical GitHub RCE (CVE-2026-3854) plus a "GitLost" prompt-injection flaw that tricks GitHub's AI agent into leaking private repos.</p></div>
+        <div class="signal"><div class="n">02</div><h4>"Cordyceps" CI/CD hole</h4><p>A supply-chain weakness left 300+ exploitable repos across npm, PyPI, crates.io, and Go — projects from Microsoft, Google, and Cloudflare included.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Amazon's $25B AI debt</h4><p>Amazon launched a bond sale of at least $25B to fund AI infrastructure, against a $200B capex budget for 2026.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chip funding stays hot</h4><p>~$10.7B into semiconductor startups in 2026; Cerebras IPO'd, MatX raised a $500M Series B led by Jane Street.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Stack watch: Next.js</h4><p>July's Next.js releases were maintenance-only. Confirm you're on May's patched versions, not exposed.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Secure your dev pipeline first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 2026</span>
+            <h3>GitHub is fielding a run of serious flaws — including one in its own AI agent</h3>
+          </div>
+          <div class="story-body">
+            <p>Three items landed close together. Wiz disclosed a critical remote-code-execution bug in GitHub's internal Git infrastructure (CVE-2026-3854). Separately, Noma Labs found "GitLost," a prompt-injection flaw in GitHub's new Agentic Workflows that abuses how the agent blends system instructions with untrusted user data in one context window — attackers can trick it into leaking private repos. And the "Cordyceps" CI/CD weakness left 300+ exploitable repositories across npm, PyPI, crates.io, and Go, touching projects from Microsoft, Google, Apache, and Cloudflare.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct action. Nash lives in GitHub across every client repo and runs agentic automation. This week: audit GitHub Actions workflows for untrusted-input paths, pin third-party actions to commit SHAs (not tags), rotate any broad-scope tokens, and be conservative about what any AI agent may read in a private repo. "Prompt injection leaks private code" is now a live threat, not a thought experiment.</div>
+          <div class="refs"><a href="https://gbhackers.com/critical-github-agentic-workflows-prompt-injection-flaw/" target="_blank" rel="noopener">GBHackers — GitLost agentic-workflow flaw</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Stack watch</span>
+            <span class="ver">Jul 1, 2026</span>
+            <h3>No new Next.js security release in July — but verify you're patched from May</h3>
+          </div>
+          <div class="story-body">
+            <p>Worth clearing up: July's Next.js releases (16.2.10 and 15.5.20, both July 1) were maintenance-only, republishing a WASM package with no security content. The real coordinated security release was in May, patching 13 advisories (DoS, middleware/proxy bypass, SSRF, cache poisoning, XSS) with fixed versions at Next.js 16.2.6 / 15.5.18 and the matching React RSC packages. Separately, the Next.js 16.3 preview (persistent Turbopack cache, first-party agent tooling) is still preview, not stable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm ls next</code> across client projects; anything below 16.2.6 (or 15.5.18 on the 15.x line) still carries May's advisories. A five-minute check that prevents a real DoS/cache-poisoning exposure on a client's live site. Don't push 16.3 into production yet.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel — Next.js May 2026 security release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI-infrastructure money machine</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Business</span>
+            <span class="ver">Jul 7, 2026</span>
+            <h3>Amazon launches a $25B+ bond sale to fund AI infrastructure</h3>
+          </div>
+          <div class="story-body">
+            <p>Amazon returned to the bond market for at least $25B across up to eight tranches (3–40 year maturities) to fund its AI buildout, and told underwriters it won't issue more debt this year. Demand peaked near $62B before settling around $41B. The context: a $200B 2026 capex budget, up sharply from $131B in 2025, with data centers, chips, and hardware taking most of it. Inference cost is becoming the AI industry's next big line item.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The hyperscalers are borrowing to drive per-token costs down; that deflation flows to Nash as a buyer of compute. What he rents to run Concierge, Front Desk, and his agents should keep getting cheaper — margin quietly improves without changing his prices. It also reinforces that the durable money is in applying AI to a business, not owning the infrastructure.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/07/07/amazon-bond-sale-ai-debt.html" target="_blank" rel="noopener">CNBC — Amazon $25B bond sale for AI</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Chips</span>
+            <span class="ver">Jul 2026</span>
+            <h3>Chip-startup funding stays hot; India commissions its third fab</h3>
+          </div>
+          <div class="story-body">
+            <p>Investors have put ~$10.7B into semiconductor startups (seed through pre-IPO) in 2026 so far. Cerebras Systems went public last month after a $1B February pre-IPO round, and MatX — building chips tuned for AI labs — raised a $500M Series B led by Jane Street. On the geography side, India commissioned its third semiconductor plant, adding real OSAT/packaging capacity and another node in the global supply chain.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Indirect but real — more chip supply and competition is the upstream reason inference keeps getting cheaper. Nothing to act on today, but it's the backdrop that makes AI-heavy products viable to sell to price-sensitive SMBs.</div>
+          <div class="refs"><a href="https://news.crunchbase.com/semiconductors-and-5g/chip-startup-funding-2026-cerebras-matx-ayar-labs-ipos-nvda/" target="_blank" rel="noopener">Crunchbase — semiconductor startup funding 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Threat</span><span class="txt">Cloudflare published its inaugural 2026 Threat Report: brute-force entry is fading in favor of "high-trust exploitation" — supply-chain and identity abuse. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag breaking qh-tag">Threat</span><span class="txt">North Korean and "PolinRider" campaigns are targeting open-source developers, backdooring 100+ legitimate packages — treat unfamiliar deps with suspicion. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag fix qh-tag">Leak</span><span class="txt">A leak exposed ~500k lines across ~1,900 files of Anthropic's Claude Code npm package; Anthropic says no customer data or credentials were exposed. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Platform</span><span class="txt">Z.ai's GLM 5.2 was the fastest-adopted model Vercel tracked in 2026 (27x token growth in a week) — the cheap-agent story from today's General AI briefing. <span class="ver">Jul 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

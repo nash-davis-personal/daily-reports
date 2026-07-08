@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-08",
+    "title": "Fed minutes confirm a hawkish turn as a buckling Midtown skyscraper forces mass evacuations",
+    "summary": "The Fed's June meeting minutes, released July 8, confirmed a hawkish shift — forward guidance dropped, nine of the dots pointing to at least one more hike — while a 37-story Midtown Manhattan tower conversion was evacuated on July 7 after support columns began buckling, clearing seven buildings and a 400-student school with no injuries; the backdrop is a narrow AI-and-energy-led market, cooling hiring, and 4.2% inflation.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-08.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "2.1.203 is a heavy hardening pass on the exact machinery Nash's nightly loops and Remote Control host run on; 2.1.204 adds one hook-streaming fix on top.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-08.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-08",
+    "title": "Anthropic pushes Cowork everywhere and into government while cheap Chinese models grab up to 46% of US developer use",
+    "summary": "Anthropic put Claude Cowork on web and mobile and opened Claude for Government on FedRAMP High, and its own data shows 90%+ of Cowork's work is ordinary knowledge work, not code; meanwhile Chinese models led by GLM 5.2 and DeepSeek now take up to 46% of US developer usage at a fifth of frontier-lab prices, and Microsoft stood up a $2.5B, 6,000-person unit to deploy AI for enterprises.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-08.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-08",
+    "title": "The AI coworker just went mobile and mostly does back-office work — sell that to SMBs",
+    "summary": "Anthropic's own data says 90%+ of Claude Cowork's work is business-process ops and content, not code — and it now runs on phones; pair that with collapsing model prices and a fresh wave of dev-security scares, and the highest-fit moves for Nash this week are a productized 'AI coworker' back-office retainer, a security-care upsell for existing web clients, and a margin-saving model-routing layer.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-08.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-08",
+    "title": "A rough stretch for GitHub security as the AI-infrastructure debt boom hits $25B — and a stack-patch reminder",
+    "summary": "GitHub is fielding a run of serious flaws — a critical RCE (CVE-2026-3854), a 'GitLost' prompt-injection leak in its new agentic workflows, and the 'Cordyceps' CI/CD supply-chain weakness across 300+ repos — while Amazon launched a $25B+ bond sale to fund AI infrastructure and semiconductor startup funding stayed hot; on Nash's stack, note that July's Next.js releases were maintenance-only, so verify you're on May's patched versions.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-08.html"
   },
   {
     "source": "america",
