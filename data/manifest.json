@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-09",
+    "title": "Historic heat dome death toll passes 40 as stocks slip and oil spikes on Middle East tensions",
+    "summary": "A record-breaking heat dome affecting more than 200 million Americans has been tied to at least 44 deaths, with a second dome forming over the West and Alaska's first-ever heat advisory issued; the Dow fell 1.1% on July 8 as oil jumped more than 4% on Middle East tensions, and June FOMC minutes showed Fed officials split on the next rate move with the funds rate held at 3.50-3.75%.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-09.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One big release: the agents list now shows real state and classifier headlines, unattended sessions get new guardrails against fabricated approvals, and --json-schema stops silently degrading.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-09.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-09",
+    "title": "Frontier three-way: GPT-5.6 and Grok 4.5 ship the same day, the first time three labs have new flagships public at once",
+    "summary": "OpenAI launched GPT-5.6 (Sol, Terra, Luna) publicly on July 9 after a 12-day government-gated preview, with a cheap Terra tier at $2.50/$15 per million tokens and Sol topping Terminal-Bench 2.1; SpaceXAI put Grok 4.5 out hours earlier with an Opus-class claim and Cursor training data; and with Anthropic's Sonnet 5 already the default, three frontier labs have new flagships publicly available on the same day for the first time.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-09.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-09",
+    "title": "Falling inference costs and a bigger Vercel are two doors Nash can walk through this week",
+    "summary": "With GPT-5.6 Terra at $2.50/$15, Grok 4.5 cheap and public, and Vercel expanding into services and voice, the through-line today is margin and reach: lock in Managed AI retainers while inference costs drop, and use Vercel Services + AI Gateway voice to widen what TSD can sell without leaving the stack.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-09.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-09",
+    "title": "Chip rally splits as China clears H200 buys, while Vercel turns into an operating layer for full-stack apps and agents",
+    "summary": "Nvidia rose 3.47% on July 8 on reports China may let Alibaba, ByteDance and DeepSeek buy H200 chips, even as the broader Philadelphia Semiconductor Index fell 16% from its June 22 peak; meanwhile Vercel is expanding from a host into an app/agent platform with Vercel Services, Vercel Agent, Connect, and voice in AI Gateway, and Next.js 16.3 ships a persistent build cache that cuts build time up to 5.5x.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-09.html"
   },
   {
     "source": "america",
