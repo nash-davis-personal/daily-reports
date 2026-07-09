@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-09" />
+  <meta name="report:title" content="2.1.205 makes the agent fleet legible and harder to trick into fake approvals" />
+  <meta name="report:summary" content="One big release: the agents list now shows real state and classifier headlines, unattended sessions get new guardrails against fabricated approvals, and --json-schema stops silently degrading." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.205 makes the agent fleet legible and harder to trick into fake approvals — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, July 9, 2026</span>
+        <span>◆</span><span>One release: 2.1.205</span>
+      </div>
+      <h1>2.1.205: the agent list gets readable, and fake approvals get harder</h1>
+      <p class="standfirst">A single large release since yesterday's briefing. Most of it lands squarely on how Nash runs Claude Code — a fleet of nightly loops, a phone-driven Remote Control host, and a stack of background agents that used to be near-impossible to read at a glance. Two things stand out: the agents view now shows real state plus a plain-English headline per row, and unattended sessions got new guardrails so a session can't be talked into acting on an approval that never happened.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything after 2.1.204</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">New release (2.1.205)</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Top signals</div></div>
+      <div class="stat"><div class="num">~400 MB</div><div class="lbl">Updater peak memory cut</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS (4–6) ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Agent list you can actually read</h4><p>Rows now show a colored state word and a classifier-written headline instead of raw tool-call text; the peek opens with full status and the exact ask for blocked sessions.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Fake approvals blocked</h4><p>Background notifications now state plainly that no human input happened, and auto mode blocks tampering with transcript files — so a loop can't act on an approval it fabricated.</p></div>
+        <div class="signal"><div class="n">03</div><h4>--json-schema stops lying</h4><p>An invalid schema used to silently produce unstructured output, and <code>format</code>-using schemas were rejected. Both fixed — structured extraction now fails loud or works.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Messages no longer vanish at --max-turns</h4><p>A message sent while Claude was working was silently lost if the turn ended at the max-turns limit. Fixed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Remote Control stops showing stale "Running"</h4><p>Web and mobile Remote Control panels now get full task state on every membership change, and Cowork VM-mode sessions stop failing with a false "Not logged in."</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Reading and steering the agent fleet</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.205</span>
+            <h3>Agent rows show a state word and a written headline, not tool-call spew</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>claude agents</code> view now renders each row as a colored state word plus a classifier-written headline describing what the session is doing, and the peek opens with full status — including the exact question when a session is blocked. Sessions that edit, merge, comment on, or push to an existing PR now link that PR in the list too.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nash runs a dozen-plus loops and background agents across the fleet (Fleet Steward, sales loop, site loop, lead-scout, macro-brain). Scanning that list used to mean parsing raw tool output. Now a single glance tells him which one is blocked and on what — check the morning fleet in seconds instead of opening each session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.205</span>
+            <h3>/doctor is now a full setup checkup that can fix issues</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/doctor</code> became a full setup checkup that diagnoses and repairs problems, with <code>/checkup</code> as an alias. The old startup "claude command missing or broken" warnings moved into <code>/doctor</code> and <code>/status</code> instead of nagging at launch.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When a scheduled task on the Air or the Desk Mac misbehaves, run <code>/doctor</code> first — it now self-diagnoses across two machines with different auth and PATH setups, which is exactly where the fleet breaks.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Guardrails for unattended sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.205</span>
+            <h3>Sessions can't be tricked into acting on approvals that never happened</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related changes. Background task notifications now explicitly state that no human input has occurred, which stops fabricated in-transcript approvals from being acted on. And auto mode gained a rule that blocks tampering with session transcript files. A companion tweak makes auto mode ask before running <code>rm -rf</code> on a variable it can't resolve from context.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the exact failure mode that matters for the agentic Robinhood steward and the workspace-scoped trade-confirm gate — an unattended loop convincing itself a human said yes. The guardrail is now built in, but Nash's own confirm gates stay the real control. Worth a note in the loop specs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Structured output and session reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.205</span>
+            <h3>--json-schema no longer silently degrades to unstructured text</h3>
+          </div>
+          <div class="story-body">
+            <p>An invalid <code>--json-schema</code> used to silently produce unstructured output, and schemas using the <code>format</code> keyword were rejected outright. Both are fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any headless script or loop that pulls structured JSON out of Claude — the report scouts, the sales-queue builders — now fails loudly on a bad schema instead of quietly handing back prose that breaks downstream. If Nash has schemas that lean on <code>format</code> (dates, emails), they'll now work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.205</span>
+            <h3>Messages stop vanishing at the --max-turns limit</h3>
+          </div>
+          <div class="story-body">
+            <p>A message sent while Claude was working was silently lost if the turn ended at the <code>--max-turns</code> limit. Also fixed: session-to-PR linking used to miss a PR created in a Bash call whose output blew past the 30K inline limit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any of Nash's automations cap turns, a queued instruction could quietly disappear. That silent-drop class is closed — one less way for an overnight run to do the wrong thing and never tell you.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Remote Control and platform</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.205</span>
+            <h3>Remote Control stops showing stale status; the updater stops hogging memory</h3>
+          </div>
+          <div class="story-body">
+            <p>Background tasks in the web and mobile Remote Control panels no longer show a stale "Running" status — full task state is now forwarded on every membership change. Cowork VM-mode local-agent sessions that failed with "Not logged in · Please run /login" on 2.1.203+ are fixed. Separately, auto-update binary downloads now stream to disk instead of buffering in memory, cutting the updater's peak memory by roughly 400 MB.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nash drives the Desk Mac from his phone; a lying status panel is worse than none. The 400 MB updater cut also matters on an always-on headless host that has to stay awake and responsive — fewer memory spikes during auto-upgrade windows.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.205</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows worktree removal no longer deletes files outside the worktree when an NTFS junction or directory symlink lived inside it <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background agents stop being stuck as "failed"/"completed" after a <code>SendMessage</code> resume, and stop flipping "needs input" → "working" on a turn with no readable text <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude attach</code> now waits out a background agent's mid-upgrade restart instead of erroring <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude mcp add-from-claude-desktop</code> no longer hangs on a bad server name — invalid names are reported and the rest still import <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A failing plugin LSP server no longer blocks a valid LSP server from another plugin handling the same file type <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows crash fixed when the launch directory is deleted, locked, or unmounted mid-command; plus a crash when a file watcher closed during a directory scan <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Project verify skills stop being rewritten every session — only when a documented command changes <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent view no longer renders a line too high and clips its header when the job list slightly overflows <span class="ver">2.1.205</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Reserved the "Claude Browser" MCP server name (with "Claude Preview") ahead of the Claude Desktop pane rename; user servers can't register under either <span class="ver">2.1.205</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
