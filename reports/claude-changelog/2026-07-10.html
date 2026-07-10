@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-10" />
+  <meta name="report:title" content="2.1.206 repairs the MCP timeouts and dead logins that quietly break unattended runs" />
+  <meta name="report:summary" content="One release, mostly repair work: per-server MCP timeouts are honored again, OAuth connectors survive a failed token refresh, expired logins finally say so, and /code-review got better on Opus 4.8." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.206 repairs the MCP timeouts and dead logins that quietly break unattended runs — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, July 10, 2026</span>
+        <span>◆</span><span>One release: 2.1.206</span>
+      </div>
+      <h1>2.1.206 repairs the MCP timeouts and dead logins that quietly break unattended runs</h1>
+      <p class="standfirst">A single release since yesterday's briefing, and it is almost entirely repair work on the failure modes that bite automation hardest: MCP servers ignoring their own timeout config, OAuth connectors dropping dead after one bad token refresh, and an expired login masquerading as a model error. The one clear upgrade is <code>/code-review</code> quality on Opus 4.8.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: releases after 2.1.205 (July 8) → 2.1.206 (July 9)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">27</div><div class="lbl">Line-item changes</div></div>
+      <div class="stat"><div class="num">17</div><div class="lbl">Of those are fixes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>MCP <code>request_timeout_ms</code> is honored again</h4><p>Per-server timeouts in <code>.mcp.json</code> were ignored in fresh sessions, so long MCP calls died at the 60s default.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OAuth MCP servers survive a failed refresh</h4><p>One bad token refresh used to force manual re-authentication. It now recovers on its own.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Expired logins finally say "run /login"</h4><p>They previously failed every model with a misleading "There's an issue with the selected model."</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>/code-review</code> got better on Opus 4.8</h4><p>Findings quality improved across all effort levels — the model you are already running.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>/doctor</code> now proposes trimming CLAUDE.md</h4><p>It flags checked-in context that Claude could derive from the codebase anyway.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Background agents upgrade eagerly</h4><p>They pull a new version right after an update instead of stalling when you attach.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP stops failing silently</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.206</span>
+            <h3>Per-server <code>request_timeout_ms</code> was being ignored in fresh sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP servers configured through <code>--mcp-config</code> or <code>.mcp.json</code> ignored a per-server <code>request_timeout_ms</code>, which meant every long-running MCP tool call timed out at the 60-second default in a fresh session. Anything you raised that value for was silently getting the default.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ever bumped a timeout for the tsd-portal MCP or a slow Notion query and concluded the setting did nothing, it genuinely did nothing. Re-check any timeout you tuned by trial and error, because the values you landed on were fitted to a bug that no longer exists.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.206</span>
+            <h3>OAuth MCP servers no longer need manual re-auth after one failed token refresh</h3>
+          </div>
+          <div class="story-body">
+            <p>A single failed refresh was enough to knock an OAuth-backed MCP server out until you re-authenticated by hand. The same release also fixed <code>--permission-prompt-tool</code> pointing at an MCP server crashing with "MCP tool not found" on cold start, before the server finished connecting.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the whole OAuth connector shelf — Notion, Gmail, Calendar, Vercel, Calendly. Scheduled jobs that woke up to a dead connector and needed you at the keyboard should now heal themselves. Worth re-enabling any connector you disabled in a cron task because it kept demanding a login.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended sessions fail legibly</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.206</span>
+            <h3>An expired login stopped pretending to be a model problem</h3>
+          </div>
+          <div class="story-body">
+            <p>An expired login used to fail every model with "There's an issue with the selected model." It now prompts you to run <code>/login</code>. This lands on top of 2.1.203's warning that fires before your login expires, so the two together close the loop on the most confusing failure in a background fleet.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every hour you have spent switching models to chase a phantom availability problem was an auth problem. When a scheduled job — this changelog scout included — dies overnight, read the error at face value now.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.206</span>
+            <h3>Background agents upgrade in the background; the agents view got cleaned up</h3>
+          </div>
+          <div class="story-body">
+            <p>Background agents now upgrade to a new version right after a Claude Code update instead of paying a slow stale-session upgrade the moment you attach. Alongside that: the agents view status column uses the full terminal width instead of truncating at 64 characters, Ctrl+X permanently removes a completed session, sessions stopped rendering twice, deleted background jobs stay deleted, and <code>claude rm</code> no longer leaves the removed job in the daemon roster.</p>
+            <p>A related fix: <code>CLAUDE_CODE_EXTRA_BODY</code> was being silently ignored by <code>claude agents</code> and <code>--bg</code> workers. The shell-exported override now follows the dispatching session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The attach stall was the main reason checking on a background agent felt slower than just doing the work. If you park agents on the Bisque or Sonderwerks builds while you take client calls, that friction is gone and the roster finally reflects reality.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code quality and context hygiene</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.206</span>
+            <h3><code>/code-review</code> findings quality improved on claude-opus-4-8, all effort levels</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog states the improvement plainly and does not quantify it. It applies across every effort level, and Opus 4.8 is the model this fleet already runs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You are the only reviewer TSD has. A free quality bump on the tool standing between a rushed Friday commit and a client's production Vercel deploy is worth putting <code>/code-review</code> back in the pre-push routine if it fell out.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.206</span>
+            <h3><code>/doctor</code> proposes trimming checked-in <code>CLAUDE.md</code> files</h3>
+          </div>
+          <div class="story-body">
+            <p>A new <code>/doctor</code> check reads your committed <code>CLAUDE.md</code> and proposes cutting content Claude could derive from the codebase on its own. It is a proposal, so you review before anything changes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run it once per client repo. Anything describing file layout or which framework the project uses is dead weight burning tokens on every turn. What survives the trim is the stuff worth keeping: deploy quirks, the <code>proxy.ts</code> convention on the Next 16 apps, the no-Co-Authored-By rule on Vercel-Hobby repos.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Git and worktree ergonomics</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.206</span>
+            <h3><code>/commit-push-pr</code> respects your push remote; <code>EnterWorktree</code> asks before wandering</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/commit-push-pr</code> now auto-allows <code>git push</code> to the repo's configured push remote — <code>remote.pushDefault</code>, or the sole remote when only one is configured — in addition to <code>origin</code>. Separately, <code>EnterWorktree</code> asks for confirmation before entering a git worktree outside the project's <code>.claude/worktrees/</code> directory. <code>/cd</code> also picked up directory path suggestions, matching <code>/add-dir</code> behavior.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The push-remote change kills a permission prompt on any client repo where the remote is not literally named <code>origin</code>. The <code>EnterWorktree</code> confirmation is a real guardrail for the loop-style automations you run unattended — an agent can no longer silently start editing a checkout outside the sandbox it was scoped to.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.206</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> picker rows printed a price belonging to a different model; first-party list prices are no longer quoted on providers that don't bill them <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Server-provided model rows were misplaced in the <code>/model</code> picker when an entitlement or allowlist restriction dropped the row they were positioned against <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude --resume</code> and <code>--continue</code> ignored keyboard input on startup <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Desktop sessions got stuck showing "running" after a slash command was sent mid-turn <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Keyboard input was ignored in the agents view when a setup prompt appeared before a bare <code>claude --resume</code> on Windows <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/remote-control</code> showed "Unknown command" when logged out; it now explains how to sign in <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Left arrow did not step back out of a phase or agent in the workflow detail view <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/status</code> listed the same broken-install warning twice <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">False "disused plugin" tips and skewed disuse telemetry for LSP plugins <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/doctor</code>'s update check now compares Homebrew installs against their cask's channel instead of the settings channel <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The fullscreen jump-to-bottom pill suggested Ctrl+End on macOS, hid rebound chords, and wrapped over the transcript <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bedrock: a multi-minute startup hang when using an <code>awsCredentialExport</code> helper on networks with restricted egress <span class="ver">2.1.206</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Gateway: <code>/login</code> now supports Anthropic-operated public gateway endpoints <span class="ver">2.1.206</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
