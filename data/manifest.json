@@ -3,11 +3,41 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-07-11",
+    "title": "2.1.207 kills the streaming keystroke lag and closes a silent consent hole in headless and SDK runs",
+    "summary": "One release since the last briefing — 2.1.207 — a hardening build: the terminal no longer freezes while streaming long output, headless and SDK runs stop being auto-recorded as consenting to managed settings, and two config relocations can silently break a repo-local setup.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-07-11.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-07-10",
     "title": "2.1.206 repairs the MCP timeouts and dead logins that quietly break unattended runs",
     "summary": "One release, mostly repair work: per-server MCP timeouts are honored again, OAuth connectors survive a failed token refresh, expired logins finally say so, and /code-review got better on Opus 4.8.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-10.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-10",
+    "title": "The frontier stops selling models and starts selling the desk: ChatGPT Work, Muse Spark 1.1, and Grok 4.5's hallucination bill",
+    "summary": "OpenAI folded Codex into the ChatGPT desktop app and launched ChatGPT Work, an agent with a 15-integration plugin directory; Meta shipped Muse Spark 1.1 and its first developer API at $1.25/$4.25 per million tokens; and independent testing from Artificial Analysis put Grok 4.5 fourth on the Intelligence Index while its hallucination rate more than doubled to 54%.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-10.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-10",
+    "title": "GhostLock: a 15-year-old Linux kernel flaw gives any user root in five seconds, and distro patches are still uneven",
+    "summary": "Nebula Security disclosed CVE-2026-43499 (GhostLock), a use-after-free in the Linux kernel present since 2011 that yields root in about five seconds and escapes Docker and Kubernetes containers; the upstream fix landed in April but Ubuntu LTS lines were still catching up. Meanwhile Meta puts its Iris AI chip into production in September on the way to 14 gigawatts, and Vercel began redacting sensitive env var values in build logs.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-10.html"
   },
   {
     "source": "america",

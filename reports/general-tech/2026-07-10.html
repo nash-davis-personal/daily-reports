@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-10" />
+  <meta name="report:title" content="GhostLock: a 15-year-old Linux kernel flaw gives any user root in five seconds, and distro patches are still uneven" />
+  <meta name="report:summary" content="Nebula Security disclosed CVE-2026-43499 (GhostLock), a use-after-free in the Linux kernel present since 2011 that yields root in about five seconds and escapes Docker and Kubernetes containers; the upstream fix landed in April but Ubuntu LTS lines were still catching up. Meanwhile Meta puts its Iris AI chip into production in September on the way to 14 gigawatts, and Vercel began redacting sensitive env var values in build logs." />
+  <meta name="report:highlights" content="5" />
+
+  <title>GhostLock: a 15-year-old Linux kernel flaw gives any user root in five seconds — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/07/15-year-old-ghostlock-flaw-enables-root.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, July 10, 2026</span>
+        <span>◆</span><span>Dev tools, chips, security, and the buildout</span>
+      </div>
+      <h1>A flaw that shipped in every Linux distro for fifteen years now has a five-second public exploit</h1>
+      <p class="standfirst">GhostLock has been sitting in the kernel since May 2011. Any logged-in user can take root with it, it breaks out of Docker and Kubernetes containers, and working exploit code is public. The upstream patch landed in April; the distributions are still catching up. Elsewhere: Meta's in-house AI chip goes into production in September, and Vercel quietly closed a hole in your build logs.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: developments of July 7–10, 2026</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/07/15-year-old-ghostlock-flaw-enables-root.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">15 yrs</div><div class="lbl">GhostLock sat undetected in the kernel</div></div>
+      <div class="stat"><div class="num">14 GW</div><div class="lbl">Meta's 2027 compute target, double 2026</div></div>
+      <div class="stat"><div class="num">$300M</div><div class="lbl">Oratomic Series A for fault-tolerant quantum</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch your Linux boxes</h4><p>CVE-2026-43499 (GhostLock), CVSS 7.8: local user to root in ~5 seconds, 97% reliable, escapes containers. Fixed upstream in April; Ubuntu 24.04 / 22.04 / 20.04 LTS were still listed vulnerable or in progress in early July.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Managed hosting shields you</h4><p>Vercel serverless and hosted Supabase are not yours to patch. The exposure is any VPS, self-hosted Supabase, or container host you run — check those first.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Build logs stop leaking</h4><p>Vercel now redacts Sensitive Environment Variable values from build logs — a real fix for a class of accidental secret exposure.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Meta builds its own silicon</h4><p>The "Iris" chip enters production in September via TSMC, with Broadcom as design partner. Meta targets 7 GW of compute in 2026 and 14 GW in 2027, shipping a new chip roughly every six months.</p></div>
+        <div class="signal"><div class="n">05</div><h4>supabase-js drops old TypeScript</h4><p>A deprecation notice landed July 10: the client library will require TypeScript 5.0. Check your older client projects before they break on upgrade.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Jul 8, 2026</span>
+            <h3>GhostLock: any local user to root in five seconds, on essentially every distro</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers at Nebula Security disclosed CVE-2026-43499, a use-after-free in the kernel's cleanup path for priority-inheritance futex operations. It has been present in every mainstream distribution — Ubuntu, Debian, RHEL, Fedora, Arch — since a kernel change in May 2011. Exploitation requires nothing but a local login and <code>CONFIG_FUTEX_PI=y</code>, which is on by default everywhere Nebula checked. Their exploit is 97% reliable and takes about five seconds. It also escapes Docker and Kubernetes containers, which makes shared and cloud infrastructure the priority. Google paid the team $92,337 through kernelCTF. CVSS 7.8.</p>
+            <p>The upstream fix landed in April (commit <code>3bfdc63936dd</code>), before anyone knew what it was. Distribution rollout has been uneven: as of early July, Ubuntu had patched its newest releases and some cloud kernels while 24.04, 22.04 and 20.04 LTS were still listed as vulnerable or in progress. A follow-up, CVE-2026-53166, fixes a crash the original patch introduced. No exploitation in the wild has been observed, but the exploit is published, so that window is closing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your client sites on Vercel and hosted Supabase are somebody else's kernel — nothing to do there. What you must check today is anything you actually run: a VPS, a self-hosted Supabase instance, any Docker host, any box where a client or contractor has a shell. Run <code>apt update &amp;&amp; apt upgrade</code> and reboot into the new kernel, then confirm with <code>uname -r</code> against your distro's advisory. Rebooting is the part people skip; a patched package on a running old kernel is still exploitable. If you have a client on their own Linux server, this is a legitimate, non-salesy reason to call them today, and it is exactly the kind of call that turns into a managed-hosting conversation.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/07/15-year-old-ghostlock-flaw-enables-root.html" target="_blank" rel="noopener">The Hacker News — GhostLock enables root and container escape</a> <a href="https://www.securityweek.com/15-year-old-linux-vulnerability-ghostlock-earns-researchers-92k-from-google/" target="_blank" rel="noopener">SecurityWeek — $92k bounty</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">Jul 9, 2026</span>
+            <h3>Vercel redacts Sensitive Environment Variable values from build logs</h3>
+          </div>
+          <div class="story-body">
+            <p>Build logs now mask the values of variables marked Sensitive. It is a small change against a common failure: a build step echoes its environment, or a framework prints config on error, and a service-role key ends up sitting in a log that more people can read than you think.</p>
+            <p>The same week, Vercel's AI Gateway added Grok 4.5 (July 8) and then Muse Spark 1.1 and GPT-5.6 Sol, Luna and Terra (July 9). Also shipped: 10x faster flag evaluation in the Flags SDK, and project settings management from the Vercel CLI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two jobs. First, go mark your Supabase service-role keys and any API secrets as Sensitive in each project — the redaction only protects variables you have flagged. Second, the Gateway now carries every model from yesterday's briefing behind one interface, which is the abstraction layer worth standardizing on. One integration, swap the model when the price or quality math moves.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — July 8–9</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 1–10, 2026</span>
+            <h3>Supabase: Postgres 14 is gone, and supabase-js is dropping old TypeScript</h3>
+          </div>
+          <div class="story-body">
+            <p>Support for Postgres 14 ended July 1, and projects still on a deprecated version are being automatically upgraded to the latest available Postgres. On July 10, Supabase posted a deprecation notice that <code>@supabase/supabase-js</code> will require TypeScript 5.0. Its July developer update also announced an OpenCode integration, alongside work across realtime, GraphQL, wrappers and Multigres.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> An automatic major-version Postgres upgrade is the kind of thing that silently breaks an old client project on a Tuesday. Inventory which client databases were on 14, and smoke-test each one's auth and queries. Then check the TypeScript version pinned in any project you haven't touched in a year, before the next <code>npm install</code> decides for you.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 9, 2026</span>
+            <h3>Meta puts its own AI chip into production in September, chasing 14 gigawatts</h3>
+          </div>
+          <div class="story-body">
+            <p>Per an internal memo reported by Reuters, Meta will begin manufacturing "Iris," a data-center accelerator designed in-house under its MTIA program, in September. TSMC fabricates it; Broadcom is the design partner. Testing reportedly took six weeks and surfaced no major issues — notable for a silicon effort that has struggled for more than five years.</p>
+            <p>Iris is the first of four planned generations, with Meta intending to ship a new chip roughly every six months through 2027, against an industry norm of a year or more. The company is targeting 7 gigawatts of compute capacity in 2026 and 14 gigawatts in 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Custom silicon is why Muse Spark 1.1 can be priced at $1.25/$4.25 and why the price floor keeps falling. You are a buyer in this market, not a seller. The planning assumption for any AI product you quote: inference cost drops meaningfully every few months. Price your retainers on the outcome delivered, never on a token-cost passthrough, and let the falling floor become your margin instead of your client's discount.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/07/09/meta-to-put-ai-chip-into-production-in-september-report.html" target="_blank" rel="noopener">CNBC — Meta chip into production in September</a> <a href="https://www.techrepublic.com/article/news-meta-custom-ai-chip-data-centers/" target="_blank" rel="noopener">TechRepublic — Meta's custom chip timeline</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Deep tech</span>
+            <span class="ver">Jul 7–8, 2026</span>
+            <h3>Oratomic raises $300M to skip straight to fault-tolerant quantum</h3>
+          </div>
+          <div class="story-body">
+            <p>The neutral-atom startup closed a $300 million Series A co-led by ARCH Venture Partners, Spark Capital and Khosla Ventures, with Bezos Expeditions, Index, General Catalyst, Bain Capital and Scott Aaronson participating. Oratomic traps individual atoms in reconfigurable optical tweezers, letting qubits physically move mid-computation. Its pitch, from research with Caltech, is that a utility-scale fault-tolerant machine may need around 10,000 reconfigurable neutral-atom qubits rather than the millions usually assumed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Zero near-term relevance to anything you ship, and that is the honest read. Worth one line of attention only because the "millions of qubits" assumption is what has kept post-quantum cryptography off everyone's roadmap. If a credible path to 10,000 holds up, TLS and key-rotation timelines for client infrastructure move from theoretical to schedulable — years out, not months. Nothing to do today.</div>
+          <div class="refs"><a href="https://siliconangle.com/2026/07/08/quantum-startup-oratomic-banks-300m-race-straight-fault-tolerance/" target="_blank" rel="noopener">SiliconANGLE — Oratomic's $300M</a> <a href="https://thequantuminsider.com/2026/07/07/oratomic-raises-300-million-series-a/" target="_blank" rel="noopener">The Quantum Insider</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">CVE-2026-50656, a privilege-escalation bug in the Microsoft Malware Protection Engine, CVSS 7.8, disclosed July 9. <span class="ver">Jul 9</span></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">LeapXpert raised $180M led by Riverwood Capital for AI-driven compliance monitoring of external chat apps in regulated industries. <span class="ver">Jul 8</span></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">8090 Solutions raised a $135M Series A led by Salesforce Ventures, in AI-driven software development. <span class="ver">Jul 8</span></span></li>
+            <li><span class="tag improve qh-tag">Space</span><span class="txt">SpaceX flew Falcon 9 booster B1067 for a record 36th time on the Starlink 10-42 mission, its 635th booster landing overall. <span class="ver">Jul 9</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

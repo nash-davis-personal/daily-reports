@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-11" />
+  <meta name="report:title" content="2.1.207 kills the streaming keystroke lag and closes a silent consent hole in headless and SDK runs" />
+  <meta name="report:summary" content="One release since the last briefing — 2.1.207 — a hardening build: the terminal no longer freezes while streaming long output, headless and SDK runs stop being auto-recorded as consenting to managed settings, and two config relocations can silently break a repo-local setup." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.207 kills the streaming keystroke lag and closes a silent consent hole in headless and SDK runs — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, July 11, 2026</span>
+        <span>◆</span><span>1 release covered ◆ 2.1.207</span>
+      </div>
+      <h1>2.1.207: streaming lag gone, and a silent consent hole in headless runs closed</h1>
+      <p class="standfirst">The only Claude Code release since your last briefing is a hardening build — no new features to sell, but the terminal-freeze-on-long-output bug that's been dogging big code responses is fixed, and a real security gap in unattended runs got patched. If you set auto mode or plugin options in repo-level settings, or symlinked the <code>claude</code> binary yourself, two of these changes can silently break your setup — check those first.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since 2026-07-10</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- Optional stat strip -->
+    <div class="stats">
+      <div class="stat"><div class="num">2.1.207</div><div class="lbl">Only release since 7/10</div></div>
+      <div class="stat"><div class="num">24</div><div class="lbl">Changes in this build</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Worth your attention</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Streaming lag is fixed</h4><p>The terminal no longer freezes and drops keystrokes while streaming long lists, tables, paragraphs, or code blocks.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Headless consent hole closed</h4><p><code>claude -p</code> and SDK runs were being permanently recorded as consenting to managed settings without ever showing the consent dialog. Patched.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Auto-updater stops clobbering your launcher</h4><p>Updates were overwriting a custom script or symlink at <code>~/.local/bin/claude</code> every release. <code>/doctor</code> now reports an externally managed launcher.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Two config sources went dead</h4><p>Auto mode no longer reads from repo-resident <code>settings.local.json</code>; plugin option values no longer read from project <code>.claude/settings.json</code>. Move them or they silently stop working.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Fewer false prompt-injection alarms</h4><p>Spurious injection warnings triggered by benign system-generated conversation updates are gone — less noise interrupting unattended runs.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Speed and daily feel</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.207</span>
+            <h3>The terminal no longer freezes while streaming long output</h3>
+          </div>
+          <div class="story-body">
+            <p>Streaming a response with a very long list, table, paragraph, or code block would freeze the terminal and make your keystrokes lag. That's fixed. There's a related fix for the transcript jumping above the start of the answer when a response finishes streaming.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update to 2.1.207. If you've been watching the cursor stutter through big Supabase migration diffs or full-component rewrites, that stops. Pure throughput win, no config change needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">2.1.207</span>
+            <h3>Headless and SDK runs were auto-consenting to managed settings</h3>
+          </div>
+          <div class="story-body">
+            <p>Remote managed settings applied from a non-interactive run — <code>claude -p</code> or the SDK — were being permanently recorded as consented without the security consent dialog ever appearing. The dialog now gates those runs the way it does interactive ones.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your daily scheduled tasks and Fleet Steward loops run through exactly this surface. If any managed settings are in play for your setup, update and verify what got auto-consented before this fix landed. If you don't use managed settings, this is a non-event — but worth knowing the gap existed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.207</span>
+            <h3>Benign system updates stop triggering prompt-injection warnings</h3>
+          </div>
+          <div class="story-body">
+            <p>Spurious prompt-injection warnings were firing on benign, system-generated conversation updates. Those false alarms are gone. Same build also hardens plugin shell handling: <code>${user_config.*}</code> in shell-form hook/monitor/headersHelper commands is now rejected as a shell-injection vector — use exec form or <code>$CLAUDE_PLUGIN_OPTION_&lt;KEY&gt;</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer false alarms mid-run means one less thing to babysit in unattended jobs. If you author plugins with shell-form commands that interpolate config, they'll now be rejected — move to the exec form or read the value inside the script.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Config changes that can silently break your setup</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.207</span>
+            <h3>Auto-updater stops overwriting a custom launcher</h3>
+          </div>
+          <div class="story-body">
+            <p>The auto-updater was overwriting a custom launcher script or symlink at <code>~/.local/bin/claude</code> on every release. It now leaves an externally managed launcher alone, and <code>/doctor</code> reports when one is in place.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run custom launchd wiring across two Macs. If you ever symlinked or hand-wrote the <code>claude</code> launcher, every update was quietly clobbering it. Update, run <code>/doctor</code>, and confirm the launcher line reads the way you expect on both machines.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.207</span>
+            <h3>Auto mode and plugin options no longer read from repo-level settings</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode no longer reads <code>autoMode</code> from a repo-resident <code>.claude/settings.local.json</code> — use <code>~/.claude/settings.json</code>. Separately, plugin option values (<code>pluginConfigs</code>) are no longer read from project-level <code>.claude/settings.json</code>; only user settings, <code>--settings</code>, and managed settings are honored.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If auto mode or any plugin option currently lives in a project's local or checked-in settings, it stops working with no error. Grep your client repos (Bisque, Studio C, Sonderwerks) for <code>autoMode</code> and <code>pluginConfigs</code> and hoist anything you rely on into <code>~/.claude/settings.json</code>.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Loops, worktrees, and background agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.207</span>
+            <h3>Agent-teams crash loop and a worktree config leak, both fixed</h3>
+          </div>
+          <div class="story-body">
+            <p>A malformed teammate mailbox message in agent teams could trigger repeated errors every second until you manually deleted the mailbox file — that crash loop is fixed. Separately, <code>extensions.worktreeConfig</code> was being left in the repo's <code>.git/config</code> after the last <code>worktree.sparsePaths</code> worktree was removed, which broke go-git tools like <code>tea</code>; it's now cleaned up. Two background-session bugs also got patched: auto-named sessions not showing their name in the agent view, and worktree-entered sessions resuming blank after a cold reopen.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These are the exact failure modes that bite loop-style automation running in isolated worktrees. If you've had a background agent go blank on resume or a loop wedge on a bad mailbox message, 2.1.207 removes those. Worth updating before the next unattended cycle.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.207</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Auto mode is now available without the <code>CLAUDE_CODE_ENABLE_AUTO_MODE</code> opt-in on Bedrock, Vertex AI, and Foundry (disable via <code>disableAutoMode</code>), and those platforms now default to Claude Opus 4.8. Skip unless you run on AWS or GCP. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Deep research runs no longer label every Fetch-phase agent "unknown" — chips now show the source hostname. Useful if you lean on the deep-research skill. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control task status updates are no longer lost when the connection recovers from a network interruption or credential refresh, and desktop-hosted sessions now show background-agent and workflow progress on mobile and web. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Compound commands with <code>cd</code> stop prompting for permission when the only output redirect was to <code>/dev/null</code>. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Malformed bracket patterns in rules globs, skill paths, <code>.ignore</code>, and <code>.worktreeinclude</code> no longer break file reads, file suggestions, and worktree creation. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/usage-credits</code> amount inputs now reject malformed values instead of silently stripping them to digits; amounts over $1,000 require a typed confirmation. <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Agent view: pasting the same text again expands the collapsed <code>[Pasted text #N]</code> placeholder instead of adding a second one, and blocked-session peeks lead with the question plus a worded staleness clock (<code>waiting 3m</code>). <span class="ver">2.1.207</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bedrock stops repeatedly requesting fresh AWS SSO credentials on every API request, and a Windows hang on stalled AWS credential resolution now fires a 60-second stall guard. <span class="ver">2.1.207</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
