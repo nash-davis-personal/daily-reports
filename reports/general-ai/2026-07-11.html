@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-07-11" />
+  <meta name="report:title" content="OpenAI's full-duplex voice lands squarely on the AI-receptionist use case, and Apple sues OpenAI over trade secrets" />
+  <meta name="report:summary" content="After a frantic model-launch week, the newest thing worth Nash's attention is quieter and closer to home: GPT-Live-1, a speak-and-listen voice model that closes the exact UX gap that makes phone bots feel robotic, while Apple sued OpenAI in federal court alleging leadership-directed trade-secret theft." />
+  <meta name="report:highlights" content="3" />
+
+  <title>Full-duplex voice good enough to answer the phone — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Saturday, July 11, 2026</span>
+        <span>◆</span><span>Voice models, legal, and frontier timelines</span>
+      </div>
+      <h1>The voice layer just got good enough to answer the phone</h1>
+      <p class="standfirst">The model-launch stampede that owned the front of this week — GPT-5.6, Grok 4.5, Muse Spark — is already in Wednesday's and Thursday's briefings. The fresh item that actually touches what TSD sells is smaller and stranger: OpenAI's GPT-Live-1 speaks and listens at the same time, which is the one thing every phone bot to date has gotten wrong. Alongside it, Apple took OpenAI to federal court.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: developments of July 8–11, 2026</span>
+        <span>◆</span><a href="https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Full-duplex</div><div class="lbl">GPT-Live-1 speaks and listens at once, with natural interruption</div></div>
+      <div class="stat"><div class="num">30–40 min</div><div class="lbl">Sustained natural voice conversations OpenAI demoed</div></div>
+      <div class="stat"><div class="num">N.D. Cal.</div><div class="lbl">Where Apple filed its trade-secret suit against OpenAI</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>GPT-Live-1 goes full-duplex</h4><p>OpenAI's new voice models speak and listen simultaneously and handle interruptions naturally — the exact gap that makes today's phone agents feel like machines. The mini model replaces Advanced Voice Mode for everyone.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Apple sues OpenAI</h4><p>Apple filed in federal court on July 10 alleging leadership-directed trade-secret theft, naming OpenAI's hardware chief Tang Tan (ex-Apple) and an engineer who allegedly kept an Apple laptop full of documents.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Microsoft leans on its own models</h4><p>Microsoft began routing Excel and Outlook AI features to its in-house MAI models, cutting its dependence on OpenAI and Anthropic inside Office.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Voice routing hits the stack</h4><p>Vercel's AI Gateway added realtime voice, speech-to-text and text-to-speech routing (plus GPT-5.6 and Muse Spark), so a solo builder can switch voice providers without rewiring.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The voice layer becomes usable</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 8, 2026</span>
+            <h3>OpenAI ships GPT-Live-1, a voice model that speaks and listens at the same time</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI released GPT-Live-1 and GPT-Live-1 mini on July 8. The architecture is unified — one model that hears and talks in the same stream, rather than the usual chain of speech-to-text, then a language model, then text-to-speech. In practice that means it can be interrupted mid-sentence and recover naturally, hold a 30-to-40-minute conversation without falling apart, and do live translation. The company is replacing Advanced Voice Mode in ChatGPT with GPT-Live-1 mini by default for all users; the larger GPT-Live-1 sits on paid tiers.</p>
+            <p>It is not flawless. OpenAI's own translation demo showed a heavy American accent and stiff, bookish Hindi, so non-English is still rough. But the core interaction — barge in, get cut off gracefully, no half-second dead air before the bot responds — is the thing that has separated "obviously a robot" from "I didn't realize" on a phone call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the most relevant release of the week for TSD Front Desk. The turn-taking lag and the can't-interrupt problem are exactly why current receptionist bots read as fake, and full-duplex is the fix. Run a bake-off: point a test line at GPT-Live-1 against your current voice stack, in English, on real caller scripts (booking, hours, "is anyone there"). If the latency and interruption handling hold up, "answers like a person, not a phone tree" becomes a demo you can sell on, not a claim.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/" target="_blank" rel="noopener">TechCrunch — OpenAI's new live voice models</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Legal and the business of the labs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 10, 2026</span>
+            <h3>Apple sues OpenAI for trade-secret theft in federal court</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple filed suit against OpenAI on July 10 in the U.S. District Court for the Northern District of California, alleging trade-secret theft and breach of contract that it says was "directed by OpenAI's senior leadership." The complaint names Tang Tan — now OpenAI's chief hardware officer, previously 24 years at Apple as VP of product design for iPhone and Apple Watch — who Apple accuses of using confidential Apple project code names while recruiting and asking candidates to bring Apple hardware to interviews. A second named engineer, Chang Liu, allegedly kept his Apple-issued laptop after joining OpenAI and used it to download confidential technical documents. OpenAI responded: "We have no interest in other companies' trade secrets."</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct product impact, but it confirms the Apple–OpenAI relationship is now adversarial. If you ever plan around "ChatGPT is baked into every iPhone" as a distribution assumption for a client, treat that as unstable — the two companies are heading to court, not deeper into partnership.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/" target="_blank" rel="noopener">TechCrunch — Apple sues OpenAI</a> <a href="https://www.cnbc.com/2026/07/10/apple-openai-lawsuit-trade-secrets.html" target="_blank" rel="noopener">CNBC — Apple's trade-secret suit</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Shift</span>
+            <span class="ver">Jul 8–10, 2026</span>
+            <h3>Microsoft starts routing Office AI to its own models</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft began pushing its in-house MAI models into Excel and Outlook features this week, reducing its reliance on OpenAI and Anthropic inside its most-used products. It is the clearest sign yet that the big platform owners want to control the model layer themselves rather than rent it, and that the "one lab powers everything" era is fragmenting into house models per platform.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The lesson for a solo shop is provider-independence. Don't hard-wire a client build to a single model's API shape; keep model calls behind a thin adapter (or route through a gateway) so you can swap when price or quality moves. The giants are hedging their model bets — you should too.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/10/top-tech-news-today-july-8-2026-todays-biggest-ai-tech-stories-from-meta-openai-microsoft-bytedance-more/" target="_blank" rel="noopener">Tech Startups — Microsoft MAI in Office</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller signals &amp; watch items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Stack</span><span class="txt">Vercel AI Gateway added realtime voice, STT and TTS routing plus GPT-5.6 (Sol/Terra/Luna) and Muse Spark 1.1 — a clean way to A/B voice providers without rewiring. <span class="ver">Jul 9</span></span></li>
+            <li><span class="tag improve qh-tag">Timeline</span><span class="txt">Google's Gemini 3.5 Pro reportedly slipped again, now targeting July 17 after an architecture rebuild (2M context, a "Deep Think" layer). No confirmed GA as of Jul 10 — treat the date as unconfirmed. <span class="ver">Jul 10</span></span></li>
+            <li><span class="tag new qh-tag">Money</span><span class="txt">Together AI raised an $800M Series C at an $8.3B valuation (Aramco Ventures led; Nvidia participated), doubling its valuation in ~16 months on open-model inference demand — the freshest large AI round, dated Jul 1. <span class="ver">Jul 1</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

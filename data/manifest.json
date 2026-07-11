@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-11",
+    "title": "Markets close a choppy week higher as SK Hynix lands a record $26.5B US IPO and flash floods swamp southeast Missouri",
+    "summary": "Wall Street ended a volatile week in the green, led by chips, as South Korea's SK Hynix pulled off the largest-ever foreign listing in US history; away from markets a flash-flood emergency hit southeast Missouri, fuel prices swung on a Strait of Hormuz risk premium, and North Carolina signed a long-delayed state budget amid drought.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-11.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since the last briefing — 2.1.207 — a hardening build: the terminal no longer freezes while streaming long output, headless and SDK runs stop being auto-recorded as consenting to managed settings, and two config relocations can silently break a repo-local setup.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-11.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-11",
+    "title": "OpenAI's full-duplex voice lands squarely on the AI-receptionist use case, and Apple sues OpenAI over trade secrets",
+    "summary": "After a frantic model-launch week, the newest thing worth Nash's attention is quieter and closer to home: GPT-Live-1, a speak-and-listen voice model that closes the exact UX gap that makes phone bots feel robotic, while Apple sued OpenAI in federal court alleging leadership-directed trade-secret theft.",
+    "highlights": 3,
+    "path": "reports/general-ai/2026-07-11.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-11",
+    "title": "Full-duplex voice just made 'answers like a person' a real demo — put it in Front Desk this week",
+    "summary": "This week's shifts — a full-duplex voice model, the labs fragmenting onto their own house models, fresh critical CVEs on gear your clients run, and a Charlotte investment pipeline — all point at assets TSD already owns; the highest-fit move is upgrading TSD Front Desk to the new voice and re-demoing it.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-11.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-11",
+    "title": "npm v12 disables install scripts by default, three critical UniFi CVEs land, and a Supabase self-hosted auth path change quietly breaks endpoints",
+    "summary": "No new CVE hit the Next.js stack this window, but the ground still moved under it: npm v12 now blocks lifecycle scripts by default (which can silently break Vercel builds), Ubiquiti disclosed three critical command-injection CVEs, and Supabase changed a self-hosted auth path that breaks hardcoded endpoints.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-11.html"
   },
   {
     "source": "claude-changelog",

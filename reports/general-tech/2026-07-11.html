@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-11" />
+  <meta name="report:title" content="npm v12 disables install scripts by default, three critical UniFi CVEs land, and a Supabase self-hosted auth path change quietly breaks endpoints" />
+  <meta name="report:summary" content="No new CVE hit the Next.js stack this window, but the ground still moved under it: npm v12 now blocks lifecycle scripts by default (which can silently break Vercel builds), Ubiquiti disclosed three critical command-injection CVEs, and Supabase changed a self-hosted auth path that breaks hardcoded endpoints." />
+  <meta name="report:highlights" content="5" />
+
+  <title>npm slams the door on install scripts — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/07/npm-12-disables-install-scripts-by.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, July 11, 2026</span>
+        <span>◆</span><span>Dev supply chain, security, chips, and space</span>
+      </div>
+      <h1>npm slams the door on install scripts, and two more defaults move under your feet</h1>
+      <p class="standfirst">No fresh CVE hit the Next.js/Vercel/React/Supabase stack in the last 48 hours. The disruption this week came from defaults changing: npm v12 now refuses to run lifecycle scripts unless you allow them, Ubiquiti shipped three critical command-injection holes, and Supabase moved a self-hosted auth path. Housekeeping — the kind that breaks a build at the worst moment if you upgrade blind.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: developments of July 9–11, 2026</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/07/npm-12-disables-install-scripts-by.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~455,000</div><div class="lbl">Malicious npm packages in 2025 — the pressure behind v12's new default</div></div>
+      <div class="stat"><div class="num">10.0 / 9.9</div><div class="lbl">CVSS of the three new Ubiquiti UniFi command-injection CVEs</div></div>
+      <div class="stat"><div class="num">$26.5B</div><div class="lbl">SK Hynix Nasdaq IPO — largest ever US listing by a foreign company</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>npm v12 blocks install scripts</h4><p>preinstall/install/postinstall lifecycle scripts and native builds no longer run on <code>npm install</code> unless you explicitly allow them. Can silently break native modules, Prisma and sharp on upgrade.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Three critical UniFi CVEs</h4><p>Ubiquiti disclosed command-injection flaws in UniFi Connect (CVSS 10.0), Talk and Access (9.9) — network-adjacent, patch available. Common in small offices.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase self-hosted path change</h4><p>Self-hosted API_EXTERNAL_URL now includes an <code>/auth/v1</code> prefix and SAML routes moved — breaks hardcoded auth/SSO endpoints if you pull the new image blind.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Broadcom + OpenAI custom silicon</h4><p>The two unveiled "Jalapeño," a custom inference chip — more vertical integration away from Nvidia at the top of the market.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Falcon 9 flies a booster 36 times</h4><p>SpaceX reflew its most-flown booster for a record 36th time; the constellation now tops 10,700 active satellites. Reuse economics keep bending down.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The defaults moved — read before you upgrade</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 8–9, 2026</span>
+            <h3>npm v12 disables install scripts by default</h3>
+          </div>
+          <div class="story-body">
+            <p>GitHub shipped npm v12 with <code>preinstall</code>, <code>install</code> and <code>postinstall</code> lifecycle scripts, implicit node-gyp native builds, and git/remote-URL dependencies all disabled by default. They no longer run on <code>npm install</code> unless you explicitly allow them. It is a direct response to 2025's roughly 455,000 malicious npm packages, most of which weaponized exactly those install hooks.</p>
+            <p>The upside is real supply-chain safety. The trap is that plenty of legitimate packages — native modules, Prisma, <code>sharp</code>, some Supabase tooling — depend on those scripts to build. Upgrade a project to v12 without allow-listing them and the build can fail, or worse, appear to succeed while skipping a native compile.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this proactively on one project before it bites a Vercel deploy. Upgrade a low-stakes repo to npm v12 first, run <code>npm approve-scripts</code> to review and allow the trusted build scripts, commit the updated manifest, and confirm the Vercel build still produces a working native compile. Only then roll it across client repos. Pin npm in CI until you've done that pass so a runner doesn't silently jump to v12 mid-week.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/07/npm-12-disables-install-scripts-by.html" target="_blank" rel="noopener">The Hacker News — npm v12 disables install scripts</a> <a href="https://github.blog/changelog/2026-06-09-upcoming-breaking-changes-for-npm-v12/" target="_blank" rel="noopener">GitHub Changelog — npm v12 breaking changes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 9, 2026</span>
+            <h3>Supabase changes a self-hosted auth path — hardcoded endpoints break</h3>
+          </div>
+          <div class="story-body">
+            <p>As of July 9, the self-hosted Supabase default <code>API_EXTERNAL_URL</code> now includes an <code>/auth/v1</code> path prefix, and SAML SSO routes moved from <code>/sso/saml/*</code> to <code>/auth/v1/sso/saml/*</code>. Separately, Postgres <code>log_connections</code> now defaults to off for new cloud projects. Managed-Supabase clients have nothing to do beyond knowing connection logging is quieter now; self-hosted setups are the ones exposed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client runs self-hosted Supabase auth, the <code>/auth/v1</code> change will break reverse-proxy rules and hardcoded auth/SAML endpoints the moment you pull the new image. Audit those configs and env vars before upgrading. If everything you run is managed Supabase, this is a non-event — note it and move on.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase — Changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">Jul 9, 2026</span>
+            <h3>Three critical command-injection CVEs in Ubiquiti UniFi</h3>
+          </div>
+          <div class="story-body">
+            <p>Ubiquiti disclosed CVE-2026-50746 in UniFi Connect (CVSS 10.0), plus command-injection flaws in UniFi Talk and UniFi Access (both 9.9), all allowing network-adjacent command injection. Patches are available. It is the third Ubiquiti disclosure in three days — the vendor has posted 14 new critical CVEs since July 7.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> UniFi gear is everywhere in small offices. If you or any client you've done work for runs a UniFi controller, patch it now and get the management UI off the public internet. This is worth a one-line heads-up to any client whose network you've touched — small effort, real goodwill, and it's the kind of thing that keeps you the person they call.</div>
+          <div class="refs"><a href="https://threat-modeling.com/vulnerability-intelligence-report-july-9-2026/" target="_blank" rel="noopener">Threat-Modeling.com — Vuln Intelligence, Jul 9</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 10, 2026</span>
+            <h3>Broadcom and OpenAI unveil a custom inference chip</h3>
+          </div>
+          <div class="story-body">
+            <p>Broadcom and OpenAI unveiled "Jalapeño," a custom inference chip, continuing the top of the market's push to design its own silicon and lean less on Nvidia. It lands against a jittery week for chip stocks — Micron fell roughly 13% in a session on doubts about whether AI capex pays off — even as SK Hynix pulled off a record $26.5B Nasdaq IPO and committed billions to ASML EUV tools.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct build impact, but the "AI capex may not pay off" narrative going mainstream is useful framing. When an SMB client asks whether AI spend is a bubble, you can point to the fact that the hyperscalers are still committing to custom silicon and record fabs — the infra bet isn't slowing, which is different from any single stock's week.</div>
+          <div class="refs"><a href="https://www.distillintelligence.com/briefings/semiconductors-ai-chips-2026-07-10" target="_blank" rel="noopener">Distill Intelligence — Chips briefing, Jul 10</a> <a href="https://www.forbes.com/sites/petercohan/2026/07/08/intel-stock-down-21-inside-the-july-2026-semiconductor-selloff/" target="_blank" rel="noopener">Forbes — July 2026 semiconductor selloff</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes &amp; heads-ups</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Markets</span><span class="txt">SK Hynix raised $26.5B on Nasdaq (ticker SKHY, $149/share), the largest-ever US IPO by a foreign company — full markets treatment in today's <a href="../america/2026-07-11.html">America</a> brief. <span class="ver">Jul 10</span></span></li>
+            <li><span class="tag breaking qh-tag">Heads-up</span><span class="txt">npm granular-access-token deprecation begins early August — tokens that bypass 2FA are going away. Check any CI tokens TSD uses to pull or publish private packages. <span class="ver">Early Aug</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">DHS confirmed a breach of its HSIN + SharePoint (sensitive-but-unclassified) network; investigation ongoing. <span class="ver">Jul 3–9</span></span></li>
+            <li><span class="tag new qh-tag">EV</span><span class="txt">Xiaomi revealed the SkyNomad N90, its first extended-range EV — a 3-row SUV with a claimed 1,500 km combined range. <span class="ver">Early Jul</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
