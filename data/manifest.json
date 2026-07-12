@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-12",
+    "title": "Markets close the week higher on a record chip listing, and the year's biggest storm system rolls into the Carolinas",
+    "summary": "Stocks capped a choppy week with modest gains as SK Hynix's record US debut and strength in Nvidia and Meta lifted the indices. Meanwhile a large, slow-moving storm system is bringing severe weather from the Plains to the mid-Atlantic this weekend, with Sunday's risk shifting south into Georgia and the Carolinas — and June inflation data lands this week.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-12.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing shipped since yesterday's 2.1.207 briefing; the changelog is unchanged, so today is a genuine no-op.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-12.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-12",
+    "title": "A quiet Sunday: the money is flowing into inference chips and the agents are going downmarket",
+    "summary": "No new frontier model dropped over the weekend. The signal instead is where capital and access are moving: SambaNova pulled $1B at an $11B valuation as an Nvidia-inference challenger, and OpenAI's ChatGPT Work agent is widening from Pro-only toward Plus and Business — the do-real-work layer is getting cheaper to reach.",
+    "highlights": 3,
+    "path": "reports/general-ai/2026-07-12.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-12",
+    "title": "A quiet-news week is a maintenance-money week: run a paid patch-and-storm-proof sweep and ride the seasonal call spike",
+    "summary": "No big shift dropped this weekend, and that's the opportunity: the fastest dollars right now come from the assets and relationships you already have. Run a flat-fee patch-harden-and-storm-proof pass for existing clients this week, point Front Desk at the storm-season call spike hitting local trades, and capture the falling inference cost as margin instead of passing it all through.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-07-12.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-12",
+    "title": "Chips are eating the market: SK Hynix's record US listing, Broadcom locks in Apple to 2031, and the buildout shifts to power and cooling",
+    "summary": "The weekend's tech story is silicon and the money around it: SK Hynix raised $26.5B in the largest-ever US listing by a foreign company and popped on debut, Broadcom extended its Apple chip partnership through 2031, and the AI buildout is visibly rotating from buying GPUs to building power and cooling. No new advisory hit Nash's stack — but the April Next.js DoS CVE is still worth a patch check.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-12.html"
   },
   {
     "source": "america",
