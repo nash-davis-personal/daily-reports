@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-13",
+    "title": "Big-bank earnings and June CPI headline the week as chip stocks slip and storms soak the Carolinas",
+    "summary": "Wall Street opens a heavy week: the major banks report starting midweek, June CPI and Fed Chair Warsh's testimony land Tuesday, and futures now lean toward a September rate hike rather than a cut. Chip stocks gave back Friday's record-listing pop, oil stayed jumpy on Middle East tension, and a slow storm system pushed damaging weather and flood watches across the Carolinas through Monday.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-13.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "The changelog is frozen at 2.1.207 (Jul 11) for a second day running, so there is nothing new to act on today.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-13.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-13",
+    "title": "No new model over the weekend — the action moved to governance and cheap open-weight coding",
+    "summary": "A quiet Monday after a loud launch week: no fresh frontier drop, and the signal is in the layers around the models. Washington is close to a voluntary review regime for frontier releases, and open-weight coding models are landing in mainstream tooling like GitHub Copilot as the price of the 'smart' tier keeps falling.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-13.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-13",
+    "title": "Storm week is call-overflow week: point Front Desk at the trades and package cheap AI video",
+    "summary": "A quiet news Monday hands Nash local, fast-cash plays. The Carolina storms are driving a call spike into local trades right now, so aim TSD Front Desk at overflow this week; ride the AI-video funding boom by selling short promo clips to existing web clients; and turn the open-weight coding drop into a budget build tier and fatter retainer margins.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-07-13.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-13",
+    "title": "No new stack CVE this window, chip stocks give back Friday's pop, and China's Sora rival banks $2.8B",
+    "summary": "Nothing new hit the Next.js/Vercel stack over the weekend, but the standing April DoS CVE is still the one to confirm patched. The chip selloff resumed Monday as SK Hynix and Micron gave back gains, Kling AI closed a ~$2.8B round to chase Sora, and a startup started test-fabbing semiconductors in orbit.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-13.html"
   },
   {
     "source": "america",

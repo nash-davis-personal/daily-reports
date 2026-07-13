@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-13" />
+  <meta name="report:title" content="No new stack CVE this window, chip stocks give back Friday's pop, and China's Sora rival banks $2.8B" />
+  <meta name="report:summary" content="Nothing new hit the Next.js/Vercel stack over the weekend, but the standing April DoS CVE is still the one to confirm patched. The chip selloff resumed Monday as SK Hynix and Micron gave back gains, Kling AI closed a ~$2.8B round to chase Sora, and a startup started test-fabbing semiconductors in orbit." />
+  <meta name="report:highlights" content="4" />
+
+  <title>No new stack CVE this window, chip stocks give back Friday's pop, and China's Sora rival banks $2.8B — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#0d9488; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, July 13, 2026</span>
+        <span>◆</span><span>Window: Jul 12 → Jul 13</span>
+      </div>
+      <h1>No new stack CVE this window — but keep the April DoS patch confirmed</h1>
+      <p class="standfirst">The ground under Nash's stack held still over the weekend: no fresh Next.js, Vercel, React, Tailwind, or Supabase advisory. The moving stories are around the silicon and the money on it — chip stocks handed back Friday's SK Hynix pop, China's Kling AI banked ~$2.8B to chase Sora, and a startup began test-fabricating semiconductors in orbit.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Stack status first, then the wider field</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack: no new advisory</h4><p>No fresh Next.js/Vercel/React/Supabase CVE this window. The standing item is still the April App Router DoS — confirm it's patched.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Chip stocks reverse</h4><p>SK Hynix's US shares fell ~8% Monday after Friday's debut pop, with Micron down ~5% and SanDisk down ~6%.</p></div>
+        <div class="signal"><div class="n">03</div><h4>China's Sora rival funds up</h4><p>Kuaishou's Kling AI closed a ~$2.8B round from Alibaba, Tencent, and Baidu at a ~$15B pre-money valuation.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chip fabs, in space</h4><p>Besxar flew semiconductor-manufacturing test beds on a Falcon 9, booking 12 flights to test space-based "Fabships."</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch check</span>
+            <span class="ver">CVE-2026-23869 · disclosed Apr 8</span>
+            <h3>No new Next.js/Vercel advisory — but the April DoS is still the one to verify</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new hit Nash's stack this window. The load-bearing item remains CVE-2026-23869, the high-severity (CVSS 7.5) React Server Components denial-of-service where a crafted HTTP request to any App Router Server Function endpoint can trigger runaway CPU on deserialization. It affects Next.js 13.x through 16.x on the App Router and is fixed in <b>15.5.15</b> (for 15.0.0+) and <b>16.2.3</b> (for 16.0.0+). Vercel's WAF auto-mitigates hosted projects, but Vercel's own guidance is not to rely on the WAF — the upgrade is the fix.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two-minute job. Run <code>npx next --version</code> across every client repo; anything on the App Router below 15.5.15 or 16.2.3 gets bumped and redeployed today. Self-hosted client apps (not on Vercel's WAF) are the priority — they have no automatic mitigation.</p>
+          <div class="refs">
+            <a href="https://vercel.com/changelog/summary-of-cve-2026-23869" target="_blank" rel="noopener">Vercel: CVE-2026-23869 summary</a>
+            <a href="https://github.com/vercel/next.js/security/advisories/GHSA-q4gf-8mx6-v5v3" target="_blank" rel="noopener">GitHub advisory</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon &amp; the money on it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Mon, Jul 13</span>
+            <h3>Chip stocks give back Friday's record-listing pop</h3>
+          </div>
+          <div class="story-body">
+            <p>The semiconductor trade cooled hard to start the week. US-listed shares of SK Hynix fell about 8% Monday after Friday's Nasdaq debut — the largest-ever US listing by a foreign company at $26.5B raised — sent them soaring. Micron dropped roughly 5% and SanDisk about 6% alongside it. Index futures were mixed to modestly higher early, but memory and storage names led the pullback.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action. It is a reminder that the AI-infrastructure trade is now volatile enough to swing 8% in a session, which is the backdrop for why clients are cost-conscious right now. Nash's edge is selling the outcome, so the underlying chip price swings do not touch his margins.</p>
+          <div class="refs">
+            <a href="https://finance.yahoo.com/markets/stocks/articles/us-stock-market-today-p-081032919.html" target="_blank" rel="noopener">Yahoo Finance: US markets</a>
+            <a href="https://www.cnbc.com/2026/07/12/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC market live blog</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Filed Jul 2</span>
+            <h3>Kling AI banks ~$2.8B to chase Sora</h3>
+          </div>
+          <div class="story-body">
+            <p>Kuaishou disclosed in a Hong Kong exchange filing that investors committed over 19B yuan (~$2.8B) to its Kling AI video unit at a ~$15B pre-money valuation, with the round capped near $3B and a post-money around $18B. Backers include Alibaba, Tencent, Baidu, and Abu Dhabi's BlueFive Capital. Reporting pegged Kling's annualized revenue climbing from roughly $240M to $500M in three months, and the raise dilutes the parent's stake to about 68%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> AI video generation is now a real, revenue-backed market, not a demo. Cheap, capable video and image tools (Kling, plus Google's Video Remix and Meta's Muse) put a "short promo clip / social reel" add-on within reach for TSD's existing web clients — Nash already has the media pipeline to package and deliver it.</p>
+          <div class="refs">
+            <a href="https://techstartups.com/2026/07/03/kling-ai-raises-2-8b-at-15b-valuation-with-backing-from-alibaba-tencent-and-baidu/" target="_blank" rel="noopener">Tech Startups</a>
+            <a href="https://www.cnbc.com/2026/07/03/kuaishou-shares-fall-after-securing-tencent-funding-for-kling-ai.html" target="_blank" rel="noopener">CNBC</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deep tech quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Besxar flew semiconductor-manufacturing test beds on a Falcon 9 with Starlink, booking 12 flights to test orbital "Fabships" that use the vacuum of space to make ultra-pure substrates. <span class="ver">Jul 4</span></span></li>
+            <li><span class="tag improve qh-tag">Robotics</span><span class="txt">Signaloid previewed an ASIC for Physical AI and robotics that accelerates uncertainty-aware computation for autonomous systems in unpredictable environments. <span class="ver">Jul</span></span></li>
+            <li><span class="tag improve qh-tag">Space</span><span class="txt">China's Tianwen-2 mission is expected to rendezvous with a near-Earth asteroid this month, carrying spectrometers, a magnetometer, and a dust analyzer. <span class="ver">Jul</span></span></li>
+            <li><span class="tag new qh-tag">IPO</span><span class="txt">A humanoid-robotics company is going public, though its CEO is not promising a robot in your home anytime soon. <span class="ver">Jul 5</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
