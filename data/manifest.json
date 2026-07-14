@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-14",
+    "title": "Freeze breaks: a big speed-and-stability drop for long-running agents",
+    "summary": "After two quiet days, 2.1.208 and 2.1.209 landed a large batch of performance, memory, and tool-correctness fixes that matter most if you run long or background Claude Code sessions.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-07-14.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

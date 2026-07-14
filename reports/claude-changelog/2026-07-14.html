@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-14" />
+  <meta name="report:title" content="Freeze breaks: a big speed-and-stability drop for long-running agents" />
+  <meta name="report:summary" content="After two quiet days, 2.1.208 and 2.1.209 landed a large batch of performance, memory, and tool-correctness fixes that matter most if you run long or background Claude Code sessions." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Freeze breaks: a big speed-and-stability drop for long-running agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, July 14, 2026</span>
+        <span>◆</span><span>2.1.208–2.1.209 ◆ Jul 14</span>
+      </div>
+      <h1>Freeze breaks: a big speed-and-stability drop for long-running agents</h1>
+      <p class="standfirst">Nothing shipped for two days, then 2.1.208 dropped one of the largest fix batches in weeks and 2.1.209 patched a regression from it hours later. Almost all of it is plumbing — throughput, memory, and making the agent's own file tools stop returning silently-wrong results.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases since 2.1.207 (Jul 11)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">new releases (2.1.208–.209)</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">top signals</div></div>
+      <div class="stat"><div class="num">7×</div><div class="lbl">faster MCP tool rounds</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS (4–6) ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>7× faster tool rounds</h4><p>Caching the tool pool cut per-tool-call overhead in print/SDK sessions with many MCP tools by up to 7×.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Long-session leaks closed</h4><p>Several memory leaks fixed and edit-heavy transcripts shrink up to 79× — your overnight loops stop bloating.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Edit survives file churn</h4><p>The Edit tool no longer errors when a file changed after you read it, as long as the target text still matches uniquely.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Grep/Read/Glob stop lying</h4><p>Invalid regex now errors instead of "No files found", and Grep stops under-counting paginated results.</p></div>
+        <div class="signal"><div class="n">05</div><h4>rm -rf guard plugs a hole</h4><p>Catastrophic removals hidden in <code>$(…)</code>/backticks now prompt even under auto mode and skip-permissions.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Background agents get trustworthy</h4><p>Completed runs stay in <code>/tasks</code>, attaching is instant, and a mid-request GOAWAY no longer crashes the session.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Throughput &amp; context cost</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.208</span>
+            <h3>Tool rounds up to 7× faster in MCP-heavy headless sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Print and SDK sessions used to reassemble the whole tool pool on every call; that assembly is now cached, cutting per-tool-call CPU by up to 7× at high MCP-tool counts. A separate fix compiles permission deny/ask matchers once instead of per turn, killing the multi-second per-turn slowdowns that hit sessions carrying many rules.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every one of your headless jobs — this scout run, the vault refresh, the portal syncs — carries a big MCP surface. This is a wall-clock win with zero config; just update and the automations get quicker.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.208</span>
+            <h3>Release notes stop dumping the whole changelog into context</h3>
+          </div>
+          <div class="story-body">
+            <p>The "Show all" action in <code>/release-notes</code> was injecting the entire changelog into every subsequent request, silently inflating token cost for the rest of the session. It no longer does. In the same release, very large markdown tables (over 200 rows) that used to stall rendering now show the first 200 with a "… N more rows" notice.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cheaper turns and no mystery context bloat after you glance at what shipped. If you ever noticed a session get sluggish and expensive after opening release notes, that was this.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The agent's own file tools stopped lying</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.208</span>
+            <h3>Edit no longer dies when a file changes after it was read</h3>
+          </div>
+          <div class="story-body">
+            <p>If a file was modified after Claude read it but the target text still matched uniquely, the Edit tool used to fail outright. It now applies the edit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer dead-ends mid-build when a formatter, Vite HMR, or a parallel agent rewrites a file you're editing on a Bisque or Studio C job. One less reason a run stalls and needs babysitting.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.208</span>
+            <h3>Grep, Read, and Glob stop returning silently-wrong results</h3>
+          </div>
+          <div class="story-body">
+            <p>Grep was returning "No files found" for an invalid regex, under-reporting totals in count mode when results paginated, Read was reporting empty files as "shorter than offset", and Glob crashed with an unclear error on a null byte in the pattern or path. All now return correct results or a clear error. The Agent tool also now fails with a named error when a subagent's <code>tools</code> list resolves to nothing, instead of launching with no tools.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These are the tools your agents make decisions on. A silently-wrong grep count is more dangerous than a crash — the agent acts on the wrong number and you never see it. This closes that whole class.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long-running &amp; background sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.208</span>
+            <h3>Memory leaks closed; edit-heavy transcripts shrink up to 79×</h3>
+          </div>
+          <div class="story-body">
+            <p>Several long-session leaks are fixed: MCP stdio server stderr accumulating up to 64 MB per server, LSP documents staying open forever (now LRU-capped at 50), async hook output retained after backgrounding, and unbounded growth in headless/SDK sessions from large tool-result payloads. Session transcript size drops up to 79× in edit-heavy sessions, and checkpoint disk usage is bounded by pruning superseded file-history backups.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your unattended loops run for hours and edit constantly. This is the difference between a loop that quietly OOMs or fills the disk overnight and one that finishes. Directly de-risks anything you leave running via <code>claude agents</code> or the scheduler.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.208–.209</span>
+            <h3>Background agents become dependable</h3>
+          </div>
+          <div class="story-body">
+            <p>Completed background agents now stay listed in <code>/tasks</code> until cleanup instead of vanishing the moment they finish; attaching to a stopped agent shows its transcript immediately rather than a blank "Session is starting" screen; a server closing an HTTP/2 connection with a GOAWAY mid-request no longer crashes supervised and background sessions; replies typed to a background agent survive a failed delivery and get sent on restart; and the false "100% context used" flash after an auto-update is gone. Then 2.1.209 un-blocked <code>/model</code> and other dialogs inside <code>claude agents</code> background sessions, reverting an overly broad guard from 2.1.208.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background agents are how you scale past a single terminal. This batch makes them stable enough to trust with real work — but note 2.1.209 was a same-day patch to 2.1.208, so update straight to .209 and skip .208.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208, 2.1.209</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Safety when running unattended</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.208</span>
+            <h3>The rm -rf guard now fires inside <code>$(…)</code> and backticks</h3>
+          </div>
+          <div class="story-body">
+            <p>Catastrophic removals like <code>rm -rf ~</code> wrapped in <code>$(…)</code>, backticks, or <code>&lt;(…)</code> now trigger the same confirmation prompt under <code>--dangerously-skip-permissions</code> and auto mode that the plain form already triggered. Previously the guard only matched the bare command, so a wrapped one slipped through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run any loop in auto mode, this is a real guardrail against a generated command nuking your home dir. It still only prompts — it does not hard-block — so keep destructive loops sandboxed to a worktree regardless.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog · 2.1.208</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fast mode now auto-restores when you switch back to a model that supports it, instead of staying off. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">New <code>vimInsertModeRemaps</code> setting maps two-key insert-mode sequences like <code>jj</code> to Escape. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>CLAUDE_CODE_MAX_OUTPUT_TOKENS</code> and similar env vars stop reading <code>1e6</code> as <code>1</code> (scientific-notation mantissa bug). <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">stream-json / <code>claude -p</code>: truncated output on large piped responses, blank CRLF lines killing the session, and a non-string <code>set_model</code> hanging headless sessions all fixed. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Screen reader mode: opt-in plain-text rendering via <code>--ax-screen-reader</code> or <code>CLAUDE_AX_SCREEN_READER=1</code>. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Mouse-click support for multi-select menus and "Other" input rows in fullscreen mode. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>apiKeyHelper</code> script failures now show the real error within 3 attempts instead of a generic 401 after ~10 silent retries. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/usage</code> shows last-known bars with an "as of" note when rate-limited; <code>/mcp</code> reclassifies placeholder servers after config edits. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Repeated "No completion record was found" notices on resume now collapse into a single summary. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The workflow save dialog now points at your <code>CLAUDE_CONFIG_DIR</code> location for user-scope saves. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Edit read cache bounded to 16 MB instead of pinning up to 1,000 full files. <span class="ver">2.1.208</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_PROCESS_WRAPPER</code>: route every Claude Code self-spawn through a required corporate launcher (enterprise). <span class="ver">2.1.208</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
