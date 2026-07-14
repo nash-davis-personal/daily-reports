@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-14" />
+  <meta name="report:title" content="Patch Next.js before the July 20 security drop; TSMC and Meta show the AI buildout is all silicon" />
+  <meta name="report:summary" content="Vercel's next Next.js security release is due July 20, so confirm your apps are on the patched line now — the App Router RSC denial-of-service issue reaches Next 16. Underneath it, TSMC posted record Q2 revenue up 36% and Meta moved its custom Iris chip toward September production, while fresh breaches at Progress ShareFile and a US lab reset the reminder to check your vendors." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js before the July 20 security drop; the AI buildout is all silicon — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#0d9488; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, July 14, 2026</span>
+        <span>◆</span><span>Window: Jul 13 → Jul 14</span>
+      </div>
+      <h1>Patch Next.js before July 20; the AI buildout is all silicon now</h1>
+      <p class="standfirst">Vercel's next coordinated Next.js security release is scheduled for July 20 — a good prompt to confirm every TSD app is already on the patched line, because the App Router denial-of-service issue from the last round reaches Next 16. Away from the framework, today's tech story is hardware: TSMC posted record quarterly revenue on AI demand, Meta pushed its own Iris chip toward September production, and two fresh breaches reset the reminder to audit your vendors.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Stack security first, then the silicon and the breaches</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- Optional stat strip -->
+    <div class="stats">
+      <div class="stat"><div class="num">Jul 20</div><div class="lbl">Next.js security release due</div></div>
+      <div class="stat"><div class="num">+36%</div><div class="lbl">TSMC Q2 revenue, YoY</div></div>
+      <div class="stat"><div class="num">540K</div><div class="lbl">People hit in the Centers Lab breach</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security drop lands July 20</h4><p>Vercel scheduled its next coordinated security release; the prior round patched 13 advisories including an App Router RSC denial-of-service that affects Next 13.x–16.x.</p></div>
+        <div class="signal"><div class="n">02</div><h4>TSMC posts record revenue</h4><p>Q2 came in at NT$1.27T (~$39.6B), up 36% year over year, on AI chip demand from Nvidia and Apple clients.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Meta's Iris chip nears production</h4><p>Meta plans a September manufacturing start for its custom TSMC-built data-center chip, part of up to $145B in AI infrastructure spend this year.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Two breaches worth noting</h4><p>Progress ShareFile disabled accounts over a credible external threat; a US lab (Centers) breach exposed 540,000 people's health data.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Defense AI hits $18B</h4><p>Europe's Helsing raised a €1.8B Series E at an $18B valuation for autonomous drones and battlefield intelligence.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack — act on this</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Release due Jul 20 · advisories from May 2026</span>
+            <h3>Confirm your Next.js apps are patched before the next drop</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's next coordinated Next.js security release is due July 20. The last coordinated round shipped 13 advisories spanning denial of service, middleware/proxy bypass, SSRF, cache poisoning and XSS. The one most likely to touch TSD: <b>CVE-2026-23870</b>, a high-severity denial of service in React Server Components that hits App Router deployments across Next 13.x, 14.x, 15.x and 16.x — a crafted request to a Server Function endpoint can spike CPU and take the app down. Two others to know: <b>CVE-2026-44578</b> (SSRF via crafted WebSocket upgrade on self-hosted Node) and <b>CVE-2026-44573</b> (middleware-auth bypass on the Pages Router with i18n).</p>
+            <p>TSD's Next 16 apps run App Router, so the RSC DoS is the relevant one. The middleware-bypass CVE targets middleware-based auth on the Pages Router — TSD's proxy.ts pattern isn't that setup, so that one is lower concern.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Today: run <code>npm ls next</code> across your client repos and bump any App Router app to the latest patched Next release, then redeploy on Vercel. Put a reminder for July 20 to pull the next security release the day it lands. This is a five-minute check that prevents a client site going down to a single malicious request.</p></div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">vercel/next.js security advisories ↗</a> · <a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel — May 2026 security release ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The silicon buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">Q2 2026</span>
+            <h3>TSMC posts record revenue on AI demand</h3>
+          </div>
+          <div class="story-body">
+            <p>Taiwan Semiconductor reported Q2 revenue of NT$1.27 trillion (about $39.6B), up 36% year over year, driven by AI accelerator orders from Nvidia and Apple-tied clients. TSMC is the single clearest read on whether the AI infrastructure boom is still accelerating — and this quarter says it is.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to build here, but it's the macro backdrop for your pitch: AI capability is compounding and getting cheaper at the model layer while demand at the chip layer keeps climbing. That's the "this isn't a fad" evidence for a hesitant SMB owner deciding whether to invest in an AI receptionist now.</p></div>
+          <div class="refs"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-14-2026" target="_blank" rel="noopener">buildfastwithai — Jul 14 2026 ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Production start ~Sept 2026</span>
+            <h3>Meta pushes its custom "Iris" chip toward production</h3>
+          </div>
+          <div class="story-body">
+            <p>Meta plans a September manufacturing start for Iris, its custom TSMC-built data-center chip (with Broadcom), aiming to scale compute to 14 gigawatts by 2027 as part of up to $145B in AI infrastructure spend this year. Every hyperscaler is now trying to own its silicon — the same move Anthropic is making with Samsung.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Custom silicon at the giants pushes inference cost down over the next few years, which quietly improves the margin on every AI product you resell. No action — just keep pricing AI retainers on today's API cost, knowing the trend is in your favor.</p></div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/13/top-tech-news-today-july-13-2026-apple-anthropic-blackstone-meta-openai-samsung-sharefile-more/" target="_blank" rel="noopener">Tech Startups — Jul 13 2026 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Breaches to know</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Incident</span>
+            <span class="ver">Jul 13</span>
+            <h3>Progress ShareFile disables accounts; a US lab loses 540K records</h3>
+          </div>
+          <div class="story-body">
+            <p>Progress disabled ShareFile customer accounts tied to on-premises Storage Zone Controllers after a credible external security threat, citing risk to confidential documents and credentials. Separately, Centers Laboratory disclosed a breach affecting 540,000 people, with the WorldLeaks extortion group claiming 720GB including patient identities, insurance and diagnostic data.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client uses ShareFile, forward the advisory and tell them to verify account status today. Broader point: this is the recurring proof for a security-hygiene add-on — dependency patching, credential rotation, backup checks — that Grant or Bishop can pitch to your existing SMB base as a low-lift monthly line item.</p></div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/13/top-tech-news-today-july-13-2026-apple-anthropic-blackstone-meta-openai-samsung-sharefile-more/" target="_blank" rel="noopener">Tech Startups — Jul 13 2026 ↗</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Also worth a glance</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Defense</span><span class="txt">Helsing raised a €1.8B Series E at an $18B valuation (Goldman, Dragoneer, Iconiq, CPPIB, JPMorgan) for autonomous drones and defense AI. <span class="ver">Jul 13</span></span></li>
+            <li><span class="tag new qh-tag">Energy</span><span class="txt">A Blackstone-led group (with Apollo and KKR vehicles) committed $5.34B to behind-the-meter power for data centers, tackling interconnection delays. <span class="ver">Jul 13</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Intel put €5B into its Leixlip, Ireland campus and regained full control of Fab 34; Samsung is accelerating a major fab by up to two years. <span class="ver">Jul 13</span></span></li>
+            <li><span class="tag fix qh-tag">Legal</span><span class="txt">Apple sued OpenAI and two former employees over allegedly transferred product-design and supplier secrets tied to OpenAI's consumer-device work. <span class="ver">Jul 13</span></span></li>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">China's Unitree Robotics won approval for a Shanghai STAR Market IPO that could raise ~$619M. <span class="ver">Jul 14</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

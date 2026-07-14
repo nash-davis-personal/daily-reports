@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-14",
+    "title": "June inflation report headlines the day as oil climbs and a new Fed chair heads to Congress",
+    "summary": "The June CPI print landed this morning as the week's pivotal data point, with forecasters expecting the headline rate to ease from 4.2% on a drop in June gasoline while core inflation stays near 2.9%. Oil pushed back toward $79 Brent on renewed tensions around the Strait of Hormuz, and Fed Chair Kevin Warsh begins his first monetary-policy testimony to Congress as a soft June jobs report clouds the rate outlook.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-14.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "After two quiet days, 2.1.208 and 2.1.209 landed a large batch of performance, memory, and tool-correctness fixes that matter most if you run long or background Claude Code sessions.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-14.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-14",
+    "title": "GPT-5.6 lands in Microsoft 365 Copilot; Anthropic lines up a Samsung chip and an October IPO",
+    "summary": "OpenAI's new GPT-5.6 family becomes the default model inside Word, Excel and PowerPoint, putting a frontier model in front of hundreds of millions of office seats. Anthropic is negotiating a custom Samsung AI chip and prepping an S-1 for an October IPO, while Google throttling Meta's Gemini access shows the real 2026 bottleneck is compute, not capability.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-14.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-14",
+    "title": "Sell what Copilot can't: the AI-in-Office moment is a wedge for TSD's receptionist and a security retainer",
+    "summary": "GPT-5.6 becoming the default inside Word and Excel commoditizes AI writing and hands TSD a cleaner pitch: sell the AI that answers the phone and the security that keeps the site up, not the AI that drafts memos. Today's shifts point to five fast, low-capital moves that ride the Office-AI reset, the July 20 Next.js security drop, and cheap Chinese image generation.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-14.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-14",
+    "title": "Patch Next.js before the July 20 security drop; TSMC and Meta show the AI buildout is all silicon",
+    "summary": "Vercel's next Next.js security release is due July 20, so confirm your apps are on the patched line now — the App Router RSC denial-of-service issue reaches Next 16. Underneath it, TSMC posted record Q2 revenue up 36% and Meta moved its custom Iris chip toward September production, while fresh breaches at Progress ShareFile and a US lab reset the reminder to check your vendors.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-14.html"
   },
   {
     "source": "america",
