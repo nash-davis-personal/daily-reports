@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-15",
+    "title": "2.1.210 hardens the parts of Claude Code your loops actually lean on",
+    "summary": "A single release, 2.1.210, but it patches worktree isolation, unattended hook stalls, and agent prompt-injection — exactly the surfaces a solo operator running scheduled worktree loops depends on.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-07-15.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

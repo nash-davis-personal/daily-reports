@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-15" />
+  <meta name="report:title" content="2.1.210 hardens the parts of Claude Code your loops actually lean on" />
+  <meta name="report:summary" content="A single release, 2.1.210, but it patches worktree isolation, unattended hook stalls, and agent prompt-injection — exactly the surfaces a solo operator running scheduled worktree loops depends on." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.210 hardens the parts of Claude Code your loops actually lean on — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, July 15, 2026</span>
+        <span>◆</span><span>New since last briefing: 2.1.210</span>
+      </div>
+      <h1>2.1.210 hardens the parts of Claude Code your loops actually lean on</h1>
+      <p class="standfirst">One release landed since yesterday's briefing, and it is almost entirely defensive: worktree isolation that could bleed into your main checkout, unattended hooks that silently stalled, and the agent tool's prompt-injection surface. If you run scheduled worktree loops — you do — this is the batch to take.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.210 (July 14), the one release after yesterday's report</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">New release (2.1.210)</div></div>
+      <div class="stat"><div class="num">33</div><div class="lbl">Line items in the release</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Top signals for TSD</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS (5) ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Worktree agents can no longer mutate your main checkout</h4><p><code>isolation: 'worktree'</code> subagents that were running git commands against the parent repo are now confined to their own worktree.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Unattended sessions stop stalling on hook timeouts</h4><p>A hook callback timeout was being reported to the model as a user rejection, which parked background loops waiting for input that never came.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Agent tool hardened against indirect prompt injection</h4><p>Content a subagent reads (web pages, client docs) can no longer smuggle instructions into the agent, and <code>ultracode</code> no longer fires on webhook or relayed-PR-comment input.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Dead worktree locks get swept automatically</h4><p>Killed background sessions were leaving permanent <code>git worktree lock</code> files; a periodic sweep now releases any lock whose owning process is gone.</p></div>
+        <div class="signal"><div class="n">05</div><h4>dataviz color validation got sharper</h4><p>The bundled chart skill now uses perceptual OKLab color difference and recalibrated color-blindness thresholds when it checks a palette.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent &amp; worktree isolation — the safety layer under your loops</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3>Worktree-isolated subagents were running git-mutating commands on the main repo</h3>
+          </div>
+          <div class="story-body">
+            <p>The whole point of <code>isolation: 'worktree'</code> is that an agent works on a throwaway copy and cannot touch your real branch. This release fixes a case where those subagents could run git-mutating commands against the main checkout instead of their own worktree — the exact failure mode that turns a "safe, isolated" loop into one that quietly rewrites live state.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Fleet Steward-style loops run in worktrees precisely so an unattended fix can't corrupt the working branch. Update to 2.1.210 before the next scheduled run — this closes the one hole that made that promise leaky.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3>Killed background sessions left permanent worktree locks behind</h3>
+          </div>
+          <div class="story-body">
+            <p>When a background session got killed mid-run, it could leave a <code>git worktree lock</code> that never cleared, blocking future worktree operations until you found and deleted it by hand. The periodic sweep now releases locks whose owning process is gone.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> One less way for a scheduled loop to wedge itself overnight and greet you with a stuck queue in the morning. If you've been manually clearing lock files, that chore is gone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3>Agent tool hardened against injection; <code>ultracode</code> stops firing on non-human input</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related hardening changes. The Agent tool is now hardened against indirect prompt injection through content a subagent reads — a page, a doc, a comment that tries to issue instructions. Separately, the <code>ultracode</code> keyword opt-in no longer triggers on non-human-originated input like webhook payloads and relayed PR comments, so external content can't kick off an expensive multi-agent run on its own.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your agents read client-supplied and web content constantly. This is the difference between "an agent summarized a sketchy page" and "an agent followed a sketchy page's instructions." Take it, and keep treating anything an agent reads as data, never commands.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3>The model no longer assumes a backgrounded <code>cd</code> took effect</h3>
+          </div>
+          <div class="story-body">
+            <p>When a command containing a <code>cd</code> got moved to the background, Claude used to assume the directory change had landed. The tool result now states plainly that the working directory is unchanged, so the model stops issuing follow-up commands against a path it never actually moved into.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer silent wrong-directory mistakes in multi-repo sessions. Small, but it's the kind of bug that produces confidently-wrong output in an unattended run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended &amp; background reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3>Hook timeouts were misread as user rejections, stalling unattended sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>A hook callback that timed out was being reported to the model as if the user had rejected the action. In an interactive session that's a shrug; in an unattended one it made the session stop and wait for input that was never coming. Fixed so a timeout reads as a timeout.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the failure mode for scheduled work like this very briefing job — a slow hook could silently park the whole run. If you've seen loops mysteriously "finish" having done nothing, this is a prime suspect.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.210</span>
+            <h3><code>claude attach</code> stops failing during session transitions; <code>--effort ultracode</code> reaches dispatched sessions</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude attach</code> was throwing "job not found" or "agent is still starting" while a session was in transition — it now waits for the daemon to settle, and a terminal resize during a slow attach is applied once it completes. Separately, <code>claude agents --effort ultracode</code> was silently dropping that value before it reached the dispatched session; it now carries through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you drive background agents from the CLI, attaching is less flaky and the effort level you set is the effort level you get. Worth confirming your dispatch scripts were not quietly running at default effort.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.210</span>
+            <h3>Auto mode pins Sonnet 5 as the permission classifier for external sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode's permission classifier now defaults to Sonnet 5 for external sessions, validated on the session's first request and pinned for the rest of that session so the decision-maker doesn't drift mid-run.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> More predictable auto-mode behavior if you lean on it for hands-off runs. Still verify the permission rules themselves — a consistent classifier only helps if it's classifying against the right allow/deny set.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Authoring, charts &amp; day-to-day correctness</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.210</span>
+            <h3>dataviz skill validates chart colors with perceptual OKLab difference</h3>
+          </div>
+          <div class="story-body">
+            <p>The bundled dataviz skill now checks palettes using perceptual OKLab color difference and recalibrated color-blindness thresholds, so "these series are distinguishable" is judged the way an eye actually sees it, not by raw RGB distance.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly useful for the client dashboards you ship — Bisque, Studio C, Sonderwerks all get charts. Better palette validation means fewer "these two lines look identical" complaints, including from color-blind viewers.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.210</span>
+            <h3>Memory writes error loudly when MEMORY.md blows past its read limit</h3>
+          </div>
+          <div class="story-body">
+            <p>A memory write that would leave <code>MEMORY.md</code> over its read limit now produces an explicit error instead of silently truncating the index. On the same theme, unmatched <code>$1</code>/<code>$2</code> positional placeholders in skills and commands are now preserved verbatim rather than being silently stripped.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a file-based memory index. Silent truncation there is the worst kind of bug — it loses context without telling you. An explicit error means you find out while you can still fix it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.210</span>
+            <h3>Startup now warns on <code>Write(path)</code>, <code>NotebookEdit(path)</code>, <code>Glob(path)</code> permission rules</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code now flags those path-scoped permission rules at startup and points you at <code>Edit(path)</code> or <code>Read(path)</code> instead — the forms that actually behave the way most people intend when they scope a rule to a path.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If your <code>settings.json</code> has any of those three, expect a nudge on next launch. Cheap chance to clean up permission rules that may not be matching what you think they match.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog · 2.1.210</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Collapsed tool summaries now show a live elapsed-time counter so long-running calls tick instead of looking stuck <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Paste markers no longer leak into external editors as stray È/É characters around pasted text <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Session crash fixed when a tool's result renderer returned a bigint or plain text instead of a UI element <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin-provided MCP servers no longer torn down when MCP servers re-sync mid-session <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plan approvals without edits no longer mislabeled "(edited by user)" or overwritten with a stale snapshot <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Grep content mode no longer claims "No matches found" when paginating past the end of results <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin cache no longer leaves temp files behind on failure or fails on locked-file renames on Windows/network filesystems <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background workers no longer crash-loop when a client resets its connection to the background service <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">SDK MCP servers registered via an <code>initialize</code> control request now start connecting immediately instead of next turn <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Late-appearing <code>.claude/*</code> symlinks now reconciled into the sandbox deny-write list <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Bash/PowerShell timeout message now distinguishes an auto-backgrounded hang from an explicit background request <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rendered text fragment no longer leaks into crash telemetry when a component returns unstyled content <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agents view: pressing ← no longer drops the task tracker, and the row you came from stays marked after hover/arrow moves <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agents dashboard no longer retains pasted images from abandoned reply drafts after a session is deleted <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agents view no longer leaves overlapping ghost frames under <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code> <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/doctor</code> no longer skips its auto-mode-default proposal on Bedrock, Vertex, and Foundry <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Agents footer now shows how many background agents are waiting on your input, with a brief color emphasis when the count changes <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Screen reader mode now announces permission mode changes aloud when cycling with Shift+Tab <span class="ver">2.1.210</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fable temporarily shows as unavailable in the advisor picker while a server-side Fable-advisor issue is fixed <span class="ver">2.1.210</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
