@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-15",
+    "title": "Big banks beat, inflation cools, and a second heat dome puts 125M+ Americans under alerts",
+    "summary": "Earnings season opened strong: JPMorgan, Goldman Sachs, and Bank of America all beat Q2 estimates. June CPI came in cooler than expected — down 0.4% on the month, 3.5% annual — with wholesale PPI data due today. The Fed is widely expected to hold rates at 3.50–3.75% at month-end. Meanwhile a second major heat dome has more than 125 million people under heat alerts, with flash-flood risk in Texas Hill Country.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-15.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "A single release, 2.1.210, but it patches worktree isolation, unattended hook stalls, and agent prompt-injection — exactly the surfaces a solo operator running scheduled worktree loops depends on.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-07-15.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-15",
+    "title": "A quiet model day, a loud governance day: Hassabis wants a US-led AI watchdog while Anthropic keeps stacking compute talent",
+    "summary": "No new frontier weights shipped in the last 24 hours — the action moved to governance and compute. Demis Hassabis published a manifesto calling for a US-led, FINRA-style body to screen frontier models before release, Anthropic pulled Monzo's Tom Blomfield onto its compute team, and Gemini 3.5 Pro is still on deck for July 17. If you're picking a model this week, wait two days.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-15.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-15",
+    "title": "Patch Week is a paid retainer, and a heat dome just made HVAC overflow-call capture an easy local sell",
+    "summary": "Two dated catalysts you can monetize this week: a Next.js security release drops July 20 and Microsoft just shipped a record Patch Tuesday, which turns 'we keep you patched' into a recurring managed-maintenance offer — and a second heat dome is slamming Charlotte-area home-services shops with more calls than they can answer, which is exactly what TSD Front Desk is for. Plus a closing window on Meta's Business Agent before Aug 1 billing.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-15.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-15",
+    "title": "Patch week: a Next.js security release lands Jul 20, Microsoft fixes a record ~570 flaws with two exploited zero-days",
+    "summary": "It's a security-first day. Next.js has a scheduled security release for July 20 covering 16.2 and 15.5 (4 high, 5 medium) — plan the upgrade now. Microsoft's July Patch Tuesday fixed a record ~570 vulnerabilities including two actively exploited zero-days in AD FS and SharePoint, and SonicWall disclosed unauthenticated RCE zero-days in SMA1000. Underneath it all, a memory-chip supercycle and Meta's new compute cloud keep reshaping the buildout.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-15.html"
   },
   {
     "source": "america",

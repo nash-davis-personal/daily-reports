@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-07-15" />
+  <meta name="report:title" content="A quiet model day, a loud governance day: Hassabis wants a US-led AI watchdog while Anthropic keeps stacking compute talent" />
+  <meta name="report:summary" content="No new frontier weights shipped in the last 24 hours — the action moved to governance and compute. Demis Hassabis published a manifesto calling for a US-led, FINRA-style body to screen frontier models before release, Anthropic pulled Monzo's Tom Blomfield onto its compute team, and Gemini 3.5 Pro is still on deck for July 17. If you're picking a model this week, wait two days." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A quiet model day, a loud governance day — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.axios.com/2026/07/14/demis-hassabis-ai-regulation-google-deepmind" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#7c3aed; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, July 15, 2026</span>
+        <span>◆</span><span>Window: Jul 14 → Jul 15</span>
+      </div>
+      <h1>A quiet model day, a loud governance day</h1>
+      <p class="standfirst">Nobody shipped new frontier weights in the last 24 hours — GPT-5.6 landed a week ago, Sonnet 5 two weeks back, and Gemini 3.5 Pro is still two days out. So the news moved to the two things that actually gate the frontier now: rules and compute. Demis Hassabis dropped a manifesto arguing the US should run a FINRA-style body that screens every frontier model before launch, and Anthropic quietly pulled another marquee operator onto the team that keeps Claude's GPUs fed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Governance and compute, not a benchmark day</span>
+        <span>◆</span><a href="https://www.axios.com/2026/07/14/demis-hassabis-ai-regulation-google-deepmind" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">30 days</div><div class="lbl">Pre-release window Hassabis proposes for model screening</div></div>
+      <div class="stat"><div class="num">Jul 17</div><div class="lbl">Gemini 3.5 Pro still expected</div></div>
+      <div class="stat"><div class="num">C+</div><div class="lbl">Top grade in the new FLI Safety Index (Anthropic)</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hassabis wants a US-led AI watchdog</h4><p>Google DeepMind's CEO published a manifesto proposing a FINRA-style body that screens frontier models — foreign or domestic, open or closed — up to 30 days before release.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Anthropic keeps poaching operators</h4><p>Monzo co-founder Tom Blomfield joined Anthropic's compute team, extending a 2026 hiring run that already bagged Karpathy and DeepMind's John Jumper.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Model releases went quiet</h4><p>No new frontier weights in 24 hours. The recent shipping — GPT-5.6, Sonnet 5, Grok 4.5 — has all been distribution and pricing, not raw capability jumps.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Gemini 3.5 Pro on deck (Jul 17)</h4><p>Google's rebuilt flagship is still expected Friday. Specs stay unconfirmed. If you're locking a model into a client build, hold two days.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Compute is the whole game</h4><p>Anthropic's hires, South Korea's $880B chip bet, and Meta's new compute cloud all say the same thing: the 2026 constraint is silicon and power, not ideas.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Governance moves to the front</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Policy</span>
+            <span class="ver">Jul 14 · manifesto</span>
+            <h3>Hassabis calls for a US-led, FINRA-style body to screen frontier models</h3>
+          </div>
+          <div class="story-body">
+            <p>Demis Hassabis — Nobel laureate, Google DeepMind CEO — published a personal manifesto, "A Framework for Frontier AI and the Dawning of a New Age," proposing that the US stand up an industry-funded standards body modeled on FINRA, the private watchdog that polices Wall Street under SEC oversight. Frontier labs would voluntarily submit models up to 30 days before release for testing that probes dangerous cyber, biological, and "deception" capabilities, with a majority-independent board of Turing Award winners and other experts, plus industry, government, and open-source seats. He wants it operating before the end of 2026.</p>
+            <p>The tell isn't the specifics — it's who's saying it. When the head of a top-three lab argues out loud for mandatory pre-release screening of "all frontier-class models, no matter their country of origin or whether they are open or closed," the industry is signaling that self-policing is running out of runway.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing changes what you can ship today, but the direction matters. If pre-release model screening becomes real, expect slower launches and more documentation from the labs you build on — and more SMB clients asking "is this AI safe / compliant?" Start keeping a one-page note per client on which model powers their product and why; that answer becomes a sales asset the moment regulation gives it teeth.</p></div>
+          <div class="refs"><a href="https://www.axios.com/2026/07/14/demis-hassabis-ai-regulation-google-deepmind" target="_blank" rel="noopener">Axios — Hassabis calls for a US-led AI watchdog, Jul 14 2026 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The talent-and-compute race</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hire</span>
+            <span class="ver">Confirmed Jul 13</span>
+            <h3>Anthropic pulls Monzo's Tom Blomfield onto its compute team</h3>
+          </div>
+          <div class="story-body">
+            <p>Tom Blomfield — co-founder and former CEO of UK digital bank Monzo — confirmed on X that he's joining Anthropic's compute team, taking leave from his general-partner role at Y Combinator. He'll work under co-founder and chief compute officer Tom Brown on the infrastructure that trains and serves Claude. It's the latest in a 2026 hiring run that already landed OpenAI co-founder Andrej Karpathy (pre-training), DeepMind's John Jumper, and ex-Azure exec Eric Boyd.</p>
+            <p>Reading the pattern: Anthropic is loading its bench on the two axes that decide the next 18 months — pre-training research and raw compute logistics. Putting a serial operator on the compute team, not the model team, says the bottleneck they're most worried about is getting and running chips.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The lab whose API your whole stack rides is aggressively hardening its supply of compute and talent. That's stability, not risk, for a shop standing on Claude — and a hint that Claude capacity and pricing keep improving over time. Keep building on it, and keep a fallback model wired into anything client-facing anyway.</p></div>
+          <div class="refs"><a href="https://techfundingnews.com/monzo-co-founder-tom-blomfield-takes-leave-from-y-combinator-to-join-anthropic/" target="_blank" rel="noopener">TechFundingNews — Blomfield joins Anthropic, Jul 2026 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> On deck &amp; the model lull</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Upcoming</span>
+            <span class="ver">Expected Jul 17</span>
+            <h3>Gemini 3.5 Pro is still two days out — hold model decisions</h3>
+          </div>
+          <div class="story-body">
+            <p>Google's next flagship, Gemini 3.5 Pro, is still targeted for July 17 after a full architectural rebuild that reportedly scrapped the 2.5 Pro base to chase better math reasoning, SVG generation, and image quality. Every headline spec — the rumored 2M-token context, pricing, benchmark scores — remains unconfirmed until Google publishes a model card. As of early July the public API still lists gemini-3.5-flash and gemini-3.1-pro-preview, not a GA 3.5 Pro.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same call as last week, now with a deadline: if you're about to lock a model into TSD Concierge or Front Desk, wait until Friday. A genuinely larger context window can let you stuff more of a client's catalog straight into the prompt and skip building a heavier RAG pipeline — that's a build you'd rather simplify than over-engineer.</p></div>
+          <div class="refs"><a href="https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm" target="_blank" rel="noopener">TechTimes — Gemini 3.5 Pro targets Jul 17, specs unconfirmed ↗</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Also worth a glance</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Compute</span><span class="txt">South Korea is coordinating ~$880B of private investment (Samsung, SK Hynix, Naver) into chips, robotics, and AI data centers over ten years — a national bet that the next AI race is won in hardware. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Safety</span><span class="txt">The Future of Life Institute's Summer 2026 AI Safety Index put Anthropic on top — with a grade of just C+. No lab earned an A or B; OpenAI and Google DeepMind got C's, Meta a D+. <span class="ver">Jul 7</span></span></li>
+            <li><span class="tag new qh-tag">Cloud</span><span class="txt">Meta launched Meta Compute, a cloud business selling GPU capacity, hosted Llama models, and agent tooling — reportedly aiming to undercut AWS and Azure by 20–30% on its custom MTIA chips. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag feature qh-tag">Robotics</span><span class="txt">Unitree is finalizing a Shanghai IPO (reported target ~$7B valuation) as soon as late July, after unveiling the GD01, a $650K manned transforming mecha — China's robotics capital wave keeps building. <span class="ver">Jul 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

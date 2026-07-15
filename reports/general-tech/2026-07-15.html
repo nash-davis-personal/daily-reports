@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-15" />
+  <meta name="report:title" content="Patch week: a Next.js security release lands Jul 20, Microsoft fixes a record ~570 flaws with two exploited zero-days" />
+  <meta name="report:summary" content="It's a security-first day. Next.js has a scheduled security release for July 20 covering 16.2 and 15.5 (4 high, 5 medium) — plan the upgrade now. Microsoft's July Patch Tuesday fixed a record ~570 vulnerabilities including two actively exploited zero-days in AD FS and SharePoint, and SonicWall disclosed unauthenticated RCE zero-days in SMA1000. Underneath it all, a memory-chip supercycle and Meta's new compute cloud keep reshaping the buildout." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch week: Next.js security release Jul 20, Microsoft's record Patch Tuesday — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, July 15, 2026</span>
+        <span>◆</span><span>Window: Jul 14 → Jul 15</span>
+      </div>
+      <h1>Patch week — and it hits your stack directly</h1>
+      <p class="standfirst">Two things you have to act on: Next.js has a scheduled security release for Sunday, July 20, patching 16.2 and 15.5 across four high and five medium issues — that's every client site you host. And Microsoft just shipped its largest-ever Patch Tuesday, a record ~570 fixes including two zero-days already being exploited in Active Directory and SharePoint. Below the security layer, a memory-chip supercycle and Meta's new compute cloud keep bending the whole buildout.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Security first, then the buildout</span>
+        <span>◆</span><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Jul 20</div><div class="lbl">Next.js security release (16.2 &amp; 15.5)</div></div>
+      <div class="stat"><div class="num">~570</div><div class="lbl">Microsoft Patch Tuesday fixes — a record</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Actively exploited MS zero-days (AD FS, SharePoint)</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security release Jul 20</h4><p>A scheduled release patches Next.js 16.2 and 15.5 — four high, five medium. Plan the client-site upgrade now so you're ready the day it drops.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Microsoft's record Patch Tuesday</h4><p>~570 CVEs fixed, including CVE-2026-56155 (AD FS) and CVE-2026-56164 (SharePoint) — both exploited in the wild — plus a BitLocker bypass.</p></div>
+        <div class="signal"><div class="n">03</div><h4>SonicWall SMA1000 zero-days</h4><p>Two unauthenticated RCE flaws (CVE-2026-15409/15410) in SonicWall's SMA1000 appliances — check if any client's remote access rides one.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Meta Compute goes after AWS/Azure</h4><p>Meta launched a cloud selling GPU capacity, hosted Llama, and agent tools — pitched to undercut the hyperscalers by 20–30% on custom silicon.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The memory supercycle is real</h4><p>AI demand for HBM and DDR5 is pushing DRAM equipment spend toward $37B in 2026 — a chip-industry boom that shows up later as pricier RAM and hosting.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this — your stack &amp; your clients</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">Release Jul 20 · Next.js 16.2 / 15.5</span>
+            <h3>A Next.js security release lands Sunday — get your upgrade path ready now</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js has a scheduled security release targeted for July 20, shipping patch releases for the 16.2 and 15.5 lines and fixing multiple issues — reported as four high and five medium severity. Per the Next.js security-release program, CVE details are published only once the patch is out, so the specifics land Sunday. This follows May's cluster of Server Components / App Router / Middleware fixes (DoS, SSRF, XSS, cache-poisoning), so the surface area is familiar.</p>
+            <p>Nothing to install yet — the point today is to be ready. Know which sites run 16.x versus 15.x, confirm your <code>proxy.ts</code> deployments are on a pinned version you can bump fast, and clear a maintenance window for Monday.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct patch instruction. Inventory every client site by Next.js major/minor today. When the release drops July 20, bump 16.x sites to the 16.2 patch and 15.x sites to 15.5, redeploy on Vercel, and smoke-test. This is also a clean reason to ping every client with a "we already patched you" note — free trust, and a natural lead-in to a managed-maintenance retainer.</p></div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Next.js — security release program ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Zero-day</span>
+            <span class="ver">Jul 14 · Patch Tuesday</span>
+            <h3>Microsoft fixes a record ~570 flaws, two already being exploited</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft's July 2026 Patch Tuesday is its largest ever — roughly 570 CVEs by most counts (some firms tally up to 622 including Chromium and mid-month updates), with three zero-days. Two are under active attack: <code>CVE-2026-56155</code>, an Active Directory Federation Services flaw that grants admin privileges, and <code>CVE-2026-56164</code>, an unauthenticated network-exploitable SharePoint privilege-escalation bug. A third, <code>CVE-2026-50661</code>, is a publicly disclosed BitLocker security-feature bypass. The release also rolls out a Kerberos encryption overhaul.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run AD FS or SharePoint, but plenty of your SMB clients' back offices do — and the AD FS bug is exactly how a small business gets its whole Microsoft 365 tenant taken over. If you touch any client's Windows/365 environment, tell them to apply July updates now, and never stand up a client integration against an unpatched on-prem SharePoint.</p></div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-july-2026-patch-tuesday-fixes-massive-570-flaws-3-zero-days/" target="_blank" rel="noopener">BleepingComputer — MS July 2026 Patch Tuesday ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The compute buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Cloud</span>
+            <span class="ver">Jul 2026</span>
+            <h3>Meta Compute enters the cloud market to sell AI power</h3>
+          </div>
+          <div class="story-body">
+            <p>Meta launched Meta Compute, a cloud business that sells GPU capacity, hosted Llama models, and AI-agent tooling to outside customers — its first real move to monetize AI infrastructure beyond advertising. Reports say Meta plans to lean on its custom MTIA chips and supply chain to undercut AWS and Azure by 20–30%. The launch rattled AI-compute stocks and puts a fourth serious bidder in a market that was effectively AWS, Azure, and Google Cloud.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> More cloud competition is good for a solo shop's cost base — cheaper GPU and hosted open models over time. You won't move off Vercel/Supabase for client sites, but a cheaper hosted-Llama tier is worth watching for the batch/back-office AI jobs where you don't need frontier Claude and want to protect margin.</p></div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-07-01/meta-is-building-a-cloud-business-to-sell-excess-ai-compute" target="_blank" rel="noopener">Bloomberg — Meta building a cloud business ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Semiconductors</span>
+            <span class="ver">Jul 14</span>
+            <h3>A memory supercycle is lifting chip and cybersecurity stocks</h3>
+          </div>
+          <div class="story-body">
+            <p>AI demand for high-bandwidth memory (HBM), DDR5, and storage is driving a capital-spending boom: DRAM equipment spending is forecast to hit ~$37B in 2026 and 3D NAND ~$14B. On July 14, cybersecurity and AI-chip stocks rallied (partly on strong signals around IBM) while some software names sold off — a market rotating toward the hardware and security layers of AI rather than the app layer.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The second-order effect reaches you: a memory supercycle means RAM, SSDs, and cloud instances get more expensive before they get cheaper. If you're spec'ing a self-hosted or VPS piece for a client, lock pricing and lean on serverless (Vercel/Supabase) where you're not eating hardware inflation directly.</p></div>
+          <div class="refs"><a href="https://www.fool.com/investing/2026/07/14/cybersecurity-and-ai-chip-stocks-are-soaring-while/" target="_blank" rel="noopener">Motley Fool — chip &amp; cyber stocks soar, Jul 14 2026 ↗</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Zero-day</span><span class="txt">SonicWall disclosed two SMA1000 flaws, <code>CVE-2026-15409</code> and <code>CVE-2026-15410</code>, exploitable for unauthenticated remote code execution — patch any SMA1000 remote-access appliance immediately. <span class="ver">Jul 15</span></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">The D1R group claimed to have stolen data from Synopsys and Bosch, threatening a leak absent a ransom; Japan's largest taxi company was knocked offline by a cyberattack that darkened dispatch systems. <span class="ver">Jul 14</span></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">Intel announced a €5B semiconductor manufacturing facility in Ireland, part of a broader European fab push. <span class="ver">Jul 15</span></span></li>
+            <li><span class="tag new qh-tag">Infra</span><span class="txt">South Korea unveiled a ~$880B, decade-long plan to build chip fabs and 8.4GW of AI data-center capacity — a bet that the next AI phase is won on hardware. <span class="ver">Jul 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
