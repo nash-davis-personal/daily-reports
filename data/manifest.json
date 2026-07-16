@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-16",
+    "title": "Wholesale inflation cools again as retail sales and a record heat wave take center stage",
+    "summary": "June producer prices fell 0.3% on the month and slowed to 5.5% annually, below forecast — more evidence price pressure is easing under new Fed Chair Kevin Warsh's data-dependent stance. The official June retail sales report lands at 8:30am ET today; private card-transaction data already points to a resilient consumer. Meanwhile a record-breaking heat dome baked 200M+ Americans this week — Billings hit an all-time 111°F, NYC neared 103°F — with the Northeast now cooling into thunderstorms. In space, SpaceX flies Starship Flight 13 and Serbia signs the Artemis Accords today.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-16.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release, 2.1.211, and it fixes the thing that most quietly breaks unattended loops: agents that reported fabricated results instead of waiting for the real one, plus subagent text in stream-json, worktree-persistent approvals, and a hardened hook-ask floor.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-16.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-16",
+    "title": "The money moves to AI implementation: Anthropic and Blackstone stand up a $1.5B services arm while DeepSeek chases $74B",
+    "summary": "No new frontier weights shipped in the last day — the action is in who deploys the models and who funds them. Anthropic, Blackstone, Goldman and others launched Ode, a $1.5B AI-implementation company built on the thesis that integration is the next trillion-dollar category. Anaconda bought the 3M-developer Kilo Code agent, DeepSeek is raising at a $74B valuation ahead of a 2027 IPO, and Gemini 3.5 Pro is still slated for July 17 — hold model decisions one more day.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-16.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-16",
+    "title": "Sell the implementation, not the model — and ride the heat wave this week",
+    "summary": "The day's biggest signal is that a $1.5B Anthropic-Blackstone venture just declared AI implementation the next trillion-dollar category — validation of exactly what TSD does, one tier down. The fastest cash this week is aimed lower and hotter: pitch the AI receptionist to Charlotte home-services shops drowning in calls during a record heat wave. Five ranked moves, all built on assets Nash already owns.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-07-16.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-16",
+    "title": "Patch weekend ahead: Next.js security release lands Sunday, and 'HalluSquatting' turns AI coding agents into malware installers",
+    "summary": "Two security items hit Nash's stack directly. Next.js's scheduled security release publishes Sunday July 20 (16.2 and 15.5, 4 high + 5 medium) — plan the upgrade now. And researchers detailed 'HalluSquatting,' which weaponizes AI coding assistants' package hallucinations to install botnet malware, hitting Cursor, Copilot, Cline and Gemini CLI at 85–100% rates. In business tech, Stripe and Advent lobbed a $53B bid for PayPal, ASML raised its 2026 outlook, and IBM warned AI-infrastructure spend is eating software budgets.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-16.html"
   },
   {
     "source": "america",

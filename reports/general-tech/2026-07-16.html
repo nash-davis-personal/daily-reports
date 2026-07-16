@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-16" />
+  <meta name="report:title" content="Patch weekend ahead: Next.js security release lands Sunday, and 'HalluSquatting' turns AI coding agents into malware installers" />
+  <meta name="report:summary" content="Two security items hit Nash's stack directly. Next.js's scheduled security release publishes Sunday July 20 (16.2 and 15.5, 4 high + 5 medium) — plan the upgrade now. And researchers detailed 'HalluSquatting,' which weaponizes AI coding assistants' package hallucinations to install botnet malware, hitting Cursor, Copilot, Cline and Gemini CLI at 85–100% rates. In business tech, Stripe and Advent lobbed a $53B bid for PayPal, ASML raised its 2026 outlook, and IBM warned AI-infrastructure spend is eating software budgets." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch weekend ahead: Next.js security release + HalluSquatting — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, July 16, 2026</span>
+        <span>◆</span><span>What's new since July 15</span>
+      </div>
+      <h1>Patch weekend ahead — and AI coding agents just became a supply-chain attack surface</h1>
+      <p class="standfirst">Two security stories land squarely on your stack. Next.js's scheduled security release publishes Sunday; get the upgrade queued. And "HalluSquatting" weaponizes the exact tools you build with — AI coding assistants that invent package names — to install botnet malware. In the wider market, Stripe put a $53B bid on PayPal and the chip buildout kept accelerating.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window, July 15–16</span>
+        <span>◆</span><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Jul 20</div><div class="lbl">Next.js security release</div></div>
+      <div class="stat"><div class="num">85–100%</div><div class="lbl">HalluSquatting hallucination rates</div></div>
+      <div class="stat"><div class="num">$53B</div><div class="lbl">Stripe–Advent bid for PayPal</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security release lands Sunday</h4><p>The scheduled July 20 release patches 16.2 and 15.5 — 4 high, 5 medium. CVEs and exact versions publish when it ships. Have your upgrade path ready now.</p></div>
+        <div class="signal"><div class="n">02</div><h4>HalluSquatting hits AI coding agents</h4><p>Attackers force assistants to hallucinate an attacker-owned package, then chain prompt injection into RCE. Cursor, Copilot, Cline, Gemini CLI all affected.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Stripe + Advent bid $53B for PayPal</h4><p>A fully-financed $60.50/share offer (28% premium) to combine Stripe's dev-first rails with PayPal's 400M-user wallet. Deal odds around 80%.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chip buildout accelerates</h4><p>ASML raised its 2026 outlook on AI demand; Nvidia cut its authorized Asia buyer list by half with on-site audits to block China diversion.</p></div>
+        <div class="signal"><div class="n">05</div><h4>AI infra is eating software budgets</h4><p>IBM warned corporate tech spend is shifting to data centers, processors and memory — pressuring traditional software revenue.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch &amp; secure your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch</span>
+            <span class="ver">Ships Jul 20</span>
+            <h3>Next.js scheduled security release publishes Sunday — plan the upgrade now</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's first pre-announced scheduled security release is set for Sunday, July 20, with patch releases for the 16.2 and 15.5 lines addressing 4 high and 5 medium severity issues. Exact CVE IDs and the specific patched version numbers publish alongside the release. This follows May's cluster of App Router / React Server Components fixes (DoS, SSRF, middleware bypass), so the surface area is familiar.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this Sunday/Monday, not "later." List every client site's current Next.js version now (a quick grep across repos), stage the bumps, and be ready to run <code>npm i next@latest</code> to the patched release the moment it lands. Your money-back guarantee means a client site popped by a public CVE is your liability. Note: your Next 16 apps use the intentional <code>proxy.ts</code> pattern — the middleware-bypass fixes are the ones to read closely.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Next.js — security release program</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 2026</span>
+            <h3>"HalluSquatting" turns AI coding assistants into malware installers</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers detailed HalluSquatting, an escalation of "slopsquatting." Instead of registering a package name an AI happens to invent, attackers use a universal adversarial trigger to make agents hallucinate a specific attacker-owned resource on demand, then chain indirect prompt injection to reach remote code execution and spread botnet malware. Reported hallucinated-resource rates ran up to 85% for repo cloning and 100% for skill installation across nine assistants including Cursor, Windsurf, Copilot, Cline and Gemini CLI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You install AI-suggested dependencies daily — this is aimed at exactly your workflow. Never let an agent auto-install a package you haven't eyeballed: verify the package actually exists on npm, check download counts and repo age, and pin/lockfile everything. Treat any "npm install &lt;never-heard-of-it&gt;" the agent proposes as guilty until proven real. Cheap habit, saves a compromised dev machine.</div>
+          <div class="refs"><a href="https://www.securityweek.com/hallusquatting-turns-ai-hallucinations-into-botnet-delivery-mechanism/" target="_blank" rel="noopener">SecurityWeek — HalluSquatting botnet delivery</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Payments &amp; fintech</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">Jul 15, 2026</span>
+            <h3>Stripe and Advent put a $53B, fully-financed bid on PayPal</h3>
+          </div>
+          <div class="story-body">
+            <p>Stripe and PE firm Advent International offered $53B — $60.50/share, a ~28% premium, backed by ~$50B in committed bank financing — to jointly acquire PayPal and its 400M+ user wallet. PayPal shares jumped 13–19%; prediction markets put deal odds near 80%. It's a re-up of an unanswered April approach, with a target to reach agreement by end of July.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You've been bottlenecked on a payment rail. If Stripe absorbs PayPal, the practical near-term takeaway is that Stripe's ecosystem is consolidating consumer + developer payments — a reason to standardize your client billing and your own checkout on Stripe rather than splitting across processors. No action today, but it firms up the "build on Stripe" bet.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/07/15/stripe-advent-offer-to-buy-paypal-for-more-than-53-billion-reuters.html" target="_blank" rel="noopener">CNBC — Stripe, Advent offer to buy PayPal</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips &amp; the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Jul 15, 2026</span>
+            <h3>ASML raises its 2026 outlook; Nvidia tightens Asia chip controls; IBM flags a budget shift</h3>
+          </div>
+          <div class="story-body">
+            <p>ASML lifted its 2026 financial guidance on stronger-than-expected Q2 and durable EUV demand — a signal AI-processor production stays elevated into 2027. Nvidia cut its authorized Asia buyer list by more than half, adding on-site audits in Singapore, Malaysia and Japan to curb diversion to China (which is pushing domestic parts like Dongfang Suanxin's DF1000). Meanwhile IBM warned that AI-infrastructure spend — data centers, processors, memory — is diverting corporate budgets away from traditional software, contributing to a rotation lifting chip and cybersecurity stocks while software names sold off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two indirect effects. First, the memory/compute supercycle keeps inference and API prices structurally higher than they'd otherwise be — keep leaning on cheaper/open models where a task allows. Second, "software budgets shrinking, AI-infra budgets growing" is your sales narrative: SMBs feel the same pressure, and TSD's pitch is doing more with an AI layer instead of buying more SaaS seats.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/15/top-tech-news-today-july-15-2026-apple-asml-ibm-anthropic-meta-nvidia-openai-stripe-paypal-more/" target="_blank" rel="noopener">Tech Startups — Top tech news, July 15</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Apple shipped iOS/iPadOS/macOS 26.5.2 ahead of schedule amid AI-driven threat concerns; also released a public beta of a redesigned, more context-aware on-device Siri. <span class="ver">Jul 15</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Israeli startup Oak left stealth with $60M seed to manage identities for AI agents accessing enterprise systems — agent identity/access is becoming its own category. <span class="ver">Jul 15</span></span></li>
+            <li><span class="tag improve qh-tag">Security</span><span class="txt">OpenAI expanded a "Patch the Planet" program using a GPT-5.5-Cyber model to find open-source vulnerabilities before attackers do. <span class="ver">Jul 15</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
