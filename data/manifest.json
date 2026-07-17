@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-17",
+    "title": "Inflation cooled again and the Fed held rates; overlapping weather disasters hit the country and a 25% Brazil tariff starts July 22",
+    "summary": "June inflation slowed on both the consumer and producer sides and retail sales edged up, leaving the Fed on hold at 3.50–3.75% ahead of its late-July meeting. Catastrophic flooding returned to Texas while Canadian wildfire smoke fouled the air for more than 100 million people. A 25% US tariff on most Brazilian imports takes effect July 22, and North Carolina was again ranked the nation's top state economy.",
+    "highlights": 4,
+    "path": "reports/america/2026-07-17.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.212 adds per-session caps on web searches and subagent spawns, auto-backgrounds long MCP calls, and closes plan-mode and worktree file-safety holes.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-17.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-17",
+    "title": "Kimi K3 puts an open-weight model at the frontier while Google's Gemini 3.5 Pro slips a third deadline",
+    "summary": "Moonshot AI shipped Kimi K3, a 2.8-trillion-parameter open-weight model that benchmarks neck-and-neck with the closed flagships from OpenAI and Anthropic, with full weights due July 27. Google's rebuilt Gemini 3.5 Pro missed a third deadline and may ship a stopgap. Anthropic and OpenAI split publicly on AI regulation ahead of their Q4 IPOs, and US venture money kept pouring into AI.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-17.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-17",
+    "title": "The implementation gap is the offer: package AI training and delivery for SMBs while everyone else sells tools",
+    "summary": "Today's through-line is that models keep getting better and cheaper, but SMBs still can't operationalize them — 73% say they need more training. That's a recurring services opening TSD is built for. Package an AI implementation-and-training retainer, offer a Next.js security-patch service off next week's release, ride Charlotte's growth for local web work, and use an open-weight model to cut your AI cost floor.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-07-17.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-17",
+    "title": "A Next.js security release lands July 20 — plan to patch; TSMC posts a blowout quarter and adds $100B to Arizona",
+    "summary": "Vercel has scheduled a Next.js security release for July 20 that fixes multiple issues across Server Components, App Router and self-hosted deployments — put it on the calendar. Zoom patched a critical 9.8-severity Windows account-takeover flaw, CISA warned that Russia-linked actors are hijacking home and small-office routers, and TSMC reported a 77% profit jump while pledging another $100B for its Arizona fabs.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-07-17.html"
   },
   {
     "source": "america",
