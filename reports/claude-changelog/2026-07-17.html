@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-17" />
+  <meta name="report:title" content="2.1.212 caps runaway agents and closes two file-safety holes" />
+  <meta name="report:summary" content="Claude Code 2.1.212 adds per-session caps on web searches and subagent spawns, auto-backgrounds long MCP calls, and closes plan-mode and worktree file-safety holes." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.212 caps runaway agents and closes two file-safety holes — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, July 17, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.212</span>
+      </div>
+      <h1>2.1.212 puts hard caps on runaway loops and plugs two file-safety holes</h1>
+      <p class="standfirst">The July 17 drop is a big single release — 48 line items in 2.1.212. The load-bearing changes: new per-session caps on web searches and subagent spawns to stop runaway loops, long MCP calls that auto-background instead of freezing the session, and fixes for two ways Claude Code could touch files it shouldn't — plan mode running <code>rm</code>/<code>touch</code> without asking, and a worktree symlink that could write outside your repo.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the 2.1.211 briefing (Jul 16)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release shipped (2.1.212)</div></div>
+      <div class="stat"><div class="num">48</div><div class="lbl">line items in one drop</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">worth your attention</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Two new runaway caps</h4><p>200 web searches and 200 subagent spawns per session by default, both tunable. A backstop against a loop that eats your budget.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Plan mode ran rm/touch without asking</h4><p>Fixed. File-modifying Bash could execute in plan mode with no permission prompt — a real hole if you scope in plan mode.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Worktree symlink could escape the repo</h4><p>Fixed. A committed <code>.claude/worktrees</code> symlink could create files outside the checkout. Matters for your loops.</p></div>
+        <div class="signal"><div class="n">04</div><h4>/fork now spawns a background session</h4><p>The old in-session subagent moved to <code>/subtask</code>. /fork copies the conversation into its own <code>claude agents</code> row.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Long MCP calls auto-background</h4><p>Any MCP tool call over 2 minutes moves to the background so the session stays usable. Relevant with heavy MCP servers.</p></div>
+        <div class="signal"><div class="n">06</div><h4>/ultrareview got less brittle</h4><p>Accepts <code>#123</code> and pasted PR URLs, fetches remote branches, and keeps its billing prompt after <code>/clear</code>.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Guardrails for unattended and heavy sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.212</span>
+            <h3>Per-session caps on web searches and subagent spawns</h3>
+          </div>
+          <div class="story-body">
+            <p>Two new limits, both defaulting to 200 and both meant to stop a loop from spiraling. A session-wide WebSearch cap (<code>CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION</code>) stops runaway search loops, and a per-session subagent-spawn cap (<code>CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION</code>) stops runaway delegation. <code>/clear</code> resets the subagent budget.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run unattended loops in worktrees. Treat 200 as a safety backstop, not a target — set both env vars deliberately for a scheduled run so a stuck agent trips the cap instead of your bill. If a legitimate deep-research or fan-out job needs more, raise it explicitly rather than discovering the ceiling mid-run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.212</span>
+            <h3>Long MCP calls move to the background automatically</h3>
+          </div>
+          <div class="story-body">
+            <p>An MCP tool call running longer than 2 minutes now backgrounds automatically so the session stays interactive. The threshold is configurable, or disable it, via <code>CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS</code>. Same release also cut token usage in inter-agent messaging (<code>SendMessage</code> bodies no longer duplicated into replayed history) and extended mid-conversation prompt caching to work behind LLM gateways and custom base URLs (Bedrock, Vertex, 1P).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on slow MCP servers — Vercel, Supabase, Notion. A long deploy-status or query call no longer freezes the whole session. If one server is reliably slow, tune the threshold up for that workflow instead of sitting through it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Safety fixes worth knowing about</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.212</span>
+            <h3>Plan mode was running file-modifying Bash without a prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>Fixed a bug where plan mode auto-ran file-modifying Bash commands — <code>touch</code>, <code>rm</code>, and the like — without a permission prompt or an SDK <code>canUseTool</code> callback. Plan mode is supposed to be read-only scoping; this let it write.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you use plan mode to scope a change before touching anything — especially in a client repo — you were exposed to unprompted deletes. Update to 2.1.212 before your next planning-heavy or unattended session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.212</span>
+            <h3>Worktree creation could follow a symlink out of the repo</h3>
+          </div>
+          <div class="story-body">
+            <p>Fixed worktree creation following a repository-committed symlink at <code>.claude/worktrees</code>, which could create files outside the repository. Same release also fixed a <code>continue:false</code> hook's halt being dropped when a tool fails or completes mid-stream, and a SIGTERM during a running Bash tool orphaning the command's process tree in print/SDK mode.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your loops create worktrees. A repo carrying a hostile <code>.claude/worktrees</code> symlink could have written outside the checkout — the risk is real only if you ever run Claude Code against a repo you didn't author, but that's the direction the business is heading. Update and it's closed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Session &amp; agent workflow</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.212</span>
+            <h3>/fork spawns a background session; the old behavior is now /subtask</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/fork</code> now copies your conversation into a new background session — its own row in <code>claude agents</code> — while you keep working in the original. The in-session subagent it used to launch is now <code>/subtask</code>. If the session has no title, the fork is named after your prompt so the row is recognizable. Alongside it: <code>/resume</code> in the agent view now opens a picker of past sessions, including ones deleted from the list, and resumes your pick as a background session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> <code>/fork</code> is now a genuine parallel-work spawn — split a client build into two tracks and keep both moving. Retrain the muscle memory: reach for <code>/subtask</code> when you want the old inline delegation, and use the new <code>/resume</code> picker to claw back a session you thought you'd lost.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.212</span>
+            <h3>Task tool's <code>mode</code> parameter is deprecated</h3>
+          </div>
+          <div class="story-body">
+            <p>The Task tool's <code>mode</code> parameter is now ignored; subagents inherit the parent session's permission mode by default. Also for SDK/headless: a <code>set_model</code> control request now applies mid-turn — the next model round-trip uses the new model instead of waiting for the next turn — and transcripts now record the reasoning-effort level on each assistant message.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any of your SDK harnesses or loop scripts pass <code>mode</code> into the Task tool, it's now a no-op — audit them so a subagent doesn't silently run with wider permissions than you assumed. Inheriting the parent mode is the safer default, but only if the parent's mode is what you intended.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Review tooling (/ultrareview)</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.212</span>
+            <h3>A cluster of /ultrareview fixes</h3>
+          </div>
+          <div class="story-body">
+            <p>Four fixes to the cloud review flow: it now accepts PR references like <code>#123</code>, <code>PR 123</code>, and pasted PR URLs (with error hints that name the command you actually typed); <code>/ultrareview &lt;branch&gt;</code> fetches the branch from origin when it exists remotely and suggests the closest name on typos; the billing confirmation is no longer skipped in a new conversation after <code>/clear</code>; and the "not a git repository" error on Claude Desktop now points at the project's repo folder instead of terminal commands.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The branch-review flow is less brittle. If earlier friction — a rejected PR URL, a branch it wouldn't fetch — made you stop using it on client PRs, it's worth a second look. Paste the PR URL and let it run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.212</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Conversations with many images no longer fail with a misleading "Request too large"; the error now explains the real cause <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Web search and web fetch retry 529 and rate-limited requests with bounded backoff, and stop returning "API Error" text as results <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude auto-mode reset</code> restores default auto-mode config (confirmation prompt; <code>--yes</code> to skip) <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cold-attaching a background agent instantly shows the formatted transcript while the session boots <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Diff previews losing line numbers and +/- markers in narrow layouts <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">OpenTelemetry HTTP exports rejected (411/400) by Azure Monitor and endpoints that reject chunked encoding; OTLP records missing <code>trace_id</code>/<code>span_id</code> when <code>TRACEPARENT</code> is set <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Spurious "File has not been read yet" when editing a file read with offset/limit before resuming a session <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag change qh-tag">Change</span><span class="txt">Agent view now shows sessions waiting on a sandbox / MCP-input / managed-settings prompt as "Needs input" instead of "Working" <span class="ver">2.1.212</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/background</code> and <code>claude --bg</code> failing on Windows when Group Policy blocks PowerShell 5.1; the daemon now prefers PowerShell 7 <span class="ver">2.1.212</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
