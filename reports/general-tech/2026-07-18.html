@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-18" />
+  <meta name="report:title" content="The July 20 Next.js release patches 9 flaws — upgrade to 16.2 and 15.5; OpenSSL quietly fixed an 11-byte DoS" />
+  <meta name="report:summary" content="Vercel's July 20 Next.js security release covers nine vulnerabilities — four high, five medium — with patches landing on the 16.2 and 15.5 lines. Separately, OpenSSL silently shipped a fix for HollowByte, an 11-byte TLS payload that permanently bloats server memory, with no CVE and no changelog entry; Supabase's Postgres 14 deprecation has already auto-upgraded or paused projects; Intel became the first to ship high-volume logic chips made with High-NA EUV; and a Munich robotics startup closed Germany's largest-ever seed round." />
+  <meta name="report:highlights" content="5" />
+
+  <title>July 20 Next.js release patches 9 flaws — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, July 18, 2026</span>
+        <span>◆</span><span>What's new since July 17</span>
+      </div>
+      <h1>The July 20 Next.js release has a number now: nine flaws, and the patches land on 16.2 and 15.5</h1>
+      <p class="standfirst">Yesterday the July 20 security release was just a date on the calendar. It now has a shape — nine vulnerabilities, four high and five medium, with patch lines confirmed for Next.js 16.2 and 15.5, and CVE ids held back until the code ships. The bigger surprise is underneath: OpenSSL fixed a remotely triggerable memory-exhaustion bug in June with no CVE, no advisory, and nothing in the changelog, so most servers running it never learned they needed to update.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window, July 17–18</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9</div><div class="lbl">Next.js flaws fixed July 20</div></div>
+      <div class="stat"><div class="num">11 bytes</div><div class="lbl">To stall an OpenSSL server</div></div>
+      <div class="stat"><div class="num">$55M</div><div class="lbl">Germany's largest-ever seed</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js: 9 flaws, 16.2 and 15.5</h4><p>Four high-severity and five medium land Monday July 20. Patch lines are confirmed; CVE ids and affected code paths stay embargoed until release. Know which line each client site is on before Monday.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OpenSSL "HollowByte" — no CVE</h4><p>An 11-byte TLS handshake payload makes OpenSSL pre-allocate memory it never reclaims. Fixed silently in June in 4.0.1, 3.6.3, 3.5.7, 3.4.6 and 3.0.21. No advisory means most operators missed it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase dropped Postgres 14</h4><p>Support ended July 1. Projects still on 14 were auto-upgraded — or paused outright if they used timescaledb, plv8, pls, plcoffee or pgjwt. Self-hosters get a Kong-to-Envoy default swap the week of Aug 9.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Intel ships High-NA EUV logic first</h4><p>ASML confirmed July 15 that select Intel 18A layers on shipping Panther Lake parts were patterned on an EXE High-NA scanner — the industry's first high-volume logic product made this way.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Robot training data raises $55M seed</h4><p>Munich's microagi closed Germany's largest seed ever to pay people to film themselves doing physical tasks, then sell that footage to humanoid-robot labs. The data layer is where the money went.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch watch — your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 20, 2026 (scheduled)</span>
+            <h3>Next.js's first scheduled security release covers nine vulnerabilities, patching the 16.2 and 15.5 lines</h3>
+          </div>
+          <div class="story-body">
+            <p>The advance notice now carries numbers. Monday's release fixes <b>nine</b> vulnerabilities — <b>four high-severity and five medium</b>, with no criticals flagged — and Vercel says the patch updates will land on <b>Next.js 16.2 and 15.5</b>. CVE identifiers, proof-of-concept details and affected code paths stay withheld until the patches are public, which is the point of the program: give defenders a window without handing attackers a target list.</p>
+            <p>This is the first release under the new monthly cadence, which pairs a roughly monthly rhythm with advance public notice and keeps an emergency lane open for anything that can't wait until the next slot.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do the inventory today so Monday is mechanical. Every client site needs to be on <b>16.2</b> or <b>15.5</b> before you can take the patch — anything sitting on an older minor (16.0, 16.1, 15.3, 15.4) needs the minor bump first, and that's the part that can break a build, so find it now rather than at 9am Monday. Sites already on 16.2 or 15.5 are a one-line version bump plus a redeploy. Since the CVE list is embargoed, assume the worst case for the high-severity four and treat this as a same-day patch across the portfolio. It does not belong in next sprint.</div>
+          <div class="refs"><a href="https://gbhackers.com/next-js-announces-july-security-release/" target="_blank" rel="noopener">GBHackers — July security release, 4 high / 5 medium</a> · <a href="https://cybersecuritynews.com/next-js-monthly-security-updates/" target="_blank" rel="noopener">Cybersecurity News — monthly release program</a> · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Jul 1 &amp; Aug 9, 2026</span>
+            <h3>Supabase's Postgres 14 deprecation already fired — and self-hosted gateways change in August</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase ended support for <b>Postgres 14 on July 1, 2026</b>. Projects still on a deprecated version were automatically upgraded to the latest available Postgres. The exception matters more than the rule: projects using extensions that don't survive on Postgres 17 — <code>timescaledb</code>, <code>plv8</code>, <code>pls</code>, <code>plcoffee</code>, or <code>pgjwt</code> — were <b>paused instead and stopped serving traffic</b>.</p>
+            <p>Looking ahead, the week of <b>Aug 9, 2026</b> the default self-hosted Supabase API gateway switches from <b>Kong to Envoy</b> in <code>docker-compose.yml</code>, with Kong demoted to an optional override.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check every client project's Postgres version in the dashboard right now, and specifically check whether any of them ever used <code>pgjwt</code> — it was common in older auth setups and it is on the pause list. A paused project is a client whose site is down and who may not have told you. If any project got force-upgraded to 17, re-run the app's queries against it before you assume nothing broke. The Envoy swap only bites if you self-host, so pin your compose file now if you do.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/45827-deprecation-notice-support-for-postgres-14-ending-on-1st-july-2026" target="_blank" rel="noopener">Supabase — Postgres 14 deprecation notice</a> · <a href="https://supabase.com/changelog/47796-developer-update-july-2026" target="_blank" rel="noopener">Supabase — Developer Update, July 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security desk</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Jun–Jul 2026</span>
+            <h3>"HollowByte": 11 bytes of TLS permanently inflates an OpenSSL server's memory, and the fix shipped with no CVE</h3>
+          </div>
+          <div class="story-body">
+            <p>A TLS handshake message declares its own size in a 4-byte header. Vulnerable OpenSSL builds allocate that declared size <em>before</em> the payload arrives and before checking whether the claim is honest. An attacker sends waves of connections claiming randomized sizes, then drops them; OpenSSL frees the buffers, but glibc holds small-to-medium allocations rather than returning them to the OS, and the randomized sizes stop the allocator from reusing them. Resident memory climbs and stays climbing after the attacker disconnects. Okta's tests against NGINX drained low-capacity servers entirely and cost higher-spec boxes up to 25% of memory, at attack bandwidth low enough to stay under alerting thresholds.</p>
+            <p>The unusual part is the disclosure. OpenSSL shipped the fix in June with <b>no CVE, no advisory, and no changelog entry pointing at it</b>. Patched versions are <b>4.0.1</b>, with backports to <b>3.6.3, 3.5.7, 3.4.6 and 3.0.21</b>, which now grow the buffer only as real data arrives.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Vercel-hosted sites are covered by the platform, so this is not a Next.js problem. It's a problem for anything you or a client runs on a VPS or in a container behind NGINX — voice-AI endpoints, self-hosted Supabase, a webhook box, a client's legacy server. Run <code>openssl version</code> on those hosts and confirm you're at or above 3.0.21 / 3.4.6 / 3.5.7 / 3.6.3 / 4.0.1. Because there's no CVE, your dependency scanners and the usual "we're patched" dashboards will not flag this — you have to look manually. That's also a clean reason to send a managed-services client a note this week.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/hollowbyte-ddos-flaw-bloats-openssl-server-memory-with-11-byte-payload/" target="_blank" rel="noopener">BleepingComputer — HollowByte</a> · <a href="https://sec.okta.com/articles/2026/06/openssl-hollowbtye-a-dos-hiding-in-11-bytes/" target="_blank" rel="noopener">Okta Security — original research</a> · <a href="https://thehackernews.com/2026/07/openssl-hollowbyte-flaw-could-freeze.html" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips &amp; hard tech</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Milestone</span>
+            <span class="ver">Jul 15, 2026</span>
+            <h3>Intel is first to ship high-volume logic chips patterned with High-NA EUV</h3>
+          </div>
+          <div class="story-body">
+            <p>ASML confirmed that Intel Foundry is patterning selected <b>Intel 18A</b> layers on a portion of shipping <b>Core Ultra Series 3 "Panther Lake"</b> processors using an EXE High-NA EUV system — the industry's first customer shipment of a mass-produced logic product built this way. The qualification is narrow by design: specific layers, dual-qualified in Oregon against the existing 0.55 NA platform, at yields matched to the older NXE scanners. That's how every lithography generation gets introduced before it spreads across a node.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do today. The read is that Intel has a credible manufacturing story again, which matters to you only as the second supplier keeping AI-inference compute cheap over the next few years. Every product you sell — TSD Front Desk, TSD Concierge — has a token cost floor set by how many people can make advanced chips. One is a monopoly; two is a market.</div>
+          <div class="refs"><a href="https://www.globenewswire.com/news-release/2026/07/15/3327453/0/en/High-NA-EUV-reaches-new-readiness-milestone-with-first-high-volume-Logic-product.html" target="_blank" rel="noopener">ASML press release (Jul 15)</a> · <a href="https://www.tomshardware.com/tech-industry/semiconductors/intel-becomes-the-first-company-to-ship-high-volume-logic-chips-made-with-asmls-high-na-euv-select-panther-lake-layers-on-18a-are-now-dual-qualified-for-0-55-na-scanners" target="_blank" rel="noopener">Tom's Hardware</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Funding</span>
+            <span class="ver">Jul 16, 2026</span>
+            <h3>microagi raises $55M — Germany's largest seed ever — to sell footage of humans doing chores</h3>
+          </div>
+          <div class="story-body">
+            <p>Munich-based <b>microagi</b> closed a <b>$55M seed</b> led by Hummingbird, with Northzone, LocalGlobe, Village Global and Redalpine joining. The company is roughly ten months old, founded by an ex-Red Bull Racing aerodynamicist, an ex-Mercedes-AMG F1 engineer, a former Alan Turing Institute researcher, an RWTH Aachen engineer, and a WhatsApp-commerce founder. It pays more than 20,000 people across 15 countries to record themselves performing physical tasks, then sells that footage to the labs training humanoid robot brains, while putting engineers on-site with industrial customers so each deployment feeds the next.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Ignore the robots and look at the business model. Investors paid a record price for <em>proprietary training data plus a services motion that generates more of it</em> — a company that sells the picks and does the deployment work. That's structurally what you already do: every client install of TSD Concierge or Front Desk produces domain-specific data and workflow knowledge. Right now you throw that away at the end of each engagement. Start writing down what each vertical's install teaches you, because the reusable artifact is what turns a one-off build into something with compounding value.</div>
+          <div class="refs"><a href="https://sifted.eu/articles/munich-robotics-startup-microagi-raises-55m-germanys-largest-ever-seed-round" target="_blank" rel="noopener">Sifted</a> · <a href="https://www.semafor.com/article/07/16/2026/robot-data-startup-microagi-raises-largest-seed-round-ever-in-germany" target="_blank" rel="noopener">Semafor</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes &amp; things worth knowing</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Stack</span><span class="txt">Tailwind CSS is on <b>4.3.2</b>, shipped June 29, following 4.3.1 on June 12 which added Node 26 compatibility patches. The 4.3 line added scrollbar, zoom and tab-size utilities plus <code>@container-size</code> for height-based container queries. <span class="ver">v4.3.2</span></span></li>
+            <li><span class="tag feature qh-tag">Stack</span><span class="txt">Supabase shipped <code>@supabase-labs/tanstack-db</code> in alpha (syncs TanStack DB collections over PostgREST and Realtime), and Realtime Broadcast now carries binary payloads alongside JSON. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag new qh-tag">Platform</span><span class="txt"><b>Vercel Services</b> lets one project deploy multiple backends — Go, Rails, FastAPI — with Docker support and service-to-service bindings. Vercel Agent also got a dashboard that can investigate production issues and act with approval. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Since July 9, Vercel redacts build-log output for environment variables marked Sensitive whose values run 32 characters or longer. <span class="ver">Jul 9</span></span></li>
+            <li><span class="tag breaking qh-tag">Space</span><span class="txt">SpaceX scrubbed <b>Starship Flight 13</b> at T-0 on July 17 after at least four engines failed to ignite; two Raptors on the Super Heavy booster need replacing. Now targeting July 20, 6:45pm EDT, carrying 20 next-gen Starlink satellites. <span class="ver">Jul 17</span></span></li>
+            <li><span class="tag feature qh-tag">Money</span><span class="txt">DeepSeek is raising at a reported 500B yuan (~$74B) valuation ahead of a planned mainland listing, and China's CXMT is prepping a chip IPO seeking up to $4.3B. <span class="ver">Jul 15–17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

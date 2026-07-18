@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-18",
+    "title": "Chip stocks fell into a bear market, oil jumped past $82 and pump prices hit $3.94, and three extreme-weather crises ran at once",
+    "summary": "The Philadelphia Semiconductor Index closed more than 20% below its late-June record after an 11% week, dragging the S&P 500 down 1% on Friday. Crude jumped over 4% to about $82 and the national average gas price rose 10 cents to $3.94, pushing rate-cut bets toward rate-hike bets. Wildfires burned in 15 states while Texas Hill Country took a third day of flash flooding and 100M+ people sat under air-quality alerts, and roughly 1.4 million vehicles were recalled in the first half of July.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-18.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.214 is a permissions release: single-segment dir/** rules now match only your project root, six Bash auto-approval holes now fail closed, and scheduled tasks stop rejecting their own prompts.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-18.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-18",
+    "title": "Anthropic bets the trillion-dollar AI business is implementation, and states start regulating the chatbots you ship",
+    "summary": "Anthropic, Blackstone and Hellman & Friedman stood up Ode with Anthropic, a $1.5B services firm that puts engineers inside client companies to actually deploy AI — the same job TSD does, now validated at venture scale. Hawaii enacted the Artificial Intelligence Disclosure and Safety Act requiring conversational AI to identify itself, Fireworks AI raised $1.505B at a $17.5B valuation on inference economics, and Xi launched a 29-nation AI governance bloc headquartered in Shanghai.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-18.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-18",
+    "title": "Two hard deadlines land Monday, and the biggest AI company in the world just validated your business model",
+    "summary": "Next.js ships nine security fixes on Monday and Supabase will pause Postgres 14 projects running certain extensions, giving you a dated reason to call every client this weekend; meanwhile Anthropic and Blackstone put $1.5B behind the argument that AI implementation, not models, is where the money is.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-18.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-18",
+    "title": "The July 20 Next.js release patches 9 flaws — upgrade to 16.2 and 15.5; OpenSSL quietly fixed an 11-byte DoS",
+    "summary": "Vercel's July 20 Next.js security release covers nine vulnerabilities — four high, five medium — with patches landing on the 16.2 and 15.5 lines. Separately, OpenSSL silently shipped a fix for HollowByte, an 11-byte TLS payload that permanently bloats server memory, with no CVE and no changelog entry; Supabase's Postgres 14 deprecation has already auto-upgraded or paused projects; Intel became the first to ship high-volume logic chips made with High-NA EUV; and a Munich robotics startup closed Germany's largest-ever seed round.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-18.html"
   },
   {
     "source": "america",
