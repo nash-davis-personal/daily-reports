@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-18" />
+  <meta name="report:title" content="2.1.214 narrows your dir/** allow rules and makes Bash permission checks fail closed" />
+  <meta name="report:summary" content="Claude Code 2.1.214 is a permissions release: single-segment dir/** rules now match only your project root, six Bash auto-approval holes now fail closed, and scheduled tasks stop rejecting their own prompts." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.214 narrows your dir/** allow rules and makes Bash permission checks fail closed — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, July 18, 2026</span>
+        <span>◆</span><span>One release since the last briefing</span>
+      </div>
+      <h1>2.1.214 narrows your <code>dir/**</code> allow rules and makes Bash permission checks fail closed</h1>
+      <p class="standfirst">This is a permissions release. A single-segment rule like <code>Edit(src/**)</code> was auto-approving writes to any <code>src/</code> anywhere in the tree, and six separate Bash auto-approval paths could be walked past — all closed in one drop. If you run auto mode or a broad allowlist, read the first two signals before your next unattended session.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.214 (July 18) — the only release since 2.1.212</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">47</div><div class="lbl">Changelog entries</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Top signals</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4><code>dir/**</code> rules got narrower</h4><p><code>Edit(src/**)</code> was approving writes to any <code>src/</code> at any depth. It now matches only <code>&lt;cwd&gt;/src</code>. Hook <code>if:</code> conditions changed the same way.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Bash checks now fail closed</h4><p>Six auto-approval gaps closed: fd redirects, commands over 10,000 chars, zsh subscripts in <code>[[ ]]</code>, some <code>help</code>/<code>man</code> forms, PowerShell 5.1, remote prompts.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Scheduled tasks stop fighting themselves</h4><p>A fired scheduled task was treating its own configured prompt as untrusted input. It now arrives as the session's assigned task.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Memory frontmatter stops truncating at <code>#</code></h4><p>Values were silently cut at an inline <code>#</code> on save. Fixed, and entries now carry an ISO <code>modified</code> timestamp.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Long tool calls emit a heartbeat</h4><p>Tool calls that previously went silent now show periodic progress, so a slow build reads differently from a hang.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>docker</code> daemon-redirect flags now prompt</h4><p><code>--url</code>, <code>--connection</code>, <code>--identity</code> and Podman remote mode point Docker at another daemon. Those ran without a prompt before.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission rules got stricter — audit your allowlists</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.214</span>
+            <h3>Single-segment <code>dir/**</code> rules now match only your project root</h3>
+          </div>
+          <div class="story-body">
+            <p>A rule like <code>Edit(src/**)</code> was auto-approving writes to a nested <code>src/</code> anywhere in the tree instead of only <code>&lt;cwd&gt;/src</code>. That is now corrected. The same narrowing applies to hook <code>if:</code> conditions — write <code>**/dir/**</code> if you actually want any-depth matching. <code>deny</code> and <code>ask</code> rules keep their any-depth behavior, which is the right asymmetry: denials stay broad, approvals get tight.</p>
+            <p>Two related tightenings landed alongside it. <code>file</code> commands using <code>-m</code>/<code>--magic-file</code> or <code>-f</code>/<code>--files-from</code> now require permission instead of passing as read-only, and permission prompts on remote sessions can no longer proceed ahead of the local confirmation dialog.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open your global <code>~/.claude/settings.json</code> and each client repo's <code>.claude/settings.json</code> and grep for allow rules of the form <code>Tool(word/**)</code>. Anything that was quietly covering a nested folder in the Bisque or Sonderwerks monorepo layout will start prompting. Widen the ones you want with <code>**/dir/**</code> and leave the rest narrow — the prompts are telling you where your allowlist was broader than you thought.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.214</span>
+            <h3>Six Bash permission-check gaps now fail closed</h3>
+          </div>
+          <div class="story-body">
+            <p>The permission analyzer parses commands before deciding whether to auto-run them, and this release closes six places where its parse disagreed with the shell's. File-descriptor redirect forms that bash reads differently now fail closed. Commands over 10,000 characters always prompt instead of running automatically. Zsh variable subscripts and modifiers inside <code>[[ ]]</code> comparisons were treated as inert text and now prompt. Certain <code>help</code> and <code>man</code> invocations that could carry unsafe options, command substitutions, or backslash paths lost their auto-approval. A permission-check bypass affecting Windows PowerShell 5.1 sessions was also fixed.</p>
+            <p>The same release adds permission prompts for <code>docker</code> commands (including the Podman <code>docker</code> shim) carrying daemon-redirect flags — <code>--url</code>, <code>--connection</code>, <code>--identity</code>, and Podman's remote mode. Those point the client at a different daemon and previously ran with no prompt.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect more prompts in auto mode, especially on long generated commands. That is the fix working. If a specific long command is a routine part of your Vercel or Supabase flow, wrap it in a short script with a stable name and allowlist the script rather than reaching for a broader Bash rule to make the prompt go away.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended automation gets more trustworthy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.214</span>
+            <h3>Scheduled tasks no longer refuse their own configured prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>A fired scheduled task was treating the prompt you configured for it as untrusted input, which is exactly the wrong call — you wrote that prompt. The fired prompt is now delivered as the session's assigned task. Related: hooks returning exit code 2 now block as documented even when the hook's stdout JSON fails schema validation, and a hook's <code>continue:false</code> halt survives a tool failing mid-stream.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the fix for your own cron-driven scouts and any nightly loop you have pointed at client repos. If a scheduled run has been mysteriously stalling or asking for confirmation with nobody there, update and re-run it before rewriting the task file — the bug was upstream of your prompt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.214</span>
+            <h3>Progress heartbeat for long tool calls, effort level in the subagent statusline</h3>
+          </div>
+          <div class="story-body">
+            <p>Long-running tool calls that previously went silent now emit a periodic progress heartbeat. The <code>subagentStatusLine</code> payload also gained the reasoning effort level, so a custom agent row can render both model and effort.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The heartbeat is the practical one — a ten-minute Next.js build and a hung process now look different on screen, so you stop killing sessions that were fine. If you maintain a custom statusline, add the effort field so you can see at a glance which background agents are burning the expensive tier.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.214</span>
+            <h3>EndConversation tool lets Claude end abusive sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude can now end a session with highly abusive users or jailbreak attempts, matching behavior that has been on claude.ai since 2025.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action for your own work. It matters if you ever put a Claude-backed chat surface in front of a client's public traffic — worth knowing the model can terminate a session on its own so you design the fallback UX rather than discovering it live.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Memory, telemetry, and connection reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.214</span>
+            <h3>Memory frontmatter stopped being truncated at an inline <code>#</code></h3>
+          </div>
+          <div class="story-body">
+            <p>Frontmatter values in memory files were silently truncated at an inline <code>#</code> when saved. Memory files also now carry an ISO <code>modified</code> timestamp in frontmatter. A related fix: the memory index over-limit warning had already been narrowed to measure only loaded content in the prior window.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant to your command vault. Any note whose <code>description:</code> line contained a <code>#</code> has been sitting there half-saved and half-useless for recall. Grep the vault's <code>memory/</code> folder for <code>#</code> inside frontmatter, fix what got clipped, and let the new <code>modified</code> stamp do your staleness triage from here.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.214</span>
+            <h3>OpenTelemetry gains message-level correlation and tool provenance</h3>
+          </div>
+          <div class="story-body">
+            <p>Log events now carry <code>message.uuid</code>, <code>client_request_id</code>, and <code>tool_source</code>, so you can correlate at the message level and see which source a tool call came from. <code>CLAUDE_CODE_OTEL_CONTENT_MAX_LENGTH</code> configures the 60 KB truncation limit on content attributes. Session cost and token telemetry no longer double-count on streams that emit multiple cumulative <code>message_delta</code> frames.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The double-count fix means any per-client cost figure you pulled from telemetry before today was inflated on streaming-heavy sessions. If you have quoted an AI-usage number to Bisque or Studio C off that data, re-measure before the next invoice conversation.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.214</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Streaming turns failing with "Socket is closed" behind corporate proxies on Windows <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">stream-json output truncating at exit for slow SDK/pipeline consumers; the exit drain now scales with queued bytes instead of a flat 2s cap <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Unbounded memory growth when <code>--settings</code> points at a device file or multi-GB file; files over 2 MiB now fail at startup with a clear error <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash tool killing the Claude session when a <code>pkill -f</code> pattern matched the CLI's own process (Linux) <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugins enabled via the <code>--settings</code> CLI flag not loading — a regression since v2.1.181 <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Feature flags going stale in long-running sessions after the OAuth token rotates <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/ultrareview</code> refusing to run in repos with no merge base; it now offers to review all tracked files <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude update</code> and <code>claude doctor</code> hanging silently, and <code>/status</code> diagnostics going blank, when a shell-config path is a directory <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP transient errors during a prompts/resources refresh clearing the server's slash commands and resources <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background daemon issues: a displaced daemon deleting its successor's control socket, idle parked sessions keeping workers alive forever, and completed sessions being undeletable via <code>claude rm</code> or the agent view <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background sessions dispatched from a non-git folder being impossible to delete from the agents view <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Reopening a stopped background session failing to restore its conversation when an unreadable folder exists in the session store <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control "session ready" push notifications firing for sessions where Remote Control was never enabled <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/install-github-app</code> and the <code>/mcp</code> settings menu being blocked in agent-view sessions; they are now refused only in background sessions with no terminal attached <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A crash when a GrowthBook feature evaluates to null, and a malformed flag payload wiping the cached feature flags <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A spurious "check your network" warning appearing while the advisor was thinking <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">OTel log events emitted outside the turn's async context missing the interaction span's trace context <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows PowerShell tool batch: commands hanging on child processes waiting on stdin, Python <code>UnicodeDecodeError</code>/<code>UnicodeEncodeError</code> crashes, raw ANSI escapes in PowerShell 7 errors, <code>where.exe</code>/<code>fc.exe</code>/<code>diff.exe</code> valid negative answers reported as errors, and <code>&gt;</code>/<code>&gt;&gt;</code> writing UTF-16LE files under PowerShell 5.1 <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The <code>claude rc</code> workspace-trust error in the home directory now says trust there is never saved and suggests running from a project directory <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Keep-alive connection pooling disables after a stale-connection error, so retries open a fresh socket <span class="ver">2.1.214</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">SessionStart hooks report source <code>"fork"</code> when a session begins as a fork instead of <code>"resume"</code> <span class="ver">2.1.214</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

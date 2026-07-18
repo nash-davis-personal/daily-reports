@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-18",
+    "title": "2.1.214 narrows your dir/** allow rules and makes Bash permission checks fail closed",
+    "summary": "Claude Code 2.1.214 is a permissions release: single-segment dir/** rules now match only your project root, six Bash auto-approval holes now fail closed, and scheduled tasks stop rejecting their own prompts.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-07-18.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
