@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-07-20",
+    "title": "TSD Daily — Monday, July 20, 2026",
+    "summary": "A frontier model found a $500K-class WordPress exploit for $25, Next.js patch day arrives, gas crosses $4 a gallon, and WordPress security becomes a sales argument you can prove.",
+    "file": "audio/2026-07-20.mp3",
+    "durationSec": 390,
+    "bytes": 4677741
+  },
+  {
     "date": "2026-07-18",
     "title": "TSD Daily — Saturday, July 18, 2026",
     "summary": "Anthropic and Blackstone bet $1.5B that AI implementation beats models, Next.js patches nine flaws Monday while Supabase starts pausing Postgres 14 projects, chip stocks fall into a bear market as gas hits $3.94, and Claude Code 2.1.214 makes Bash permissions fail closed.",
