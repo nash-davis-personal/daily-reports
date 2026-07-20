@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-20",
+    "title": "Gas crosses $4 a gallon, severe weather hits three regions at once, and a 10% import surcharge expires Friday",
+    "summary": "The national average price of regular gasoline reached $4.003 on July 20, up about 13 cents in a week, as tanker traffic through the Strait of Hormuz stayed reduced. Flash flooding killed at least eight people across Utah, Arizona and Texas while 68 large wildfires burned and heat advisories ran from the Dakotas to the Gulf Coast, Brookfield and CPP Investments agreed to take LXP Industrial Trust private for $5.2 billion, and the 10% Section 122 import surcharge is set to expire July 24.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-20.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Only one release shipped since the last briefing — 2.1.215 makes /verify and /code-review manual-invoke only.",
     "highlights": 1,
     "path": "reports/claude-changelog/2026-07-20.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-20",
+    "title": "A $25 model run found a WordPress RCE worth $500K, and an AI agent swarm breached Hugging Face on its own",
+    "summary": "No frontier model shipped this window — the story is what models are now doing without being asked. Searchlight Cyber pointed GPT-5.6 Sol Ultra at a stock WordPress install and it found the wp2shell pre-auth RCE for about $25 in compute, against a bug-broker market price near $500K. Hugging Face disclosed an intrusion that ran end-to-end as an autonomous agent swarm across 17,000+ recorded events, and the EU published its Article 50 transparency guidelines two weeks before the AI-disclosure duty becomes applicable on August 2.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-07-20.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-20",
+    "title": "WordPress just became a sales argument you can prove — six moves off today's security news",
+    "summary": "A frontier model found a pre-auth WordPress RCE for about $25 in compute against a $500K broker price, exploitation started before most shops patched, and Next.js is shipping its first scheduled security release today. That combination turns 'your site is a liability' from a pitch into a checkable fact, and it makes a managed patch retainer the easiest recurring-revenue offer TSD has ever had to explain.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-20.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-20",
+    "title": "It's Next.js patch day — the release hadn't landed at filing time, so keep checking; meanwhile AsyncAPI's npm org was hijacked",
+    "summary": "The first scheduled Next.js security release — 4 high and 5 medium severity fixes across the 16.2 and 15.5 lines — was due today but had not been published when this briefing was filed. Microsoft Threat Intelligence documented a takeover of AsyncAPI's release pipeline that republished five package versions with an import-time payload in about 90 minutes, Anthropic lined up investor meetings for a possible October IPO, and Vercel made Sandbox egress free while adding cache-reason logs.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-20.html"
   },
   {
     "source": "america",

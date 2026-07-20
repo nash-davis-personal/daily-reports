@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-07-20" />
+  <meta name="report:title" content="A $25 model run found a WordPress RCE worth $500K, and an AI agent swarm breached Hugging Face on its own" />
+  <meta name="report:summary" content="No frontier model shipped this window — the story is what models are now doing without being asked. Searchlight Cyber pointed GPT-5.6 Sol Ultra at a stock WordPress install and it found the wp2shell pre-auth RCE for about $25 in compute, against a bug-broker market price near $500K. Hugging Face disclosed an intrusion that ran end-to-end as an autonomous agent swarm across 17,000+ recorded events, and the EU published its Article 50 transparency guidelines two weeks before the AI-disclosure duty becomes applicable on August 2." />
+  <meta name="report:highlights" content="4" />
+
+  <title>A $25 model run found a $500K WordPress exploit — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Monday, July 20, 2026</span>
+        <span>◆</span><span>What's new since July 18</span>
+      </div>
+      <h1>A $25 model run found a $500K WordPress exploit, and an agent swarm breached Hugging Face without a human driving</h1>
+      <p class="standfirst">Nothing shipped from the frontier labs this window — Anthropic's newsroom is verifiably empty since July 14, and Gemini 3.5 Pro missed another target date. The real news is on the offensive side: a stock frontier model found a pre-auth remote-code-execution flaw in the world's most-audited PHP codebase for roughly the price of lunch, and Hugging Face published forensics on an intrusion that ran itself.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~48h window, July 18–20</span>
+        <span>◆</span><a href="https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~$25</div><div class="lbl">Compute to find a WordPress pre-auth RCE</div></div>
+      <div class="stat"><div class="num">17,000+</div><div class="lbl">Attacker events in the Hugging Face breach</div></div>
+      <div class="stat"><div class="num">Aug 2</div><div class="lbl">EU AI disclosure duty becomes applicable</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>A frontier model found a $500K-class exploit for $25</h4><p>Searchlight Cyber pointed GPT-5.6 Sol Ultra at a stock WordPress instance. It pulled the admin email in minutes and, about four hours later, worked out that a read-only SQL injection could escalate to admin without cracking a password.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Hugging Face was breached by an autonomous agent swarm</h4><p>A malicious dataset chained a remote-code loader with config template injection, then escalated and moved laterally over a weekend across short-lived sandboxes. Public models, datasets and Spaces were verified clean.</p></div>
+        <div class="signal"><div class="n">03</div><h4>The EU published its Article 50 transparency guidelines</h4><p>Filed July 20, ahead of the August 2 applicability date. The duty to tell a user they are talking to an AI system, and to machine-mark synthetic content, is now spelled out.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The frontier labs shipped nothing</h4><p>Anthropic's newsroom has no posts between July 15 and 20. Gemini 3.5 Pro passed another rumored date without launching. An honest quiet window on capability.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The economics of finding bugs just broke</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>Searchlight Cyber found the WordPress wp2shell RCE with an off-the-shelf model and about $25 of compute</h3>
+          </div>
+          <div class="story-body">
+            <p>Adam Kues at Searchlight Cyber pointed <b>GPT-5.6 Sol Ultra</b> at a stock WordPress instance with no special harness. It extracted the administrator email address within minutes. Roughly four hours later it had established that a read-only SQL injection in the <code>author__not_in</code> parameter could be escalated to full admin access without ever cracking a password hash.</p>
+            <p>That chain is half of <b>wp2shell</b> — the pre-auth RCE (CVE-2026-63030 and CVE-2026-60137) that WordPress patched on July 17 in 6.9.5 and 7.0.2, and that started seeing in-the-wild exploitation once a proof of concept went public. Searchlight framed the result against the roughly <b>$500,000</b> exploit brokers will pay for a WordPress pre-auth RCE.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two jobs. First, audit today — any client site you built, inherited, referred out, or are mid-migration on needs a WordPress version check and a post-patch compromise check, because exploitation began before most shops patched. Second, this is the cleanest cold-open you will get this quarter: the security floor under WordPress is dropping because attackers now rent a model instead of hiring a researcher, and "your site is a monthly CVE subscription" is a true, checkable claim you can lead a Next.js migration pitch with.</p>
+          <div class="refs"><a href="https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/" target="_blank" rel="noopener">Searchlight Cyber — the writeup</a> <a href="https://www.rapid7.com/blog/post/etr-cve-2026-63030-wp2shell-a-critical-remote-code-execution-vulnerability-in-wordpress-core/" target="_blank" rel="noopener">Rapid7 — wp2shell technical analysis</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 16–19, 2026</span>
+            <h3>Hugging Face disclosed an intrusion that ran end-to-end as an agent swarm</h3>
+          </div>
+          <div class="story-body">
+            <p>A malicious dataset exploited a remote-code dataset loader plus a config template injection to execute code on a processing worker, then escalated privileges and moved laterally across internal clusters over a weekend. Forensics recovered more than <b>17,000 recorded attacker events</b> spread across a swarm of short-lived sandboxes. Limited internal datasets and service credentials were touched; Hugging Face verified that public models, datasets, Spaces and the software supply chain were clean.</p>
+            <p>One detail worth sitting with: Hugging Face had to run the forensic analysis using the open-weight <b>GLM 5.2</b> on their own infrastructure, because commercial API guardrails refused to accept the malicious artifacts as input.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The guardrail detail is the practical lesson. If you ever need to analyze something genuinely hostile — a suspicious upload, a poisoned document in a Concierge RAG corpus — the commercial APIs will refuse it and you will need a local open-weight fallback. Worth knowing before you need it at 2am. More immediately: anything that ingests client-supplied files into a RAG index is an untrusted-input path, and Concierge should treat uploaded documents as data rather than instructions.</div>
+          <div class="refs"><a href="https://huggingface.co/blog/security-incident-july-2026" target="_blank" rel="noopener">Hugging Face — security incident disclosure</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The disclosure clock is running</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Compliance</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>The European Commission published Article 50 transparency guidelines, two weeks before the rules bite</h3>
+          </div>
+          <div class="story-body">
+            <p>The Commission filed "Guidelines on transparency obligations for providers and deployers of AI systems" on <b>July 20</b>. The guidelines themselves are non-binding, but they are the first Commission instrument covering the full scope of Article 50, and the underlying obligations become applicable on <b>August 2, 2026</b>.</p>
+            <p>Two duties matter for anyone shipping conversational AI: telling users they are interacting with an AI system, and machine-readable marking of synthetic content.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This lands squarely on TSD Front Desk. Hawaii's Act 248 already pushed the same disclosure duty in the US, and the EU version makes it the de facto global template. Build the "you're speaking with an AI assistant" disclosure into the default greeting now rather than retrofitting it per client, then put it on the sales sheet — "disclosure compliant by default" is a free trust differentiator with SMB buyers who are nervous about the legal surface of an AI answering their phone.</div>
+          <div class="refs"><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">European Commission — AI regulatory framework</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quiet at the frontier</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Context</span>
+            <span class="ver">Jul 15–20, 2026</span>
+            <h3>No major model shipped this window, and that is the honest read</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic's newsroom has nothing between July 15 and July 20 — the most recent posts are July 14. Nothing frontier-level landed from OpenAI, Google, Meta, xAI, DeepSeek or Mistral either. <b>Gemini 3.5 Pro</b> passed another rumored launch date on July 17 without shipping and reportedly remains in limited Vertex AI preview; Google has never officially confirmed that date, so treat the delay reporting as press rather than statement.</p>
+            <p>The one live capability story, <b>Kimi K3</b>, broke on July 16 and was covered in the July 17 edition. The follow-up: Moonshot reportedly paused new subscriptions on July 19 after 48 hours of demand pushed it near GPU capacity. That is aggregator-sourced and not confirmed against a primary post — treat it as unconfirmed. Open weights are still promised for July 27.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to change. Claude stays the delivery default, and a quiet capability window is a good time to ship client work instead of re-evaluating your stack. Put a note in your calendar for July 27 to check whether the K3 weights actually land, because a 2.8T open-weight model at $3/$15 per million tokens is real pricing pressure on your inference line — but wait for third-party benchmark replication before you act on Moonshot's own numbers.</div>
+          <div class="refs"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic newsroom (verified empty for the window)</a> <a href="https://simonwillison.net/2026/Jul/16/kimi-k3/" target="_blank" rel="noopener">Simon Willison on Kimi K3</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Update</span><span class="txt">OpenAI shipped Codex and ChatGPT quality-of-life updates: Codex fixed bundled instructions for the GPT-5.6 Sol/Terra/Luna line and restored their 272,000-token context windows; custom instructions went from 1,500 to 5,000 characters on paid tiers. <span class="ver">Jul 18</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Current AI, the public-interest AI nonprofit led by Ayah Bdeir, is reported at $400M in total commitments — $100M from the French government plus Ford Foundation, MacArthur, DeepMind and Salesforce. The total is well-attested; the July 19 date is not firm. <span class="ver">Jul 19</span></span></li>
+            <li><span class="tag improve qh-tag">Signal</span><span class="txt">SK Group chair Chey Tae-won told the Jeju Forum that foreign governments now treat AI memory access as economic security, with customers asking for 60–100% more AI memory in 2027. Aggregator-sourced; primary not fetched. <span class="ver">Jul 19</span></span></li>
+            <li><span class="tag fix qh-tag">Correction</span><span class="txt">Several aggregators are recycling the SpaceX acquisition of Anysphere/Cursor as current news. The deal is real but dates to June 16 and is not new this window. <span class="ver">—</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

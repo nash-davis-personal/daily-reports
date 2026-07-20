@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-20" />
+  <meta name="report:title" content="It's Next.js patch day — the release hadn't landed at filing time, so keep checking; meanwhile AsyncAPI's npm org was hijacked" />
+  <meta name="report:summary" content="The first scheduled Next.js security release — 4 high and 5 medium severity fixes across the 16.2 and 15.5 lines — was due today but had not been published when this briefing was filed. Microsoft Threat Intelligence documented a takeover of AsyncAPI's release pipeline that republished five package versions with an import-time payload in about 90 minutes, Anthropic lined up investor meetings for a possible October IPO, and Vercel made Sandbox egress free while adding cache-reason logs." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js patch day — release pending at filing time — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, July 20, 2026</span>
+        <span>◆</span><span>What's new since July 18</span>
+      </div>
+      <h1>It's Next.js patch day and the release hadn't shipped at filing time — keep refreshing</h1>
+      <p class="standfirst">The first release under Vercel's new scheduled security program was due today, covering 4 high and 5 medium severity issues across the 16.2 and 15.5 lines. When this briefing was filed the blog post was not up and no stable patch had appeared on GitHub, so the version numbers are still unknown — ignore any third-party article claiming to have them. Elsewhere, AsyncAPI's npm org was hijacked through its release pipeline.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~48h window, July 18–20, with late-surfacing items from July 14–17</span>
+        <span>◆</span><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4 high</div><div class="lbl">Next.js flaws due to be patched today</div></div>
+      <div class="stat"><div class="num">~90 min</div><div class="lbl">To republish 5 poisoned AsyncAPI versions</div></div>
+      <div class="stat"><div class="num">3,300</div><div class="lbl">Accounts exposed in the Ecopetrol breach</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js patch day, release still pending</h4><p>4 high and 5 medium severity fixes for the 16.2 and 15.5 lines were scheduled for July 20. Not published at filing time. Check before end of day and upgrade.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Do not trust the version numbers circulating</h4><p>A third-party article names "16.2.6 and 15.5.18" as today's patch. Those are the May 7 release. Wait for Vercel's own post.</p></div>
+        <div class="signal"><div class="n">03</div><h4>AsyncAPI's npm release pipeline was taken over</h4><p>Four core GitHub repos compromised; five versions across four package names republished in roughly 90 minutes carrying the same injected loader, delivering payload at import time.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Anthropic is lining up an October IPO</h4><p>Goldman, Morgan Stanley and JPMorgan are scheduling investor meetings. The S-1 was filed confidentially in June.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel made Sandbox egress free, added cache-reason logs</h4><p>Runtime logs now show why a response was or wasn't cached — directly useful for debugging client site performance.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Due Jul 20, 2026</span>
+            <h3>The first scheduled Next.js security release was due today and had not landed when this was filed</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel announced on July 13 that it is formalizing a monthly Next.js security-release program, and that the first scheduled release would arrive on <b>July 20</b> with patch releases for the <b>16.2</b> and <b>15.5</b> lines fixing <b>4 high and 5 medium</b> severity vulnerabilities. CVE details are to be published in a follow-up post once the patch is live.</p>
+            <p>As of filing, nextjs.org/blog still shows the July 13 announcement as the most recent post, and the GitHub releases page shows only <code>v16.3.0-canary.90</code> (July 20) — a canary, not the security patch. <b>The exact patched version numbers are not yet public.</b> A devops-daily.com article circulating the versions "16.2.6 and 15.5.18" is describing the <b>May 7, 2026</b> release, not this one.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check <a href="https://nextjs.org/blog" target="_blank" rel="noopener">nextjs.org/blog</a> again before you stop working today. When the post lands, run <code>npm ls next</code> across every client project, upgrade anything on 16.2.x or 15.5.x to the named patch, and redeploy. Four high-severity issues is enough that "I'll do it next sprint" is the wrong call. Do not upgrade to a version number you read in a third-party blog post — take it from Vercel's advisory only.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Vercel — the security release program</a> <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases on GitHub</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply chain</span>
+            <span class="ver">Jul 14–15, 2026</span>
+            <h3>AsyncAPI's npm organization was compromised through its release pipeline</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft Threat Intelligence documented a compromise of four core AsyncAPI GitHub repositories. <b>Five package versions across four package names</b> were republished within roughly 90 minutes, each carrying the same injected loader with <b>import-time payload delivery</b> — meaning the malicious code runs when the package is imported, not just at install.</p>
+            <p>Separately, jscrambler packages were compromised on July 11 via stolen publishing credentials. Two independent registry compromises inside a week.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Import-time payloads defeat the "I don't run install scripts" defense. Pin dependencies with a committed lockfile on every client project, and treat any unexplained dependency bump in a PR as suspicious until you've read the diff. If AsyncAPI tooling is anywhere in your stack, check installed versions against Microsoft's advisory. This is also the argument for keeping client dependency trees small — every package you add is a publishing credential you don't control.</div>
+          <div class="refs"><a href="https://www.microsoft.com/en-us/security/blog/2026/07/15/unpacking-asyncapi-npm-supply-chain-compromise-import-time-payload-delivery/" target="_blank" rel="noopener">Microsoft Threat Intelligence — AsyncAPI compromise</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack, incrementally better</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">Jul 17, 2026</span>
+            <h3>Vercel made Sandbox egress free and added cache-reason logs</h3>
+          </div>
+          <div class="story-body">
+            <p>Data downloaded by Vercel Sandbox is now free. Runtime logs now surface <b>cache reasons</b>, showing why a given response was or was not cached. Vercel also optimized CDN caching and deploys for immutable static assets, and the Chat SDK gained native Slack agent support.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The cache-reason logs are the practical win. Next time a client says "the site feels slow," you can point at the actual cache decision instead of guessing — that turns a vague complaint into a fixable line item, and it's the kind of thing worth screenshotting into a Managed AI retainer report to make the retainer feel concrete.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">July 2026</span>
+            <h3>Supabase shipped a TanStack DB sync layer and turned off connection logging by default</h3>
+          </div>
+          <div class="story-body">
+            <p><code>@supabase-labs/tanstack-db</code> (alpha) syncs TanStack DB collections with Supabase tables over PostgREST and Realtime. Realtime Broadcast now handles binary payloads. As of <b>July 9</b>, Postgres <code>log_connections</code> defaults to off for new projects, and existing Free and Pro projects are being migrated.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>log_connections</code> change is the one that could bite. If you have ever debugged a client's connection-pool problem by reading connection logs, that signal is going away on existing projects too. Note it now so you're not confused later. The TanStack DB alpha is worth a look for anything with heavy local state, but alpha means don't put it in a client build yet.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/47796-developer-update-july-2026" target="_blank" rel="noopener">Supabase — July developer update</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business &amp; money</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Markets</span>
+            <span class="ver">Jul 15, 2026</span>
+            <h3>Anthropic's bankers are scheduling investor meetings ahead of a possible October listing</h3>
+          </div>
+          <div class="story-body">
+            <p>Goldman Sachs, Morgan Stanley and JPMorgan are lining up investor meetings for what could be an <b>October debut</b>; Anthropic filed its S-1 confidentially in June. The last private round was reported at $65B raised at a $965B valuation, and a trillion-dollar debut is reportedly the banker base case.</p>
+            <p>Treat the valuation projections as banker talk rather than fact.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two effects. An S-1 forces public disclosure of Anthropic's revenue mix and enterprise concentration, which is free market research on what AI buyers actually pay for. And a listed Anthropic means more pressure to monetize the API — worth modeling what a 20% price move in either direction does to your per-client inference cost before you sign anyone to a fixed-price retainer.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/07/15/anthropic-ipo-banks-investor-meetings.html" target="_blank" rel="noopener">CNBC — Anthropic IPO investor meetings</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Colombia's state energy company Ecopetrol disclosed unauthorized access to cloud file storage across the parent and ~14 subsidiaries; data tied to ~3,300 accounts was exfiltrated with a ransom demand, though the company says ransomware deployment was blocked. <span class="ver">Jul 17–18</span></span></li>
+            <li><span class="tag breaking qh-tag">Patch</span><span class="txt">Microsoft's July Patch Tuesday remains the largest in its history at roughly 621 CVEs, including two zero-days under active attack — CVE-2026-56164 in SharePoint Server (unauthenticated, no user interaction) and CVE-2026-56155 in AD FS. If any client runs SharePoint, this is still unfinished business. <span class="ver">Jul 14</span></span></li>
+            <li><span class="tag improve qh-tag">Heads up</span><span class="txt">npm v12 ships this month and blocks preinstall/install/postinstall scripts by default, plus Git and remote dependencies. Expect some existing installs to break — budget an afternoon. Exact GA date still unconfirmed. <span class="ver">Jul 8</span></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">A dataset attributed to gig platform Paidwork was loaded into Have I Been Pwned — 11GB containing 23.3 million unique email addresses, allegedly taken in March 2026. Confirmed via aggregator rather than HIBP directly. <span class="ver">Jul 19</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">TSMC raised 2026 capex to $60–64B and added $100B to its Arizona commitment, bringing that total to $265B, on record Q2 revenue of $40.2B and net income up 77%. Shares still fell as much as 4.5% in Taipei on margin concerns. <span class="ver">Jul 16</span></span></li>
+            <li><span class="tag fix qh-tag">EVs</span><span class="txt">TechCrunch tallied every EV discontinued in the US this year, including Sony and Honda's Afeela venture abandoning both branded models in March. Roughly 247,000 EVs sold in Q2, about 5.8% of the market — up from Q1, down year over year. <span class="ver">Jul 18</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
