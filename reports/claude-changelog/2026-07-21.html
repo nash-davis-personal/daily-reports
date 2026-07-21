@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-21" />
+  <meta name="report:title" content="One release, 40 line items: long sessions stop stalling and worktree isolation gets teeth" />
+  <meta name="report:summary" content="v2.1.216 is a single fix-heavy release whose headline wins are a quadratic slowdown killed in long sessions, hot-reloading skills, and three holes closed in worktree and .claude filesystem isolation." />
+  <meta name="report:highlights" content="6" />
+
+  <title>One release, 40 line items: long sessions stop stalling and worktree isolation gets teeth — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, July 21, 2026</span>
+        <span>◆</span><span>1 release ◆ v2.1.216</span>
+      </div>
+      <h1>One release, 40 line items: long sessions stop stalling and worktree isolation gets teeth</h1>
+      <p class="standfirst">v2.1.216 shipped no headline feature, and it is still the most useful release of the past week for anyone running Claude Code hard. A quadratic slowdown in long sessions is gone, skills and commands finally reload without a restart, and three separate ways an agent could write outside its worktree or project got closed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the July 20 briefing (v2.1.215)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in the window</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Signals worth acting on</div></div>
+      <div class="stat"><div class="num">40</div><div class="lbl">Line items in 2.1.216</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Long sessions stop stalling</h4><p>Message normalization cost grew quadratically with turn count, causing multi-second stalls and slow resumes. Fixed.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Skills hot-reload mid-session</h4><p>Skills and commands edited during a session now appear in the slash menu without a restart.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Worktree subagents can't escape</h4><p><code>git -C</code>, <code>--git-dir</code>, and <code>GIT_DIR</code>/<code>GIT_WORK_TREE</code> no longer redirect an isolated subagent into the shared checkout.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Scheduled-task writes stay in the project</h4><p>A symlink at <code>.claude</code> could redirect workflow saves and scheduled-task writes outside the project. Closed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Unattended runs survive token rotation</h4><p>Auto mode no longer denies commands with "HTTP 401" classifier errors after the OAuth token rotates mid-session.</p></div>
+        <div class="signal"><div class="n">06</div><h4>New sandbox escape hatch</h4><p><code>sandbox.filesystem.disabled</code> skips filesystem isolation while keeping network egress control.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Throughput: the long-session tax got cheaper</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Quadratic message normalization was making long sessions crawl</h3>
+          </div>
+          <div class="story-body">
+            <p>In long sessions the cost of normalizing messages grew quadratically with the number of turns. The symptom was multi-second stalls and slow resumes on big conversations. That is now fixed.</p>
+            <p>Two smaller companions landed alongside it: <code>/context</code> now warns explicitly when the conversation has exceeded the context window, and a failed <code>/compact</code> displays as an error instead of quietly doing nothing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have been reflexively running <code>/clear</code> on the Bisque or Sonderwerks build sessions because they got sluggish after an hour, stop doing that. Update, then let a session run its full length. The stall you were working around was a bug, and you were paying for it in re-explaining context.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Skills and commands edited mid-session now appear without a restart</h3>
+          </div>
+          <div class="story-body">
+            <p>Previously a skill or slash command you changed during a session stayed invisible to the slash menu until you restarted Claude Code. Now the change lands live. Plugin skills that declare a <code>name</code> in frontmatter also stopped losing their plugin prefix in autocomplete.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the write-test-write loop you actually use when authoring skills. Editing a skill and immediately invoking it in the same session is one step now instead of three, which makes it cheap to keep tightening the scout, sales, and vault routines rather than leaving them at v1.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Isolation: three ways an agent could write where it shouldn't</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Worktree-isolated subagents could redirect git back into the shared checkout</h3>
+          </div>
+          <div class="story-body">
+            <p>A subagent running with worktree isolation could point git at the main checkout using <code>git -C</code>, <code>--git-dir</code>, or the <code>GIT_DIR</code> and <code>GIT_WORK_TREE</code> environment variables. Isolation held for ordinary file writes and leaked on git operations. Two related fixes shipped with it: worktree sessions could land in another project's leftover worktree when the working directory did not match the selected project, and background sessions whose worktree had no git repository were undeletable.</p>
+            <p>This is the second pass at the same class of bug. v2.1.210 fixed isolated subagents running git-mutating commands against the main checkout; 2.1.216 closes the flag and environment-variable routes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worktree isolation is the entire safety argument for letting a loop run unattended against a client repo. Until you are on 2.1.216, treat any parallel-agent run on Bisque or Studio C as capable of touching the main checkout. Update before the next unattended sweep, then confirm with <code>git -C &lt;repo&gt; status</code> that the main checkout is clean when a run finishes.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Workflow saves and scheduled-task writes followed a symlinked .claude out of the project</h3>
+          </div>
+          <div class="story-body">
+            <p>If <code>.claude</code> was a symlink, workflow saves and scheduled-task writes followed it and could land outside the project directory. <code>/rewind</code> got the same treatment separately: it no longer restores or deletes files through symlinks or hard links at tracked paths, and it reports how many paths it skipped.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run scheduled tasks daily, including this briefing. Any repo where <code>.claude</code> is symlinked to share config across projects was a write-redirect waiting to happen. Worth running <code>find ~/Documents -maxdepth 3 -name .claude -type l</code> once to see whether you have any.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">v2.1.216</span>
+            <h3>sandbox.filesystem.disabled separates filesystem isolation from network egress control</h3>
+          </div>
+          <div class="story-body">
+            <p>New setting: <code>sandbox.filesystem.disabled</code> skips filesystem isolation while keeping network egress control in place.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful for builds that legitimately need to write across the filesystem (Vercel CLI cache, pnpm store, Supabase local stack) while you still want egress restricted. Reach for this before you disable the sandbox entirely, which is the move you would otherwise make the first time a build fails inside it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended and background sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Token rotation and resume no longer break running agents</h3>
+          </div>
+          <div class="story-body">
+            <p>Three failures in the same area got fixed. Auto mode was denying commands with "HTTP 401" classifier errors after the OAuth token expired or rotated mid-session. Resumed background agent sessions were reverting to the default agent, losing the agent's own prompt and tool restrictions; both are restored now. And background subagents were being cancelled when a high-priority message arrived during their startup window.</p>
+            <p>On the cloud side, sessions that dropped their in-flight message when the container restarted mid-turn now re-run the interrupted turn on resume instead of going unresponsive, and Claude Code on the web stopped re-asking the same question and discarding your answer after a few idle minutes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The reverting-to-default-agent bug is the one that quietly cost you work. A resumed background agent that lost its tool restrictions was doing a different job than the one you dispatched. If any background run from the past week produced output that looked off-brief, that is a plausible cause worth checking before you blame the prompt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.216</span>
+            <h3>Blocked background sessions surface what they need instead of hanging</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/mcp</code> and <code>/install-github-app</code> in a background session now park a "needs input" request in the agent view when no client is attached. MCP re-authentication stopped revoking working credentials before the new sign-in succeeds. AskUserQuestion no longer tells Claude to continue when your free-text answer asked it to wait or explain first.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The MCP re-auth fix matters most here. Re-authenticating Supabase or a client MCP server could previously leave you with no working credentials if the new sign-in failed, in the middle of a build. That failure mode is gone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog ◆ v2.1.216</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash permission checking of compound statements with redirects inside <code>&amp;&amp;</code> lists or negations <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash command parsing of non-ASCII characters now matches real shell word boundaries <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">PowerShell tool permission validation of commands containing invisible Unicode characters <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Read-only commands on Windows accessing network paths without a permission prompt <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude daemon stop --any</code> could terminate an unrelated process via a stale legacy daemon lockfile <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Esc-Esc at an idle prompt not opening the rewind picker in long sessions with background tasks <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Ctrl+X twice in the agent list failing to delete a session, and deleted sessions reappearing when their background worker had died <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">@-mentions silently attaching nothing after file-modifying hooks; vim dot-repeat of <code>c</code>-operators and paste; statusline running twice on resume; resume-picker hangs on failure <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Mouse and focus garbage in the terminal while a GUI editor from <code>/memory</code>, <code>/plan</code>, <code>/keybindings</code>, or Ctrl+G is open; <code>/memory</code> no longer waits for the editor to close <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude-in-Chrome 403-looping on reconnect when the session's OAuth token lacks a required scope <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Telemetry misreporting permission denials: failed prompt requests no longer count as user rejections, and interrupts report as aborts <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prometheus metrics endpoint (<code>OTEL_METRICS_EXPORTER=prometheus</code>) emitting invalid <code># UNIT</code> lines <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fullscreen dialogs stretching past their panel edge, the <code>/config</code> list clipping its keyboard-hint footer, and the transcript-mode footer wrapping under 104 columns <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Right-to-left text (Arabic, Hebrew, Persian) rendering in the wrong order when mixed with English or code <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/fork</code> confirmation is one line now with the new session's name, <code>claude attach</code> id, and a note when the copy shares your checkout <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/ultrareview</code> diff-too-large error shows configured limits, measured diff size, and the largest contributing files <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/code-review ultra</code> empty-diff message names the exact base ref and suggests passing an explicit base <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Validation of <code>git</code> and <code>gh</code> command arguments in the PowerShell tool <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Spend limit adjustment prompt shows the server's reason when a change is rejected <span class="ver">v2.1.216</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Bundled dataviz skill: reordered default chart palette, dropped guidance suggesting direct labels for four-series charts <span class="ver">v2.1.216</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
