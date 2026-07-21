@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-21",
+    "title": "Three tariff deadlines land in four days, GM raises guidance again, and gas sits exactly at $4.00",
+    "summary": "The import-duty floor changes twice this week: a 25% Section 301 duty on most Brazilian goods takes effect Wednesday, and the 10% across-the-board Section 122 surcharge terminates by operation of law Friday, which could take the average effective tariff rate from about 13% to about 7% unless USTR's proposed 10–12.5% replacement duties are finalized first. GM opened a heavy earnings week with $48.0B in revenue and a second guidance raise, the national average gas price is $4.00, and a collapsing heat dome is producing severe storms and flash flooding from the Midwest to the I-95 corridor.",
+    "highlights": 6,
+    "path": "reports/america/2026-07-21.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "v2.1.216 is a single fix-heavy release whose headline wins are a quadratic slowdown killed in long sessions, hot-reloading skills, and three holes closed in worktree and .claude filesystem isolation.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-21.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-21",
+    "title": "Microsoft is about to sell AI bug-hunting at Anthropic's throat, and the biggest open-weight week of the year starts Friday",
+    "summary": "AI security stopped being a research topic and became a product category this window: Microsoft is shipping Project Perception before month-end to undercut Anthropic's Mythos on cost, and a startup called Neo raised $100M on July 20 for AI application security. Meanwhile the calendar is loaded — DeepSeek retires its legacy API aliases July 24, Moonshot drops Kimi K3's 2.8T weights under a modified MIT license July 27, and Alibaba previewed a 2.4T Qwen3.8-Max with no benchmarks to back its claims.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-21.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-21",
+    "title": "Security is the offer this week: a patch you can sell, a retainer with a calendar, and a receptionist priced against a 3.7% unemployment rate",
+    "summary": "Microsoft is about to sell enterprises an AI that reads code and reports what's broken, a startup raised $100M on July 20 to do the same thing, and Next.js just put security patching on a published monthly schedule. That combination hands TSD a fixed-fee audit that opens doors this week and a recurring managed-patch retainer with a calendar behind it — plus a sharper way to sell TSD Front Desk into a North Carolina labor market with 3.7% unemployment.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-21.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-21",
+    "title": "Next.js patch day, take two — still unpublished at filing; meanwhile RabbitMQ hands out OAuth secrets to anyone who asks",
+    "summary": "The Next.js security release slipped from July 20 to July 21 and had still not shipped when this was filed at 7:30am ET — npm's latest and backport tags both still point at the July 1 releases. Patch when it lands and not before. Separately, a RabbitMQ endpoint that never checked authorization has been handing out OAuth client secrets since 2024, and TSMC put another $100B into Arizona while the chip tape sits in a bear market.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-21.html"
   },
   {
     "source": "america",

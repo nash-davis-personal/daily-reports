@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-07-21" />
+  <meta name="report:title" content="Microsoft is about to sell AI bug-hunting at Anthropic's throat, and the biggest open-weight week of the year starts Friday" />
+  <meta name="report:summary" content="AI security stopped being a research topic and became a product category this window: Microsoft is shipping Project Perception before month-end to undercut Anthropic's Mythos on cost, and a startup called Neo raised $100M on July 20 for AI application security. Meanwhile the calendar is loaded — DeepSeek retires its legacy API aliases July 24, Moonshot drops Kimi K3's 2.8T weights under a modified MIT license July 27, and Alibaba previewed a 2.4T Qwen3.8-Max with no benchmarks to back its claims." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Microsoft aims Project Perception at Mythos as open-weight week loads up — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Tuesday, July 21, 2026</span>
+        <span>◆</span><span>What's new since July 20</span>
+      </div>
+      <h1>Microsoft is about to sell AI bug-hunting at Anthropic's throat, and the biggest open-weight week of the year starts Friday</h1>
+      <p class="standfirst">Yesterday's briefing was about models finding exploits on their own; today the market caught up and turned that into a product line. Microsoft is shipping Project Perception before the end of July as a multi-model rival to Anthropic's Mythos, an AI application-security startup called Neo took $100M on July 20, and the open-weight calendar between now and next Monday is the most crowded it has ever been.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window, July 20–21</span>
+        <span>◆</span><a href="https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$100M</div><div class="lbl">Neo's seed + Series A for AI app security, July 20</div></div>
+      <div class="stat"><div class="num">Jul 27</div><div class="lbl">Kimi K3's 2.8T weights go public</div></div>
+      <div class="stat"><div class="num">Jul 24</div><div class="lbl">DeepSeek retires its legacy API model names</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Microsoft ships Project Perception this month</h4><p>A multi-model security platform that routes each task to the cheapest model that can handle it, pulling from Microsoft's own models plus OpenAI and Anthropic. The pitch is Mythos-class bug hunting at a price that makes continuous scanning viable.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Neo raised $100M in one shot for AI application security</h4><p>Announced July 20, a combined seed and Series A from a16z, Bessemer, Craft Ventures and Merlin Ventures. Two of the week's biggest AI stories are both "who secures the code the models write."</p></div>
+        <div class="signal"><div class="n">03</div><h4>DeepSeek's legacy API names die Friday</h4><p><code>deepseek-chat</code> and <code>deepseek-reasoner</code> stop resolving after July 24 at 15:59 UTC. If anything you run still points at those strings, it breaks in three days.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Kimi K3's full 2.8T weights land July 27</h4><p>Moonshot is publishing the largest open-weight model ever released under a modified MIT license, plus a technical report. The model has been live via API since July 16; this is the download.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Alibaba's 2.4T Qwen3.8-Max preview arrived with nothing to check</h4><p>Previewed July 19 at WAIC in Shanghai and described as "second only to Fable 5." No benchmark table, no model card, no license, no standard per-token price. Treat the ranking claim as marketing until someone independent tests it.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> AI security became a product category this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 19–21, 2026</span>
+            <h3>Microsoft is launching Project Perception before month-end and aiming it squarely at Anthropic's Mythos</h3>
+          </div>
+          <div class="story-body">
+            <p><b>Project Perception</b> is a cybersecurity platform that scans enterprise code, infrastructure and deployed AI systems for vulnerabilities and then suggests or applies the patch. The architectural bet is multi-model routing: each task goes to whichever model handles it most efficiently, drawing on Microsoft's own models, OpenAI's, and Anthropic's inside one product. Cheap models take the bulk of the volume and expensive reasoning capacity is reserved for the edge cases.</p>
+            <p>That routing is the whole pitch. Anthropic's Mythos-class security offering set the capability bar; Microsoft is attacking the price of running it continuously rather than the quality of any single finding. The product sits under Hayete Gallot, the EVP for security who came back to Microsoft from Google Cloud in February. Launch is reported for the end of July, so specifics and pricing are not public yet — treat the cost claim as a claim.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The thing enterprises are about to buy for six figures is a scanner that reads a codebase and reports what's broken. You can sell the SMB version of that today with Claude and a repo — a fixed-fee "AI security & dependency audit" on a client's existing site, delivered as a written report with prioritized fixes. It's the cheapest possible foot-in-the-door for a rebuild pitch, it needs zero new infrastructure, and Grant and Bishop can sell it without understanding a line of it.</div>
+          <div class="refs"><a href="https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/" target="_blank" rel="noopener">TechRepublic — Project Perception could challenge Mythos</a> <a href="https://www.uctoday.com/security-compliance-risk/what-is-microsofts-project-perception-and-can-it-match-anthropics-mythos/" target="_blank" rel="noopener">UC Today — what it is</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>Neo raised $100M across a combined seed and Series A to secure AI-written applications</h3>
+          </div>
+          <div class="story-body">
+            <p>Announced July 20, backed by Andreessen Horowitz, Bessemer Venture Partners, Craft Ventures and Merlin Ventures. A hundred million dollars pre-product-maturity, in the same week Microsoft aims a security platform at Anthropic, tells you where the smart money thinks the bottleneck is: not writing the code, securing it.</p>
+            <p>Same day, Infinity raised $15M in seed for AI infrastructure and inference software. The AI funding tape is still heavily weighted toward infrastructure and security rather than applications.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Confirmation of the wedge above. When VCs put $100M into "the AI wrote it, now who checks it," the SMB-scale version of that anxiety is a client who paid someone for a site and has no idea whether it's safe. That's a sales conversation, not a technical one.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/20/venture-capital-startup-funding-roundup-july-20-2026/" target="_blank" rel="noopener">Tech Startups — VC roundup, July 20</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Open weights on a countdown</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Jul 24, 2026</span>
+            <h3>DeepSeek retires <code>deepseek-chat</code> and <code>deepseek-reasoner</code> in three days</h3>
+          </div>
+          <div class="story-body">
+            <p>Both legacy model aliases become fully inaccessible after <b>July 24, 2026 at 15:59 UTC</b>. This is a deprecation deadline, not a launch — some coverage this week has been conflating it with a DeepSeek V4 general-availability date, and V4 still has no confirmed GA. V4 has been in preview since April 24.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep every project, script and n8n/agent config for those two strings before Friday. If a client automation you built quietly falls back to DeepSeek for a cheap step, it fails silently on Friday afternoon and you find out from the client.</div>
+          <div class="refs"><a href="https://api-docs.deepseek.com/news/news260424/" target="_blank" rel="noopener">DeepSeek API docs — V4 preview &amp; deprecations</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 27, 2026</span>
+            <h3>Moonshot publishes Kimi K3's full 2.8-trillion-parameter weights on Monday, under a modified MIT license</h3>
+          </div>
+          <div class="story-body">
+            <p>Moonshot split the K3 launch in two. The model went live July 16 through the Kimi app, Kimi Work, Kimi Code and the Kimi API. The weights — the largest open-weight release in existence — plus a technical report covering architecture, training and evaluation land <b>July 27</b> under a modified MIT license. K3 has since taken the top spot on a major coding leaderboard.</p>
+            <p>The market already priced the announcement: the Philadelphia Semiconductor Index fell into a bear market on July 17, down more than 20% from its June peak, in the worst weekly rout for chipmakers since April 2025. Moonshot has separately paused new Kimi K3 subscriptions on capacity grounds, which is its own signal about what US export controls are doing to Chinese inference supply.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You will not self-host a 2.8T model, and you shouldn't try. What matters is the second-order effect: a permissively licensed frontier-class model puts a hard ceiling on what any vendor can charge per token, and that ceiling keeps falling. Price your Managed AI retainers on the value of the workflow, never on a per-message inference margin, because the margin is going to zero.</div>
+          <div class="refs"><a href="https://cryptobriefing.com/kimi-k3-open-weights-july-27/" target="_blank" rel="noopener">Crypto Briefing — K3 open weights July 27</a> <a href="https://www.techtimes.com/articles/321066/20260720/kimi-k3-wipes-33t-chip-stocks-moonshot-moves-toward-hong-kong-ipo.htm" target="_blank" rel="noopener">TechTimes — the chip-stock fallout</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Preview</span>
+            <span class="ver">Jul 19, 2026</span>
+            <h3>Alibaba previewed a 2.4T multimodal Qwen3.8-Max and published nothing verifiable with it</h3>
+          </div>
+          <div class="story-body">
+            <p>The Qwen team previewed <b>Qwen3.8-Max-Preview</b> on July 19 at the World AI Conference: 2.4 trillion total parameters in a sparse mixture-of-experts design, and Qwen's first model above a trillion parameters to go multimodal. The team described it as "second only to Fable 5" among the systems it benchmarked.</p>
+            <p>That claim shipped without a benchmark table, a model card, a license, a standard per-token price, or any independent testing. Access is live through Token Plan, Qoder and QoderWork at 10% of standard pricing. Open weights are promised with no date.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to act on, and that's the point. When a lab announces a ranking without a benchmark table, the correct response is to keep building on the model you can actually evaluate. File it and move on.</div>
+          <div class="refs"><a href="https://www.marktechpost.com/2026/07/19/alibaba-previews-qwen3-8-max-a-2-4-trillion-parameter-multimodal-model-days-after-moonshots-kimi-k3-open-weight-launch/" target="_blank" rel="noopener">MarkTechPost — Qwen3.8-Max preview</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Distribution, not capability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Jul 14–20, 2026</span>
+            <h3>Anthropic put Claude in every US K-12 classroom it can reach, and brought Fable back to paid tiers</h3>
+          </div>
+          <div class="story-body">
+            <p><b>Claude for Teachers</b> launched July 14: verified US K-12 educators get free premium Claude access, a teaching-skills library, and a Learning Commons connector that grounds lesson plans in academic standards for all 50 states plus curricula like OpenSciEd and Illustrative Mathematics. Terms are FERPA-aligned and were co-developed with the American Federation of Teachers. Sign-ups run through June 30, 2027. It's individual educators only for now; a schools-and-districts offering is still unannounced.</p>
+            <p>Separately, <b>Fable 5</b> returned to Max and Team Premium on July 20, and the free-access window that had been open closed July 19. Claude Code's boosted limits hold through August 19.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two things. Anthropic is buying distribution with free tiers while the model tiers shuffle underneath — expect your own limits and model availability to keep moving, so never hard-code a model ID in a client deployment without a fallback. And if you want a zero-cost referral surface in Gastonia and Charlotte, teachers who just got free Claude are the single most connected group of local adults you can reach.</div>
+          <div class="refs"><a href="https://www.techtimes.com/articles/320533/20260715/anthropic-makes-claude-free-all-us-k-12-teachers-standards-aligned-agentic-ai.htm" target="_blank" rel="noopener">TechTimes — Claude for Teachers</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>SAP closed its Prior Labs acquisition and put over €1B behind models that read tables instead of text</h3>
+          </div>
+          <div class="story-body">
+            <p>SAP committed more than <b>€1 billion across four years</b> to tabular foundation models — systems pretrained on table-shaped structured data rather than language. Prior Labs' TabPFN series was published in Nature. On spreadsheets and databases, this class of model outperforms language models and competes with traditional machine learning without the feature-engineering overhead.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth knowing before you build the next client dashboard. When a client asks for forecasting or anomaly detection over their sales table, the answer is increasingly a tabular model, not a prompt wrapped around a CSV. Nothing to buy yet — this is a "don't reach for an LLM by reflex" note.</div>
+          <div class="refs"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">Build Fast with AI — July 20 roundup</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Research</span><span class="txt">Epoch AI tested Pangram, GPTZero and Originality.ai against AI text prompted to imitate a specific author. Average miss rate 13% — Pangram 10%, GPTZero 11%, Originality.ai 18% — and 24–29% on scientific writing, with Pangram missing 48% of Gemini-written academic passages. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag fix qh-tag">Research</span><span class="txt">The RadLE 2.0 benchmark finds radiology models deliver wrong findings at full confidence. Miscalibrated confidence defeats the human-review safety net that clinical deployment assumes. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag improve qh-tag">Policy</span><span class="txt">The World AI Conference closed in Shanghai with a 29-country World AI Cooperation Organization; charter and leadership are still unannounced. Separately, US officials are discussing a FINRA-style independent AI watchdog to evaluate models pre- and post-release. Details unsettled on both. <span class="ver">Jul 18–20</span></span></li>
+            <li><span class="tag improve qh-tag">Model</span><span class="txt">Gemini 3.5 Pro missed a July 17 target, its third slip; Google is reportedly weighing a Gemini 3.6 Flash stopgap, and Alphabet shares fell about 4% on the news. <span class="ver">Jul 17–20</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Etched is in talks at a $20B valuation for transformer-specific chips; CuspAI raised a $450M Series B at $2.6B for materials discovery, backed by Kleiner Perkins, NEA, a Bezos fund and AMD Ventures. <span class="ver">Jul 20</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

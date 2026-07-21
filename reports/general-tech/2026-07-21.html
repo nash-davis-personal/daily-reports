@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-21" />
+  <meta name="report:title" content="Next.js patch day, take two — still unpublished at filing; meanwhile RabbitMQ hands out OAuth secrets to anyone who asks" />
+  <meta name="report:summary" content="The Next.js security release slipped from July 20 to July 21 and had still not shipped when this was filed at 7:30am ET — npm's latest and backport tags both still point at the July 1 releases. Patch when it lands and not before. Separately, a RabbitMQ endpoint that never checked authorization has been handing out OAuth client secrets since 2024, and TSMC put another $100B into Arizona while the chip tape sits in a bear market." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js patch day take two, and RabbitMQ leaks OAuth secrets — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, July 21, 2026</span>
+        <span>◆</span><span>What's new since July 20</span>
+      </div>
+      <h1>Next.js patch day, take two — still unpublished at filing time, while RabbitMQ hands OAuth secrets to anyone who asks</h1>
+      <p class="standfirst">Vercel moved the July security release from the 20th to the 21st, and as of 7:30am ET today it has not shipped: npm's <code>latest</code> and <code>backport</code> tags both still resolve to the July 1 builds. The genuinely actionable security story this window is RabbitMQ, where a management endpoint has been returning the OAuth client secret to unauthenticated callers since version 3.13.0 shipped in early 2024.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window, July 20–21</span>
+        <span>◆</span><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4 high / 5 med</div><div class="lbl">Vulnerabilities in the pending Next.js release</div></div>
+      <div class="stat"><div class="num">8.7</div><div class="lbl">CVSS on the RabbitMQ OAuth secret leak</div></div>
+      <div class="stat"><div class="num">$265B</div><div class="lbl">TSMC's total committed US investment</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>The Next.js patch has slipped twice and is still not out</h4><p>Announced for July 20, moved to July 21 by a note on the Vercel blog, and unpublished as of this filing. Latest stable is still 16.2.10 and 15.5.20, both from July 1.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Do not upgrade to a version number you read secondhand</h4><p>No CVE IDs or patched version numbers have been published. Any specific "patched version" circulating right now is a guess. Watch the npm dist-tags, not a blog aggregator.</p></div>
+        <div class="signal"><div class="n">03</div><h4>RabbitMQ's <code>GET /api/auth</code> returns the OAuth client secret with no auth check</h4><p>CVE-2026-57219, CVSS 8.7. The endpoint's authorization check was hard-coded to always allow. Present since 3.13.0 in early 2024. Patched in 4.3.0, 4.2.6, 4.1.11, 4.0.20 and 3.13.15.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel shipped Workflows run-state configuration and Turborepo cache purging</h4><p>Both landed July 20. You can now choose where Workflows keeps run state, and purge build and CI artifacts out of a Remote Cache.</p></div>
+        <div class="signal"><div class="n">05</div><h4>TSMC added $100B to Arizona while chip stocks sat in a bear market</h4><p>Total US commitment is now $265B across 10 fabs, and 2026 capex guidance went up to $60–64B. The CFO says the build-out is accelerating. The tape disagrees.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this, watch that</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Pending</span>
+            <span class="ver">Checked 07:30 ET, Jul 21</span>
+            <h3>The first scheduled Next.js security release has now slipped twice and had not published at filing time</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel appended a note to its July 13 announcement: <i>"The July security release originally targeted for July 20 is now expected on July 21, 2026."</i> Checking npm directly this morning, the <code>latest</code> tag on <code>next</code> is <b>16.2.10</b> (published July 1) and the <code>backport</code> tag is <b>15.5.20</b> (also July 1). The most recent publish of any kind was a 16.3 canary late last night. Nothing security-related has landed.</p>
+            <p>What is known and unchanged: the release covers the <b>16.2</b> and <b>15.5</b> lines and fixes <b>4 high and 5 medium</b> severity issues. CVE identifiers and technical details publish only once the patch is out — that's deliberate, so advance notice arms defenders without handing attackers a target list. The 13.x and 14.x majors are not on the list; in the May coordinated release those majors got no back-patches and users were told to move to a patched 15.5.x or 16.2.x.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do nothing yet, and check again this evening. Concretely: run <code>npm view next dist-tags</code> — when <code>latest</code> moves off 16.2.10 or <code>backport</code> moves off 15.5.20, read the blog post, then bump and redeploy every client project on 16.2/15.5 the same night. Any project still on 13.x or 14.x doesn't get a patch at all, so schedule the major upgrade now rather than discovering it under pressure. Don't act on version numbers from a secondhand blog; several are already circulating and none of them are official.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Next.js — security release program</a> <a href="https://gbhackers.com/next-js-announces-july-security-release/" target="_blank" rel="noopener">GBHackers — 4 high, 5 medium</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch now</span>
+            <span class="ver">Jul 2026</span>
+            <h3>Two RabbitMQ flaws leak OAuth client secrets and expose cross-tenant queue metadata</h3>
+          </div>
+          <div class="story-body">
+            <p><b>CVE-2026-57219</b> (CVSS 8.7): an obsolete <code>GET /api/auth</code> management endpoint returns the client secret on any installation configured with the <code>management.oauth_client_secret</code> key. Unlike every other sensitive management endpoint, its authorization check was hard-coded to always allow the request. An attacker exchanges the secret for an administrator token and owns every message, queue, user and broker setting. The bug has been present since 3.13.0 shipped in early 2024.</p>
+            <p><b>CVE-2026-57221</b> (CVSS 5.3): any authenticated user who can reach a virtual host can enumerate every queue and exchange name in it and read message and consumer counts, regardless of their actual permissions. Fixed in <b>4.3.0, 4.2.6, 4.1.11, 4.0.20 and 3.13.15</b>. No evidence of exploitation before disclosure. Beyond patching: rotate the OAuth client secret if the management UI is internet-reachable, and firewall port 15672.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run RabbitMQ, so the direct exposure is zero — but check any client stack you inherited during a migration, because a legacy PHP or Java app with a message broker bolted on is exactly where a 2024-era RabbitMQ hides. The reusable lesson is the shape of the bug: an old endpoint nobody removed, with an auth check that was never wired up. Worth a grep through your own Supabase edge functions and API routes for handlers that were built before you added auth middleware.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/07/rabbitmq-flaws-could-leak-oauth-secrets.html" target="_blank" rel="noopener">The Hacker News — RabbitMQ flaws</a> <a href="https://thecyberexpress.com/cve-2026-5721-rabbitmq-vulnerability/" target="_blank" rel="noopener">Cyber Express — CVE detail</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>Vercel let you choose where Workflows keeps run state, and gave Turborepo a Remote Cache purge</h3>
+          </div>
+          <div class="story-body">
+            <p>Two shipped July 20. <b>Configure where run state lives in Vercel Workflows</b> means a durable workflow's state no longer has to sit wherever the platform put it by default. <b>Purge your Remote Cache's build and CI artifacts</b> gives Turborepo users a way to clear a poisoned or bloated cache without support tickets.</p>
+            <p>That follows a busy July 17: Sandbox data downloads became free, runtime logs started showing the reason behind each cache decision, immutable static assets got CDN caching improvements, Chat SDK added native Slack agent support, and the Vercel plugin gained Kimi Code CLI support.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The cache-purge is the one you'll use. Next time a client deploy serves stale output and you can't work out why, purge the Remote Cache instead of burning an hour bisecting. And the runtime-log cache reasons from the 17th are the fastest way to prove to a client that their site is actually being cached at the edge — screenshot material for a performance report.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">Jul 2026</span>
+            <h3>Supabase's July developer update: binary Realtime payloads, audit log drains, one-click Connect</h3>
+          </div>
+          <div class="story-body">
+            <p>Realtime Broadcast now carries binary payloads alongside JSON, which cuts encoding overhead for things like telemetry and live screenshot streams. <b>Audit Log Drains</b> stream a project's audit logs to an external destination. <b>Connect</b> copies every environment variable <code>@supabase/server</code> needs in a single click. <code>@supabase-labs/tanstack-db</code> is in alpha for syncing TanStack DB collections over PostgREST and Realtime, and Wrappers v0.6.2 can query and join MongoDB collections from Postgres.</p>
+            <p>Two defaults to know: Postgres <code>log_connections</code> is now off for new projects on all tiers as of July 9, with existing Free and Pro projects being migrated, and <code>pg_graphql</code> v1.6.2 ships with schema introspection off by default.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a client build uses GraphiQL or GraphQL codegen against Supabase, introspection being off by default will break your tooling on the next project you spin up — enable it per schema. Audit Log Drains are the cheap version of a compliance story: any client who asks "who can see my data" now gets a real answer for the cost of pointing a drain somewhere.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/47796-developer-update-july-2026" target="_blank" rel="noopener">Supabase — developer update, July 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Jul 16–20, 2026</span>
+            <h3>TSMC put another $100B into Arizona and raised capex, days after the chip index entered a bear market</h3>
+          </div>
+          <div class="story-body">
+            <p>TSMC committed an additional <b>$100 billion</b> to Arizona for at least four more 2nm-or-better fabs, taking its total US investment to <b>$265 billion</b> across 10 fabs, two advanced packaging facilities and an R&D center. 2026 capex guidance went from $52–56B up to <b>$60–64B</b>. When the announced fabs are complete, roughly 30% of TSMC's 2nm-and-below capacity will sit in Arizona. The CFO said on July 20 that the company is accelerating the build-out on an AI "megatrend."</p>
+            <p>The timing is the story. The Philadelphia Semiconductor Index closed in a bear market on July 17 after Moonshot's Kimi K3 landed. The company closest to the actual demand signal is spending harder while the market marks the sector down more than 20%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No trade here, and don't try to have one. The operating read is that inference capacity keeps getting cheaper and more abundant on a multi-year schedule, which is the single assumption underneath every AI product you sell. Build offers that get better as tokens get cheaper — a receptionist that answers more calls, a concierge that reads more pages — rather than offers that depend on scarcity.</div>
+          <div class="refs"><a href="https://www.tomshardware.com/tech-industry/tsmc-commits-another-100-billion-to-arizona-for-at-least-four-more-2nm-fabs" target="_blank" rel="noopener">Tom's Hardware — the $100B addition</a> <a href="https://www.cnbc.com/2026/07/20/tsmc-arizona-fab-capacity-ai-chip-demand.html" target="_blank" rel="noopener">CNBC — CFO on accelerating</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">China's CXMT is raising $8.6B in a Shanghai IPO for server and AI DRAM; institutional orders came in at 500× the shares available. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag fix qh-tag">Layoffs</span><span class="txt">Samsung cut 739 US positions across display, mobile and consumer electronics and is moving its US headquarters from New Jersey to Texas. Its AI chip unit is outperforming the consumer business. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag new qh-tag">Infra</span><span class="txt">Hut 8 signed a $9.8B, 15-year Texas lease for the fully contracted one-gigawatt Beacon Point campus. Molex and Prysmian signed a $6.29B fiber supply agreement. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag new qh-tag">M&amp;A</span><span class="txt">Tempus AI is acquiring Personalis in a $1.5B deal combining genomic testing with an AI clinical platform. Etched is in talks at a $20B valuation for transformer-specific chips. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag breaking qh-tag">Regulation</span><span class="txt">The EU fined AliExpress €550M (about $629M) for insufficient prevention of counterfeit and illegal product listings — an escalation in Digital Services Act enforcement. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag fix qh-tag">Threat</span><span class="txt">A solo Russian-speaking actor known as "bandcampro" was reported running a botnet of eight dental-clinic PCs with operations outsourced to Google's open-source Gemini CLI. Small, but it's the template. <span class="ver">Jul 20</span></span></li>
+            <li><span class="tag improve qh-tag">Space</span><span class="txt">SpaceX hit a second consecutive last-second abort on a Falcon 9 Starlink launch from Vandenberg on July 20, the same day Starship Flight 13 was set to carry V3 Starlink satellites for the first time. <span class="ver">Jul 20</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
