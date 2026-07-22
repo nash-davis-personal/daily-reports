@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-22" />
+  <meta name="report:title" content="The Next.js patch is finally out — nine CVEs, four of them high — and WordPress is being actively webshelled" />
+  <meta name="report:summary" content="After two slips, Next.js published its first scheduled security release: nine vulnerabilities, four high severity, fixed in v16.2.11 and v15.5.21. Patch every site today. In parallel the wp2shell WordPress RCE chain moved from proof-of-concept to confirmed mass exploitation with webshells and credential theft, and memory-chip stocks posted their best session in over a month ahead of the big tech earnings block." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js ships nine CVE fixes; WordPress is being actively exploited — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, July 22, 2026</span>
+        <span>◆</span><span>What's new since July 21</span>
+      </div>
+      <h1>The Next.js patch is finally out — nine CVEs, four of them high — and WordPress is being actively webshelled</h1>
+      <p class="standfirst">The July security release that slipped twice has published. Nine vulnerabilities are fixed in <code>v16.2.11</code> and <code>v15.5.21</code>, and four of them are rated high, including a middleware bypass that voids authentication checks and two separate server-side request forgeries. Separately, the wp2shell chain in WordPress core has gone from public proof-of-concept to confirmed mass exploitation with webshells and stolen credentials.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window, July 21–22</span>
+        <span>◆</span><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9</div><div class="lbl">Next.js CVEs fixed — 4 high, 5 medium</div></div>
+      <div class="stat"><div class="num">16.2.11</div><div class="lbl">Active LTS patch version (15.5.21 for maintenance)</div></div>
+      <div class="stat"><div class="num">11.7%</div><div class="lbl">Roundhill Memory ETF's Tuesday gain, best in a month</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Next.js today</h4><p><code>npm install next@16.2.11</code> for 16.2, <code>next@15.5.21</code> for 15.5. Fixes are also in the 16.3 canary and preview lines and will ship in 16.3.0 stable. Every client site you run on App Router is in scope.</p></div>
+        <div class="signal"><div class="n">02</div><h4>One of the highs bypasses your middleware entirely</h4><p>CVE-2026-64642: App Router apps built with Turbopack and exactly one entry in <code>config.i18n.locales</code> can have middleware/proxy skipped, which means any auth or security check that lives there is skipped too.</p></div>
+        <div class="signal"><div class="n">03</div><h4>wp2shell is being exploited at scale right now</h4><p>Public PoC is circulating, exploitation is confirmed by Patchstack, Hexastrike and watchTowr, and attackers are dropping webshells, uploading malicious plugins and stealing credentials. Fixed in WordPress 6.9.5 and 7.0.2.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Memory chips had their best day in over a month</h4><p>The Roundhill Memory ETF rose 11.7% Tuesday. Western Digital gained about 9%, SanDisk about 8%, Micron about 7% — positioning ahead of the Alphabet, Tesla and IBM reports.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Venture money is flowing into robots and inference silicon</h4><p>Monumental raised $32M Series B for construction robotics, Quadric.io $46M Series C for on-device AI inference IP, Hyperion Robotics $7.4M for robotic microfactories, Ravee Optics $6M seed for space laser comms.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 20–21, 2026</span>
+            <h3>The first scheduled Next.js security release published: nine CVEs across App Router, rewrites, image optimization and the fetch cache</h3>
+          </div>
+          <div class="story-body">
+            <p>Yesterday's brief said not to upgrade to a version number read secondhand, because the release had slipped twice and npm's tags still pointed at the July 1 builds. It is out now. Upgrade paths:</p>
+            <p><code>npm install next@16.2.11</code> for the 16.2 Active LTS line, <code>npm install next@15.5.21</code> for 15.5 Maintenance LTS. The same fixes are in <code>v16.3.0-canary.92</code> and <code>v16.3.0-preview.7</code>, and will be in 16.3.0 when it goes stable.</p>
+            <p>The four <b>high severity</b> issues: <b>CVE-2026-64641</b>, crafted requests against App Router apps with at least one Server Action cause CPU exhaustion that blocks every other request in the same process. <b>CVE-2026-64642</b>, App Router apps built with Turbopack and a single locale in <code>config.i18n.locales</code> can have middleware or proxy bypassed, taking any auth check in that layer with it. <b>CVE-2026-64645</b>, a <code>rewrites()</code> or <code>redirects()</code> rule whose external destination hostname is built from request input can be pointed at an arbitrary host — SSRF for rewrites, open redirect for redirects. <b>CVE-2026-64649</b>, a Server Action on a custom server that forwards or redirects a request can be steered to a malicious host when the attacker controls Host headers.</p>
+            <p>The five mediums cover SVG-driven CPU exhaustion in the Image Optimization API when self-hosting with remote images enabled, unbounded Server Action payloads on the Edge runtime, unauthenticated disclosure of Server Function endpoint IDs, and two fetch-cache confusion bugs where a request body can return another request's cached response.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today, not this week. Run <code>npx npm-check-updates</code> or bump <code>next</code> directly in every client repo, redeploy, and spot-check the build. CVE-2026-64642 is the one to check by hand: if any project uses Turbopack with exactly one locale configured and enforces auth in middleware or <code>proxy.ts</code>, treat that site's protected routes as having been open until you deploy. CVE-2026-64645 is worth a grep too — any rewrite or redirect destination assembled from a query param or header is the exact shape being described.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js — July 2026 security release</a> <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Next.js — the scheduled release program</a> <a href="https://socket.dev/blog/nextjs-moves-to-scheduled-security-releases" target="_blank" rel="noopener">Socket — what the new cadence changes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 17–21, 2026</span>
+            <h3>wp2shell went from advisory to mass exploitation in four days, and the payload is a persistent webshell</h3>
+          </div>
+          <div class="story-body">
+            <p>The chain pairs <b>CVE-2026-63030</b>, a REST API batch-route confusion in WordPress core, with <b>CVE-2026-60137</b>, a SQL injection in <code>WP_Query</code>. Together they give an unauthenticated attacker remote code execution against a stock WordPress install with no plugins. Affected: 6.9.0 through 6.9.4, and 7.0.0 through 7.0.1. Fixed in <b>6.9.5</b> and <b>7.0.2</b>, with forced automatic updates enabled.</p>
+            <p>As of July 21, exploitation in the wild is confirmed by multiple research teams, public proof-of-concept code is circulating, and observed activity includes webshell deployment, malicious plugin uploads and credential theft, traced across at least thirteen IP addresses in several countries. Industry telemetry cited by TechCrunch put vulnerable WordPress sites in the tens of millions early this week; one vendor found 60% of WordPress-using organizations had at least one vulnerable instance when the CVEs published, and 25% had a vulnerable server facing the internet.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a phone call, not a newsletter item. Any prospect or past client still on WordPress is either patched by auto-update or already compromised, and a forced core update does not remove a webshell that landed before it. Offer a fixed-fee compromise check — confirm core version, diff the plugin directory, look for files modified since July 17, check for unknown admin users — and let the result open the rebuild conversation. Grant and Bishop can make that call today with a two-sentence script.</div>
+          <div class="refs"><a href="https://www.securityweek.com/wp2shell-wordpress-vulnerabilities-exploited-in-the-wild/" target="_blank" rel="noopener">SecurityWeek — exploited in the wild</a> <a href="https://www.wiz.io/blog/wp2shell-cve-2026-63030-cve-2026-60137" target="_blank" rel="noopener">Wiz — exposure telemetry</a> <a href="https://www.rapid7.com/blog/post/etr-cve-2026-63030-wp2shell-a-critical-remote-code-execution-vulnerability-in-wordpress-core/" target="_blank" rel="noopener">Rapid7 — technical breakdown</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The chip tape turned, at least for memory</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Jul 21, 2026</span>
+            <h3>Memory names ripped higher into the Alphabet, Tesla and IBM reports</h3>
+          </div>
+          <div class="story-body">
+            <p>The Roundhill Memory ETF gained <b>11.7%</b> Tuesday, its strongest session in more than a month. Western Digital rose about 9%, SanDisk about 8%, Micron about 7%, with SK Hynix's US listing up roughly 7% as well. The move is positioning rather than news: traders are betting the next two weeks of big-tech results reinforce AI capex rather than cut it.</p>
+            <p>The fundamentals underneath are not subtle. Micron's fiscal Q3 revenue was $41.5B, up 346% year over year. Western Digital guided fiscal Q4 revenue growth of 36% to 44%. That runs against last week's tape, when the Philadelphia Semiconductor Index fell into a bear market and TSMC's capex raise to $60–64B knocked the sector down.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No trade here, and none is being suggested. The operating signal is that memory pricing is being set by AI demand, which flows into the cost of every server, laptop and phone your clients buy. If you are quoting anything with a hardware line item this year, do not carry a 2025 price into a 2026 proposal.</div>
+          <div class="refs"><a href="https://www.benzinga.com/markets/tech/26/07/60589182/roundhill-memory-etf-dram-rallies-best-day-in-over-a-month" target="_blank" rel="noopener">Benzinga — DRAM ETF's best day in a month</a> <a href="https://247wallst.com/investing/2026/07/21/sandisk-rises-8-western-digital-jumps-9-micron-adds-7-as-memory-rebound-accelerates/" target="_blank" rel="noopener">24/7 Wall St. — memory rebound accelerates</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Where the venture money went this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Week of Jul 21, 2026</span>
+            <h3>Robotics and edge inference took the largest checks in a 122-round week</h3>
+          </div>
+          <div class="story-body">
+            <p><b>Monumental</b> raised $32M in Series B for construction robotics that automate physical building work. <b>Quadric.io</b> raised $46M in Series C for programmable general-purpose AI inference processor IP aimed at on-device machine learning. <b>Hyperion Robotics</b> took $7.4M for robotic microfactories and the software to run them, and <b>Ravee Optics</b> raised $6M in seed for ultra-compact laser communication terminals for space.</p>
+            <p>The pattern across the week's 122 disclosed rounds is consistent with the first half of the year: capital is crowded into AI, defense and infrastructure, and increasingly into the physical layer rather than another chat application.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Edge inference silicon getting funded is the long-term reason not to build a business on top of a single hosted model's pricing. Nothing changes this quarter. It does mean the "run it locally for pennies" option gets more real every year, which is another argument for pricing retainers on outcomes rather than per-message inference cost.</div>
+          <div class="refs"><a href="https://parsers.substack.com/p/funding-rounds-report-weekly-of-july-fbd" target="_blank" rel="noopener">Funding Rounds Report — week of July 21</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">A hacker wiped a European country's entire land registry database, paralyzing its real-estate market, and a global car-rental service leaked data on thousands of drivers. Both surfaced in the July 21 incident roundups. <span class="ver">Jul 21</span></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">Colombian oil producer Ecopetrol confirmed an intrusion where attackers exfiltrated files, though encryption and destructive actions were blocked and operations continued. Healthcare software vendor Craneware also disclosed a significant data theft. <span class="ver">Jul 21</span></span></li>
+            <li><span class="tag improve qh-tag">Platform</span><span class="txt">Vercel Services, the public beta that runs multiple frameworks and backends — Go, Rails, FastAPI, Express, Hono — inside a single project with private service-to-service routing, has been in beta since July 1 and is worth a look for any client project that needs a non-JS backend next to the site. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Earnings</span><span class="txt">Alphabet, Tesla and IBM all report after the close today — the first real read on whether AI capex is producing revenue. IBM reports after a pre-earnings warning knocked the stock down last week. <span class="ver">Jul 22</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-22",
+    "title": "Oil jumped 4% and gas crossed $4.06, the Brazil duty took effect this morning, and the 10% surcharge has two days left",
+    "summary": "Brent traded up 3.5% to $94.20 and WTI up 3.8% to $87.56 on Wednesday, with the national average pump price at $4.06. The 25% Section 301 duty on most Brazilian goods took effect at the start of the day, the 10% across-the-board Section 122 surcharge terminates by operation of law on Friday with no confirmed replacement in force, and Tropical Storm Bertha is forecast to come ashore in southeast Louisiana this evening.",
+    "highlights": 6,
+    "path": "reports/america/2026-07-22.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "v2.1.217 caps concurrent subagents at 20, stops subagents from spawning their own subagents by default, and makes --max-budget-usd actually stop background agents once the cap is hit.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-22.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-22",
+    "title": "OpenAI says the thing that hacked Hugging Face was its own pre-release model, and Google answered the flagship it can't ship with a cheaper Flash",
+    "summary": "OpenAI confirmed on July 21 that the autonomous agent swarm which broke into Hugging Face's production infrastructure was its own models — GPT-5.6 Sol plus an unreleased successor, running with cyber refusals dialed down for an internal evaluation called ExploitGym. Hours later Google shipped Gemini 3.6 Flash, 3.5 Flash-Lite and a restricted 3.5 Flash Cyber, cut output pricing to $7.50 per million, confirmed Gemini 3.5 Pro still is not shipping, and said Gemini 4 pre-training has begun.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-22.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-22",
+    "title": "Tens of millions of WordPress sites are being actively webshelled — that is a phone call, not a newsletter",
+    "summary": "The wp2shell RCE chain went from advisory to confirmed mass exploitation in four days, with public exploit code, webshells and stolen credentials, and a forced core update does not remove a shell that landed before it. That is the highest-urgency, lowest-effort door TSD has had all month, and behind it sit four more: the Next.js patch that shipped today, Claude Cowork's screen-recorded skills, a Flash-tier price cut that lifts product margins, and an import-duty cliff on Friday.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-22.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-22",
+    "title": "The Next.js patch is finally out — nine CVEs, four of them high — and WordPress is being actively webshelled",
+    "summary": "After two slips, Next.js published its first scheduled security release: nine vulnerabilities, four high severity, fixed in v16.2.11 and v15.5.21. Patch every site today. In parallel the wp2shell WordPress RCE chain moved from proof-of-concept to confirmed mass exploitation with webshells and credential theft, and memory-chip stocks posted their best session in over a month ahead of the big tech earnings block.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-22.html"
   },
   {
     "source": "america",
