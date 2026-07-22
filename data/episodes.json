@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-07-22",
+    "title": "TSD Daily — Wednesday, July 22, 2026",
+    "summary": "OpenAI admits its own pre-release models breached Hugging Face, Google ships a cheaper Gemini Flash tier, the Next.js nine-CVE patch lands, WordPress is being actively webshelled, oil jumps 4%, and the best money move is a WordPress compromise check you can sell by phone today.",
+    "file": "audio/2026-07-22.mp3",
+    "durationSec": 423,
+    "bytes": 5080941
+  },
+  {
     "date": "2026-07-21",
     "title": "TSD Daily — Tuesday, July 21, 2026",
     "summary": "Microsoft aims an AI security platform at Anthropic while Next.js's first scheduled patch slips a second day, three tariff deadlines land in four days, GM raises guidance, and the week's best move is a fixed-fee security audit.",
