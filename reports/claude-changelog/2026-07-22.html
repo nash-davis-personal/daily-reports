@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-22" />
+  <meta name="report:title" content="Subagent fan-out gets a hard ceiling and the budget cap finally halts background agents" />
+  <meta name="report:summary" content="v2.1.217 caps concurrent subagents at 20, stops subagents from spawning their own subagents by default, and makes --max-budget-usd actually stop background agents once the cap is hit." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Subagent fan-out gets a hard ceiling and the budget cap finally halts background agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, July 22, 2026</span>
+        <span>◆</span><span>v2.1.217 ◆ 20 line items</span>
+      </div>
+      <h1>Subagent fan-out gets a hard ceiling and the budget cap finally halts background agents</h1>
+      <p class="standfirst">One release since yesterday's briefing, and the three items that matter all sit in the same place: how many agents a single message is allowed to spawn, how deep they nest, and whether your spend cap can actually stop them. The rest is leak-and-crash cleanup, most of it in long sessions.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: v2.1.217, released July 21, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">Line items</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Agent fan-out behavior changes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Subagents capped at 20 concurrent</h4><p>One message can no longer fan out unbounded background agents. Override with <code>CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Nested subagents off by default</h4><p>A subagent can no longer spawn its own subagents unless you set <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>. This changes existing workflows silently.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Spend cap now stops running agents</h4><p><code>--max-budget-usd</code> previously let background subagents keep burning past the cap. It now denies new spawns and halts running ones.</p></div>
+        <div class="signal"><div class="n">04</div><h4>MCP output memory leak fixed</h4><p>Truncated MCP tool results were keeping the full untruncated payload in memory for the rest of the session.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Transcript loss now warns instead of failing silently</h4><p>Disk-full write failures and session saving disabled by an inherited env var both surface as warnings now.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Opus 4.8 on Bedrock can auto-compact again</h4><p>Auto-compact never triggered for Opus 4.8 on Bedrock, and <code>/compact</code> failed once you were already over the limit.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent fan-out grows guardrails</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Subagents stop spawning nested subagents by default</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagents no longer spawn their own subagents unless you explicitly raise <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>. This is the one item in the release that can change the behavior of something you already built without throwing an error, since a workflow that relied on a coordinator agent delegating downward will now just do less work rather than fail loudly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any of your scaffolded loops or the Fleet Steward pattern has an agent that delegates to further agents, run it once and read the output before trusting a scheduled run. Where the nesting is load-bearing, set the depth env var in the launchd or cron wrapper rather than assuming the default carried over.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Hard cap of 20 concurrently-running subagents</h3>
+          </div>
+          <div class="story-body">
+            <p>There is now a ceiling on how many subagents run at once, defaulting to 20 and overridable via <code>CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS</code>. The stated reason is to stop a single message from fanning out unbounded background agents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Wide sweeps across a client repo will queue past 20 instead of saturating the Mac. That is the behavior you want on the laptop while a build is running, so leave it alone. Only raise it for a deliberate large audit on a machine doing nothing else.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.217</span>
+            <h3><code>--max-budget-usd</code> now halts background subagents</h3>
+          </div>
+          <div class="story-body">
+            <p>The spend cap did not stop background subagents. Once the cap is reached, new spawns are denied and already-running background agents are halted.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the flag that makes an unattended overnight loop safe to leave running. If you have been avoiding scheduled agent work over cost anxiety, the guardrail is real now, so put an explicit <code>--max-budget-usd</code> on every scheduled task wrapper.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long sessions: memory, transcripts, compaction</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Truncated MCP tool output stopped pinning full results in memory</h3>
+          </div>
+          <div class="story-body">
+            <p>When an MCP tool returned a large result that got truncated for display, the full untruncated result stayed in memory for the remainder of the session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your heaviest MCP callers are Supabase table dumps and the portal pipeline tools, both of which return fat payloads. Long client sessions that got sluggish by hour three should behave better after you update.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Silent transcript loss now raises a warning</h3>
+          </div>
+          <div class="story-body">
+            <p>Two failure modes that used to lose transcripts quietly now warn: writes failing because of something like a full disk, and session saving being switched off by an inherited environment variable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth knowing about before the next time you go looking for a session you wanted to mine into the vault. If you see the inherited-env warning, check whatever wrapper script launched that session before blaming Claude Code.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Auto-compact never fired for Opus 4.8 on Bedrock</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto-compact did not trigger at all for Claude Opus 4.8 on Bedrock, and <code>/compact</code> failed once the session was already over the limit, which is the exact moment you would reach for it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only bites if you run through Bedrock, which you do not today. File it under reasons a Bedrock-routed client engagement needs its own smoke test rather than assuming parity with the direct API.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Isolation and startup hardening</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.217</span>
+            <h3>Background sessions could escape their workspace through a symlink</h3>
+          </div>
+          <div class="story-body">
+            <p>Background session isolation was not canonicalizing symlinked working directories, which could let a session reach outside its workspace folder. This is the third consecutive release touching symlink handling in isolation boundaries, after the <code>.claude</code> symlink and worktree fixes in v2.1.216.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update before the next unattended run. Isolation you assumed was holding was leaky on any project reached through a symlinked path, which is easy to hit given the vault and project folders on this Mac.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.217</span>
+            <h3>A brace-heavy paths frontmatter could OOM the CLI at startup</h3>
+          </div>
+          <div class="story-body">
+            <p>A <code>CLAUDE.md</code> or <code>SKILL.md</code> frontmatter <code>paths</code> value with many brace groups could stall or OOM-kill the CLI before it started. Brace expansion is now budget-bounded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A startup hang with no error is hard to diagnose from scratch. Given how many custom skills you carry globally, this is the kind of failure you would have spent an hour on.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.217</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Emoji shortcode autocomplete in the prompt input, type <code>:heart:</code> to insert one, disable via <code>emojiCompletionEnabled</code> <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows auto-update failures could leave <code>claude.exe</code> missing, failed updates now restore the preserved executable <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Corporate mTLS, TLS-verify, OAuth scope and proxy settings were ignored in Claude Desktop sessions <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--resume</code>, <code>--continue</code> and <code>/resume</code> threw a TypeError on transcripts with a malformed attachment entry <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background shells could become impossible to stop after backgrounding a session or on a heavily loaded machine, most visible on Windows <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control viewers who connected after a permission prompt appeared never saw it <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Managed <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> settings can no longer be overridden by lower-scope signal-specific values <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Screen reader startup announcement was cut off by the first prompt render, and the thinking status row stopped re-rendering every few seconds <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Transcript preview sat flush against the input area when attaching to a starting background session <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Footer PR badges are clickable hyperlinks even when terminal support cannot be detected over ssh or tmux, opt out with <code>FORCE_HYPERLINK=0</code> <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Login-expiry warning moved to 3 days before expiry instead of 5 <span class="ver">v2.1.217</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Frontend-design plugin suggestion tip capped at 3 lifetime impressions <span class="ver">v2.1.217</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

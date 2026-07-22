@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-22",
+    "title": "Subagent fan-out gets a hard ceiling and the budget cap finally halts background agents",
+    "summary": "v2.1.217 caps concurrent subagents at 20, stops subagents from spawning their own subagents by default, and makes --max-budget-usd actually stop background agents once the cap is hit.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-07-22.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
