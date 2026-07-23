@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-23" />
+  <meta name="report:title" content="Code review moves out of your conversation, and Claude stops auto-launching its expensive skills" />
+  <meta name="report:summary" content="v2.1.218 runs /code-review as a background subagent so it no longer eats your context, stops /deep-research from launching itself, ships fork skills to the background by default, and fixes the descriptive-argument and non-interactive bugs that broke ultrareview." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Code review moves out of your conversation, and Claude stops auto-launching its expensive skills — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, July 23, 2026</span>
+        <span>◆</span><span>Window: v2.1.218, released July 22, 2026</span>
+      </div>
+      <h1>Code review moves out of your conversation, and Claude stops auto-launching its expensive skills</h1>
+      <p class="standfirst">v2.1.218 is a big single release. <code>/code-review</code> now runs as a background subagent so review output no longer buries your working conversation, <code>/deep-research</code> only starts when you type it, and skills declared <code>context: fork</code> now run in the background by default. It also cleans up the two ultrareview bugs that were silently doing the wrong thing.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>One release since the last briefing (v2.1.217)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release (v2.1.218)</div></div>
+      <div class="stat"><div class="num">37</div><div class="lbl">Line items shipped</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Worth your attention</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>/code-review runs in the background</h4><p>Review work is now a background subagent, so it stops flooding your conversation and holds stacked slash commands as its target.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Claude stops auto-launching /deep-research</h4><p>Deep research now starts only when you invoke it. No more surprise research runs burning tokens on their own.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Fork skills default to background</h4><p>Skills with <code>context: fork</code> now run in the background unless you set <code>background: false</code>. Direct lever for your loops.</p></div>
+        <div class="signal"><div class="n">04</div><h4>ultrareview finally handles plain-English args</h4><p>"review my auth changes" runs a real review instead of failing, and <code>/code-review ultra</code> stops silently downgrading to a local review in non-interactive sessions.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Auto mode gets less naggy</h4><p>The dangerous-rm, background-<code>&amp;</code>, and Windows-path checks are now judged by the auto-mode classifier instead of popping a dialog. Plan mode stops prompting on Bash it can't prove read-only.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Agent hooks now require folder trust</h4><p>Agent frontmatter hooks won't run unless the agent file's own folder has accepted workspace trust. Closes a quiet code-execution path.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Review and research change how they run</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.218</span>
+            <h3>/code-review now runs as a background subagent</h3>
+          </div>
+          <div class="story-body">
+            <p>Review output no longer fills up your main conversation. It runs off to the side as a subagent, and it keeps any slash commands you stacked as the thing it reviews. This pairs with the July 19 change (v2.1.215) that already stopped Claude from firing <code>/code-review</code> and <code>/verify</code> on its own.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> On a Bisque or Sonderwerks feature branch you can kick a review and keep coding in the same session without the review's findings shoving your work off-screen or eating context. Make <code>/code-review</code> a standing pre-merge step, not a "clear the deck first" ritual.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior</span>
+            <span class="ver">v2.1.218</span>
+            <h3>/deep-research only starts when you ask for it</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude no longer launches deep research on its own initiative. You have to invoke <code>/deep-research</code> yourself. Deep research is one of the more token-heavy things the tool can do, so this removes a class of unprompted spend.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer surprise bills on solo work. If you were relying on Claude to reach for research automatically, you now have to trigger it — worth a note in any skill or loop prompt that expected the old behavior.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.218</span>
+            <h3>ultrareview stops failing on descriptive arguments and silent downgrades</h3>
+          </div>
+          <div class="story-body">
+            <p>Two fixes. <code>/ultrareview</code> given a plain-English argument like "review my auth changes" used to fail; it now reviews your current branch and applies the text as a note on the findings. Separately, <code>/code-review ultra</code> was silently running a cheap local review inside non-interactive sessions instead of launching the paid cloud review — it now launches the cloud review as intended. Error feedback also improved so a bad argument gets corrected instead of retried unchanged.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your ultrareview muscle memory works again — you can describe what you changed instead of remembering exact syntax. And if you ever wire ultrareview into a scripted or scheduled run, it'll now actually do the cloud review you're paying for rather than quietly stubbing it out.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation, skills, and auto mode</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.218</span>
+            <h3>Fork skills run in the background by default</h3>
+          </div>
+          <div class="story-body">
+            <p>Skills declared with <code>context: fork</code> now run in the background unless you explicitly set <code>background: false</code> in the skill's frontmatter. Frontmatter booleans also got more forgiving this release — <code>yes</code>/<code>no</code>/<code>on</code>/<code>off</code>/<code>1</code>/<code>0</code> are now accepted alongside <code>true</code>/<code>false</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly touches your loop and skill work. If a fork skill was assuming it ran inline and blocked the session, that assumption just flipped — audit any loop-engineering skill you built that reads results right after a fork call, and pin <code>background: false</code> where you need synchronous behavior.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">v2.1.218</span>
+            <h3>Auto mode and plan mode stop over-prompting</h3>
+          </div>
+          <div class="story-body">
+            <p>In auto mode, the dangerous-<code>rm</code>, background-<code>&amp;</code>, and suspicious-Windows-path checks no longer open a permission dialog — the auto-mode classifier decides them instead. Plan mode with auto also stops prompting for Bash commands the static analyzer can't prove read-only; the classifier judges those too.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Less interruption when you're moving fast in auto mode on your own machine. The tradeoff is that a model classifier, not a hard rule, now gates those edge cases — fine for your solo builds, worth knowing before you lean on auto mode for anything destructive.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">v2.1.218</span>
+            <h3>Agent frontmatter hooks now require workspace trust</h3>
+          </div>
+          <div class="story-body">
+            <p>Agent frontmatter hooks were running from untrusted folders. Now the agent file's own folder has to have accepted workspace trust before its hooks fire. This is the latest in a run of isolation and trust-boundary fixes across recent releases.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you clone or copy an agent definition from anywhere you didn't write yourself, its hooks won't execute until you trust that folder. Good default. Keep your own reusable agents in trusted, git-tracked locations so this never trips your own work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Reliability and cost fixes worth knowing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.218</span>
+            <h3>Runaway retry loop after context overflow is stopped</h3>
+          </div>
+          <div class="story-body">
+            <p>A retry loop was re-sending identical, doomed requests after a context-overflow error when the thinking budget was large — quietly burning tokens on requests that could never succeed. Fixed. <code>Ctrl+B</code> backgrounding now also applies the same background-shell caps as other paths.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> One of the cheaper-to-ignore, expensive-in-practice bugs. On long AI-build sessions with big thinking budgets, you're no longer at risk of a silent token drain when context blows past the limit.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.218</span>
+            <h3>Left arrow no longer silently discards your conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>Pressing the left arrow right after editing used to discard the conversation with no undo. Now those presses ask you to confirm, and Esc in the agent view returns you to the conversation it backgrounded instead of losing it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Straight quality-of-life. Fewer "where did my session go" moments during a long delivery day.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, v2.1.218</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows paths with <code>\u</code>-prefixed segments (like <code>C:\Users\unicorn</code>) were being corrupted into CJK characters in tool inputs, making those files inaccessible <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Multi-line paste collapsed into one line with <code>j</code> in place of newlines in terminals that encode pasted newlines as Ctrl+J <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/context</code> reported stale pre-compact token usage after compacting from the message picker <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A resumed session could fail every turn, or crash on resume, when its history held a malformed delta attachment <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fork-session lineage was lost after compaction in headless and SDK sessions <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An engine teardown race could start and abandon a phantom turn; input pushed after close is now consistently rejected <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Spurious "[Request interrupted by user]" messages after interrupted tool calls, plus an unpaired <code>tool_use</code> block left in the transcript when a tool aborted mid-response <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote sessions kept sending heartbeats after their worker was replaced, leaving desktop and IDE processes retrying a rejected request forever <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Pull request events were occasionally lost when a session exited immediately after creating or linking a PR <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Crashes (max call stack) when a deeply nested watched directory tree was deleted or moved, and when rendering deeply nested UI trees <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt history entries were dropped or duplicated when history writes raced or failed <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>claude mcp list</code> and <code>/mcp</code> now show HTTP status and error text when a server fails to connect, plus a warning for config values with hidden leading/trailing whitespace <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Server-managed settings: benign feature and cost toggles no longer trigger the settings-approval prompt <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Trust dialogs now name the repository root the grant covers <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">Agent markdown files now reject agent names containing <code>:</code>, which is reserved for plugin namespacing <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Fast mode now announces when it changes as a result of switching models via <code>/config model=&lt;x&gt;</code> or Remote Control <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The "N MCP servers need authentication" startup notice was over-counting claude.ai connectors that aren't connected in claude.ai <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bedrock: gateway spend metering now prices application-inference-profile ARNs and other config-mapped model IDs at the configured model's rates; setup wizard fixed for assume-role profiles in partitioned regions and proxy-only networks <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rare negative or incorrect turn-duration measurements after a system clock adjustment, now timed with a monotonic clock <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Accessibility: screen-reader announcements of deleted text for word/line deletions, VoiceOver now echoes trailing spaces, and plugin/settings panels move the cursor to the focused row so screen readers and magnifiers can follow <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Mojibake when a long IDE selection was truncated mid-emoji, and a case where a tool executor error could be silently dropped <span class="ver">v2.1.218</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Sandbox command restrictions for IDE interactions were tightened <span class="ver">v2.1.218</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
