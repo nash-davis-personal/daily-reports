@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-23",
+    "title": "Markets brace for Big Tech earnings as inflation runs hot and wildfires spread out West",
+    "summary": "Stocks slipped ahead of Alphabet and Tesla results, CPI is running at 4.2% with the Fed holding at 3.50-3.75%, wildfires pull in military air support, and Charlotte lands a second SMBC US headquarters.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-23.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "v2.1.218 runs /code-review as a background subagent so it no longer eats your context, stops /deep-research from launching itself, ships fork skills to the background by default, and fixes the descriptive-argument and non-interactive bugs that broke ultrareview.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-23.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-23",
+    "title": "OpenAI ships a managed agent platform as Google and the open-weight labs flood the zone",
+    "summary": "OpenAI's Presence puts trusted voice and chat agents behind a white-glove enterprise product, while Google, Moonshot and DeepSeek keep pushing cheaper and more open models.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-23.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-23",
+    "title": "Turn today's Next.js CVEs into a Managed Care retainer while OpenAI validates your receptionist",
+    "summary": "Eight fresh Next.js CVEs, OpenAI's enterprise-only agent launch, cheaper models and a Charlotte hiring wave all point at recurring, low-capital plays Nash can start this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-23.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-23",
+    "title": "Patch Next.js now: eight new CVEs, four of them high severity",
+    "summary": "Next.js shipped a July security release fixing eight CVEs including DoS, middleware bypass and SSRF; meanwhile AMD probes a breach and TSMC pours another $100B into AI capacity.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-23.html"
   },
   {
     "source": "america",

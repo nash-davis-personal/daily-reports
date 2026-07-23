@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-23" />
+  <meta name="report:title" content="Patch Next.js now: eight new CVEs, four of them high severity" />
+  <meta name="report:summary" content="Next.js shipped a July security release fixing eight CVEs including DoS, middleware bypass and SSRF; meanwhile AMD probes a breach and TSMC pours another $100B into AI capacity." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js now: eight new CVEs — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23052e2b' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, July 23, 2026</span>
+        <span>◆</span><span>Since the July 22 edition</span>
+      </div>
+      <h1>Patch Next.js today: eight new CVEs, four rated high</h1>
+      <p class="standfirst">Next.js published its July security release with eight CVEs across Server Actions, Turbopack middleware, image optimization and fetch caching. Elsewhere, AMD is investigating a claimed breach, TSMC added $100B to its AI capacity, and researchers found 434 exploitable flaws hiding in AI-generated apps.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window to July 23</span>
+        <span>◆</span><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">8</div><div class="lbl">Next.js CVEs fixed (4 high, 4 medium)</div></div>
+      <div class="stat"><div class="num">16.2.11</div><div class="lbl">Active LTS patch — also 15.5.21 for Maintenance LTS</div></div>
+      <div class="stat"><div class="num">434</div><div class="lbl">exploitable flaws found across AI-generated apps</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js July security release</h4><p>Patch to 16.2.11 or 15.5.21 — DoS, middleware bypass, SSRF, cache confusion.</p></div>
+        <div class="signal"><div class="n">02</div><h4>AI-built apps leak</h4><p>Analysis finds 434 exploitable flaws: DoS, broken authz, exposed secrets.</p></div>
+        <div class="signal"><div class="n">03</div><h4>TSMC doubles down</h4><p>Adds $100B for Arizona; 2026 capex up to $60–64B; demand seen robust to 2029–30.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AMD probes a breach</h4><p>IntelBroker claims stolen product plans, customer data and internal docs.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Patch your browser too</h4><p>Chrome update fixes 12 high-severity flaws; a hardware flaw hits pre-2017 Sony FeliCa chips.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this now — Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Jul 20, 2026</span>
+            <h3>Next.js July 2026 security release: eight CVEs, four high</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js shipped fixes in v16.2.11 (Active LTS) and v15.5.21 (Maintenance LTS). The four high-severity issues: <b>CVE-2026-64641</b> — DoS via crafted requests to App Router Server Actions (excessive CPU blocks the process); <b>CVE-2026-64642</b> — middleware/proxy bypass in apps built with Turbopack and a single <code>i18n.locales</code> entry, which lets auth checks be skipped; <b>CVE-2026-64645</b> — SSRF/open redirect when a <code>rewrites()</code>/<code>redirects()</code> destination hostname is built from request input; and <b>CVE-2026-64649</b> — SSRF in Server Actions on custom servers. Four medium CVEs cover an SVG image-optimization DoS, an unbounded Edge Server Action payload, disclosure of internal Server Function endpoint IDs, and two fetch cache-confusion bugs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today. On every TSD site running Next 16, run <code>npm install next@16.2.11</code> (or <code>next@15.5.21</code> on 15.5), redeploy, and confirm the build. The middleware/proxy-bypass CVE-2026-64642 is the one to eyeball given TSD's <code>proxy.ts</code> pattern — verify no client relies on single-locale middleware for auth. This is also the exact wedge for a paid Managed Care retainer (see Money Moves).</div>
+          <div class="refs"><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js — July 2026 Security Release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Jul 22, 2026</span>
+            <h3>Researchers find 434 exploitable flaws in AI-generated apps</h3>
+          </div>
+          <div class="story-body">
+            <p>A security analysis of AI-generated applications surfaced 434 exploitable flaws, with denial-of-service, broken authorization, and exposed secrets among the most common. It lands alongside Google shipping Gemini 3.5 Flash Cyber, a model tuned to find, validate and patch critical vulnerabilities.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ship AI-assisted code, this is your pre-flight checklist: scan for hardcoded secrets, confirm every mutating route checks authorization, and rate-limit anything that can be hammered. It also opens a service line — a fixed-fee "AI-app security audit" for other builders and SMBs shipping vibe-coded software.</div>
+          <div class="refs"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-22-2026" target="_blank" rel="noopener">AI News — July 22, 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI buildout keeps spending</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Chips</span>
+            <span class="ver">Jul 2026</span>
+            <h3>TSMC adds $100B for Arizona; 2026 capex now $60–64B</h3>
+          </div>
+          <div class="story-body">
+            <p>TSMC said the AI build-out has not slowed, adding a $100B investment to grow its Arizona facilities and lifting 2026 capex to $60–64B (at least $4B above prior guidance), with revenue growth projected above 40%. CEO C.C. Wei sees robust demand through 2029–2030. NVIDIA and TSMC also detailed bringing AI (Metropolis, TAO Toolkit) into fabs for automated defect inspection.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The compute supply that powers every model Nash resells keeps expanding, which is why inference prices keep falling. Cheap, abundant capacity is the tailwind under productized AI offers — plan pricing assuming model COGS keeps dropping, not rising.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-07-16/tsmc-beats-lofty-estimates-in-latest-sign-of-sustained-ai-demand" target="_blank" rel="noopener">Bloomberg — TSMC outlook</a> ◆ <a href="https://nvidianews.nvidia.com/news/nvidia-and-tsmc-bring-ai-into-fabs-to-advance-semiconductor-design-and-manufacturing" target="_blank" rel="noopener">NVIDIA newsroom</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Jul 2026</span>
+            <h3>AMD investigating a claimed IntelBroker breach</h3>
+          </div>
+          <div class="story-body">
+            <p>AMD is investigating a potential breach after the group IntelBroker claimed to have stolen sensitive data including upcoming product details, customer databases and internal documents. AMD says it is working with law enforcement to determine scope and mitigate damage.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Vendor and supply-chain breaches are the norm, not the exception. Reinforces basic hygiene on client projects — rotate any credentials that touch third-party APIs, and don't store client secrets anywhere a single leak exposes them.</div>
+          <div class="refs"><a href="https://www.securityweek.com/" target="_blank" rel="noopener">SecurityWeek</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Google shipped a Chrome update fixing 12 high-severity vulnerabilities that enable browser attacks — update Chrome. <span class="ver">Jul 22</span></span></li>
+            <li><span class="tag breaking qh-tag">Hardware</span><span class="txt">Japan's vuln portal confirmed a silicon-level crypto flaw in pre-2017 Sony FeliCa contactless chips (CVE-2026-59776) with no possible software patch. <span class="ver">Jul 22</span></span></li>
+            <li><span class="tag feature qh-tag">Markets</span><span class="txt">Super Micro Computer jumped 26% on a record backlog — another read on unrelenting AI datacenter demand. <span class="ver">Jul 22</span></span></li>
+            <li><span class="tag new qh-tag">Dev tools</span><span class="txt">Meta's Muse Spark 1.1 brought agentic coding and multimodal reasoning to developers via the Meta Model API. <span class="ver">Jul 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
