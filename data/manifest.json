@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-24",
+    "title": "Quiet window: no new Claude Code release since 2.1.218",
+    "summary": "The changelog is unchanged from yesterday — 2.1.218 (Jul 22) is still the top entry, and we covered it in full then, so there is nothing new to act on today.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-07-24.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
