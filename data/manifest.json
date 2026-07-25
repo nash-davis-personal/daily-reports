@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-25",
+    "title": "Markets steady into a heavy Fed-and-earnings week as Bertha floods the Carolinas",
+    "summary": "Stocks stabilized Friday as oil fell below $100 after a chip-led selloff, with a Fed decision, Q2 GDP, PCE and Big Tech earnings all due next week, while Tropical Storm Bertha's moisture triggered flash floods across North Carolina.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-25.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "2.1.219 makes Opus 5 the default Opus model with 1M context and fast mode at $10/$50 per Mtok, turns on deeper nested subagents, and adds guardrails that make unattended agent and MCP runs safer; 2.1.220 is bug fixes only.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-07-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-25",
+    "title": "Anthropic ships Claude Opus 5 — frontier-class at unchanged Opus pricing",
+    "summary": "Claude Opus 5 lands near Fable 5-level intelligence for the same $5/$25 Opus price with an effort dial and near-immune browser agents, while HubSpot and others push agents deeper into everyday SMB software.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-25",
+    "title": "Opus 5 makes hardened AI the sale: reprice retainers, become the agent integrator",
+    "summary": "A cheaper, injection-resistant Claude Opus 5 and CRMs turning on native agents both point to the same play — sell productized, recurring AI services TSD can deliver now while margins on delivery just went up.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-25",
+    "title": "The chip rally cracks: Intel beats but sells off, and semiconductors go geopolitical",
+    "summary": "Intel posted its fastest revenue growth in 15 years and landed a first external 18A customer yet the stock kept sliding, Taiwan indicted an ex-TSMC manager for leaking secrets to China, and Nash's web stack sits patched and quiet.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-25.html"
   },
   {
     "source": "claude-changelog",
