@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-25" />
+  <meta name="report:title" content="Claude Opus 5 lands as the new default — 1M context, cheaper fast mode" />
+  <meta name="report:summary" content="2.1.219 makes Opus 5 the default Opus model with 1M context and fast mode at $10/$50 per Mtok, turns on deeper nested subagents, and adds guardrails that make unattended agent and MCP runs safer; 2.1.220 is bug fixes only." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Claude Opus 5 lands as the new default — 1M context, cheaper fast mode — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, July 25, 2026</span>
+        <span>◆</span><span>Covers 2.1.219 (Jul 24) &amp; 2.1.220 (Jul 25)</span>
+      </div>
+      <h1>Opus 5 is the new default — 1M context, fast mode at $10/$50 per Mtok</h1>
+      <p class="standfirst">2.1.219 is the big one: Claude Opus 5 replaces Opus 4.8 as the default Opus model, deeper nested subagents turn on by default, and several changes make unattended agent, workflow, and MCP runs safer to leave alone. 2.1.220 (today) is bug fixes and reliability only.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Two releases since the last real breakdown (2.1.218, Jul 22)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases since last briefing</div></div>
+      <div class="stat"><div class="num">Opus 5</div><div class="lbl">New default Opus model</div></div>
+      <div class="stat"><div class="num">$10/$50</div><div class="lbl">Opus 5 fast mode, per Mtok</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Opus 5 is now default</h4><p>1M context, fast mode at $10/$50 per Mtok. Opus 4.8 drops out of the top slot; both stay on <code>/fast</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Nested subagents, on by default</h4><p>Subagents can now spawn subagents up to depth 3 without a flag. Your loops and workflows can fan out deeper.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Workflows get a size cap</h4><p>Dynamic workflows now default to "aim for &lt;15 agents." A guardrail against runaway fan-out you'll want to know about.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>claude -p</code> stops eating answers</h4><p>A mid-stream API error no longer discards the text already produced. Direct win for scheduled and headless runs.</p></div>
+        <div class="signal"><div class="n">05</div><h4>MCP failures now explain themselves</h4><p><code>claude mcp list</code> and <code>/mcp</code> now show HTTP status and error text when a server won't connect.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Hard-deny network egress for sandboxes</h4><p>New <code>strictAllowlist</code> setting denies non-allowlisted hosts outright instead of prompting.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The model shift: Opus 5</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Claude Opus 5 ships as the default Opus model</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog lists <code>claude-opus-5</code> as the new default Opus model, with a 1M context window and fast mode priced at $10/$50 per million tokens (input/output). It sits above Opus 4.8, which is still selectable. The bundled <code>claude-api</code> skill was updated to default to Opus 5 and carries a migration path from Opus 4.8.</p>
+            <p>This is a default-model change, so unless you pin a model explicitly, new sessions pick Opus 5 on the next update. Worth an eval pass on your real work before you assume parity — the model is different even if the workflow isn't.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run one Bisque or Studio C build session on Opus 5 and sanity-check output quality and cost before you let it become your everyday default. The 1M context matters most on your larger repos — you can hand it a whole Next.js app plus the Supabase schema in one shot. If you've pinned a model anywhere in a client project or a scheduled task, check whether you meant to.</p>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Fast mode changes: Opus 4.7 out, Opus 5 in</h3>
+          </div>
+          <div class="story-body">
+            <p>Opus 4.7 was removed from fast mode. <code>/fast</code> now applies to Opus 5 and Opus 4.8. The <code>/model</code> picker now highlights only the newest model's name so the highlight marks the actual new release, and the merged Opus row now reads "Opus (1M context)" instead of a bare "Opus." A stale-cache bug that showed the Fable row as "Requires usage credits" on plans that include it was also fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you were leaning on Opus 4.7 in fast mode, that path is gone — <code>/fast</code> is now an Opus 5 / 4.8 toggle. No action beyond knowing which two models your fast-mode key now flips between.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents &amp; workflows: deeper, but with brakes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Nested subagents up to depth 3 by default</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagents can now spawn nested subagents up to depth 3 by default — the old default was 1 (no nesting). Set <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1</code> to turn nesting back off. Alongside it, stream-json now forwards nested subagent text: agents spawned at depth 2+ show up when <code>--forward-subagent-text</code> is set, keyed by the spawning Agent's <code>tool_use</code> id.</p>
+            <p>This reverses the depth-1 default that landed only a few days ago in 2.1.217. The concurrency caps from that release (20 concurrent subagents, 200 per session) still stand.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your loop-engineering and workflow patterns can now decompose one more level without a flag — a discovery agent that itself spawns per-file fixers now works out of the box. If you'd deliberately relied on the flat depth-1 behavior in a steward loop to keep blast radius small, pin <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1</code> so this update doesn't quietly widen it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Dynamic workflows now default to a size guideline (&lt;15 agents)</h3>
+          </div>
+          <div class="story-body">
+            <p>Dynamic workflows now default to a medium size guideline — aim for fewer than 15 agents. Pick another size, or unrestricted, via <b>Dynamic workflow size</b> in <code>/config</code>. There's a new <code>workflowSizeGuideline</code> settings key so the advisory can be set from any settings file (the <code>/config</code> row hides itself while one is set), and the running-workflow status line now shows the current default with a pointer to <code>/config</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is advisory, not a hard cap, but it nudges the model toward smaller fan-outs. If you've built a genuinely large workflow — a big audit or migration sweep — set the guideline to a larger size or unrestricted in that project's settings so it doesn't get talked down to under 15 agents.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3><code>claude -p</code> no longer drops the answer on a mid-stream error</h3>
+          </div>
+          <div class="story-body">
+            <p>Headless <code>claude -p</code> text output was discarding the answer it had already produced when a turn died on a mid-stream API error. Now the produced text survives the failure.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct reliability win for exactly the kind of unattended job that files these briefings and runs your scheduled tasks. Fewer silent empty outputs when the API hiccups mid-turn — you get partial work back instead of nothing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP, sandbox &amp; headless plumbing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>MCP connection failures now surface HTTP status and errors</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude mcp list</code> and <code>/mcp</code> now show the HTTP status and error text when a server fails to connect, plus a warning for MCP config values with hidden leading or trailing whitespace. Headless runs get the same signal: a new <code>mcp_server_errors</code> field in the stream-json init event lists <code>--mcp-config</code> entries skipped by config validation, and terminal runs print a startup warning.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a lot of MCP servers — Supabase, Vercel, Notion, the tsd-portal, the higgsfield pair. Next time one goes dark, <code>claude mcp list</code> tells you whether it's a 401, a 500, or a stray space in a config value instead of a blank "not connected." Cuts real time out of debugging a broken connector.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Sandbox network hard-deny and a <code>DirectoryAdded</code> hook</h3>
+          </div>
+          <div class="story-body">
+            <p>New <code>sandbox.network.strictAllowlist</code> setting denies non-allowlisted hosts for sandboxed commands outright, with no prompt. And a new <code>DirectoryAdded</code> hook fires after <code>/add-dir</code> — or the SDK <code>register_repo_root</code> control request — registers a new working directory mid-session. One caveat for managed setups: managed MCP allowlist/denylist <code>${VAR}</code> entries now resolve from the startup environment and managed-settings env instead of settings-file env.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> <code>strictAllowlist</code> is the setting you'd want on any sandboxed automation touching client data — it makes egress fail closed instead of pausing for a prompt nobody's there to answer. The <code>DirectoryAdded</code> hook is a clean spot to auto-load per-repo context when you pull a second project into a session mid-flow.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.219</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Latest release is bug fixes and reliability improvements only <span class="ver">2.1.220 · Jul 25</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control clients no longer keep a stale fast-mode status after a model switch, reconnect, or failed org check <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Copy-on-select inside GNU screen now copies the selection instead of printing base64 into the terminal <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: <code>CLAUDE_CODE_GIT_BASH_PATH</code> pointing at a non-bash binary is now ignored with a warning instead of being run as bash <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode: ← on an empty prompt returns to the agent view from NORMAL mode, not only INSERT <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Screen-reader mode now echoes only the typed character instead of rewriting the whole input line every keystroke <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>claude --teleport</code> shows which repo your checkout points at when it doesn't match the session's repo <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The "Remote Control is only available via api.anthropic.com" error now names the specific setting that caused it <span class="ver">2.1.219</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
