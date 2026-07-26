@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-26" />
+  <meta name="report:title" content="Memory is the new bottleneck: DRAM spot prices up ~700% in a year" />
+  <meta name="report:summary" content="AI data centers have eaten the memory supply, pushing DRAM spot prices up roughly 700% year over year and raising the cost of every device a client buys, while Vercel ships WAF for Blob and 30-minute workflow steps and a public GitLab exploit lands for a June patch." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Memory is the new bottleneck: DRAM spot prices up ~700% in a year — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/samsung-and-sk-hynix-warn-ai-driven-memory-shortages-could-last-until-2027-and-beyond-as-hbm-demand-explodes-customers-already-reserving-supply-years-ahead-while-the-wider-dram-market-begins-to-tighten" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, July 26, 2026</span>
+        <span>◆</span><span>Since the July 25 edition</span>
+      </div>
+      <h1>Memory became the bottleneck, and it is going to show up on your clients' invoices</h1>
+      <p class="standfirst">DRAM spot prices are up roughly 700% over the past year as Samsung, SK Hynix and Micron shift capacity to high-bandwidth memory for AI data centers, and analysts expect supply to lag demand into 2028. On the stack side there is still no new Next.js advisory to patch, Vercel shipped WAF for Blob and 30-minute workflow steps, and a working exploit is now public for a GitLab flaw patched six weeks ago.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window to July 26</span>
+        <span>◆</span><a href="https://www.networkworld.com/article/4113772/samsung-warns-of-memory-shortages-driving-industry-wide-price-surge-in-2026.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~700%</div><div class="lbl">DRAM spot price increase over the past year, per a July 2026 Bloomberg report</div></div>
+      <div class="stat"><div class="num">$195–205B</div><div class="lbl">Alphabet's raised 2026 capex forecast, against roughly −$5.8B quarterly free cash flow</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">new Next.js security advisories since the July 20 release — nothing to patch today</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack watch: clear</h4><p>No new Next.js, Vercel or Supabase advisory since the July 20 security release. Stay patched.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Memory supercycle</h4><p>DRAM spot up ~700% in a year; Samsung is pushing another 20% on Q3 contract prices.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel ships</h4><p>WAF for Blob in beta, workflow steps up to 30 minutes, Opus 5 on AI Gateway.</p></div>
+        <div class="signal"><div class="n">04</div><h4>GitLab exploit public</h4><p>Working exploit code published July 24 for a flaw GitLab patched June 10.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Inference silicon</h4><p>Etched raised $300M at $10.3B for a transformer-only chip; AMD and Cerebras split workloads.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">All clear</span>
+            <span class="ver">Jul 26, 2026</span>
+            <h3>No new advisory to patch, and Vercel keeps shipping platform features</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new has landed on Next.js, Vercel or Supabase security since the July 20 monthly release, which carried four high-severity and five medium-severity fixes covering Server Actions denial of service, middleware and proxy bypass, SSRF, cache confusion of response bodies, image-optimization DoS via SVG, unauthenticated disclosure of internal Server Function endpoints, and unbounded Server Action payloads on Edge. If any TSD or client project is still behind that release, it is the one thing to fix this week.</p>
+            <p>Feature side, Vercel shipped several things worth knowing about. WAF for Blob went to beta on July 24, letting you deny, challenge and rate-limit blob traffic with no code changes. Workflow steps now run up to 30 minutes on extended function durations. Claude Opus 5 landed on AI Gateway with BYOK, no markup on provider pricing and automatic failover. On July 23 the dashboard gained interactive terminals into running Sandboxes with shell access and file transfer, feature-flag evaluation metrics, and flag revision history in the CLI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete moves. Run <code>npx next@latest --version</code> across every live project and confirm each one is on or past the July 20 release, because the middleware-bypass and unauthenticated-endpoint-disclosure items in that batch are exactly the class of bug that turns into an incident on a client site. Then turn on WAF for Blob anywhere you serve client uploads or generated media — it is a rate-limit you get for free, and "we rate-limit your file endpoints" is a line worth having in the Managed AI retainer.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js July 2026 security release</a> ◆ <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploit</span>
+            <span class="ver">Jul 24, 2026</span>
+            <h3>Public exploit code lands for a GitLab flaw patched six weeks ago</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers at depthfirst published working exploit code on July 24 for a GitLab vulnerability the company patched on June 10. The gap between a quiet patch and a public exploit is the window where unpatched self-hosted instances get found, and six weeks is a long time for a self-managed install to sit untouched.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You are on GitHub, so this is not your exposure. It is a sales observation worth reusing: any SMB running self-hosted developer or business software inherits a patching obligation nobody at the company owns. That is the argument for managed hosting and a retainer, and it is more persuasive with a dated example than with a general warning.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/" target="_blank" rel="noopener">BleepingComputer</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI buildout is repricing physical goods</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Market</span>
+            <span class="ver">Jul 23, 2026</span>
+            <h3>DRAM spot prices are up roughly 700% in a year and manufacturers keep raising</h3>
+          </div>
+          <div class="story-body">
+            <p>Memory prices surged again on July 23 on AI data-center demand and constrained supply, lifting SK Hynix, Micron and SanDisk. A July 2026 Bloomberg report puts DRAM spot prices up nearly 700% over the past year. Samsung is pushing Q3 DRAM average selling prices up as much as another 20%, a third straight quarter of double-digit increases, and SK Hynix is reported to have scrapped long-term contract price caps. Samsung's DRAM ASP rose about 90% quarter over quarter in Q1 2026 and another 50–60% in Q2; SK Hynix posted roughly $38 billion revenue and a near-72% operating margin for the quarter ended March 31.</p>
+            <p>The cause is allocation, not a factory fire. HBM for AI accelerators carries better margins than commodity DRAM, so capacity moved. Samsung and SK Hynix have warned the shortage could run past 2027, with some analysts pointing beyond 2030, and Chinese suppliers are filling the gap — CXMT is now the world's fourth-largest memory producer.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a quoting problem before it is a news item. Any project where you spec hardware for a client — a front-desk tablet, a kiosk, a shop workstation, a mini PC running a local display — is looking at materially higher device costs through the rest of the year, and phone and laptop prices follow. Put a 30-day expiry on hardware line items in proposals instead of eating the delta. It also strengthens the pitch for cloud-first: a Vercel and Supabase build has no memory bill of materials at all.</div>
+          <div class="refs"><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/samsung-and-sk-hynix-warn-ai-driven-memory-shortages-could-last-until-2027-and-beyond-as-hbm-demand-explodes-customers-already-reserving-supply-years-ahead-while-the-wider-dram-market-begins-to-tighten" target="_blank" rel="noopener">Tom's Hardware</a> ◆ <a href="https://www.insiderfinance.io/news/memory-prices-surge-lifting-sk-hynix-and-micron" target="_blank" rel="noopener">InsiderFinance</a> ◆ <a href="https://www.networkworld.com/article/4113772/samsung-warns-of-memory-shortages-driving-industry-wide-price-surge-in-2026.html" target="_blank" rel="noopener">Network World</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Capex</span>
+            <span class="ver">Jul 24, 2026</span>
+            <h3>Alphabet burned free cash flow to buy AI capacity, and Intel raised its own spend</h3>
+          </div>
+          <div class="story-body">
+            <p>Alphabet posted roughly negative $5.8 billion in quarterly free cash flow, a direct consequence of AI infrastructure spending, and raised its 2026 capital expenditure forecast to $195–205 billion. Intel lifted its 2026 capital spending plan from $18 billion to $20 billion after strong quarterly results and AI infrastructure demand. Both point the same direction: the largest balance sheets in tech are choosing capacity over cash generation.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No trade here, and you are not the buyer of any of this. What it tells you is that per-token prices are being subsidized by an enormous capital build that nobody wants to admit might overshoot. Enjoy the cheap inference while it lasts, and avoid designing a client product whose unit economics only work if API prices keep falling. Price your retainers off today's cost with room, not off an assumed discount.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/24/top-tech-news-today-july-24-2026-amd-apple-google-intel-oracle-samsung-spacex-more/" target="_blank" rel="noopener">Tech Startups, July 24</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Jul 23, 2026</span>
+            <h3>Etched raises $300M at $10.3B on a transformer-only inference chip</h3>
+          </div>
+          <div class="story-body">
+            <p>Etched closed a $300 million Series C led by Sequoia at a $10.3 billion valuation, with a16z, Jane Street and SK Hynix participating. Its Sohu chip is a transformer-specific ASIC on TSMC 4nm that the company claims delivers a 20× inference speedup over Nvidia's H100. Etched was founded by three Harvard dropouts in 2022 and recently opened an 80,000-square-foot facility near its San Jose headquarters. Separately, AMD and Cerebras announced a partnership letting customers split inference workloads between AMD Helios systems and Cerebras hardware through Cerebras Cloud.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference is where the silicon fight has moved, and that is the half of the market you actually buy. More competition below Nvidia means the per-token cost of the AI features in Front Desk and Concierge trends down over the next few years without you doing anything. Nothing to act on this week, but it supports pricing AI retainers on value delivered rather than on a cost-plus markup that will erode.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/07/23/ai-chip-startup-etched-defies-skeptics-hits-10-3b-valuation/" target="_blank" rel="noopener">TechCrunch</a> ◆ <a href="https://techstartups.com/2026/07/23/etched-ai-chip-startup-founded-by-college-dropouts-raises-300m-at-10-3b-valuation-to-take-on-nvidia/" target="_blank" rel="noopener">Tech Startups</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Origin Energy confirmed a cyberattack exposing names, addresses, birthdates and partial financial details across roughly 4.8 million accounts <span class="ver">Jul 24</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Parcel carrier OnTrac told customers hackers breached its corporate network and may have accessed personal details <span class="ver">Jul 25</span></span></li>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Oracle released 1,449 security patches across its product portfolio in its quarterly update <span class="ver">Jul 24</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Supabase Launch Week 15 shipped beta passkeys for Auth via WebAuthn, binary payloads for Realtime Broadcast, and a MongoDB foreign data wrapper <span class="ver">Jul 14–18</span></span></li>
+            <li><span class="tag improve qh-tag">Config</span><span class="txt">Supabase turned Postgres <code>log_connections</code> off by default for new projects on all tiers, with existing Free and Pro projects migrating <span class="ver">Jul 9</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Samsung unveiled the Galaxy Z Fold8, Z Fold8 Ultra and Z Flip8, and previewed AI smart glasses with Google, Gentle Monster and Warby Parker <span class="ver">Jul 24</span></span></li>
+            <li><span class="tag feature qh-tag">Scam wave</span><span class="txt">Attackers are using addresses from ShinyHunters leaks to send sextortion emails demanding $2,000 in Bitcoin — worth a heads-up to client staff <span class="ver">Jul 25</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

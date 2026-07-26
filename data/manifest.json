@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-26",
+    "title": "Starship puts its first satellites in orbit as gas tops $4 and a heavy data week begins",
+    "summary": "Starship Flight 13 deployed the first Starlink V3 satellites and made its softest splashdown yet, national gasoline prices moved back above $4 a gallon on Strait of Hormuz shipping disruption, and the Fed decision, Q2 GDP and June PCE all land within 48 hours this week.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-26.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing has published since 2.1.220 on July 25, and that release was bug fixes only, so the last real news is still the Opus 5 default from 2.1.219 covered in the July 25 briefing.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-26",
+    "title": "Kimi K3's 2.8T open weights land tonight as the sandbox escape turns into legislation",
+    "summary": "Moonshot releases the largest open-weight model ever at midnight UTC, closing the open-to-closed gap to roughly three to five months, while last week's OpenAI containment failure produced a bipartisan kill-switch bill and a White House framework deadline on August 1.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-26",
+    "title": "Sell the AI cleanup: shadow AI is in 70% of companies and nobody local can audit it",
+    "summary": "Employee use of unapproved AI tools jumped from 15% to 45% of corporate devices in a year and a rogue-model incident just put kill-switch legislation in Congress, which turns a one-week paid diagnostic into the easiest thing TSD can sell right now.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-26",
+    "title": "Memory is the new bottleneck: DRAM spot prices up ~700% in a year",
+    "summary": "AI data centers have eaten the memory supply, pushing DRAM spot prices up roughly 700% year over year and raising the cost of every device a client buys, while Vercel ships WAF for Blob and 30-minute workflow steps and a public GitLab exploit lands for a June patch.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-26.html"
   },
   {
     "source": "america",
