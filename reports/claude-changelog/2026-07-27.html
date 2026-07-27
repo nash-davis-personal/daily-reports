@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-27" />
+  <meta name="report:title" content="Second quiet day: still nothing past 2.1.220" />
+  <meta name="report:summary" content="The changelog has not moved in two days — 2.1.220 (July 25) is still the top entry — so today is a good window to clear the unactioned settings carryover from the 2.1.219 Opus 5 release." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Second quiet day: still nothing past 2.1.220 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Monday, July 27, 2026</span>
+        <span>◆</span><span>No new release since 2.1.220 (Jul 25)</span>
+      </div>
+      <h1>Two days flat — 2.1.220 is still the top entry</h1>
+      <p class="standfirst">Nothing has published since <b>2.1.220</b> on July 25, which carried only the line "Bug fixes and reliability improvements." That makes this the second consecutive briefing with no new source material, so the useful move today is closing out the settings carryover from <b>2.1.219</b> rather than reading anything new.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Jul 26 → Jul 27</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Status</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">No change</span>
+            <span class="ver">2.1.220 · Jul 25</span>
+            <h3>No new Claude Code release in two days</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog top entry is unchanged from yesterday's briefing: <b>2.1.220</b>, dated July 25, with a single generic bug-fix bullet. The last release with real content is <b>2.1.219</b> (July 24) — the Opus 5 default, 1M context, fast mode at $10/$50 per Mtok — covered in the <a href="2026-07-25.html">July 25 briefing</a>.</p>
+            <p>A weekday with no publish is less routine than a quiet Sunday, though a three-day gap right after a model-default release is not unusual on its own. Nothing here supports reading more into it. This feed picks up 2.1.221 the morning it lands.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No upgrade, no config change, no client-facing implication today. Skip straight to the carryover below if you have ten minutes.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Carryover worth clearing on a slow day</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Setting</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>strictAllowlist turns sandbox network egress into a hard deny</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.219 added <code>sandbox.network.strictAllowlist</code>, which denies any host outside the allowlist for sandboxed commands without opening a prompt. The default behaviour prompts instead, so an unattended run will sit waiting on a dialog nobody is there to answer.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the setting that makes a scheduled or background agent fail fast instead of hanging on an unexpected egress prompt. If any client repo runs Claude unattended, set it and list the hosts you actually need — for a Next.js/Supabase build that is typically the Vercel API, your Supabase project host, and the npm registry.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Default change</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Dynamic workflows now default to a medium size guideline</h3>
+          </div>
+          <div class="story-body">
+            <p>Workflows now aim for fewer than 15 agents by default, and the guideline can be pinned from any settings file via the <code>workflowSizeGuideline</code> key — when it is set there, the <code>/config</code> row is hidden. The running-workflow status line shows the active size.</p>
+            <p>Pair this with the two spend guards from the same week: the concurrent-subagent cap (default 20, override with <code>CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS</code>) and the <code>--max-budget-usd</code> fix in 2.1.217, which now actually halts running background agents once the cap is hit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Put <code>workflowSizeGuideline</code> in project settings for anything client-billed so a fan-out can't quietly scale past what the engagement is worth. The <code>--max-budget-usd</code> fix is the one that makes an unattended cap trustworthy — before it, background agents kept spending past the limit.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.219</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Diagnostics</span>
+            <span class="ver">2.1.219 · Jul 24</span>
+            <h3>Failed MCP servers now say why</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude mcp list</code> and <code>/mcp</code> report the HTTP status and error text when a server fails to connect, and warn about config values carrying hidden leading or trailing whitespace. Headless runs get an <code>mcp_server_errors</code> entry in the stream-json init event listing skipped <code>--mcp-config</code> entries, and terminal runs print a startup warning.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Next time a Supabase or Vercel MCP server goes missing mid-build, <code>claude mcp list</code> gives you the actual status code instead of a silent absence. The whitespace warning is worth knowing about — a trailing space on a pasted token reads as a valid string and fails as a bad credential.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.219</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Nothing published in this window — the items below are unactioned leftovers from the last release, listed once for completeness. <span class="ver">Jul 26–27</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>DirectoryAdded</code> hook fires when <code>/add-dir</code> or the SDK <code>register_repo_root</code> registers a working directory mid-session. <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Opus 4.7 dropped from fast mode; <code>/fast</code> now covers Opus 5 and Opus 4.8. <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The bundled claude-api skill defaults to Opus 5, with a documented migration path from Opus 4.8. <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Nested subagent forwarding in stream-json: depth-2+ subagents appear under <code>--forward-subagent-text</code>, keyed by their spawning Agent <code>tool_use</code> id. <span class="ver">2.1.219</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude -p</code> no longer discards an answer it already produced when a turn dies on a mid-stream API error. <span class="ver">2.1.219</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
