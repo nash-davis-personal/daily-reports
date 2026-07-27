@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-27",
+    "title": "Oil gives back last week's spike as the busiest week of the quarter opens",
+    "summary": "The US and Iran paused strikes for a second day and crude fell about 5%, pulling Brent back to roughly $92 from last week's $102 high, as markets head into a Fed decision, Q2 GDP, June PCE and four megacap earnings reports inside three days.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-27.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "The changelog has not moved in two days — 2.1.220 (July 25) is still the top entry — so today is a good window to clear the unactioned settings carryover from the 2.1.219 Opus 5 release.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-27.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-27",
+    "title": "Nvidia would guarantee $250B of OpenAI's debt as Kimi K3's weights go live",
+    "summary": "Nvidia is in talks to backstop roughly $250 billion in financing for a 10-gigawatt OpenAI campus in Ohio while separately discussing $350 billion in chip financing, Kimi K3's 1.4 TB of open weights actually landed at midnight UTC, and Microsoft is rationing Azure capacity into year-end.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-27.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-27",
+    "title": "Sell the deadline: two dated breaking changes are a recurring-revenue wedge",
+    "summary": "Supabase removes an API endpoint on September 23 and swaps the self-hosted gateway on August 9, Next.js now patches on a fixed monthly cadence, and nobody at an SMB is tracking any of it — which turns a $149/month Breaking Change Watch into the easiest recurring line TSD can add this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-27.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-27",
+    "title": "Two Supabase deadlines are on your calendar, and GitHub halves bug bounties today",
+    "summary": "No new advisory on Nash's stack, but Supabase is removing the logs.all API endpoint on September 23 and switching self-hosted installs to Envoy from August 9, while GitHub cuts public bug bounty payouts by at least half starting today under a flood of AI-generated reports.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-27.html"
   },
   {
     "source": "america",

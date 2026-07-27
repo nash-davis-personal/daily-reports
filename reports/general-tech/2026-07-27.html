@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-27" />
+  <meta name="report:title" content="Two Supabase deadlines are on your calendar, and GitHub halves bug bounties today" />
+  <meta name="report:summary" content="No new advisory on Nash's stack, but Supabase is removing the logs.all API endpoint on September 23 and switching self-hosted installs to Envoy from August 9, while GitHub cuts public bug bounty payouts by at least half starting today under a flood of AI-generated reports." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Two Supabase deadlines are on your calendar, and GitHub halves bug bounties today — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, July 27, 2026</span>
+        <span>◆</span><span>Since the July 26 edition</span>
+      </div>
+      <h1>Quiet on advisories, loud on deadlines</h1>
+      <p class="standfirst">Nothing new to patch on the Next.js or Vercel side today, so the stack item worth your time is calendar work: Supabase removes the <code>logs.all</code> Management API endpoint on September 23 and flips self-hosted installs from Kong to Envoy starting the week of August 9. Elsewhere, GitHub's bug bounty cuts take effect today because AI-generated reports have buried its security team.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>~24h window to July 27</span>
+        <span>◆</span><a href="https://github.blog/security/next-chapter-restructuring-githubs-bug-bounty-program/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Sep 23</div><div class="lbl">Supabase removes the <code>logs.all</code> analytics endpoint — migrate to the ClickHouse-backed logs endpoint</div></div>
+      <div class="stat"><div class="num">$10K</div><div class="lbl">GitHub's new flat payout for a critical public bug bounty finding, down from $20K–$30K+</div></div>
+      <div class="stat"><div class="num">9.1</div><div class="lbl">CVSS on the Check Point SmartConsole auth bypass now exploited in the wild</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack watch: clear</h4><p>No new Next.js or Vercel advisory since the July 20 release. Patched line is still 16.2.11 and 15.5.21.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase logs API</h4><p><code>logs.all</code> disappears September 23; queries must move to ClickHouse SQL and a unified logs table.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Envoy by default</h4><p>Self-hosted Supabase swaps Kong for Envoy starting the week of August 9 — a flagged breaking change.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Bounties halved</h4><p>GitHub's public payouts drop by at least half today; top money moves to an invite-only VIP tier.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Firewall admin bypass</h4><p>Check Point's SmartConsole flaw hands full admin on management servers and is being exploited.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Stack watch</span>
+            <span class="ver">Jul 27</span>
+            <h3>No new advisory to patch — the July 20 security release is still the current line</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js has published nothing since the July 20 security release, and the Vercel changelog has not moved since July 24 (WAF for Blob in beta, 30-minute workflow steps, Claude Opus 5 on AI Gateway). The July 20 release remains the one that matters: eight CVEs including a high-severity App Router denial of service via Server Actions (CVE-2026-64641), a middleware bypass on Turbopack builds with a single locale (CVE-2026-64642), and two SSRF paths (CVE-2026-64645, CVE-2026-64649).</p>
+            <p>Patched versions are <code>16.2.11</code> on Active LTS and <code>15.5.21</code> on Maintenance LTS. Vercel now preannounces these on a monthly cadence, so the next one is predictable rather than a surprise.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm ls next</code> across every client repo today and confirm each is at 16.2.11 or 15.5.21. The middleware bypass is the one that quietly voids auth checks, and any site you built with Turbopack and a single locale is exposed until it is patched.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js July 2026 security release</a> <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Jul 21–23</span>
+            <h3>Supabase sets two dates: logs API removal September 23, Envoy gateway from August 9</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase is moving log querying to a ClickHouse-backed system. The Management API <code>analytics/endpoints/logs.all</code> endpoint gets removed on September 23; the path becomes <code>analytics/endpoints/logs</code>, queries must convert to ClickHouse SQL dialect, every source now lives in one unified logs table filtered by <code>source_name</code>, and nested field access moves from metadata arrays to a flat <code>log_attributes</code> map. Separately, self-hosted Supabase switches its default API gateway from Kong to Envoy starting the week of August 9, flagged as a breaking change.</p>
+            <p>Supabase also opened Pipelines in public alpha on July 21 — managed change-data-capture streaming Postgres changes to BigQuery in near real time, with initial table copy, incremental replication and automatic schema-change detection, priced at $0.053 per hour per active pipeline during alpha.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep your projects and any client automations for <code>logs.all</code> now — anything that scrapes Supabase logs for a dashboard or an alert breaks silently on September 23. Neither of these is a security fix, which is exactly why nobody gets around to them; that gap is a billable retainer line, and it is today's best bet in Money Moves.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Supabase release notes, July 2026</a> <a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">supabase/supabase releases</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; the developer economy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Effective today</span>
+            <span class="ver">Jul 27</span>
+            <h3>GitHub halves public bug bounty payouts because AI-generated reports buried the triage queue</h3>
+          </div>
+          <div class="story-body">
+            <p>Starting today, GitHub cuts public bug bounty payouts by at least half at every severity level. Critical findings drop from a $20,000–$30,000-plus range to a flat $10,000, while a permanent invite-only VIP tier pays $30,000 and up with faster responses and direct access to the security engineering team. Reports filed before today, including everything already sitting in the triage queue, keep the old terms.</p>
+            <p>GitHub's stated reason is the flood of low-effort and AI-generated submissions now swamping bounty programs. The two-tier structure is an explicit bet that paying proven researchers more and everyone else less produces better signal.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the first big platform to formally price in AI slop, and the same dynamic is coming for anything with an open intake — contact forms, quote requests, support inboxes. When you pitch AI intake triage to a client, this is the concrete story to point at.</div>
+          <div class="refs"><a href="https://github.blog/security/next-chapter-restructuring-githubs-bug-bounty-program/" target="_blank" rel="noopener">The GitHub Blog</a> <a href="https://www.theregister.com/devops/2026/07/23/github_slashes_public_bug_bounty_payouts_as_ai_report_flood_buries_its_security_team/" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Exploited</span>
+            <span class="ver">Jul 23</span>
+            <h3>Check Point patches a SmartConsole auth bypass already being used in attacks</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-16232 is an authentication bypass in the Check Point SmartConsole login process, CVSS 9.1, confirmed exploited in the wild against what the vendor calls a small number of customers. An unauthenticated remote attacker can obtain an application login token and authenticate to the management server with full administrative privileges, then modify security policies and configurations. It affects Check Point Security Management and Multi-Domain Security Management — the servers that push policy to the firewalls.</p>
+            <p>Rapid7 recommends hunting for compromise even after the hotfix, particularly where the management server has been reachable from the internet, reviewing admin, SmartConsole, API and application-token activity against the published indicators.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not your stack, but it is the stack at the larger clients you want — anyone with a real IT vendor probably runs Check Point somewhere. Forwarding this to a prospect's office manager with one plain-English sentence is a legitimate, no-pitch reason to be in their inbox this week.</div>
+          <div class="refs"><a href="https://www.rapid7.com/blog/post/etr-cve-2026-16232-critical-check-point-smartconsole-authentication-bypass-exploited-in-the-wild/" target="_blank" rel="noopener">Rapid7 analysis</a> <a href="https://www.helpnetsecurity.com/2026/07/23/check-point-vulnerability-cve-2026-16232/" target="_blank" rel="noopener">Help Net Security</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Costs</span><span class="txt">Server DRAM prices are forecast up another 18% in Q3 2026 on top of the spot-price run already underway — client hardware quotes keep getting worse. <a href="https://www.originbrief.app/en/reports/semiconductor-chip-industry/2026-07-20/weekly" target="_blank" rel="noopener">Semiconductor weekly</a> <span class="ver">Q3</span></span></li>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Adobe ColdFusion CVE-2026-48282 remains under mass exploitation; Shadowserver tracks roughly 800 exposed instances and CISA has it in the KEV catalog. <a href="https://www.bleepingcomputer.com/news/security/max-severity-adobe-coldfusion-flaw-now-exploited-in-attacks/" target="_blank" rel="noopener">BleepingComputer</a> <span class="ver">since Jul 7</span></span></li>
+            <li><span class="tag feature qh-tag">Platform</span><span class="txt">Claude Opus 5 is live on Vercel's AI Gateway with BYOK, no provider markup and automatic failover across API formats. <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <span class="ver">Jul 24</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
