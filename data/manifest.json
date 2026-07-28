@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-28",
+    "title": "A chip rout out of Asia meets the start of a Fed meeting nobody can call",
+    "summary": "Memory-chip selling knocked the Kospi down more than 10% and pulled Nasdaq futures lower as the Fed opened a two-day meeting with hold odds down to 64%.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-28.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No Claude Code release has published since 2.1.220 on July 25, making this the third straight briefing with no new source material and nothing to action.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-28.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-28",
+    "title": "Shared Claude chats landed in Google, and the industry picked sides on open weights",
+    "summary": "Publicly shared Claude links were indexed by Google and leaked credentials and medical records; Anthropic published its open-weights position while 37 companies launched a security alliance without it.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-28.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-28",
+    "title": "Two news hooks you can bill against this week: leaked AI share links and an unpatched Next.js line",
+    "summary": "The Claude share-link indexing story and a React Server Components CVE reaching back to Next.js 13 both create fixed-fee work Nash can sell to existing clients within days.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-28.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-28",
+    "title": "Memory is eating hardware pricing, and the chip trade cracked overnight",
+    "summary": "RAM costs pushed Pixel 11 and Qualcomm prices up while the Kospi fell over 10% on memory names; no new Next.js advisory, so 16.2.11 remains the patched line.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-28.html"
   },
   {
     "source": "america",

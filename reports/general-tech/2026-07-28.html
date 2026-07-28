@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-28" />
+  <meta name="report:title" content="Memory is eating hardware pricing, and the chip trade cracked overnight" />
+  <meta name="report:summary" content="RAM costs pushed Pixel 11 and Qualcomm prices up while the Kospi fell over 10% on memory names; no new Next.js advisory, so 16.2.11 remains the patched line." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Memory is eating hardware pricing, and the chip trade cracked overnight — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, July 28, 2026</span>
+        <span>◆</span><span>Dev tools ◆ hardware ◆ platforms</span>
+      </div>
+      <h1>Memory is eating hardware pricing, and the chip trade cracked overnight</h1>
+      <p class="standfirst">DRAM diverted to AI accelerators is now showing up in the price of ordinary things: Pixel 11 up about $100, Qualcomm raising chip prices double digits in September, budget phones going back to 4GB of RAM. Then the same trade reversed hard overnight, with Korean memory names down 13–14% and the Kospi off more than 10%.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the July 27 edition</span>
+        <span>◆</span><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.2.11</div><div class="lbl">Next.js patched line — unchanged</div></div>
+      <div class="stat"><div class="num">~2x</div><div class="lbl">Mobile DRAM contract price move in Q2</div></div>
+      <div class="stat"><div class="num">-10%</div><div class="lbl">Kospi, on memory-name selling</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack watch: still clear</h4><p>No new Next.js or Vercel advisory since July 20. The patched line remains 16.2.11 LTS and 15.5.21 maintenance.</p></div>
+        <div class="signal"><div class="n">02</div><h4>RAM is the new BOM problem</h4><p>Mobile DRAM roughly doubled in Q2 on top of a ~60% Q1 jump. Phone prices forecast up 6.9% for 2026.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Pixel 11 up ~$100</h4><p>Google is expected to raise base Pixel 11 pricing to about $899, with memory costs named as the driver.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Qualcomm raises in September</h4><p>Double-digit percentage increases on chips starting September, which flows to every Android OEM.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Apple's glasses slip a year</h4><p>Smart glasses pushed to WWDC June 2027, with consumer availability late 2027.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Clear</span>
+            <span class="ver">as of July 28</span>
+            <h3>No new advisory to patch — the July 20 security release is still the current line</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js published nothing new since the July 20 monthly security release, which covered four high and five medium severity issues. Patched versions remain 16.2.11 on Active LTS and 15.5.21 on Maintenance LTS. That release included the App Router Server Actions denial of service, the Turbopack middleware and proxy bypass on single-locale apps, and the SSRF in rewrites via attacker-controlled destination hostname.</p>
+            <p>Worth remembering that Vercel moved to a scheduled monthly cadence on July 13, so the next expected window is mid-to-late August rather than a random drop. The React Server Components DoS tracked as CVE-2026-23870 reaches back through 13.x, 14.x, 15.x and 16.x App Router deployments, so any older client site you still touch is in scope even if it is not on your current line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing new to patch today. Use the quiet window to sweep the client sites you have not touched in months — anything on 13.x or 14.x App Router is exposed to CVE-2026-23870 and will not fix itself. Put the mid-August security window on the calendar now so the patch pass is scheduled work you bill for instead of an emergency.</div>
+          <div class="refs"><a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog</a> <a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a> <a href="https://www.cybersecuritydive.com/news/critical-vulnerabilities-found-in-react-and-nextjs/807016/" target="_blank" rel="noopener">Cybersecurity Dive on the RSC CVEs</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The memory squeeze reaches consumers</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">July 27–28</span>
+            <h3>AI data centers bid away the world's DRAM, and phone prices are the receipt</h3>
+          </div>
+          <div class="story-body">
+            <p>Samsung, SK Hynix and Micron control nearly all global DRAM output and have been shifting capacity toward high-bandwidth memory for AI accelerators. The consumer side is paying for it. Mobile DRAM contract prices are tracking a roughly 93–98% quarter-over-quarter jump in Q2 on top of a 58–63% rise in Q1, taking LPDDR5 from around $10 per gigabyte to near $20. Sub-$200 phones have seen bill-of-materials inflation of 20–30% since January, and TrendForce expects some budget models to revert to 4GB of RAM.</p>
+            <p>It is now visible in named products. Google is expected to price the base Pixel 11 around $899, roughly $100 higher, with RAM cost cited as the reason. Qualcomm has signalled double-digit percentage chip price increases beginning in September. Analysts do not expect meaningful relief before late 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two practical effects. Client device refresh cycles stretch, so more of your traffic is old mid-range Android on constrained memory — keep testing on a throttled device and keep bundles lean, because JS parse cost hurts more on 4GB phones. Second, if you spec hardware for a client build, quote it fresh; anything you priced in the spring is stale.</div>
+          <div class="refs"><a href="https://www.androidauthority.com/ram-shortage-prices-explained-3626017/" target="_blank" rel="noopener">Android Authority</a> <a href="https://www.techpowerup.com/343954/memory-price-surge-to-persist-in-1q26-smartphone-and-notebook-brands-begin-raising-prices-and-downgrading-specs" target="_blank" rel="noopener">TechPowerUp, citing TrendForce</a> <a href="https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/" target="_blank" rel="noopener">IDC</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Markets</span>
+            <span class="ver">July 28</span>
+            <h3>The memory trade reversed hard: SK Hynix -14%, Samsung -13%, Kospi off more than 10%</h3>
+          </div>
+          <div class="story-body">
+            <p>Korean memory names were hammered overnight and dragged the Kospi down more than 10%. The proximate cause is not demand — it is the structure of the demand. Nvidia's reported $250 billion financing backstop for OpenAI's Ohio data center has investors using the phrase "circular financing," where a chip supplier underwrites its own customers' ability to buy. Layer on the worry that Chinese models are closing the capability gap and the return on all that capex looks less certain than it did a week ago.</p>
+            <p>SK Hynix reports results around 8 p.m. ET tonight, which is the single best read available on whether the memory cycle is actually turning or the market is just repricing risk.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Watch it, do not trade it. The operational read is that the AI buildout narrative now has a visible bear case, which means the "everyone is adopting AI, get on board" pitch is weaker than the boring one that works anyway: this specific automation saves this business this many hours a week.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-july-28-dow-sp-500-nasdaq-082832371.html" target="_blank" rel="noopener">Yahoo Finance live</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platforms and products</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Delay</span>
+            <span class="ver">July 27</span>
+            <h3>Apple pushes smart glasses to WWDC 2027 on privacy concerns</h3>
+          </div>
+          <div class="story-body">
+            <p>Bloomberg reports Apple has moved its smart glasses launch to WWDC in June 2027, with consumer availability at the end of that year. Privacy is the stated cause. Meta spent the same week adding Threads support, a Muse Spark AI upgrade and neural handwriting input to its Ray-Ban Display line, which leaves it effectively unopposed in the category for another eighteen months.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to build for. Useful as a reminder that face-worn cameras are a live privacy issue — relevant if any client in a salon, clinic or retail space asks you about in-store video or AI camera analytics. That conversation needs a consent answer before a technical one.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/27/top-tech-news-today-july-27-2026-anthropic-monday-com-moonshot-ai-nvidia-openai-more/" target="_blank" rel="noopener">Tech Startups, citing Bloomberg</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Layoffs</span>
+            <span class="ver">July 27</span>
+            <h3>Monday.com cuts about 20% of staff while restructuring around AI</h3>
+          </div>
+          <div class="story-body">
+            <p>Monday.com is cutting roughly 630 roles, about a fifth of its workforce, as it reorganises around its AI platform. This is a profitable, growing SaaS company shedding a fifth of its people, which makes it a cleaner signal than the usual post-overhire correction — the work-management category is being rebuilt around agents and the headcount that supported the old shape is going.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct prospecting signal. SMBs paying per-seat for work-management tools are about to get less human support from the vendor. "You are paying for seats you barely use and the support is thinning" is a real opener for a booking or intake automation that replaces a tool subscription rather than adding to it.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/07/27/top-tech-news-today-july-27-2026-anthropic-monday-com-moonshot-ai-nvidia-openai-more/" target="_blank" rel="noopener">Tech Startups</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Bank of Baroda exposed 700+ GB of data via a compromised employee email account — phishing is still the entry point. <span class="ver">Jul 27</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">AMD and Cerebras announced an inference partnership pairing Helios rackscale with the Wafer-Scale Engine, claiming up to 5x tokens per second per watt, available late 2026. <span class="ver">Jul 28</span></span></li>
+            <li><span class="tag new qh-tag">Infra</span><span class="txt">Micron's $100B complex near Syracuse is anchoring a New York semiconductor corridor. <span class="ver">Jul 27</span></span></li>
+            <li><span class="tag improve qh-tag">Reminder</span><span class="txt">Supabase deadlines still stand: the logs API drops September 23 and self-hosted swaps Kong for Envoy from the week of August 9. <span class="ver">standing</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Lunar Outpost's moon rover will run its lidar on Nvidia Jetson GPUs, likely the first GPU on the lunar surface. <span class="ver">Jul 28</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
