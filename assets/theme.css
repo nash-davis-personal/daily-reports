@@ -463,3 +463,10 @@ a:focus-visible, .btn:focus-visible, .card:focus-visible {
 /* Reveal-on-load (progressive, respects reduced-motion) */
 .reveal { opacity: 0; transform: translateY(10px); animation: rise .5s ease forwards; }
 @keyframes rise { to { opacity: 1; transform: none; } }
+
+/* Collapsed archives — the hub shows the 4 newest per section until "Show more".
+   The n+5 cutoffs must match MAX_PER_SOURCE in index.html. */
+.grid[data-collapsed] > .card:nth-child(n+5) { display: none; }
+.ep-list[data-collapsed] button.ep-item:nth-of-type(n+5) { display: none; }
+.more-row { display: flex; justify-content: center; margin-top: 20px; }
+.ep-list .ep-more { align-self: center; margin-top: 8px; }

@@ -6,7 +6,7 @@
   <title>TSD Daily Reports</title>
   <meta name="description" content="Automated daily intelligence briefings, scouted and written by a TSD agent." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
-  <link rel="stylesheet" href="assets/theme.css" />
+  <link rel="stylesheet" href="assets/theme.css?v=2026-07-29" />
 </head>
 <body>
   <header class="topbar">
@@ -17,7 +17,7 @@
       </a>
       <nav>
         <a href="#feed">Feed</a>
-        <a href="https://github.com/nashyD/daily-reports" target="_blank" rel="noopener">Repo</a>
+        <a href="https://github.com/nash-davis-personal/daily-reports" target="_blank" rel="noopener">Repo</a>
       </nav>
     </div>
   </header>
@@ -98,16 +98,30 @@
       const order = [...new Set(rest.map(r => r.source))];
       let html = '';
       for (const src of order) {
-        const items = groups[src].slice(0, MAX_PER_SOURCE);
-        const archived = groups[src].length - items.length;
+        const items = groups[src];
+        const extra = items.length - MAX_PER_SOURCE;
         const label = items[0].sourceLabel || src;
         html += `<div class="section-head">
             <h2><span class="diamond">◆</span> ${esc(label)}</h2>
-            <span class="count">${archived > 0 ? `latest ${items.length} · ${archived} archived` : `${items.length} earlier`}</span>
+            <span class="count">${items.length} earlier</span>
           </div>
-          <div class="grid">${items.map(r => card(r, false)).join('')}</div>`;
+          <div class="grid"${extra > 0 ? ' data-collapsed' : ''}>${items.map(r => card(r, false)).join('')}</div>
+          ${extra > 0 ? `<div class="more-row"><button class="btn btn-ghost more-btn" type="button" data-more="${extra}">Show ${extra} more</button></div>` : ''}`;
       }
       document.getElementById('sources').innerHTML = html;
+      document.getElementById('sources').addEventListener('click', (ev) => {
+        const btn = ev.target.closest('.more-btn');
+        if (!btn) return;
+        const grid = btn.closest('.more-row').previousElementSibling;
+        if (grid.hasAttribute('data-collapsed')) {
+          grid.removeAttribute('data-collapsed');
+          btn.textContent = 'Show less';
+        } else {
+          grid.setAttribute('data-collapsed', '');
+          btn.textContent = `Show ${btn.dataset.more} more`;
+          grid.previousElementSibling.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     }
 
     fetch('data/manifest.json', { cache: 'no-store' })
@@ -136,8 +150,8 @@
         return;
       }
       const e = eps[0];
-      const recent = eps.slice(0, MAX_PER_SOURCE);
-      const list = recent.map((ep, i) => `<button class="ep-item${i === 0 ? ' active' : ''}" data-file="${esc(ep.file)}" data-title="${esc(ep.title)}" data-date="${esc(ep.date)}" data-dur="${ep.durationSec || 0}">
+      const extra = eps.length - MAX_PER_SOURCE;
+      const list = eps.map((ep, i) => `<button class="ep-item${i === 0 ? ' active' : ''}" data-file="${esc(ep.file)}" data-title="${esc(ep.title)}" data-date="${esc(ep.date)}" data-dur="${ep.durationSec || 0}">
           <span class="ep-play">▶</span>
           <span class="ep-info"><span class="ep-t">${fmtDate(ep.date)} · ${mins(ep.durationSec)}</span><span class="ep-d">${esc(ep.summary || '')}</span></span>
         </button>`).join('');
@@ -153,7 +167,7 @@
           <button class="btn btn-ghost" id="copyFeed" type="button">Copy feed link</button>
           <span class="feed-url">${esc(feedUrl)}</span>
         </div>
-      </div>` + (eps.length > 1 ? `<div class="ep-list"><div class="ep-label">◆ Recent episodes</div>${list}</div>` : '');
+      </div>` + (eps.length > 1 ? `<div class="ep-list"${extra > 0 ? ' data-collapsed' : ''}><div class="ep-label">◆ All episodes</div>${list}${extra > 0 ? `<button class="btn btn-ghost ep-more" type="button" data-more="${extra}">Show ${extra} more</button>` : ''}</div>` : '');
 
       const audio = document.getElementById('pc-audio');
       el.querySelectorAll('.ep-item').forEach(b => b.addEventListener('click', () => {
@@ -163,6 +177,18 @@
         el.querySelector('.pc-title').textContent = b.dataset.title;
         el.querySelector('.pc-meta').textContent = fmtDate(b.dataset.date) + ' · ' + mins(Number(b.dataset.dur));
       }));
+      const em = el.querySelector('.ep-more');
+      em && em.addEventListener('click', () => {
+        const listEl = em.closest('.ep-list');
+        if (listEl.hasAttribute('data-collapsed')) {
+          listEl.removeAttribute('data-collapsed');
+          em.textContent = 'Show less';
+        } else {
+          listEl.setAttribute('data-collapsed', '');
+          em.textContent = `Show ${em.dataset.more} more`;
+          listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
       const cb = document.getElementById('copyFeed');
       cb && cb.addEventListener('click', async () => {
         try { await navigator.clipboard.writeText(feedUrl); cb.textContent = 'Copied ✓'; }
