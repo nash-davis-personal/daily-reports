@@ -44,6 +44,7 @@
 
   <script>
     const ARROW = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+    const MAX_PER_SOURCE = 4;
 
     function fmtDate(iso) {
       const [y, m, d] = iso.split('-').map(Number);
@@ -97,11 +98,12 @@
       const order = [...new Set(rest.map(r => r.source))];
       let html = '';
       for (const src of order) {
-        const items = groups[src];
+        const items = groups[src].slice(0, MAX_PER_SOURCE);
+        const archived = groups[src].length - items.length;
         const label = items[0].sourceLabel || src;
         html += `<div class="section-head">
             <h2><span class="diamond">◆</span> ${esc(label)}</h2>
-            <span class="count">${items.length} earlier</span>
+            <span class="count">${archived > 0 ? `latest ${items.length} · ${archived} archived` : `${items.length} earlier`}</span>
           </div>
           <div class="grid">${items.map(r => card(r, false)).join('')}</div>`;
       }
@@ -134,7 +136,8 @@
         return;
       }
       const e = eps[0];
-      const list = eps.map((ep, i) => `<button class="ep-item${i === 0 ? ' active' : ''}" data-file="${esc(ep.file)}" data-title="${esc(ep.title)}" data-date="${esc(ep.date)}" data-dur="${ep.durationSec || 0}">
+      const recent = eps.slice(0, MAX_PER_SOURCE);
+      const list = recent.map((ep, i) => `<button class="ep-item${i === 0 ? ' active' : ''}" data-file="${esc(ep.file)}" data-title="${esc(ep.title)}" data-date="${esc(ep.date)}" data-dur="${ep.durationSec || 0}">
           <span class="ep-play">▶</span>
           <span class="ep-info"><span class="ep-t">${fmtDate(ep.date)} · ${mins(ep.durationSec)}</span><span class="ep-d">${esc(ep.summary || '')}</span></span>
         </button>`).join('');
@@ -150,7 +153,7 @@
           <button class="btn btn-ghost" id="copyFeed" type="button">Copy feed link</button>
           <span class="feed-url">${esc(feedUrl)}</span>
         </div>
-      </div>` + (eps.length > 1 ? `<div class="ep-list"><div class="ep-label">◆ All episodes</div>${list}</div>` : '');
+      </div>` + (eps.length > 1 ? `<div class="ep-list"><div class="ep-label">◆ Recent episodes</div>${list}</div>` : '');
 
       const audio = document.getElementById('pc-audio');
       el.querySelectorAll('.ep-item').forEach(b => b.addEventListener('click', () => {
