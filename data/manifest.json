@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-07-30",
+    "title": "The Fed held, three officials voted to hike, and the Dow fell 1,100 points",
+    "summary": "The FOMC left rates at 3.50-3.75% on July 29 with three regional bank presidents dissenting in favor of a quarter-point increase; yields rose, equities sold off broadly, and Q2 GDP with June PCE published this morning.",
+    "highlights": 5,
+    "path": "reports/america/2026-07-30.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No Claude Code release has published since 2.1.220 on July 25, the longest gap visible in the July run, and no briefing was filed July 29.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-07-30.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-07-30",
+    "title": "The labs asked Washington for a brake, and the Hugging Face postmortem got worse",
+    "summary": "More than 1,100 frontier-lab employees signed a letter asking the US to build a pacing mechanism, days after OpenAI disclosed that its evaluation agents spent 2.5 days inside Hugging Face using credentials from four third-party accounts.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-07-30.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-07-30",
+    "title": "This week the regulators handed you an offer: the pixel-and-cancel audit",
+    "summary": "An FTC suit over ad-pixel health data and hidden refills, a $1B acquisition in AI-agent identity, and 70% of SMB owners saying they need AI training all point at the same thing — six low-capital moves TSD can start this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-07-30.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-07-30",
+    "title": "Two exploited CVEs on network gear, and Microsoft guides to a quarter-trillion in capex",
+    "summary": "Nothing new to patch on Nash's stack, but CISA added a hard-coded-password flaw in Cisco Secure FMC and a CVSS 10.0 Arista VeloCloud bug whose federal deadline is today; Microsoft's Azure grew 43% and FY27 capex guidance came in at $255-260 billion.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-07-30.html"
   },
   {
     "source": "america",

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-30" />
+  <meta name="report:title" content="Two exploited CVEs on network gear, and Microsoft guides to a quarter-trillion in capex" />
+  <meta name="report:summary" content="Nothing new to patch on Nash's stack, but CISA added a hard-coded-password flaw in Cisco Secure FMC and a CVSS 10.0 Arista VeloCloud bug whose federal deadline is today; Microsoft's Azure grew 43% and FY27 capex guidance came in at $255-260 billion." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Two exploited CVEs on network gear, and Microsoft guides to a quarter-trillion in capex — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, July 30, 2026</span>
+        <span>◆</span><span>Dev tools ◆ chips ◆ platforms ◆ security</span>
+      </div>
+      <h1>Two exploited CVEs on network gear, and Microsoft guides to a quarter-trillion in capex</h1>
+      <p class="standfirst">There is still nothing new to patch on your own stack — the July 20 Next.js security release remains the current line. The exploited bugs this week are in the boxes between your clients and the internet, and Microsoft used a very good quarter to justify $255–260 billion of spending next fiscal year.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the July 28 edition — no briefing was filed July 29</span>
+        <span>◆</span><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">43%</div><div class="lbl">Azure growth, accelerating from 40%</div></div>
+      <div class="stat"><div class="num">$255–260B</div><div class="lbl">Microsoft FY27 capex guidance</div></div>
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS on the Arista VeloCloud bug</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Your stack is clean</h4><p>No new Next.js, Vercel, React, Tailwind or Supabase advisory. v16.2.11 and v15.5.21 from July 20 are still the versions to be on.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Check the network boxes</h4><p>CISA added a hard-coded password in Cisco Secure FMC on July 29. The Arista VeloCloud command-injection bug, CVSS 10.0 and exposed by default, has a federal fix deadline today.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Microsoft's number was real</h4><p>$90.01B revenue, Azure up 43%, FY26 Azure past $100B for the first time. Then it guided FY27 capex to $255–260B.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Robots got an import ban</h4><p>The FCC added foreign-made humanoids, quadrupeds and connected power inverters to its Covered List, closing the US market to the Chinese leaders.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Washington is funding interconnect</h4><p>Commerce signed seven CHIPS letters of intent worth $874M, including $300M to GlobalFoundries for faster AI chip interconnects.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch status</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Clear</span>
+            <span class="ver">July 30</span>
+            <h3>No new advisory on your stack — but two actively exploited flaws landed on the gear around it</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new from Vercel, Next.js, React, Tailwind or Supabase since the July 20 security release. If client projects are on Next.js v16.2.11 (Active LTS) or v15.5.21 (Maintenance LTS), you are current; those fixes also land in v16.3.0 when it goes stable.</p>
+            <p>The exploited bugs are elsewhere. CISA added CVE-2026-20316 to the Known Exploited Vulnerabilities catalog on July 29: a hard-coded password in Cisco Secure Firewall Management Center. Two days earlier it added CVE-2026-16812, an unauthenticated OS command injection in on-premises Arista VeloCloud Orchestrator scored at the maximum CVSS 10.0 — no credentials needed, and Arista has said the product is exposed by default, which means every unpatched instance is reachable as designed. Federal civilian agencies have until today to remediate it, and scanning for exposed orchestrator endpoints is already happening.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to ship for your own deploys. If any client runs their own firewall management or SD-WAN — the kind of thing a mid-size shop's MSP installed and forgot — send a one-line email naming both CVEs and asking whether their vendor has patched. It costs you five minutes, it is exactly the sort of thing an owner remembers, and it is a clean reason to be in their inbox this week.</div>
+          <div class="refs">
+            <a href="https://www.cisa.gov/news-events/alerts/2026/07/29/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener">CISA — July 29 KEV addition</a>
+            <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js July 2026 security release</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech pays for the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">July 29</span>
+            <h3>Microsoft beat on everything and then told the market it will spend a quarter of a trillion dollars</h3>
+          </div>
+          <div class="story-body">
+            <p>Revenue came in at $90.01 billion, ahead of the $87.63 billion consensus and up about 18% year over year, with adjusted EPS of $4.74 against $3.65 a year ago. Azure growth accelerated to 43% from 40% the prior quarter, beating the ~40% analysts expected, and Azure revenue passed $100 billion for the full fiscal year for the first time, up 41%. Management guided Q1 Azure growth to roughly 45% and quarterly capex above $50 billion.</p>
+            <p>The headline number is the spending. FY27 capex guidance is $255–260 billion, against roughly $190 billion committed in 2026. Microsoft also extended the assumed useful life of data centers and office buildings from 15 to 25 years starting in fiscal 2027 and shifted new data-center leases from finance to operating treatment — accounting changes that reduce reported future depreciation and bring its calendar-2026 capital spending outlook to about $175 billion.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two things you can use. Azure at 43% and accelerating means enterprise AI budgets are still expanding, which is the tailwind under every AI proposal you write. And the depreciation change is worth understanding before a client's CFO asks you about it: the industry is now stretching the accounting life of AI hardware to make the spending work. That is a reason to keep your own client commitments short and cancelable rather than betting on multi-year infrastructure pricing holding.</div>
+          <div class="refs">
+            <a href="https://www.cnbc.com/2026/07/29/microsoft-msft-q4-earnings-report-2026.html" target="_blank" rel="noopener">CNBC</a>
+            <a href="https://www.tikr.com/blog/q4-earnings-confirm-microsoft-azure-machine-is-just-getting-started" target="_blank" rel="noopener">Segment and capex detail</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Silicon</span>
+            <span class="ver">July 29</span>
+            <h3>Amazon's own chips are now a $20 billion business, and it is going direct-to-device from orbit</h3>
+          </div>
+          <div class="story-body">
+            <p>Amazon's custom-silicon line — Graviton CPUs, Trainium training accelerators and Nitro security chips — passed a $20 billion annual run rate, growing more than 100% year over year, with multi-year commitments from OpenAI, Anthropic, Meta and Uber. Separately, Amazon entered direct-to-device satellite connectivity, letting ordinary smartphones talk to its low-Earth-orbit constellation without a dedicated dish.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference is going to keep getting cheaper as the hyperscalers substitute their own silicon for Nvidia's margin. Price AI retainers on the value delivered rather than a markup over token cost, because the token cost is on a downward slope you don't control.</div>
+          <div class="refs">
+            <a href="https://techstartups.com/2026/07/29/top-tech-news-today-july-29-2026-amazon-google-microsoft-mit-nvidia-softbank-xai-more/" target="_blank" rel="noopener">Tech Startups — July 29 roundup</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Policy reshapes hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">July 28–29</span>
+            <h3>The FCC closed the US market to foreign-made humanoid and quadruped robots</h3>
+          </div>
+          <div class="story-body">
+            <p>The FCC added foreign-made two-legged humanoids, four-legged quadrupeds and connected power inverters to its Covered List, blocking equipment authorization for new devices. The stated reasoning is that connected robots carry cameras, microphones, sensors, navigation and remote-control software capable of mapping homes, factories, warehouses and critical infrastructure, and that offshore production leaves supply chains exposed. The order lands on a category China dominates — Unitree, Agibot and UBTech are the market leaders, and Unitree had just gone commercial in Europe on July 22 with a North American push expected. Firms that can demonstrate secure, auditable supply chains and locked-down firmware may have a route back in.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A direct read-through to client conversations: connected hardware is now regulated on data-collection risk, not just radio compliance. Anything you install for a client that has a camera, a microphone or a cloud callback is going to face that question eventually. Knowing where a device's firmware and data go is becoming part of the spec.</div>
+          <div class="refs">
+            <a href="https://www.nbcnews.com/tech/tech-news/us-bans-foreign-made-humanoid-robots-targeting-china-national-security-rcna589777" target="_blank" rel="noopener">NBC News</a>
+            <a href="https://www.therobotreport.com/industry-reacts-fcc-ban-u-s-imports-new-humanoid-quadruped-robots/" target="_blank" rel="noopener">The Robot Report — industry reaction</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">July 29</span>
+            <h3>Commerce signed seven CHIPS letters of intent worth $874 million, aimed at interconnect</h3>
+          </div>
+          <div class="story-body">
+            <p>The Commerce Department announced seven letters of intent totaling $874 million in federal incentives under the CHIPS and Science Act, targeting technologies meant to raise the performance of the fastest computers and strengthen the domestic compute supply chain, with named applications in materials, industrial optimization, robotics, defense, drug discovery and finance. GlobalFoundries took $300 million of it to work on faster AI chip interconnects — the bandwidth between chips, which is where a growing share of the bottleneck now sits.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background, not action. The constraint on AI capacity has moved from raw compute to memory, power and the links between chips. It is worth knowing when a client asks why AI pricing isn't falling faster than it is.</div>
+          <div class="refs">
+            <a href="https://www.hpcwire.com/off-the-wire/commerce-department-announces-874m-chips-rd-initiative-across-7-companies/" target="_blank" rel="noopener">HPCwire</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Spur Intelligence took $200M from Insight Partners for bot detection and IP intelligence; ThreatLocker raised a $190M Series F for zero-trust application control. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Rocket Lab won a $266M Space Force contract for 12 or more suborbital launches out of Kodiak Island, Alaska. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag improve qh-tag">M&amp;A</span><span class="txt">SoftBank is reportedly in talks to buy Gravis Robotics, an ETH Zurich spinout automating construction equipment, at more than $500M. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag improve qh-tag">Research</span><span class="txt">MIT researchers published VLASH, which lets robots act on where an object will be instead of where it is — faster manipulation and warehouse picking. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag feature qh-tag">Platform</span><span class="txt">Reminder from last week's Supabase notices: the logs API is removed September 23 and the Envoy gateway cutover starts August 9. <span class="ver">still open</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
