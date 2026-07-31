@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-07-31" />
+  <meta name="report:title" content="Six days quiet — 2.1.220 is still the newest release" />
+  <meta name="report:summary" content="The changelog has not moved since 2.1.220 on July 25, making this the second consecutive briefing with no new releases to report." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Six days quiet — 2.1.220 is still the newest release — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, July 31, 2026</span>
+        <span>◆</span><span>No new release since 2.1.220 (Jul 25)</span>
+      </div>
+      <h1>Six days quiet — 2.1.220 is still the newest release</h1>
+      <p class="standfirst">The changelog has not moved. <b>2.1.220</b>, dated July 25 and carrying the single line "Bug fixes and reliability improvements," is still the top entry on the page. That makes two consecutive briefings with nothing new to report.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Jul 30 → Jul 31</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">Releases this window</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Days since 2.1.220</div></div>
+      <div class="stat"><div class="num">2.1.220</div><div class="lbl">Newest entry on the page</div></div>
+    </div>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Status</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">No change</span>
+            <span class="ver">2.1.220 · Jul 25</span>
+            <h3>Checked again today: nothing numbered above 2.1.220 exists on the page</h3>
+          </div>
+          <div class="story-body">
+            <p>Verified against the source this morning. The dated run on the page ends 2.1.217 (Jul 21), 2.1.218 (Jul 22), 2.1.219 (Jul 24), 2.1.220 (Jul 25) — and then stops. The last release with substantive content is still <b>2.1.219</b>, covered in full in the <a href="2026-07-25.html">July 25 briefing</a>.</p>
+            <p>Six days is three times the longest gap anywhere else in the July run, where the biggest pause was the two days between 2.1.218 and 2.1.219. The page offers no explanation, so treat it as a pause and nothing more. There is no signal here about what ships next.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to install and nothing to tell a client. Bisque, Studio C, and Sonderwerks delivery is unaffected. Stop re-checking the changelog manually — this briefing is the check.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Carryover</span>
+            <span class="ver">2.1.218–2.1.219 · Jul 22–24</span>
+            <h3>A quiet week is the window to land the config changes you skipped</h3>
+          </div>
+          <div class="story-body">
+            <p>Four items from the last two real releases are still sitting unconfigured, and none of them will get easier when the next release lands. From 2.1.219: <code>sandbox.network.strictAllowlist</code> denies non-allowlisted hosts for sandboxed commands without prompting, and <code>workflowSizeGuideline</code> sets the dynamic workflow size guideline from any settings file. Subagents also now nest to depth 3 by default, up from 1.</p>
+            <p>From 2.1.218: <code>/code-review</code> runs as a background subagent, so review work stays out of the conversation. Full write-ups are in the <a href="2026-07-25.html">July 25</a> and <a href="2026-07-27.html">July 27</a> briefings and are not repeated here.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set <code>workflowSizeGuideline</code> in your global settings once so client repos inherit it, and turn on <code>strictAllowlist</code> before the next sandboxed build run. Both are one-line settings edits with no downside if the next release arrives mid-week.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">None</span><span class="txt">Nothing published between July 25 and today. No fixes, no smaller changes, no undated entries. <span class="ver">Jul 30–31</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

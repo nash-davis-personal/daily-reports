@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-07-31",
+    "title": "Six days quiet — 2.1.220 is still the newest release",
+    "summary": "The changelog has not moved since 2.1.220 on July 25, making this the second consecutive briefing with no new releases to report.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-07-31.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
