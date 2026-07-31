@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-07-31" />
+  <meta name="report:title" content="Vercel shipped eight changes to your stack in one day, and AWS grew 37%" />
+  <meta name="report:summary" content="Vercel's July 30 changelog carries one behavior change you must audit before August 10 — Server-Timing headers will start reaching the browser — alongside faster deploys and stateless MCP; Amazon's AWS grew 37% on a $220 billion capex year while Apple set a June-quarter record and still sold off." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Vercel shipped eight changes to your stack in one day, and AWS grew 37% — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042f2a' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, July 31, 2026</span>
+        <span>◆</span><span>Dev tools ◆ platforms ◆ hardware ◆ business</span>
+      </div>
+      <h1>Vercel shipped eight changes to your stack in one day, and AWS grew 37%</h1>
+      <p class="standfirst">No new security advisory landed on Next.js, React, Tailwind or Supabase, but Vercel's July 30 changelog carries one behavior change with a date attached: Server-Timing response headers start passing through to the browser on August 10, which means any backend timing you emit becomes readable by anyone with devtools. Meanwhile Amazon's cloud posted its fastest growth in eighteen quarters on the way to a $220 billion capex year, and Apple set a June-quarter record and got sold anyway.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the July 30 edition</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Aug 10</div><div class="lbl">Server-Timing headers reach the browser</div></div>
+      <div class="stat"><div class="num">37%</div><div class="lbl">AWS year-over-year growth</div></div>
+      <div class="stat"><div class="num">$220B</div><div class="lbl">Amazon capex planned for 2026</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Audit your Server-Timing headers</h4><p>On August 10 they stop being stripped and reach the browser's Performance API. If you emit DB query names or internal timings, that is now public. Ten-minute check.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your stack is otherwise clean</h4><p>Nothing new to patch on Next.js, React, Tailwind or Supabase. The last KEV addition, July 29, was a Cisco firewall flaw that does not touch you.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Deploys got 7 seconds faster</h4><p>Up to 5 seconds off platform overhead per build, plus 2 more if you update the CLI. Free speedup on every project.</p></div>
+        <div class="signal"><div class="n">04</div><h4>MCP without Redis</h4><p>mcp-handler 2.0 supports the stateless MCP spec, which removes the Redis dependency from shipping an MCP server on Vercel.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The cloud reaccelerated</h4><p>AWS grew 37% to $42.2B at a 39.4% operating margin. Amazon rose more than 10% after hours; Apple fell on a Services miss.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">July 30 → effective Aug 10</span>
+            <h3>Vercel will stop stripping Server-Timing headers, and eight other changes landed the same day</h3>
+          </div>
+          <div class="story-body">
+            <p>The one with a deadline: starting August 10, 2026, Server-Timing response headers pass through to the client and land in the browser's Performance API. That is useful if you want real backend metrics in your RUM data. It is a leak if any of your routes emit timing entries named after internal services, database queries or third-party calls, because those names become visible to anyone who opens devtools on a client site.</p>
+            <p>The rest of the July 30 batch is upside. Deployments are up to 7 seconds faster — as much as 5 seconds of platform overhead removed automatically, plus about 2 more on the latest CLI. mcp-handler 2.0 supports the new stateless MCP protocol, so an MCP server no longer needs Redis behind it. The @vercel/sandbox SDK can now run multiple isolated agents in one sandbox using separate Linux users and groups. Turborepo and Remote Cache added OIDC so CI workflows can authenticate without long-lived tokens. On AI Gateway: GPT-5.6 Luna is 80% cheaper and Terra 20% cheaper, Sol's fast mode runs 2.5× quicker at double the price, and two new models arrived — MiniMax H3 for 2K text-and-image-to-video, and Thinking Machines' Inkling Small, an open-weights multimodal model with a 1M-token context window and controllable thinking effort.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do the Server-Timing audit this week, before August 10 does it for you. Grep every client project for <code>Server-Timing</code> and for any middleware or observability wrapper that sets it, and rename or drop anything descriptive. Then take the free wins: bump the Vercel CLI on every project for the deploy speedup, and if you have been putting off shipping an MCP server for Concierge because of the Redis dependency, that excuse is gone.</div>
+          <div class="refs">
+            <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — July 30</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Clear</span>
+            <span class="ver">July 29–31</span>
+            <h3>No new advisory on anything you ship — the week's KEV addition was network gear</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new to patch on Next.js, React, Tailwind or Supabase since yesterday's edition. The most recent CISA Known Exploited Vulnerabilities addition, on July 29, was CVE-2026-20316, a hard-coded password in Cisco Secure Firewall Management Center. Two older entries carried federal remediation deadlines of July 30: an OS command injection in Arista VeloCloud Orchestrator On-Prem, and a sensitive-information exposure in Fortinet FortiOS that lets an unauthenticated attacker bypass patches with crafted HTTP requests. Next.js remains on the monthly security cadence, with the July 20 release covering nine CVEs fixed in v16.2.11 and v15.5.21.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do on your own code. The relevant question is whether any client runs their own firewall or SD-WAN appliance, because those three CVEs are all edge devices and all actively exploited. If a client has an IT vendor, one email asking whether they are patched is worth sending, and it costs you nothing to be the person who asked. Confirm every client project is on Next.js 16.2.11 or 15.5.21 if you have not since July 20.</div>
+          <div class="refs">
+            <a href="https://www.cisa.gov/news-events/alerts/2026/07/29/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener">CISA — July 29 KEV addition</a>
+            <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js July 2026 security release</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech reported, and the market split</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">July 30</span>
+            <h3>AWS grew 37%, its fastest in eighteen quarters, and Amazon guided capex to $220 billion</h3>
+          </div>
+          <div class="story-body">
+            <p>Amazon reported Q2 net sales of $200.6 billion, up 20% from $167.7 billion, against consensus near $196.5 billion. Operating income rose 43% to $27.5 billion. AWS did $42.2 billion, up 36.7% year over year — an annualized run rate of $169 billion, well past the 31% analysts expected — with $16.6 billion of operating income at a 39.4% margin. Andy Jassy said the AI and chips businesses each cleared $25 billion in run rate. Trailing-twelve-month purchases of property and equipment hit $169 billion, up 64%, and Jassy put full-year capital spending at roughly $220 billion. The stock rose more than 10% after hours.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cloud reacceleration at this scale means the compute glut people predicted has not arrived, so do not plan around inference prices collapsing further on their own. The useful read for you is the direction of Amazon's spend — custom silicon and AI capacity — which is why the OpenAI and Anthropic price cuts keep coming. Budget client AI features on today's prices and treat every cut as margin, rather than pricing a retainer on a discount that has not happened yet.</div>
+          <div class="refs">
+            <a href="https://www.cnbc.com/2026/07/30/amazon-amzn-q2-earnings-report-2026.html" target="_blank" rel="noopener">CNBC</a>
+            <a href="https://www.businesswire.com/news/home/20260729379483/en/Amazon.com-Announces-Second-Quarter-Results" target="_blank" rel="noopener">Amazon press release</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">July 30</span>
+            <h3>Apple posted its best June quarter ever and fell on a Services miss</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple reported fiscal Q3 revenue of $109.4 billion for the quarter ended June 27, up 16% year over year, with net income of $29.8 billion and diluted EPS of $2.02, up 29%. iPhone revenue was $54.25 billion, up 22% and ahead of the $53.86 billion consensus. Services came in at $30.74 billion against expectations near $31.22 billion. Tim Cook called it the strongest June quarter in company history, with double-digit growth across iPhone, Mac and Services and in every geography. The stock fell after hours on the Services line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A 16% revenue beat that trades down on one soft segment is the market telling you what it is paying for: recurring revenue, at a premium to hardware sales. That is the same argument for restructuring TSD toward managed AI retainers instead of one-off site builds. Same work, different multiple — and it is an easy line to use with a client who runs their business on projects and wonders why cash is lumpy.</div>
+          <div class="refs">
+            <a href="https://www.apple.com/newsroom/2026/07/apple-reports-third-quarter-results/" target="_blank" rel="noopener">Apple newsroom</a>
+            <a href="https://9to5mac.com/2026/07/30/apple-reports-q3-2026-earnings-109-4-billion-in-revenue-up-16/" target="_blank" rel="noopener">9to5Mac</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space and infrastructure</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Contract</span>
+            <span class="ver">July 29–30</span>
+            <h3>The Space Force gave SpaceX all 18 launches of its orbital early-warning constellation</h3>
+          </div>
+          <div class="story-body">
+            <p>Two task orders worth about $1.6 billion cover 18 Falcon 9 launches from Vandenberg through the end of 2027, carrying Space-Based Sensing and Targeting satellites — the Pentagon's orbital early-warning layer for detecting airborne threats and passing targeting data to forces in near-real time. It is the first task order since the Space Force raised its National Security Space Launch ceiling to $17 billion, and it puts SpaceX above $7 billion in Pentagon contracts this year. An acquisition official described the timeline from requirement to signed contract as roughly two months, which they called unprecedented.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not directly actionable, but the procurement speed is the signal — a two-month federal acquisition cycle means the buying side is willing to move fast when the capability already exists and the vendor is the obvious one. That is the same dynamic that closes SMB deals: show a working thing, be the only person who can wire it into their systems, and the decision timeline collapses.</div>
+          <div class="refs">
+            <a href="https://www.thedefensepost.com/2026/07/30/us-rocket-launch-spacex/" target="_blank" rel="noopener">The Defense Post</a>
+            <a href="https://www.techtimes.com/articles/322186/20260730/space-force-awarded-spacex-all-18-sbst-missions-golden-dome-has-one-launch-provider.htm" target="_blank" rel="noopener">Tech Times</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Supabase fixed a panic in project metrics collection that could intermittently stop metrics from being collected and pushed under concurrent requests. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag feature qh-tag">Tooling</span><span class="txt">OpenAI released an official Terraform provider for managing projects, users, groups, roles and service accounts as infrastructure-as-code. <span class="ver">Jul 29</span></span></li>
+            <li><span class="tag feature qh-tag">Audio</span><span class="txt">OpenAI shipped GPT Transcribe for files and completed realtime turns, plus GPT Live Transcribe for low-latency streaming — both take free-form context and keyword hints. <span class="ver">Jul 28</span></span></li>
+            <li><span class="tag improve qh-tag">Models</span><span class="txt">AI Gateway added MiniMax H3, which generates 2K video from text, images or reference material, and Inkling Small from Thinking Machines, open-weights multimodal with a 1M-token window. <span class="ver">Jul 30</span></span></li>
+            <li><span class="tag improve qh-tag">CI</span><span class="txt">Turborepo and Vercel Remote Cache now support OIDC, so build pipelines can drop long-lived cache tokens. <span class="ver">Jul 30</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
