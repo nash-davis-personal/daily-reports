@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-01" />
+  <meta name="report:title" content="Vercel shipped eight things on the last day of July, including its own identity gate and spend caps" />
+  <meta name="report:summary" content="Vercel closed the month with Passport for IdP-protected deployments and AI Gateway spend budgets, no new Next.js security advisory landed, Okta paid nearly $200 million for agent identity monitoring, and chip stocks shed over a trillion dollars on fears that AI capex is peaking." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Vercel shipped eight things on the last day of July, including its own identity gate and spend caps — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23042a26' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, August 1, 2026</span>
+        <span>◆</span><span>Dev tools ◆ platforms ◆ silicon ◆ security</span>
+      </div>
+      <h1>Vercel shipped eight things on the last day of July, including its own identity gate and spend caps</h1>
+      <p class="standfirst">The two that change your workflow are Passport, which puts a real identity provider in front of a deployment instead of a shared preview password, and AI Gateway spend budgets, which cap a team or a single project with alerts and defaults that new projects inherit. Nothing new landed on the Next.js security side, so the July 21 patch line is still the one to be on.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the July 31 edition</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">8</div><div class="lbl">Vercel changelog entries on July 31</div></div>
+      <div class="stat"><div class="num">$200M</div><div class="lbl">Okta's price for Permiso</div></div>
+      <div class="stat"><div class="num">$1T+</div><div class="lbl">Chip-stock value shed in the selloff</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>No new advisory on your stack</h4><p>Nothing new for Next.js, React or Supabase since the July 21 security release. If you are on 16.2.12 or 15.5.22 you are current.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Spend caps finally exist</h4><p>AI Gateway budgets cap a whole team or one project, email on threshold, and new projects and keys inherit the default. Set this today.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Passport replaces the shared password</h4><p>Protect deployments with your own identity provider instead of a link everyone forwards. Client staging just got sellable to a real business.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agent identity is a market now</h4><p>Okta paid nearly $200M in near-all cash for Permiso to watch what non-human identities do after they authenticate.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Silicon wobbled, capex did not</h4><p>Chip stocks lost more than a trillion on fears AI spending is peaking, while the four hyperscalers guided to $720–745B of 2026 capex.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security status</span>
+            <span class="ver">Aug 1</span>
+            <h3>Nothing new to patch — the July 21 line is still current</h3>
+          </div>
+          <div class="story-body">
+            <p>No new Next.js, React or Supabase advisory has landed since the July 21 security release, which shipped 16.2.11 and 15.5.21 and covered App Router denial of service, middleware and proxy bypasses, server-side request forgery, cache confusion, an Image Optimization SVG DoS, internal Server Function endpoint disclosure and unbounded Server Action payloads. That release is the one that matters, and Vercel has committed to a regular patch cadence with advance notice, so the next one is predictable rather than a surprise.</p>
+            <p>The follow-up releases on July 25 were maintenance. 16.2.12 backported TypeScript 7 support and doc fixes. 15.5.22 went the other way and now rejects TypeScript 7.0 or newer with an explicit error rather than failing in a confusing place.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npx next --version</code> across every client repo and confirm 16.2.12 or 15.5.22. The one that will bite you is the 15.5.22 TypeScript guard — if any project has drifted onto TypeScript 7, the build stops with an error rather than a subtle break, so find it on your own time instead of during a client deploy window.</div>
+          <div class="refs">
+            <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog</a>
+            <a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js release tracker</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">July 31</span>
+            <h3>Vercel closed the month with Passport, AI Gateway budgets, and a new MCP spec version</h3>
+          </div>
+          <div class="story-body">
+            <p>Eight entries landed on July 31. Passport lets you protect Vercel deployments with your own identity provider across multiple enterprise auth systems. AI Gateway Spend Budgets cap spend for a whole team or a single project, with email alerts and defaults that new projects and keys inherit automatically. A new AI Gateway Logs page breaks down individual requests by cost, token usage, duration and provider fallback, with filters. Vercel's MCP implementation moved to the 2026-07-28 specification with improved authorization and a stateless core.</p>
+            <p>The rest: workflow run search in observability, filterable by workflow, environment, deployment ID, region or custom parameters; the Chat SDK Microsoft Teams adapter picked up message reactions, native ephemeral messages, author emails via Microsoft Graph and custom token factories; DeepSeek V4 Flash is running updated weights on AI Gateway with better agent-task behavior; and Poolside's Laguna S 2.1 got a capacity bump on both paid and free tiers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do the spend budget first — it is the single highest-value five minutes on this list, because an agent loop on a client project can burn a month of margin overnight and you currently have nothing between you and that bill. Set a team cap and a per-project default now. Passport is the other one with revenue attached: client staging behind a real identity provider instead of a forwarded preview link is a legitimate line item on a Managed AI retainer, and it removes the awkward conversation about who has the password.</div>
+          <div class="refs">
+            <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Tooling</span>
+            <span class="ver">July 30</span>
+            <h3>GitHub put its Copilot SDK agent inside Visual Studio and VS Code</h3>
+          </div>
+          <div class="story-body">
+            <p>GitHub's July releases put an Agent preview built on the Copilot SDK — the same SDK behind the Copilot CLI — into both Visual Studio and VS Code, selectable from the agent picker. GitHub's framing is that it gets more tasks right on the first attempt with less back-and-forth, and that responses are shorter. The Agents window, in public preview, got a redesigned layout, faster review flows and better handling of multiple concurrent sessions. Copilot CLI added conditional sandbox bypass, Ctrl+G editing for freeform answers, and a web OAuth login flow as the default on local terminals.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The convergence is the signal, not the feature list. Every vendor is landing on the same shape — one agent SDK, a CLI, an editor surface, and a multi-session review window — which is the shape you already work in. No reason to switch, but the multi-session review pattern is worth stealing: when you run parallel agents on a client build, you need one place to review their output, not four terminal tabs.</div>
+          <div class="refs">
+            <a href="https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-july-update/" target="_blank" rel="noopener">GitHub changelog — Visual Studio</a>
+            <a href="https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases/" target="_blank" rel="noopener">GitHub changelog — VS Code</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security and identity</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Acquisition</span>
+            <span class="ver">July 30</span>
+            <h3>Okta bought Permiso for just under $200 million to watch what AI agents do after login</h3>
+          </div>
+          <div class="story-body">
+            <p>Okta agreed to acquire Permiso Security in an almost all-cash deal worth nearly $200 million, expected to close in Q3 of Okta's fiscal 2027. Permiso is a Palo Alto identity-security platform that detects threats across human, non-human and agentic identities in multi-cloud environments. It came out of stealth in 2022, was co-founded by former FireEye executives Paul Nguyen and Jason Martin, and had raised about $29 million total — so the exit multiple is telling.</p>
+            <p>The strategic read is that identity vendors are moving past verifying who logged in and toward continuously monitoring what users, applications and agents do once they are inside. Okta is betting that machine identities outnumber human ones fast enough to justify a platform.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Enterprise buyers are being trained right now to ask "what can this agent reach, and who is watching it?" That question will arrive at your SMB deals within a year, in a cruder form. Get ahead of it cheaply: every agent you deploy gets a named service account, a scoped credential, and an activity log the client can actually read. It costs you an hour per deployment and it answers the objection before the prospect learns to raise it.</div>
+          <div class="refs">
+            <a href="https://techcrunch.com/2026/07/30/okta-buys-ai-security-startup-permiso-source-says-for-about-200m/" target="_blank" rel="noopener">TechCrunch</a>
+            <a href="https://siliconangle.com/2026/07/30/okta-acquire-permiso-security-reported-200m-identity-security-deal/" target="_blank" rel="noopener">SiliconANGLE</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and the money behind it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Markets</span>
+            <span class="ver">July 29–31</span>
+            <h3>Chip stocks shed over a trillion dollars, then the hyperscalers guided capex higher anyway</h3>
+          </div>
+          <div class="story-body">
+            <p>The late-July semiconductor selloff took more than $1 trillion off the companies powering the AI buildout, with Nvidia, SK Hynix, Samsung, Micron, AMD and TSMC each losing north of $100 billion. The stated fear was that AI infrastructure spending is peaking faster than expected. TSMC's July 16 results had beaten on profit and revenue but came with 2026 capex guidance raised to $60–64 billion, at least $4 billion above the prior forecast, which Morgan Stanley attributed partly to equipment cost inflation and read as a margin problem.</p>
+            <p>Then the buyers spoke. Amazon, Microsoft, Meta and Alphabet collectively guided to $720–745 billion of 2026 capital spending, and Amazon rose 15% on July 31 on earnings that highlighted its chip business. The market is pricing a spending peak the spenders are not describing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A capex fight between chipmakers and cloud buyers is not your problem, but the direction it settles is. Three-quarters of a trillion in committed 2026 buildout means inference capacity keeps growing and per-token cost keeps falling, which is exactly the assumption your Managed AI retainer margins depend on. Nothing in this week's tape argues for repricing upward. Keep pricing on outcomes.</div>
+          <div class="refs">
+            <a href="https://www.cnbc.com/2026/07/29/chip-selloff-sk-hynix-samsung-softbank.html" target="_blank" rel="noopener">CNBC — the selloff</a>
+            <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-july-31-dow-sp-500-nasdaq-081227738.html" target="_blank" rel="noopener">Yahoo Finance — July 31 close</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Models</span><span class="txt">DeepSeek V4 Flash is serving updated weights on Vercel AI Gateway, tuned for agent tasks. <span class="ver">Jul 31</span></span></li>
+            <li><span class="tag feature qh-tag">Protocol</span><span class="txt">Vercel MCP moved to spec version 2026-07-28 — improved authorization and a stateless core design. Worth a look if you ship MCP servers for clients. <span class="ver">Jul 31</span></span></li>
+            <li><span class="tag new qh-tag">Big tech</span><span class="txt">Microsoft is increasingly promoting its own AI infrastructure and in-house models, which puts it in more direct competition with its primary partners. <span class="ver">Jul 31</span></span></li>
+            <li><span class="tag fix qh-tag">Toolchain</span><span class="txt">Next.js 15.5.22 now rejects TypeScript 7.0+ with an actionable error instead of failing obscurely. Check any repo still on the 15.x line. <span class="ver">Jul 25</span></span></li>
+            <li><span class="tag improve qh-tag">Observability</span><span class="txt">Vercel workflow runs are now searchable by workflow, environment, deployment ID, region or custom parameters. <span class="ver">Jul 31</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

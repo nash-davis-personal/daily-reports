@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-01",
+    "title": "The FBI says hackers hit water utilities in at least seven states, aiming at the water itself",
+    "summary": "Federal warnings went out to water systems nationwide after break-ins in at least seven states since July 27, some causing pressure loss and flooding, while stocks closed a volatile July higher, the 10-year Treasury hit its highest level in over a year, and mortgage rates rose for a fourth straight week.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-01.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Seven days on from 2.1.220, the changelog is unchanged for the third consecutive briefing, so this one covers a permissions audit worth doing during the lull instead.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-01.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-01",
+    "title": "OpenAI announced its next model by solving ten open math problems, then handed it to the government",
+    "summary": "An internal version of Astra produced ten new results in mathematics and theoretical computer science, each formalized in Lean, for roughly $2,000 of tokens — and the same day the federal framework that will review it before release hit its build deadline, while Amazon closed a $50 billion investment that gives it about 5% of OpenAI.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-01.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-01",
+    "title": "Sell the receipt, not the robot — this week's opening is proving the agent did what you said",
+    "summary": "OpenAI made its biggest claim of the year credible by shipping machine-checkable proofs, Okta paid $200 million for software that watches what agents do after they log in, and Vercel finally shipped spend caps — three signals pointing at the same sellable thing, plus a rate-driven outbound angle for Charlotte trades.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-01.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-01",
+    "title": "Vercel shipped eight things on the last day of July, including its own identity gate and spend caps",
+    "summary": "Vercel closed the month with Passport for IdP-protected deployments and AI Gateway spend budgets, no new Next.js security advisory landed, Okta paid nearly $200 million for agent identity monitoring, and chip stocks shed over a trillion dollars on fears that AI capex is peaking.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-01.html"
   },
   {
     "source": "america",
