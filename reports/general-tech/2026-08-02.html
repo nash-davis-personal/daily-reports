@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-02" />
+  <meta name="report:title" content="Nothing new to patch on your stack, but $70 million left hardware wallets in 41 minutes" />
+  <meta name="report:summary" content="No new Next.js, React, Vercel or Supabase advisory landed over the weekend, while a Coldcard exploit drained 1,196 Bitcoin wallets in under an hour, Mexico became America's second-largest server supplier at $46.9B year to date, Apple rate-limited AI-assisted bug reports, and Chime cut 10% of staff and named AI as the reason." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Nothing new to patch on your stack, but $70 million left hardware wallets in 41 minutes — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23052e2b' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, August 2, 2026</span>
+        <span>◆</span><span>Dev tools ◆ hardware ◆ security ◆ business</span>
+      </div>
+      <h1>Nothing new to patch on your stack, but $70 million left hardware wallets in 41 minutes</h1>
+      <p class="standfirst">A quiet weekend for the web platform. No new Next.js, React, Vercel or Supabase advisory landed, and the Vercel changelog has not moved since its July 31 batch. Everything else worth reading is about supply chains and consequences: Mexico is now the second-largest supplier of servers to the United States, a Coldcard exploit emptied nearly 1,200 Bitcoin wallets in under an hour, and Apple became the first major vendor to formally rate-limit AI-assisted bug reports.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 1 edition</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$46.9B</div><div class="lbl">Mexican server sales to the US, YTD</div></div>
+      <div class="stat"><div class="num">$70M</div><div class="lbl">Drained from 1,196 Coldcard wallets</div></div>
+      <div class="stat"><div class="num">~150</div><div class="lbl">Chime jobs cut, roughly 10% of staff</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing to patch this weekend</h4><p>No new advisory on Next.js, React, Vercel or Supabase. The May coordinated release line — 15.5.18 and 16.2.6 — is still the floor you need to be on.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Mexico is America's #2 server source</h4><p>$46.9B in year-to-date sales, second only to Taiwan. The AI buildout's hardware supply chain moved next door and almost nobody noticed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>A hardware wallet failed hard</h4><p>1,196 Coldcard wallets drained of roughly $70M inside a 41-minute window on July 30. Self-custody hardware is not automatically safe hardware.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Apple throttled AI bug reports</h4><p>A submission cap plus a 30-day cool-off on Feedback Assistant, after a flood of AI-assisted reports. The disclosure economy is buckling under its own volume.</p></div>
+        <div class="signal"><div class="n">05</div><h4>A fintech cut 10% and blamed AI</h4><p>Chime cut roughly 150 of 1,500 employees, with the CEO writing that smaller teams with fewer layers are moving faster. The stock barely reacted.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> On your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Clear</span>
+            <span class="ver">August 2</span>
+            <h3>No new advisory landed, and the Vercel changelog has not moved since July 31</h3>
+          </div>
+          <div class="story-body">
+            <p>Checked this morning: nothing new on Next.js, React, Vercel or Supabase since the last briefing. The most recent Vercel changelog entries are still the July 31 batch — AI Gateway team and project spend budgets, updated DeepSeek V4 Flash weights served by default, a dedicated AI Gateway logs page, Vercel MCP on the 2026-07-28 spec, and Passport reaching general availability.</p>
+            <p>The standing patch floor has not changed. The May 2026 coordinated release fixed 13 advisories across denial of service, middleware and proxy bypass, SSRF, cache poisoning and XSS, and everything is patched in Next.js 15.5.18 and 16.2.6. Earlier minors of 15.x and 16.x are not getting backports.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action required this weekend. If any client project is still pinned below 15.5.18 or 16.2.6, that is the one outstanding item, and it will not be fixed by waiting — those minors are never getting a patch. Run <code>npx next --version</code> across the portfolio once and close it out.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Next.js May 2026 security release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Ongoing</span>
+            <h3>The vulnerability an AI agent actually used this week was Citrix NetScaler CVE-2026-3055</h3>
+          </div>
+          <div class="story-body">
+            <p>The agent-driven campaign detailed in today's AI briefing landed its confirmed compromises through CVE-2026-3055, an out-of-bounds read in NetScaler ADC and NetScaler Gateway configured as a SAML identity provider, scored 9.3 on CVSS v4.0. Citrix patched it on March 23 and CISA added it to the Known Exploited Vulnerabilities catalog on March 30. Fixed versions are 14.1-66.59, 13.1-62.23, and 13.1-37.262 for the FIPS and NDcPP builds.</p>
+            <p>The interesting part is the age. This is a four-month-old patched bug that an autonomous agent found, selected, and exploited without a human picking the target.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not your stack, so no direct action. It matters for any client running an on-premise Citrix gateway, which in Charlotte means the larger dental, medical and legal offices that still have a VPN appliance in a closet. That is a real, specific opening line for a security conversation with an SMB that has never bought anything from you.</div>
+          <div class="refs"><a href="https://www.rapid7.com/blog/post/etr-cve-2026-3055-citrix-netscaler-adc-and-netscaler-gateway-out-of-bounds-read/" target="_blank" rel="noopener">Rapid7</a> <a href="https://horizon3.ai/attack-research/vulnerabilities/cve-2026-3055/" target="_blank" rel="noopener">Horizon3.ai</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">August 2</span>
+            <h3>Mexico became the second-largest supplier of servers to the United States</h3>
+          </div>
+          <div class="story-body">
+            <p>Mexican server manufacturing hit $46.9 billion in year-to-date sales to the US, putting it behind only Taiwan. The AI datacenter buildout needs assembled machines faster than the traditional supply chain moves them, and final assembly has migrated to the closest large manufacturing base with the right labor and trade posture.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background, but useful background. The compute you rent through Vercel and Anthropic is now physically assembled a few days' truck ride from Charlotte, which is one reason inference prices keep falling instead of rising. Cheap compute is the substrate every TSD product margin sits on.</div>
+          <div class="refs"><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme — Financial Times, August 2</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Cool</span>
+            <span class="ver">August 1</span>
+            <h3>Defcon 34 badges ship an open-source chip you can verify</h3>
+          </div>
+          <div class="story-body">
+            <p>This year's Defcon badges include Baochip-1x, an open-source chip whose security properties are independently verifiable, and which doubles as a hardware security token. The pitch is that you can inspect the silicon design rather than take a vendor's word for what the secure element does.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to buy today. Worth watching as the "prove it, do not trust it" pattern spreads from chips into AI supply chains, which is the same argument that will eventually sell verified-agent work to clients.</div>
+          <div class="refs"><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme — Wired, August 1</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security, and what AI is doing to work</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">August 1</span>
+            <h3>A Coldcard exploit drained 1,196 Bitcoin wallets in a 41-minute window</h3>
+          </div>
+          <div class="story-body">
+            <p>Roughly $70 million was stolen from 1,196 Coldcard wallets during a 41-minute window on July 30, disclosed August 1. Coldcard is a hardware wallet, the product category people buy specifically to avoid this outcome. The speed is the story: a single window, over a thousand victims, no opportunity for anyone to react in time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No crypto exposure here, so this is a lesson rather than a threat. Anything that concentrates a single point of failure across a thousand customers fails a thousand times at once. That applies directly to a shared API key or a single service-role Supabase credential reused across client projects. Separate keys per client, and rotate on offboarding.</div>
+          <div class="refs"><a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme — CoinDesk, August 1</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">August 2</span>
+            <h3>Apple capped bug report submissions after a flood of AI-assisted reports</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple introduced a submission cap and a 30-day cool-off period on Feedback Assistant bug reports, citing the volume of AI-assisted submissions. Researchers can request higher quotas. It follows similar throttles at curl and the Internet Bug Bounty, and it is the first time a vendor of Apple's size has formally rate-limited AI-assisted disclosure.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The generalizable version of this is showing up everywhere. When AI makes producing a thing nearly free, the receiving side starts charging for attention. Expect the same pattern in inbound sales: cold email that reads as agent-generated is going to get filtered harder every quarter, which raises the value of Grant and Bishop showing up in person.</div>
+          <div class="refs"><a href="https://www.techmeme.com/260802/p1" target="_blank" rel="noopener">Techmeme — Financial Times</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Business</span>
+            <span class="ver">July 31</span>
+            <h3>Chime cut about 10% of staff and put AI in the memo</h3>
+          </div>
+          <div class="story-body">
+            <p>Chime Financial cut roughly 150 of its 1,500 employees. CEO Chris Britt told staff that AI is changing what is possible but requires new skills, and that smaller teams with fewer layers are moving faster and getting more done. The company framed it as a flattening rather than a retrenchment. Shares moved 0.4% on the day.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A public, named company just said out loud that a smaller team plus AI beats a larger team. That is the exact argument TSD makes about itself, and it now has a citation attached. Use it in the pitch: a one-person studio that compounds itself with agents is the same structural bet a $1B fintech just made on stage.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-07-31/fintech-chime-to-cut-about-10-of-staff-on-ai-efficiency-gains" target="_blank" rel="noopener">Bloomberg</a> <a href="https://www.pymnts.com/news/banking/2026/chime-cuts-10percent-of-workforce-in-ai-pivot/" target="_blank" rel="noopener">PYMNTS</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Legal</span><span class="txt">A judge denied xAI's request to block a Minnesota law banning "nudify" apps, leaving the state statute in force while the challenge proceeds. <span class="ver">Aug 1</span></span></li>
+            <li><span class="tag fix qh-tag">Shut down</span><span class="txt">Malaysia shut down Network School, Balaji Srinivasan's techno-utopian residency project, over licensing issues. <span class="ver">Aug 2</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Harmony, which sells AI-powered enterprise software for employee onboarding and software access provisioning, raised a $34M seed led by Lightspeed. Big seed for a workflow-automation wrapper. <span class="ver">Aug 1</span></span></li>
+            <li><span class="tag improve qh-tag">Market</span><span class="txt">India's mobile app market hit a record $345M in consumer spending in Q2 2026, up 35% year over year. <span class="ver">Aug 1</span></span></li>
+            <li><span class="tag improve qh-tag">Compute</span><span class="txt">The number of AI chips in active use is now doubling roughly every nine months, per New York Times reporting on deployment rates. <span class="ver">Jul 29</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

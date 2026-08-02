@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-02",
+    "title": "A heat dome over the West, 18,000 people sick from lettuce, and an AI fund that fell 67% in a month",
+    "summary": "Record heat pushed the Southwest toward 120 degrees and put most of Montana under a red flag warning, a national Cyclospora outbreak traced to shredded lettuce passed 18,000 cases across 41 states, federal officials widened the water-utility intrusion picture to at least seven states, and the best-known AI hedge fund lost 67% of its portfolio in July.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-02.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "2.1.220 from July 25 still tops the changelog, making this the fourth consecutive briefing with zero releases and the longest pause by a wide margin.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-02.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-02",
+    "title": "As of today, a chatbot in Europe has to tell people it is a chatbot",
+    "summary": "The EU AI Act's transparency obligations became enforceable on August 2 and California's provenance law went operative the same day, while Palo Alto's Unit 42 documented an attacker pointing DeepSeek at 460 targets through an open-source agent framework and Washington quietly missed its own August 1 frontier-model deadline.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-02.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-02",
+    "title": "Disclosure became law today — sell the compliance sweep before somebody else does",
+    "summary": "The EU started enforcing chatbot disclosure and California's provenance law went operative on the same day, an autonomous agent ran a 460-target scan campaign, and DeepSeek's cheap agent model got better while holding its price — three shifts that each turn into a specific thing TSD can sell to clients it already has.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-02.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-02",
+    "title": "Nothing new to patch on your stack, but $70 million left hardware wallets in 41 minutes",
+    "summary": "No new Next.js, React, Vercel or Supabase advisory landed over the weekend, while a Coldcard exploit drained 1,196 Bitcoin wallets in under an hour, Mexico became America's second-largest server supplier at $46.9B year to date, Apple rate-limited AI-assisted bug reports, and Chime cut 10% of staff and named AI as the reason.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-02.html"
   },
   {
     "source": "america",
