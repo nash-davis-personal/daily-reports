@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-03",
+    "title": "Spokane lost 600 buildings in a weekend and oil fell 7% on the prospect of talks",
+    "summary": "Three fast-moving fires around Spokane destroyed roughly 600 to 700 structures and forced about 60,000 people out with zero containment, Brent crude fell as much as 7.3% after the White House said it had called off a planned strike on Iran and would open talks, the Fed is holding at 3.50-3.75% into Friday's July jobs report, and a shooting at an Idaho In-N-Out killed three.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-03.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "2.1.220 from July 25 is still the newest entry, and cross-checking the raw GitHub changelog confirms this is a real release pause rather than a stale docs page.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-03.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-03",
+    "title": "The biggest open-weight model yet is a week out, and two teams raced the same AI to the same proof",
+    "summary": "Alibaba launched Qwen3.8-Max at 2.4 trillion parameters with open weights promised next week and Vercel already routing it, while OpenAI published ten decade-open math proofs with machine-checkable Lean certificates for about $2,000 of compute and two independent research teams used GPT-5.6 to crack the same quantum-crypto problem three hours apart.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-03.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-03",
+    "title": "A 9.5 in Rails just handed your sales arm a dated reason to call",
+    "summary": "Six ranked moves off today's shifts: a critical Rails flaw with public exploits gives Grant and Bishop a checkable reason to call every legacy-site lead this week, Sonnet 5's promo pricing expires August 31, Qwen3.8-Max open weights land next week, and 73% of SMBs say they need AI training they are not getting.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-03.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-03",
+    "title": "Nothing to patch on your stack, but a 9.5 is loose in Rails and RAM is now a supply crisis",
+    "summary": "Next.js has shipped no advisory since July 21 and the Vercel changelog is quiet, while Rails patched a CVSS 9.5 arbitrary-file-read-to-RCE in Active Storage affecting 500,000+ sites with public exploits already out, the AI-driven DRAM shortage pushed MacBook Air waits into September after a $200 price rise, and the Coldcard wallet theft was traced to a random-number-generator flaw with losses now put at $88 million.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-03.html"
   },
   {
     "source": "america",

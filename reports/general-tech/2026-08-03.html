@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-03" />
+  <meta name="report:title" content="Nothing to patch on your stack, but a 9.5 is loose in Rails and RAM is now a supply crisis" />
+  <meta name="report:summary" content="Next.js has shipped no advisory since July 21 and the Vercel changelog is quiet, while Rails patched a CVSS 9.5 arbitrary-file-read-to-RCE in Active Storage affecting 500,000+ sites with public exploits already out, the AI-driven DRAM shortage pushed MacBook Air waits into September after a $200 price rise, and the Coldcard wallet theft was traced to a random-number-generator flaw with losses now put at $88 million." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Nothing to patch on your stack, but a 9.5 is loose in Rails and RAM is now a supply crisis — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.bleepingcomputer.com/news/security/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, August 3, 2026</span>
+        <span>◆</span><span>Dev tools ◆ hardware ◆ security ◆ business</span>
+      </div>
+      <h1>Nothing to patch on your stack, but a 9.5 is loose in Rails and RAM is now a supply crisis</h1>
+      <p class="standfirst">Next.js has published no new advisory since the July 21 batch and the Vercel changelog has not moved since Qwen 3.8 Max landed on the Gateway on August 2, so there is no emergency on TSD's own stack this morning. Elsewhere the week is uglier: Rails patched a CVSS 9.5 file-read-to-RCE in Active Storage that reaches half a million sites with public exploit code already circulating, and the memory shortage feeding AI datacenters has now pushed MacBook Air delivery estimates into September.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 2 edition</span>
+        <span>◆</span><a href="https://www.bleepingcomputer.com/news/security/rails-patches-critical-active-storage-flaw-with-rce-potential/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9.5</div><div class="lbl">CVSS on the Rails Active Storage flaw</div></div>
+      <div class="stat"><div class="num">58–63%</div><div class="lbl">Q2 contract DRAM price rise, quarter on quarter</div></div>
+      <div class="stat"><div class="num">$88M</div><div class="lbl">Now attributed to the Coldcard RNG flaw</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Your stack is clean this morning</h4><p>No new Next.js, React, Vercel or Supabase advisory since the eight-advisory batch of July 21. The Vercel changelog's last entry is August 2.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Rails has a 9.5 with public exploits</h4><p>CVE-2026-66066 turns an image upload into arbitrary file read and potentially RCE, exposing secret_key_base and service credentials. Proof-of-concept code went public fast.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Memory is now the binding constraint on consumer hardware</h4><p>Contract DRAM rose 90–95% in Q1 and another 58–63% in Q2 as makers shifted capacity to AI server RAM. The MacBook Air is up $200 and back-ordered into September.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The Coldcard drain has a cause</h4><p>The Bitcoin hardware-wallet theft traces to a random-number-generator flaw. The loss figure has been revised to roughly $88 million.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chrome moves against New Tab hijackers</h4><p>Google is preparing to block extensions that hijack the New Tab page by default — a small change that removes one of the oldest ways client machines get quietly compromised.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch status on the stack you actually ship</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Clear</span>
+            <span class="ver">August 3</span>
+            <h3>No new advisory on Next.js, React, Vercel or Supabase</h3>
+          </div>
+          <div class="story-body">
+            <p>The newest published Next.js security advisories remain the July 21 batch: two SSRF issues (rewrites, and Server Actions on custom servers), a middleware and proxy bypass in App Router affecting Turbopack and single-locale configs, a Server Actions denial of service, two cache-confusion bugs, an unbounded Server Action payload on the Edge runtime, and a DoS in the Image Optimization API on SVG processing. Nothing has been added since.</p>
+            <p>The Vercel changelog's last entry is Qwen 3.8 Max on the AI Gateway, August 2. Before that, July 31 brought Gateway spend budgets, a dedicated logs page, updated DeepSeek V4 Flash weights, MCP spec 2026-07-28 support, and expanded workflow-run search in Observability.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client project is still below Next.js 15.5.16 or 16.2.5, that is the whole job this morning — the July 21 set includes two high-severity SSRFs and a proxy bypass. Run <code>npx next --version</code> across the portfolio, upgrade anything behind, and then leave it alone: there is nothing newer to chase today.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js security advisories</a> <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">July 29 – Aug 1</span>
+            <h3>Rails patched a critical Active Storage flaw that turns an upload into a file read</h3>
+          </div>
+          <div class="story-body">
+            <p>The Rails security team published CVE-2026-66066, rated CVSS 9.5. Active Storage handed untrusted uploads to libvips without disabling libvips' unfuzzed image loaders, so an unauthenticated attacker who uploads a crafted file and triggers variant generation can read arbitrary files from the server — including the process environment holding <code>secret_key_base</code> and service credentials. From there, escalation to remote code execution is on the table.</p>
+            <p>Fixed in 7.2.3.2, 8.0.5.1 and 8.1.3.1; libvips should be 8.13 or newer. Rails 6.x is affected only where Active Storage was configured outside its defaults. The Ethiack researchers who found it estimate 500,000+ sites in scope, and maintainers published full details plus forensic tooling because public proof-of-concept exploits appeared almost immediately.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not your stack, and that is the point worth selling. Any prospect running a Rails site with user uploads — salons, shops, anyone with a legacy build from an agency that has moved on — is exposed right now and probably does not know. That is a real, checkable, dated reason for Grant or Bishop to call a lapsed lead today, and "your image uploads can leak your server keys" opens a modernization conversation better than a redesign pitch does.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/rails-patches-critical-active-storage-flaw-with-rce-potential/" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://ethiack.com/info-hub/research/kindarails2shell-rails-rce-cve-2026-66066" target="_blank" rel="noopener">Ethiack research</a> <a href="https://www.herodevs.com/blog-posts/cve-2026-66066-rails-active-storage-arbitrary-file-read-and-rce" target="_blank" rel="noopener">HeroDevs writeup</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The AI buildout is now visible in what hardware costs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply</span>
+            <span class="ver">August 2</span>
+            <h3>The memory shortage reached the MacBook Air, at $200 more and several weeks late</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple's cheapest laptop is short across the retail network. US delivery estimates run two to six weeks, and higher-RAM configurations slip furthest, with some pushed to September. The 13-inch M5 launched at $1,099 in March and went to $1,299 in June, so buyers are paying $200 more and still waiting.</p>
+            <p>The cause is upstream. Memory makers have been reallocating capacity toward the high-bandwidth RAM that AI server buildouts consume, and contract DRAM prices rose 90–95% quarter-over-quarter in Q1 2026 and another 58–63% in Q2. Apple has trimmed RAM configuration options and started sourcing Chinese memory for its China market. TrendForce expects the pressure to persist into 2027–2028.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a machine upgrade is anywhere on the plan for this school year, the price only goes one direction for the next several quarters — decide now or accept 2027 pricing. The broader read matters more: the AI datacenter buildout has started taxing ordinary consumer goods, which is a concrete, non-hype answer for any client who asks whether the AI boom is real.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/02/the-global-memory-shortage-hits-the-macbook-air/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://www.macrumors.com/2026/08/02/macbook-air-shortage-report/" target="_blank" rel="noopener">MacRumors</a> <a href="https://9to5mac.com/2026/08/02/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/" target="_blank" rel="noopener">9to5Mac</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Chips</span>
+            <span class="ver">Q2 results</span>
+            <h3>TSMC's quarter shows where all that memory and silicon is going</h3>
+          </div>
+          <div class="story-body">
+            <p>TSMC's second-quarter revenue rose 33% to more than $40 billion with earnings per share up 77% to $4.31, and the company guided Q3 to $44.6–45.8 billion. First-half revenue was up 35%. The stock is up more than 50% year to date, well ahead of the broader market.</p>
+            <p>On the export side, Nvidia is permitted to ship H200 chips to China under a revenue-sharing arrangement that carries a 25% export levy.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background only. It is the number to keep in your head when a client asks whether AI spending is a bubble about to pop: the company that physically manufactures the chips is guiding revenue up again next quarter. That is not proof the boom lasts, and it is the most concrete evidence available that demand has not turned yet.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-reports-earnings-july-091000460.html" target="_blank" rel="noopener">Yahoo Finance</a> <a href="https://www.fool.com/investing/2026/07/16/tsmc-just-announced-fantastic-news-for-nvidia-shar/" target="_blank" rel="noopener">Motley Fool</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Update</span><span class="txt">The Coldcard hardware-wallet drain covered yesterday now has a cause — a random-number-generator flaw — and the loss estimate has been revised to about $88 million. Hardware wallets fail at the entropy source, which no amount of user caution catches. <span class="ver">Aug 2</span></span></li>
+            <li><span class="tag improve qh-tag">Browser</span><span class="txt">Chrome may soon block New Tab hijacker extensions by default, closing a long-standing route for adware onto client machines. <span class="ver">Aug 2</span></span></li>
+            <li><span class="tag fix qh-tag">Supply chain</span><span class="txt">Arch Linux disabled AUR package adoption to stem a malware flood, and ad firm Adform's script was compromised to steal cryptocurrency — two more reminders that the dependency and third-party-script surface is where breaches actually start. <span class="ver">Jul 31</span></span></li>
+            <li><span class="tag new qh-tag">Autonomy</span><span class="txt">The robotaxi gap keeps widening: Waymo runs roughly 3,000 vehicles at about 500,000 paid rides a week and is targeting 20+ new cities, while Tesla's service sits at roughly 44 active vehicles with safety monitors aboard in California. <span class="ver">Aug 2</span></span></li>
+            <li><span class="tag improve qh-tag">Enterprise</span><span class="txt">A Marc Benioff-backed startup launched with the pitch that AI can solve the AI deployment problem — the same gap OpenAI Presence is chasing, and the same one TSD sells into at SMB scale. <span class="ver">Aug 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
