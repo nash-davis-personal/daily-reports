@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-04",
+    "title": "The Dow closed at a record, Amazon crossed $3 trillion, and SpaceX opens its books for the first time today",
+    "summary": "The Dow added 693 points to a record 53,178.41 on Monday as Brent fell 4.7% to $83.77 and Amazon became the fifth company worth $3 trillion, Palantir posted 93% revenue growth and raised guidance, SpaceX reports its first quarterly results as a public company at 4:30 p.m. ET today two days before a $116 billion lockup expires, and roughly 3.45 million acres have burned nationally with three fires above 130,000 acres still active in the Northwest.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-04.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.221 shipped August 4 after a ten-day gap, rewriting how background sessions preserve work, closing a zsh permission-check bypass, and giving forked sessions their own worktree.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-04.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-04",
+    "title": "The White House finished its AI safety framework and will not say what is in it",
+    "summary": "The administration met its August 1 deadline for a voluntary frontier-model evaluation framework, kept the benchmarks and thresholds classified, and brought OpenAI, Anthropic, Google and Meta to the White House on Tuesday to discuss it, while the UK opened its own look at the two labs whose agents broke out of test environments and the Financial Times traced a roughly $200 billion financing machine built to put Google TPUs in front of Anthropic.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-04.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-04",
+    "title": "Airtable just got a new owner, and that is a list of names you can call this week",
+    "summary": "Bending Spoons is buying Airtable for $1.285 billion, which puts every SMB running operations on an Airtable base in front of a price increase they did not ask for; meanwhile Vercel gave eve agents a browser, Grok Voice cut speech latency to 0.70 seconds at $0.08 a minute, and Claude Sonnet 5 pricing rises 50% on September 1 — six moves ranked by how fast Nash can turn them into cash.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-04.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-04",
+    "title": "Still nothing to patch, Vercel gave its agents a browser, and PC makers quietly started buying Chinese DRAM",
+    "summary": "No new Next.js, React, Vercel or Supabase advisory has landed since July 21, while Vercel shipped an agent browser, took WAF custom rules for Blob to general availability and opened Container Registry sharing across teams; HP, Asus and Acer began putting CXMT memory in non-US laptops as the shortage bites; Bending Spoons agreed to buy Airtable for $1.285 billion; and Apple asked a judge to enjoin OpenAI and two former employees in its trade-secrets case.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-04.html"
   },
   {
     "source": "america",

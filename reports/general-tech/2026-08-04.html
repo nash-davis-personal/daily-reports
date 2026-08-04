@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-04" />
+  <meta name="report:title" content="Still nothing to patch, Vercel gave its agents a browser, and PC makers quietly started buying Chinese DRAM" />
+  <meta name="report:summary" content="No new Next.js, React, Vercel or Supabase advisory has landed since July 21, while Vercel shipped an agent browser, took WAF custom rules for Blob to general availability and opened Container Registry sharing across teams; HP, Asus and Acer began putting CXMT memory in non-US laptops as the shortage bites; Bending Spoons agreed to buy Airtable for $1.285 billion; and Apple asked a judge to enjoin OpenAI and two former employees in its trade-secrets case." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Still nothing to patch, Vercel gave its agents a browser, and PC makers quietly started buying Chinese DRAM — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, August 4, 2026</span>
+        <span>◆</span><span>Dev tools ◆ hardware ◆ platforms ◆ security</span>
+      </div>
+      <h1>Still nothing to patch, Vercel gave its agents a browser, and PC makers quietly started buying Chinese DRAM</h1>
+      <p class="standfirst">Your stack is clean: no new Next.js, React, Vercel or Supabase security advisory since the July 21 batch. Vercel used the quiet to ship three things worth ten minutes of your time, while the memory shortage pushed HP, Asus and Acer into validating and shipping CXMT parts in laptops sold outside the US.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 3 edition</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">New advisories on your stack since July 21</div></div>
+      <div class="stat"><div class="num">$1.285B</div><div class="lbl">Enterprise value on the Airtable deal</div></div>
+      <div class="stat"><div class="num">40 min</div><div class="lbl">Telegram's outage from the App Store</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing to patch</h4><p>No new Next.js, React, Vercel or Supabase advisory since the July 21 batch of eight. The Rails Active Storage 9.5 from yesterday still applies to anyone running Rails.</p></div>
+        <div class="signal"><div class="n">02</div><h4>eve agents can browse now</h4><p>Vercel shipped browser control for eve agents today, backed by the open-source agent-browser toolset. Web navigation stops being a scraping project.</p></div>
+        <div class="signal"><div class="n">03</div><h4>WAF custom rules for Blob went GA</h4><p>Custom WAF rules now cover Vercel Blob in production on all plans, with beta settings carried over. Free protection against people hotlinking your client's assets.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Chinese DRAM entered Western laptops</h4><p>HP, Asus and Acer have started using small volumes of CXMT memory in notebooks for non-US markets after validating the parts in mid-2026.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Airtable sold for $1.285B</h4><p>Bending Spoons made its first post-IPO acquisition, all cash, expected to close by year end. The no-code database category just got a new owner with a cost-cutting reputation.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Apple wants an injunction against OpenAI</h4><p>Apple asked a federal judge to bar OpenAI and two ex-Apple engineers from using alleged trade secrets, plus expedited discovery. OpenAI says it neither has nor wants them.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">August 4</span>
+            <h3>No new advisory on Next.js, React, Vercel or Supabase</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new to patch. The last coordinated Next.js security release was the July 21 batch of eight advisories, and nothing has shipped since. The May 6 release remains the big one of the year — thirteen advisories spanning denial of service, middleware and proxy bypass, SSRF, cache poisoning and XSS, patched in 15.5.18 and 16.2.6. If any client site is still below those versions, that is the outstanding item.</p>
+            <p>Yesterday's Rails Active Storage flaw, an arbitrary file read that chains to RCE at CVSS 9.5 with public exploits circulating, still stands for anyone touching a Rails codebase. It does not affect Nash's stack directly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No emergency deploys today. Spend the reclaimed time on the check you keep deferring: run <code>npm audit</code> plus a version sweep across every client repo and confirm every one is at Next.js 15.5.18 or 16.2.6 and above. Do it now while there is no fire, because the next advisory batch will not wait for a convenient week.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories</a> <a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">May 2026 security release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">August 4</span>
+            <h3>Vercel gave eve agents a browser</h3>
+          </div>
+          <div class="story-body">
+            <p>Today's changelog entry is short — "your eve agent can now navigate the web like a human" — and it lands on top of a real open-source project. The vercel-labs agent-browser repository ships a namespaced browser toolset as an eve extension, with sandbox bootstrap helpers, docs and examples. That follows July's extension system, which lets you package tools, connections, skills, instructions and hooks and install them like normal dependencies.</p>
+            <p>eve itself is Vercel's open-source agent framework, introduced in June. The trajectory over two months is clear: the framework got an extension mechanism, then a browser. Vercel is building the thing that turns a Next.js developer into an agent developer without leaving the platform.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the cheapest path to a new billable service. Every SMB client has a "go look at this site and pull the data into our system" job — competitor pricing, supplier stock, permit filings, review monitoring. Build one eve agent with the browser extension against a real client need this week, deploy it on infrastructure you already pay for, and you have a monthly retainer line that costs almost nothing to run.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">vercel-labs/agent-browser</a> <a href="https://vercel.com/blog/introducing-eve" target="_blank" rel="noopener">Introducing eve</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">August 3</span>
+            <h3>WAF custom rules for Blob hit general availability, and Container Registry repos can be shared</h3>
+          </div>
+          <div class="story-body">
+            <p>Two entries yesterday. Vercel WAF for Blob is generally available, so custom WAF rules now apply to Blob storage in production across all plans, with beta settings carried forward automatically. Separately, Container Registry repositories can now be shared with up to 100 Vercel teams.</p>
+            <p>The Blob change is the useful one for a small studio. Blob URLs are public by default, which means a client's uploaded gallery, PDF menu or product photos are bandwidth anyone can consume from anywhere.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Add a referrer-based WAF rule on Blob for every client site that stores images or documents, and cap it to the client's own domain. It takes minutes and removes the scenario where someone hotlinks a client's asset library and the overage lands on your bill. Pair it with the AI Gateway spend budgets from August 1 and you have hard ceilings on the two costs that can run away.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The memory crunch reached the supply chain's politics</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Hardware</span>
+            <span class="ver">August 4</span>
+            <h3>HP, Asus and Acer started shipping laptops with Chinese CXMT memory</h3>
+          </div>
+          <div class="story-body">
+            <p>Nikkei Asia reports that several major PC makers completed validation of ChangXin Memory Technologies DRAM in mid-2026 and have since begun using it at small scale. The chips go into a limited number of notebook models sold outside the United States. CXMT prioritizes domestic customers like Huawei, and the PC makers are moving carefully to avoid antagonizing Micron, Samsung and SK Hynix, who supply the rest of their volume.</p>
+            <p>The driver is the AI-induced memory shortage that has been building all year and that already pushed MacBook Air pricing up $200 with waits into September. When three of the largest PC vendors accept geopolitical risk to secure DRAM, the shortage is structural rather than a quarter of bad planning.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a machine purchase is anywhere on your plan for this fall, move it forward. Laptop and RAM prices are going up rather than down through the AI buildout, and the configuration you want in November will cost more and ship later than the one you can order today. This is also a live objection-handler for clients delaying hardware spend — the wait is not going to get cheaper.</div>
+          <div class="refs"><a href="https://asia.nikkei.com/business/china-tech/hp-asus-and-acer-begin-using-cxmt-chips-amid-memory-shortage" target="_blank" rel="noopener">Nikkei Asia</a> <a href="https://www.tomshardware.com/tech-industry/three-major-pc-makers-now-using-chinese-memory-to-fight-unprecedented-memory-shortage-report-claims-hp-asus-and-acer-using-small-amounts-of-cxmt-chips-in-limited-number-of-notebooks-for-non-us-market" target="_blank" rel="noopener">Tom's Hardware</a> <a href="https://www.techmeme.com/260804/p1" target="_blank" rel="noopener">Techmeme</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business moves</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">August 4</span>
+            <h3>Bending Spoons is buying Airtable for $1.285 billion in cash</h3>
+          </div>
+          <div class="story-body">
+            <p>Bending Spoons entered a definitive agreement to acquire Airtable at an enterprise value of $1.285 billion, which with Airtable's net cash implies roughly $2.25 billion in equity value. It is an all-cash deal expected to close by year end subject to regulatory approval, and it is the company's first acquisition since listing on Nasdaq on July 1. Bending Spoons bought AOL in January and Eventbrite in March.</p>
+            <p>Airtable, founded in 2013, is the spreadsheet-database hybrid a lot of small businesses use to run operations without writing code. Bending Spoons has a well-known playbook for acquired software: cut costs, raise prices, run it for cash.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a lead list. Any client running operations on Airtable is looking at price increases and feature changes under a new owner within a year. A Supabase-backed custom app that does exactly what their base does, that they own outright, is an easy pitch against a bill that is about to go up. Search your client notes for Airtable and give Grant and Bishop the names.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-08-04/bending-spoons-to-buy-software-firm-airtable-for-2-3-billion" target="_blank" rel="noopener">Bloomberg</a> <a href="https://www.tradingview.com/news/reuters.com,2026:newsml_TUAB83JYL:0-bending-spoons-enters-definitive-agreement-to-acquire-airtable-for-1-285-billion/" target="_blank" rel="noopener">Reuters</a> <a href="https://en.ilsole24ore.com/art/first-move-nasdaqs-bending-spoons-acquires-airtable-for-1285-billion-AJFycKe" target="_blank" rel="noopener">Il Sole 24 Ore</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Legal</span>
+            <span class="ver">August 3–4</span>
+            <h3>Apple asked a judge to enjoin OpenAI and two former employees, and OpenAI published the receipts</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple filed Monday for a preliminary injunction barring OpenAI and two former Apple staff from accessing, acquiring, using or disclosing alleged confidential information, plus a concurrent motion for expedited discovery. The named former employees are Chang Liu, a senior systems electrical engineer, and Tang Yew Tan, a vice president of product design for iPhone and Apple Watch. Apple alleges the trade secrets benefit OpenAI's move into consumer hardware.</p>
+            <p>OpenAI responded in a blog post saying the request is based on false information and unnecessary because it does not have and does not want Apple's trade secrets, and pointed to messages showing Apple employees continued texting a former colleague after the departure.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant to you as a contract term. You sell client-owned source code as a differentiator, which makes IP ownership language load-bearing in every agreement you sign. Make sure each contract states plainly what the client owns, what TSD retains as reusable components (Front Desk, Concierge, Booking Bridge), and that reusing your own framework across clients is explicitly permitted.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/technology/ai/articles/apple-seeks-preliminary-injunction-against-055820477.html" target="_blank" rel="noopener">Reuters via Yahoo Finance</a> <a href="https://seekingalpha.com/news/4624305-apple-seeks-injunction-against-openai-in-trade-secrets-lawsuit" target="_blank" rel="noopener">Seeking Alpha</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes &amp; things to watch</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Platform</span><span class="txt">Apple pulled Telegram from the App Store for about 40 minutes Monday night over a CSAM report, then restored it after Telegram banned the account and removed the content. Existing users were unaffected. <span class="ver">Aug 3–4</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">TSMC says its A16 node enters production in the second half of 2026, with AI chipmakers first in line. <span class="ver">Aug</span></span></li>
+            <li><span class="tag improve qh-tag">Policy</span><span class="txt">Reuters reports the administration is drafting FCC restrictions on imported optical transceivers, a component category that sits directly in the AI data-center interconnect path. <span class="ver">Aug 4</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Samsung is blocking smart-TV apps that resell viewers' internet connections as residential proxies. If a client's network looks like it is originating odd traffic, a TV app is now a plausible cause. <span class="ver">Aug 4</span></span></li>
+            <li><span class="tag improve qh-tag">Legal</span><span class="txt">TikTok reached three settlements in teen-harm lawsuits with roughly 2,600 similar cases still pending. <span class="ver">Aug 4</span></span></li>
+            <li><span class="tag new qh-tag">Silicon</span><span class="txt">GlobalFoundries signed a letter of intent with the Commerce Department on July 29 for a $300M award targeting US silicon photonics, aimed at the interconnect bottleneck in large GPU clusters. <span class="ver">Jul 29</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
