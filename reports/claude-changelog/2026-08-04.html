@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-04" />
+  <meta name="report:title" content="The drought breaks: 2.1.221 lands 39 changes and unattended agents finally push their work" />
+  <meta name="report:summary" content="Claude Code 2.1.221 shipped August 4 after a ten-day gap, rewriting how background sessions preserve work, closing a zsh permission-check bypass, and giving forked sessions their own worktree." />
+  <meta name="report:highlights" content="6" />
+
+  <title>The drought breaks: 2.1.221 lands 39 changes and unattended agents finally push their work — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, August 4, 2026</span>
+        <span>◆</span><span>One release: 2.1.221</span>
+      </div>
+      <h1>The drought breaks: 2.1.221 lands 39 changes and unattended agents finally push their work</h1>
+      <p class="standfirst">Four straight briefings reported nothing shipped. Today <b>2.1.221</b> landed with 39 line items, and the load-bearing ones are about work you don't watch: background sessions now commit and push instead of leaving output stranded, <code>/fork</code> gets its own worktree, and a zsh permission-check bypass in <code>[[ ]]</code> conditionals is closed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything since the 2026-08-03 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">39</div><div class="lbl">line items in one drop</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">days since 2.1.220</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">permission bypasses closed</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Background sessions commit and push</h4><p>They now preserve work in git, open a draft PR only when the task calls for one, follow your CLAUDE.md git instructions, and always report where the work lives.</p></div>
+        <div class="signal"><div class="n">02</div><h4>zsh <code>[[ ]]</code> permission bypass closed</h4><p>Hidden commands could execute inside regex conditionals without a prompt. Update before your next unattended run.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>/fork</code> gets its own worktree</h4><p>Forked sessions no longer work in the original session's checkout, so two forks can't step on each other's files.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>claude-api</code> gains <code>prompt-audit</code></h4><p>A subcommand that audits prompts and tool descriptions for patterns written for older models.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Print mode connects MCP before turn one</h4><p><code>-p</code> runs with <code>--mcp-config</code> were emitting tool calls as literal text because servers weren't connected yet.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Auto-mode permission checks got cheaper</h4><p>Checks now reuse the cached conversation prefix, and the Stats panel finally breaks out cache read and cache write tokens.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended work stops disappearing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>Background sessions now commit and push to preserve work</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog entry: background sessions were changed "to commit and push to preserve work, open a draft PR only when the task calls for one, follow your CLAUDE.md git instructions, and always end by reporting where the work lives."</p>
+            <p>Three behavior changes bundled into one line. Work gets persisted to git rather than living in a worktree you have to go find. The draft-PR-every-time habit becomes conditional. And your CLAUDE.md git rules now govern what the background session does, which means the rules you already wrote apply to agents you aren't watching.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled tasks and steward loops now push their own branches. Two things to check before the next fire: your CLAUDE.md commit-trailer rule (no Claude Co-Authored-By on Vercel-Hobby private repos) is now the rule background sessions follow, which is what you want — and the bisqueimports identity comes from the <code>includeIf</code> in your global gitconfig, which a background session inherits the same way an interactive one does. Watch the first unattended push into a Bisque repo and confirm the author resolves the way it does interactively.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3><code>/fork</code> sessions get a worktree of their own</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions forked with <code>/fork</code> now create a new worktree instead of working in the original session's checkout. This closes the last shared-state hole in the fork model that landed back in 2.1.212, where <code>/fork</code> became a background session copy of your conversation.</p>
+            <p>Related in the same release: <code>/status</code> now reports the session kind — <code>interactive</code>, or a background job that is <code>attached</code> or <code>unattended</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Forking to try two approaches on a Sonderwerks build no longer means both forks editing the same files under you. Fork freely now. The <code>/status</code> session-kind line is the fast way to confirm a session you attached to is actually the unattended one you think it is.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>Print mode wasn't connecting MCP servers before the first turn</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP servers passed via <code>--mcp-config</code> weren't connected before the first turn in print mode (<code>-p</code>), "which made the model emit tool calls as literal text." Fixed. In the same release, plugin- and org-delivered skills named after terminal-only built-ins (<code>/help</code>, <code>/feedback</code>) were un-invocable in non-interactive sessions; that's fixed too.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both bugs hit exactly the surface your scheduled tasks run on. If any headless run you wrote in the last stretch produced a transcript with tool calls printed as text rather than executed, that was this, and it's worth re-running rather than debugging your prompt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission and sandbox hardening</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security fix</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>zsh could hide commands inside <code>[[ ]]</code> regex conditionals</h3>
+          </div>
+          <div class="story-body">
+            <p>A Bash tool permission-check bypass "where zsh could execute hidden commands in <code>[[ ]]</code> regex conditionals" is fixed; affected commands now prompt. A second one landed alongside it: PowerShell permission checks mishandled paths containing quote characters on Windows, and those paths now prompt for approval.</p>
+            <p>This is the third release in a month to patch a <code>[[ ]]</code>-shaped hole in the permission analyzer — 2.1.214 fixed zsh variable subscripts and modifiers in the same construct. The pattern is that shell constructs the analyzer reads as inert text can still execute.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update now. You run Claude Code unattended on a Mac with zsh as the login shell, which is the exact combination this affects, and your permission allowlists are the only thing standing between a scheduled task and your client repos. Take the update before the next cron fire rather than after.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>Sandbox credential masking — Linux and WSL only</h3>
+          </div>
+          <div class="story-body">
+            <p>New <code>mode: "mask"</code> for sandbox credential files: sandboxed commands read a sentinel copy of the file (the whole thing, or just the spans captured by an <code>extract</code> regex) while the sandbox proxy substitutes the real value on egress. The agent never sees the secret; the outbound request still carries it.</p>
+            <p>The caveat is in the same sentence: "on macOS file masking falls back to <code>deny</code>." So on your machine this is a deny rule with a nicer name.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to configure locally today. It matters the moment you put a TSD agent on a Linux box or a container — that's the setup where an agent can use a Supabase service key or a Vercel token without the key ever entering its context. File it against whatever you build next that runs somewhere other than this Mac.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Model hygiene and cost visibility</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3><code>claude-api</code> skill gains a <code>prompt-audit</code> subcommand</h3>
+          </div>
+          <div class="story-body">
+            <p>A new <code>prompt-audit</code> subcommand in the bundled <code>claude-api</code> skill audits "prompts and tool descriptions for patterns written for older models." It arrives eleven days after 2.1.219 made Opus 5 the default, which is the natural reason to want it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Point it at the prompts in every client AI feature you've shipped. Anything you wrote against an earlier model generation — verbose role-play preambles, few-shot padding, defensive formatting instructions — is now cost you're paying per call on a model that doesn't need it. That's a concrete margin item on any build where the client pays for tokens, and a credible line in a maintenance retainer pitch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>Auto-mode permission checks stop burning fresh tokens</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related changes. Permission checks for parallel tool calls are now cache-efficient, and switching modes mid-check reliably prompts instead of applying a stale result. Separately, auto-mode permission checks now reuse the cached conversation prefix across decisions, which the changelog frames directly as reduced prompt-cache cost.</p>
+            <p>The Stats panel also now counts cache tokens in its totals, broken out by input, output, cache read, and cache write.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Auto mode on a long session got measurably cheaper, which lowers the cost of leaving a loop running. Use the new Stats breakdown once on a real build session to learn what your actual cache-read ratio is — that number is what tells you whether long sessions or frequent <code>/clear</code>s are the cheaper habit on your workload.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Plugins and editor surface</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.221 · Aug 4</span>
+            <h3>Plugins install and activate without a reload</h3>
+          </div>
+          <div class="story-body">
+            <p>Plugins installed from <code>/plugin</code> now activate immediately when safe, rather than always requiring <code>/reload-plugins</code>. <code>/plugin install</code> also refreshes a stale marketplace catalog and retries before reporting a plugin not found. Plugins can pass <code>"."</code> as a <code>skills</code> path, and <code>claude plugin validate</code> now warns when a marketplace or plugin name would be rejected by Claude Desktop's managed marketplace sync.</p>
+            <p>On the editor side, the VS Code extension gained a Focus view: a chat-menu toggle that hides tool activity behind an expandable per-turn summary with a live running-tool indicator, bound to <code>Ctrl+Alt+F</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The two plugin-install failure modes that used to look like "the plugin is broken" were stale catalog and missing reload. Both are gone, so a plugin that still doesn't show up now is actually a real problem. The <code>validate</code> warning is the one to care about if you ever package a TSD-internal plugin for the desktop app.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.221</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The thinking toggle had no effect for the rest of a session that started with thinking off <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">WebSearch failed with a 400 at effort <code>xhigh</code>/<code>max</code> when thinking is disabled <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">@-mentioned files were silently dropped when you pressed Esc to retract a prompt and resubmitted it <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Crash when preparing API requests for SDK MCP tools named after built-in object properties like <code>constructor</code> <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sandboxed large uploads failed with TLS errors through the sandbox proxy <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>CLAUDE_CODE_RESUME_INTERRUPTED_TURN=0</code> didn't disable interrupted-turn auto-resume; falsy values are now honored <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A wake-from-sleep race let two processes refresh the same MCP connector or WIF OAuth token at once, forcing re-authentication <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Renaming a session from Claude Code Desktop or claude.ai didn't update the CLI's session name <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The "Plugins changed" notification lingered after plugins were reloaded <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode: the yank register now survives dialogs, history search, and the transcript view <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode: undoing back to an empty prompt now arms the "press ← again" confirm before returning to the agent view <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Team and Enterprise spend-limit message blamed the org's monthly limit instead of your individual spend limit <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: Bedrock auth with AWS SSO named profiles failed in desktop-managed sessions when a stray <code>HOME</code> was set <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Tool search re-enabled on Google Vertex AI for Claude 4.5-generation and newer models <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/ultrareview</code> now refuses a checkout with no branches up front, and stops suggesting <code>git fetch --unshallow</code> on complete clones <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Windows startup reads process creation times via a native kernel32 call instead of spawning PowerShell <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Emoji autocomplete accepts alternate shortcodes like <code>:thumbsup:</code>, <code>:thumbsdown:</code>, <code>:love:</code> <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude in Chrome closes the browser tabs it opens once it no longer needs them <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Fast mode reports on the stream when usage credits run out mid-session instead of failing silently <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Monitor: a watch that exits with no output now says so instead of reporting "stream ended" <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Gateway <code>model</code> field now rejects non-string values with a 400 instead of forwarding them <span class="ver">2.1.221</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Removed the repeated "Permission mode changed while the auto-mode classifier call was queued" notice from approval prompts <span class="ver">2.1.221</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
