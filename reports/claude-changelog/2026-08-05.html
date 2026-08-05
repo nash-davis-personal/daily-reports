@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-05" />
+  <meta name="report:title" content="2.1.222 is a containment patch: worktree isolation was leaking into your real checkout" />
+  <meta name="report:summary" content="Claude Code 2.1.222 shipped August 4 with 21 changes, and the bulk of them close holes where isolated sessions, background agents, and auto-allow hooks could reach past the boundary they were supposed to respect." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.222 is a containment patch: worktree isolation was leaking into your real checkout — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, August 5, 2026</span>
+        <span>◆</span><span>One release: 2.1.222</span>
+      </div>
+      <h1>2.1.222 is a containment patch: worktree isolation was leaking into your real checkout</h1>
+      <p class="standfirst">A second release landed the same day as yesterday's 2.1.221, and it reads like a cleanup sweep after that one. Four separate fixes close cases where an isolated session, a background agent, or an auto-allow hook could act outside the boundary it appeared to be inside, and ultraplan is gone entirely.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.221</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">21</div><div class="lbl">Logged changes</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Containment holes closed</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Worktree isolation was advisory</h4><p>Isolated sessions and their subagents could run destructive git commands against the main checkout. Isolation now covers file edits and Bash in every session type.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Auto-allow hooks bypassed restrictions</h4><p>PreToolUse auto-allow hooks were skipping tool restrictions inside background agent tasks: summaries, compaction, renames.</p></div>
+        <div class="signal"><div class="n">03</div><h4>SendMessage now gets classified</h4><p>In auto mode, messages sent to other agent sessions pass through the permission classifier before dispatch.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Remote Control lost a config path</h4><p>A repo's own <code>.claude/settings.json</code> can no longer switch Remote Control auto-start on. It can still switch it off.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Ultraplan is removed</h4><p>Listed with no replacement and no migration note.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>/usage</code> stopped over-blaming MCP</h4><p>A server's share now reflects only requests that actually consumed its tool results, rather than every turn after any call to it.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Isolation stopped being a suggestion</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.222</span>
+            <h3>Worktree-isolated sessions could run destructive git against the main checkout</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog states it plainly: worktree-isolated sessions and their subagents were able to run destructive git commands against the main checkout. The fix extends isolation to file edits and Bash across every session type, which means the previous boundary was covering less than the name implied.</p>
+            <p>This lands one day after 2.1.221 changed <code>/fork</code> to create its own worktree and changed background sessions to commit and push on their own. Those two features were shipping into a boundary that had this hole in it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update before the next unattended run of anything that uses worktree isolation. If a loop or background session touched a client repo since 2.1.221 landed, run <code>git reflog</code> and <code>git status</code> on the main checkout for Bisque, Studio C, and Sonderwerks before you trust the tree. A destructive git command against a main checkout is the one failure mode that survives a rerun.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.222</span>
+            <h3>PreToolUse auto-allow hooks skipped tool restrictions in background agent tasks</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto-allow hooks were bypassing tool restrictions during the background work Claude Code does on its own: summaries, compaction, and renames. Those tasks run without you watching them, which is exactly where a restriction is doing its most useful work.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Re-read any PreToolUse hook you wrote to auto-allow a narrow command set. It was broader than you configured during background tasks, so a hook that allowed a safe subset of Bash was effectively allowing more. Worth a pass over hooks in the daily-reports and client repos.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.222</span>
+            <h3>Auto mode now classifies SendMessage before it dispatches</h3>
+          </div>
+          <div class="story-body">
+            <p>Messages sent to other agent sessions via <code>SendMessage</code> are now evaluated by the permission classifier before they go out. Previously an agent could instruct a sibling session without that message being checked, which turns agent-to-agent messaging into a way around the classifier.</p>
+            <p>A related refusal change: when Claude tries to invoke a skill marked <code>disable-model-invocation</code>, it is now told to ask you to run the skill instead of reproducing the skill's workflow itself.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both changes make multi-agent runs behave closer to how they read on paper. The skill one matters if you flagged any skill as human-invoke-only expecting that to stop the workflow from happening. Until now Claude would just do the work inline.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Control surface moved</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.222</span>
+            <h3>Repo-local settings can no longer turn Remote Control auto-start on</h3>
+          </div>
+          <div class="story-body">
+            <p>Remote Control auto-start is now user-scope only, set through <code>/config</code>. A repo's <code>.claude/settings.json</code> or <code>.claude/settings.local.json</code> can still turn it off, and the off direction still works from the repo.</p>
+            <p>The asymmetry is the point: a checked-in settings file should not be able to switch on remote access to a machine that clones it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any repo enables Remote Control auto-start in its settings file, that line is now dead and the feature silently stops arriving. Set it once at user scope through <code>/config</code> and delete the repo-level line so the config stops lying about what is active.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.222</span>
+            <h3>Ultraplan removed</h3>
+          </div>
+          <div class="story-body">
+            <p>One line in the changelog, no replacement named and no migration path given. Planning work goes back to plan mode and the planning skills.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check any skill, scheduled task, or CLAUDE.md that references ultraplan and cut the reference. A scheduled task that invokes a removed feature fails at 3am with nobody reading the output.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.222</span>
+            <h3>Diffs now read raw git blob content</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/diff</code>, the Remote Control workspace diff, and file-edit diffs in Claude Code on the web now use raw git blob content, ignoring workspace-configured diff drivers and textconv.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Diffs now show what is actually in the file. If a repo configured a diff driver to prettify or filter something, the review surface was showing you the filtered version while the commit carried the raw one.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Metering and connection accuracy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.222</span>
+            <h3><code>/usage</code> was attributing far too much to MCP servers</h3>
+          </div>
+          <div class="story-body">
+            <p>A server's share of usage previously counted every turn after any call to it. It now counts only the requests that actually consumed that server's tool results.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Re-run <code>/usage</code> before you drop any MCP server for being expensive. With a connector surface as wide as yours, the old numbers inflated whichever server you happened to call earliest in a session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.222</span>
+            <h3>Three connection failures that were reporting the wrong thing</h3>
+          </div>
+          <div class="story-body">
+            <p>The startup connectivity check was hanging and then failing behind an HTTPS proxy; it now uses the same proxy-aware transport as API requests and times out with a clear message. "Connection closed mid-response" was being reported on responses that had actually completed. Stream idle timeout was firing on custom <code>ANTHROPIC_BASE_URL</code> gateways even while server keep-alive pings were arriving.</p>
+            <p>Separately, claude.ai connectors were being marked as needing authorization when the real problem was an invalid session token. They now show a <code>/login</code> hint.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The connector one saves real time. If a claude.ai connector has been showing as needing authorization on this Mac, try <code>/login</code> before re-authorizing anything through connector settings.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog ◆ 2.1.222</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sessions now link to pull requests created after the branch was pushed, including through the GitHub REST API <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>SendMessage</code> truncates a long summary instead of rejecting the send on a character limit <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Tool errors are displayed again for tools no longer available locally, for example after an MCP server is removed <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The spinner's effort label in a subagent transcript shows the subagent's own <code>effort:</code> setting rather than the session's <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rare crashes when a file watcher hit a filesystem error or during watcher teardown <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Org-restricted <code>model: opus</code> subagent and teammate family aliases step down to the newest org-allowed model in the family instead of dropping to the parent model <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/usage-credits</code> on Team and Enterprise no longer blocks members whose earlier request was dismissed from sending a new one <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Screen readers in <code>--ax-screen-reader</code> mode echo just the deleted characters on end-of-line deletions instead of re-reading the whole input line <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Host model-selection keys take precedence over a stale on-disk <code>managed-settings.json</code> when <code>CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST</code> is set <span class="ver">2.1.222</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
