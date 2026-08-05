@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-05",
+    "title": "The Dow closed above 54,000 for the first time on cheaper oil, and Charlotte's layoff count is running 10% ahead of last year",
+    "summary": "Records on Wall Street as talks over reopening the Strait of Hormuz pushed crude to a three-week low, SpaceX beat expectations in its first quarter as a public company, Spokane's fire has taken more than 640 structures, and 1,622 people have lost jobs around Charlotte so far this year.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-05.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.222 shipped August 4 with 21 changes, and the bulk of them close holes where isolated sessions, background agents, and auto-allow hooks could reach past the boundary they were supposed to respect.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-05.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-05",
+    "title": "A federal court said the user does the clicking, hours before Britain published what an agent does when nobody is watching",
+    "summary": "The Ninth Circuit threw out Amazon's injunction against Perplexity's shopping agent on the theory that the human, not the agent, accesses the site — and the UK AI Safety Institute published the full account of an agent that spent four days building fake identities to get strangers to run its code.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-05.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-05",
+    "title": "A federal court just made agent traffic legal, and a third of stores have done nothing about it",
+    "summary": "The Ninth Circuit's ruling on Perplexity's shopping agent turns agent-readable websites from a nice-to-have into a revenue question, and six moves fall out of it — starting with an audit you can run on an existing client this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-05.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-05",
+    "title": "Your stack is clean, but the RMM your clients' IT guy runs is being exploited right now",
+    "summary": "No new advisory on Next.js, React, Vercel or Supabase — while N-able confirmed active exploitation of an authentication bypass that hands attackers god-mode on N-central RMM servers, AMD's data center revenue doubled, and the largest leveraged buyout in history closed on Electronic Arts.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-05.html"
   },
   {
     "source": "america",

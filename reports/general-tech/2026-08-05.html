@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-05" />
+  <meta name="report:title" content="Your stack is clean, but the RMM your clients' IT guy runs is being exploited right now" />
+  <meta name="report:summary" content="No new advisory on Next.js, React, Vercel or Supabase — while N-able confirmed active exploitation of an authentication bypass that hands attackers god-mode on N-central RMM servers, AMD's data center revenue doubled, and the largest leveraged buyout in history closed on Electronic Arts." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Your stack is clean, but the RMM your clients' IT guy runs is being exploited right now — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.bleepingcomputer.com/news/security/n-able-warns-of-n-central-auth-bypass-flaw-exploited-in-attacks/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, August 5, 2026</span>
+        <span>◆</span><span>Dev tools ◆ chips ◆ security ◆ big tech</span>
+      </div>
+      <h1>Your stack is clean, but the RMM your clients' IT guy runs is being exploited right now</h1>
+      <p class="standfirst">Third day running with no new advisory on Next.js, React, Vercel or Supabase. The live fire is one layer over: N-able confirmed attackers are exploiting an authentication bypass that gives unauthenticated god-mode on N-central, the RMM platform a large share of small-business IT providers use to reach every endpoint they manage.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 4 edition</span>
+        <span>◆</span><a href="https://www.bleepingcomputer.com/news/security/n-able-warns-of-n-central-auth-bypass-flaw-exploited-in-attacks/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2026.3.1.7</div><div class="lbl">N-central hotfix that closes the exploited bypass</div></div>
+      <div class="stat"><div class="num">$6.7B</div><div class="lbl">AMD data center revenue, more than double a year ago</div></div>
+      <div class="stat"><div class="num">$55B</div><div class="lbl">EA buyout, the largest LBO ever completed</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new to patch on your stack</h4><p>Vercel's security bulletin still shows React2Shell from June 29 as the most recent entry. No August advisory for Next.js, React, Vercel or Supabase.</p></div>
+        <div class="signal"><div class="n">02</div><h4>N-central is under active exploitation</h4><p>CVE-2026-18577 is an authentication bypass that yields administrative takeover of the RMM console. It exists because the patch for CVE-2026-18576 was incomplete. Hotfix 2026.3.1.7 shipped Sunday.</p></div>
+        <div class="signal"><div class="n">03</div><h4>The delivery side is impersonating your update prompts</h4><p>The SMOKE#SCREEN campaign uses fake Adobe and Zoom update lures and bogus maintenance utilities to talk people into installing remote-management software including ConnectWise ScreenConnect.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AMD's data center business doubled</h4><p>Record quarterly revenue of $11.5B, up 50%, with data center at $6.718B and 58% of the company. The stock still fell about 9% after hours.</p></div>
+        <div class="signal"><div class="n">05</div><h4>EA is private again after 37 years</h4><p>The $55B PIF-led buyout closed Tuesday at $210 a share. PIF holds 93.4%; Andrew Wilson stays CEO and the company stays in Redwood City.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch status: you're clear, the layer above you isn't</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Advisory</span>
+            <span class="ver">August 5</span>
+            <h3>No new advisory on Next.js, React, Vercel or Supabase</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's security bulletin page still lists the June 29 React2Shell bulletin for CVE-2025-55182 as its most recent entry, with nothing filed in August. The React Server Components DoS work under CVE-2026-23864 and the self-hosted WebSocket SSRF under CVE-2026-44578 are the standing items, both already fixed in current releases.</p>
+            <p>Nothing has changed for three days. That is a good streak and not a reason to skip the check.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No emergency deploys today. Use the quiet to confirm every client site is on a patched Next.js line for the standing CVEs rather than assuming last month's upgrade covered all of them — the fix list for CVE-2026-23864 spans 15.x and 16.x separately, so a project pinned to an old minor can be patched on paper and vulnerable in fact.</div>
+          <div class="refs"><a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a> <a href="https://vercel.com/changelog/summary-of-cve-2026-23864" target="_blank" rel="noopener">Vercel — CVE-2026-23864</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">August 1–4</span>
+            <h3>N-able confirmed attackers are using an N-central auth bypass to take over managed endpoints</h3>
+          </div>
+          <div class="story-body">
+            <p>N-able detected active exploitation on August 1 and its investigation turned up more than it started with. CVE-2026-18577 is an authentication bypass affecting both hosted and on-premises N-central servers, and it exists because the earlier fix for CVE-2026-18576 was incomplete. Either one gets an attacker administrative account takeover. Researchers describe the result as unauthenticated god-mode on the RMM console, which is the console that reaches every machine the provider manages, so the observed follow-on activity is endpoint takeover, persistence and lateral movement into customer environments.</p>
+            <p>Hotfix 2026.3.1.7 landed Sunday. Hosted deployments got it automatically; on-premises operators have to install it by hand, which is exactly the population that lags. Separately, TP-Link patched 15 flaws in the zero-touch provisioning mechanism of its Omada networking gear that chain with previously disclosed bugs to reach remote code execution — the same shape of problem in the small-business network closet.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run N-central, and that is the point — your clients' IT providers might, and a compromise there reaches the same machines your sites and receptionist integrations sit on. Send a two-line email to the technical contact at each client on a managed-IT contract asking whether their provider runs N-central and whether it's on 2026.3.1.7. It costs you ten minutes, it is genuinely useful, and it is the cheapest credibility you can buy with the person who signs off on your work.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/n-able-warns-of-n-central-auth-bypass-flaw-exploited-in-attacks/" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://www.helpnetsecurity.com/2026/08/03/cve-2026-18577-n-able-n-central-vulnerability/" target="_blank" rel="noopener">Help Net Security</a> <a href="https://www.huntress.com/blog/n-able-vulnerability-exploitation" target="_blank" rel="noopener">Huntress</a> <a href="https://www.n-able.com/blog/n-central-security-update-august-4-2026" target="_blank" rel="noopener">N-able</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Threat</span>
+            <span class="ver">August 4</span>
+            <h3>SMOKE#SCREEN dresses malware up as an Adobe or Zoom update</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers disclosed an active multi-wave campaign using social engineering lures themed around Adobe and Zoom software updates, business document reviews and system maintenance utilities, all to get a user to install legitimate remote monitoring and management software such as ConnectWise ScreenConnect. Once the tool is on the machine the attacker has a supported, signed remote-control channel that most endpoint security treats as normal IT activity.</p>
+            <p>This is the same objective as the N-central attacks approached from the other end: instead of breaking the provider's console, convince one employee to install the remote-access tool themselves.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every client whose staff you've trained to click through a browser update prompt is in the target set. If you're building the Managed AI retainer into something recurring, a quarterly fifteen-minute staff security note is a low-cost, high-perceived-value line item that costs you almost nothing to produce — and this campaign is a concrete example to open with.</div>
+          <div class="refs"><a href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Where the money went</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Earnings</span>
+            <span class="ver">August 4</span>
+            <h3>AMD posted record revenue, doubled its data center business, and the stock fell anyway</h3>
+          </div>
+          <div class="story-body">
+            <p>Q2 revenue was $11.5 billion, up 50% year over year against a $11.28 billion consensus, with adjusted EPS of $1.66 versus $1.61 expected. Data center more than doubled to $6.718 billion on EPYC and Instinct demand and now accounts for 58% of the company. Client and Gaming came in at $3.8 billion, with client up 23% and gaming down 31%. Embedded was $977 million, up 19%.</p>
+            <p>Shares rose about 7% in the regular session to $518.58 and then dropped roughly 9% after hours to around $472. A double beat that gets sold is a sentiment tell: the market has moved from rewarding AI revenue to interrogating the margin structure behind it, in this case the ramp cost of complex rack-scale systems.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference supply keeps expanding and inference pricing keeps falling, which is your input cost. The second-order effect matters more: when the market starts pricing AI on margin rather than growth, the client-side sales conversation shifts the same way within a quarter or two. Get ahead of it by putting a measured before-and-after number on every AI deployment you ship, because "it saves you eleven hours a month on missed calls" survives a mood change and "it's AI-powered" does not.</div>
+          <div class="refs"><a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD investor relations</a> <a href="https://qz.com/amd-record-revenue-data-center-earnings-q2-2026-080426" target="_blank" rel="noopener">Quartz</a> <a href="https://www.benzinga.com/markets/earnings/26/08/60931767/amd-delivers-double-beat-in-q2-as-data-center-revenue-more-than-doubles" target="_blank" rel="noopener">Benzinga</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">August 4</span>
+            <h3>The Electronic Arts buyout closed, and it's the biggest leveraged buyout ever done</h3>
+          </div>
+          <div class="story-body">
+            <p>The $55 billion acquisition of Electronic Arts by Saudi Arabia's Public Investment Fund, Silver Lake and Affinity Partners completed Tuesday, ending 37 years as a public company. Shareholders get $210 a share in cash, a 25% premium to the $168.32 unaffected close on September 25. PIF ends up with 93.4%, including the rollover of its existing stake, against roughly $36 billion of total equity. Andrew Wilson remains CEO and headquarters stays in Redwood City.</p>
+            <p>The scale is the story rather than the company. A $55 billion take-private clearing all its regulatory approvals sets a marker for how much sovereign capital is available for US technology assets and how little friction it meets on the way through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct read, filed because deal scale of this kind moves what mid-market buyers believe is normal. The practical version for you is smaller and closer: sovereign and PE money at this scale eventually reaches SMB roll-ups in services, and roll-ups buy standardized web and AI systems across dozens of locations at once. That is a customer profile worth being findable to.</div>
+          <div class="refs"><a href="https://www.ea.com/news/ea-announces-completion-of-acquisition" target="_blank" rel="noopener">EA</a> <a href="https://www.thewrap.com/industry-news/deals-ma/electronic-arts-goes-private-55-billion-buyout-closes/" target="_blank" rel="noopener">TheWrap</a> <a href="https://www.gematsu.com/2026/08/electronic-arts-announces-completion-of-acquisition-by-pif-silver-lake-and-affinity-partners" target="_blank" rel="noopener">Gematsu</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">TP-Link fixed 15 vulnerabilities in the zero-touch provisioning mechanism of Omada network devices, chainable with earlier flaws to reach RCE <span class="ver">Aug 4</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">SpaceX launched three AST SpaceMobile BlueBird direct-to-cell satellites early Wednesday, a day after putting up 24 more Starlink satellites on the 90th Falcon 9 flight of 2026 <span class="ver">Aug 4–5</span></span></li>
+            <li><span class="tag improve qh-tag">Enterprise</span><span class="txt">European incumbents including SAP and Capgemini reported enterprise AI work moving from experiments into production deployments <span class="ver">Aug 4</span></span></li>
+            <li><span class="tag new qh-tag">Mobility</span><span class="txt">Dubai-based fleet-management startup Moove raised $250M at a $2.1B valuation, with Mubadala participating <span class="ver">Aug 4</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
