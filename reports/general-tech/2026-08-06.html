@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-06" />
+  <meta name="report:title" content="Patch by tomorrow: CISA put a 9.8 in an AI framework on the actively-exploited list, and the memory shortage came for consumer hardware" />
+  <meta name="report:summary" content="CISA gave federal agencies until August 7 to fix an unauthenticated remote-code-execution chain in IBM's Langflow plus flaws in Apache Tomcat and N-able N-central, while AI datacenters bidding away the world's DRAM pushed RTX 5090 street prices past $4,300 against a $1,999 list and forced price hikes on the Switch 2, PS5 and Steam Deck." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch by tomorrow: CISA put a 9.8 in an AI framework on the actively-exploited list, and the memory shortage came for consumer hardware — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cisa.gov/news-events/alerts/2026/08/04/cisa-adds-three-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, August 6, 2026</span>
+        <span>◆</span><span>Dev tools ◆ chips ◆ platforms ◆ space</span>
+      </div>
+      <h1>Patch by tomorrow: CISA put a 9.8 in an AI framework on the actively-exploited list, and the memory shortage came for consumer hardware</h1>
+      <p class="standfirst">CISA added IBM's Langflow, Apache Tomcat and N-able N-central to the Known Exploited Vulnerabilities catalog on August 4 with an August 7 federal remediation deadline; the Langflow bug is an unauthenticated chain to remote code execution with a public proof of concept. Separately, AI datacenters outbidding everyone for memory have pushed RTX 5090 street prices past $4,300 against a $1,999 list, and the same shortage is now showing up on game console price tags.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 5 edition</span>
+        <span>◆</span><a href="https://www.cisa.gov/news-events/alerts/2026/08/04/cisa-adds-three-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Aug 7</div><div class="lbl">Federal deadline to patch all three KEV additions</div></div>
+      <div class="stat"><div class="num">$4,300+</div><div class="lbl">RTX 5090 street price against a $1,999 list</div></div>
+      <div class="stat"><div class="num">209 tons</div><div class="lbl">Human-made debris now on the Moon</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Langflow gives away superuser tokens, then runs your Python</h4><p>CVE-2026-9198 chains an unauthenticated auto-login endpoint that hands a superuser bearer token to any network caller with a validation endpoint that executes arbitrary code. CVSS 9.8. Patched in 1.10.1 on July 17.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Nothing new landed on Nash's stack</h4><p>No fresh Next.js, React, Vercel or Supabase advisory this week. The May floor still applies: Next.js 15.5.18 or 16.2.6, with earlier minors of 15.x and 16.x never getting patched.</p></div>
+        <div class="signal"><div class="n">03</div><h4>VRAM is now most of a graphics card's cost</h4><p>Memory has passed 80% of a high-end card's build cost as AI buyers absorb DRAM supply. The RTX 50 Super refresh is indefinitely delayed, and Korean retail has the 5090 near $5,100.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The shortage reached the living room</h4><p>Nvidia and AMD have both pushed phased price increases; Nintendo raised the Switch 2, Sony raised the PS5 a second time, and Valve raised the Steam Deck by nearly 50%.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Two record quarters, two sell-offs</h4><p>AMD posted record Q2 revenue of $11.5B and fell 6%. SpaceX beat on its first public earnings and fell 13.6% on $15.8B of AI-compute capex — the market is now punishing the spending, not the results.</p></div>
+        <div class="signal"><div class="n">06</div><h4>A Falcon 9 upper stage hit the Moon</h4><p>An 8,818-pound spent stage struck near Einstein crater at 8,700 km/h on August 5. The European Southern Observatory picked up sodium and lithium in a debris plume lasting five to ten minutes.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">August 4 ◆ deadline August 7</span>
+            <h3>CISA flagged Langflow, Tomcat and N-central as actively exploited</h3>
+          </div>
+          <div class="story-body">
+            <p>The Langflow entry is the ugly one. CVE-2026-9198 carries a CVSS of 9.8 and works by chaining two separate mistakes in IBM's open-source Langflow: an unauthenticated auto-login endpoint that issues a superuser bearer token to any caller who can reach it, and a code-validation endpoint that executes arbitrary Python. Grab the token from the first, post code to the second, and you have remote code execution with no credentials. IBM shipped the fix in Langflow OSS 1.10.1 on July 17; a public proof of concept appeared about a week after disclosure, and CISA added the CVE to the KEV catalog on August 4 alongside flaws in Apache Tomcat and N-able N-central. Federal civilian agencies have until August 7 under BOD 26-04.</p>
+            <p>The pattern behind it is the thing to internalise. Langflow is a visual builder for LLM pipelines — the kind of tool people stand up quickly on a VPS to prototype an agent, then forget. A default-permissive auth endpoint plus an endpoint whose whole job is running code is a combination that shows up across this entire generation of AI tooling, because these frameworks were designed for a laptop and get deployed on the open internet.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. First, go inventory anything you or a client ever spun up to try an agent idea — Langflow, Flowise, n8n, any self-hosted LLM builder sitting on a droplet — and either patch it to 1.10.1 or take it offline today. A forgotten prototype on a client's VPS is now an actively exploited entry point with your name attached to it. Second, on the good-news side, nothing new dropped on Next.js, React, Vercel or Supabase this week, so if your projects are already on 15.5.18 or 16.2.6 you have no emergency there.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/08/04/cisa-adds-three-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA advisory</a> <a href="https://thehackernews.com/2026/08/cisa-flags-langflow-rce-tomcat-and-n.html" target="_blank" rel="noopener">The Hacker News</a> <a href="https://www.securityweek.com/cisa-warns-of-exploited-langflow-n-central-and-tomcat-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek</a> <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-langflow-n-central-apache-tomcat-flaws/" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The memory shortage stopped being a datacenter story</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Hardware</span>
+            <span class="ver">Early August</span>
+            <h3>A $1,999 graphics card costs $4,300, and consoles are following it up</h3>
+          </div>
+          <div class="story-body">
+            <p>The mechanism is simple: memory makers pointed capacity at HBM and server parts to serve AI buildouts, GDDR allocation shrank, and graphics-memory prices climbed through the second quarter. VRAM now accounts for more than 80% of a high-end card's build cost. RTX 5090 street pricing is running $4,300 to $5,000 against a $1,999 MSRP, Korean retail has hit roughly $5,100, and the RTX 50 Super refresh has been delayed indefinitely because the math no longer works. The 5090 and 5080 are the worst affected, sitting 75% or more above list.</p>
+            <p>What is new in the last few weeks is the spread beyond enthusiast hardware. Nvidia and AMD have both pushed phased increases, Nintendo raised the Switch 2, Sony raised the PS5 for a second time, and Valve raised the Steam Deck by nearly 50%. Memory is an input to almost everything with a chip in it, so this eventually shows up in laptops, phones and any client hardware refresh.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Forget local inference. Any plan that involved buying a GPU to self-host a model for a client is dead on cost for at least the next few quarters, and renting API tokens is now the cheap option by a wide margin — which is a point worth making out loud in a proposal when a client asks why you are not "keeping it in-house." Second, if your own dev machine is due for replacement, the price curve is going up rather than down, so buy now or plan to wait a year. Third, this is a live objection-handler for Grant and Bishop: the reason an AI feature is a monthly subscription instead of a hardware purchase is that the hardware doubled in price and the subscription did not.</div>
+          <div class="refs"><a href="https://www.techtimes.com/articles/320169/20260711/gpu-memory-crisis-prices-rtx-5090-above-4300-nvidia-offers-paper-cards.htm" target="_blank" rel="noopener">Tech Times</a> <a href="https://mlq.ai/news/gpu-price-tracker-rtx-5090-tops-4200-as-high-end-and-16gb-cards-lose-discounts/" target="_blank" rel="noopener">MLQ GPU price tracker</a> <a href="https://byteiota.com/rtx-5090-prices-hit-4k-5k-coming-memory-crisis-why/" target="_blank" rel="noopener">byteiota</a> <a href="https://localaimaster.com/blog/gpu-prices-memory-shortage" target="_blank" rel="noopener">Local AI Master</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The market started charging for capex</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">August 4–5</span>
+            <h3>AMD and SpaceX both beat, and both got sold</h3>
+          </div>
+          <div class="story-body">
+            <p>AMD reported Q2 revenue of $11.5 billion and adjusted EPS of $1.66 — records on both lines, growth of 50% and 246%, a double beat against consensus — and the stock fell about 6% to $486.60 on Wednesday. Part of that was competitive: Elon Musk called Nvidia's Vera Rubin the best architecture available and committed SpaceX to Nvidia chips exclusively for its Starmind orbital compute program.</p>
+            <p>SpaceX's first earnings report as a public company beat on revenue and adjusted EBITDA, and the stock closed down 13.6% at $108.27 because capital expenditure on AI computing infrastructure hit $15.8 billion in the quarter, with total capex above $18 billion and no sign of slowing. The broader indices still set records on Middle East de-escalation hopes. The signal underneath is that investors have stopped rewarding AI spending on announcement and started asking when it converts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The same question is walking into your sales calls about six months behind. "When does this convert" is exactly what a Charlotte SMB owner means when they hesitate on an AI receptionist, and the answer that closes is arithmetic rather than capability: this many missed calls a month, this much average job value, therefore this payback period. Build that calculator into the pitch deck and let the prospect enter their own numbers.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/stocks/articles/amd-drops-6-despite-record-142036039.html" target="_blank" rel="noopener">Yahoo Finance — AMD</a> <a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-aug-5-212003303.html" target="_blank" rel="noopener">Yahoo Finance — SpaceX</a> <a href="https://www.detroitnews.com/story/business/2026/08/05/sp-500-dow-at-record-highs-as-mideast-hopes-offset-spacex-amd-drag/91180656007/" target="_blank" rel="noopener">Detroit News / Reuters</a> <a href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank" rel="noopener">Schwab market update</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Courts</span>
+            <span class="ver">August 4–5</span>
+            <h3>Apple asked a judge to freeze OpenAI's hardware work, and OpenAI moved to dismiss the same week</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple filed for a preliminary injunction and expedited discovery against OpenAI and two former Apple employees — Chang Liu, a senior system electrical engineer, and Tang Yew Tan, formerly VP of product design for iPhone and Apple Watch — seeking to bar them from accessing, using or disclosing what Apple says are its trade secrets. The underlying suit, filed last month, claims that misappropriated material is what enabled OpenAI's move into consumer hardware.</p>
+            <p>OpenAI filed a motion to dismiss on August 5 and published a blog post calling the allegations baseless and the suit careless and oddly personal. The hearing on Apple's injunction and discovery motions is set for October 1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct exposure, but it is a clean illustration of why your contracts should be boring and explicit. You hire nobody and you hand over source code on day one, which means the one clause that actually protects you is a clear statement of what the client owns and what remains your reusable IP — the TSD Front Desk and Concierge cores are yours, the client-specific configuration and site are theirs. If that line is not written down in your current agreement, write it before the next signature.</div>
+          <div class="refs"><a href="https://www.jurist.org/news/2026/08/apple-files-motion-for-preliminary-injunction-against-openai-in-trade-secrets-case/" target="_blank" rel="noopener">JURIST</a> <a href="https://9to5mac.com/2026/08/04/apple-preliminary-injunction-openai/" target="_blank" rel="noopener">9to5Mac</a> <a href="https://www.digitimes.com/news/a20260805VL209/apple-openai-hardware-legal-lawsuit.html" target="_blank" rel="noopener">DigiTimes</a> <a href="https://www.bankinfosecurity.com/openai-rejects-apples-trade-secrets-lawsuit-a-32422" target="_blank" rel="noopener">BankInfoSecurity</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Space</span>
+            <span class="ver">August 5</span>
+            <h3>A four-tonne Falcon 9 upper stage crashed into the Moon by accident</h3>
+          </div>
+          <div class="story-body">
+            <p>The stage had delivered Blue Ghost 1 and Hakuto-R Mission 2 in 2024 and was left adrift; solar activity and gravitational nudges eventually put it back on a lunar trajectory. It struck near Einstein crater at about 2:35 a.m. EDT on August 5 at 8,700 km/h, and is expected to have left a crater roughly 60 feet across and 12 feet deep. The European Southern Observatory detected sodium and lithium in a debris plume that persisted for five to ten minutes.</p>
+            <p>NASA noted there was never any risk to Earth, and that a meteoroid with equivalent energy strikes the Moon roughly every six days. The number that stuck was the running total: human-made debris on the lunar surface has now passed 209 tons, at a moment when several countries and companies are planning permanent installations there.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing operational. It is the best cold-open you will get this week, and if you ever want a client-facing newsletter with a personality, an item like this at the bottom is what makes people finish reading the ones above it.</div>
+          <div class="refs"><a href="https://www.npr.org/2026/08/05/g-s1-137542/spacex-falcon-9-rocket-moon-crash" target="_blank" rel="noopener">NPR</a> <a href="https://www.cnn.com/2026/08/04/science/spacex-rocket-moon-impact" target="_blank" rel="noopener">CNN</a> <a href="https://www.forbes.com/sites/jamiecartereurope/2026/08/05/spacex-rocket-hits-moon-as-lunar-junk-tops-209-tons/" target="_blank" rel="noopener">Forbes</a> <a href="https://en.wikipedia.org/wiki/2026_SpaceX_lunar_impact" target="_blank" rel="noopener">Impact summary</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Milestone</span><span class="txt">Amazon crossed $3 trillion in market value on August 3 — the fifth company ever — after AWS revenue rose 37% to $42.2B and 2026 capex guidance moved from $200B to $220B <span class="ver">Aug 3</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">The Everest ransomware group claimed 1 TB of data from Omnicell, a pharmacy-automation vendor used by health systems worldwide <span class="ver">week of Aug 3</span></span></li>
+            <li><span class="tag breaking qh-tag">Infrastructure</span><span class="txt">Cyberattacks continued against US water utilities across several states, and semiconductor maker Analog Devices disclosed two separate security incidents in quick succession <span class="ver">week of Aug 3</span></span></li>
+            <li><span class="tag improve qh-tag">Platform</span><span class="txt">Amazon closed Bedrock Agents to new customers on July 30, renaming it Bedrock Agents Classic; allowlisted accounts keep full access with no end-of-life date given <span class="ver">Jul 30</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

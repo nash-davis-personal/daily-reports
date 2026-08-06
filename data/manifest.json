@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-06",
+    "title": "Spokane is burning, hiring nearly stopped in July, and oil fell 5% in a day on a shipping-lane deal",
+    "summary": "Three fires around Washington's second-largest city destroyed roughly 700 structures and forced 65,000 evacuations, private payrolls added just 44,000 jobs in July against a 75,000 forecast, and crude fell more than 5% to a three-week low as Iran and Oman finalized a draft agreement to reopen the Strait of Hormuz.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-06.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.223 shipped August 6 with 19 changes, four of which close ways a Bash command, a workflow script, or an agent definition could slip past permission checks.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-08-06.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-06",
+    "title": "Meta shipped a terminal coding agent on the same afternoon Google DeepMind lost its CEO and its chief scientist",
+    "summary": "Muse Code puts a third serious player in the terminal next to Claude Code, priced at $1.25/$4.25 per million tokens with a data-sharing tier that cuts it by more than 90% — and hours later Demis Hassabis handed off day-to-day control of Google DeepMind while Jeff Dean left Google entirely after 27 years.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-06.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-06",
+    "title": "Six moves off a week where trust became the product and nobody could buy a GPU",
+    "summary": "An actively exploited AI framework with a federal patch deadline, a seven-hour outage at your model provider, and survey data showing 33% of SMBs name data security as the top barrier to using AI all point at the same sellable thing — proof that the AI you install is bounded, reliable, and answers correctly when a machine does the asking.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-06.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-06",
+    "title": "Patch by tomorrow: CISA put a 9.8 in an AI framework on the actively-exploited list, and the memory shortage came for consumer hardware",
+    "summary": "CISA gave federal agencies until August 7 to fix an unauthenticated remote-code-execution chain in IBM's Langflow plus flaws in Apache Tomcat and N-able N-central, while AI datacenters bidding away the world's DRAM pushed RTX 5090 street prices past $4,300 against a $1,999 list and forced price hikes on the Switch 2, PS5 and Steam Deck.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-06.html"
   },
   {
     "source": "america",
