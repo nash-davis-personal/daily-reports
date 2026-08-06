@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-06" />
+  <meta name="report:title" content="2.1.223 closes four permission bypasses. Update before your next unattended run." />
+  <meta name="report:summary" content="Claude Code 2.1.223 shipped August 6 with 19 changes, four of which close ways a Bash command, a workflow script, or an agent definition could slip past permission checks." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.223 closes four permission bypasses. Update before your next unattended run. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, August 6, 2026</span>
+        <span>◆</span><span>1 release ◆ 19 changes</span>
+      </div>
+      <h1>2.1.223 closes four permission bypasses. Update before your next unattended run.</h1>
+      <p class="standfirst">One release since yesterday's briefing, and the headline is security. A crafted Bash command could hide part of itself from the approval dialog, workflow scripts could break out of their sandbox with dynamic <code>import()</code>, and an agent definition could ignore an org policy that was supposed to block bypass mode. The rest of the release tightens how 1M-context models get held to a budget and folds <code>/review</code> into <code>/code-review</code>.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.223, since the 2026-08-05 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">19</div><div class="lbl">Changes</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Permission bypasses closed</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Bash could hide itself from the approval prompt</h4><p>A crafted command could conceal parts of itself from permission checks. Tabs and invisible Unicode could hide command text from the dialog you were approving.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Workflow scripts could escape their sandbox</h4><p>Dynamic <code>import()</code> let workflow scripts run code outside the sandbox. Relevant to every loop and workflow you run unattended.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>/review</code> is now <code>/code-review</code></h4><p>One command for the working diff or a PR. It also remembers the effort level you typed last, so <code>/code-review</code> alone repeats it.</p></div>
+        <div class="signal"><div class="n">04</div><h4>1M-context throttle now covers every 1M model</h4><p><code>CLAUDE_CODE_DISABLE_1M_CONTEXT</code> holds any model with a native 1M window down to 200K instead of a fixed hardcoded list.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Cloud sessions tell you how to finish locally</h4><p>Cloud sessions now surface a <code>/teleport</code> hint with the exact <code>claude --teleport &lt;session id&gt;</code> to continue on your machine.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The permission layer got four holes patched</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.223</span>
+            <h3>A crafted Bash command could hide part of itself from the permission check</h3>
+          </div>
+          <div class="story-body">
+            <p>Two separate fixes land here. The first closes a Bash permission bypass where a crafted command could hide parts of itself from permission checks. The second covers the display side: commands padded with tabs or invisible Unicode could hide part of the command from the approval dialog, so what you read and what ran were different things.</p>
+            <p>This is the third consecutive release touching Bash permission parsing. 2.1.221 fixed zsh executing hidden commands inside <code>[[ ]]</code> regex conditionals and PowerShell mishandling quoted paths on Windows.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update today, before the next scheduled task fires. Your daily-reports scout, the vault refresh, and any loop you leave running all approve Bash on your behalf while you are not at the keyboard. That is exactly the shape of session this class of bug abuses.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.223</span>
+            <h3>Workflow scripts could run code outside the workflow sandbox</h3>
+          </div>
+          <div class="story-body">
+            <p>Workflow scripts were able to use dynamic <code>import()</code> to execute code beyond the sandbox that is supposed to contain them. Workflow scripts are plain JavaScript with a deliberately narrow surface — no filesystem, no Node APIs — and this defeated that boundary.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct hit on the loop-engineering pattern you build for repos and vaults. A loop's whole safety argument rests on the sandbox holding. If you have written workflow scripts you have not read end to end since, skim them for <code>import(</code> before your next unattended cycle.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.223</span>
+            <h3>An agent definition's <code>bypassPermissions</code> ignored the org disable policy</h3>
+          </div>
+          <div class="story-body">
+            <p>An agent definition that declared <code>bypassPermissions</code> mode would take it even when the organization policy disabling bypass-permissions said otherwise. The agent file effectively outranked the admin setting.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Low impact for a solo operator with no org policy to violate. Worth filing under what you can say when a client's IT contact asks whether the agent respects their guardrails — the answer is now yes, and pinned to a version.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Context budgets and model resolution</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.223</span>
+            <h3>The 1M-context kill switch now covers every 1M model, and unknown model IDs get held to a window</h3>
+          </div>
+          <div class="story-body">
+            <p><code>CLAUDE_CODE_DISABLE_1M_CONTEXT</code> used to apply to a fixed list of models. It now holds every Claude model with a native 1M window down to 200K through auto-compaction, and prints a startup warning when auto-compaction is failing to enforce that ceiling.</p>
+            <p>Separately, auto-compact now keeps sessions running on unrecognized model IDs inside an assumed context window rather than letting them grow unbounded. <code>CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1</code> restores the old behavior.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run Opus 5 on 1M context. If you use the disable flag anywhere to keep long sessions cheap, its blast radius just widened to every 1M model, so check any wrapper scripts or launchd env before you get surprised by a mid-session compaction. If you point Claude Code at a gateway with custom model IDs, the second change will start compacting sessions that previously ran uncapped.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.223</span>
+            <h3>You now get told when a subagent silently ran on the parent model</h3>
+          </div>
+          <div class="story-body">
+            <p>Workflow agents, forked skills, slash commands, and resumed background agents that request a restricted subagent model now emit a warning explaining the parent model ran instead. Previously the downgrade was silent.</p>
+            <p>Related plumbing in the same release: gateway model discovery no longer hides Claude models registered under provider-prefixed IDs like <code>vertex_ai/claude-*</code> or <code>bedrock/anthropic.claude-*</code>, and <code>modelOverrides</code> keys that are not Anthropic model IDs are now ignored as documented rather than being treated as the session's canonical model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a workflow stage has been producing weaker output than the model you specified should give, this warning is how you will finally see why. Worth a rerun of your loop-engineering workflows to check nothing has been quietly running on the wrong tier.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Commands you actually type</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.223</span>
+            <h3><code>/review</code> is now an alias of <code>/code-review</code>, with a sticky effort level</h3>
+          </div>
+          <div class="story-body">
+            <p>The two review commands are one. <code>/code-review</code> reviews the current diff or a PR via <code>/code-review &lt;level&gt; &lt;pr#&gt;</code>, and <code>/code-review ultra</code> launches the deep cloud review. Calling <code>/code-review</code> with no effort level reuses whatever level you typed last, so you set it once by typing something like <code>/code-review high</code> and every bare call after that inherits it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set the level deliberately on your first review of a client branch, because every bare <code>/code-review</code> after it silently inherits that choice. Cheap habit: run <code>/code-review high</code> once per session on Bisque or Sonderwerks work, then bare calls for the rest.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.223</span>
+            <h3>Cloud sessions now show you the teleport command</h3>
+          </div>
+          <div class="story-body">
+            <p>Cloud sessions display a <code>/teleport</code> hint with the exact invocation to continue that session on your own machine: <code>claude --teleport &lt;session id&gt;</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Makes the phone-to-desk handoff practical. Kick a client fix off from claude.ai while you are out, teleport into it at the desk with the context intact instead of re-explaining the problem to a fresh session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resuming a session after a mid-session <code>/cd</code> came back empty <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Forked background agents got stuck "already resuming" for the rest of the session when rebuilding the fork's parent prompt failed <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A resumed session holding a malformed diagnostics attachment failed every turn or hung the interactive app on an error screen <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sandboxed commands failed to start on Linux when <code>sandbox.filesystem.denyWrite</code> covered the working directory <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Server-delivered managed settings no longer disable the env block of a local <code>managed-settings.json</code> or MDM profile; admin env merges per key <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A rare hang when parsing unusual <code>git push</code> output <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Owner wildcards (<code>"owner/*"</code>) in the <code>strictKnownMarketplaces</code> and <code>blockedMarketplaces</code> managed settings, to allow or block every marketplace repo under a GitHub org <span class="ver">2.1.223</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
