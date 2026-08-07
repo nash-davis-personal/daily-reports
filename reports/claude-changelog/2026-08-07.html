@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-07" />
+  <meta name="report:title" content="Your sessions can now message each other, and the 200-subagent cap is gone." />
+  <meta name="report:summary" content="Claude Code 2.1.224 shipped August 7 with 31 changes: cross-session SendMessage between sessions on any of your machines, the removal of the 200-subagent-per-session spawn cap, and a consent change that now uploads your CLAUDE.md with a shared transcript." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Your sessions can now message each other, and the 200-subagent cap is gone. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, August 7, 2026</span>
+        <span>◆</span><span>1 release ◆ 31 changes</span>
+      </div>
+      <h1>Your sessions can now message each other, and the 200-subagent cap is gone.</h1>
+      <p class="standfirst">2.1.224 is the biggest release since Opus 5 landed two weeks ago, and the theme is agents that coordinate. Claude Code sessions can now send messages to each other across all of your machines, discover each other with <code>ListAgents</code>, and spawn subagents without hitting the old 200-per-session ceiling. Two items deserve a slower read before you update: the sandbox deny-list had a trailing-slash bypass, and sharing a feedback transcript now uploads your system prompt, which includes your <code>CLAUDE.md</code>.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.224, since the 2026-08-06 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">31</div><div class="lbl">Changes</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">Remote Control fixes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Cross-session <code>SendMessage</code> shipped</h4><p>Sessions can message each other on any of your machines, with <code>ListAgents</code> to discover them. macOS and Linux.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The 200-subagent cap is removed</h4><p>Long-running sessions no longer refuse new agents. Concurrency and depth limits still apply.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Transcript sharing now uploads your <code>CLAUDE.md</code></h4><p>With consent, the feedback survey's share now also sends the system prompt, tool definitions, and model parameters.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Long project paths crossed into other projects</h4><p>Paths over 200 characters could resolve to a different project's session directory. Rename, fork, delete and <code>/resume</code> were all affected.</p></div>
+        <div class="signal"><div class="n">05</div><h4>A sandbox deny entry with a trailing slash was bypassable</h4><p><code>denyRead: "~/.aws/"</code> was silently ignorable on Linux and macOS. Sandbox violations are also now visible in Bash results.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Sessions that coordinate with each other</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.224</span>
+            <h3>Cross-session <code>SendMessage</code>, with <code>ListAgents</code> to find the other sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code sessions can now message each other, including sessions running on a different machine of yours, and <code>ListAgents</code> enumerates what is out there to talk to. The changelog scopes this to macOS and Linux.</p>
+            <p>This is a different primitive from spawning a subagent. A subagent is a child you own for the length of a task. This is one long-lived session handing something to another long-lived session that already has its own context loaded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The obvious first use is your scheduled work. A vault-refresh session that already holds the wiki in context can be pinged by the loose-ends steward instead of each one rebuilding the same context from cold. Start with one pair before you wire a mesh — a message to a session running with bypassed permissions is a real blast-radius question, which is why the setting below exists.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.224</span>
+            <h3><code>crossSessionInbound</code> and <code>dialogExpiry</code> gate what arrives</h3>
+          </div>
+          <div class="story-body">
+            <p>Messages sent to a session that is running with bypassed permissions are held for your approval. Messages to other sessions auto-deliver. A related fix: <code>SendMessage</code> used to report "Message sent" when the write to a teammate's inbox had actually failed, and failed deliveries are now reported as errors.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The false-success fix matters more than the feature for you today. Any automation that fired a <code>SendMessage</code> and treated the confirmation as proof of delivery was capable of lying to you. If you have a loop whose handoff step reports success without a downstream check, that check is still worth adding.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.224</span>
+            <h3>The 200-subagent-per-session spawn cap is gone</h3>
+          </div>
+          <div class="story-body">
+            <p>Long-running sessions no longer refuse new agents once they have spawned 200 over the session's lifetime. Concurrency limits (default 20, via <code>CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS</code>) and spawn depth (default 3) are unchanged.</p>
+            <p>Worth reading alongside the workflow tooling's own 1000-agent lifetime backstop, which is set far above any real workflow and is not affected here.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This unblocks the long unattended session, which is exactly the shape your loops take. A steward that runs for hours over a client repo and fans out per file was the case that hit 200 and started refusing work partway through, with no obvious symptom other than agents that stopped spawning.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Secrets, the sandbox, and what leaves your machine</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.224</span>
+            <h3>Sandbox deny entries written with a trailing slash were silently bypassable</h3>
+          </div>
+          <div class="story-body">
+            <p>A filesystem deny entry written as <code>denyRead: "~/.aws/"</code> could be bypassed on both Linux and macOS. The trailing slash defeated the match. Separately, sandbox violation details never appeared in Bash tool results, so Claude could not see which file or network access was denied or why, and would retry blind.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Go look at your sandbox settings right now and check every <code>denyRead</code> and <code>denyWrite</code> for a trailing slash. If you wrote one that way, it has not been protecting that path. Anything covering <code>~/.aws</code>, <code>~/.config/vercel</code>, or a Supabase service-role key file is the one to check first.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.224</span>
+            <h3>Sharing a feedback transcript now uploads your system prompt, which contains your <code>CLAUDE.md</code></h3>
+          </div>
+          <div class="story-body">
+            <p>With your consent, the feedback survey's transcript share now also uploads the last request's model settings: the system prompt (which includes your <code>CLAUDE.md</code> instructions), tool definitions, and model parameters. Secrets are redacted as before, and these fields are dropped first if the share is too large. A companion fix stops long-session shares from failing silently and showing a success message.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your global <code>CLAUDE.md</code> names clients, deploy scopes, vault paths, and the Bisque Vercel arrangement. None of that is a secret a redactor would catch, because it is prose. Consent is still per-share and this only fires when you actively submit feedback, so the rule is simply to read the consent line before clicking through on a session that was doing client work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.224</span>
+            <h3>Sandbox credential masking gets structured extraction, JWT awareness, and AWS SigV4 re-signing</h3>
+          </div>
+          <div class="story-body">
+            <p>New options: <code>extract</code> and <code>onExtractNoMatch</code> for pulling a credential out of a structured env value, <code>decode: "jwt"</code> with <code>maskClaims</code> for JWT-aware masking, and <code>awsPairs</code>/<code>sigv4</code> for re-signing AWS SigV4 requests at the proxy. All of these require <code>network.tlsTerminate</code> and are honored only from user, managed, or <code>--settings</code> settings.</p>
+            <p>The scope restriction is the important half: a repo-local <code>.claude/settings.json</code> cannot turn these on, so a client repo cannot define its own masking rules.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> <code>decode: "jwt"</code> with <code>maskClaims</code> is the one that maps to your stack. Supabase anon and service-role keys are JWTs, so a sandboxed command can now hold a structurally valid token while the real claims are substituted on egress. That is the difference between running an agent against a client's Supabase project and not.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Session integrity</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.224</span>
+            <h3>Project paths over 200 characters resolved into another project's session directory</h3>
+          </div>
+          <div class="story-body">
+            <p>Long project paths were being sanitized to a shared prefix, so two different projects could land on the same session directory. Session list, rename, fork, delete and <code>/resume</code> all crossed projects as a result. Deleting a session in one project could remove one belonging to another.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check whether any client checkout sits at a path over 200 characters. Deeply nested worktrees under a long parent are the realistic way to get there, and the failure mode is a <code>/resume</code> that hands you the wrong client's session. Cheap to verify: <code>pwd | wc -c</code> in each project root.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.224</span>
+            <h3>A recreated Remote Control session uploaded prior local conversation history into the new session</h3>
+          </div>
+          <div class="story-body">
+            <p>When a Remote Control session was recreated after its server session expired, it pushed the earlier local conversation history into the fresh session. Related: Remote Control now archives the stale server session instead of leaving a dead one listed after compaction or <code>/resume</code>, and a plugin's install records were being silently corrupted when the same plugin is installed across multiple projects.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same class of problem as the path collision — context arriving somewhere it was not supposed to go. If you use Remote Control to check on a running build from your phone while switching between client sessions, this one was capable of carrying one client's conversation into another session's history.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Self-hosted runners, plugins, and Remote Control polish</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.224</span>
+            <h3><code>claude self-hosted-runner</code> turns your own machines into session hosts</h3>
+          </div>
+          <div class="story-body">
+            <p>Self-hosted environments let Claude Code web, mobile, and desktop sessions run on your own machines or containers. The changelog gates this to Team and Enterprise plans.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Plan-gated, so it is off the table today unless you move TSD onto Team. File it as a sales fact instead of a tool: when a client asks whether agent work touches infrastructure they do not control, "it can run on hardware you own" is now a true answer with a plan attached to it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.224</span>
+            <h3><code>archive</code> plugin source: install from a zip over HTTPS with SHA-256 pinning</h3>
+          </div>
+          <div class="story-body">
+            <p>Plugins can now be installed from a zip served over HTTPS, with no git or npm in the path, and with optional SHA-256 pinning of the archive.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a distribution channel for your own skills. Dropping a zip on a Vercel-hosted URL with a pinned hash is a simpler handoff than granting repo access, which matters the day you package something like the vault or sales skills for someone outside your machines. Pin the hash if you ever do.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.224</span>
+            <h3>Remote Control stops going quiet on you</h3>
+          </div>
+          <div class="story-body">
+            <p>Attached web and mobile clients now see compaction progress and the post-compaction boundary instead of a silent pause, and <code>/clear</code> resets propagate to attached clients. Connection failures show a persistent failure indicator with details and a reconnect shortcut in place of an 8-second toast. Auto-start no longer intermittently fails with "Remote credentials fetch failed" on a cold start with a stale login token.</p>
+            <p>Two more on the same surface: a resumed session was silently reconnecting Remote Control after you turned it off, and the VS Code extension showed it as connected after the connection had failed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The silent-reconnect-on-resume fix is the one to note. If you turned Remote Control off deliberately on a session and later resumed it, it was coming back on without telling you. Everything else here makes phone-checking a long build actually readable.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Fullscreen mode keeps the full pre-compaction history in scrollback across repeated compactions, instead of only the most recent interval <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP tools that connect mid-turn were deferred for tool search without their names announced to the model <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>ANTHROPIC_BEDROCK_REGION_PREFIX</code> prefers a specific cross-region inference profile over the <code>AWS_REGION</code>-derived one <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Recalled or restored paste content occasionally attached the wrong data or silently lost text when a paste had aged out or placeholder numbers collided <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Removing an unavailable paste that changes a command's text now gets a cancel-and-confirm step; recalled paste placeholders renumber when accepted <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Copy-on-select on Wayland sometimes never reached the clipboard; the two selection writes no longer race <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control and SDK clients showed a blank "(no content)" message after <code>/clear</code> and other output-less commands <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The managed-settings approval prompt no longer re-appears after re-login or org switching when the org's settings are unchanged <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The Bash tool description now always notes that command output is displayed to the model, not reliably to the user <span class="ver">2.1.224</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Sessions were not honoring <code>remoteControlAtStartup</code> when explicitly enabled <span class="ver">2.1.224</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
