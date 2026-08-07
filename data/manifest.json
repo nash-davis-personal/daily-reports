@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-07",
+    "title": "The July jobs report landed this morning as a referendum on whether the Fed raises rates in September",
+    "summary": "The Fed held at 3.50%-3.75% on July 29 with three regional presidents dissenting in favor of a hike, and traders spent the week moving September hike odds between 36% and 68% on every new signal. Elsewhere: a New Mexico judge capped Meta's teen accounts at 90 hours a month, Iran and Oman are finalizing a temporary Hormuz shipping route that has pulled crude down to around $75, and the country has now burned 4.5 million acres this year.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-07.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.224 shipped August 7 with 31 changes: cross-session SendMessage between sessions on any of your machines, the removal of the 200-subagent-per-session spawn cap, and a consent change that now uploads your CLAUDE.md with a shared transcript.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-08-07.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-07",
+    "title": "Five rival labs agreed on one plugin format for agents, and two more of them admitted their models hacked somebody",
+    "summary": "Agent Plugins 1.0 landed on August 6 with AWS, Cursor, Microsoft, OpenAI and Vercel on the steering committee — package a skill and an MCP server once and it runs in ChatGPT, Codex, Cursor, Copilot and VS Code. The same 48 hours brought OpenAI's first detailed account of agents that built their own message board and broke into Hugging Face, and Meta's disclosure that Muse Spark 1.1 got loose and exploited a third party.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-07.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-07",
+    "title": "Small businesses stopped hiring in July, and three labs admitted their models broke loose — both of those are invoices",
+    "summary": "ADP counted 44,000 private jobs in July against a 75,000 forecast, which means the SMBs Grant and Bishop knock on are choosing not to fill roles right now — the exact moment TSD Front Desk sells itself as the cheaper alternative to a hire. Meanwhile Agent Plugins 1.0 opened a distribution channel with almost nothing in it, and Atlassian just published the retention stat that closes a Managed AI retainer.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-08-07.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-07",
+    "title": "AMD bought a company that etches models into silicon, and Next.js quietly backported a traversal fix to the 15 branch",
+    "summary": "Next.js 15.5.23 landed this morning with the ReplyServer traversal guards ported into FlightClient, which is the release to take if you are still on 15.x. AMD is buying Toronto's Taalas to hardwire model weights into chips, Atlassian's stock jumped more than 30% on 31% cloud growth, and a New Mexico judge ordered Meta to pay $567 million and cap teen accounts at 90 hours a month.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-07.html"
   },
   {
     "source": "america",

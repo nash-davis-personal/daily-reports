@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-07" />
+  <meta name="report:title" content="AMD bought a company that etches models into silicon, and Next.js quietly backported a traversal fix to the 15 branch" />
+  <meta name="report:summary" content="Next.js 15.5.23 landed this morning with the ReplyServer traversal guards ported into FlightClient, which is the release to take if you are still on 15.x. AMD is buying Toronto's Taalas to hardwire model weights into chips, Atlassian's stock jumped more than 30% on 31% cloud growth, and a New Mexico judge ordered Meta to pay $567 million and cap teen accounts at 90 hours a month." />
+  <meta name="report:highlights" content="6" />
+
+  <title>AMD bought a company that etches models into silicon, and Next.js quietly backported a traversal fix to the 15 branch — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, August 7, 2026</span>
+        <span>◆</span><span>Dev tools ◆ chips ◆ platforms ◆ business</span>
+      </div>
+      <h1>AMD bought a company that etches models into silicon, and Next.js quietly backported a traversal fix to the 15 branch</h1>
+      <p class="standfirst">Next.js 15.5.23 published at 09:57 UTC this morning with one change: the ReplyServer traversal guards ported into FlightClient. It is a small patch on a hardening path, and if any TSD site is still pinned to 15.x it is the version to move to. Away from the stack, AMD is acquiring Taalas to burn model weights directly into chips, and Atlassian put up a quarter good enough to add 30% to its stock in a single session.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 6 edition</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">15.5.23</div><div class="lbl">Next.js patch shipped this morning on the 15 branch</div></div>
+      <div class="stat"><div class="num">$219M</div><div class="lbl">venture funding Taalas raised before AMD bought it</div></div>
+      <div class="stat"><div class="num">+30%</div><div class="lbl">Atlassian's move on its Q4 print</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js 15.5.23 is out with a traversal-guard backport</h4><p>Published August 7 at 09:57 UTC, one change: port the ReplyServer traversal guards to FlightClient. Anything of yours still on the 15 line should take it.</p></div>
+        <div class="signal"><div class="n">02</div><h4>16.3.0 is four days old and carries a dependency CVE fix</h4><p>The August 3 release updated vendored lodash to 4.17.23 to close CVE-2025-13465, alongside Turbopack build work and a styled-jsx fix for styles vanishing under concurrent rendering.</p></div>
+        <div class="signal"><div class="n">03</div><h4>AMD is buying Taalas to hardwire models into chips</h4><p>The Toronto startup etches model weights straight into silicon for inference. Its first test chip served Llama 3.1 8B at close to 17,000 tokens per second. Deal expected to close in Q4.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Atlassian's cloud growth reaccelerated and the stock jumped over 30%</h4><p>Q4 revenue of $1.8 billion, up 28%, with cloud revenue at $1.2 billion and 31% growth. Adjusted EPS of $1.87 against a $1.50 consensus. Subscription ARR is $6.6 billion.</p></div>
+        <div class="signal"><div class="n">05</div><h4>A New Mexico judge put a usage cap on Meta's teen accounts</h4><p>$567 million into a child mental health fund on top of $375 million in civil penalties, plus a hard 90-hour monthly limit for under-18 users and overnight and school-hours notification blackouts.</p></div>
+        <div class="signal"><div class="n">06</div><h4>OpenAI's first device is a speaker, not a phone</h4><p>Reported as a doughnut shape about the size of a hockey puck, with camera, mics, lights and moving parts, over $300, developed with Jony Ive's team and aimed at 2027.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">15.5.23 ◆ August 7</span>
+            <h3>Next.js shipped a 15.x patch this morning porting traversal guards into FlightClient</h3>
+          </div>
+          <div class="story-body">
+            <p>One commit, contributed by eps1lon: "[15.x] Port ReplyServer traversal guards to FlightClient." It brings a protection that already existed on the server side of the Flight protocol over to the client side on the maintenance branch. Vercel did not publish a separate advisory alongside it, so treat it as hardening rather than an emergency.</p>
+            <p>The bigger version story is four days old. Next.js 16.3.0 landed August 3 with contributions from more than 88 developers, and it bumped vendored lodash to 4.17.23 to resolve CVE-2025-13465. It also fixed styled-jsx losing styles during concurrent rendering, improved Turbopack, and cleaned up the macOS Rosetta 2 warning. Canary builds on 16.3.1 have been coming out daily since.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm outdated next</code> across the client sites tonight. Anything on 15.x goes to 15.5.23; anything on 16.x should already be at 16.3.0 for the lodash CVE. Neither is a fire drill, and both are ten-minute jobs that keep you off the version where the next real advisory lands. Sites on 13.x or 14.x get no security patches at all any more.</div>
+          <div class="refs">
+            <a href="https://github.com/vercel/next.js/releases/tag/v15.5.23" target="_blank" rel="noopener">Next.js v15.5.23 release</a>
+            <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">All Next.js releases</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Standard</span>
+            <span class="ver">August 6</span>
+            <h3>Vercel's Agent Plugins proposal went 1.0 with AWS, Microsoft, OpenAI and Cursor on the committee</h3>
+          </div>
+          <div class="story-body">
+            <p>Covered in full in today's <a href="../general-ai/2026-08-07.html">General AI briefing</a>. The short version for the platform side: Vercel initiated the spec, the technical steering committee draws core maintainers from AWS, Cursor, Microsoft, OpenAI and Vercel, and Google has said it will adopt the format in Agents CLI and Data Agent Kit.</p>
+            <p>A plugin is a directory with a <code>plugin.json</code>, a <code>skills/</code> folder and an optional <code>mcp.json</code>. ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code support it at launch.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Vercel is now writing the packaging standard for agent extensions on top of already hosting your deployments. That is a reason to keep the deploy story where it is, and a reason to publish a TSD plugin under your own name while the registry is nearly empty.</div>
+          <div class="refs">
+            <a href="https://vercel.com/blog/introducing-agent-plugins" target="_blank" rel="noopener">Vercel</a>
+            <a href="https://agent-plugins.org/" target="_blank" rel="noopener">agent-plugins.org</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">August 6</span>
+            <h3>AMD is acquiring Taalas, which burns model weights directly into the chip</h3>
+          </div>
+          <div class="story-body">
+            <p>Taalas, founded in Toronto in 2023 and funded to $219 million, builds inference silicon where the model is not loaded from memory at run time — it is etched into the hardware. Its first test chip served Meta's Llama 3.1 8B at close to 17,000 tokens per second. AMD plans to fold the technology across Helios systems, Instinct GPUs, EPYC CPUs and ROCm. The deal is expected to close in Q4 2026.</p>
+            <p>It lands seven months after Nvidia's $20 billion Groq acquisition, and both deals point the same direction: the money in AI is moving from training to serving, and serving rewards specialised parts over general-purpose GPUs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference-per-dollar keeps falling, and it falls fastest for small fixed models. The economics of running an 8B-class model yourself for narrow jobs — classification, routing, extraction inside Concierge — get better every quarter, while the frontier calls stay expensive. Worth designing the next AI product so the cheap tier can be swapped without a rewrite.</div>
+          <div class="refs">
+            <a href="https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344" target="_blank" rel="noopener">The Register</a>
+            <a href="https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html" target="_blank" rel="noopener">CNBC</a>
+            <a href="https://siliconangle.com/2026/08/06/amd-acquires-taalas-hardwire-ai-models-silicon/" target="_blank" rel="noopener">SiliconANGLE</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business and platform</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">August 6</span>
+            <h3>Atlassian's cloud business reaccelerated to 31% and the stock added more than 30%</h3>
+          </div>
+          <div class="story-body">
+            <p>Q4 FY26 revenue of $1.8 billion, up 28% year over year, with cloud revenue at $1.2 billion growing 31%. Adjusted EPS came in at $1.87 against a $1.50 consensus. Subscription ARR is $6.6 billion, up 23%, and remaining performance obligations grew 44% to $4.8 billion. Guidance calls for 18% subscription ARR growth in FY27.</p>
+            <p>The AI line is the part worth noting: Atlassian says Rovo is in use at more than 80% of the Fortune 500, Rovo-assisted actions grew 50% quarter over quarter, and customers who adopted it grew ARR at more than twice the rate of customers who did not.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> "Customers who turned on the AI features expanded twice as fast" is the cleanest public evidence yet that AI attach drives retention, from a company that reports real numbers. Put that stat in the Managed AI retainer pitch. It answers the "is this a gimmick" objection with someone else's audited revenue.</div>
+          <div class="refs">
+            <a href="https://www.sec.gov/Archives/edgar/data/0001650372/000165037226000031/ex991q4fy26.htm" target="_blank" rel="noopener">Atlassian 8-K exhibit</a>
+            <a href="https://siliconangle.com/2026/08/06/atlassian-stock-skyrockets-30-cloud-growth-roars-back/" target="_blank" rel="noopener">SiliconANGLE</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Ruling</span>
+            <span class="ver">August 6</span>
+            <h3>A New Mexico court ordered Meta to cap teen usage at 90 hours a month</h3>
+          </div>
+          <div class="story-body">
+            <p>Chief District Court Judge Bryan Biedscheid ordered Meta to pay $567 million into a child mental health fund, on top of the $375 million in civil penalties a jury assessed in phase one after finding 75,000 violations of the New Mexico Unfair Practices Act. Of the new money, $420 million goes to treatment services for young people over five years.</p>
+            <p>The product orders are the unusual part. Under-18 accounts on Facebook and Instagram face a hard cap of 90 hours a month. Push notifications to those accounts pause from 10 p.m. to 7 a.m. daily, and from 8 a.m. to 3 p.m. on academic weekdays. The order also tightens adult-to-minor contact controls and adds safeguards around AI chatbots.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A state court just wrote engagement-limiting product requirements into a remedy. If any client site collects data from minors — youth sports, tutoring, a salon booking flow with under-18 clients — the design questions a plaintiff's lawyer would ask are now on the record. Cheap to get right at build time, expensive later.</div>
+          <div class="refs">
+            <a href="https://www.washingtonpost.com/technology/2026/08/06/new-mexico-judge-orders-meta-pay-567-million-child-harms-case/" target="_blank" rel="noopener">Washington Post</a>
+            <a href="https://www.engadget.com/2232202/meta-additional-567-million-fine-new-mexico-child-safety-case/" target="_blank" rel="noopener">Engadget</a>
+            <a href="https://www.pbs.org/newshour/nation/new-mexico-court-orders-meta-to-pay-567-million-over-mental-health-harms-to-kids-online" target="_blank" rel="noopener">PBS News</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Hardware</span><span class="txt">OpenAI's first device is reported as a doughnut-shaped speaker roughly the size of a hockey puck, with a camera, mics, lights and moving parts, over $300, built with Jony Ive's team for a 2027 launch. <span class="ver">Bloomberg, Aug 6</span></span></li>
+            <li><span class="tag new qh-tag">Scale</span><span class="txt">ByteDance is pretraining a model at roughly 10 trillion parameters. <span class="ver">FT, Aug 7</span></span></li>
+            <li><span class="tag breaking qh-tag">Export</span><span class="txt">Commerce's BIS is reviewing how Chinese AI firms access Nvidia chips overseas, including by renting foreign data centre capacity. <span class="ver">Bloomberg, Aug 7</span></span></li>
+            <li><span class="tag improve qh-tag">Insider</span><span class="txt">Atlassian's CEO committed $250 million of personal money to company shares after the Q4 print. <span class="ver">FT, Aug 7</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
