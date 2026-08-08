@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-08",
+    "title": "The economy shed 23,000 jobs in July and the market closed at a record, because a weak print is the bullish outcome now",
+    "summary": "July nonfarm payrolls came in at minus 23,000 against expectations of roughly 80,000 gains, and the S&P 500 and Nasdaq both closed at records on the news, capping the strongest week for the major indexes since mid-April. Small-business data released the same morning pointed the other way, with the NFIB employment index rising to 102.1 and hiring plans at their highest since October 2022, while crews reported containment lines around all three of the fires that have forced roughly 65,000 people out of the Spokane area.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-08.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.225 and 2.1.226 shipped August 8 with 15 changes, led by a fix for a transient 401 that swapped a long-lived CLAUDE_CODE_OAUTH_TOKEN for a stored login's short-lived token and broke headless sessions until restart, plus cross-session SendMessage gaining the ability to open a conversation with a named Remote Control session.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-08-08.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-08",
+    "title": "OpenAI stopped work on its next model because it might write zero-days by itself",
+    "summary": "OpenAI said Friday it cannot rule out that Astra hits the Critical cybersecurity tier of its Preparedness Framework, the first time any of its models has been flagged there, and it has paused internal work that doesn't meet hardened controls. Anthropic went the other direction on a different risk surface and cut Fable 5's biology false positives by about 85 percent, Cloudflare shipped a browser written for agents instead of people, and a climate scientist put a number on what an agent costs in electricity: roughly 600 chat prompts each.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-08.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-08",
+    "title": "A 10.0, a 7.0.3 and an 85% drop in refusals — three of today's stories are invoices you can write before Monday",
+    "summary": "Today's briefings hand you one thing that expires fast and two that compound. The WordPress and Metabase advisories are a paid triage sweep you can start this afternoon with a phone and a list of domains; Anthropic reopening biology on Fable 5 quietly unlocked an entire category of Charlotte SMB you could not demo to on Thursday; and Cloudflare giving away an agent-native browser during beta drops the marginal cost of a monitoring retainer close to zero.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-08.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-08",
+    "title": "Update every WordPress site you touch today, then audit your npm tree",
+    "summary": "A pre-auth XSS in the WordPress login screen chains all the way to PHP execution once an admin clicks the wrong link, patched in 7.0.3 on August 6 and disclosed August 7. In the same window a CVSS 10.0 zero-day in Metabase was used against Metabase Cloud and exposed Framework customer data, roughly 800 malicious npm packages turned up using require() instead of install hooks, and Atlassian still hasn't fixed one of two ways Rovo can be talked into exfiltrating Jira and Confluence data.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-08.html"
   },
   {
     "source": "america",

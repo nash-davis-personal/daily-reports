@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-08" />
+  <meta name="report:title" content="Update every WordPress site you touch today, then audit your npm tree" />
+  <meta name="report:summary" content="A pre-auth XSS in the WordPress login screen chains all the way to PHP execution once an admin clicks the wrong link, patched in 7.0.3 on August 6 and disclosed August 7. In the same window a CVSS 10.0 zero-day in Metabase was used against Metabase Cloud and exposed Framework customer data, roughly 800 malicious npm packages turned up using require() instead of install hooks, and Atlassian still hasn't fixed one of two ways Rovo can be talked into exfiltrating Jira and Confluence data." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Update every WordPress site you touch today, then audit your npm tree — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, August 8, 2026</span>
+        <span>◆</span><span>Web platform ◆ security ◆ hardware</span>
+      </div>
+      <h1>Update every WordPress site you touch today, then audit your npm tree</h1>
+      <p class="standfirst">CVE-2026-64638 is a pre-auth cross-site scripting bug in the WordPress failed-login page that pwn.ai chained into PHP execution, rated 8.9, patched in 7.0.3 on August 6 and disclosed on August 7. Alongside it: a Metabase zero-day scoring a flat 10.0 that was already used against Metabase Cloud, roughly 800 malicious npm packages that dodge lifecycle-hook scanners by asking you to <code>require()</code> them, and an Atlassian Rovo data-exfiltration path that is still open as of this morning.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 7 edition</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS on the Metabase zero-day already used in the wild</div></div>
+      <div class="stat"><div class="num">~800</div><div class="lbl">malicious npm packages in the Flooding Dropper campaign</div></div>
+      <div class="stat"><div class="num">7.0.3</div><div class="lbl">the WordPress release you need on every client site</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>WordPress login box → shell</h4><p>A crafted username survives sanitization on the failed-login page and creates attacker-controlled DOM that abuses <code>user-profile.js</code>. If a logged-in admin then visits the attacker's page, it ends in PHP execution. Patch is 7.0.3.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Metabase 10.0, no CVE, already exploited</h4><p>Unauthenticated SQL injection gives admin. Metabase Cloud was hit by an unknown zero-day and Framework confirmed customer data exposure. Six release branches need patching; block <code>/api/session/reset_password</code> if you can't patch now.</p></div>
+        <div class="signal"><div class="n">03</div><h4>~800 npm packages that wait for require()</h4><p>The Flooding Dropper campaign skips install hooks entirely and tells developers to import the package. That triggers WEL1DROPPER, which fingerprints OS and CPU then pulls a payload from Cloudflare Workers or a DNS TXT record.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Rovo will still leak your Jira if you ask it nicely</h4><p>Atlassian closed the URL-parameter version in July. The document-injection version PromptArmor reported on May 23 is unresolved as of August 8, with no response to their July 29 follow-up.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel shipped Skill Packs and a free Pro domain</h4><p>You can bundle agent skills from the skills.sh directory into a pack, and new Pro subscriptions now include a domain free for a year across six TLDs. Audit log drains gained Datadog, Splunk and Panther.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Self-hosted Supabase swaps Kong for Envoy next week</h4><p>Envoy becomes the default API gateway the week of August 9. If you rely on Kong's HTTPS listener, a custom <code>kong.yml</code>, or the <code>kong</code> service name, you have to opt back in.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch queue, in order</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">CVE-2026-64638 ◆ CVSS 8.9</span>
+            <h3>A WordPress username field chains to code execution, and every legacy client site is in scope</h3>
+          </div>
+          <div class="story-body">
+            <p>The bug lives in how WordPress renders a failed login. A specially crafted username survives the sanitization filters and lands as attacker-controlled live DOM on the failed-login page. From there it interacts with WordPress's own <code>user-profile.js</code> to steer the application into same-origin requests it should never make. The pwn.ai research team demonstrated the full chain, which they call XSS2Shell, ending in PHP execution and exposure of database credentials plus a persistent foothold.</p>
+            <p>The initial XSS needs no authentication. Full exploitation needs a logged-in administrator to visit a page the attacker controls, which is a phishing email, not a hard problem. WordPress shipped 7.0.3 on August 6 and pwn.ai disclosed on August 7. Older branches did not get backports.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run WordPress, but a real share of the SMBs you sell into do, and the ones you migrated to Next.js often still have the old site parked somewhere with a live wp-admin. Spend an hour today pulling the version off every WordPress domain you or a client still own and get them all to 7.0.3. Then make it a product: a $150 one-time "we checked and patched every site you forgot you had" is the easiest yes on the list, and it gets you inside their hosting account, which is where the redesign conversation actually starts.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">CVSS 10.0 ◆ no CVE assigned</span>
+            <h3>A Metabase zero-day was used against Metabase Cloud, and Framework says customer data got out</h3>
+          </div>
+          <div class="story-body">
+            <p>An unauthenticated attacker can inject arbitrary SQL into the Metabase application database and come out with administrator access. From there it's configuration changes, stolen database credentials for every connected source, and bulk export. It scores a flat 10.0 and no CVE has been assigned yet. Metabase says Metabase Cloud was attacked by someone using an unknown zero-day, and Framework, the modular-laptop maker, has confirmed customer data exposure through that attack.</p>
+            <p>Six branches are affected: v1.58.0–1.58.23, v1.59.0–1.59.20, v1.60.0–1.60.16, v1.61.0–1.61.10, v1.62.0–1.62.8 and v1.63.0–1.63.3. Fixed builds are 1.58.24, 1.59.21, 1.60.17, 1.61.11, 1.62.9 and 1.63.5 or later. If you can't patch a self-hosted instance immediately, block the <code>/api/session/reset_password</code> endpoint and grep your logs for POST calls to it returning 400. Post-patch cleanup is the real work: revoke sessions, rotate every credential Metabase held, review admin accounts and audit the query history.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Metabase is the BI tool a bootstrapped SMB self-hosts on a spare droplet and then forgets, and it holds credentials to everything. If any client dashboard you built talks to a Metabase instance, that instance holds your Supabase connection string. Check it today and rotate the keys regardless of what you find, because a 10.0 with in-the-wild use and no CVE means the scanning started before the advisory did.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/metabase-zero-day-exploited-in-wild.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply chain</span>
+            <span class="ver">August 8</span>
+            <h3>Roughly 800 npm packages skip the install hook and wait for you to import them</h3>
+          </div>
+          <div class="story-body">
+            <p>Paul McCarty of OpenSourceMalware and Sonatype, which tracks it as Flooding Dropper, found about 800 malicious packages on npm. The interesting part is the delivery. Most supply-chain malware fires from a <code>postinstall</code> hook, which is exactly what scanners watch. These packages do nothing at install time and instead instruct the developer to load them with <code>require()</code>. That call runs WEL1DROPPER, a downloader that fingerprints your OS and CPU architecture and then fetches a matching payload from a Cloudflare Workers domain, a DNS TXT record at wel1[.]ru, or a per-platform fallback host.</p>
+            <p>Payloads differ by platform. On Windows it patches ETW and AMSI to blind local telemetry, persists via Registry Run keys and scheduled tasks, and pulls an encrypted executable. On macOS it does comparable evasion and persists with a LaunchAgent. On Linux it drops Sliver, an open-source command-and-control framework. Package names are typosquats and what the researchers describe as AI-generated slop names built to look plausible in a search.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is aimed directly at you. You install packages fast, on a machine holding client Vercel tokens, Supabase service keys and an Anthropic key, and a Registry Run key or LaunchAgent on that laptop is the whole business. Two rules starting today: nothing gets installed because an AI or a blog post suggested the name, and any package whose README tells you to <code>require()</code> it for setup gets read before it gets imported. Run <code>npm ls</code> against your active projects this weekend and eyeball anything you don't remember adding.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/nearly-800-malicious-npm-packages.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The agent you deployed is a data-exfil path</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Partially fixed</span>
+            <span class="ver">August 8</span>
+            <h3>Two teams found two ways to make Atlassian Rovo hand over Jira and Confluence data, and one still works</h3>
+          </div>
+          <div class="story-body">
+            <p>PromptArmor's version hides instructions inside a document. A user asks Rovo to summarize the file, the hidden text tells Rovo to go fetch internal data and append it to a URL the attacker controls, and the user sees a perfectly normal summary while the data leaves. Varonis Threat Labs found a second route they call RovoBlast: a crafted URL carrying a <code>rovoChatPrompt</code> parameter preloads instructions into Rovo Chat, and in their words, "One click from an authenticated user was enough for Rovo to run them with that user's privileges and send the results to an attacker-controlled server."</p>
+            <p>Atlassian fixed RovoBlast server-side on July 8 and that fix is validated. The content-injection path is a different story. PromptArmor disclosed it on May 23, followed up on July 29, got no further communication, and published on August 5. It remains unresolved as of August 8. Neither issue has a CVE.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the failure mode of every RAG product you sell, including Concierge. Any agent that both reads untrusted input and can reach the network is one hidden paragraph away from being an exfiltration tool, and the vendor timeline here shows how long a fix can take once it's shipped. Make outbound network access an explicit allowlist in your agent configs rather than something the model can improvise, and write "we do not let the assistant call arbitrary URLs" into the proposal, because Atlassian just demonstrated the alternative in public.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/atlassian-rovo-can-be-tricked-into.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">August 7</span>
+            <h3>Vercel added Skill Packs, opened container registry repos, and is giving Pro subscribers a domain</h3>
+          </div>
+          <div class="story-body">
+            <p>Skill Packs let you assemble a custom collection of agent skills out of the skills.sh directory rather than wiring them one at a time, which is the natural follow-on to the Agent Plugins 1.0 spec that went out on August 6. Alongside it: Hermes Agent can now use Vercel AI Gateway for inference across 200-plus models with no markup on tokens, Container Registry repositories can be made public for read-only access, and audit log drains added Datadog, Splunk and Panther as destinations. New Pro subscriptions include a free domain for one year across six TLDs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The free Pro domain quietly kills a line item in your onboarding — you've been eating or passing through a domain fee on new client projects. Skill Packs are the packaging layer for the plugin play from Thursday's brief: one TSD pack containing your Front Desk, Concierge and Booking Bridge skills is a thing a prospect can install in ten seconds, and installs are a metric you can show the next prospect.</div>
+          <div class="refs">
+            <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel Changelog</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Week of August 9</span>
+            <h3>Self-hosted Supabase makes Envoy the default API gateway, replacing Kong</h3>
+          </div>
+          <div class="story-body">
+            <p>Starting the week of August 9, a self-hosted Supabase stack gets Envoy as its API gateway by default. Kong is still available, but you have to opt back in, and you need to if you depend on Kong's HTTPS listener, a custom <code>kong.yml</code>, or anything referencing the <code>kong</code> service name — a Docker Compose file or an internal URL, for instance. Separately, Realtime Broadcast now carries binary payloads over WebSockets, the REST API and the database, which removes the JSON encoding overhead for things like sensor streams and image frames.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If everything you run is hosted Supabase, this is a non-event. If you stood up a self-hosted instance for a client who wanted their data on their own box, pin the image version before Monday so an unattended pull doesn't swap the gateway under a production site while you're in class.</div>
+          <div class="refs">
+            <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase Changelog</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Exploited</span><span class="txt">Progress Kemp LoadMaster command injection, CVE-2026-8037, CVSS 9.6, unauthenticated RCE on the load balancer, with 792+ exploitation attempts reported and a CISA listing. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag fix qh-tag">Update</span><span class="txt">N-able pushed Hotfix 2 with additional hardening for N-central after confirming customer environments were compromised — the follow-on to Wednesday's RMM story. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag breaking qh-tag">Novel</span><span class="txt">CSS injection can break webmail security across Outlook, Gmail, Fastmail, Proton Mail, Yahoo and AOL, enabling credential and token theft with no script involved. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag fix qh-tag">Kernel</span><span class="txt">SCTPhantom, CVE-2026-64564, an 18-year-old use-after-free in Linux SCTP networking, escalates to root and escapes containers. Patched, no public exploit yet. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag breaking qh-tag">Phishing</span><span class="txt">A widespread Microsoft 365 adversary-in-the-middle campaign uses residential proxies to keep hijacked sessions alive, targeting payroll and finance staff. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Terafab, the Tesla and SpaceX semiconductor project, committed $16.8B to a Texas complex spanning roughly 100 million square feet. <span class="ver">Aug 7</span></span></li>
+            <li><span class="tag improve qh-tag">Earnings</span><span class="txt">Cloudflare posted $696M in Q2 revenue, up 36% year over year, and raised full-year guidance to $2.86–2.87B. <span class="ver">Aug 7</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
