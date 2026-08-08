@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-08" />
+  <meta name="report:title" content="A transient 401 was silently killing headless sessions until restart. 2.1.225 fixes it." />
+  <meta name="report:summary" content="Claude Code 2.1.225 and 2.1.226 shipped August 8 with 15 changes, led by a fix for a transient 401 that swapped a long-lived CLAUDE_CODE_OAUTH_TOKEN for a stored login's short-lived token and broke headless sessions until restart, plus cross-session SendMessage gaining the ability to open a conversation with a named Remote Control session." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A transient 401 was silently killing headless sessions until restart. 2.1.225 fixes it. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, August 8, 2026</span>
+        <span>◆</span><span>2 releases ◆ 15 changes</span>
+      </div>
+      <h1>A transient 401 was silently killing headless sessions until restart. 2.1.225 fixes it.</h1>
+      <p class="standfirst">Yesterday's release was the feature drop. Today's is the cleanup pass behind it, and most of it lands on unattended work. The headline fix: a single transient 401 could cause Claude Code to replace a long-lived <code>CLAUDE_CODE_OAUTH_TOKEN</code> with a stored login's short-lived token, and every headless session stayed broken until the process restarted. Cross-session <code>SendMessage</code> also grew the half it was missing yesterday, so a session can now open a conversation with a named Remote Control session instead of only replying to one that messaged first.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.225 and 2.1.226, since the 2026-08-07 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases in window</div></div>
+      <div class="stat"><div class="num">15</div><div class="lbl">Changes</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Unattended-session fixes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>A transient 401 clobbered your long-lived <code>CLAUDE_CODE_OAUTH_TOKEN</code></h4><p>It was replaced with a stored login's short-lived token, and headless sessions stayed broken until restart. Fixed in 2.1.225.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>SendMessage</code> can now initiate, not just reply</h4><p>A session can start a conversation with your Remote Control sessions on other machines by name. <code>ListAgents</code> lists them as <code>name [ref]</code>.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Cross-session messages were parking silently in headless runs</h4><p>They stayed queued with no notice and no expiry, in headless sessions and during startup. One day after the feature shipped.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Auto mode was counting its own safety-filter refusal as a block</h4><p>A refused permission check pushed auto mode toward its consecutive-block limit. The action is still denied, and the model is now told to move on.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Gateway spend limits now name the cap and the reset time</h4><p>The usage warning reports the limit, when it resets, and the operator's message. Requires the gateway on 2.1.225.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended sessions stop breaking themselves</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>A transient 401 replaced a long-lived <code>CLAUDE_CODE_OAUTH_TOKEN</code> with a short-lived one</h3>
+          </div>
+          <div class="story-body">
+            <p>One transient 401 was enough to make Claude Code swap the long-lived <code>CLAUDE_CODE_OAUTH_TOKEN</code> for a stored login's short-lived token. Headless sessions then stayed broken until the process restarted, because the replacement token expired and nothing put the original back.</p>
+            <p>The failure shape is what makes this worth reading twice: the trigger is intermittent, the damage persists, and a restart clears it. That is a bug that looks like flakiness in whatever wraps it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any of your scheduled or cron-driven runs authenticate with <code>CLAUDE_CODE_OAUTH_TOKEN</code>, update before the next cadence. Then go re-read the failures you wrote off as network flakiness over the last stretch, because an auth error mid-run followed by every later turn failing is exactly this. Long-lived unattended processes were the ones exposed, and short interactive sessions mostly would not have noticed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>Auto mode counted a safety-filter refusal of its own permission check toward the block limit</h3>
+          </div>
+          <div class="story-body">
+            <p>When the safety filter refused auto mode's own permission check, that refusal was counted against the consecutive-block limit that stops a runaway session. The action is still denied. The difference is that the model is now told to move on rather than retry, so the refusal no longer walks the session toward a hard stop.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the fix for an unattended run that dies partway through for no visible reason. If you have a loop in auto mode that touches anything the filter is twitchy about, it was capable of burning its block budget on its own permission plumbing and then quitting with work left. Worth re-running any loop you disabled for unexplained early exits.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>Cross-session messages stayed parked in headless sessions with no notice and no expiry</h3>
+          </div>
+          <div class="story-body">
+            <p>Messages sent to a headless session, or to any session still starting up, sat queued indefinitely. No notice that something was waiting, and no expiry to clear it out. This is a one-day-old fix on a one-day-old feature.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If yesterday's briefing prompted you to wire a handoff between two scheduled sessions, this is why it did nothing. Your scheduled runs are headless by definition, so they were the exact case that swallowed the message. Update first, then test the pair with a message you can confirm arrived rather than trusting the send.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>MCP OAuth servers on macOS threw a burst of 401s after a keychain read timed out</h3>
+          </div>
+          <div class="story-body">
+            <p>When a keychain read timed out on macOS, OAuth-authenticated MCP servers intermittently failed with a burst of 401 errors, presenting as though they had never been authenticated at all.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a long list of OAuth MCP servers on this Mac. The next time one reports itself as unauthenticated, check the version before you re-run an OAuth flow, because on 2.1.224 and earlier a keychain hiccup produced the same symptom as an expired grant. Two useless minutes each time, and it teaches you to distrust a connector that was fine.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cross-session messaging gets its initiator</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.225</span>
+            <h3><code>SendMessage</code> can open a conversation with a Remote Control session by name</h3>
+          </div>
+          <div class="story-body">
+            <p>Yesterday's cross-session messaging could only reply to a Remote Control session on another machine after that session messaged you first. Now a session can start the conversation by name, and <code>ListAgents</code> shows the reachable ones as <code>name [ref]</code>.</p>
+            <p>The paired safety fix: a Remote Control recipient you have already confirmed is never silently swapped for a same-named session on the local machine when the remote list could not be checked.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is what makes a two-machine handoff actually schedulable. Until now the far side had to speak first, which no cron job does. The naming fix is the one to respect: if you name a session the same thing on the laptop and the desk Mac, you were one failed list lookup away from a message landing on the wrong box. Give them distinct names now, while you only have a couple.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Spend caps and workspace trust</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.225</span>
+            <h3>The usage warning now names the gateway spend limit, its reset time, and the operator's message</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code's usage warning understands gateway spend limits. When the limit is reached, the message states the cap, when it resets, and whatever message the operator attached. The gateway itself has to be on 2.1.225 for this.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not actionable today unless you put a gateway in front of your own usage, and it is worth knowing as a sellable pattern. A client who wants AI features with a hard monthly ceiling gets a cap that explains itself when hit, including your own message about what to do next. That is a cleaner answer than "it stopped working" the first time a Studio C or Sonderwerks build runs into the ceiling.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.225</span>
+            <h3><code>claude agents</code> now prompts for workspace trust on untrusted directories</h3>
+          </div>
+          <div class="story-body">
+            <p>The trust prompt that <code>claude</code> shows for an untrusted directory now also appears in <code>claude agents</code>. The two entry points behave the same way.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Small, and it closes a real gap. <code>claude agents</code> was a way to start work in a directory that never got the trust check, which matters the day you clone a client's existing codebase to quote a modernization job. Expect one extra prompt the first time you open an unfamiliar repo that way.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Remote Control and web session reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>Resuming a Remote Control session broke its history after a large conversation was compacted</h3>
+          </div>
+          <div class="story-body">
+            <p>Conversation history broke on Remote Control session resume once a very large conversation had been compacted. Alongside it, Claude Code on the web had sessions misreported as stuck while re-sending a growing event backlog on every reconnect.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both of these bite the same habit: leaving a long build running and checking in from the phone or the web. The growing-backlog one is the worse of the two, because a session that looks stuck is a session you kill and restart, and you lose the run rather than the display.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.225</span>
+            <h3>Photos attached from the Claude app go straight to the model</h3>
+          </div>
+          <div class="story-body">
+            <p>A photo attached from the Claude app during Remote Control is now shown to Claude directly, in place of being read off disk with a separate tool call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the phone-to-agent loop for visual feedback. Screenshot a broken layout on the Bisque site, send it into the running session, and it lands as an image rather than a filesystem round trip. Cheap throughput win for reviewing a client build while away from the desk.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hovering over a session belonging to another project in the agents list changed the directory the next agent started in <span class="ver">2.1.225</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude self-hosted-runner</code> registered and then failed every session when <code>--base-dir</code> could not be created or written; it now exits at startup with a clear error <span class="ver">2.1.225</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Focus view folded away the latest to-do list, a pending question's context, and settled answers; thinking-only folds now show "Thought for Ns" and re-collapse when their turn completes <span class="ver">2.1.225</span></span></li>
+            <li><span class="tag improve qh-tag">Release</span><span class="txt">2.1.226 shipped the same day with "Bug fixes and reliability improvements" and nothing itemized <span class="ver">2.1.226</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
