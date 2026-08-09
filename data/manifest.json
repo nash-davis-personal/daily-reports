@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-09",
+    "title": "The country is at wildfire Preparedness Level 5 with 94 uncontained large fires",
+    "summary": "This morning's national situation report lists 94 uncontained large fires, 3.63 million cumulative acres and 30,419 personnel assigned, with the country at Preparedness Level 5 and crews from Australia and New Zealand plus military airtankers committed. The Northwest alone accounts for 2.63 million acres. Separately, forecasters put a Central Pacific system 1,000 miles east-southeast of Hawaii at a 90 percent chance of developing within seven days, and July CPI lands Tuesday as the last major input before the September Fed meeting.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-09.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing shipped to the Claude Code changelog since 2.1.226 on August 8, so today's briefing is short: the top of the changelog is unchanged, and the only open work is the update and the carry-over items from the two releases already covered.",
     "highlights": 3,
     "path": "reports/claude-changelog/2026-08-09.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-09",
+    "title": "Google dismantled DeepMind, and Hassabis is on his way out",
+    "summary": "Gemini development is consolidating in the Bay Area under Koray Kavukcuoglu, DeepMind no longer has a CEO, and Demis Hassabis has been moved to chairman in what former staff describe as an orderly exit. Anthropic is making Auto Mode the Claude Code default on August 14 after testing showed classifiers caught 89 percent of dangerous commands against 13.6 percent for human reviewers, Nvidia put up to $3B into a Texas power developer, and Amazon has a 7.65-gigawatt gas plant planned for Pecos County.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-09.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-09",
+    "title": "Yesterday's watch-list item shipped, so build the social pack this week",
+    "summary": "Grok Imagine Image 2.0 was on yesterday's watch list waiting for an API, and it landed on Vercel's AI Gateway on August 8, which turns client social content from manual work into something you can bill monthly. Five more moves follow: an on-prem AI box for the Charlotte practices that refuse the cloud, a human-layer security drill aimed at the owner's phone rather than the codebase, selling the delivery capacity Auto Mode is about to hand you, a reverse-proxy review off the back of open-sourced desync tooling, and a model-portability pass now that DeepMind is being folded into Google.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-09.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-09",
+    "title": "An AI fed 138 RFCs found 700 broken web servers, including a US bank",
+    "summary": "James Kettle at PortSwigger built HTTP Terminator, an AI-assisted system that turned 138 HTTP and SMTP RFCs into 30,000 candidate attack vectors and found roughly 700 vulnerable targets across 30,000 authorized test sites, plus an Apache Traffic Server zero-day. It is open source. Separately, a Go-based macOS stealer is spreading through paste-into-Terminal prompts and drains crypto wallets, NatJack turns NAT tables into a session-hijacking primitive, and Grok Imagine Image 2.0 landed on Vercel's AI Gateway.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-09.html"
   },
   {
     "source": "america",

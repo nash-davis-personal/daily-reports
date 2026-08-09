@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-09" />
+  <meta name="report:title" content="An AI fed 138 RFCs found 700 broken web servers, including a US bank" />
+  <meta name="report:summary" content="James Kettle at PortSwigger built HTTP Terminator, an AI-assisted system that turned 138 HTTP and SMTP RFCs into 30,000 candidate attack vectors and found roughly 700 vulnerable targets across 30,000 authorized test sites, plus an Apache Traffic Server zero-day. It is open source. Separately, a Go-based macOS stealer is spreading through paste-into-Terminal prompts and drains crypto wallets, NatJack turns NAT tables into a session-hijacking primitive, and Grok Imagine Image 2.0 landed on Vercel's AI Gateway." />
+  <meta name="report:highlights" content="6" />
+
+  <title>An AI fed 138 RFCs found 700 broken web servers, including a US bank — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, August 9, 2026</span>
+        <span>◆</span><span>Security ◆ dev platform ◆ hardware</span>
+      </div>
+      <h1>An AI fed 138 RFCs found 700 broken web servers, including a US bank</h1>
+      <p class="standfirst">James Kettle at PortSwigger fragmented 138 HTTP and SMTP specifications into roughly 15,000 pieces, generated 30,000 candidate attack vectors, and turned up about 700 vulnerable targets across 30,000 authorized test sites, among them banks, government infrastructure, security products and an airport. The tool is open source and it uses Claude, which means the same technique is now available to whoever wants it, and the rest of the weekend's security news is aimed at the machine you personally develop on.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 8 edition</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~700</div><div class="lbl">vulnerable targets found across 30,000 authorized test sites</div></div>
+      <div class="stat"><div class="num">8.3</div><div class="lbl">CVSS on the NatJack Hyper-V NAT flaw</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">cryptocurrencies with dedicated drain routines in the new macOS stealer</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>AI-assisted research industrialized request smuggling</h4><p>HTTP Terminator produced novel desync techniques including dual-matching Content-Length triggers, a "dangling-byte" method for reliable response queue poisoning, and Shared-Parser Confusion. One multipart/byteranges technique alone exposed over 200 websites.</p></div>
+        <div class="signal"><div class="n">02</div><h4>An Apache Traffic Server zero-day fell out of it</h4><p>CVE-2026-63078, found by human-guided cascade analysis rather than autonomously. Patched, though public verification records were still incomplete when the research published.</p></div>
+        <div class="signal"><div class="n">03</div><h4>A macOS stealer spreads by asking you to paste into Terminal</h4><p>Go-based, takes browser passwords and iCloud Keychain, fakes a system credential prompt to escalate, then runs a DRAIN routine with separate handlers for Bitcoin, Litecoin, Dogecoin, Monero, Ethereum and XRP. Huntress traced the infrastructure to sanctioned Russian host Aeza Group.</p></div>
+        <div class="signal"><div class="n">04</div><h4>NatJack makes NAT tables an attack surface</h4><p>Malcolm Stagg's Black Hat research hijacks live TCP sessions, spoofs DNS, discloses mapped ports and exhausts NAT tables. CVE-2026-56181 (CVSS 8.3) in Windows Hyper-V NAT, CVE-2026-63913 (CVSS 8.2) in Linux Netfilter conntrack. No universal patch.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Grok Imagine Image 2.0 is on Vercel's AI Gateway</h4><p>Available as a preview from August 8, with image generation and text rendering. Yesterday's brief noted the model had no API. Now there's a route to one behind a gateway you already use.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Attackers are calling personal phones to get at SaaS data</h4><p>UNC6671 runs voice phishing against personal devices to capture credentials, then deploys Python and PowerShell scripts to pull data out of cloud accounts.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security research just got a force multiplier, and it's public</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Research</span>
+            <span class="ver">August 8</span>
+            <h3>HTTP Terminator turned the HTTP spec into 30,000 attack vectors and broke about 700 targets</h3>
+          </div>
+          <div class="story-body">
+            <p>James Kettle at PortSwigger fed 138 HTTP and SMTP RFCs into a system that fragmented them into roughly 15,000 pieces and generated 30,000 candidate attack vectors, using Claude for document extraction and test-case generation. Run against 30,000 authorized test websites, it found approximately 700 vulnerable targets. The list of who was affected is the uncomfortable part: banks, government infrastructure, security products, and an airport. A single technique built on Content-Type: multipart/byteranges exposed more than 200 websites including an unnamed US bank.</p>
+            <p>The techniques themselves are new, not rediscoveries. Dual-matching Content-Length patterns trigger desync where previous methods failed. A "dangling-byte" trick makes response queue poisoning reliable enough to be practical. Shared-Parser Confusion generalizes the whole category. It also produced an Apache Traffic Server zero-day, CVE-2026-63078, though Kettle credits human-guided cascade analysis for that one rather than the AI working alone. PortSwigger's advice is to avoid HTTP/1.1 on upstream connections, and where that isn't possible, allow-list methods at both layers and restrict which methods may carry a request body. HTTP Terminator is on GitHub.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The defensive read matters more than the headline. Every client site you host on Vercel terminates at an edge you don't control, so the exposure here is mostly on the self-hosted and legacy stacks you inherited, which is where an Nginx or Apache proxy sits in front of an old app. If you have any client running their own reverse proxy, that is a real conversation this week. The commercial read: an open-source tool that finds real bugs at this scale is the honest version of the security pitch, because "someone can now scan the entire internet cheaply" is a fact rather than a scare tactic.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> This week's threats are pointed at developers</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Malware</span>
+            <span class="ver">August 8</span>
+            <h3>A Go-based macOS stealer arrives through copy-paste and empties crypto wallets partially</h3>
+          </div>
+          <div class="story-body">
+            <p>Huntress researcher Andrew Brandt disclosed a ClickFix campaign targeting macOS. The delivery is social engineering rather than an exploit: the victim is convinced to paste a command into Terminal. That runs a Bash profiler and loader which fingerprints the system, then pulls down a Mach-O payload matched to the CPU architecture. It attempts privilege escalation by showing a fake system error asking for credentials.</p>
+            <p>It takes browser passwords, iCloud Keychain data and cached credentials, and then runs a routine literally named DRAIN with separate functions for Bitcoin, Litecoin, Dogecoin, Monero, Ethereum and XRP. Huntress flags one detail as new: this is "the first time we have seen malware capable of emptying a cryptocurrency wallet that could be used to remove any less than the entire wallet's value," meaning it can skim rather than clean out, which delays detection. The infrastructure traces to Aeza Group, a Russian bulletproof hosting provider under US, UK and Australian sanctions.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You are the target profile. You paste commands into Terminal from documentation and error messages dozens of times a day, and your Keychain holds Supabase service keys, Vercel tokens and client credentials. Adopt one rule with no exceptions: never paste a command you did not type or read in full, and treat any web page that tells you to run something in Terminal as hostile. If you ever have pasted a blind one-liner, rotate the Vercel and Supabase tokens rather than assuming.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/clickfix-attacks-deliver-macos-stealer.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Vulnerability</span>
+            <span class="ver">August 7</span>
+            <h3>NatJack hijacks TCP sessions by manipulating NAT connection state</h3>
+          </div>
+          <div class="story-body">
+            <p>Malcolm Stagg disclosed this at Black Hat USA 2026 through SODIUM-24. It's a new attack class rather than a single bug, and it works by manipulating NAT connection tracking state. Four paths: replace a NAT mapping to redirect traffic from a live TCP connection, interfere with DNS requests to enable forged responses, disclose externally mapped ports, and flood the NAT connection table with spoofed flows. Independently developed NAT implementations turned out to be susceptible in the same ways.</p>
+            <p>Two CVEs so far. CVE-2026-56181 at CVSS 8.3 covers Windows NAT in Hyper-V, and Microsoft has fixed Windows 11 and Server 2025. CVE-2026-63913 at CVSS 8.2 covers Linux Netfilter conntrack, with fixes in stable kernels 5.10.259, 5.15.210, 6.1.176, 6.6.143, 6.12.93, 6.18.35, 7.0.12 and 7.1, though that only mitigates the broader downstream-spoofing technique. There is no single universal patch. The practical limit is real: the attacker needs privileged access to a system behind the same NAT as the victim. No public evidence of exploitation as of August 7.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Low urgency for you specifically, because the same-NAT requirement means this is an office-network and shared-hosting problem rather than a public web problem. Where it does apply is any client with a flat network where the guest wifi, the POS terminals and the back office all sit behind one router, which describes most of the trades and retail shops you work with. It's a legitimate reason to recommend network segmentation on the next site visit, and it costs them nothing from you.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/new-natjack-attacks-hijack-tcp-sessions.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Social engineering</span>
+            <span class="ver">August 8</span>
+            <h3>UNC6671 calls personal phones to get into company SaaS</h3>
+          </div>
+          <div class="story-body">
+            <p>A data extortion group is running voice phishing against personal devices rather than corporate ones, capturing credentials on the call and then deploying Python and PowerShell scripts to pull data out of cloud accounts. The personal-phone angle is the point, since it sits outside whatever mobile management and call filtering the company has bought.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every SMB you serve has the same hole, which is that the owner's cell is the real admin console and it has no controls on it at all. When you set up a client's Supabase or Google Workspace, turn on phishing-resistant MFA rather than SMS codes, and tell the owner plainly that nobody from you will ever call asking for a code. That sentence, said once at handoff, defeats most of this.</div>
+          <div class="refs">
+            <a href="https://thehackernews.com/2026/08/unc6671-vishing-attacks-target-personal.html" target="_blank" rel="noopener">The Hacker News</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> On your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Platform</span>
+            <span class="ver">August 8</span>
+            <h3>Vercel put Grok Imagine Image 2.0 on the AI Gateway as a preview</h3>
+          </div>
+          <div class="story-body">
+            <p>xAI's Imagine Image 2.0 is now available through Vercel's AI Gateway in preview, with image generation and text rendering. Yesterday's General AI brief covered the model landing second to GPT-Image-2 in both the Image Edit and Text-to-Image arenas, with the caveat that API access was listed as coming soon and therefore not automatable.</p>
+            <p>A gateway preview is not the same as a general xAI API, and preview status on Vercel means it can change or disappear. But it is a route to calling the model from code with billing you already have set up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This closes the gap that made yesterday's item a manual tool. Text rendering inside generated images is the specific thing that has forced you into Photoshop for client social assets, so spend thirty minutes putting a real client's product shot through it via the Gateway. If the text holds up, a monthly social-image package becomes something you can actually automate and bill for. Keep it off anything load-bearing while it's in preview.</div>
+          <div class="refs">
+            <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel Changelog</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Tooling</span><span class="txt">Backflip AI converts 3D scans into editable parametric CAD models in minutes instead of hours, aimed at industrial digitization. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag feature qh-tag">Platform</span><span class="txt">Hermes Agent gained Vercel infrastructure integration, giving it inference across 200+ models and isolated command execution. <span class="ver">Aug 7</span></span></li>
+            <li><span class="tag fix qh-tag">Guidance</span><span class="txt">PortSwigger's mitigation for the desync research: avoid HTTP/1.1 upstream, and where you can't, allow-list methods at both layers and restrict which may carry bodies. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag breaking qh-tag">Patch</span><span class="txt">Apache Traffic Server zero-day CVE-2026-63078 is patched, but public verification records were incomplete at disclosure, so confirm your build rather than trusting the version string. <span class="ver">Aug 8</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
