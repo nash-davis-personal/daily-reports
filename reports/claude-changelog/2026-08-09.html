@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-09" />
+  <meta name="report:title" content="Quiet window: no release since 2.1.226. Use the day to catch up on 2.1.224 and 2.1.225." />
+  <meta name="report:summary" content="Nothing shipped to the Claude Code changelog since 2.1.226 on August 8, so today's briefing is short: the top of the changelog is unchanged, and the only open work is the update and the carry-over items from the two releases already covered." />
+  <meta name="report:highlights" content="3" />
+
+  <title>Quiet window: no release since 2.1.226. Use the day to catch up on 2.1.224 and 2.1.225. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, August 9, 2026</span>
+        <span>◆</span><span>0 releases ◆ quiet window</span>
+      </div>
+      <h1>Quiet window: no release since 2.1.226. Use the day to catch up on 2.1.224 and 2.1.225.</h1>
+      <p class="standfirst">The top of the changelog is still <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">2.1.226, dated August 8</a>, which yesterday's briefing already covered. Sunday after a heavy week is a normal place for the release train to stop, so rather than pad this out, the rest of the page is the short list of things from the last two releases that are still sitting undone.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: nothing published since the 2026-08-08 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">Releases in window</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Changes</div></div>
+      <div class="stat"><div class="num">2.1.226</div><div class="lbl">Newest version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing published in the last 24 hours</h4><p>The newest changelog entry is still 2.1.226 (August 8, "Bug fixes and reliability improvements"). No action from today's source.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The <code>CLAUDE_CODE_OAUTH_TOKEN</code> fix is still the one to land</h4><p>Fixed in 2.1.225. If any scheduled run authenticates with that token and is still on an older build, it can break until restart.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Last week's feature drop is the real backlog</h4><p>Self-hosted runners, the <code>archive</code> plugin source and cross-session <code>SendMessage</code> all landed in 2.1.224 and none of it configures itself.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The window itself</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">no new version</span>
+            <h3>The changelog has not moved since yesterday's briefing</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.226 remains the top entry, and its single line reads "Bug fixes and reliability improvements." Yesterday's report covered it alongside 2.1.225. There is no 2.1.227 and no August 9 entry to summarize.</p>
+            <p>Worth keeping in proportion: the four releases before this covered roughly 130 changes in five days. A stopped day after that is the normal shape of the release train, and it does not signal anything about what comes next.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Skip the update-and-verify ritual today if you already ran it after 2.1.226. Spend the slot on the carry-over below instead, or on nothing at all. There is no changelog-driven work on the board.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · top of page</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Still open from the last window</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.225</span>
+            <h3>Get every unattended runner onto 2.1.225 or later</h3>
+          </div>
+          <div class="story-body">
+            <p>The transient-401 bug replaced a long-lived <code>CLAUDE_CODE_OAUTH_TOKEN</code> with a stored login's short-lived token and left headless sessions broken until the process restarted. Same release also fixed cross-session messages parking in headless sessions with no notice and no expiry.</p>
+            <p>Both failures only show up in long-running unattended work, which is precisely the category that nobody watches until it has been quietly failing for a while.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check the version on whatever machine runs your scheduled jobs, not the one you sit at. A quiet Sunday is the cheapest time to bounce a runner, and the next scheduled cadence will tell you whether it took.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.225</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.224</span>
+            <h3>The 2.1.224 features are unconfigured until you configure them</h3>
+          </div>
+          <div class="story-body">
+            <p>Three items from Thursday still need a deliberate decision: <code>claude self-hosted-runner</code> for running web, mobile and desktop sessions on your own machines (Team and Enterprise plans), the <code>archive</code> plugin source for installing plugins from a zip over HTTPS with optional SHA-256 pinning, and cross-session <code>SendMessage</code> with <code>ListAgents</code> on macOS and Linux.</p>
+            <p>The same release also removed the 200-subagent-per-session spawn cap, so long-running sessions no longer refuse new agents. Concurrency and depth limits still apply.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cross-session <code>SendMessage</code> is the one with near-term value for you, since it is what lets a Bisque build session hand off to a separate verification session rather than doing both in one context. Prove it works between two sessions you can watch before you put it anywhere near a scheduled job.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Nothing new to list. The most recent release carries only the line "Bug fixes and reliability improvements" with no itemized changes. <span class="ver">2.1.226</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

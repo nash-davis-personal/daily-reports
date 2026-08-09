@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-09" />
+  <meta name="report:title" content="Google dismantled DeepMind, and Hassabis is on his way out" />
+  <meta name="report:summary" content="Gemini development is consolidating in the Bay Area under Koray Kavukcuoglu, DeepMind no longer has a CEO, and Demis Hassabis has been moved to chairman in what former staff describe as an orderly exit. Anthropic is making Auto Mode the Claude Code default on August 14 after testing showed classifiers caught 89 percent of dangerous commands against 13.6 percent for human reviewers, Nvidia put up to $3B into a Texas power developer, and Amazon has a 7.65-gigawatt gas plant planned for Pecos County." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Google dismantled DeepMind, and Hassabis is on his way out — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://the-decoder.com/google-dismantles-deepmind-and-bets-on-a-fresh-start-as-hassabis-heads-for-the-exit/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Sunday, August 9, 2026</span>
+        <span>◆</span><span>Frontier labs ◆ agents ◆ AI infrastructure</span>
+      </div>
+      <h1>Google dismantled DeepMind, and Hassabis is on his way out</h1>
+      <p class="standfirst">The lab that produced AlphaGo and Gemini is being folded into Google as an ordinary subdivision: Gemini work is consolidating in the Bay Area under Koray Kavukcuoglu, the CEO title is gone, and Demis Hassabis has been moved up to chairman in what former staff read as a managed exit. In the same 48 hours Anthropic set a date to make Claude Code run itself by default, Nvidia bought a fifth of a Texas power developer, and Amazon's answer to the electricity problem turned out to be 35 gas turbines.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the August 8 edition</span>
+        <span>◆</span><a href="https://the-decoder.com/google-dismantles-deepmind-and-bets-on-a-fresh-start-as-hassabis-heads-for-the-exit/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">89%</div><div class="lbl">of dangerous commands caught by Auto Mode, against 13.6% by human reviewers</div></div>
+      <div class="stat"><div class="num">7.65 GW</div><div class="lbl">gas plant Amazon has planned in Pecos County, Texas</div></div>
+      <div class="stat"><div class="num">~1,500</div><div class="lbl">tokens per second from DiffusionGemma on an H100</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>DeepMind stopped being its own company</h4><p>All Gemini development moves to the Bay Area under Koray Kavukcuoglu, who runs day-to-day operations without a CEO title. Hassabis was made chairman and may leave outright within months. Chief scientist Jeff Dean is departing, and Sergey Brin's influence is growing.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Claude Code goes hands-off by default on August 14</h4><p>Auto Mode becomes the default for Pro, Max and Team. A classifier screens for dangerous or irreversible actions and prompt injection, and Anthropic does not bill for the classifier's own tokens. Enterprise still has to opt in.</p></div>
+        <div class="signal"><div class="n">03</div><h4>The approval prompt was worse than the robot</h4><p>Across 1,053 paid testers, human reviewers caught 13.6% of dangerous commands and Auto Mode caught 89%. Teams on Auto Mode shipped about 25% more pull requests. In 720 scripted attack attempts, none succeeded against Claude models in Auto Mode.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nvidia is buying power, not just selling chips</h4><p>Up to $3B into Lancium for roughly a 20% stake at about a $10B valuation. Lancium has 4 GW contracted in Texas and is developing up to 15 GW more, feeding OpenAI and Oracle data centers.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Google turned Gemma into a diffusion model on the cheap</h4><p>DiffusionGemma refines blocks of 256 tokens in parallel instead of one at a time, converted from Gemma-4-26B-A4B using under 10% of the original training token budget. Apache 2.0 weights are on Hugging Face.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Claude Code sessions can now talk to each other</h4><p>Sessions send text summaries across terminals on macOS and Linux, and Claude can push an update on its own when a change affects what another session is doing. Local on one machine, routed through Anthropic across machines.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The lab that made Gemini is now a department</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Restructure</span>
+            <span class="ver">August 9</span>
+            <h3>Google folded DeepMind into itself and promoted Hassabis toward the door</h3>
+          </div>
+          <div class="story-body">
+            <p>Google is centralizing AI development under its own control and ending DeepMind's separate existence. Gemini work is consolidating in the Bay Area, day-to-day operational leadership passes to Koray Kavukcuoglu in the US, and the DeepMind CEO role goes away. Demis Hassabis, who founded the lab, has been moved to chairman. Reporting from Pathfounders says he wanted to leave at the same time as chief scientist Jeff Dean and stayed on to avoid compounding a stock decline, and that he intends to concentrate on scientific work and his pharmaceutical startup Isomorphic Labs. He may exit fully within months.</p>
+            <p>A former Google manager quoted in the coverage puts it flatly: "the era of DeepMind as an independent actor is over." Sergey Brin's influence over AI direction is described as increasing. The account is assembled from The Guardian, Pathfounders, SemiAnalysis and Tim O'Reilly's newsletter rather than a Google announcement, so treat the internal detail as well-sourced reporting and not confirmed org chart.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Read this as a stability signal on the Gemini line, in the wrong direction. Reorgs of this size slow shipping and scramble roadmaps for a couple of quarters, and the people who set DeepMind's research agenda are leaving. If any client build has Gemini as its only model, that is now a single point of failure worth an afternoon: put the model call behind a thin adapter so Front Desk and Concierge can swap providers without a rewrite. You already have Claude in production, so the cheap version of this is making the provider a config value.</div>
+          <div class="refs">
+            <a href="https://the-decoder.com/google-dismantles-deepmind-and-bets-on-a-fresh-start-as-hassabis-heads-for-the-exit/" target="_blank" rel="noopener">The Decoder</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Anthropic's bet: the human in the loop was the weak link</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Default change</span>
+            <span class="ver">August 8</span>
+            <h3>Auto Mode becomes the Claude Code default on August 14, with the numbers to argue for it</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto Mode lets Claude Code work through a task without stopping for approval at each step. A classifier judges whether an action is dangerous or irreversible and interrupts only then, and it also watches for prompt injection. From August 14 this is the default for Pro, Max and Team plans. Enterprise customers keep the manual default unless they opt in. Anthropic does not charge for the tokens the classifier itself consumes, and the behavior was tested against Fable 5, Opus 5 and Sonnet 5.</p>
+            <p>The evidence is the interesting part. Across 1,053 paid testers, human reviewers approving commands one at a time caught 13.6 percent of the dangerous ones. The classifier caught 89 percent. Teams running Auto Mode produced roughly 25 percent more pull requests. A security audit ran 72 attack scenarios ten times each, and none of the 720 attempts succeeded against Claude models in Auto Mode. Internally the classifier killed about 2,000 processes that would have disrupted GPU training jobs. Anthropic's own caveat is worth keeping: "The classifier reduces risks but doesn't eliminate them."</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The 13.6 percent number is the one to internalize, because clicking approve on every command was your safety story too. Before the 14th, decide deliberately whether your client repos run Auto Mode, and check that the ones touching production Supabase or Vercel have a settings override rather than inheriting the new default by surprise. The 25 percent PR lift is also a real delivery-capacity claim you can test on your own backlog this week before you ever mention it to a client.</div>
+          <div class="refs">
+            <a href="https://the-decoder.com/anthropic-sets-claude-code-to-auto-mode-by-default-to-protect-developers-from-bad-approvals/" target="_blank" rel="noopener">The Decoder</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">August 8</span>
+            <h3>Claude Code sessions can message each other across terminals</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions can now send text summaries and messages back and forth instead of you copying context between windows. It works both ways: a session can answer a question from another session, and Claude can send an update unprompted when a change affects work happening elsewhere. On one machine the messages stay local. Across machines they route through Anthropic's servers, and only responses travel that path. Administrators can restrict the feature in settings.</p>
+            <p>macOS and Linux only. It is not available on Amazon Bedrock, Google Cloud Agent Platform, or Microsoft Foundry. Anthropic's documentation lists the intended uses as sharing insights, coordinating parallel workflows, and checking status on long-running tasks.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is aimed squarely at how you actually work, which is several client repos open at once with no shared memory between them. The concrete win is a long build in one terminal that tells the other terminal when it finishes rather than you checking. Note the cross-machine routing before you use it between the laptop and the desk Mac on client code, since that path goes through Anthropic rather than staying local.</div>
+          <div class="refs">
+            <a href="https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/" target="_blank" rel="noopener">The Decoder</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The buildout became a power business</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Capital</span>
+            <span class="ver">August 9</span>
+            <h3>Nvidia is putting up to $3B into a Texas power developer, and Amazon is building its own gas plant</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia is investing up to $3 billion in Lancium, taking roughly a 20 percent stake worth about $2 billion at a valuation near $10 billion. Lancium has 4 gigawatts of power contracted in Texas and is developing up to 15 gigawatts more, supplying sites that include OpenAI and Oracle data centers. A chip company buying a fifth of an electricity developer is a straightforward admission of where the constraint sits.</p>
+            <p>Amazon's version is more direct and much dirtier. The company has a 7.65-gigawatt gas plant planned for Pecos County, Texas, running 35 gas turbines and emitting up to 33 million tons of CO₂ a year, which would make it the largest-emitting power plant in the country. Amazon spokesperson Margaret Callahan acknowledged that "AI data centers could make hitting them harder" in reference to the company's climate targets.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nobody spends $3B on substations when inference is about to get cheap. Pair this with yesterday's 600x agent energy figure and stop assuming per-token prices fall forever on the schedule your margins quietly depend on. For anything you quote as a flat monthly AI retainer this month, put a usage ceiling in the contract and a renegotiation clause on model cost, so a provider price increase eats a conversation instead of your margin.</div>
+          <div class="refs">
+            <a href="https://the-decoder.com/ais-energy-appetite-drives-nvidia-and-amazon-to-pour-billions-into-massive-power-infrastructure/" target="_blank" rel="noopener">The Decoder</a>
+            <a href="https://techcrunch.com/2026/08/08/planned-amazon-data-center-could-become-the-biggest-climate-polluter-in-the-u-s/" target="_blank" rel="noopener">TechCrunch</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and moves</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Research</span>
+            <span class="ver">August 9</span>
+            <h3>DiffusionGemma hits ~1,500 tokens per second, and the conversion cost almost nothing</h3>
+          </div>
+          <div class="story-body">
+            <p>Google DeepMind turned the existing Gemma-4-26B-A4B into a text diffusion model rather than training one from scratch, spending under ten percent of the original training token budget. The conversion ran supervised fine-tuning followed by a combined reinforcement learning and sampler distillation stage. Instead of emitting one token at a time, the model refines blocks of 256 tokens in parallel, the way image models pull a picture out of noise. It reaches roughly 1,500 tokens per second on an H100 and about 71 percent averaged across LiveCodeBench-v6 and GPQA-Diamond. The weights shipped in mid-June under Apache 2.0 on Hugging Face; the technical report landed August 9.</p>
+            <p>Two honest limits. The speed advantage is a single-user phenomenon, and by about 32 concurrent requests it matches a standard autoregressive model. Quality still trails regular Gemma 4, with occasional repetition loops and weaker multimodal handling.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The concurrency ceiling kills this for a shared Concierge endpoint, and that is exactly why it fits the other case: a single-user tool where latency is the whole product. Think interactive drafting inside a client dashboard, or a local dev assistant. Apache 2.0 weights mean a client can run it on their own box with no per-token bill, which is a real answer to the SMB that refuses to send data to an API.</div>
+          <div class="refs">
+            <a href="https://the-decoder.com/googles-diffusiongemma-proves-you-dont-need-to-train-from-scratch-to-build-a-text-diffusion-model/" target="_blank" rel="noopener">The Decoder</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">August 8</span>
+            <h3>OpenAI bought NextSlide, and told everyone months later</h3>
+          </div>
+          <div class="story-body">
+            <p>NextSlide turned prompts, notes, documents and research into polished, editable presentations. OpenAI acquired it earlier in 2026 and the news only surfaced on August 8, which founder Ahmed Beshry described as coming a few months late. Terms were not disclosed. The team is now working on ChatGPT. Beshry previously co-founded Caper AI, the cashier-less checkout company Instacart bought in 2021 for $350 million.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Deck generation is being absorbed into ChatGPT, so treat "we'll build you an AI proposal generator" as a feature with a short shelf life and stop quoting it as a standalone product. The durable version is the part OpenAI cannot buy: a generator wired into one client's actual pricing, inventory and brand assets. Sell the integration.</div>
+          <div class="refs">
+            <a href="https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/" target="_blank" rel="noopener">TechCrunch</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Science</span><span class="txt">Google DeepMind's WeatherNext predicts cyclone track and intensity at the same time, which previous systems handled separately. <span class="ver">Aug 9</span></span></li>
+            <li><span class="tag breaking qh-tag">Fraud</span><span class="txt">Scammers are enrolling fake students at US community colleges and using AI to complete the coursework, collecting financial aid on the accounts. <span class="ver">Aug 9</span></span></li>
+            <li><span class="tag improve qh-tag">Legal</span><span class="txt">Britain's employment tribunals are backlogged after workers began drafting claims with ChatGPT, with reporting describing a hundredfold surge in applications. <span class="ver">Aug 9</span></span></li>
+            <li><span class="tag feature qh-tag">Research</span><span class="txt">Readers rated AI-generated short stories above human ones until they were told a machine wrote them, at which point the ratings inverted. <span class="ver">Aug 8</span></span></li>
+            <li><span class="tag fix qh-tag">Safety</span><span class="txt">TechCrunch argues the AI safety test itself is becoming a safety risk, as evaluation work increasingly requires building the capability being measured. <span class="ver">Aug 9</span></span></li>
+            <li><span class="tag new qh-tag">Tooling</span><span class="txt">Backflip AI converts 3D scans into editable parametric CAD models in minutes rather than hours. <span class="ver">Aug 8</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
