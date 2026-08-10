@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-10" />
+  <meta name="report:title" content="Second quiet day. The reason to update is the permission-bypass cluster in 2.1.222 and 2.1.223." />
+  <meta name="report:summary" content="Nothing has shipped since 2.1.226 on August 8, so this briefing skips the empty window and pulls forward the four security fixes and one privacy change that got buried under last week's feature releases." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Second quiet day. The reason to update is the permission-bypass cluster in 2.1.222 and 2.1.223. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Monday, August 10, 2026</span>
+        <span>◆</span><span>0 releases ◆ second quiet day</span>
+      </div>
+      <h1>Second quiet day. The reason to update is the permission-bypass cluster in 2.1.222 and 2.1.223.</h1>
+      <p class="standfirst">The top of <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">the changelog</a> is still 2.1.226, dated August 8, for the second briefing running. Yesterday's page already listed the obvious carry-over, so this one goes back a few releases and pulls out what got buried: four separate permission and sandbox escapes that were patched while everyone was reading the feature announcements.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: nothing published since 2026-08-08</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">Releases in window</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Days since 2.1.226</div></div>
+      <div class="stat"><div class="num">2.1.226</div><div class="lbl">Newest version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Two days, no release, and that is normal</h4><p>2.1.226 still tops the page. There was also no release on August 5 between 2.1.222 and 2.1.223, so a two-day gap is inside the usual rhythm.</p></div>
+        <div class="signal"><div class="n">02</div><h4>2.1.223 closed a real Bash permission bypass</h4><p>A crafted command could hide parts of itself from the permission check, and padded or invisible Unicode could hide part of a command from the approval dialog you actually read.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Worktree isolation only started isolating in 2.1.222</h4><p>Before that, worktree-isolated sessions and their subagents could run destructive git commands against your main checkout.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The feedback survey now uploads your CLAUDE.md</h4><p>2.1.224 changed the transcript share so that, with consent, it also sends the system prompt. Your global CLAUDE.md is part of that prompt.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The window itself</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">no new version</span>
+            <h3>Nothing has published since Saturday</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.226 is still the newest entry, dated August 8, carrying the single line "Bug fixes and reliability improvements." There is no August 9 or August 10 entry to summarize.</p>
+            <p>For proportion: the changelog also skips August 5, sitting between 2.1.222 on August 4 and 2.1.223 on August 6. Two consecutive days without a release has precedent within the same two-week stretch, so read this as the release train idling rather than as a signal.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No changelog-driven work today. If you have already updated past 2.1.226, close this page and go build. If you have not checked your version in a week, the next two stories are why that matters more than usual.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · top of page</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> What last week's feature drop buried</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">2.1.223</span>
+            <h3>Four permission escapes patched in one release</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.223 fixed a Bash permission bypass where a crafted command could hide parts of itself from permission checks, and separately fixed permission prompts so that commands padded with tabs or invisible Unicode can no longer hide part of the command from the approval dialog. It also stopped workflow scripts from using dynamic <code>import()</code> to run code outside the workflow sandbox, and closed a gap where an agent definition's <code>bypassPermissions</code> mode ignored the org bypass-permissions disable policy.</p>
+            <p>All four share a shape: the approval you clicked did not cover what actually ran. That is the failure mode that matters most on a machine where you approve a lot of commands quickly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the release floor. Anything below 2.1.223 that touches client repos should move up today, including whatever runs your scheduled jobs. You approve Bash constantly across Bisque, Studio C and Sonderwerks work, and the padded-command fix is the one that protects a prompt you skim rather than read.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">2.1.222</span>
+            <h3>Worktree isolation and hook restrictions both leaked</h3>
+          </div>
+          <div class="story-body">
+            <p>Worktree-isolated sessions and their subagents could run destructive git commands against the main checkout. Isolation now applies to file edits and Bash in every session type. The same release stopped PreToolUse auto-allow hooks from bypassing tool restrictions inside background agent tasks such as summaries, compaction and renames.</p>
+            <p>Worth naming plainly: if you reached for worktree isolation as the safety net that let you run agents unattended against a client repo, that net had a hole in it until August 4.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Re-check any loop or scheduled agent you built on worktree isolation before August 4 and confirm it is on 2.1.222 or later. If you wrote a PreToolUse auto-allow hook to smooth out an unattended run, re-read it now that it no longer overrides tool restrictions in background tasks, because its real blast radius was wider than you designed for.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.222</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Two settings that deserve a deliberate decision</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Privacy</span>
+            <span class="ver">2.1.224</span>
+            <h3>The feedback-survey transcript share now includes your system prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>Per the changelog, with your consent the share now also uploads the last request's model settings: the system prompt, which includes your <code>CLAUDE.md</code> instructions, plus tool definitions and model parameters. Secrets are redacted as before, and these fields are dropped first if the share is too large.</p>
+            <p>Redaction catches secrets. It does not catch client names, internal vault paths, deploy-scope guardrails or the account rules you keep in your global instructions, because none of that looks like a credential.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your global <code>CLAUDE.md</code> names Bisque, the Vercel team scopes and your vault layout. Treat the feedback survey as a client-confidentiality decision from now on and decline the transcript share on any session running client work, or accept it knowing exactly what goes with it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.224</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.223</span>
+            <h3>Context-window enforcement got stricter for 1M-context models</h3>
+          </div>
+          <div class="story-body">
+            <p><code>CLAUDE_CODE_DISABLE_1M_CONTEXT</code> now holds every Claude model with a native 1M window to 200K through auto-compaction instead of a fixed list, and a startup warning appears when auto-compaction is not holding the session to 200K. Separately, auto-compact now keeps sessions on unrecognized model IDs inside the assumed context window; <code>CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1</code> restores the old behavior.</p>
+            <p>Both changes trade some session length for predictable token spend on long runs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only relevant if you set that env var somewhere and forgot. If a long session starts compacting earlier than you expect, check for it before you start debugging anything else.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.223</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>/review</code> is now an alias of <code>/code-review</code>, and a bare <code>/code-review</code> reuses the effort level you typed last. <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/usage</code> no longer overattributes spend to MCP servers; a server's share now reflects only requests that consumed its tool results. <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP OAuth servers on macOS no longer fail with a burst of 401s after a keychain read times out. <span class="ver">2.1.225</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Gateway model discovery no longer hides Claude models registered under provider-prefixed IDs such as <code>vertex_ai/claude-*</code>. <span class="ver">2.1.223</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The startup connectivity check no longer hangs behind an HTTPS proxy; it times out with a clear message. <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag breaking qh-tag">Removed</span><span class="txt">Ultraplan is gone. <span class="ver">2.1.222</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Nothing new to list from the current window. 2.1.226 carries only "Bug fixes and reliability improvements" with no itemized changes. <span class="ver">2.1.226</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
