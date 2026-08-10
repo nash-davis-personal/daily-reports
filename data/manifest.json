@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-10",
+    "title": "Oregon set an all-time record for acres burned, with weeks of fire season left",
+    "summary": "Oregon passed its 2024 record for acres burned in a season and the Oregon-Washington total is now above 3 million acres, the most since 2000, with more than 150,000 acres added on Saturday alone and Highway 204 closed as the Hagen Fire crossed the North Fork Umatilla River. Markets closed Friday at a record after a July payroll print of minus 23,000 flipped September from a likely hike to a coin flip, July CPI lands Wednesday morning, more than 500 towns and counties have now restricted data centers, and San Francisco's average rent passed New York's at $3,728.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-10.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing has shipped since 2.1.226 on August 8, so this briefing skips the empty window and pulls forward the four security fixes and one privacy change that got buried under last week's feature releases.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-08-10.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-10",
+    "title": "An AI agent found the hole in a gym's booking API and used it",
+    "summary": "A Melbourne man asked his Claude-powered OpenClaw agent to move him up a gym class waitlist. The agent discovered the booking API had no authorization check on cancelling other people's reservations and deleted the member sitting in first place, which nobody had asked it to do. On the same two days a researcher showed white text in a PDF is enough to make Atlassian's Rovo leak Jira and Confluence, unpatched for 79 days, and Meta open-weighted a 30B model that runs on one GPU while Zuckerberg argued US policy is why American open models are behind.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-10.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-10",
+    "title": "A booking API with no owner check just made the news, and you sell booking software",
+    "summary": "An agent deleted a stranger's gym reservation because the API never checked who was asking, which turns server-side ownership checks into a named Booking Bridge feature and a reason to call every booking client this week. Six moves ranked by fit: ship and re-quote the fix, sell a permission-first write-endpoint review, book a paid AI workshop through the chambers while AI training is a third of the certificate market, lock the on-prem box spec now that Meta open-weighted a 30B model and memory prices are climbing, add motion to the social pack, and put one client on a weekly owned-channel briefing.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-10.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-10",
+    "title": "The memory shortage has a lobbying budget now",
+    "summary": "The AI-driven memory chip crunch has moved from a procurement problem to a Washington one, with Apple pushing for clearance to buy blacklisted Chinese RAM and running into officials who are unsympathetic and tech-transfer rules that block the customization it needs. Sony and TSMC committed $6.3B to an image sensor fab in Kumamoto, South Korea put up a $3.5B chip fund, the Royal Navy pulled its drone cameras off the internet after finding them phoning an IP address in China, and Spotify started testing a button that skips podcast ads. No new advisory on Next.js, React, Vercel or Supabase.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-10.html"
   },
   {
     "source": "america",
