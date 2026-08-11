@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-11",
+    "title": "345 salmonella cases in 27 states, and a recall that reached five major grocers",
+    "summary": "A multistate salmonella outbreak traced to jalapenos from a Sinaloa grower has reached 345 cases and 36 hospitalizations across 27 states, pulling Taylor Farms salsa and guacamole from Walmart, Target, Kroger, Whole Foods and Trader Joe's. Markets snapped their winning streak Monday as oil climbed on the closed Strait of Hormuz, July CPI lands Wednesday morning, and Oregon and Washington are past three million acres burned.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-11.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "August 10 ended the two-day gap with 2.1.227, a maintenance release whose one load-bearing item for TSD is a fix for every Bash command failing under claude-code-action on GitHub-hosted runners.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-08-11.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-11",
+    "title": "Anthropic spent a day buying land, power and a math result",
+    "summary": "In about 36 hours Anthropic launched a data-center joint venture with Macquarie and GIC, signed a 20-year 191MW lease worth $9.1B with a bitcoin miner, and published a Claude run that pushed a Riemann-zeta lower bound from 41.6% to 67.2% using 60 subagents and 31M output tokens. OpenAI shipped GPT-5.6-Cyber to vetted defenders after it found two chainable zero-days in Chrome's V8 sandbox.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-11.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-11",
+    "title": "Three companies lost customer data through a dashboard, and that is your invoice",
+    "summary": "A CVSS 10.0 zero-day in Metabase let attackers reach customer data at Framework, Tally and Kilo Code through a tool none of them wrote, while OpenAI shipped a model that finds and chains exploits. Six moves ranked by fit, led by a fixed-fee data access audit Grant and Bishop can sell this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-11.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-11",
+    "title": "A CVSS 10.0 in a dashboard tool took customer data out of three companies",
+    "summary": "An unauthenticated SQL injection in Metabase's password-reset endpoint, scored 10.0 and exploited as a zero-day since August 3, gave attackers admin on customer instances and pulled user data from Framework, Tally and Kilo Code. Intel upsized its first-ever share sale to $20 billion at $95, and no new advisory landed on Next.js, React, Vercel or Supabase.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-11.html"
   },
   {
     "source": "america",

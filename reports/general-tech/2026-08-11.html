@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-11" />
+  <meta name="report:title" content="A CVSS 10.0 in a dashboard tool took customer data out of three companies" />
+  <meta name="report:summary" content="An unauthenticated SQL injection in Metabase's password-reset endpoint, scored 10.0 and exploited as a zero-day since August 3, gave attackers admin on customer instances and pulled user data from Framework, Tally and Kilo Code. Intel upsized its first-ever share sale to $20 billion at $95, and no new advisory landed on Next.js, React, Vercel or Supabase." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A CVSS 10.0 in a dashboard tool took customer data out of three companies — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/metabase/metabase/security/advisories/GHSA-vwf4-m7j8-wcjf" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, August 11, 2026</span>
+        <span>◆</span><span>Security ◆ chips ◆ dev platform</span>
+      </div>
+      <h1>A CVSS 10.0 in a dashboard tool took customer data out of three companies</h1>
+      <p class="standfirst">Metabase patched an unauthenticated SQL injection in its password-reset endpoint that scored a maximum 10.0 and had been exploited as a zero-day since August 3, handing attackers admin on customer instances and, through them, the connected databases. Framework, Tally and Kilo Code have all told users their data was reached, while Intel upsized its first share sale since 1971 to $20 billion at $95 a share.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 10–11, 2026</span>
+        <span>◆</span><a href="https://github.com/metabase/metabase/security/advisories/GHSA-vwf4-m7j8-wcjf" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10.0</div><div class="lbl">Metabase CVSS, exploited in the wild</div></div>
+      <div class="stat"><div class="num">$20B</div><div class="lbl">Intel share sale, upsized from $15B</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New advisories on Nash's stack</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Metabase now if you self-host it</h4><p>Unauthenticated SQL injection on POST /api/session/reset_password. Every release from 1.58 up, branches 0.58 through 0.63.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The blast radius was the connected databases</h4><p>Admin access meant stored DB credentials, config changes and bulk export, not just dashboard views.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Three vendors disclosed downstream breaches</h4><p>Framework lost names, addresses, phones and login IPs. Tally lost emails and password hashes. Kilo Code lost Slack tokens.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Intel raised $20B at $95 a share</h4><p>Upsized from the $15B announced Monday. 210,526,315 shares, ~$19.7B net, closing August 12.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Nothing new to patch on your own stack</h4><p>No fresh Next.js, React, Vercel, Tailwind or Supabase advisory in this window. The React/Next RCE and DoS fixes from earlier this year still stand.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The security item to act on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 10</span>
+            <h3>Metabase's password-reset endpoint was an unauthenticated SQL injection, and someone found it first</h3>
+          </div>
+          <div class="story-body">
+            <p>The flaw sits in the publicly reachable <code>POST /api/session/reset_password</code> endpoint and carries a CVSS of 10.0. It affects every release from 1.58 onward, spanning the 0.58 through 0.63 branches, and it is tracked as GHSA-vwf4-m7j8-wcjf. Exploiting it gives a remote, unauthenticated attacker full administrator access to an instance, which in turn exposes the stored credentials for every database that instance connects to, plus config changes and bulk export.</p>
+            <p>Metabase found out the hard way. Its own Metabase Cloud platform was breached on August 3 by someone using the then-unknown flaw against customer instances. Metabase blocked the endpoints, shipped a patch within hours and auto-upgraded all cloud accounts. Fixed releases are x.58.24, x.59.21, x.60.17, x.61.11, x.62.9 and x.63.5. Self-hosted instances are the ones still exposed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: if you or any client runs self-hosted Metabase, upgrade to the fixed release for your branch today, then rotate every database credential that instance held — the patch does not undo stolen credentials. Broader lesson for client builds: an internal BI tool reachable from the internet is a full-database credential store with a login form in front of it. Put those behind Vercel access control or a VPN, not just a password.</div>
+          <div class="refs"><a href="https://github.com/metabase/metabase/security/advisories/GHSA-vwf4-m7j8-wcjf" target="_blank" rel="noopener">Metabase advisory</a> · <a href="https://thehackernews.com/2026/08/metabase-zero-day-exploited-in-wild.html" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Aug 10</span>
+            <h3>Framework, Tally and Kilo Code all lost customer data through the same vendor</h3>
+          </div>
+          <div class="story-body">
+            <p>Framework Computer said Metabase notified it on August 6 that its instance had been vulnerable and had been accessed on August 3. Exposed fields: names, email addresses, physical addresses, phone numbers and login IP addresses. Tally, the Belgian form-builder, disclosed email addresses and password hashes. Kilo Code, the AI coding platform now owned by Anaconda, disclosed names, emails and customers' Slack access tokens, which it invalidated immediately.</p>
+            <p>None of the three was itself breached. Each was breached through a dashboard tool it had pointed at its own production database.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a sales argument, not just a warning. Every SMB client you have runs at least one third-party tool with a live connection into their data, and none of them have an inventory of which ones. A one-page "what has read access to your database" audit is a real, chargeable first engagement and it opens the door to a retainer.</div>
+          <div class="refs"><a href="https://www.helpnetsecurity.com/2026/08/10/metabase-zero-day-framework-tally-kilo-code/" target="_blank" rel="noopener">Help Net Security</a> · <a href="https://www.bleepingcomputer.com/news/security/framework-tally-disclose-metabase-data-theft-attacks/" target="_blank" rel="noopener">BleepingComputer</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon keeps getting funded at a scale that is hard to picture</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 10</span>
+            <h3>Intel sold $20 billion of stock, its first public share sale since 1971</h3>
+          </div>
+          <div class="story-body">
+            <p>Intel announced a $15 billion underwritten offering Monday morning and priced it that evening at $20 billion: 210,526,315 shares at $95, roughly $19.7 billion net, with the deal expected to close August 12. Underwriters hold a 30-day option for more. Proceeds go to general corporate purposes, meaning the capital expenditure behind the foundry buildout.</p>
+            <p>The stock fell about 4% on the announcement, which is the ordinary reaction to roughly 3% dilution. It is worth holding both facts at once: Intel is diluting shareholders because the stock has surged around 175% this year, and it is doing so to fund capacity customers are asking for.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. It is a read on where the AI buildout is in its cycle — a company that avoided public equity raises for 55 years just decided the demand signal was worth the dilution. Compute supply keeps expanding, which is good for your input costs eventually and bad for anyone whose moat is access to GPUs.</div>
+          <div class="refs"><a href="https://www.intc.com/news-events/press-releases/detail/1779/intel-announces-upsize-and-pricing-of-20-billion-common" target="_blank" rel="noopener">Intel press release</a> · <a href="https://newsroom.intel.com/corporate/intel-announces-proposed-15-billion-common-stock-offering" target="_blank" rel="noopener">Intel Newsroom</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Clear</span>
+            <span class="ver">Aug 11</span>
+            <h3>No new Next.js, React, Vercel, Tailwind or Supabase advisory in this window</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new landed on the stack you ship on. The standing items are unchanged: the React and Next.js unauthenticated RCE pair in Server Function endpoint deserialization (CVE-2025-55182 and CVE-2025-66478), the memory-exhaustion DoS in React and Next.js (CVE-2026-23864), and the SSRF in WebSocket upgrade handling that only affects self-hosted Next.js on the built-in Node server. Vercel-hosted projects get platform-level blocking on the RCE request patterns, which is not a reason to skip the upgrade.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Quiet day means it is a cheap day to run <code>npm audit</code> across the client portfolio and clear the backlog. The SSRF one is the only item where self-hosting versus Vercel actually changes your exposure, and everything you run is on Vercel.</div>
+          <div class="refs"><a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a> · <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Tesla and SpaceX confirmed Terafab in Grimes County, Texas — $16.8B first phase, logic, memory, packaging and test on one site, at least 3,000 jobs, water drawn from Gibbons Creek Reservoir <span class="ver">Aug 6</span></span></li>
+            <li><span class="tag feature qh-tag">Deal</span><span class="txt">AMD closed a definitive agreement to buy Taalas, the Toronto startup that etches model weights directly into silicon instead of holding them in HBM; its HC1 encodes Llama 3.1 8B at roughly 17,000 tokens/sec/user near 200W <span class="ver">Aug 6</span></span></li>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Microsoft fixed critical issues across Azure, Entra and SharePoint and Apple patched a high-severity authentication bypass; CISA pushed organizations to patch exposed VPNs and segment networks against Gunra ransomware <span class="ver">Aug 10–11</span></span></li>
+            <li><span class="tag new qh-tag">Fintech</span><span class="txt">Cashi launched a global card that spends stablecoin balances as ordinary currency, another step in crypto rails showing up as plain payment infrastructure <span class="ver">Aug 11</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
