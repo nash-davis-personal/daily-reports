@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-11" />
+  <meta name="report:title" content="The quiet broke: 2.1.227 shipped five fixes and zero features. Only the GitHub Actions one is likely to reach you." />
+  <meta name="report:summary" content="August 10 ended the two-day gap with 2.1.227, a maintenance release whose one load-bearing item for TSD is a fix for every Bash command failing under claude-code-action on GitHub-hosted runners." />
+  <meta name="report:highlights" content="4" />
+
+  <title>The quiet broke: 2.1.227 shipped five fixes and zero features. Only the GitHub Actions one is likely to reach you. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, August 11, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.227</span>
+      </div>
+      <h1>The quiet broke: 2.1.227 shipped five fixes and zero features. Only the GitHub Actions one is likely to reach you.</h1>
+      <p class="standfirst">2.1.227 published on August 10, after yesterday's briefing went out, so this is the first look at it. Five bullets, all fixes and polish, and the only one with real blast radius is a CI failure that made every Bash command fail under <code>claude-code-action</code>.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything since the August 10 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Releases in window</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New features</div></div>
+      <div class="stat"><div class="num">2.1.227</div><div class="lbl">Newest version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>CI was fully broken for one Actions config</h4><p>Every Bash command failed under <code>claude-code-action</code> with <code>allowed_non_write_users</code> on GitHub-hosted runners. That is a total outage of the tool inside that pipeline, patched in 2.1.227.</p></div>
+        <div class="signal"><div class="n">02</div><h4>An expired login token could push you toward paid credits</h4><p>Feature flags were being evaluated without your subscription tier when a session started with an expired token, which could wrongly prompt Max plan users to enable usage credits for Fable.</p></div>
+        <div class="signal"><div class="n">03</div><h4>The typing path got faster where you actually type</h4><p>Fewer event-loop stalls on file-not-found suggestions and at-mention size checks — the two things that fire constantly while you compose a prompt with <code>@</code> file references.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nothing here changes what you can build or sell</h4><p>Zero new features, zero breaking changes, no agent or automation capability added. Update for the CI and billing fixes, then close the page.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one release</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.227</span>
+            <h3>Every Bash command failed under claude-code-action on GitHub-hosted runners</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog line is specific: every Bash command failing under <code>claude-code-action</code> with <code>allowed_non_write_users</code> on GitHub-hosted runners. Bash carries almost everything an agent does in CI — installs, builds, tests, git — so a workflow hitting this did not degrade, it stopped working.</p>
+            <p>The failure was scoped to that one setting on GitHub's own runners, which is exactly the kind of bug that looks like a flaky pipeline for days before anyone reads the release notes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have <code>claude-code-action</code> wired into any client repo — Bisque, Studio C, Sonderwerks — check whether it sets <code>allowed_non_write_users</code>, and pin the action to a version carrying 2.1.227 before you debug the workflow further. If you have been ignoring red runs on a Claude-driven job for the last few days, re-run one before you go hunting for a cause in your own YAML.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.227</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.227</span>
+            <h3>Expired login tokens made Max plan users look like they needed to buy credits</h3>
+          </div>
+          <div class="story-body">
+            <p>When a session started with an expired login token, feature flags were evaluated without the user's subscription tier attached. The visible symptom was a prompt telling Max plan users to enable usage credits for Fable — a paid-usage nudge aimed at people whose plan already covered them.</p>
+            <p>The interesting part is the mechanism rather than the prompt. A stale token silently downgraded what the client believed about the account, and the entitlement check ran on that wrong picture.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you enabled usage credits in the last week because a prompt told you to, go look at your billing settings and confirm that was a decision rather than a bug. This also joins the run of stale-token bugs from 2.1.224 and 2.1.225 — when Claude Code starts behaving as though you are on a different plan or a different auth state, re-login first and debug second.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.227</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Polish on the input path</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.227</span>
+            <h3>Fewer event-loop stalls on file suggestions and at-mention checks</h3>
+          </div>
+          <div class="story-body">
+            <p>The release cites performance work in two specific places: file-not-found suggestions, and at-mention size checks. Both run while you are typing, and both block the event loop when they run slowly, which is the class of lag that reads as the whole terminal hitching rather than as one feature being slow.</p>
+            <p>The slash-command menu also got a rendering pass in the same release — blue now marks only the selected row, matched characters are bolded instead of recolored, and emoji or accented command names keep their glyphs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do here. Worth knowing only because you drive Claude Code with <code>@</code> file references across large Next.js repos all day, and if the input has felt sticky in big projects, this release is the plausible cause of it feeling better rather than something you changed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.227</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/tui</code> no longer brings back a conversation that had been rewound to before its first message <span class="ver">2.1.227</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Slash-command menu: blue marks only the selected row, matched characters are bolded instead of recolored, and emoji or accented names keep their glyphs <span class="ver">2.1.227</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

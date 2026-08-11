@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-11",
+    "title": "The quiet broke: 2.1.227 shipped five fixes and zero features. Only the GitHub Actions one is likely to reach you.",
+    "summary": "August 10 ended the two-day gap with 2.1.227, a maintenance release whose one load-bearing item for TSD is a fix for every Bash command failing under claude-code-action on GitHub-hosted runners.",
+    "highlights": 4,
+    "path": "reports/claude-changelog/2026-08-11.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
