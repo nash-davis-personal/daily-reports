@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-12" />
+  <meta name="report:title" content="Everything Claude writes for your clients now carries an invisible mark" />
+  <meta name="report:summary" content="Anthropic is embedding imperceptible watermarks in Claude's text and C2PA provenance metadata in its files, everywhere Claude runs — the API, Claude Code and Cowork included — applied worldwide to satisfy an EU transparency rule that took effect August 2. No opt-out is documented and the detection tooling has not been published. Meta open-weighted a 30B agent model that runs on one 24GB consumer GPU under Apache 2.0, and Google's Gemini app crossed a billion monthly users." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Everything Claude writes for your clients now carries an invisible mark — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#8b5cf6; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, August 12, 2026</span>
+        <span>◆</span><span>Provenance ◆ local agents ◆ scale</span>
+      </div>
+      <h1>Everything Claude writes for your clients now carries an invisible mark</h1>
+      <p class="standfirst">Anthropic confirmed it is embedding imperceptible watermarks in Claude's text output and signed C2PA metadata in the files Claude produces, across the Platform API, claude.ai, Claude Code, Cowork and Tag. The trigger is an EU transparency rule that took effect August 2, and Anthropic is applying it worldwide, with no documented opt-out and no published way to detect the mark yet.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 11 – August 12 morning, 2026</span>
+        <span>◆</span><a href="https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Aug 2</div><div class="lbl">EU rule that triggered the watermark</div></div>
+      <div class="stat"><div class="num">&lt;20GB</div><div class="lbl">Meta's 30B agent model at 4-bit</div></div>
+      <div class="stat"><div class="num">1B</div><div class="lbl">Gemini app monthly users</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Watermarking happens at the model level</h4><p>The mark is embedded in the text itself and survives copy-paste. Anthropic says it may survive some editing, without saying how much.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The API is covered, not just the chat app</h4><p>Claude Platform API, claude.ai, Claude Code, Cowork and Tag, plus Claude via AWS, Google Cloud and Microsoft Foundry.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Detection tooling does not exist publicly yet</h4><p>Anthropic says technical documentation for detecting its watermarks is forthcoming. Right now nobody outside Anthropic can check.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Meta put a real agent model on a 24GB card</h4><p>Muse Glimmer, 30B dense, Apache 2.0, 131k context, quantized under 20GB, 3.1× decode speedup with its draft model.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Gemini's app crossed a billion monthly users</h4><p>Google's 14th product to hit that number, up from 900M a year ago, and 150M images generated per day.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Provenance landed, and it reaches your API calls</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">Aug 11</span>
+            <h3>Anthropic will watermark Claude's text and files everywhere Claude runs</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic said Claude models launched on or after August 2, 2026 carry marking at launch, and that it is retrofitting older models. Text gets an imperceptible watermark embedded in the output that travels with the text when it is copied and pasted. Files such as .png and .svg get signed provenance metadata following the C2PA standard. The coverage list is broad: the Claude Platform API, claude.ai, Claude Code, Claude Cowork, Claude Tag, and Claude accessed through AWS, Google Cloud and Microsoft Foundry.</p>
+            <p>The driver is the EU AI Act's Article 50 transparency obligations and the associated Code of Practice, both live since August 2, which require AI-generated content to be marked in a machine-readable way. Penalties run to €15 million or 3% of worldwide turnover. Anthropic chose to apply the marking globally rather than geofence it to the EU. Two things are still open: Anthropic's own help documentation says nothing about an opt-out, and it defers detection specifics to technical documentation it has not yet published. TechCrunch asked how much editing removes the mark and got no answer before publication.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every line of client-facing copy your pipeline generates through the Claude API is now marked, including landing-page text, blog posts, and the Concierge answers a client's customers read. Add one sentence to your service agreements disclosing that AI-assisted content may carry provenance marking, before a client discovers it from a detector instead of from you. The daily-reports HTML you publish is in scope too.</div>
+          <div class="refs"><a href="https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content" target="_blank" rel="noopener">Anthropic help center</a> · <a href="https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/" target="_blank" rel="noopener">TechCrunch</a> · <a href="https://artificialintelligenceact.eu/transparency-rules-article-50/" target="_blank" rel="noopener">AI Act Article 50</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> A capable agent that never leaves the machine</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Open weights</span>
+            <span class="ver">Aug 10–11</span>
+            <h3>Meta open-sourced Muse Glimmer, a 30B agent model built for one consumer GPU</h3>
+          </div>
+          <div class="story-body">
+            <p>Meta Superintelligence Labs released Muse Glimmer under Apache 2.0: a 30-billion-parameter dense transformer with a ~1.8B vision tower, 131,072-token context, and a January 4, 2026 knowledge cutoff. Full precision needs 55GB or more, but a 4-bit quantization drops the language model under 20GB, and Meta ships a K-Quant variant sized for 24GB VRAM at roughly 1% degradation. Weights are on Hugging Face with vLLM support from day one, and llama.cpp, MLX and ExecuTorch integrations following.</p>
+            <p>The target is always-on local agent work: function calling, long tool-use sessions, local coding, and LLM-as-a-judge evaluation. Meta reports 75.5 on MCP Atlas, 74.6 on DeepSearch QA, 51.2 on SWE-Bench Pro and 94.7 on AIME 2026, ahead of Gemma4-31B and Qwen3.6-27B on agentic tasks while trailing on terminal work and computer use. A block-diffusion drafter takes an RTX 5090 from 74.9 to 233.4 tokens per second.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the first open model good enough at tool calling to run the boring half of your agent workloads at zero marginal cost — reranking, classification, LLM-as-judge passes, draft generation — on a machine you own, with Claude reserved for the calls that need it. It is also the honest answer for a client who refuses to let customer data touch a third-party API, and given the watermark story above, unmarked local output is now a differentiator someone will eventually pay for.</div>
+          <div class="refs"><a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model" target="_blank" rel="noopener">Meta AI Research</a> · <a href="https://www.marktechpost.com/2026/08/10/meta-ai-releases-muse-glimmer/" target="_blank" rel="noopener">MarkTechPost</a> · <a href="https://www.phoronix.com/news/Meta-Muse-Glimmer" target="_blank" rel="noopener">Phoronix</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Scale on one side, slippage on the other</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Milestone</span>
+            <span class="ver">Aug 11</span>
+            <h3>The Gemini app passed a billion monthly users</h3>
+          </div>
+          <div class="story-body">
+            <p>Sundar Pichai announced that more than a billion people use the Gemini app monthly, making it Google's 14th product at that scale alongside Search, Gmail, Android, Maps, Chrome, Play and YouTube. The curve is steep: 400 million in May 2025, 900 million a year later, another 50 million by late July. More than 100 million of those users are on iOS, 63% talk to Gemini by voice, and the app generates over 150 million images a day.</p>
+            <p>Gemini VP Josh Woodward said task automation is rolling out across 40 apps, with more at the Made by Google event tonight in New York. For comparison, ChatGPT reports a billion weekly users.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your SMB clients' customers are now overwhelmingly people who ask an assistant before they open a browser. That makes structured data, clean headings and a crawlable FAQ the highest-leverage SEO work you can bill for this quarter, and it is an easy upsell on every site you already maintain.</div>
+          <div class="refs"><a href="https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/" target="_blank" rel="noopener">Google blog</a> · <a href="https://9to5google.com/2026/08/11/gemini-app-1-billion/" target="_blank" rel="noopener">9to5Google</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Slipping</span>
+            <span class="ver">Aug 12</span>
+            <h3>Qwen3.8-Max open weights have not shipped in the week Alibaba promised</h3>
+          </div>
+          <div class="story-body">
+            <p>When Alibaba released Qwen3.8-Max on August 3 — 2.4 trillion parameters, 95B active, 1M context, $2/$6 per million tokens — it said the weights for the Max-class model and a new Qwen3.8-27B would land during the week of August 10 on Hugging Face and ModelScope. That would have been the first open-weights release of a Qwen Max-class model. As of this morning neither repository exists and no license has been named.</p>
+            <p>The API model is real and shipping, and its headline claim is 86.1 on OSWorld-Verified against 83.2 for GPT-5.6 Sol Max and 85.0 for Claude Fable 5. The open-weights half is the part still outstanding.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do not plan any client architecture around self-hosted Qwen3.8 until the weights and, more importantly, the license actually appear. Muse Glimmer is Apache 2.0 and downloadable today, which makes it the safer local bet for anything you have to quote a price on this month.</div>
+          <div class="refs"><a href="https://www.digitalapplied.com/blog/qwen3-8-open-weights-checklist-before-download" target="_blank" rel="noopener">Digital Applied tracker</a> · <a href="https://venturebeat.com/technology/qwen3-8-max-arrives-with-a-bold-claim-it-outperforms-gpt-5-6-sol-max-and-fable-5-on-agentic-computer-use" target="_blank" rel="noopener">VentureBeat</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Ship</span><span class="txt">OpenAI pushed ChatGPT app updates across web, iOS and Android — better document and file handling, faster search, Library access, and Voice now accepting file uploads and working inside Projects <span class="ver">Aug 12</span></span></li>
+            <li><span class="tag fix qh-tag">People</span><span class="txt">Chloé Bakalar left OpenAI as head of ethics less than a year after joining <span class="ver">Aug 11</span></span></li>
+            <li><span class="tag improve qh-tag">Ship</span><span class="txt">Claude Code 2.1.228 fixed a session-cleanup bug that was deleting contents inside a project's memory folder — patch before your next agent run <span class="ver">see the Claude changelog brief</span></span></li>
+            <li><span class="tag feature qh-tag">Watch</span><span class="txt">Made by Google runs tonight at 6:00pm ET in New York, with Pixel 11, Pixel Watch 5 and further Gemini automation expected <span class="ver">Aug 12</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

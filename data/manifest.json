@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-12",
+    "title": "July inflation lands at 8:30 this morning with oil still stuck at the Strait",
+    "summary": "Economists expect July CPI at 0.2% for the month and 3.4% year over year, easing from 3.5%, with core at 2.5%. Stocks slipped Tuesday ahead of the print as Brent held near $89 on the closed Strait of Hormuz. The Ninth Circuit cleared more than 3,000 social-media addiction lawsuits to proceed against Meta, Google, TikTok and Snap, Oregon and Washington passed three million acres burned at an $820 million suppression cost, and a Marine veteran held in Russia for 1,666 days landed at Joint Base Andrews.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-12.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since the last briefing: 2.1.228, eighteen changes, eleven of them fixes — the load-bearing three are a memory-folder deletion bug, hardening on claude.ai-synced skills that may break your own, and a Write tool rule change that drops a forced read step.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-08-12.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-12",
+    "title": "Everything Claude writes for your clients now carries an invisible mark",
+    "summary": "Anthropic is embedding imperceptible watermarks in Claude's text and C2PA provenance metadata in its files, everywhere Claude runs — the API, Claude Code and Cowork included — applied worldwide to satisfy an EU transparency rule that took effect August 2. No opt-out is documented and the detection tooling has not been published. Meta open-weighted a 30B agent model that runs on one 24GB consumer GPU under Apache 2.0, and Google's Gemini app crossed a billion monthly users.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-12.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-12",
+    "title": "A billion people now ask an assistant before they open a browser",
+    "summary": "Gemini's app crossed a billion monthly users the same week Anthropic began watermarking every word Claude writes, and the FTC's AI disclosure penalty stands at $53,088 per violation. Six moves ranked by fit, led by a monthly AI-answer-visibility retainer Grant and Bishop can sell to every client TSD already maintains.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-12.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-12",
+    "title": "421 CVEs, one of them already being used to take SYSTEM on Windows",
+    "summary": "August Patch Tuesday fixed 421 vulnerabilities including CVE-2026-68820, a use-after-free in the Windows afd.sys socket driver that attackers are already exploiting for SYSTEM privileges. Nothing new landed on Next.js, React, Vercel or Supabase. Vercel now accepts Bun.serve as a function entrypoint with WebSockets on Fluid compute, self-hosted Supabase swapped Kong for Envoy this week, and Nvidia lined up six asset managers to mobilize $500 billion for AI compute.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-12.html"
   },
   {
     "source": "america",

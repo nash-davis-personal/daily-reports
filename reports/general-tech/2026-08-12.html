@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-12" />
+  <meta name="report:title" content="421 CVEs, one of them already being used to take SYSTEM on Windows" />
+  <meta name="report:summary" content="August Patch Tuesday fixed 421 vulnerabilities including CVE-2026-68820, a use-after-free in the Windows afd.sys socket driver that attackers are already exploiting for SYSTEM privileges. Nothing new landed on Next.js, React, Vercel or Supabase. Vercel now accepts Bun.serve as a function entrypoint with WebSockets on Fluid compute, self-hosted Supabase swapped Kong for Envoy this week, and Nvidia lined up six asset managers to mobilize $500 billion for AI compute." />
+  <meta name="report:highlights" content="6" />
+
+  <title>421 CVEs, one of them already being used to take SYSTEM on Windows — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, August 12, 2026</span>
+        <span>◆</span><span>Patch Tuesday ◆ your stack ◆ capital</span>
+      </div>
+      <h1>421 CVEs, one of them already being used to take SYSTEM on Windows</h1>
+      <p class="standfirst">Microsoft's August Patch Tuesday is the biggest of the year so far, and the one flaw under active attack is a use-after-free in afd.sys, the kernel driver behind the Windows Sockets API, which gets an attacker from ordinary user to SYSTEM. No new advisory landed on Next.js, React, Vercel or Supabase, so the web stack is quiet this week and the work is on the machines you and your clients actually sit at.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 10 – August 12 morning, 2026</span>
+        <span>◆</span><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">421</div><div class="lbl">CVEs fixed, one exploited zero-day</div></div>
+      <div class="stat"><div class="num">$500B</div><div class="lbl">Nvidia's third-party compute financing</div></div>
+      <div class="stat"><div class="num">8,288×</div><div class="lbl">Unitree IPO oversubscription</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Windows today</h4><p>CVE-2026-68820, a use-after-free in afd.sys, is being exploited to elevate to SYSTEM. 236 of the 421 fixes are Windows.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your web stack is clean this week</h4><p>No new advisory on Next.js, React, Vercel or Supabase. The last one was July's Server Actions DoS, fixed in 16.2.11 and 15.5.21.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel Functions now run Bun.serve directly</h4><p>WebSocket handlers included, on Fluid compute with Active CPU pricing, so idle connections cost nothing.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Self-hosted Supabase swapped its gateway</h4><p>Envoy replaced Kong as the default API gateway this week. Custom kong.yml or HTTPS listener means you opt back in.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Nvidia turned GPUs into collateral</h4><p>Six asset managers, over $500 billion of third-party capital, structured so the buildout never touches Nvidia's balance sheet.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Humanoid robots got a public comp</h4><p>Unitree's Shanghai IPO drew roughly $1.2 trillion in orders against a $904 million offer.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Aug 11</span>
+            <h3>CVE-2026-68820: a socket-driver bug attackers are already using for SYSTEM</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft shipped fixes for 421 CVEs on August 11. The one under active exploitation is CVE-2026-68820, a use-after-free in afd.sys, the kernel-mode driver behind the Windows Sockets API. A crafted application triggers a race condition and elevates to SYSTEM. Researchers point at nation-state activity based on the history of similar driver bugs, which in practice means it will be commodity tooling soon.</p>
+            <p>Also worth pulling out of the pile: CVE-2026-62832, a publicly disclosed User Profile Service elevation-of-privilege; remote code execution in Windows DNS, Deployment Services TFTP, Microsoft QUIC and HPC Pack; and CVE-2026-62911 in Exchange Server. The breakdown is 236 Windows fixes, 98 in Office, 30 in SharePoint, 26 in developer tools, 17 in Azure. Separately, CISA added CVE-2026-8037, a command injection in Progress LoadMaster, to its Known Exploited Vulnerabilities catalog, and the SharePoint auth-bypass disclosed August 6 as SCTPhantom (CVE-2026-64564) is still worth confirming as patched on any client running SharePoint on-prem.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update your own Windows machines and say the words "Patch Tuesday, elevation of privilege, patch now" in your next client check-in. For clients on Microsoft 365 with an on-prem Exchange or SharePoint box still running, this is a billable morning of work you can offer today. On the web side there is nothing to do, which is the useful half of the answer.</div>
+          <div class="refs"><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">SecurityWeek</a> · <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Last Next.js advisory (July)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Changes on the stack you ship</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Aug 10</span>
+            <h3>Vercel Functions accept Bun.serve as an entrypoint, WebSockets included</h3>
+          </div>
+          <div class="story-body">
+            <p>The Bun runtime for Vercel Functions now takes <code>Bun.serve()</code> as a function entrypoint. You write a <code>server.ts</code> at the project root with a routes map, set <code>"bunVersion": "1.x"</code> in vercel.json, and the server you ran locally deploys as-is with no framework wrapper. Add a <code>websocket</code> handler and call <code>server.upgrade(request)</code> inside fetch to promote matching requests.</p>
+            <p>The pricing detail is the part that matters. WebSocket connections run on Fluid compute with Active CPU pricing, so you are billed for time spent processing messages rather than for holding the connection open.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This removes the reason you have been avoiding realtime on client projects. A live booking-availability feed, an agent status stream in Concierge, or a "your quote is ready" push no longer needs a separate always-on server, and an idle connection at 2am costs nothing. Try it on one internal project before you put it in a client quote.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/bun-serve-entrypoint-for-vercel-functions" target="_blank" rel="noopener">Vercel changelog</a> · <a href="https://vercel.com/docs/functions/websockets" target="_blank" rel="noopener">WebSockets docs</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Week of Aug 9</span>
+            <h3>Self-hosted Supabase now defaults to Envoy instead of Kong</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase made Envoy the default API gateway for self-hosted deployments this week, replacing Kong. Anything depending on Kong's HTTPS listener, a custom <code>kong.yml</code>, or the <code>kong</code> service name by hostname will break on upgrade unless you explicitly opt back in. Separately, since August 5 specifying an explicit version when creating or updating a Postgres extension on Supabase is deprecated.</p>
+            <p>Hosted Supabase projects are unaffected by the gateway change.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your client projects are on hosted Supabase, so this is a no-op today. It matters the first time a client asks to self-host for data-residency reasons, which given the AI-provenance rules in this morning's General AI brief is a conversation that is coming. Note the extension-version deprecation in any migration scripts you reuse.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Capital is buying the physical layer</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 10–11</span>
+            <h3>Nvidia lined up six asset managers to mobilize over $500 billion for AI compute</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia signed memorandums of understanding with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR to establish independent AI compute infrastructure financing platforms, targeting more than $500 billion of third-party capital over time. Nvidia is not lending. The six partners underwrite and deploy capital through their own platforms, and Nvidia connects its customers to that capital. The buildout stays off Nvidia's balance sheet.</p>
+            <p>The intent is to make GPU compute a financeable asset class in the way commercial real estate or toll roads are — something you borrow against on a long amortization. Jensen Huang called the chips an "investable asset" on CNBC. Deals are expected to reach market within months.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to buy. The read is that inference capacity keeps expanding on someone else's balance sheet, which supports the case that per-token prices trend down over the next two years. Keep quoting Managed AI retainers on today's costs and let the margin improve underneath you.</div>
+          <div class="refs"><a href="https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital" target="_blank" rel="noopener">Nvidia newsroom</a> · <a href="https://www.cnbc.com/2026/08/10/nvidia-wall-street-asset-managers-500-billion-ai-push.html" target="_blank" rel="noopener">CNBC</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 11</span>
+            <h3>Sony and TSMC put $4.7 billion into a Japanese image-sensor venture</h3>
+          </div>
+          <div class="story-body">
+            <p>Sony Semiconductor Solutions and TSMC agreed to form Advanced Vision Semiconductor Manufacturing Corp in Kumamoto, next to TSMC's existing JASM plant. Sony is the controlling shareholder at ¥465 billion (about $2.92 billion) including a cash-and-asset transfer of its newly built Kumamoto factory; TSMC puts in ¥282 billion. Sony leads core sensor technology, product planning and design; TSMC supplies the advanced process. Volume production targets 2029, with additional funding assumed to depend on Japanese government support.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A 2029 production date on smartphone camera sensors is background, not action. File it as evidence that the chip supply chain keeps concentrating in Japan and Taiwan, which is the real variable behind hardware costs on anything you spec for clients.</div>
+          <div class="refs"><a href="https://www.sony-semicon.com/en/news/2026/2026081101.html" target="_blank" rel="noopener">Sony Semiconductor</a> · <a href="https://www.investing.com/news/stock-market-news/tsmc-sony-to-invest-47-billion-in-joint-venture-for-image-sensors-4851145" target="_blank" rel="noopener">Reuters via Investing.com</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Robots and aircraft change hands</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Markets</span>
+            <span class="ver">Aug 10–11</span>
+            <h3>Unitree's Shanghai listing drew about $1.2 trillion in orders</h3>
+          </div>
+          <div class="story-body">
+            <p>Unitree Robotics priced its STAR Market IPO at 150.8 yuan on August 6, selling 40.45 million new shares — 10% of enlarged share capital — to raise 6.1 billion yuan (roughly $904 million) at a valuation near $9 billion. Retail demand ran to about 8,288 times the offer, roughly 9.8 million orders and 8.1 trillion yuan of subscription value, with a lot-winning rate around 0.018%. It is the first pure-play humanoid robot company to list on a mainland Chinese exchange.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing actionable, and the valuation math (219× earnings) is its own warning. The useful signal is that "humanoid robotics" now has a public comparable, which means the AI-adjacent hardware narrative has somewhere concrete to point. Expect it in client conversations as a reason they think everything is about to change.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/stocks/articles/unitree-robotics-ipo-oversubscribed-8-175125684.html" target="_blank" rel="noopener">Reuters via Yahoo Finance</a> · <a href="https://www.bloomberg.com/news/articles/2026-08-10/unitree-s-shanghai-ipo-5-526-times-subscribed-by-retail-buyers" target="_blank" rel="noopener">Bloomberg</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">Aug 10–11</span>
+            <h3>Archer is buying Wisk, Insitu and SkyGrid from Boeing for equity</h3>
+          </div>
+          <div class="story-body">
+            <p>Archer Aviation signed definitive agreements to acquire three Boeing subsidiaries: Wisk Aero's autonomous eVTOL program, Insitu's uncrewed aircraft business, and SkyGrid's airspace-management software. Boeing takes a stake of nearly 20% in Archer, agrees to invest up to $55 million in an upcoming Archer round, and keeps cross-licensed access to Wisk's autonomous flight systems for its own commercial and defense platforms. Closing is expected by the end of 2026 subject to regulatory review.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Consolidation in a capital-hungry sector, paid in stock rather than cash. Nothing to act on, but it is a clean example of the pattern where the incumbent trades an unprofitable program for a stake in whoever might finish it.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/10/archer-buys-former-rival-wisk-aero/" target="_blank" rel="noopener">TechCrunch</a> · <a href="https://www.cnbc.com/2026/08/10/boeing-evtol-archer-stake.html" target="_blank" rel="noopener">CNBC</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Ship</span><span class="txt">Vercel Connect added observability — filter events, track metrics, forward to any log drain — and CLI setup for 100+ connectors, so you configure integrations from the terminal instead of the dashboard <span class="ver">Aug 11</span></span></li>
+            <li><span class="tag improve qh-tag">Ship</span><span class="txt">Vercel Sandbox now runs on Vercel Managed Images, open-source bases with Node.js, Python and coding agents preinstalled <span class="ver">Aug 10</span></span></li>
+            <li><span class="tag improve qh-tag">Ship</span><span class="txt">Vercel's security scanner got one-command onboarding via <code>npx deepsec init</code> — worth a pass over a client repo <span class="ver">Aug 10</span></span></li>
+            <li><span class="tag feature qh-tag">Ship</span><span class="txt">Enterprise Managed Users hit general availability on Vercel, and LaunchDarkly landed as a first-party Marketplace integration <span class="ver">Aug 11</span></span></li>
+            <li><span class="tag new qh-tag">Watch</span><span class="txt">Made by Google runs tonight at 6:00pm ET in New York: Pixel 11, Pixel 11 Pro Fold, Pixel Watch 5 and a Pixel Tag expected, with pre-orders opening the same day <span class="ver">Aug 12</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
