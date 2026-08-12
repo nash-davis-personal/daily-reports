@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-12",
+    "title": "2.1.228 fixed a session cleanup that was deleting contents inside a project's memory folder. Read that one first.",
+    "summary": "One release since the last briefing: 2.1.228, eighteen changes, eleven of them fixes — the load-bearing three are a memory-folder deletion bug, hardening on claude.ai-synced skills that may break your own, and a Write tool rule change that drops a forced read step.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-08-12.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

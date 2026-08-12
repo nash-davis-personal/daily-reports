@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-12" />
+  <meta name="report:title" content="2.1.228 fixed a session cleanup that was deleting contents inside a project's memory folder. Read that one first." />
+  <meta name="report:summary" content="One release since the last briefing: 2.1.228, eighteen changes, eleven of them fixes — the load-bearing three are a memory-folder deletion bug, hardening on claude.ai-synced skills that may break your own, and a Write tool rule change that drops a forced read step." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.228 fixed a session cleanup that was deleting contents inside a project's memory folder. Read that one first. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, August 12, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.228</span>
+      </div>
+      <h1>2.1.228 fixed a session cleanup that was deleting contents inside a project's memory folder. Read that one first.</h1>
+      <p class="standfirst">One release landed since yesterday's briefing — 2.1.228, dated August 11 — and it is a cleanup drop: eighteen changes, eleven of them fixes, zero new features. Three items actually reach your daily loop: the memory-folder deletion bug, a hardening pass on claude.ai-synced skills that can break skills you wrote, and a Write tool rule change that removes a forced read before an overwrite.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.227</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">18</div><div class="lbl">changes in 2.1.228</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">of those are fixes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Session cleanup was deleting inside project memory folders</h4><p>A cleanup routine removed contents inside a project's memory folder. Fixed in 2.1.228. Your durable memory lives in the git-backed command vault, which is why this one likely cost you nothing.</p></div>
+        <div class="signal"><div class="n">02</div><h4>claude.ai-synced skills got locked down — and may now break</h4><p>Synced skills no longer shadow local commands or MCP prompts, and their bodies no longer run <code>!</code> commands or expand <code>@</code> files on your machine. Any synced skill that leaned on those stops working.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Write can now overwrite an unread file for newer models</h4><p>The Write tool matches the Edit tool's rules for newer models: overwrite without a read-first this session. One fewer round trip when you regenerate a whole file.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The frozen-but-alive terminal is fixed</h4><p>Interactive sessions could stop redrawing entirely while the process kept working, after a rare internal layout error. If you have been killing sessions you assumed were hung, some of them were finishing.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Remote Control <code>/resume</code> leaked history between sessions</h4><p>Resuming while connected could push the resumed conversation's title or history into the connected session. Client-context bleed across a phone-driven session is a real confidentiality problem.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Two things that were quietly deleting data</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Session cleanup deleted contents inside a project's memory folder</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog entry is one line: "Fixed session cleanup deleting contents inside a project's memory folder." No detail on trigger conditions or blast radius, so treat the affected window as "any version before 2.1.228."</p>
+            <p>This lands on the exact directory the harness manages per project — <code>~/.claude/projects/&lt;project&gt;/memory/</code> — rather than on anything you keep under version control.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your July migration to a git-backed command vault is what made this a non-event. The harness memory dirs are pointer files now, and the vault is a real repo with history on two Macs. If you ever get tempted to move durable memory back into a harness-managed folder to save a step, this is the counter-argument. Upgrade, then spot-check that <code>~/.claude/projects/-Users-nashdavis-Documents/memory/MEMORY.md</code> still holds its pointer line.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Background plugin-cache cleanup wiped symlinked dev checkouts</h3>
+          </div>
+          <div class="story-body">
+            <p>Background cleanup deleted a plugin's cache when its only installed version was a symlinked development checkout. The symlink target is a working directory you are editing, so the deletion reached live work.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only bites if you develop plugins locally by symlinking a checkout into the plugin dir. If you have been doing that for any TSD tooling, confirm the checkout is intact and that it has a remote before you upgrade and forget about it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Trust boundaries tightened on synced content</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.228</span>
+            <h3>Skills synced from claude.ai are now treated as untrusted input</h3>
+          </div>
+          <div class="story-body">
+            <p>Four changes in one bullet. Synced skills can no longer shadow local commands or MCP prompts. Their descriptions are sanitized and labeled. And on your machine, their bodies no longer execute <code>!</code> commands or expand <code>@</code> file references.</p>
+            <p>The first three are pure hardening. The fourth is a capability removal: a synced skill that shelled out through <code>!</code> or pulled in a file with <code>@</code> silently loses that behavior after upgrade.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Audit the skills you actually invoke. Anything you authored on claude.ai and sync down — the advisor skills, the humanizer, the vault-refresh helpers — needs a check for <code>!</code> or <code>@</code> in its body. If one depends on either, move it to a local <code>.claude/skills/</code> file instead of relying on sync. Name collisions are the other thing to verify: a synced skill that used to win over a local slash command now loses, so check that the version firing is the version you meant.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Remote Control <code>/resume</code> leaked the resumed conversation into the connected session</h3>
+          </div>
+          <div class="story-body">
+            <p>Running <code>/resume</code> while connected could leak the resumed conversation's title or history into the session on the other end.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run three client accounts out of one machine. A Bisque conversation title surfacing in a session you are driving for Studio C is the kind of thing that is embarrassing once and contractual twice. Upgrade before the next phone-driven session, and avoid <code>/resume</code> over Remote Control until you have.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Marketplace entries stopped inheriting another tier's custom headers</h3>
+          </div>
+          <div class="story-body">
+            <p>A settings-merge bug let a marketplace entry redefined in a higher-precedence settings tier inherit custom headers from a different tier. Marketplace entries now merge as whole entries.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Custom headers on a marketplace entry usually carry auth. If you have marketplace config in more than one settings tier, an entry could have been sending credentials meant for a different registry. Grep your settings files for marketplace blocks with headers and confirm each one points where you think.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The build loop</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.228</span>
+            <h3>Write no longer forces a read before overwriting, on newer models</h3>
+          </div>
+          <div class="story-body">
+            <p>The Write tool now lets newer models overwrite an existing file they have not read this session, matching the Edit tool's rules. Older models still require the read first.</p>
+            <p>The practical effect is one fewer tool round trip every time a file gets regenerated wholesale rather than patched. The tradeoff is the obvious one: a blind overwrite discards whatever was there, with no diff step in between.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a throughput win on the work you do most — scaffolding a Next.js route, regenerating a Tailwind config, rewriting a component from a spec. It also removes the accidental safety net that read-first provided. Keep the checkout clean before you hand off a batch of file rewrites, so <code>git diff</code> is the review step that the forced read used to be.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Interactive sessions could stop redrawing while still running</h3>
+          </div>
+          <div class="story-body">
+            <p>A rare internal layout error could stop an interactive session from redrawing entirely. The process kept going underneath a frozen screen, which reads as a hang from the outside.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have a habit of Ctrl-C-ing a session that looks stuck on a long build or migration, some of those were live and about to finish. After upgrading, give a silent session more rope before killing it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.228</span>
+            <h3>Long-session papercuts: <code>/tui</code> model reverts and blind compaction</h3>
+          </div>
+          <div class="story-body">
+            <p>Two items for anyone who keeps sessions alive for hours. <code>/tui</code> could revert the session to an earlier model when <code>/model</code> had been changed since the last response — you would end up on a different model than the one you selected, silently. And compaction now surfaces its retry countdown and stall hint instead of showing only a progress bar.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>/tui</code> one matters if you switch models mid-session, which you do when a task escalates. Worth re-checking <code>/status</code> after any <code>/tui</code> toggle on versions before 2.1.228. The compaction hint means a stalled compaction on a long Bisque session now tells you it is stalled rather than looking like slow progress.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent-to-agent messaging becomes readable</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.228</span>
+            <h3>Cross-session messages display inline with their sender</h3>
+          </div>
+          <div class="story-body">
+            <p>Cross-session messaging shipped in 2.1.224. In 2.1.228 the sender and body render inline instead of collapsing to a single line, and messages sent to Remote Control sessions on other machines show your Remote Control session name as the sender. A companion fix stops cross-session messaging from starting without an inbox in the first session after an install or upgrade.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the feature to watch for multi-repo work — a session in the Bisque checkout messaging one in Sonderwerks without you relaying by hand. Readable inline messages are what make it debuggable enough to actually try. Worth one experiment on a low-stakes pair of repos before you build any routine around it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.228</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vertex AI credential handling: expired or missing Google Cloud credentials now fail in seconds instead of retrying for minutes <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude self-hosted-runner</code> no longer fails every session on a fresh runner when the <code>checkout</code> hook fails for a repo the session does not push to; that repo is skipped with a warning <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runners no longer end sessions in the gap between a background task finishing and the follow-up turn starting <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: <code>git</code> / Git Bash is found when Claude Code launches from a parent folder of the git installation <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The deferred-tools reminder is no longer occasionally sent to the model twice after a skill invocation <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Terminal title busy-spinner glyphs updated to reduce tab-bar jitter on some terminals <span class="ver">2.1.228</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Removed the outdated note about auto mode sessions costing slightly more from the first-use notice on Pro, Max, and Team <span class="ver">2.1.228</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
