@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-12",
+    "title": "TSD Daily — Wednesday, August 12, 2026",
+    "summary": "Anthropic starts watermarking every word Claude writes, Meta open-sources a 30B agent model that runs on one consumer GPU, Microsoft patches 421 CVEs including an exploited zero-day, and July inflation lands this morning.",
+    "file": "audio/2026-08-12.mp3",
+    "durationSec": 412,
+    "bytes": 4948461
+  },
+  {
     "date": "2026-08-11",
     "title": "TSD Daily — Tuesday, August 11, 2026",
     "summary": "A dashboard zero-day at CVSS 10.0 pulled customer data out of Framework, Tally and Kilo Code, Anthropic spent 36 hours buying power and a Riemann-zeta result, a 345-case salmonella outbreak hit five national grocers on date codes still in shelf life, and the money move is a fixed-fee data access audit you can sell this week.",
