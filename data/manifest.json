@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-14",
+    "title": "Subagent forking is on by default in 2.1.232: forked agents inherit your full conversation and prompt cache. That is the throughput change in this window.",
+    "summary": "Three releases landed since the last briefing (2.1.229, 2.1.231, 2.1.232) totaling 81 logged changes, and the load-bearing ones are default-on subagent forking, two MCP OAuth fixes that unblock sign-ins that were failing, and stricter permission gates on /commit-push-pr and nested git repos.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-14.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

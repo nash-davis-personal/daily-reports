@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-14" />
+  <meta name="report:title" content="Subagent forking is on by default in 2.1.232: forked agents inherit your full conversation and prompt cache. That is the throughput change in this window." />
+  <meta name="report:summary" content="Three releases landed since the last briefing (2.1.229, 2.1.231, 2.1.232) totaling 81 logged changes, and the load-bearing ones are default-on subagent forking, two MCP OAuth fixes that unblock sign-ins that were failing, and stricter permission gates on /commit-push-pr and nested git repos." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Subagent forking is on by default in 2.1.232 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, August 14, 2026</span>
+        <span>◆</span><span>3 releases ◆ 2.1.229 → 2.1.232</span>
+      </div>
+      <h1>Subagent forking is on by default in 2.1.232: forked agents inherit your full conversation and prompt cache. That is the throughput change in this window.</h1>
+      <p class="standfirst">Three releases since the last briefing — 2.1.229 (Aug 12), 2.1.231 and 2.1.232 (both Aug 13) — and 2.1.232 alone carries 49 bullets, the biggest drop in weeks. Four things reach your daily loop: default-on subagent forking, two MCP OAuth fixes that unblock sign-ins that have been failing, a <code>/commit-push-pr</code> change that stops auto-approving destructive git flags, and per-repository trust confirmation for nested git repos.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.228</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">releases in window</div></div>
+      <div class="stat"><div class="num">81</div><div class="lbl">logged changes</div></div>
+      <div class="stat"><div class="num">49</div><div class="lbl">in 2.1.232 alone</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Subagent forking is on by default</h4><p>A <code>subagent_type: "fork"</code> subagent now inherits the full conversation and the prompt cache. Non-teammate agent spawns in interactive sessions also run in the background by default. Delegation stops costing a cold re-read of context.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Two MCP OAuth fixes shipped back to back</h4><p>2.1.231 fixed sign-in failing with a redirect URI mismatch on servers using a pre-registered OAuth client. 2.1.229 fixed strict authorization servers by switching the redirect URI to <code>127.0.0.1</code>. Retry the connectors you gave up on.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>/commit-push-pr</code> no longer auto-approves dangerous flags</h4><p><code>--force</code>, <code>--amend</code>, <code>--no-verify</code> and friends now stop for approval inside that command. Your Bisque push loop will prompt where it used to sail through.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nested git repos each need their own trust confirmation</h4><p>A nested repository stopped inheriting trust from its parent directory. Expect a fresh trust prompt anywhere you have a repo inside a repo.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Workflow fan-outs now reuse the cached prompt prefix</h4><p>Sibling agents sharing a prefix are staggered so later ones read the cache instead of re-paying for it. Straight token savings on every fan-out you run.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Dead MCP servers stop costing you 30 seconds</h4><p>A server that fails to answer the protocol-version probe, or answers it malformed, no longer holds the full 30-second connect timeout. Startup gets its time back.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent throughput and token spend</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.232</span>
+            <h3>Subagent forking flipped to on by default</h3>
+          </div>
+          <div class="story-body">
+            <p>Two changes in one bullet. A <code>subagent_type: "fork"</code> subagent inherits the full conversation and the prompt cache, so a forked agent starts already knowing what the parent session knows. And non-teammate agent spawns in interactive sessions now run in the background by default, so spawning one stops blocking the turn you are in.</p>
+            <p>The economics matter more than the ergonomics. A cold subagent re-reads context from scratch and pays for it; a fork reads the cache.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This makes delegation cheap enough to be the default on long client sessions. On a Bisque or Sonderwerks build where you have already loaded the schema, the component tree and the deploy history into context, forking a subagent to chase a side question no longer costs a second full context load. Watch the flip side: background-by-default means spawned agents finish while you have moved on, so check <code>/tasks</code> before you assume nothing ran.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.232</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improvement</span>
+            <span class="ver">2.1.229</span>
+            <h3>Workflow fan-outs stagger same-prefix siblings to hit the cache</h3>
+          </div>
+          <div class="story-body">
+            <p>When a workflow fans out to sibling agents that share a prompt prefix, they are now staggered so the later ones read the cached prefix instead of re-paying for it. The stagger is tunable off with <code>CLAUDE_CODE_WORKFLOW_PREFIX_STAGGER_MS=0</code>.</p>
+            <p>Paired with this, <code>/code-review</code> at high, xhigh and max effort now runs in a background agent like the other levels (2.1.232).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every wide fan-out you run gets cheaper with no change on your end. The <code>/code-review</code> change is the one you will feel day to day: high-effort reviews stop pinning the session, so you can keep editing while a review runs against the branch. Leave the stagger alone unless you are debugging a workflow that depends on simultaneous starts.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.229</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improvement</span>
+            <span class="ver">2.1.232</span>
+            <h3>Fullscreen streaming stops re-normalizing the whole conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>Long sessions stay responsive because the entire conversation is no longer re-normalized on every update. 2.1.229 separately fixed long responses partly disappearing while streaming and then being printed twice, and fixed multi-second UI stalls after editing a file with thousands of IDE diagnostics while the extension is connected.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The sessions that got sludgy were the ones worth keeping — a full afternoon on one client repo. If you have been starting fresh sessions to escape the lag and re-paying for context every time, stop doing that and upgrade instead.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.232</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP connections and OAuth</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.231 · 2.1.229</span>
+            <h3>Two separate MCP OAuth failures got fixed two days apart</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.231 is a single-bullet release: MCP OAuth sign-in was failing with a redirect URI mismatch for servers that use a pre-registered OAuth client, with Slack named as the example. 2.1.229 fixed a different one — strict authorization servers rejecting the callback — by using <code>127.0.0.1</code> in the redirect URI instead of <code>localhost</code>.</p>
+            <p>Both present the same way from your seat: you click through the browser flow, it looks fine, and the server comes back unauthenticated.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Go re-auth the connectors you wrote off. Several of yours are sitting unauthenticated right now, including the Vercel plugin server, Stripe and Square — all three are exactly the pre-registered-client shape 2.1.231 fixed. Upgrade first, then run the sign-ins from an interactive session. A working Stripe and Square connector is the difference between reading a client's payment data and asking them to screenshot it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.231</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.232</span>
+            <h3>A broken MCP server no longer burns the full connect timeout</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP connections hung for the entire 30-second connect timeout when a server failed to answer the protocol-version probe or sent a malformed reply. They now fail fast.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a long MCP list across Supabase, Vercel, Notion, Calendly, Vapi and the rest. One sick server was taxing every session start by half a minute. If startup has felt slow, this is a chunk of it, and the fix costs you nothing but the upgrade.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.232</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission gates got stricter</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.229</span>
+            <h3><code>/commit-push-pr</code> stopped auto-approving destructive git flags</h3>
+          </div>
+          <div class="story-body">
+            <p>Git and <code>gh</code> commands carrying dangerous flags — the changelog names <code>--force</code>, <code>--amend</code> and <code>--no-verify</code> — are no longer auto-approved inside <code>/commit-push-pr</code>. They stop for permission like any other risky command.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This touches the one workflow you have already been burned on. Your Bisque deploy path is a plain <code>git push</code> now that the Vercel seat is resolved, so the happy path is unaffected. Where you will notice it is any cleanup pass that amends a commit or force-pushes a branch preview: expect a prompt, and read it rather than reflexively approving. An extra confirmation before a force-push into a client repo is a feature.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.229</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.232</span>
+            <h3>Nested git repositories no longer inherit trust from the parent</h3>
+          </div>
+          <div class="story-body">
+            <p>Each repository now requires its own trust confirmation. Previously a repo nested inside a trusted directory was trusted along with it. Alongside this, Bash input redirections (<code>&lt; file</code>) are now permission-checked like their argument spellings on all platforms, and <code>sandbox.ripgrep</code> is honored only from user, managed and <code>--settings</code> settings so project settings can no longer override the sandbox's ripgrep binary.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You work out of <code>~/Documents</code> with client repos and two vaults underneath it. Expect a run of trust prompts on the next upgrade, one per repo, and treat that as a one-time tax. The <code>sandbox.ripgrep</code> change is the one to remember if you ever script a project-level settings file and wonder why the override is ignored.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.232</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Sessions can now address each other by name</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.232</span>
+            <h3><code>@</code>-mention another Claude session from the prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>Type <code>@</code> in the prompt to mention another Claude session by name, and Claude uses <code>SendMessage</code> to reach it directly. <code>SendMessage</code> now delivers to a bare name that exactly matches one live session instead of asking you to confirm with a ref first. To keep that unambiguous, interactive sessions on one machine now hold unique names: starting or renaming a session to a name another live session already uses produces a <code>name-word-word</code> variant and tells you. <code>/config</code> gained rows for "Dialog expiry" and "Messages from your other sessions".</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the multi-repo pattern you already work in — one session on a client build, another on the vault or a report — finally wired together. Name your sessions per client and you can push a finding from the Studio C session into the Sonderwerks one without copy-paste. Check the new <code>/config</code> inbound row before you rely on it; cross-session messages can be set to hold for approval rather than auto-deliver.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.232</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Crash to the error screen when a tool call had a non-string <code>glob</code>, <code>file_path</code> or <code>command</code> value, which also broke <code>--resume</code> of that session <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">RangeError crash when a progress bar or markdown table rendered in a very narrow terminal, which could also crash <code>--continue</code>/<code>--resume</code> at startup <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> rejecting Sonnet/Opus 1M for claude.ai subscribers using a custom <code>ANTHROPIC_BASE_URL</code> gateway <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Auto mode failing on every tool call for users who disable the attribution header via <code>CLAUDE_CODE_ATTRIBUTION_HEADER</code> on direct Anthropic API connections <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Claude Code Review workflow generated by <code>/install-github-app</code> completing without ever posting its review on the pull request <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Dynamic workflows inside CPU-limited containers using the host machine's core count instead of the container's limit <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Conversations whose messages alone exceed the API's 32 MB request limit retrying compaction forever; they now fail once with a clear message <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">"Prompt is too long" errors now explain why automatic compaction could not recover instead of only suggesting <code>/compact</code> <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A file-watcher handle leak after atomic file replacements, plus a Windows scheduled-tasks watcher error on network filesystems <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/plugin install plugin@marketplace</code> refreshes the marketplace first, so newly published plugins install without a manual update <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/feedback</code> and <code>/bug</code> open immediately when invoked mid-response instead of waiting for the turn to finish <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">GitLab support for plugin marketplaces, plus secret redaction for the GitLab token families and <code>glab</code> CLI credential-path protection <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Plugin marketplace <code>command</code> sources: a local command prints the plugin directory, re-resolved each session and applied without a restart <span class="ver">2.1.229</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Fable 5 is offered as an <code>/advisor</code> again for orgs with Fable access, with usage-credits consent through <code>/model fable</code> <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A startup race that could silently unregister a plugin marketplace through concurrent writes to <code>known_marketplaces.json</code> <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/update</code> and <code>/tui</code> refusing to restart while work that survives the relaunch was running <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">PowerShell permission bypass via variable-writing parameters overwriting <code>$PSDefaultParameterValues</code>, and a Windows bypass through Cygwin-style symlinks in Git Bash <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Hardened the cross-session messaging socket directory on shared <code>/tmp</code> against pre-planted symlinks, and the Linux filesystem sandbox against a protected-path bypass <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cowork sessions no longer inline external <code>@</code>-imports from user-scope memory files <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Pasted and clipboard images are read without blocking the event loop; the agent panel hides completed subagents with a <code>/tasks</code> hint <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A large Remote Control batch across both releases: reconnects survive ~30 minutes of network blips, bridge sessions restore history, and resuming a deleted conversation starts a replacement instead of failing <span class="ver">2.1.232</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Infrastructure items with no bearing on a solo macOS shop: mTLS cert rotation, malformed AWS/Vertex regions, Bedrock stream idle timeouts, gateway policy validation, self-hosted runner startup <span class="ver">2.1.229 · 2.1.232</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting. No 2.1.230 entry appears in the changelog.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
