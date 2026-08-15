@@ -3,11 +3,31 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-08-15",
+    "title": "Todo tools are gone on every model you actually run, and three skill/plugin bugs that broke -p mode got fixed. One release, 2.1.233, and it lands squarely on how your scheduled agents behave.",
+    "summary": "One release shipped since the last briefing — 2.1.233 with 20 logged changes — and the load-bearing items are the removal of TodoWrite and the Task* tools on Opus 4.8 / Sonnet 5 / Fable 5 / Mythos 5 and newer, two fixes to skill resolution and argument substitution that were breaking headless runs, and an MCP v2 stream fix aimed at serverless-hosted servers.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-15.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-08-14",
     "title": "Subagent forking is on by default in 2.1.232: forked agents inherit your full conversation and prompt cache. That is the throughput change in this window.",
     "summary": "Three releases landed since the last briefing (2.1.229, 2.1.231, 2.1.232) totaling 81 logged changes, and the load-bearing ones are default-on subagent forking, two MCP OAuth fixes that unblock sign-ins that were failing, and stricter permission gates on /commit-push-pr and nested git repos.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-14.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-14",
+    "title": "The agent tier got crowded in 48 hours and nobody raised the price",
+    "summary": "xAI shipped Grok 4.6 and DeepSeek took V4-Pro to general availability within a day of each other, both aimed at long-running agent work, both holding output pricing at or below $10 per million tokens. Anthropic separately made Sonnet 5's introductory $2/$10 permanent and cancelled the September increase to $3/$15. The economics of running agents got better this week while the capability gap between the top four models kept narrowing.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-14.html"
   },
   {
     "source": "america",

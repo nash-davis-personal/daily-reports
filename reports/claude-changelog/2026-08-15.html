@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-15" />
+  <meta name="report:title" content="Todo tools are gone on every model you actually run, and three skill/plugin bugs that broke -p mode got fixed. One release, 2.1.233, and it lands squarely on how your scheduled agents behave." />
+  <meta name="report:summary" content="One release shipped since the last briefing — 2.1.233 with 20 logged changes — and the load-bearing items are the removal of TodoWrite and the Task* tools on Opus 4.8 / Sonnet 5 / Fable 5 / Mythos 5 and newer, two fixes to skill resolution and argument substitution that were breaking headless runs, and an MCP v2 stream fix aimed at serverless-hosted servers." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Todo tools are gone on every model you actually run, and three skill/plugin bugs that broke -p mode got fixed. One release, 2.1.233, and it lands squarely on how your scheduled agents behave. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, August 15, 2026</span>
+        <span>◆</span><span>One release: 2.1.233</span>
+      </div>
+      <h1>Todo tools were removed from every model you actually run. That is the change to absorb today.</h1>
+      <p class="standfirst">A single release landed since the last briefing — 2.1.233, dated August 14 — carrying 20 logged changes. The headline item is a silent behavior change: <code>TodoWrite</code> and the <code>Task*</code> tracking tools are no longer offered on Opus 4.8, Sonnet 5, Fable 5, Mythos 5 or anything newer, and you need an environment variable to get them back.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.232</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">logged changes</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">that hit headless runs</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Todo and task tools removed on current models</h4><p><code>TaskCreate/Get/Update/List</code> and <code>TodoWrite</code> are no longer available on Opus 4.8, Sonnet 5, Fable 5, Mythos 5 and newer. Set <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> to bring them back.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Bundled skill aliases stopped reporting "Unknown command"</h4><p><code>/checkup</code>, <code>/review</code> and friends were failing in <code>-p</code> mode, or with plugins and MCP loaded, whenever a user or project skill shadowed the bundled one. Fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Skill arguments no longer re-expand as template markers</h4><p>An argument value that happened to contain template syntax was being expanded a second time. That is a correctness bug in every skill you pass free text to.</p></div>
+        <div class="signal"><div class="n">04</div><h4>MCP v2 stopped hammering serverless servers</h4><p>Connections were endlessly reopening the <code>subscriptions/listen</code> stream against servers that cut long-held streams on a fixed timeout — the exact behavior of a serverless host.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Notification hooks fire again for permission prompts</h4><p>Under Claude Desktop and VS Code, permission prompts were not triggering Notification hooks. If you wired a hook to tell you a run is blocked, it was silently dead there.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Print mode now names an unrecognized model on stderr</h4><p>A request for a model ID Claude Code does not recognize writes <code>[claude-code:unrecognized_model]</code> to stderr. Map it with <code>modelOverrides</code> to silence it.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> A behavior change you did not ask for</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.233</span>
+            <h3>Todo and task-tracking tools are off on Opus 4.8, Sonnet 5, Fable 5, Mythos 5 and newer</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog states it plainly: <code>TaskCreate</code>, <code>TaskGet</code>, <code>TaskUpdate</code>, <code>TaskList</code> and <code>TodoWrite</code> are no longer available on those models, and <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> restores them. No reasoning is given in the entry, so treat the stated scope as the whole story rather than guessing at intent.</p>
+            <p>The practical shape of this: on a current model, a long task will no longer emit a visible checklist unless you opt back in. Anything downstream that parsed or displayed that checklist sees nothing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check your scheduled tasks and any skill whose instructions say "track progress with TodoWrite" or "create a task per item" — those lines are now dead text on your default model. Two options. Leave it off and let the agent work without the ceremony, which is the intended default and one less tool call per step. Or, if you rely on the checklist to watch a long unattended run, export <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> in the environment that launches those jobs. Pick one and make it consistent, because half your skills assuming the tools exist while the model cannot call them is the worst of both.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.233</span>
+            <h3>Notification hooks were not firing for permission prompts in Desktop and VS Code</h3>
+          </div>
+          <div class="story-body">
+            <p>Permission prompts failed to trigger Notification hooks when running under Claude Desktop or VS Code. Separately, cloud sessions were sometimes marked as lost when the environment shut down while Claude sat waiting on a permission prompt.</p>
+            <p>Both failures share a cause pattern: a blocked session looked idle to the layer above it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ever wired a Notification hook to ping you when a run stops for approval and concluded it did not work, retest it in the desktop app. A run that blocks on approval and never tells you is the single most expensive failure mode in an unattended job — you lose the whole window, not the step. The cloud-session fix matters the same way for anything you kick off and walk away from.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Skills and plugins got less brittle</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.233</span>
+            <h3>Shadowed bundled skills reported "Unknown command" in headless runs</h3>
+          </div>
+          <div class="story-body">
+            <p>Bundled skill aliases such as <code>/checkup</code> and <code>/review</code> reported "Unknown command" in <code>-p</code> mode, or with plugins and MCP loaded, when a user or project skill shadowed the bundled skill. Alongside it, <code>claude plugin validate</code> now inspects a bare <code>.claude/skills</code> directory and reports SKILL.md files whose frontmatter fails to parse.</p>
+            <p>The shadowing bug only bit setups with a deep skill and plugin stack. That is a description of your machine.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run dozens of skills across the Vercel, Codex and anthropic-skills plugin sets plus your own, and your scheduled tasks all run headless. This is the class of bug that makes a nightly job fail with an error that reproduces nowhere interactively. Worth a pass: run <code>claude plugin validate</code> against your skills directory now that it checks bare <code>.claude/skills</code>, and you will find any SKILL.md whose frontmatter has been quietly unparseable.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.233</span>
+            <h3>Skill argument values were being re-expanded as template markers</h3>
+          </div>
+          <div class="story-body">
+            <p>Skill and command argument substitution was fixed to prevent argument values from being re-expanded as template markers. In other words: pass an argument whose text happens to look like the template syntax, and it got substituted a second time on the way through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This hits any skill you invoke with free-form text — a prospect name into a sales skill, a client brief into a build skill, a raw draft into the-humanizer. The failure was silent corruption of the argument rather than a crash, so nothing in your logs would have flagged it. No action needed beyond updating, but if you ever saw a skill mangle an argument and wrote it off as model weirdness, that was probably this.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Connections: MCP servers and WebFetch</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.233</span>
+            <h3>MCP v2 stopped endlessly reopening streams against serverless hosts</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP v2 connections were endlessly reopening the <code>subscriptions/listen</code> stream against servers that terminate long-held streams on a fixed timeout — the changelog names serverless hosts as the example.</p>
+            <p>A reconnect loop against a hosted server is not a cosmetic problem. It is request volume you are paying for and log noise you have to read past.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Most of your MCP surface is hosted and remote — Supabase, Notion, Calendly, Vapi, the Higgsfield server. Any of them that cuts idle streams on a timer was in this loop. Update and watch whether your session startup and idle behavior gets quieter. If a specific connector has been flaky in a way you never fully diagnosed, retry it before assuming the server is the problem.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.233</span>
+            <h3>WebFetch cache TTL is now configurable, and print mode names unrecognized models</h3>
+          </div>
+          <div class="story-body">
+            <p>Two knobs for automated runs. <code>CLAUDE_CODE_WEBFETCH_CACHE_TTL_MS</code> configures the WebFetch session URL cache TTL, with the default unchanged at 15 minutes. And in print mode, a <code>[claude-code:unrecognized_model]</code> line goes to stderr when a request goes out for a model ID Claude Code does not recognize, which you silence by mapping it with <code>modelOverrides</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The TTL knob is for exactly the jobs you already run — this scout routine, and anything that scrapes a client's site or a docs page more than once in a session. Drop the TTL when a run needs to see a page change within the same session; raise it when you are hitting the same URL repeatedly and want the fetch to cost nothing. The stderr diagnostic is the more useful of the two: pin it in your scheduled-task logs and a typo'd or retired model ID surfaces as a line you can grep instead of a run that quietly behaves wrong.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.233</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows paths using the NT <code>\??\</code> device prefix bypassed UNC path validation, an NTLM credential-leak vector. Closed. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows auto mode was repeatedly stopping for approval on ordinary <code>cd &lt;dir&gt; &amp;&amp; &lt;command&gt; &gt; file</code> Bash commands — a 2.1.232 regression. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag fix qh-tag">Revert</span><span class="txt">The 2.1.232 Bash permission changes for Cygwin-style symlinks on Windows and for input redirections (<code>&lt; file</code>) were reverted; a narrower version returns later. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">GitLab merge request URLs now work with the <code>--worktree</code> flag and in the <code>claude agents</code> view, where MRs display as <code>!N</code>. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The GitHub app setup tip no longer appears in repos whose origin is on gitlab.com or bitbucket.org. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Opt-in memory cgroup support for Bash commands on Linux via <code>CLAUDE_CODE_TOOL_MEMORY_LIMIT</code>, so a runaway build cannot stall the session. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Idle sessions on Linux sometimes pinned one CPU core at 100% when sandboxing was enabled. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>claude self-hosted-runner</code> starts faster: the session branch is created without rewriting the working tree, and two blocking server round trips are gone. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Apps gateway 400/413 errors from Vertex, Foundry and Claude Platform on AWS now carry the upstream's own message; also fixes an auto-compact bug on the gateway. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Opt-in <code>forward_user_identity</code> apps gateway setting on Anthropic upstreams sends the signed-in user's identity as headers, so a proxy can attribute spend per user. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Screen reader mode: the <code>/effort</code> selector renders as a numbered list with a typed-number prompt, and hint and dialog text no longer clips. <span class="ver">2.1.233</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

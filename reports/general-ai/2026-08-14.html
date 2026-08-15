@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-14" />
+  <meta name="report:title" content="The agent tier got crowded in 48 hours and nobody raised the price" />
+  <meta name="report:summary" content="xAI shipped Grok 4.6 and DeepSeek took V4-Pro to general availability within a day of each other, both aimed at long-running agent work, both holding output pricing at or below $10 per million tokens. Anthropic separately made Sonnet 5's introductory $2/$10 permanent and cancelled the September increase to $3/$15. The economics of running agents got better this week while the capability gap between the top four models kept narrowing." />
+  <meta name="report:highlights" content="5" />
+
+  <title>The agent tier got crowded in 48 hours and nobody raised the price — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#8b5cf6; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Friday, August 14, 2026</span>
+        <span>◆</span><span>Agents ◆ pricing ◆ the money</span>
+      </div>
+      <h1>The agent tier got crowded in 48 hours and nobody raised the price</h1>
+      <p class="standfirst">xAI shipped Grok 4.6 and DeepSeek took V4-Pro to general availability within a day of each other, both pitched at long-running agent work and both holding output pricing at or under $10 per million tokens. Anthropic quietly made Sonnet 5's introductory $2/$10 permanent, killing a September increase that would have raised every agent bill by half.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 12 – August 14, 2026 — covers the skipped August 13 edition</span>
+        <span>◆</span><a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$2/$10</div><div class="lbl">Sonnet 5, now permanent</div></div>
+      <div class="stat"><div class="num">1M</div><div class="lbl">DeepSeek V4-Pro context window</div></div>
+      <div class="stat"><div class="num">$1.1B</div><div class="lbl">River AI seed, two months old</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sonnet 5's price increase was cancelled</h4><p>$2/$10 per million tokens is now the standard rate. The September 1 jump to $3/$15 is off the table.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Grok 4.6 matched GPT-5.6 Sol at $2/$6</h4><p>61 on the Artificial Analysis index, two points behind Claude Opus 5, with pricing held flat from 4.5.</p></div>
+        <div class="signal"><div class="n">03</div><h4>DeepSeek V4-Pro went GA with a 1M context</h4><p>384K max output, thinking and non-thinking modes, agent-tuned. No third party has replicated its benchmark claims.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agents are being sold as seats, not tokens</h4><p>xAI's Grok Bot bundles persistent cloud agents into $120–$200/month subscriptions. That is the pricing model to watch.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The AI profit story is thinner than the headlines</h4><p>Anthropic's widely-repeated $559M Q2 operating profit traces to investor projections reported in May, not audited results.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Two frontier-adjacent agent models in two days</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model</span>
+            <span class="ver">Aug 12</span>
+            <h3>Grok 4.6 lands at GPT-5.6 Sol's score and keeps Grok 4.5's price</h3>
+          </div>
+          <div class="story-body">
+            <p>xAI released Grok 4.6 roughly five weeks after 4.5, scoring 61 on the Artificial Analysis Intelligence Index — level with GPT-5.6 Sol and two points behind Claude Opus 5. Pricing stayed at $2 per million input tokens and $6 per million output, with a fast variant at double that. The context window is unchanged at 500,000 tokens.</p>
+            <p>The pitch is sustained project work over one-shot generation: researching an unfamiliar domain, implementing core functions, then iterating on feedback across a long session. It was callable the same afternoon in Cursor, Grok Build, the xAI API, OpenRouter, Cloudflare, and Vercel's AI Gateway.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> At $2/$6 with a 500K window, Grok 4.6 is now the cheapest credible option for the long-context grunt work in your pipeline — scraping and summarizing a client's entire existing site before a rebuild, or bulk-generating page copy from a content brief. It is already in the Vercel AI Gateway, so trying it against a real workload is a model-string change and a spend comparison, not an integration project.</div>
+          <div class="refs"><a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI announcement</a> · <a href="https://www.testingcatalog.com/icymi-xai-releases-grok-4-6-for-long-running-agent-work/" target="_blank" rel="noopener">TestingCatalog</a> · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model</span>
+            <span class="ver">Aug 12–13</span>
+            <h3>DeepSeek V4-Pro-0813 reached general availability with agent benchmarks nobody has checked</h3>
+          </div>
+          <div class="story-body">
+            <p>DeepSeek moved V4-Pro out of the preview it had been in since April and into general availability across its app, web interface and API. The GA build carries a 1,000,000-token context window and can produce up to 384,000 tokens of output, running in either thinking or non-thinking mode. The training emphasis is agentic: tool use, code execution, and multi-step workflows that run without a human in the loop.</p>
+            <p>DeepSeek's own numbers are 87.9 on Terminal Bench 2.1, 62.7 on DeepSWE and 61.5 on NL2Repo. Treat those as vendor-reported. Artificial Analysis puts the max-effort configuration at 53 on its composite index, one point above DeepSeek's own V4 Flash from July, which is a much smaller gap than the headline benchmarks suggest. A formal API version with Responses API support followed on August 13.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The 384K output ceiling is the interesting number, because it is enough to have a model emit an entire small Next.js page set in one call instead of orchestrating twelve. Worth a bake-off against Sonnet 5 on a real Concierge ingestion job before you trust it with anything client-facing, given no outside party has reproduced the agent scores.</div>
+          <div class="refs"><a href="https://www.techtimes.com/articles/324241/20260813/deepseek-v4-pro-0813-goes-ga-benchmark-claims-await-independent-proof.htm" target="_blank" rel="noopener">TechTimes</a> · <a href="https://artificialanalysis.ai/models/deepseek-v4-pro" target="_blank" rel="noopener">Artificial Analysis</a> · <a href="https://tech.yahoo.com/ai/articles/deepseek-officially-launches-v4-pro-181255468.html" target="_blank" rel="noopener">Yahoo Tech</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The price of running an agent went down, and the unit changed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Pricing</span>
+            <span class="ver">Aug 10</span>
+            <h3>Anthropic made Sonnet 5's $2/$10 permanent and cancelled the September increase</h3>
+          </div>
+          <div class="story-body">
+            <p>Sonnet 5 launched on June 30 at an introductory $2 per million input tokens and $10 per million output, with the rate scheduled to rise to $3/$15 on September 1. Anthropic has now made the introductory number the standard price and cancelled the increase. Subscription plan prices are unchanged.</p>
+            <p>One caveat worth checking against your own bills: the newer tokenizer can push billable token counts up by as much as 35% on the same input, so a flat headline rate does not automatically mean a flat invoice. Verify against Anthropic's published pricing page rather than a third-party summary.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A 50% cost increase you had penciled in for September is gone. That reprices every Managed AI retainer you were about to quote — the Concierge and Front Desk margins you modeled at $3/$15 now hold at $2/$10, which is the difference between a defensible monthly number and one you would have had to renegotiate in Q4. Re-run the retainer math this week and quote from the new floor.</div>
+          <div class="refs"><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic pricing docs</a> · <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">Sonnet 5 launch post</a> · <a href="https://www.finout.io/blog/claude-sonnet-5-pricing-2026-the-hidden-costs-and-real-savings-behind-the-cost-neutral-launch" target="_blank" rel="noopener">Finout on the tokenizer</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Product</span>
+            <span class="ver">Aug 11</span>
+            <h3>Grok Bot sells persistent agents as monthly seats</h3>
+          </div>
+          <div class="story-body">
+            <p>xAI opened an early beta of Grok Bot, where each agent gets its own persistent cloud computer with a browser, filesystem and terminal. The agent signs into the customer's existing tools using the customer's own credentials and works through multi-step jobs while the user is away, surfacing only when something needs approval. The explicit design goal is operating software that has no clean API or MCP connector.</p>
+            <p>The pricing is the signal. It ships bundled into SuperGrok Heavy, Cursor Ultra at $200/month, and Cursor Teams Premium at $120 per seat per month. This is the first public product out of SpaceX's acquisition of Cursor's parent Anysphere, announced in June.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Note what is being sold: a seat, priced like a junior employee, for work measured in outcomes rather than tokens. That is the shape of the Managed AI retainer you want to be selling to SMBs, and it is now market-validated at $120/seat. Also worth flagging to clients — an agent authenticating as a human user with real credentials is a security conversation you should have before a client's office manager sets one loose on their booking system.</div>
+          <div class="refs"><a href="https://www.unite.ai/xai-launches-grok-bot-always-on-ai-teammates-with-their-own-cloud-computers/" target="_blank" rel="noopener">Unite.AI</a> · <a href="https://www.eesel.ai/blog/grok-bot-review" target="_blank" rel="noopener">eesel review of the beta</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The money underneath</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Check this</span>
+            <span class="ver">Aug 13</span>
+            <h3>The Anthropic profit number everyone repeated this week is a May projection</h3>
+          </div>
+          <div class="story-body">
+            <p>A wave of coverage on August 13 reported that Anthropic had booked its first operating profit: $559 million on $10.9 billion of Q2 revenue, up 130% from $4.8 billion in Q1, arriving roughly two years ahead of internal guidance. The underlying figures come from projections Anthropic shared with investors ahead of a funding round, first reported by the Wall Street Journal on May 20. Anthropic has not published audited quarterly results, and it is a private company with no obligation to.</p>
+            <p>The caveats that travel with the number are real: the company itself flagged that sustained profitability through the rest of the year is uncertain because of scheduled compute cost increases, and at least one analysis argues a compute discount flattered the quarter. Separately, OpenAI's public S-1 is expected on EDGAR in mid-to-late August after a confidential June 8 filing, which will be the first audited look at anyone's frontier-lab economics.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do not repeat the $559M figure to a client as fact. When a prospect asks whether the AI vendor you are building on will still exist in three years, the honest answer is that Anthropic's revenue growth is well-sourced and its profitability is a projection — and that you hand over source code on day one so they are not stranded either way. That answer closes better than a number you cannot defend.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/05/20/anthropic-revenue-explosive-growth-ipo-profitable-quarter.html" target="_blank" rel="noopener">CNBC, May 20</a> · <a href="https://www.wheresyoured.at/anthropics-profitability-swindle/" target="_blank" rel="noopener">Where's Your Ed At, skeptical read</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/openai-confidentially-files-ipo-sec-223341186.html" target="_blank" rel="noopener">OpenAI S-1 background</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Also worth knowing</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">River AI, founded by xAI co-founder Igor Babuschkin, raised <b>$1.1B</b> led by General Catalyst and AMP PBC with Nvidia and AMD Ventures participating — two months after founding. The product is a training API doing LoRA fine-tunes on open-weight models in 15–20 minutes. <a href="https://techcrunch.com/2026/08/11/general-catalyst-leads-1-1b-round-into-2-month-old-river-ai/" target="_blank" rel="noopener">TechCrunch</a> <span class="ver">Aug 11</span></span></li>
+            <li><span class="tag new qh-tag">Open weights</span><span class="txt">Nvidia released <b>Nemotron 3.5 Lightning</b>, an open 30B mixture-of-experts model with 3B active parameters built for the high-volume execution layer of long-running agents, alongside NeMo Switchyard, a router that picks between open and proprietary models per workflow step. <a href="https://blogs.nvidia.com/blog/nemotron-lightning-switchyard-rtx-dgx/" target="_blank" rel="noopener">Nvidia</a> <span class="ver">Aug 11</span></span></li>
+            <li><span class="tag improve qh-tag">Gateway</span><span class="txt">Vercel's AI Gateway added Grok 4.6 and updated DeepSeek V4-Pro weights, and is running <b>Gemini 3.7 Flash at 50% off</b> plus Exa web search free through August 31. Cheap window for evaluation work. <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <span class="ver">Aug 12–13</span></span></li>
+            <li><span class="tag feature qh-tag">Safety</span><span class="txt">DeepMind's Demis Hassabis proposed an independent AI safety body, days after the White House convened OpenAI, Anthropic and Google on a voluntary model-testing framework. No binding rules yet. <a href="https://techstartups.com/2026/08/13/top-tech-news-today-august-13-2026-anthropic-deepmind-google-lenovo-microsoft-spacexai-more/" target="_blank" rel="noopener">Tech Startups</a> <span class="ver">Aug 13</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Vendor-reported benchmarks are labeled as such. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
