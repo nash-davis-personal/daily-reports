@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-15",
+    "title": "Inflation cooled, records fell, and the consumer stopped spending",
+    "summary": "July CPI came in at 0.1% for the month and 3.4% year over year, matching estimates and easing from 3.5%, and the S&P 500 cleared 7,800 for the first time on Thursday before the Russell 2000 set its own record Friday. Retail sales then fell 0.6% in July against forecasts for a small gain, the sharpest pullback in months. Tropical Storm Lala had the Big Island under a hurricane warning heading into Saturday, Indiana declared a statewide disaster over flooding with the White River near a century high, and 93 uncontained large fires are burning nationally.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-15.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release shipped since the last briefing — 2.1.233 with 20 logged changes — and the load-bearing items are the removal of TodoWrite and the Task* tools on Opus 4.8 / Sonnet 5 / Fable 5 / Mythos 5 and newer, two fixes to skill resolution and argument substitution that were breaking headless runs, and an MCP v2 stream fix aimed at serverless-hosted servers.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-15.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-15",
+    "title": "OpenAI made Sol 14x faster by renting someone else's silicon",
+    "summary": "OpenAI previewed an Ultrafast API tier running GPT-5.6 Sol on Cerebras wafer-scale hardware at up to 750 output tokens per second, with no price and no ship date attached. Z.ai open-weighted GLM-5.3 at 84.5% on CyberGym and gated the high-risk parts behind trusted access, DeepSeek raised V4-Pro API pricing by up to 1,100% on some workloads, and the rest of the window was distribution deals: IBM reselling OpenAI into regulated enterprises and Apple training a China-specific model with Alibaba.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-15.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-15",
+    "title": "The consumer pulled back 0.6%, which makes every lead your clients already have worth more",
+    "summary": "July retail sales fell 0.6% while hardware and component costs climb, so SMBs will cut ad spend before they cut anything else — which turns missed-call recovery into the easiest thing Grant and Bishop can sell this month. Six moves ranked by fit, including a fixed-fee AI cost-and-routing audit riding DeepSeek's 1,100% price increase, a Supabase RLS security check priced off a 700,000-record breach, and a local play on SMBC bringing 2,000 jobs to Charlotte.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-15.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-15",
+    "title": "A CVSS 10 in industrial gear, and the chip shortage moved to your clients' laptops",
+    "summary": "CISA published 14 ICS advisories on August 13 including a maximum-severity command-injection flaw in the Haiwell IoT Cloud HMI Gateway that touches energy, manufacturing and water utilities. Nothing new landed on Next.js, React, Vercel or Supabase security, though Next.js 16.3.1 shipped Turbopack and cache fixes and Vercel Blob added putImage. SMIC crossed $3 billion of quarterly revenue for the first time and is raising prices, memory makers are prioritizing data centers over consumer parts, and Uber and Pony.ai are putting 2,000-plus robotaxis on European roads.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-15.html"
   },
   {
     "source": "claude-changelog",

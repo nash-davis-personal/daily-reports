@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-15" />
+  <meta name="report:title" content="OpenAI made Sol 14x faster by renting someone else's silicon" />
+  <meta name="report:summary" content="OpenAI previewed an Ultrafast API tier running GPT-5.6 Sol on Cerebras wafer-scale hardware at up to 750 output tokens per second, with no price and no ship date attached. Z.ai open-weighted GLM-5.3 at 84.5% on CyberGym and gated the high-risk parts behind trusted access, DeepSeek raised V4-Pro API pricing by up to 1,100% on some workloads, and the rest of the window was distribution deals: IBM reselling OpenAI into regulated enterprises and Apple training a China-specific model with Alibaba." />
+  <meta name="report:highlights" content="5" />
+
+  <title>OpenAI made Sol 14x faster by renting someone else's silicon — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#8b5cf6; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Saturday, August 15, 2026</span>
+        <span>◆</span><span>Inference speed ◆ open weights ◆ distribution</span>
+      </div>
+      <h1>OpenAI made Sol 14x faster by renting someone else's silicon</h1>
+      <p class="standfirst">The Ultrafast tier runs GPT-5.6 Sol on Cerebras wafer-scale chips at up to 750 output tokens per second against roughly 53 on standard inference, and it shipped as a limited preview with no published price and no general availability date. Everything else in this 48-hour window was open-weights catch-up and distribution deals, which is what a market looks like when the capability race stops being the story.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 14 – August 15, 2026</span>
+        <span>◆</span><a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">750/s</div><div class="lbl">Output tokens, GPT-5.6 Sol on Ultrafast</div></div>
+      <div class="stat"><div class="num">84.5%</div><div class="lbl">GLM-5.3 on the CyberGym benchmark</div></div>
+      <div class="stat"><div class="num">1,100%</div><div class="lbl">Peak DeepSeek V4-Pro API price increase</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Ultrafast is a preview, not a product</h4><p>GPT-5.6 Sol at up to 750 tokens/sec on Cerebras silicon. Limited API preview, select customers, no price and no date published.</p></div>
+        <div class="signal"><div class="n">02</div><h4>GLM-5.3 ships with a safety gate</h4><p>Z.ai open-weighted a model that scores 84.5% on CyberGym and is holding the higher-risk capabilities behind a trusted-access system.</p></div>
+        <div class="signal"><div class="n">03</div><h4>DeepSeek raised prices instead of cutting</h4><p>V4-Pro API pricing went up as much as 1,100% on some workloads. The cheap V4 Flash tier stayed cheap.</p></div>
+        <div class="signal"><div class="n">04</div><h4>IBM is now an OpenAI channel</h4><p>A strategic partnership aimed at financial services, government, telecom and retail — the accounts that will not buy direct from a model lab.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Apple built a China-only model with Alibaba</h4><p>Custom model trained for the China market, with an on-device generative AI service registered with Chinese regulators.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Latency became the thing being sold</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 13–14, 2026</span>
+            <h3>OpenAI previews Ultrafast: GPT-5.6 Sol at up to 750 output tokens per second</h3>
+          </div>
+          <div class="story-body">
+            <p>Ultrafast is a service tier inside the OpenAI API that runs GPT-5.6 Sol on Cerebras wafer-scale hardware. Cerebras parks the model weights in 44GB of on-die SRAM and skips the memory bus, which is where the speed comes from: up to 750 output tokens per second against roughly 53 on standard processing, or about 14x. Cerebras published a benchmark in which Sol on Ultrafast worked through all 2,500 Humanity's Last Exam questions in 11 hours 11 minutes.</p>
+            <p>The caveats are load-bearing. It launched as a limited preview for a select group of API customers, access expands as capacity grows, and neither OpenAI nor Cerebras published pricing or a GA date. Treat this as a demonstration that the speed exists and a signal that inference speed is now a paid tier, rather than something you can build on this month.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the unlock for TSD Front Desk. A phone receptionist lives or dies on time-to-first-word, and 14x on generation is the difference between a caller hearing a pause and a caller hearing a person. Nothing to do today since there is no price, but start logging your actual per-turn latency on Front Desk calls now so you have a baseline to compare against when a speed tier becomes buyable.</div>
+          <div class="refs"><a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">OpenAI — Previewing Ultrafast mode</a> · <a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai" target="_blank" rel="noopener">Cerebras engineering post</a> · <a href="https://9to5mac.com/2026/08/13/openai-previews-ultrafast-gpt-5-6-sol-running-up-to-14-times-faster/" target="_blank" rel="noopener">9to5Mac (Aug 13)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Open weights kept closing the gap, and got more expensive</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>Z.ai open-weights GLM-5.3 and gates the dangerous half behind trusted access</h3>
+          </div>
+          <div class="story-body">
+            <p>GLM-5.3 scores 84.5% on CyberGym, a vulnerability-detection benchmark, and Z.ai reports roughly a 50% improvement over GLM-5.2 on its internal coding benchmark. The company said it intends to release publicly after further security testing while restricting some higher-risk capabilities through a trusted-access system.</p>
+            <p>The interesting part is the release shape. A Chinese lab shipping open weights with a capability carve-out is the same posture the US labs adopted for cyber-capable models, which means the safety-gating convention is now industry-wide rather than a Western export-control artifact.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open-weights coding models at this level make the "we host it on your infrastructure" pitch real for clients who balk at sending data to a US lab. Worth knowing it exists; not worth switching to. Your delivery speed comes from Claude Code on Opus 5, and swapping the model to save API cents costs you hours.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Pricing</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>DeepSeek raised V4-Pro API pricing by up to 1,100% on some workloads</h3>
+          </div>
+          <div class="story-body">
+            <p>V4-Pro went to $1.32 per million cache-miss input tokens and $3.96 per million output tokens at peak rates, an increase of as much as 1,100% on certain workloads compared with what DeepSeek charged before. The cheaper V4 Flash model stayed at its lower rates.</p>
+            <p>Yesterday's briefing framed V4-Pro's general availability as part of a cheap-agent-tier story. This pricing move partly undoes that read. The floor on frontier-adjacent inference is being set by whoever is willing to eat compute cost, and DeepSeek stopped volunteering.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct evidence that model pricing moves up as well as down. If you quote a client a monthly Managed AI retainer with token cost baked in, put a usage ceiling in the contract and reprice above it. A 1,100% jump on the model under your product is a margin event you cannot absorb.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The labs are buying distribution</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Partnership</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>IBM will sell OpenAI models into financial services, government, telecom and retail</h3>
+          </div>
+          <div class="story-body">
+            <p>IBM announced a broad strategic partnership with OpenAI to help customers integrate OpenAI models into their workflows, with the four named focus verticals being the ones that buy through a systems integrator and a procurement process rather than a credit card and an API key.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The frontier labs are conceding they cannot sell to conservative buyers directly, which is the same gap you occupy for SMBs. Your pitch is unchanged and slightly better validated: the model is a commodity, the integration and the accountability are the product.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>Apple trained a custom China model with Alibaba and registered it with regulators</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple partnered with Alibaba on a China-specific AI model and registered an on-device generative AI service with Chinese regulators, a step required before shipping consumer AI features in that market. The competitive target is Huawei and the other domestic handset makers that already ship local assistants.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing operational. It is the clearest signal yet that "which model" is becoming a per-jurisdiction compliance question, which is the shape of argument that eventually reaches US clients in regulated trades.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Tooling</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>Writer ships Palmyra X6 and claims orchestration cut basic-task cost by half</h3>
+          </div>
+          <div class="story-body">
+            <p>Writer launched Palmyra X6 with an upgraded agent harness and claims up to a 50% cost reduction on basic tasks through orchestration improvements rather than a cheaper model. The claim is the company's own and is not independently benchmarked.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The cheapest performance win available to you is routing, not model choice. Audit TSD Concierge: every RAG lookup that currently hits Opus and could be answered by Haiku 4.5 is pure margin sitting on the table.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Money</span><span class="txt">Big Tech AI purchase commitments are approaching $1.5 trillion, with roughly another $1.5 trillion in lease commitments on top. <span class="ver">Aug 14</span></span></li>
+            <li><span class="tag improve qh-tag">Funding</span><span class="txt">40 new companies crossed $1B valuations in July, the highest monthly count in more than four years. <span class="ver">Jul 2026</span></span></li>
+            <li><span class="tag new qh-tag">Open</span><span class="txt">Meta's Muse Glimmer, a 30B Apache-2.0 agentic model that runs on a single 24GB consumer GPU, is on Hugging Face with GGUF and ExecuTorch builds. Landed Aug 10, before this window, and still the most useful thing to try locally. <span class="ver">Aug 10</span></span></li>
+            <li><span class="tag fix qh-tag">Quiet</span><span class="txt">No Anthropic, Google or xAI model release in this window. Yesterday's edition covered the Anthropic Q2 profit and Gemini 3.7 Flash. <span class="ver">Aug 15</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

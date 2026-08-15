@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-15" />
+  <meta name="report:title" content="A CVSS 10 in industrial gear, and the chip shortage moved to your clients' laptops" />
+  <meta name="report:summary" content="CISA published 14 ICS advisories on August 13 including a maximum-severity command-injection flaw in the Haiwell IoT Cloud HMI Gateway that touches energy, manufacturing and water utilities. Nothing new landed on Next.js, React, Vercel or Supabase security, though Next.js 16.3.1 shipped Turbopack and cache fixes and Vercel Blob added putImage. SMIC crossed $3 billion of quarterly revenue for the first time and is raising prices, memory makers are prioritizing data centers over consumer parts, and Uber and Pony.ai are putting 2,000-plus robotaxis on European roads." />
+  <meta name="report:highlights" content="6" />
+
+  <title>A CVSS 10 in industrial gear, and the chip shortage moved to your clients' laptops — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, August 15, 2026</span>
+        <span>◆</span><span>Security ◆ silicon ◆ your stack ◆ robotaxis</span>
+      </div>
+      <h1>A CVSS 10 in industrial gear, and the chip shortage moved to your clients' laptops</h1>
+      <p class="standfirst">CISA dropped 14 industrial control system advisories on August 13, topped by a 10.0 command-injection flaw in a cloud HMI gateway used across energy, manufacturing and water utilities. Nothing new hit Next.js, React, Vercel or Supabase on the security side in this window, which makes the more expensive story the one about memory and foundry pricing working its way into every quote your clients get for hardware.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 13 – August 15, 2026</span>
+        <span>◆</span><a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS on CVE-2026-19188, Haiwell HMI gateway</div></div>
+      <div class="stat"><div class="num">93.7%</div><div class="lbl">SMIC Q2 fab utilization</div></div>
+      <div class="stat"><div class="num">700k</div><div class="lbl">French taxpayers exposed in agency breach</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>CVSS 10 in an ICS cloud gateway</h4><p>CVE-2026-19188, OS command injection in Haiwell IoT Cloud HMI Gateway. One of 14 CISA advisories on Aug 13; two carried federal deadlines on Aug 14.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your stack stayed quiet on security</h4><p>No new Next.js, React, Vercel or Supabase advisory this window. The May coordinated release is still the last one that mattered — 15.5.18 / 16.2.6 remain the floor.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Next.js 16.3.1 is a maintenance release</h4><p>Turbopack fixes, next/image improvements, cache and HMR reliability, plus backports for routing and SSR. Safe upgrade, no migration work.</p></div>
+        <div class="signal"><div class="n">04</div><h4>SMIC crossed $3B a quarter and is raising prices</h4><p>93.7% utilization, ~2.9M 8-inch-equivalent wafers, profit more than tripled to $479.2M.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Memory is being rationed to data centers</h4><p>Makers are prioritizing AI buildout over consumer parts, tightening supply and pushing PC and phone costs up.</p></div>
+        <div class="signal"><div class="n">06</div><h4>2,000+ robotaxis headed to Europe</h4><p>Uber and Pony.ai expanding past Zagreb into four more European markets and the Middle East.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Aug 13, 2026</span>
+            <h3>CISA publishes 14 ICS advisories, including a 10.0 in the Haiwell IoT Cloud HMI Gateway</h3>
+          </div>
+          <div class="story-body">
+            <p>ICSA-26-225-02 covers CVE-2026-19188, an OS command injection flaw scored CVSS 10.0 in the Haiwell IoT Cloud HMI Gateway. The affected sectors named are energy, critical manufacturing, and water and wastewater. Two of the fourteen advisories carried federal remediation deadlines that fell on August 14.</p>
+            <p>Maximum severity plus network-reachable plus water utilities is the combination that gets acted on. This does not touch a web stack, and it is the highest-consequence disclosure in the window.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No patch action for you. It is a live sales fact for the trades side of your network: any Charlotte-area client running connected industrial or building-automation gear has a vendor question to ask this week. "Do you know what's on your network and who can reach it" opens more doors than a website pitch does.</div>
+          <div class="refs"><a href="https://emnetwork.substack.com/p/hurricane-warning-for-hawaiis-big" target="_blank" rel="noopener">EM Network incident brief (Aug 14)</a> · <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">CISA advisories</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>French tax agency cyberattack exposed data on roughly 700,000 taxpayers</h3>
+          </div>
+          <div class="story-body">
+            <p>A cyberattack on the French tax agency exposed data belonging to approximately 700,000 taxpayers. Scope and attribution were not detailed in the initial reporting.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every client site you run that stores anything personal is one of these at a smaller scale. Confirm RLS is actually enforced on every Supabase table you have shipped, rather than assumed — a policy that was never enabled is the single most common way a Supabase project leaks.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Release</span>
+            <span class="ver">Next.js 16.3.1</span>
+            <h3>Next.js ships a maintenance release; the instant() test helper landed in 16.3</h3>
+          </div>
+          <div class="story-body">
+            <p>16.3.1 is maintenance: Turbopack fixes, next/image improvements, cache and HMR reliability work, and backported fixes for routing, SSR and dev workflows. The 16.3 minor before it added an <code>instant()</code> test helper for verifying instant navigation and finding slow routes.</p>
+            <p>On security, the last release that mattered is still the May 2026 coordinated one — 13 advisories across DoS, middleware and proxy bypass, SSRF, cache poisoning and XSS, all patched in 15.5.18 and 16.2.6. Nothing new has landed since.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Take 16.3.1 on client projects; a patch release with HMR and cache fixes pays for itself in dev time. Then use <code>instant()</code> on the two or three routes clients actually complain about — a measured navigation number is a better renewal argument than "the site feels faster."</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js release notes (Aug 2026)</a> · <a href="https://vercel.com/changelog/next-js-may-2026-security-release" target="_blank" rel="noopener">Vercel — May 2026 security release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">API change</span>
+            <span class="ver">Aug 2026</span>
+            <h3>Vercel Blob adds putImage; Supabase deprecates pinning extension versions</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel Blob's new <code>putImage(pathname, bodyOrUrl, options)</code> runs an image through Vercel Image Optimization and stores only the optimized output, accepting either the image content or a public URL that gets fetched server-side. The <code>optimizeImage</code> option on <code>put</code> and the <code>putFromUrl</code> function are both deprecated in its favor and still work.</p>
+            <p>On the Supabase side, specifying an explicit version when creating or updating a Postgres extension was deprecated as of 2026-08-05, and a fix landed for physical restore credential handling so current passwords get reapplied after a restore.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Straight cost cut on the image-heavy client sites. Storing only the optimized output instead of the original shrinks Blob storage and kills a transform step you are currently paying for on every request. Grep your projects for <code>putFromUrl</code> and <code>optimizeImage</code> and migrate them while they still work.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel" target="_blank" rel="noopener">Vercel release notes (Aug 2026)</a> · <a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Supabase release notes (Aug 2026)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and the cost of hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>SMIC ran at 93.7% utilization, cleared $3B in a quarter, and is raising prices</h3>
+          </div>
+          <div class="story-body">
+            <p>China's largest foundry shipped roughly 2.9 million 8-inch-equivalent wafers in Q2, passed $3 billion of quarterly revenue for the first time, and more than tripled quarterly profit to $479.2 million. It is raising prices on sought-after capacity and plans to start reporting AI chip revenue separately.</p>
+            <p>Applied Materials landed in the same window with fiscal Q3 revenue of $9.12 billion, up 25% year over year, adjusted earnings of $3.50 per share, and a stated plan to double semiconductor-system output by 2028. Memory makers, meanwhile, are prioritizing data center demand, which tightens supply and raises component costs in PCs and phones.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Hardware quotes your clients receive are going up for reasons that have nothing to do with them. That is the argument for software and process work over equipment refreshes this year, and it is a genuine reason a booking-automation build beats buying another terminal.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Autonomy</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>Uber and Pony.ai are putting 2,000-plus robotaxis on European roads</h3>
+          </div>
+          <div class="story-body">
+            <p>The partnership expands from Zagreb, Croatia into four additional European markets and the Middle East, with more than 2,000 vehicles planned across five European cities. Uber is positioning its ride-hailing network as the distribution layer for multiple autonomous-driving providers rather than betting on one, and is targeting roughly 120,000 driverless vehicles across at least 15 cities during 2026.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The pattern is worth stealing at your scale. Uber owns the demand and stays neutral on the supplier underneath. That is exactly the position to hold with model vendors: own the client relationship and the integration, keep the model swappable.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/14/top-tech-news-today-august-14-2026-apple-anthropic-deepseek-google-ibm-pony-ai-openai-spacex-uber-more/" target="_blank" rel="noopener">Tech Startups daily roundup (Aug 14)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Risk</span><span class="txt">Moody's warned that financial institutions' reliance on a small group of cloud and AI providers concentrates outage, security and pricing risk. <span class="ver">Aug 14</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Astra Space is seeking $250M at roughly a $1B valuation, with Rocket 4 targeting 2027 launches at about $5M each. <span class="ver">Aug 14</span></span></li>
+            <li><span class="tag new qh-tag">Quantum</span><span class="txt">Infleqtion posted Q2 revenue of $12.6M, up 116% year over year, and raised full-year guidance to about $43M. <span class="ver">Aug 14</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">TSMC reported July revenue of roughly $14.5B, up about 45% year over year. Nvidia disclosed a $21B stake in SpaceX as of quarter-end. <span class="ver">Aug 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
