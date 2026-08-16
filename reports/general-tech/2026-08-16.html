@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-16" />
+  <meta name="report:title" content="A CVSS 10 in SAP Commerce is being exploited three days after the patch" />
+  <meta name="report:summary" content="CVE-2026-58231, a maximum-severity unauthenticated remote code execution flaw in SAP Commerce Cloud's Data Hub Adapter, was patched on August 12 and confirmed hitting honeypots by August 14 with no public proof-of-concept. Nothing new landed on Next.js, React or Supabase security, though Vercel turned on Encrypted Client Hello across its CDN and added one-click Node.js 20 upgrades. AMD raised $4.75 billion in its biggest-ever dollar bond sale, California cleared Waymo for driverless rides across 18 counties, and SpaceX launched two Falcon 9s 38.5 minutes apart." />
+  <meta name="report:highlights" content="6" />
+
+  <title>A CVSS 10 in SAP Commerce is being exploited three days after the patch — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.bleepingcomputer.com/news/security/max-severity-sap-commerce-cloud-flaw-now-targeted-in-attacks/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#2dd4bf; --accent-2:#14b8a6; --accent-soft:rgba(45,212,191,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, August 16, 2026</span>
+        <span>◆</span><span>Security ◆ platform ◆ capital</span>
+      </div>
+      <h1>A CVSS 10 in SAP Commerce is being exploited three days after the patch</h1>
+      <p class="standfirst">SAP patched a maximum-severity unauthenticated remote code execution bug in Commerce Cloud on August 12, and a threat-intelligence firm saw exploitation attempts in its honeypots by August 14 — with no public proof-of-concept in circulation, which tells you someone reverse-engineered the patch. Nash's own stack stayed quiet on security, and the week's platform news was mostly Vercel plumbing.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 13 – August 16, 2026</span>
+        <span>◆</span><a href="https://www.bleepingcomputer.com/news/security/max-severity-sap-commerce-cloud-flaw-now-targeted-in-attacks/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS on the SAP Commerce Cloud flaw</div></div>
+      <div class="stat"><div class="num">$4.75B</div><div class="lbl">AMD's biggest-ever dollar bond sale</div></div>
+      <div class="stat"><div class="num">38.5 min</div><div class="lbl">SpaceX's new gap between two launches</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch-to-exploit was three days</h4><p>CVE-2026-58231 hit SAP's patch day August 12; Defused saw attempts on August 14. No public PoC, which means the patch itself was the map.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your stack had a clean week</h4><p>No new Next.js, React, Vercel or Supabase security advisory in the window. The last coordinated Next.js release was May.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel turned on Encrypted Client Hello</h4><p>ECH is live across the Vercel CDN for domains on Vercel DNS, hiding the requested hostname from network observers.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AMD borrowed $4.75 billion</h4><p>Four tranches out to 2036, its largest dollar bond sale ever, funding the AI accelerator and data-center push.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Waymo cleared for 18 California counties</h4><p>The CPUC approved paid driverless rides on freeways, at night, in rain and fog, opening Sacramento and San Diego.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Two Falcon 9s, 38.5 minutes apart</h4><p>A Globalstar mission from the Cape and a Space Force mission from Vandenberg on Saturday night, a new turnaround record.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this, then check your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Aug 12–14, 2026</span>
+            <h3>CVE-2026-58231: max-severity RCE in SAP Commerce Cloud, exploited in the wild</h3>
+          </div>
+          <div class="story-body">
+            <p>The flaw is an improper authorization bug in SAP Commerce Cloud's Data Hub Adapter extension. An unauthenticated attacker can abuse a default authentication client and submit crafted input to functions that lack sufficient validation, ending in remote code execution. CVSS 10.0. SAP shipped the fix on its August 12 patch day under security note 3771065 and told customers to apply it immediately.</p>
+            <p>Threat-intelligence firm Defused reported exploitation attempts against its honeypots three days later, on August 14. There is no public proof-of-concept, which is the detail worth sitting with: attackers diffed the patch and built a working exploit inside 72 hours. SAP's August patch day carried 28 new security notes in total, including a separate 9.6 in S/4HANA and Commerce Cloud.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action — you do not run SAP. The transferable lesson is the clock. Three days from public patch to live exploitation, with no PoC, is the new normal for anything internet-facing with a default credential path. Go audit every client project for default or shared service credentials still sitting in an env file, and make "we patch your dependencies monthly" an explicit, billable line in the Managed AI retainer instead of something you do for free when you remember.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/max-severity-sap-commerce-cloud-flaw-now-targeted-in-attacks/" target="_blank" rel="noopener">BleepingComputer (Aug 14)</a> · <a href="https://onapsis.com/blog/sap-security-patch-day-august-2026/" target="_blank" rel="noopener">Onapsis — SAP Patch Day analysis</a> · <a href="https://www.securityweek.com/sap-patches-critical-s-4hana-commerce-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Clear</span>
+            <span class="ver">Aug 13–16, 2026</span>
+            <h3>Nothing new to patch on Next.js, React, Vercel or Supabase</h3>
+          </div>
+          <div class="story-body">
+            <p>Checked and clean for this window. No new security advisory landed on the Next.js repository, React Server Components, the Vercel platform or Supabase between August 13 and 16. The most recent coordinated Next.js security release remains the May 2026 batch of 13 advisories covering denial of service, middleware and proxy bypass, SSRF, cache poisoning and XSS — including CVE-2026-23870, the high-severity Server Function DoS affecting React 19.x and App Router deployments on Next 13 through 16.</p>
+            <p>Next.js 16.3 remains the current feature line, carrying Instant Navigations, a faster dev server, and a set of agent-facing additions: bundled docs via AGENTS.md, first-party Skills for multi-step workflows, an Agent Browser with React introspection, and actionable errors with paste-ready prompts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to patch this weekend. If you have not already confirmed every client deployment is past the May 2026 advisory line, that is the one to verify — run <code>npm audit</code> across the client repos once and be done. The 16.3 agent tooling is worth an hour of your time: AGENTS.md plus first-party Skills means Claude Code can drive Next.js scaffolding with less hand-holding from you, which is delivery hours back.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js security advisories</a> · <a href="https://nextjs.org/blog/next-16-3" target="_blank" rel="noopener">Next.js 16.3 release notes</a> · <a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platform changes on your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">Aug 13–14, 2026</span>
+            <h3>Vercel ships Encrypted Client Hello, one-click Node 20 upgrades, and more agent plumbing</h3>
+          </div>
+          <div class="story-body">
+            <p>Encrypted Client Hello is now supported across the Vercel CDN for domains managed by Vercel DNS. ECH encrypts the server name in the TLS handshake, so a network observer sees a connection to Vercel rather than to a specific client site. It is on for eligible domains without configuration.</p>
+            <p>The rest of the week's changelog is developer-experience work: a dashboard control that upgrades projects off deprecated Node.js versions to Node 20 in one click, Grok Build added to the AI SDK harness layer, a meta adapter that lets any Agent Client Protocol harness plug into the AI SDK, Exa joining the Agent Marketplace for grounded search, and DeepSeek V4 Pro switching to updated weights on the AI Gateway with no code change.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. First, run the Node 20 one-click upgrade across every client project still on a deprecated runtime this week — deprecated runtimes eventually stop building, and you do not want to discover that during a client emergency. Second, ECH is a free privacy line for proposals to clients who care about what their traffic reveals; it costs you nothing and it is already on.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog (Aug 13–14)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Capital, roads and orbit</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Aug 13–14, 2026</span>
+            <h3>AMD raised $4.75 billion in its largest-ever dollar bond sale</h3>
+          </div>
+          <div class="story-body">
+            <p>AMD came to market with a four-part unsecured senior note offering maturing in 2029, 2031, 2033 and 2036, initially targeting $4 billion to $5 billion and pricing at $4.75 billion. Bank of America, JPMorgan, Barclays and Wells Fargo led the sale, which was expected to settle August 17. Proceeds are earmarked for general corporate purposes including debt repayment.</p>
+            <p>Context: AMD guided third-quarter revenue above estimates earlier in the month and said data-center sales would more than double by 2027. The bond sale is part of a broad wave of chip and hyperscaler borrowing to fund AI capacity — roughly $220 billion raised by tech companies for infrastructure so far in 2026.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Chipmakers are funding AI capacity with debt rather than cash flow, which means the buildout now has interest payments attached to it. That does not change what you ship this month. It does mean the price of inference is eventually going to reflect somebody's coupon payments, so keep the usage ceilings in your retainer contracts and do not price a fixed monthly on the assumption that token costs only fall.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-08-13/amd-plans-to-raise-as-much-as-5-billion-from-debt-offering" target="_blank" rel="noopener">Bloomberg</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/amd-looks-raise-4-billion-160009191.html" target="_blank" rel="noopener">Reuters via Yahoo Finance</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Approval</span>
+            <span class="ver">Aug 15, 2026</span>
+            <h3>California cleared Waymo to charge for driverless rides across 18 counties</h3>
+          </div>
+          <div class="story-body">
+            <p>The California Public Utilities Commission approved Waymo on August 15 to operate and charge for fully driverless rides in 18 counties: Alameda, Contra Costa, Marin, Napa, Sacramento, San Francisco, San Mateo, Santa Clara, Santa Cruz, Solano, Sonoma, Yolo, Los Angeles, Orange, Riverside, San Bernardino, San Diego and Ventura.</p>
+            <p>The permit covers freeways, highways, city streets, rural roads, parking lots, driveways and rail crossings, day and night, in rain, fog and hail. It opens Sacramento and San Diego as new markets and clears the full Bay Area and Los Angeles. Waymo says rollout will be gradual. As of May its service area was about 1,400 square miles across 11 cities with roughly 3,000 electric vehicles.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Watch this as a regulatory template, not a product. A state utility commission just granted blanket operating authority for an autonomous service across half its population, and that same approval logic is what will eventually govern autonomous agents making commitments on a business's behalf. When a client asks whether an AI receptionist can legally book and confirm work for them, the answer is trending toward yes — write the audit logging into Front Desk now so you can prove what it said.</div>
+          <div class="refs"><a href="https://electrek.co/2026/08/14/waymo-cpuc-approval-california-expansion-18-counties/" target="_blank" rel="noopener">Electrek</a> · <a href="https://www.engadget.com/2237530/waymo-receives-permission-to-offer-rides-in-sacramento-and-san-diego/" target="_blank" rel="noopener">Engadget</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Record</span>
+            <span class="ver">Aug 15, 2026</span>
+            <h3>SpaceX launched two Falcon 9s 38.5 minutes apart</h3>
+          </div>
+          <div class="story-body">
+            <p>Saturday evening, a Falcon 9 lifted off from Cape Canaveral at 9:12 p.m. EDT carrying eight satellites for Globalstar, deploying all eight over roughly six minutes starting 56.5 minutes after liftoff. At 9:50 p.m. EDT — 38.5 minutes later — a second Falcon 9 launched USSF-366 for the US Space Force from Vandenberg. That is a new record for the shortest gap between two SpaceX launches.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No client action. Worth keeping in your head as a benchmark for what a well-built pipeline looks like: two independent launch campaigns on opposite coasts, coordinated to under 40 minutes apart, because the process was designed to be repeatable rather than heroic. That is the same argument you make when a client asks why you template your deployments.</div>
+          <div class="refs"><a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-breaks-record-launch-doubleheader-ussf-366-globalstar-2r" target="_blank" rel="noopener">Space.com</a> · <a href="https://spaceflightnow.com/2026/08/15/live-coverage-spacex-to-launch-satellite-replenishment-mission-for-globalstar-from-cape-canaveral/" target="_blank" rel="noopener">Spaceflight Now</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">LG and Nvidia signed an MoU in Santa Clara to co-develop an Isaac GR00T-powered humanoid, targeting a Q1 2027 unveiling. <a href="https://www.robotics247.com/topic/tag/Humanoid" target="_blank" rel="noopener">Robotics 24/7</a> <span class="ver">Aug 13</span></span></li>
+            <li><span class="tag improve qh-tag">Industry</span><span class="txt">North American companies ordered 8,940 robots worth $622M in Q2 2026, up 4.3% in units and 21.3% in revenue year over year — the dollar figure rising four times faster than the unit count. <a href="https://www.robotics247.com/topic/tag/Humanoid" target="_blank" rel="noopener">Robotics 24/7</a> <span class="ver">Aug 14</span></span></li>
+            <li><span class="tag improve qh-tag">Funding</span><span class="txt">Chinese embodied-AI startup Infiforce closed roughly $150M across Series A and A+ rounds for its AtomBrain world model, claiming deployments across 30-plus cities. <a href="https://theaiinsider.tech/" target="_blank" rel="noopener">The AI Insider</a> <span class="ver">Aug 15</span></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">Analog Devices' data breach disclosure remains open: unauthorized access detected June 23, files confirmed exfiltrated, operations unaffected, and a separate claimed incident from the ExfilSquad group still under assessment. <a href="https://www.securityweek.com/semiconductor-firm-analog-devices-discloses-data-breach/" target="_blank" rel="noopener">SecurityWeek</a> <span class="ver">ongoing</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

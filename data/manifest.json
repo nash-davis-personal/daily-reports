@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-16",
+    "title": "Lala took out the power on the Big Island, and Indiana broke a 1913 record",
+    "summary": "Hurricane Lala made its closest approach to Hawaii's Big Island late Saturday and weakened to a tropical storm Sunday morning, leaving one person dead, nearly 70% of the island without power, homes swept off foundations near Naalehu, and isolated rainfall reports as high as 35 inches. In the Midwest, the White River at Anderson, Indiana crested at a record 24.9 feet, beating a mark that had stood since 1913, with at least three dead and more than 150,000 without power. The national wildfire preparedness level is at 5 with 88 uncontained large fires and 7.2 million acres burned year to date, and bond investors spent the weekend arguing about $70 billion in off-balance-sheet credit backstops behind the AI buildout.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-16.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Zero releases since the last briefing — the top of the Claude Code changelog is unchanged at 2.1.233 (August 14), which the August 15 report already covered in full, so there is nothing new to absorb and the only open items are yesterday's carry-overs.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-16.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-16",
+    "title": "The cheap tier got good enough to run your agents",
+    "summary": "Google shipped Gemini 3.7 Flash at half price with DeepSWE jumping from 48.6% to 65.3%, and Alibaba open-weighted Qwen3.8-27B under Apache 2.0 with agentic coding scores that beat models several times its size on a single GPU. OpenAI's CFO told investors enterprise revenue has passed consumer at a $40 billion annualized pace, Z.ai's GLM-5.3 found a real vulnerability in Cursor and disclosed it privately, and OpenAI notified European free-tier users that ads arrive later this month.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-16.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-16",
+    "title": "Sell the patching, then cut your own token bill",
+    "summary": "A max-severity SAP flaw went from public patch to live exploitation in three days with no proof-of-concept in circulation, which is the argument for turning dependency patching into a paid monthly line on every client you already have. Gemini 3.7 Flash at half price through December 31 cuts the cost of the products you already run, an open-weights 27B model makes a private on-prem AI offer honest for the first time, and the SBA's doubled cumulative loan limit means your bigger modernization scopes are now financeable.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-16.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-16",
+    "title": "A CVSS 10 in SAP Commerce is being exploited three days after the patch",
+    "summary": "CVE-2026-58231, a maximum-severity unauthenticated remote code execution flaw in SAP Commerce Cloud's Data Hub Adapter, was patched on August 12 and confirmed hitting honeypots by August 14 with no public proof-of-concept. Nothing new landed on Next.js, React or Supabase security, though Vercel turned on Encrypted Client Hello across its CDN and added one-click Node.js 20 upgrades. AMD raised $4.75 billion in its biggest-ever dollar bond sale, California cleared Waymo for driverless rides across 18 counties, and SpaceX launched two Falcon 9s 38.5 minutes apart.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-16.html"
   },
   {
     "source": "america",

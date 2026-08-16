@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-16" />
+  <meta name="report:title" content="The cheap tier got good enough to run your agents" />
+  <meta name="report:summary" content="Google shipped Gemini 3.7 Flash at half price with DeepSWE jumping from 48.6% to 65.3%, and Alibaba open-weighted Qwen3.8-27B under Apache 2.0 with agentic coding scores that beat models several times its size on a single GPU. OpenAI's CFO told investors enterprise revenue has passed consumer at a $40 billion annualized pace, Z.ai's GLM-5.3 found a real vulnerability in Cursor and disclosed it privately, and OpenAI notified European free-tier users that ads arrive later this month." />
+  <meta name="report:highlights" content="5" />
+
+  <title>The cheap tier got good enough to run your agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report" style="--accent:#a78bfa; --accent-2:#8b5cf6; --accent-soft:rgba(167,139,250,0.12)">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Sunday, August 16, 2026</span>
+        <span>◆</span><span>Cheap tiers ◆ open weights ◆ money</span>
+      </div>
+      <h1>The cheap tier got good enough to run your agents</h1>
+      <p class="standfirst">Gemini 3.7 Flash landed at half price with a long-horizon software-engineering score that went from 48.6% to 65.3% in three weeks, and Alibaba open-weighted a 27-billion-parameter model that runs on one GPU and beats far larger models on agentic terminal work. The frontier headlines were quiet this weekend; the economics underneath them moved a lot.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 13 – August 16, 2026</span>
+        <span>◆</span><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">50%</div><div class="lbl">Gemini 3.7 Flash introductory price cut</div></div>
+      <div class="stat"><div class="num">73.0</div><div class="lbl">Qwen3.8-27B on Terminal-Bench 2.1</div></div>
+      <div class="stat"><div class="num">$40B</div><div class="lbl">OpenAI annualized revenue run rate</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Flash is now the agent workhorse</h4><p>Gemini 3.7 Flash at $0.75 in / $3.75 out per million through December 31, with DeepSWE up from 48.6% to 65.3% over 3.6 Flash.</p></div>
+        <div class="signal"><div class="n">02</div><h4>A frontier-ish coder fits on one GPU</h4><p>Qwen3.8-27B ships Apache 2.0 with 262K native context, vision, and 73.0 on Terminal-Bench 2.1 against Muse Glimmer's 51.7.</p></div>
+        <div class="signal"><div class="n">03</div><h4>OpenAI is now an enterprise company</h4><p>CFO Sarah Friar told investors business revenue passed consumer, at roughly $40B annualized. The year started 60-40 the other way.</p></div>
+        <div class="signal"><div class="n">04</div><h4>A model found a real bug in Cursor</h4><p>GLM-5.3 was handed a reverse-engineering task and surfaced a potentially serious vulnerability in the editor. Disclosed privately; fix in progress.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Ads are coming to European ChatGPT</h4><p>OpenAI Ireland notified EEA and Swiss Free and Go users on August 15 that sponsored results start later this month.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The cheap tier is where the capability landed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 13, 2026</span>
+            <h3>Gemini 3.7 Flash ships for coding and agents at a 50% introductory price</h3>
+          </div>
+          <div class="story-body">
+            <p>Google DeepMind put Gemini 3.7 Flash into general availability three weeks after 3.6 Flash, and the jumps are on the benchmarks that matter for agent work. FrontierCode 1.1 went from 34.4% to 43.6%. DeepSWE v1.1, a long-horizon software-engineering test, went from 48.6% to 65.3%. Terminal-Bench 2.1 came in at 85.8%, close behind GPT-5.6 Terra's 87.4%, and Code Arena's web-development Elo moved from 1,538 to 1,588.</p>
+            <p>Pricing is the actual story. Google is charging $0.75 per million input tokens and $3.75 per million output through December 31, 2026, then $1.50 and $7.50 from January 1. That is a two-model gap collapsing into a discount window: for four and a half months, a model that scores within two points of a frontier coding model on terminal work costs Flash money. It is live on the Gemini API, AI Studio, Antigravity and Android Studio, and Vercel put it on the AI Gateway at the same 50% off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the model to run the boring half of your products on. TSD Concierge does retrieval-and-answer, Booking Bridge does structured extraction, and neither needs Opus-class reasoning per turn. Route those to 3.7 Flash before December 31, measure the quality delta on 20 real transcripts, and if it holds you have cut the per-conversation cost of your Managed AI retainers without touching the offer. Set a calendar reminder for mid-December: the price doubles on January 1 and your margin math changes with it.</div>
+          <div class="refs"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google — Introducing Gemini 3.7 Flash</a> · <a href="https://venturebeat.com/technology/googles-gemini-3-7-flash-targets-coding-and-agents-with-a-50-introductory-price-cut" target="_blank" rel="noopener">VentureBeat</a> · <a href="https://www.infoworld.com/article/4209622/google-cuts-gemini-3-7-flash-prices-as-enterprise-ai-economics-diverge-and-pro-cadence-slows.html" target="_blank" rel="noopener">InfoWorld</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>Alibaba open-weights Qwen3.8-27B: Apache 2.0, 262K context, one GPU</h3>
+          </div>
+          <div class="story-body">
+            <p>The Qwen team released Qwen3.8-27B at 15:00 UTC on August 14 with open weights under Apache 2.0. It is a dense 27.78-billion-parameter multimodal model taking text, images and video, with a native 262,144-token context window that extends to a million. The point of the release is that it targets a single consumer GPU rather than a rack.</p>
+            <p>The agentic scores are what make it notable. Terminal-Bench 2.1 went from 63.4 to 73.0 over the prior generation, DeepSWE 1.1 from 13.3 to 42.2, OSWorld-Verified from 63.9 to 84.3, and SWE-MM from 25.7 to 38.6. On Terminal-Bench it beats Meta's 30B Muse Glimmer by more than 20 points. Reported SWE-Bench Pro is 61.7%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the model that makes "it runs on your own hardware, we never send your data anywhere" a truthful sentence at an SMB price point. That is a real objection you hit with medical, legal and financial clients. Do not rebuild delivery around it — your speed comes from Claude Code — but it is worth having a one-page answer ready when a prospect asks where their customer data goes, because now the answer can be "a box in your office" without you eating a quality cliff.</div>
+          <div class="refs"><a href="https://huggingface.co/Qwen" target="_blank" rel="noopener">Qwen on Hugging Face</a> · <a href="https://officechai.com/miscellaneous/alibaba-releases-qwen-3-8-27b-beats-muse-glimmer-30b-on-many-benchmarks/" target="_blank" rel="noopener">OfficeChai</a> · <a href="https://startupfortune.com/alibabas-qwen38-27b-squeezes-frontier-ai-benchmarks-onto-one-gaming-gpu/" target="_blank" rel="noopener">Startup Fortune</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Where the money actually is</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Business</span>
+            <span class="ver">Aug 14, 2026</span>
+            <h3>OpenAI's enterprise revenue passed consumer, two quarters ahead of plan</h3>
+          </div>
+          <div class="story-body">
+            <p>CFO Sarah Friar told investors on August 14 that business revenue has overtaken ChatGPT consumer revenue. "We entered the year at 60-40, but enterprise has accelerated much faster than expected and those lines have now crossed," she said. She had previously guided to parity by the end of 2026.</p>
+            <p>The supporting numbers: roughly $40 billion in annualized recurring revenue, up from about $20 billion at the start of the year, with a 20% month-over-month jump in July alone. Revenue chief Denise Dresser departed after eight months and was replaced by Dali Rajic.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The company with the best consumer AI brand in the world makes most of its money selling to businesses, and it got there by accelerating past its own forecast. That is your market thesis with a $40 billion receipt attached. Give Grant and Bishop this one line for cold calls and the top of proposals: the AI money is being made inside businesses, not by consumers playing with chatbots, and the businesses buying it are not tech companies.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/08/14/openai-cfo-friar-tells-investors-that-enterprise-bigger-than-consumer.html" target="_blank" rel="noopener">CNBC (Aug 14)</a> · <a href="https://www.unite.ai/openai-tells-investors-enterprise-revenue-has-overtaken-its-chatgpt-consumer-business/" target="_blank" rel="noopener">Unite.AI</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Product</span>
+            <span class="ver">Aug 15, 2026</span>
+            <h3>OpenAI tells European free-tier users that ads arrive later this month</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI Ireland sent a notice on August 15 to Free and Go plan users across the European Economic Area and Switzerland saying ads are coming to ChatGPT later in August. Paid tiers — Plus, Pro, Business, Enterprise and Edu — stay ad-free. Ads appear as a sponsored section below the model's main answer, keyed to what the user asked about.</p>
+            <p>Targeting starts contextual only, with personalized advertising requiring opt-in consent, which is the GDPR constraint. The UK has had ChatGPT ads for a while; France, Germany and Ireland were announced as future markets without dates. The notice also updated OpenAI's European privacy disclosures to cover ad personalization, mirroring an April 30 change on the US side.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Sponsored placements inside assistant answers are the next search-result real estate, and your SMB clients will eventually ask how to appear in them. Nothing to sell today. What to do today is keep instrumenting how often client sites get cited by assistants, because when the paid version of that surface opens up, the shop that already has the organic baseline is the one that gets the budget.</div>
+          <div class="refs"><a href="https://ppc.land/chatgpt-free-and-go-users-in-europe-face-ads-from-later-this-month/" target="_blank" rel="noopener">PPC Land (Aug 15)</a> · <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">OpenAI — Testing ads in ChatGPT</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models that find bugs in your tools</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Aug 14–15, 2026</span>
+            <h3>GLM-5.3 found a potentially serious vulnerability in Cursor</h3>
+          </div>
+          <div class="story-body">
+            <p>Yesterday's briefing covered GLM-5.3's release and its safety gating. The follow-on is more concrete: given a complex reverse-engineering task, the model surfaced what security researcher Joshua Saxe described as a potentially serious vulnerability in Cursor. It was disclosed privately, and the Cursor team is working with Z.ai on a fix with details to follow once users are protected.</p>
+            <p>Z.ai says it added vulnerability-discovery environments to the post-training mix expecting the model to get better at finding flaws, and instead watched capability progress further down the exploitation chain. CyberGym went from 77.2% on GLM-5.2 to 84.5%. ExploitBench, which measures reasoning through and executing an exploit, roughly doubled from 24.4% to 54.4%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update Cursor when the patch lands — that is the two-minute action item. The larger point: models that find exploitable bugs in developer tooling are now open-weighted, so the window between a flaw existing in something you ship on and someone finding it is closing. Pin your dependencies, keep an eye on the advisory feeds for your stack, and stop treating "nobody would bother looking at a small agency's site" as a security posture.</div>
+          <div class="refs"><a href="https://venturebeat.com/technology/glm-5-3-is-here-with-advanced-cyber-capabilities-and-reportedly-already-found-a-serious-vulnerability-in-cursor" target="_blank" rel="noopener">VentureBeat</a> · <a href="https://cryptobriefing.com/glm-5-3-cursor-vulnerability-cybersecurity/" target="_blank" rel="noopener">Crypto Briefing</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes worth knowing</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Nvidia opened Nemotron 3.5 Lightning, a 30B mixture-of-experts model with 3B active parameters and a 1M context, aimed at long-running agents, alongside NeMo Switchyard, an open routing library that sends each agent step to the cheapest capable model. <a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-5-lightning-delivers-fast-accurate-specialized-task-execution-for-long-running-agents/" target="_blank" rel="noopener">NVIDIA</a> <span class="ver">Aug 11–12</span></span></li>
+            <li><span class="tag feature qh-tag">Gateway</span><span class="txt">Vercel put Gemini 3.7 Flash on the AI Gateway at 50% off and made Z.ai's GLM 5.2 free for eve agents through August 27, so you can A/B two models against your own workload without touching billing. <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <span class="ver">Aug 13</span></span></li>
+            <li><span class="tag improve qh-tag">Privacy</span><span class="txt">Google is pushing HEIR, its open-source homomorphic-encryption compiler, as a path to running inference on encrypted inputs — annotate which Python types are secret and the compiler handles the rest, targeting OpenFHE and Lattigo. <a href="https://blog.google/security/how-google-is-making-private-ai-practical-with-homomorphic-encryption/" target="_blank" rel="noopener">Google</a> <span class="ver">Aug 15</span></span></li>
+            <li><span class="tag improve qh-tag">Deals</span><span class="txt">Fireworks AI closed a $1.5 billion Series D, one of the largest AI rounds of the month, as inference-serving infrastructure keeps attracting capital that used to go to model labs. <a href="https://news.crunchbase.com/venture/biggest-funding-rounds-ai-defense-fintech-robotics/" target="_blank" rel="noopener">Crunchbase News</a> <span class="ver">Aug 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
