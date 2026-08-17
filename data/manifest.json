@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-17",
+    "title": "Second quiet day: still nothing past 2.1.233. Three days without a release, after a stretch that averaged one a day.",
+    "summary": "No release has been published since 2.1.233 on August 14, making this the second consecutive empty briefing and the longest gap in the changelog's last two weeks, so the only useful move today is clearing the 2.1.233 carry-overs that are still open.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-08-17.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

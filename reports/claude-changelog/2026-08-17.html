@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-17" />
+  <meta name="report:title" content="Second quiet day: still nothing past 2.1.233. Three days without a release, after a stretch that averaged one a day." />
+  <meta name="report:summary" content="No release has been published since 2.1.233 on August 14, making this the second consecutive empty briefing and the longest gap in the changelog's last two weeks, so the only useful move today is clearing the 2.1.233 carry-overs that are still open." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Second quiet day: still nothing past 2.1.233. Three days without a release, after a stretch that averaged one a day. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Monday, August 17, 2026</span>
+        <span>◆</span><span>Zero releases in window</span>
+      </div>
+      <h1>Still nothing past 2.1.233. Second empty day running.</h1>
+      <p class="standfirst">The newest entry on the <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a> is still 2.1.233, dated August 14 — verified directly against the source this morning. That release was covered in full on <a href="./2026-08-15.html">August 15</a> and the window was already empty on <a href="./2026-08-16.html">August 16</a>, so there is no new material to brief and this one stays short.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.233</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">new releases</div></div>
+      <div class="stat"><div class="num">2.1.233</div><div class="lbl">still the newest</div></div>
+      <div class="stat"><div class="num">3 days</div><div class="lbl">since last publish</div></div>
+    </div>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quiet window</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">no change</span>
+            <h3>Nothing published between August 14 and today</h3>
+          </div>
+          <div class="story-body">
+            <p>The version list at the top of the changelog still reads 2.1.233, 2.1.232, 2.1.231, 2.1.229. No entry has been added, and nothing in the already-covered window has been revised.</p>
+            <p>Worth one note on cadence: the ten releases before this ran August 4, 4, 6, 7, 8, 8, 10, 11, 12, 13, 13 and 14 — close to one a day, sometimes two. Three days of silence is the longest gap visible on the current page. That is an observation about publishing rhythm and nothing more; the changelog gives no reason for it, and guessing at one would be making things up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to upgrade, nothing to re-test on Bisque, Studio C or Sonderwerks. Your pinned version is current. If the next release lands large after this gap, you will want the carry-overs below already closed so you are reading one diff instead of two.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Still open from 2.1.233</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Carry-over</span><span class="txt">Decide one way on the todo tools. <code>TaskCreate/Get/Update/List</code> and <code>TodoWrite</code> are off on Opus 4.8, Sonnet 5, Fable 5, Mythos 5 and newer; either strip the "track progress with TodoWrite" lines out of your skills or export <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> where your scheduled jobs launch. Second day carrying this. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag fix qh-tag">Carry-over</span><span class="txt">Run <code>claude plugin validate</code> against your skills directory now that it checks a bare <code>.claude/skills</code> and reports SKILL.md files whose frontmatter fails to parse. Ten minutes, and a quiet day is when it costs you nothing. <span class="ver">2.1.233</span></span></li>
+            <li><span class="tag fix qh-tag">Carry-over</span><span class="txt">Retest any Notification hook you wired for permission prompts under Claude Desktop or VS Code — it was silently not firing before this release. <span class="ver">2.1.233</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
