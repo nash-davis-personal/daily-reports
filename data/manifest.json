@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-17",
+    "title": "The consumer pulled back, and the Fed's next move is a coin flip in the wrong direction",
+    "summary": "July retail sales fell 0.6% to $763.6 billion, the biggest monthly drop in more than a year against forecasts for a small gain, with autos down 1.8% and online down 2.2%. The Fed holds at 3.50%-3.75% and futures are split on whether September brings a hike rather than a cut, with Brent near $88 and about 33% higher than a year ago doing most of the work. Retail earnings from Home Depot, Target, Lowe's, TJX and Walmart land this week alongside Fed minutes, an extreme heat warning covers the Carolinas with heat indices past 105, a Class I recall of 1.59 million dozen eggs is tied to a 17-state Salmonella outbreak, and the president approved an emergency declaration for Indiana after flooding that has killed at least six.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-17.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No release has been published since 2.1.233 on August 14, making this the second consecutive empty briefing and the longest gap in the changelog's last two weeks, so the only useful move today is clearing the 2.1.233 carry-overs that are still open.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-17.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-17",
+    "title": "Anthropic raised its own risk rating and shelved a model it already built",
+    "summary": "Anthropic's August risk report moved catastrophic misalignment from 'very low' to 'low' and disclosed Model 2, an internal Mythos-class model more capable than Mythos 5 that it has no plans to release, citing incomplete predeployment assessments. Google shuts off the three Imagen 4 API endpoints today and the replacement is a different method call rather than a model-name swap, Claude went down across five products for 36 minutes on Sunday evening, Higgsfield raised $400M at a $5.4B valuation on $700M annualized revenue, and a four-university study found a chatbot ran the trust-building half of a romance scam better than human scammers did.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-17.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-17",
+    "title": "It is 105 degrees in Charlotte and 71% of HVAC shops are missing calls",
+    "summary": "The Carolinas are on their fourth straight day of heat advisories with records forecast all week, heat waves drive 3-5x call volume into HVAC shops, and 71% of them miss calls during peak season while homeowners dial two or three competitors within fifteen minutes. TSD Front Desk already exists, which makes this a days-not-weeks sale Grant and Bishop can knock on today. Behind it: Google kills the Imagen 4 endpoints this afternoon and Supabase quietly stopped honoring extension version pins on August 5, which is the argument for a paid AI-dependency retainer; Stripe paying $7 billion for OpenRouter says the money in AI services is metered usage, so reprice Front Desk and Concierge per conversation; and Claude's 36-minute outage Sunday night is the reason a failover path is a billable line rather than a nicety.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-17.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-17",
+    "title": "Stripe paid $7 billion for the toll booth in front of the models",
+    "summary": "Stripe finalized a deal to buy OpenRouter for more than $7 billion, five times the AI gateway's May valuation, putting the payments company between eight million developers and 400-plus models. Nothing new landed on Next.js, React or Vercel security since July 21, though two Supabase changes took effect this month that break self-hosted setups and CI. Meanwhile AWS is rationing CPU cycles because agent workloads spend most of their runtime on tool processing rather than inference, BlackRock's $12.5 billion bond package for Meta's El Paso campus is reported to be only partially insured, and PJM's capacity auctions wasted about $12 billion of ratepayer money on a modeling error.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-17.html"
   },
   {
     "source": "america",
