@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-18" />
+  <meta name="report:title" content="The quiet window ended: 2.1.234 ships 51 changes, and the built-in claude-api skill now costs 25k tokens instead of 200k." />
+  <meta name="report:summary" content="One release closed a three-day gap and it is a large one, led by an 8x cut in the claude-api skill's context cost, automatic session continuation when a usage limit resets, and a batch of fixes that stop permission state and MCP secrets from leaking or being dropped." />
+  <meta name="report:highlights" content="6" />
+
+  <title>The quiet window ended: 2.1.234 ships 51 changes, and the built-in claude-api skill now costs 25k tokens instead of 200k. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, August 18, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.234</span>
+      </div>
+      <h1>The quiet window ended: 2.1.234 ships 51 changes, and the built-in <code>claude-api</code> skill now costs 25k tokens instead of 200k.</h1>
+      <p class="standfirst">After three days without a release, 2.1.234 landed on August 17 carrying 51 logged changes. The items that reach your daily loop: an 8x cut in what the bundled <code>claude-api</code> skill charges your context window, automatic continuation when a claude.ai usage limit resets, two <code>/goal</code> fixes that stop a goal hanging forever, and a security batch that stops MCP diagnostics printing resolved secrets and stops session restarts silently dropping your permission flags.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.233</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">51</div><div class="lbl">logged changes</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">days since the last release</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>The <code>claude-api</code> skill dropped from ~200k tokens to ~25k</h4><p>Reference docs now load on demand instead of all at once. That skill fires on nearly any Anthropic-API-shaped task, so it has been quietly eating most of a context window every time it triggered.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Sessions continue automatically when a usage limit resets</h4><p>Hit the claude.ai limit mid-build and the session picks itself back up at reset instead of sitting dead. Toggle lives in <code>/config</code> under "Continue automatically at usage limit".</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>/goal</code> stops hanging on dead turns and stalled background work</h4><p>A goal now clears itself with a notice when a turn dies on revoked auth, exhausted credits or context overflow, and Claude checks in on background tasks that have kept a goal waiting 30+ minutes.</p></div>
+        <div class="signal"><div class="n">04</div><h4>MCP diagnostics no longer print resolved secrets</h4><p>Scope-conflict warnings now show the configured <code>${VAR}</code> form and connection-failure details show only the server origin. Credential masking on relayed permission previews was tightened in the same release.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Session restarts stop dropping your permission flags</h4><p>Accepting the fullscreen-renderer prompt used to restart the session without its permission mode, tool allow/deny rules, model or effort flags. <code>/tui</code> had the same problem with launch-time tool rules.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>/permissions</code> and <code>/add-dir</code> now open mid-turn</h4><p>Rule changes apply to the rest of the current turn, so you can widen or tighten permissions without killing work in progress. <code>/autocompact</code>, <code>/theme</code>, <code>/help</code>, <code>/config</code> and <code>/advisor</code> also open mid-turn in the fullscreen TUI.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Context and throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.234</span>
+            <h3>The bundled <code>claude-api</code> skill costs an eighth of what it did</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog puts the reduction at "~200k+ tokens to ~25k", achieved by loading reference docs on demand rather than up front. This is the single largest context change in the release.</p>
+            <p>The skill's own trigger rules are broad: it is supposed to load before you touch anything Anthropic-API-shaped, including agent, MCP and tool-definition work where the provider is not even stated. On a 200k baseline that meant one skill load could crowd out the actual codebase.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any session where you are wiring Claude into a client build — the Sonderwerks intake agent, anything touching the Anthropic SDK — just got most of its working context back. If you had been avoiding the skill or manually working around it to protect context, stop working around it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.234</span>
+            <h3>Usage-limit resets resume the session for you</h3>
+          </div>
+          <div class="story-body">
+            <p>When a claude.ai usage limit resets, Claude Code now continues the session automatically. It is on by default with an opt-out in <code>/config</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant to your unattended jobs specifically. A scheduled task that hit the limit used to die there and you found out later; now the run picks back up on its own. Worth deciding deliberately whether you want that on for automated runs, because a job resuming hours later still writes and pushes whatever it was doing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.234</span>
+            <h3>Two long-session bugs that were costing you approvals</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode had been repeatedly re-checking and denying sandboxed commands' network access after a conversation was compacted. Separately, session-scoped permission answers, including denies, were being dropped when you answered a background subagent's tool permission prompt.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both bit hardest in the long agent-heavy sessions you run on client builds. Answers you gave once should now stick past a compaction and past a subagent prompt, which cuts the interruption tax on anything you leave running.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Secrets, permissions and trust</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.234</span>
+            <h3>MCP diagnostics were printing resolved secrets</h3>
+          </div>
+          <div class="story-body">
+            <p>Scope-conflict warnings now display the configured <code>${VAR}</code> placeholder rather than the resolved value, and connection-failure details are cut back to the server origin.</p>
+            <p>The same release tightened masking on relayed permission previews twice: credential masking could previously hide the command, path or destination from the person approving it, and provider API tokens failed to mask when followed directly by a shell delimiter.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a wide MCP surface with live keys in it (Supabase, Vercel, Vapi, Upstash, Higgsfield). Anything you pasted from an MCP error into a chat, a note or a client thread before this release may contain a real secret. Skim recent debugging output before you assume it was already redacted.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.234</span>
+            <h3>Restarts no longer silently downgrade your permission mode</h3>
+          </div>
+          <div class="story-body">
+            <p>Accepting the "Try the new fullscreen renderer?" prompt restarted the session without its permission mode (including <code>--dangerously-skip-permissions</code>), tool allow/deny rules, model or effort flags. <code>/tui</code> dropped launch <code>--allowed-tools</code> and <code>--disallowed-tools</code> rules on restart; it now refuses to switch and tells you why when the session has restrictions a restart cannot carry.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This cuts both ways and the second direction is the one to care about. A session you launched with narrow tool rules could quietly come back wide open after a restart. If you use launch flags to fence an unattended run, re-verify the mode after any renderer or <code>/tui</code> switch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.234</span>
+            <h3>Windows NT-path hardening finished, and marketplace allowlists closed a host gap</h3>
+          </div>
+          <div class="story-body">
+            <p>Remote file reads, session restore, CLAUDE.md includes, workflow scripts and file uploads now reject Windows NT-namespace (<code>\??\</code>) paths, closing the remaining pre-approval file accesses against the NTLM credential-leak vector that 2.1.233 started on. Separately, <code>strictKnownMarketplaces</code> allowlists were accepting SCP-style git marketplace sources whose host differed from the one git would actually connect to.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The NT-path work is a Windows vector and you are on darwin, so it is background. The marketplace allowlist bypass is the one worth noting if you ever pin plugin sources for a client machine.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents, goals and Remote Control</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.234</span>
+            <h3><code>/goal</code> gets two failure modes it was missing</h3>
+          </div>
+          <div class="story-body">
+            <p>A goal now clears itself with a notice when a turn dies on an unrecoverable error such as revoked auth, an exhausted credit balance or a context overflow, instead of staying armed. And when background tasks keep a goal waiting 30+ minutes, Claude checks in on them rather than waiting indefinitely. Opt out with <code>CLAUDE_CODE_GOAL_CHECKIN_MINUTES=0</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the loop-engineering failure mode you have been designing around by hand. A stalled background task no longer parks an unattended run forever, which removes one of the reasons your loops need an external timeout brake.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.234</span>
+            <h3>Cross-session messaging stops failing silently</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Desktop inter-session messages were being silently dropped by the recipient when cross-session messaging read as disabled, leaving the sender's query "thinking" for many minutes. <code>SendMessage</code> also stopped rejecting recipients copied out of <code>ListAgents</code> when the session name hit the 200-character cap or was emoji-heavy, and both tools now say when your account's session list was too long to check completely rather than treating unseen sessions as absent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you tried multi-session agent coordination, hit a hang, and wrote the feature off, that was probably this. Worth one retry before you keep building around it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.234</span>
+            <h3>Remote Control syncs state to phone and web properly now</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions hosted from Claude Code Desktop or VS Code keep phones and claude.ai/code current on permission mode and model as they change, effort picks made on a phone or on claude.ai/code apply back to terminal- and Desktop-hosted sessions, and files sent to you during a Remote Control session now actually upload instead of showing an empty card. Signing this computer into a different claude.ai account or org now stops the running session within seconds with a reason, replacing a misleading HTTP 404 hours later.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Checking a running build from your phone between client stops is now a real workflow. The empty-card bug was the thing making it useless for reviewing generated output on the road.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Terminal workflow</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.234</span>
+            <h3>Dialogs open mid-turn, including <code>/permissions</code> and <code>/add-dir</code></h3>
+          </div>
+          <div class="story-body">
+            <p><code>/permissions</code> can be opened while Claude is working and rule changes apply to the rest of the current turn. <code>/add-dir &lt;path&gt;</code> works mid-turn too, and <code>/add-dir</code>, <code>/autocompact</code>, <code>/theme</code>, <code>/help</code>, <code>/config</code> and <code>/advisor</code> all open mid-turn in the fullscreen TUI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Adding a sibling directory mid-task is the common one for you — pulling the vault or a second repo into scope without restarting a session you have already spent context building up.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.234</span>
+            <h3>Queued input and <code>!</code> shell mode got a cleanup pass</h3>
+          </div>
+          <div class="story-body">
+            <p>Five separate fixes: queued messages no longer reappear in prompt history while still queued, Esc while selecting a queued message no longer interrupts the turn, <code>!</code> mode no longer sticks after a mid-turn submit, a queued <code>!</code> command edited with up-arrow no longer gets sent to the model as plain text, and dialogs opened while a <code>!</code> command was running no longer get dismissed when it finishes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The up-arrow one was the dangerous one. A queued shell command silently becoming a chat message means the command never ran while you believed it did.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.234</span>
+            <h3>Transcript rendering and session titles</h3>
+          </div>
+          <div class="story-body">
+            <p>Your own prompts now render markdown in the transcript the same way replies do, with highlighted code blocks, inline code and lists. Auto-generated session titles now read as short specific names such as "Login button bug" instead of sentences restating the request.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cosmetic, but the title change matters once you have a dozen parallel sessions across Bisque, Studio C and Sonderwerks and are picking one out of a list.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.234</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Optional <code>CLAUDE_CODE_PROJECT_DIR_NAME</code> lets hosts choose a short name for the per-project transcript directory <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">New <code>selection:clear</code> keybinding action clears an in-app text selection, including in the agents view <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">GitLab merge request badge in the footer and statusline for repos with a GitLab remote and an authenticated <code>glab</code> CLI <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude is now told to use your account email only to identify you and not to send it to unrelated services unless you ask <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Crash when a non-streaming fallback response (typically via third-party gateways) contained a thinking block missing its thinking field or a text block missing its text <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Markdown rendering became extremely slow on messages containing unusual Unicode sequences <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Repository detection mis-read the host of git remotes with unusual userinfo, producing links and repo-specific behavior for the wrong host <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Modal text such as the <code>/login</code> OAuth URL lost characters when copied in fullscreen <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A <code>---</code> horizontal rule in rendered markdown ran into the line after it <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Consecutive shell commands split into multiple "Ran 1 shell command" rows when todo/task updates were interleaved <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Trust prompts omitted the repository-wide scope warning when the directory was first seen before the repository existed there <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An IDE diff tab closing during a permission re-prompt could answer the new prompt with the previous input <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">After <code>/login</code> with <code>CLAUDE_CODE_OAUTH_TOKEN</code> set, the stale-token reminder leaked into Claude's automatically resumed turn <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Permission previews now relay only to channel servers admitted by the inbound trust gate, and a server's explicit permission-capability opt-out is honored <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Expired Anthropic profile credential now points you at <code>/login</code> when a claude.ai login would take precedence <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">"API returned an empty or malformed response" now reports content type, body kind, size, request ID and why the streaming request failed <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>claude setup-token</code> rejects unexpected extra arguments instead of silently ignoring them <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag breaking qh-tag">Changed</span><span class="txt">Esc in fullscreen no longer clears a mouse text selection; it interrupts or dismisses as usual and the selection stays highlighted <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag breaking qh-tag">Removed</span><span class="txt">The "Default teammate model" setting is gone from <code>/config</code>; agent-team teammates use the leader's model unless the spawn names one <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag breaking qh-tag">Removed</span><span class="txt">The redundant "Allowed by auto mode classifier" line under every Agent tool call <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Dimmed the elapsed-time counter on the running tool header so it no longer competes with the bold counts <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Background task notifications delivered between turns are now wrapped in <code>&lt;system-reminder&gt;</code> tags, matching mid-turn delivery <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Mantle skips the admin-pin availability probe at startup when a main-loop model is already picked <span class="ver">2.1.234</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows startup no longer stalls on repeated rename retries when <code>~/.claude.json</code> is read-only <span class="ver">2.1.234</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
