@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-18" />
+  <meta name="report:title" content="GitHub went down for eight hours and Cursor launched a competitor the same day" />
+  <meta name="report:summary" content="GitHub degraded worldwide for roughly eight hours on August 17, taking Actions, the API, pull requests and Copilot with it, and Cursor picked that day to open the beta of Origin, agent-first code hosting that syncs existing GitHub repos and already ships Vercel preview deployments per pull request. Vercel put GPT-5.6 Sol at half price on the AI Gateway through September 18 and turned on Encrypted Client Hello across the CDN, Next.js still has no August advisory so 16.2.11 and 15.5.21 remain the patched line, Unitree priced its Shanghai IPO at about 61 billion yuan after 8,000-times retail oversubscription, and France's tax authority disclosed a breach affecting roughly 678,000 people." />
+  <meta name="report:highlights" content="5" />
+
+  <title>GitHub went down for eight hours and Cursor launched a competitor the same day — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, August 18, 2026</span>
+        <span>◆</span><span>Your stack ◆ dev infra ◆ hardware money</span>
+      </div>
+      <h1>GitHub went down for eight hours and Cursor launched a competitor the same day</h1>
+      <p class="standfirst">GitHub's August 17 outage hit Actions, the API, pull requests, webhooks, SAML and Copilot, with error rates around 20 percent on the web and API and roughly 50 percent on raw and archive downloads. Hours into it Cursor opened the beta of Origin, code hosting built for agents that syncs your existing GitHub repos and already runs Vercel preview deployments on every pull request.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 17 – August 18, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~8 hrs</div><div class="lbl">GitHub degraded worldwide, Aug 17</div></div>
+      <div class="stat"><div class="num">50% off</div><div class="lbl">GPT-5.6 Sol on Vercel AI Gateway to Sept 18</div></div>
+      <div class="stat"><div class="num">8,000×</div><div class="lbl">Retail oversubscription on Unitree's Shanghai IPO</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>GitHub was down most of a workday</h4><p>Roughly eight hours of degradation starting 13:40 UTC. Actions, API, PRs, webhooks, SAML, SCIM and Copilot all affected; Copilot auth lagged the recovery.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Cursor shipped GitHub competition</h4><p>Origin is in beta for paid users: agent-scale code hosting with GitHub sync, PR review, merge, and Vercel preview deploys per PR.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Half-price frontier tokens on Vercel</h4><p>GPT-5.6 Sol is 50 percent off on the AI Gateway from August 17 through September 18. Gemini 3.7 Flash is also discounted.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Next.js is still quiet</h4><p>No August advisory. The July release remains the line to be on: 16.2.11 and 15.5.21. Anything on 13, 14, or older 15.x is unpatched.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Humanoid robots get a public price</h4><p>Unitree priced at 150.8 yuan a share, about 61 billion yuan, and debuts August 19. It sets the comp for 30 to 50 peers queued behind it.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The day the pipeline stopped</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Outage</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>GitHub degraded worldwide for about eight hours</h3>
+          </div>
+          <div class="story-body">
+            <p>Impairment started around 13:40 UTC. Within the hour GitHub confirmed degraded API requests, Actions and webhooks; issues and pull requests followed, and Copilot joined around 14:31 UTC. General web and API traffic ran roughly 20 percent errors, while archive downloads and raw repository content failed at about 50 percent. SAML and OIDC authentication, SCIM and Team Sync were also hit, which is the part that locks people out rather than merely slowing them down.</p>
+            <p>GitHub identified the component at 16:36 UTC and had the API back to normal by 19:01 UTC, though recovery was not linear: git operations degraded again afterward, the API briefly regressed, and Copilot authentication problems outlasted everything else. A root cause has not been published.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your deploys ride GitHub. When Actions is at 50 percent error rate you cannot ship a client hotfix, which is a problem specifically on the day a client site is broken. Two cheap mitigations: keep the Vercel CLI path working and rehearsed as the emergency deploy route that does not touch GitHub, and stop treating a green CI run as the only gate you have. Add a one-line local verification you can run when Actions is unavailable. Neither takes an afternoon and both pay for themselves the first time this recurs.</div>
+          <div class="refs"><a href="https://www.infoworld.com/article/4210864/github-restores-services-after-nearly-8-hour-outage-disrupts-actions-apis-prs-and-copilot.html" target="_blank" rel="noopener">InfoWorld</a> · <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-github-is-down-worldwide/" target="_blank" rel="noopener">BleepingComputer</a> · <a href="https://xenospectrum.com/en/github-august-17-outage/" target="_blank" rel="noopener">XenoSpectrum</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 17–18, 2026</span>
+            <h3>Cursor opened the Origin beta, and Vercel already deploys from it</h3>
+          </div>
+          <div class="story-body">
+            <p>Cursor put Origin into beta for paid users: code hosting built into the editor and pitched at "agent scale" rather than as a GitHub clone. It handles the codebase view, pull request review and merges, and integrates CI and deployment providers including Vercel, Buildkite and Depot. Existing GitHub repositories sync in, so trying it does not require abandoning anything.</p>
+            <p>Vercel's own changelog lists the other half: deploying Cursor Origin repositories is in public beta for Pro and Enterprise, with a preview deployment spun up for every pull request and a production ship on merge. The launch landing on the day GitHub spent eight hours degraded was either very good timing or very good instincts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth an experiment on one throwaway repo, and worth nothing more than that for now. The interesting property is that your agents would be reviewing and merging in the same surface where they write, which removes a handoff you currently pay for in context. The disqualifying property is that a beta code host from a startup is not where client source code lives, especially when your closing differentiator is that the client owns the source day one. Sync a personal project, see whether the Vercel preview flow is actually faster, and keep client work on GitHub until Origin has a year behind it.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> · <a href="https://venturebeat.com/infrastructure/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in-ai-coding-race" target="_blank" rel="noopener">VentureBeat</a> · <a href="https://techstartups.com/2026/08/17/cursor-launches-origin-a-github-rival-built-for-ai-coding-agents/" target="_blank" rel="noopener">Tech Startups</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Pricing</span>
+            <span class="ver">Aug 13–17, 2026</span>
+            <h3>Vercel cut AI Gateway pricing on two frontier models and turned on Encrypted Client Hello</h3>
+          </div>
+          <div class="story-body">
+            <p>GPT-5.6 Sol is 50 percent off on the Vercel AI Gateway from August 17 through September 18. Gemini 3.7 Flash landed on the Gateway at half price on August 13, and GLM 5.2 is free for eve agents through August 27 via Blackbox. Separately, Encrypted Client Hello is now supported across the Vercel CDN as of August 14, and there is a one-click upgrade path for deployments still pinned to deprecated Node.js versions.</p>
+            <p>On security, nothing new has landed for Next.js, React or Vercel this month. The July 2026 release is still the line: 16.2.11 on Active LTS and 15.5.21 on Maintenance LTS, covering nine SSRF, bypass and denial-of-service CVEs. Applications on 13, 14 or earlier 15.x branches never got equivalent fixes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. Run the one-click Node upgrade on any client project still on a deprecated runtime before Vercel forces it during an unrelated deploy. Then take the 30-day GPT-5.6 Sol discount as a free evaluation window: route a non-critical path in TSD Concierge through it via the Gateway, measure answer quality and latency against your current model, and you will know by mid-September whether it belongs in the stack at full price. Also confirm every client repo is on 16.2.11 or 15.5.21, since the July advisory is a month old and an unpatched SSRF is not less dangerous for being quiet.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> · <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js — July 2026 security release</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware, money and breaches</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">IPO</span>
+            <span class="ver">Aug 18, 2026</span>
+            <h3>Unitree priced its Shanghai IPO at about 61 billion yuan and lists tomorrow</h3>
+          </div>
+          <div class="story-body">
+            <p>Unitree Robotics priced at 150.8 yuan per share, roughly $22.40, valuing the company near 61 billion yuan. It sold about 40.44 million shares, 10 percent of enlarged capital, raising close to 6.1 billion yuan or roughly $904 million. Retail demand oversubscribed the offering more than 8,000 times. It debuts on the STAR Market on August 19 as the first onshore-listed humanoid robot company in mainland China.</p>
+            <p>Revenue grew at a 226.8 percent compound annual rate from 2023 to 2025 and net profit reached 278 million yuan in 2025, but profit fell 54.6 percent in the first quarter of 2026 on higher marketing and R&D spend. The debut is expected to set the valuation comp for 30 to 50 peers preparing Hong Kong listings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No delivery implication, and that is fine. The signal to take is the shape of the demand: retail money oversubscribing a hardware robotics offering 8,000 times is the same appetite that makes "we use AI" a selling phrase to your SMB clients right now. That window is worth using while it is open, and it is worth remembering that a Q1 profit decline on marketing spend is what the bill for that enthusiasm looks like.</div>
+          <div class="refs"><a href="https://www.caixinglobal.com/2026-08-18/unitree-to-debut-at-61-billion-yuan-valuation-in-closely-watched-shanghai-ipo-102475173.html" target="_blank" rel="noopener">Caixin Global</a> · <a href="https://qz.com/unitree-robotics-ipo-oversubscribed-shanghai-081126" target="_blank" rel="noopener">Quartz</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">France's tax authority, the DGFiP, disclosed a data breach exposing roughly 678,000 individuals. <span class="ver">Aug 17</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">GE and Philips are investigating breach claims made by the Clop ransomware group. <span class="ver">Aug 17</span></span></li>
+            <li><span class="tag improve qh-tag">Scale</span><span class="txt">Microsoft says it has about 2.2 million AI chips installed globally and has spent roughly $280 billion on AI expansion since 2022, with power and finished data center capacity still the bottleneck. <span class="ver">Aug 17</span></span></li>
+            <li><span class="tag feature qh-tag">Deal</span><span class="txt">Cloud cost firm DoiT is acquiring Israeli AI cost-management startup Attribute for about $65 million. <span class="ver">Aug 17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

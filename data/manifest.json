@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-18",
+    "title": "The 30-year Treasury yield hit its highest level since 2007",
+    "summary": "The 30-year Treasury yield rose above 5.31% on Monday, its highest since June 2007, as oil climbed past $90 a barrel and the three major stock indexes each fell about half a percent. The biggest read on the American consumer since July's retail sales drop arrives this week, with Home Depot reporting Tuesday, Target and Lowe's Wednesday alongside Fed minutes, and Walmart Thursday. Charlotte broke a 115-year-old temperature record on the fifteenth straight day at or above 90 degrees, a multistate Cyclospora outbreak linked to recalled iceberg lettuce has reached 9,481 illnesses across 17 states, and police are still seeking additional shooters after five people were wounded at Virginia State University.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-18.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release closed a three-day gap and it is a large one, led by an 8x cut in the claude-api skill's context cost, automatic session continuation when a usage limit resets, and a batch of fixes that stop permission state and MCP secrets from leaking or being dropped.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-18.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-18",
+    "title": "An AI wrote the vulnerability. Another AI walked through it.",
+    "summary": "GitHub Copilot Autofix co-authored a commit that introduced a shell-injection hole in a Snowflake repo, and Wiz's autonomous Red Agent found it, rewrote its own failed payload, and exfiltrated a live Jira API token. OpenAI disbanded its Preparedness team, the third safety group it has dissolved since 2024; Nvidia is close to guaranteeing about $105 billion of debt for an OpenAI data center campus it does not own; the DOJ has spent nearly a year investigating a16z over board seats at competing AI-data companies; a 3M expert witness lost a $61 million case after his court report turned out to be 85 to 90 percent ChatGPT output; and Politico traced a fake think tank built specifically to get cited by chatbots.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-18.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-18",
+    "title": "Fifteen days of 90-degree heat just built your call list",
+    "summary": "Charlotte is on its fifteenth straight day at or above 90 degrees and broke a 1911 record Monday, which means every HVAC shop in the metro is missing calls it cannot answer right now — the single most sellable moment TSD Front Desk will get this year. Six ranked moves today: the heat-wave missed-call play, a productized answer-engine presence retainer built on the mechanism Politico just documented, a fixed-fee AI code and workflow audit off the Copilot Autofix disclosure, an offer reframe for a consumer that stopped spending in July, a 30-day margin window from Vercel's half-price GPT-5.6 Sol, and an AI-use-policy package for professional firms after a ChatGPT-written expert report helped lose a $61 million case.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-18.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-18",
+    "title": "GitHub went down for eight hours and Cursor launched a competitor the same day",
+    "summary": "GitHub degraded worldwide for roughly eight hours on August 17, taking Actions, the API, pull requests and Copilot with it, and Cursor picked that day to open the beta of Origin, agent-first code hosting that syncs existing GitHub repos and already ships Vercel preview deployments per pull request. Vercel put GPT-5.6 Sol at half price on the AI Gateway through September 18 and turned on Encrypted Client Hello across the CDN, Next.js still has no August advisory so 16.2.11 and 15.5.21 remain the patched line, Unitree priced its Shanghai IPO at about 61 billion yuan after 8,000-times retail oversubscription, and France's tax authority disclosed a breach affecting roughly 678,000 people.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-18.html"
   },
   {
     "source": "america",

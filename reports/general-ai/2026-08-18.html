@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-18" />
+  <meta name="report:title" content="An AI wrote the vulnerability. Another AI walked through it." />
+  <meta name="report:summary" content="GitHub Copilot Autofix co-authored a commit that introduced a shell-injection hole in a Snowflake repo, and Wiz's autonomous Red Agent found it, rewrote its own failed payload, and exfiltrated a live Jira API token. OpenAI disbanded its Preparedness team, the third safety group it has dissolved since 2024; Nvidia is close to guaranteeing about $105 billion of debt for an OpenAI data center campus it does not own; the DOJ has spent nearly a year investigating a16z over board seats at competing AI-data companies; a 3M expert witness lost a $61 million case after his court report turned out to be 85 to 90 percent ChatGPT output; and Politico traced a fake think tank built specifically to get cited by chatbots." />
+  <meta name="report:highlights" content="6" />
+
+  <title>An AI wrote the vulnerability. Another AI walked through it. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Tuesday, August 18, 2026</span>
+        <span>◆</span><span>Agent security ◆ safety governance ◆ money</span>
+      </div>
+      <h1>An AI wrote the vulnerability. Another AI walked through it.</h1>
+      <p class="standfirst">GitHub Copilot Autofix co-authored a commit in a Snowflake repository that stripped out the existing input sanitization and replaced it with raw string expansion inside a shell block. Wiz's autonomous Red Agent found the hole, failed its first exploit, rewrote the payload on its own, and walked out with a live Jira API token.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 17 – August 18, 2026</span>
+        <span>◆</span><a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">5 days</div><div class="lbl">The Copilot-introduced bug was live before Wiz found it</div></div>
+      <div class="stat"><div class="num">~$105B</div><div class="lbl">Nvidia credit guarantee for OpenAI's Ohio campus</div></div>
+      <div class="stat"><div class="num">85–90%</div><div class="lbl">Share of a sworn expert report written by ChatGPT</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>An automated fix opened the hole</h4><p>Copilot Autofix removed a repo's sanitized-input pattern and inlined an issue title into a shell command. Wiz's agent exploited it and took a Jira token.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OpenAI dissolved Preparedness</h4><p>The team evaluating catastrophic model risk was disbanded at the end of July. It is the third safety group OpenAI has folded since 2024.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Nvidia is the credit rating now</h4><p>About $105B in guarantees for an OpenAI data center campus, scaled down from a $250B figure after investors pushed back on the exposure.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The DOJ is looking at a VC firm</h4><p>a16z has been under civil antitrust investigation for nearly a year over partners sitting on the boards of Databricks and Fivetran.</p></div>
+        <div class="signal"><div class="n">05</div><h4>A ChatGPT report cost a $61M case</h4><p>Opposing counsel found the expert's prompts published on the open web, including "show how 3M is 0% at fault."</p></div>
+        <div class="signal"><div class="n">06</div><h4>Someone is paying to rank inside chatbots</h4><p>A fake think tank publishing question-shaped "data reports" got cited by ChatGPT and Perplexity in neutral tests. Answer-engine manipulation is now a purchased service.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents on both sides of the exploit</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>Copilot Autofix introduced a shell-injection bug, and Wiz's agent used it to take a live credential</h3>
+          </div>
+          <div class="story-body">
+            <p>On June 18 a pull request merged into <code>snowflakedb/snowflake-connector-net</code> carried a commit co-authored by GitHub Copilot Autofix. The change touched <code>.github/workflows/jira_issue.yml</code>, a workflow that fires whenever anyone opens a public issue. Autofix removed the repository's existing sanitized-input pattern and substituted direct string expansion inside a <code>run:</code> block, which means the issue title landed unescaped in a shell command. That step also had <code>JIRA_BASE_URL</code>, <code>JIRA_USER_EMAIL</code> and <code>JIRA_API_TOKEN</code> in its environment.</p>
+            <p>Wiz's autonomous Red Agent found the workflow five days later. Its first payload failed. It read the failure, rewrote the payload, and base64-exfiltrated all three secrets to an out-of-band listener. The stolen token authenticated as an account with read access to Snowflake's engineering, security compliance and bug bounty projects. Wiz reported it on June 23, Snowflake patched the same day, rotated the token, and confirmed Wiz was the only third party to touch the endpoint during the window. The details went public on August 17.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two separate action items. First, go through every repo you own and confirm no workflow interpolates <code>${{ github.event.* }}</code> directly into a <code>run:</code> block, because issue titles, PR titles and branch names are all attacker-controlled. Pass them through <code>env:</code> variables and quote them. Second, and this is the harder habit: an accepted AI fix is a code change from an untrusted author. You already read agent diffs on client work. Treat automated security fixes with the same suspicion, because this one deleted an existing protection and nobody caught it in review. If you ever pitch a client on agent-assisted delivery, this story is also the honest answer to "what could go wrong," and having the answer ready is worth more than dodging the question.</div>
+          <div class="refs"><a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Wiz — Red Agent exploits Snowflake vuln</a> · <a href="https://www.theregister.com/security/2026/08/17/an-ai-broke-snowflakes-code-then-another-ai-agent-exploited-it/5288666" target="_blank" rel="noopener">The Register</a> · <a href="https://www.scworld.com/news/wiz-agent-finds-snowflake-repo-flaw-in-code-co-authored-by-github-copilot-autofix" target="_blank" rel="noopener">SC Media</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Who is minding the frontier</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 17–18, 2026</span>
+            <h3>OpenAI disbanded its Preparedness team and split the work across product groups</h3>
+          </div>
+          <div class="story-body">
+            <p>The unit responsible for evaluating whether frontier models could assist with biological, chemical, nuclear or large-scale cyber harm was dissolved at the end of July, reported this week. Its mandate now sits with senior staff inside existing teams, split by subject area, with separate owners for biological risk and cyber risk. OpenAI has described the move as streamlining.</p>
+            <p>The pattern matters more than the single decision. Superalignment was dissolved in May 2024 after Jan Leike left, AGI Readiness was dissolved after that, and Preparedness is the third. Head of ethics Chloé Bakalar left in July, and chief futurist Josh Achiam and safety lead Johannes Heidecke have also departed. The restructuring is happening while the company is reported to be preparing for an IPO.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a vendor-risk data point, not a moral one. Anthropic published a risk report three days ago that raised its own misalignment rating and named failure modes in its own models; OpenAI folded the team that would write the equivalent document. When an SMB client asks why you standardized on Claude for their receptionist or concierge, that contrast is a concrete, sourceable answer rather than a preference. Keep the model layer swappable anyway — your gateway abstraction is the insurance policy against any single lab's governance turning into your outage.</div>
+          <div class="refs"><a href="https://www.heise.de/en/news/OpenAI-dissolves-Preparedness-team-for-AI-risks-11416658.html" target="_blank" rel="noopener">heise online</a> · <a href="https://www.engadget.com/2237916/openai-reportedly-disbanded-its-preparedness-team-as-part-of-streamlining-process/" target="_blank" rel="noopener">Engadget</a> · <a href="https://www.analyticsinsight.net/news/openai-ends-ai-preparedness-team-as-ipo-plans-meet-fresh-safety-questions" target="_blank" rel="noopener">Analytics Insight</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>A fake think tank was built to be cited by chatbots, and it worked</h3>
+          </div>
+          <div class="story-body">
+            <p>Politico traced an organization called the Hanover Institute to Piro Inc., a subcontractor working through Havas Media for the Israel Government Advertising Agency, funded at roughly $100,000 and registered under FARA. The mechanism is the interesting part. Hanover publishes unbylined "data reports" with footnotes and tables of contents, organized around precisely phrased questions of the kind people type into a chatbot, written in a flat neutral register. In Politico's own tests, both ChatGPT and Perplexity cited Hanover content.</p>
+            <p>Strip the geopolitics and what remains is a working recipe: format content to match the shape of a retrieval query, write it in the register a model rates as sourceable, and get quoted inside answers you never paid for a placement in.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Answer-engine optimization has a demonstrated method now, and it is not a mystery. For every client, publish a page per question a real buyer would ask a chatbot — "how much does mobile detailing cost in Gastonia," "do salons in Charlotte take same-day appointments" — with the answer in the first two sentences, a specific number, and a citable source. That is a productizable add-on Grant and Bishop can sell as a monthly line item on top of a site build. The defensive half applies too: run your clients' brand names through ChatGPT and Perplexity monthly and see what gets cited, because someone in their category is going to figure this out.</div>
+          <div class="refs"><a href="https://responsiblestatecraft.org/israel-influence-chatgpt/" target="_blank" rel="noopener">Responsible Statecraft</a> · <a href="https://www.calcalistech.com/ctechnews/article/ry008ygjpze" target="_blank" rel="noopener">Calcalist</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The money and the courts</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Deal</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>Nvidia is close to guaranteeing about $105 billion of debt for an OpenAI data center it will not own</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia is nearing an agreement to backstop roughly $100 to $105 billion in credit so OpenAI can lease a data center campus in Ohio, where a developer builds, owns and operates the site under a 20-year lease covering up to 8 gigawatts. Nvidia is also putting about $1.5 billion into SB Energy. The number is a markdown from the $250 billion figure discussed in July, cut after investors raised concerns about Nvidia's exposure.</p>
+            <p>The reason the guarantee exists at all is that OpenAI has no investment-grade credit rating, so Nvidia's balance sheet stands in for one and lenders price the debt against the chipmaker instead of the borrower. The guarantee covers the lease and construction debt rather than the chips that fill the building.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing changes in your build this week, but it changes how you should read model pricing over the next two years. The compute buildout is increasingly financed by vendor credit rather than by customer revenue, which is what makes aggressive introductory pricing possible and also what makes it reversible. Quote managed AI retainers on a term you can requote annually, and keep your per-client token cost in a spreadsheet you actually look at, so a price move is a renegotiation instead of a surprise against your margin.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener">CNBC</a> · <a href="https://www.scmp.com/tech/big-tech/article/3364341/nvidia-provide-us105-billion-guarantee-openais-ohio-data-centre" target="_blank" rel="noopener">South China Morning Post</a> · <a href="https://www.digitimes.com/news/a20260817VL215/nvidia-openai-data-center-infrastructure-chips.html" target="_blank" rel="noopener">DigiTimes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>An expert witness lost a $61 million case after his report turned out to be mostly ChatGPT</h3>
+          </div>
+          <div class="story-body">
+            <p>In the Watson Grinding explosion litigation in Harris County, Texas, an explosion that killed three people and destroyed about 200 homes, a 3M expert from Knighthawk Engineering produced a report that trial testimony pegged at 85 to 90 percent ChatGPT output. Among roughly 350 pages of prompts recovered in discovery was the instruction to "show how 3M is 0% at fault for the explosion at Watson Grinding."</p>
+            <p>The discovery method is the detail worth remembering. A plaintiffs' lawyer suspected the document was AI-generated, searched its text, and found the expert's chat sessions sitting on the open web where shared conversations are indexed. The deposition paused for three hours while they collected them. The jury returned more than $61 million and assigned 3M 30 percent of the fault. The report had been billed at over $80,000.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Shared chat links are public documents. If you have ever used a share link to hand a client a draft, an audit, or a proposal outline, go find those links and kill the ones that contain client names, pricing, or internal reasoning. Beyond hygiene, this is the sharpest sales artifact you will get this month for the "we're worried about AI" objection: the failure was a person passing off unreviewed output under his own signature. Your pitch is that a human owns the output and reviews it, and now you have a $61 million example of what the alternative costs.</div>
+          <div class="refs"><a href="https://www.404media.co/show-how-3m-is-0-at-fault-expert-witness-used-chatgpt-to-write-report-defending-company-in-deadly-explosion-lawsuit/" target="_blank" rel="noopener">404 Media</a> · <a href="https://abc13.com/post/harris-county-jury-awards-watson-grinding-explosion-survivors-more-61-million-latest-verdict-3m/19659865/" target="_blank" rel="noopener">ABC13 Houston</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Context</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>The DOJ has been investigating a16z for nearly a year over board seats at competing AI-data companies</h3>
+          </div>
+          <div class="story-body">
+            <p>Bloomberg reported a civil antitrust investigation into Andreessen Horowitz under Section 8 of the Clayton Act, which bars interlocking directorates between competing companies above certain size thresholds. The seats in question are Ben Horowitz at Databricks and general partner Martin Casado at Fivetran. No enforcement decision has been made.</p>
+            <p>The precedent is thin but real: five Thoma Bravo representatives left the boards of SolarWinds and N-able in 2022 and 2023 after the DOJ raised the same concern. Applying it to a venture firm rather than a private equity firm is the new part.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct effect on delivery. It is worth tracking because interlocking boards are one of the mechanisms that keeps a handful of AI-infrastructure vendors coordinated, and you are a downstream buyer of that infrastructure. File it under reasons to keep switching costs low across every vendor in your stack.</div>
+          <div class="refs"><a href="https://thenextweb.com/news/andreessen-horowitz-doj-probe-databricks-fivetran-board-seats" target="_blank" rel="noopener">The Next Web</a> · <a href="https://www.inc.com/georgia-fearn/justice-department-investigating-andreessen-horowitz-issue-two-board-seats-competing-data-companies/91392195" target="_blank" rel="noopener">Inc.</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Claude for Government entered beta, with Anthropic remaining the contracted and billing party so agencies do not need a separate cloud-provider relationship. <span class="ver">Aug 18</span></span></li>
+            <li><span class="tag improve qh-tag">Data</span><span class="txt">404 Media traced Amazon's book-digitization operation to a Las Vegas facility where workers cut the spines off rare books to scan them. <span class="ver">Aug 17</span></span></li>
+            <li><span class="tag feature qh-tag">Deal</span><span class="txt">Stripe's acquisition of OpenRouter for more than $7 billion is finalized, putting a payments company between eight million developers and 400-plus models. Covered in yesterday's Technology briefing. <span class="ver">Aug 16–17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
