@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-19" />
+  <meta name="report:title" content="Vercel shipped managed JWT signing, and CISA gave the feds three days on a Ray RCE" />
+  <meta name="report:summary" content="Vercel shipped KMS-backed JWT signing in Functions so no private key sits in your repo, put GLM 5.3 on the AI Gateway, added a Cline adapter to the AI SDK harness layer, let Vercel for Platforms deploy from end users' own GitHub repos, and on Wednesday added an Instagram DM adapter to the Chat SDK. CISA put CVE-2025-62593 in the Ray compute framework into its Known Exploited Vulnerabilities catalog at CVSS 9.4 and gave federal agencies until August 20 to patch to Ray 2.52.0. Next.js still has no August advisory, so the July 21 line remains current. Cerebras launched the CS-4 on three overclocked WSE-3 Turbo wafers claiming up to 30x GPU inference speed, Unitree opened 629 percent above its IPO price in Shanghai at a peak valuation near 66 billion dollars, and the first meaningful Nvidia H200 shipments reached ByteDance and Tencent with Beijing telling them to keep the chips in Hong Kong." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Vercel shipped managed JWT signing, and CISA gave the feds three days on a Ray RCE — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, August 19, 2026</span>
+        <span>◆</span><span>Your stack ◆ one KEV ◆ chips and robots</span>
+      </div>
+      <h1>Vercel shipped managed JWT signing, and CISA gave the feds three days on a Ray RCE</h1>
+      <p class="standfirst">Four shipped items on Nash's stack in two days, and the one that matters most is the least flashy: Vercel KMS now signs JWTs inside Functions with a managed key, so no private key has to live in an env var. The security story of the window is CVE-2025-62593 in the Ray compute framework, which CISA added to the exploited-in-the-wild catalog with a three-day federal deadline.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 18 – August 19, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9.4</div><div class="lbl">CVSS on the Ray RCE now in CISA's KEV catalog</div></div>
+      <div class="stat"><div class="num">629%</div><div class="lbl">Unitree's opening pop on the Shanghai STAR Market</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Next.js advisories published in August so far</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sign JWTs without holding the key</h4><p>Vercel KMS signs tokens inside Functions using a managed key. Every client project with a hand-rolled JWT secret in an env var can drop that secret.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Ray RCE is being exploited now</h4><p>CVE-2025-62593, CVSS 9.4, unauthenticated code execution through Ray's HTTP job endpoints. Fixed in 2.52.0. Federal deadline was August 20.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Chat SDK now speaks Instagram DMs</h4><p>Media, quick replies, reactions and story replies. Half of Nash's SMB prospects run their whole inbound through Instagram.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Next.js: nothing to patch</h4><p>No August advisory has been published. The July 21 batch remains the most recent, so the current patched line still stands.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Cerebras CS-4 claims 30x GPU inference</h4><p>Three overclocked WSE-3 Turbo wafers per rack, 750 PFLOPs, early access now with general availability expected this quarter.</p></div>
+        <div class="signal"><div class="n">06</div><h4>China's first humanoid listing went vertical</h4><p>Unitree opened 629% above its IPO price, briefly worth about $66B, after retail oversubscribed more than 8,000 times.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Shipped on Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Aug 18, 2026</span>
+            <h3>Vercel KMS signs JWTs inside Functions, so the private key never enters your codebase</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel shipped managed key signing for JSON Web Tokens in Functions. The signing key lives in Vercel KMS and the Function calls out to sign, which removes the usual pattern of stuffing a private key or shared secret into an environment variable and hoping nobody prints the env in a debug route.</p>
+            <p>Three other things landed the same day. Vercel for Platforms can now deploy from an end user's own GitHub repository using a temporary token that is encrypted and discarded after the deploy. Cline joined the AI SDK harness layer through <code>@ai-sdk/harness-cline</code>, so it runs behind the same HarnessAgent interface as the other agents. And Z.ai's GLM-5.3 went live on the AI Gateway with unified billing and request tracing. On Wednesday the Chat SDK picked up an Instagram Direct Messages adapter covering media, quick replies, reactions and story replies.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. First, grep every client repo for a JWT secret in an env var and move those to KMS — it is a short change that turns into a real line on a security-hardening invoice. Second, the Instagram DM adapter is the cheapest new product surface you have: most Charlotte salons, detailers and trades take more inbound through Instagram DMs than through their contact form, and TSD Front Desk answering DMs after hours is the same pitch you already win with on phones.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">Aug 2026</span>
+            <h3>Supabase tightened realtime filters, and pinning extension versions is now deprecated</h3>
+          </div>
+          <div class="story-body">
+            <p>Postgres Changes now supports AND filters, additional filter operators, and column selection on the subscription payload, which means a realtime subscription can stop shipping whole rows over the socket for a client that only needs two fields. Separately, as of August 5 specifying an explicit version when creating or updating a Postgres extension on Supabase is deprecated.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any dashboard you built subscribes to a wide table and filters client-side, move the filter and the column list into the subscription — it is a few lines and it cuts socket traffic on the exact pages clients complain are slow on mobile. Also scan migrations for pinned extension versions before that deprecation bites.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one you patch</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">CVE-2025-62593</span>
+            <h3>CISA gave federal agencies three days to fix an actively exploited Ray RCE</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA added CVE-2025-62593 to the Known Exploited Vulnerabilities catalog on August 17 after confirming exploitation in the wild, with a remediation deadline of August 20 for federal civilian agencies. The bug carries a CVSS 4.0 score of 9.4 and stems from insufficient protection on Ray's HTTP API endpoints, including job endpoints that accept requests capable of launching code. Anything before Ray 2.52.0 is affected.</p>
+            <p>Ray is the distributed compute framework underneath a lot of AI training and inference infrastructure at large companies, and it has a long history of being deployed on an open port because it was assumed to be sitting on a trusted internal network. That assumption is what the exploitation is monetizing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You almost certainly do not run Ray. The transferable lesson is the pattern — an internal-only service exposed to the internet because someone assumed the network boundary. Do a five-minute pass over every client deployment for admin endpoints, webhook receivers and internal APIs that answer unauthenticated requests. That audit is a sellable fixed-fee deliverable.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener">CISA</a> <a href="https://www.theregister.com/security/2026/08/18/cisa-gives-feds-3-days-to-fix-actively-exploited-ray-rce-bug/5289007" target="_blank" rel="noopener">The Register</a> <a href="https://thehackernews.com/2026/08/cisa-flags-actively-exploited-ray-flaw.html" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon, and where it is allowed to go</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 19, 2026</span>
+            <h3>Cerebras overclocked its wafer and put three of them in a rack</h3>
+          </div>
+          <div class="story-body">
+            <p>The CS-4 is built on the WSE-3 Turbo, a TSMC 5nm wafer-scale part with four trillion transistors, 900,000 AI cores and 44GB of SRAM on the wafer itself. Three of them go into a rack on the Nexus architecture, for a claimed 750 PFLOPs, 7.2 Tbps of I/O and 129.6 PB/s of memory bandwidth. Cerebras claims up to 30x faster inference than GPU systems and has demonstrated around 2,000 tokens per second on the K2 Think reasoning model. It is in early access with general availability expected later this quarter.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Watch this as a price signal rather than a purchase. Wafer-scale inference competing on tokens per second is what eventually drags per-token pricing down across the board, which is the input cost on every AI product you sell on a monthly retainer. Margin on TSD Front Desk gets better without you doing anything.</div>
+          <div class="refs"><a href="https://www.cerebras.ai/blog/introducing-cerebras-cs-4" target="_blank" rel="noopener">Cerebras</a> <a href="https://www.nextplatform.com/compute/2026/08/19/cerebras-overclocks-wse-3-waferscale-engine-to-boost-inference-oomph-in-nexus-cs-4/5289400" target="_blank" rel="noopener">The Next Platform</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 19, 2026</span>
+            <h3>The first real H200 shipments reached ByteDance and Tencent, and Beijing told them to leave the chips in Hong Kong</h3>
+          </div>
+          <div class="story-body">
+            <p>The Financial Times reports ByteDance and Tencent each took delivery of roughly 10,000 Nvidia H200 processors in recent weeks, the first meaningful volume since Washington cleared purchases of up to 100,000 units per buyer. The twist is on the Chinese side: regulators have told the companies to keep the hardware in Hong Kong, which sits outside the mainland customs border, in order to protect demand for domestic chipmakers.</p>
+            <p>Neither company currently operates data centers in Hong Kong, and Hong Kong's data-center capacity and power supply are both constrained. Ten thousand accelerators each is a rounding error against what either company would deploy given a free hand.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action. The read is that Chinese labs are compute-constrained by their own government as much as by export controls, which is part of why models like GLM-5.3 optimize hard for tokens burned per task. Cheap, efficient open weights keep arriving, and Vercel's AI Gateway now bills GLM-5.3 like any other model — worth a price comparison on your lower-margin automation work.</div>
+          <div class="refs"><a href="https://www.tomshardware.com/pc-components/gpus/first-nvidia-h200-shipments-reach-bytedance-and-tencent-as-beijing-loosens-its-import-block" target="_blank" rel="noopener">Tom's Hardware</a> <a href="https://www.engadget.com/2239738/china-reportedly-allows-bytedance-tencent-import-10000-h200-chips/" target="_blank" rel="noopener">Engadget</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The robot listing that broke price discovery</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 19, 2026</span>
+            <h3>Unitree opened 629% above its IPO price on its Shanghai debut</h3>
+          </div>
+          <div class="story-body">
+            <p>Unitree Robotics priced at 150.80 yuan and opened at 1,100, a 629% pop that briefly put its market capitalization near 445 billion yuan, or about $66 billion. It settled to 883.9 yuan by midday and closed at 845, valuing the company around $50 billion. The Hangzhou company sold 40.45 million shares for roughly 6.1 billion yuan, about 10% of enlarged share capital. Retail investors subscribed more than 8,000 times the shares available to them.</p>
+            <p>It is the first general-purpose humanoid robotics company to list on a mainland Chinese exchange, and the debut landed on the opening day of the World Robot Conference in Beijing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to buy or build here. Note it as a sentiment marker: capital is paying six times fair value for physical-AI stories while the same week's semiconductor tape is selling AI infrastructure hard. That split is worth naming out loud when a client asks whether the AI thing is a bubble — the honest answer is that some of it plainly is, and none of it changes whether answering their phone at 9pm makes them money.</div>
+          <div class="refs"><a href="https://www.scmp.com/tech/tech-trends/article/3364499/unitree-robotics-surges-629-us66-billion-valuation-shanghai-share-debut" target="_blank" rel="noopener">South China Morning Post</a> <a href="https://www.cnbc.com/2026/08/19/china-backflipping-robot-maker-unitree-jumps-shanghai-ipo.html" target="_blank" rel="noopener">CNBC</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Microsoft shipped broader fixes Tuesday for the Copilot deep-link flaw Varonis reported in December 2025, after an initial February mitigation. <span class="ver">Aug 18</span></span></li>
+            <li><span class="tag new qh-tag">Leak</span><span class="txt">A release candidate of macOS Tahoe 26.7 contained an internal video of camera-equipped AirPods running a Visual Intelligence feature, with an LED indicator and on-iPhone processing. <span class="ver">Aug 18</span></span></li>
+            <li><span class="tag feature qh-tag">Money</span><span class="txt">Temporal is in talks to raise about $500M at a $12B+ valuation, more than double its February Series D mark. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag feature qh-tag">Money</span><span class="txt">Nvidia's quarterly free cash flow reached $48.5B, up roughly 18-fold over three years, which CNBC argues is shifting its moat from chip design to balance sheet. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Block open-sourced Berd, an Apache-2.0 desktop app for running AI agents and skills across operating systems with local conversation storage. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag improve qh-tag">Ship</span><span class="txt">Cursor Origin repositories can now deploy to Vercel with automatic preview and production builds, in public beta. <span class="ver">Aug 17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

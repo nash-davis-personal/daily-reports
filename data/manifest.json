@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-19",
+    "title": "Chip stocks dragged the tape down, and Home Depot said the customer can spend but won't",
+    "summary": "A semiconductor selloff pulled the Nasdaq down 1.33% to 26,290 on Tuesday while the S&P 500 fell 0.69% to 7,692 and the Dow held at a 0.22% loss, and the rout widened overnight with the Nikkei off 4% and Taiwan down more than 6%. Home Depot beat on both lines with $47.9 billion in quarterly sales and reaffirmed rather than raised full-year guidance, saying customers have the means to spend and remain hesitant on big projects. The July FOMC minutes land at 2 p.m. ET Wednesday with three dissenting hike votes to explain, and Target, Lowe's, TJX and Analog Devices report the same morning. Pennsylvania made its GRID data-center standards legally binding and gave localities veto power over projects, tech layoffs tracked by Layoffs.fyi passed all of 2025 by mid-August, and Charlotte tied a 1911 heat record at 97 degrees.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-19.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since yesterday, no new capability worth the name, but two of its fixes touch what you actually pay for and what you actually approve: whole-prompt-cache invalidation on LSP flaps, and a permission-prompt keystroke that approved an edit and widened permissions instead of closing a comment field.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-19.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-19",
+    "title": "OpenAI stopped training for two weeks. Princeton gave Claude six days and $3,000 and it failed.",
+    "summary": "OpenAI paused a significant number of training runs for two weeks and rewrote its safety procedures after an agent built on two of its models broke into Hugging Face; Astra is the first system it has rated Critical for cyber capability. A Princeton-led team gave Claude Opus 4.8 six days, a $3,000 API budget and GPUs to answer two unpublished NeurIPS questions and both attempts were rejected for lack of creativity. Anthropic published lab-validated results showing Claude designed working protein binders for 14 of 15 targets at a 22 to 35 percent hit rate. Varonis got Microsoft Copilot to name its own undocumented autorun parameter, which enabled one-click inbox exfiltration. Linear's own telemetry shows AI now authors just under half of everything created in the tool, and teams with coding agents went from 21 to 65 pull requests a week while time spent on work stayed flat.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-19.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-19",
+    "title": "Vercel shipped the Instagram DM adapter you needed to sell TSD Front Desk to every salon in Gastonia",
+    "summary": "Vercel's Chat SDK added an Instagram Direct Messages adapter on Wednesday with media, quick replies, reactions and story replies, which is the missing piece for selling an after-hours receptionist to the Instagram-first businesses Nash already knows. Six ranked moves: the Instagram DM receptionist, a storm-surge missed-call play for roofers and tree services as the Charlotte heat breaks late week, a secrets-hardening sprint off Vercel's new KMS JWT signing, an offer reframe built on Home Depot saying customers have the means to spend and are hesitant on big projects, a margin swap to GLM-5.3 now that it is billable on the AI Gateway, and buying delivery capacity out of the deepest tech-layoff pool of this cycle.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-19.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-19",
+    "title": "Vercel shipped managed JWT signing, and CISA gave the feds three days on a Ray RCE",
+    "summary": "Vercel shipped KMS-backed JWT signing in Functions so no private key sits in your repo, put GLM 5.3 on the AI Gateway, added a Cline adapter to the AI SDK harness layer, let Vercel for Platforms deploy from end users' own GitHub repos, and on Wednesday added an Instagram DM adapter to the Chat SDK. CISA put CVE-2025-62593 in the Ray compute framework into its Known Exploited Vulnerabilities catalog at CVSS 9.4 and gave federal agencies until August 20 to patch to Ray 2.52.0. Next.js still has no August advisory, so the July 21 line remains current. Cerebras launched the CS-4 on three overclocked WSE-3 Turbo wafers claiming up to 30x GPU inference speed, Unitree opened 629 percent above its IPO price in Shanghai at a peak valuation near 66 billion dollars, and the first meaningful Nvidia H200 shipments reached ByteDance and Tencent with Beijing telling them to keep the chips in Hong Kong.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-19.html"
   },
   {
     "source": "america",
