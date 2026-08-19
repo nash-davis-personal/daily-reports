@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-19" />
+  <meta name="report:title" content="2.1.235 is a repair release: language-server reconnects no longer blow away your whole prompt cache, and one Shift+Tab was silently granting session-wide edit permission." />
+  <meta name="report:summary" content="One release since yesterday, no new capability worth the name, but two of its fixes touch what you actually pay for and what you actually approve: whole-prompt-cache invalidation on LSP flaps, and a permission-prompt keystroke that approved an edit and widened permissions instead of closing a comment field." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.235 is a repair release: language-server reconnects no longer blow away your whole prompt cache, and one Shift+Tab was silently granting session-wide edit permission. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, August 19, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.235</span>
+      </div>
+      <h1>2.1.235 is a repair release. The two entries that matter are a prompt-cache bug and a permission-prompt keystroke.</h1>
+      <p class="standfirst">Nineteen changes shipped, one of them an opt-in spellchecker and the rest cleanup. Read it anyway for two reasons: language-server disconnects had been invalidating the entire prompt cache mid-session, and Shift+Tab inside a permission prompt's comment field had been approving the edit and granting session-wide edit permission.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-18 briefing (2.1.234)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in the window</div></div>
+      <div class="stat"><div class="num">19</div><div class="lbl">Changelog entries</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">New setting (spellcheck)</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>A language server dropping mid-session was invalidating the whole prompt cache</h4><p>Fixed in 2.1.235. Every LSP disconnect or reconnect meant the next turn re-paid for the full conversation prefix at uncached rates.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Shift+Tab in a permission prompt's comment field was granting session-wide edit permission</h4><p>The keystroke approved the edit and widened permissions for the rest of the session instead of closing the comment field. It now closes the field.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Permission dialogs now describe what a grant actually covers</h4><p>Display text and the "don't ask again" option are matched to the real scope of the grant, and "don't ask again" is withheld entirely when the contents cannot be fully displayed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Background cloud sessions stopped re-rendering their whole event stream</h4><p><code>/ultrareview</code> and <code>/autofix-pr</code> running in the background no longer re-scan and re-render on every update, which cuts memory and CPU in the host session.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The embedded grep in native macOS builds fails fast instead of eating memory</h4><p>Pathological patterns now bail out, and <code>-m N</code> combined with <code>-A</code>/<code>-C</code> prints correct context lines rather than wrong ones.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Context-limit errors now tell you when auto-compact is off</h4><p>The error names auto-compact as the reason it could not recover and points at <code>/config</code> to turn it back on.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> What this costs you in tokens and machine</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.235</span>
+            <h3>Whole-prompt-cache invalidation when a language server flapped</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog entry is one line: "Fixed whole-prompt-cache invalidation when a language server disconnected or reconnected mid-session." The consequence is larger than the line. A cache miss on the prompt prefix means the next turn pays full input price for everything already in the conversation.</p>
+            <p>Language servers disconnect for ordinary reasons. A TypeScript server restarting after a big dependency install, an editor reload, a machine waking up. On a long session in a large repo, each of those was a full re-charge of the conversation prefix.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the entry that pays for reading today's release. Your heaviest sessions are exactly the profile that got hit: long Next.js builds for Bisque and Studio C with a TS language server attached and an IDE extension connected. Update before the next long build session rather than after it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.235</span>
+            <h3>Background cloud sessions stopped thrashing the host session</h3>
+          </div>
+          <div class="story-body">
+            <p>Cloud sessions such as <code>/ultrareview</code> and <code>/autofix-pr</code> had their event streams re-scanned and re-rendered on every update while they ran in the background. That work is gone, so memory and CPU use during those runs drops.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You kick off <code>/code-review ultra</code> and keep working in the same terminal. The cost of doing that just went down, which makes it more reasonable to fire a review on a client branch and continue building instead of waiting it out.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.235</span>
+            <h3>The embedded grep hardened, and its context flags were wrong</h3>
+          </div>
+          <div class="story-body">
+            <p>Two changes to the grep bundled with native macOS and Linux builds. Pathological patterns now fail fast rather than exhausting memory, and <code>-m N</code> used together with <code>-A</code> or <code>-C</code> now prints the correct context.</p>
+            <p>The second half is the one to register. Any search you ran with a match limit plus context lines could have been showing you the wrong surrounding code.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a recent search across a client repo looked like it proved a pattern was safe to change, re-run it on the new build before you trust it. This is a native-build fix, so it applies to the macOS binary you run on this machine.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permissions and approvals</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.235</span>
+            <h3>One keystroke was approving the edit and widening permission for the session</h3>
+          </div>
+          <div class="story-body">
+            <p>Shift+Tab pressed inside the permission prompt's comment field approved the edit and granted session-wide edit permission, when the expected behavior was closing the comment field. Shift+Tab is also the permission-mode cycle key, which is how a habitual keystroke turned into a silent grant.</p>
+            <p>Nothing in the changelog says how long this was live. Treat it as a reason to look at what a session was allowed to do rather than a reason to panic.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You approve fast and you type Shift+Tab reflexively to flip modes. If a recent session on a client repo made edits you did not remember approving individually, this is a candidate explanation. Check <code>git diff</code> and the branch history on anything you shipped in the last few days before assuming the diff was reviewed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.235</span>
+            <h3>Dialogs now match the grant, and withhold "don't ask again" when they cannot show you everything</h3>
+          </div>
+          <div class="story-body">
+            <p>Permission dialog display text and the "don't ask again" option are now aligned with what the grant would actually cover. When the contents cannot be fully displayed, the "don't ask again" option is withheld rather than offered blind.</p>
+            <p>Related in the same release: notebook cell delete and replace approval dialogs used to silently omit the existing cell content when the notebook or cell could not be read. The dialog now says why it is empty.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Fewer blanket grants made on incomplete information. Expect slightly more prompting in sessions where tool input is large or unreadable, and take that as the dialog doing its job instead of a regression to work around.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.235</span>
+            <h3>The Agent tool was advertising an agent that was not there</h3>
+          </div>
+          <div class="story-body">
+            <p>In sessions where the general-purpose agent is unavailable, the Agent tool still advertised it as the default. Omitting <code>subagent_type</code> in those sessions now returns a clear error listing the agents that do exist.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant to your scheduled and headless runs, where the available agent set differs from your interactive setup. A spawn that used to fail vaguely now names its options, which makes an unattended job's failure readable when you check it the next morning.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one new thing, plus prompt-input repair</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.235</span>
+            <h3>Optional spellcheck in the prompt input</h3>
+          </div>
+          <div class="story-body">
+            <p>A new opt-in <code>spellcheck</code> setting underlines misspelled words in the prompt as you type. It uses whichever of <code>aspell</code>, <code>hunspell</code> or <code>ispell</code> you already have installed, so it does nothing until one of those is on the machine.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Marginal for code prompts. Mildly useful when you draft client-facing copy in the prompt box, which you do for Studio C and Sonderwerks content. Install <code>aspell</code> via Homebrew first or the setting is inert.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.235</span>
+            <h3>Three rendering bugs in the thing you look at all day</h3>
+          </div>
+          <div class="story-body">
+            <p>Nested markdown list items were misaligning at depth three and deeper, and wrapped list items now get a hanging indent. Prompt input highlights for slash commands, keywords and mentions were appearing shifted by one or more characters in some multi-line prompts. Slash commands run while Claude was responding rendered HTML entities instead of the actual characters.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. Worth knowing that deep nested lists in agent output were previously misaligned in the terminal, so a plan you read as flat may have been nested.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.235</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Context-limit errors now say when auto-compact is off and point at <code>/config</code> to re-enable it. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The prompt footer was not showing the "Update installed" restart notice after a background auto-update. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The expanded task list (<code>ctrl+t</code>) always started collapsed when resuming a session that still had open tasks. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode now preserves NORMAL mode and cursor position when toggling the detailed transcript (<code>ctrl+o</code>) or closing a panel. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Arrow keys and Enter pressed in quick succession in a dialog now select the option you navigated to instead of the previously highlighted one. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>SendMessage</code> refuses messages too large for cross-session delivery up front instead of dropping them silently. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control: <code>claude rc</code> now applies the same enterprise-gateway availability check as interactive startup. <span class="ver">2.1.235</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Focus stopped jumping between open Claude tabs on its own when a multi-panel window is restored or reloaded. <span class="ver">2.1.235</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
