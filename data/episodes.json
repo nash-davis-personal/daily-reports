@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-19",
+    "title": "TSD Daily — Wednesday, August 19, 2026",
+    "summary": "OpenAI halted training runs for two weeks and rated Astra Critical for cyber, a Princeton study gave Claude six days and $3,000 and it still could not produce publishable research, Vercel shipped KMS-backed JWT signing and an Instagram DM adapter, chip stocks dragged the indexes down while Home Depot said customers have the means to spend and won't, and the best money move today is an Instagram DM receptionist for Charlotte's appointment businesses.",
+    "file": "audio/2026-08-19.mp3",
+    "durationSec": 391,
+    "bytes": 4687245
+  },
+  {
     "date": "2026-08-17",
     "title": "TSD Daily — Monday, August 17, 2026",
     "summary": "Anthropic raises its own misalignment risk and shelves a stronger model, Google kills the Imagen 4 endpoints today, Stripe buys OpenRouter for over $7 billion, July retail sales post their biggest drop in a year while the Fed debates a September hike, and a record heat week makes Charlotte HVAC shops the best sales call on the board.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-07.mp3",
     "durationSec": 367,
     "bytes": 4405581
-  },
-  {
-    "date": "2026-06-05",
-    "title": "TSD Daily — June 5, 2026",
-    "summary": "Anthropic nears a trillion and Opus 4.8 ships, a Next.js security patch you need, a steady US jobs report against four-year-high gas, and a quiet week for Claude Code.",
-    "file": "audio/2026-06-05.mp3",
-    "durationSec": 208,
-    "bytes": 2498157
   }
 ]
