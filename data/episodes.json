@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-20",
+    "title": "TSD Daily — Thursday, August 20, 2026",
+    "summary": "Stripe buys OpenRouter for a reported $7.5 billion and Binance lets AI agents trade with no loss cap; a CVSS 9.8 WordPress form-plugin flaw still sits unpatched on 300,000 sites; Walmart raises guidance on the back of a $2.9 billion tariff refund; and the July Fed minutes show three dissents that all wanted a hike.",
+    "file": "audio/2026-08-20.mp3",
+    "durationSec": 410,
+    "bytes": 4919661
+  },
+  {
     "date": "2026-08-19",
     "title": "TSD Daily — Wednesday, August 19, 2026",
     "summary": "OpenAI halted training runs for two weeks and rated Astra Critical for cyber, a Princeton study gave Claude six days and $3,000 and it still could not produce publishable research, Vercel shipped KMS-backed JWT signing and an Instagram DM adapter, chip stocks dragged the indexes down while Home Depot said customers have the means to spend and won't, and the best money move today is an Instagram DM receptionist for Charlotte's appointment businesses.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-09.mp3",
     "durationSec": 378,
     "bytes": 4533453
-  },
-  {
-    "date": "2026-06-07",
-    "title": "TSD Daily — Sunday, June 7, 2026",
-    "summary": "Microsoft ships seven in-house models and a Copilot coder, DeepSeek's first raise, a Next.js patch that becomes a recurring Site Care offer, an ISS shelter scare, and two championship series swinging.",
-    "file": "audio/2026-06-07.mp3",
-    "durationSec": 367,
-    "bytes": 4405581
   }
 ]
