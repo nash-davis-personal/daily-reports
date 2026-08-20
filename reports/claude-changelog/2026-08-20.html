@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-20" />
+  <meta name="report:title" content="Prompt caching was broken for anyone routing through an LLM gateway, and 2.1.237 fixes it. Everything else in this window is orchestration plumbing." />
+  <meta name="report:summary" content="Two releases landed since the last briefing: a 33-entry 2.1.236 that mostly hardens multi-session work and auto mode, and a two-line 2.1.237 whose gateway prompt-cache fix is the one item with a dollar figure attached." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Prompt caching was broken for anyone routing through an LLM gateway, and 2.1.237 fixes it. Everything else in this window is orchestration plumbing. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, August 20, 2026</span>
+        <span>◆</span><span>2 releases ◆ 2.1.236, 2.1.237</span>
+      </div>
+      <h1>Prompt caching was broken for gateway sessions. 2.1.237 fixes it, and the rest of the window is orchestration plumbing.</h1>
+      <p class="standfirst">Today's release is two lines long and one of them has a dollar figure attached: sessions running through an LLM gateway or a custom base URL were not getting prompt caching. Yesterday's 2.1.236 is the bigger read, thirty-three entries deep, and almost all of its weight sits in the machinery you use to run several Claude sessions at once.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-19 briefing (2.1.235)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases in the window</div></div>
+      <div class="stat"><div class="num">35</div><div class="lbl">Changelog entries</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Genuinely new capabilities</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Prompt caching was broken for LLM gateway and custom base URL sessions</h4><p>Fixed in 2.1.237. If any of your Claude Code sessions route through a gateway or a custom endpoint, they were paying uncached input rates on every turn.</p></div>
+        <div class="signal"><div class="n">02</div><h4>There is now a built-in "Concise" output style</h4><p>Claude leads with results and skips preamble and narration while doing the work just as thoroughly. It sits under Output style in <code>/config</code>. This is the house voice you already ask for, shipped as a setting.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>notify_when_idle</code> lets one session wait on another without polling</h4><p>Cross-session <code>SendMessage</code> can now ask another Claude Code session on the same machine to send one notice when it next goes idle. Opt-in, one-shot, macOS and Linux.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>ANTHROPIC_DEFAULT_MODEL</code> sets the starting model without pinning it</h4><p>New sessions start on it, and a <code>/model</code> pick still overrides it and persists across restarts. That is the behavior <code>ANTHROPIC_MODEL</code> never had.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Sandbox read-deny rules stopped losing to allowed read regions on macOS</h4><p>A wildcard deny like <code>**/.env</code> now takes precedence inside allowed regions, covers the contents of matched directories, and survives someone renaming the denied file.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Deleting a directory a session had switched into no longer breaks the session</h4><p>Clipboard copy, background housekeeping, background sessions and local MCP logs had all been failing after the removal, a regression that had been live since 2.1.229.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Today's release, both lines of it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.237</span>
+            <h3>Gateway and custom base URL sessions were not caching the prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>The entry reads "Fixed prompt caching for sessions using an LLM gateway or custom base URL." Prompt caching is the thing that keeps a long session affordable. Without it, every turn re-pays full input price for the entire conversation prefix, and the cost curve of a long build session goes from flat to linear.</p>
+            <p>This only bites sessions pointed at something other than the direct Anthropic API. If your terminal sessions all hit the API directly, you were never affected and nothing changes for you.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check whether anything you run sets <code>ANTHROPIC_BASE_URL</code> or routes Claude Code through a gateway, including the scheduled tasks and any Vercel AI Gateway wiring. If yes, update before your next long session and stop paying the uncached rate. If no, this release is a one-line read and you can move on.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.237</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.237</span>
+            <h3>A built-in "Concise" output style</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude leads with results and skips preamble and narration, while doing the work just as thoroughly. It is selected under Output style in <code>/config</code>, so it applies at the session level with no prompt engineering and no CLAUDE.md instruction to maintain.</p>
+            <p>You have been enforcing roughly this rule by hand for months through global instructions. A built-in style is more durable than a memory file, because it does not compete for attention with everything else in context.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Turn it on and see whether it lets you delete some of the voice rules you carry in <code>~/.claude/CLAUDE.md</code>. Shorter global instructions mean more room for actual project context on Bisque and Sonderwerks work. Keep the rules that are specific to your writing voice, since this style governs how Claude reports work rather than how it drafts client copy.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.237</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Running more than one session at a time</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.236</span>
+            <h3><code>notify_when_idle</code> on cross-session <code>SendMessage</code></h3>
+          </div>
+          <div class="story-body">
+            <p>One session can now ask another Claude Code session on the same machine to send a single notice when it next goes idle. The changelog is explicit that it is opt-in, one-shot, and involves no polling, and that it works on macOS and Linux.</p>
+            <p>Until now, a coordinating session that wanted to know when a worker finished had to guess an interval and keep checking. That burned tokens on every check and still landed late. A one-shot idle notice replaces the whole pattern with a single call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the piece your loop designs kept working around. Anywhere a steward session is currently sleeping on a timer waiting for a delivery session to finish, replace the timer with an idle notice. Fewer wake-ups, no wasted polling turns, and the handoff fires the moment the worker is actually done.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.236</span>
+            <h3><code>SendMessage</code> now refuses a burst up front instead of reporting phantom sends</h3>
+          </div>
+          <div class="story-body">
+            <p>Once a rapid burst would exceed what the recipient session's inbox accepts, further messages are refused immediately. Previously they were reported as sent and then dropped.</p>
+            <p>Silent drops are the worst failure mode in a multi-session setup, because the sender believes the handoff happened and moves on. Two related fixes landed alongside it: <code>SendMessage</code> calls were being rejected when a malformed closing tag left the message text inside the summary field, and Remote Control now marks a session offline within seconds of the CLI exiting rather than leaving a dead session looking live.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have ever had a fleet run where one agent's instructions never arrived and you could not reproduce it, this is a plausible cause. Worth a re-run of any orchestration you shelved as flaky before you rewrite it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.236</span>
+            <h3>Removing a directory a session had switched into broke four separate things</h3>
+          </div>
+          <div class="story-body">
+            <p>Clipboard copy, background housekeeping, background sessions and local MCP logs all broke after the removal. The regression dates to 2.1.229. A companion fix covers skills hot-reload in SDK and VS Code sessions, which had been raising an error on every skills change once the session's working directory was deleted.</p>
+            <p>The failure profile here is specific: it needs a session that changed directory into a path that later disappears. Worktree-based workflows produce exactly that shape, since the worktree is created, worked in, and then cleaned up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your isolated-worktree agent runs are the case this describes. If background agents have been going quiet or MCP logs have been empty after a worktree cleanup, update rather than debugging your own harness.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Defaults, sandboxing, and what auto mode could be fooled by</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.236</span>
+            <h3><code>ANTHROPIC_DEFAULT_MODEL</code> sets a starting point rather than a pin</h3>
+          </div>
+          <div class="story-body">
+            <p>It sets the model new sessions start on. A <code>/model</code> pick still overrides it and persists across restarts, which the changelog notes is a departure from how <code>ANTHROPIC_MODEL</code> behaves.</p>
+            <p>That distinction is the whole point. <code>ANTHROPIC_MODEL</code> forces a model and keeps forcing it, so a mid-session switch does not survive. A default is a starting position you can move off and stay moved off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful for the unattended work. Set a default model for scheduled tasks and cron-driven runs so an interactive experiment does not leak a model choice into tomorrow's automated run, and keep manual sessions free to switch without fighting the environment.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.236</span>
+            <h3>Sandbox wildcard deny rules now win inside allowed read regions on macOS</h3>
+          </div>
+          <div class="story-body">
+            <p>Three changes in one entry: a wildcard read-deny such as <code>**/.env</code> now takes precedence inside allowed read regions, it covers the contents of matched directories, and it cannot be bypassed by renaming the denied file.</p>
+            <p>Read that as an admission that the deny rule was previously losing to a broader allow rule in the same config. Anyone who wrote a deny rule for secrets and assumed it held may not have had the protection they configured.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You keep client Supabase service keys and Vercel tokens in <code>.env</code> files across Bisque, Studio C and Sonderwerks repos. If you have sandbox deny rules configured, they behave the way you intended only after this update. Update, then re-read your rules once to confirm they say what you think they say.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.236</span>
+            <h3>Auto mode's clean-tree check could be fooled by a git config setting</h3>
+          </div>
+          <div class="story-body">
+            <p>A repo with <code>status.showUntrackedFiles=no</code> was making auto mode's git status check report a clean tree. Two more auto mode changes landed with it: <code>Monitor</code> allow rules are now set aside while auto mode is active so Monitor commands get reviewed the same way Bash commands are, and the classifier on Bedrock, Vertex AI, Foundry, and in sessions with telemetry disabled now uses the same defaults as on the Claude API, including severity-scored classification.</p>
+            <p>The pattern across all three is auto mode being less trusting of its own shortcuts. A false clean-tree reading is the one with teeth, because a clean tree is the signal that says destructive operations are cheap to undo.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth checking whether any client repo carries that git setting before you run auto mode in it. Also note the classifier parity item if you ever point a session at Bedrock or Vertex for a client with cloud-vendor constraints, since those sessions were previously running with weaker defaults than your direct-API sessions.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.236</span>
+            <h3>Slash-command typos no longer run the closest fuzzy match</h3>
+          </div>
+          <div class="story-body">
+            <p>Pressing Enter on a slash-command typo, or on a command unavailable in the current session, now reports the problem instead of running whatever the fuzzy matcher liked best. Prefixes and aliases still run as before.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Small, and it removes a real hazard. You carry a long list of custom commands with overlapping names, and a mistyped one silently running a different command is the kind of thing you only notice after it has already done something.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.236</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The fullscreen renderer now falls back to the classic renderer after a failed start instead of exiting on every subsequent launch <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>/model</code> picker no longer renders taller than the terminal; it shows what fits and scrolls for the rest <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Session recaps, automatic and <code>/recap</code>, are capped at 400 characters cut at a word boundary, ending occasional runaway recaps <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fullscreen mode: a newly sent message could stay hidden until the next update after a terminal resize, and a blank band could linger above the prompt after clearing a multi-line prompt <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The managed-settings approval prompt could fail to appear at startup while still capturing the first keypress as approval <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Unhandled promise rejections when a subprocess fails to start, for example <code>powershell.exe</code> on WSL with Windows interop disabled, a regression from 2.1.234 <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Terminal tab titles no longer jump in tmux under iTerm integration; the title is written only when its text changes <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner sessions released on idle, retire or startup timeout could resume on another runner before the post-session hook finished <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Spinner tips never appeared, with a repeating background error, when the cached guest-pass reward in <code>~/.claude.json</code> was malformed <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Fable 5 first-time usage-credits prompt auto-selected the fallback model after 60 seconds of no answer under Remote Control <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An unclear error when the cloud environments list came back empty or malformed <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Clawd mascot's eyes and feet rendered unevenly in iTerm2 at some font sizes <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">SIGTERM in print/SDK mode no longer records an interrupted turn or synthetic tool denials; commands still terminate and the exit code is still 143 <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/goal</code> now checks in automatically after 30 minutes, then 1h and 2h, when a goal is parked behind long-running background work <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/usage</code> shows the usage-credits spend row for Team and Enterprise members, capped at 0% before anything is spent <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Startup writes the session counter in the background <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The <code>/model</code> picker highlights only the newest model's name, and footer items plus the session title chip are aligned to a consistent right margin <span class="ver">2.1.236</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">VS Code: screen reader support for the transcript, with live announcements for replies, permission requests, errors and status changes, plus per-turn heading navigation <span class="ver">2.1.236</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

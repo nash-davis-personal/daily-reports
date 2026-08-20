@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-20",
+    "title": "Prompt caching was broken for anyone routing through an LLM gateway, and 2.1.237 fixes it. Everything else in this window is orchestration plumbing.",
+    "summary": "Two releases landed since the last briefing: a 33-entry 2.1.236 that mostly hardens multi-session work and auto mode, and a two-line 2.1.237 whose gateway prompt-cache fix is the one item with a dollar figure attached.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-20.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
