@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-20" />
+  <meta name="report:title" content="Patch Forminator on every client WordPress site, then read the rest" />
+  <meta name="report:summary" content="CVE-2026-15748 is an unauthenticated arbitrary file upload in the Forminator Forms WordPress plugin rated CVSS 9.8, fixed in 1.56.2, and SecurityWeek estimated more than 300,000 of the plugin's 600,000-plus installs were still on a vulnerable release at disclosure. GitLab shipped an out-of-band patch for CVE-2026-19478, a CVSS 9.4 GraphQL code-injection flaw letting an unauthenticated attacker modify or delete public projects and user data on self-managed instances. Vercel put Vercel for Slack into public beta, added a managed Microsoft Entra connector to Vercel Connect, listed Algolia on the Marketplace, and made Fish Audio speech and transcription models free on the AI Gateway for 30 days. TerraPower's 345MW Natrium reactor stores excess heat in molten sodium so it can chase data-center load swings without throttling the reactor. Relativity Networks raised $22M for hollow-core vacuum fiber that cuts transit from about 5 to 3.5 microseconds per kilometer, and LandSpace landed a ZhuQue-3 booster on legs, a first for a Chinese rocket." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch Forminator on every client WordPress site, then read the rest — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/08/forminator-wordpress-flaw-can-enable.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, August 20, 2026</span>
+        <span>◆</span><span>Patch first ◆ platform ◆ power &amp; photons</span>
+      </div>
+      <h1>Patch Forminator on every client WordPress site, then read the rest</h1>
+      <p class="standfirst">A CVSS 9.8 unauthenticated file upload in a WordPress form plugin with more than 600,000 installs went public this week, and by SecurityWeek's count over 300,000 sites were still running a vulnerable version. If you inherited or touch any WordPress property in the Charlotte book, that's the first hour of your day.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 17 – August 20, 2026</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/08/forminator-wordpress-flaw-can-enable.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9.8</div><div class="lbl">CVSS on the Forminator unauthenticated file upload, fixed in 1.56.2</div></div>
+      <div class="stat"><div class="num">9.4</div><div class="lbl">CVSS on GitLab's out-of-band GraphQL code-injection patch</div></div>
+      <div class="stat"><div class="num">3.5 µs</div><div class="lbl">Per-kilometer transit on hollow-core fiber, down from about 5</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Forminator: unauthenticated RCE path on 300,000+ live sites</h4><p>CVE-2026-15748. Insufficient file-type validation in <code>handle_file_upload</code> lets an unauthenticated attacker upload an executable. Patched in 1.56.2.</p></div>
+        <div class="signal"><div class="n">02</div><h4>GitLab shipped an emergency GraphQL patch</h4><p>CVE-2026-19478, CVSS 9.4, no privileges and no user interaction needed to modify or delete public projects. Self-managed only; GitLab.com is already patched.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel for Slack is in public beta</h4><p>Collaborative coding, production investigations and remediation actions from Slack. Vercel Connect also picked up a managed Microsoft Entra connector.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Free speech and transcription models on the AI Gateway</h4><p>Fish Audio's models are on Vercel AI Gateway free for 30 days, one API key, no provider account, with spend tracking.</p></div>
+        <div class="signal"><div class="n">05</div><h4>TerraPower's answer to spiky AI load is a vat of sodium</h4><p>A 345MW reactor that never throttles, dumping surplus heat into molten sodium and pulling it back out when the data center spikes. Meta already bought eight plants.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Fiber with nothing in it</h4><p>Relativity Networks raised $22M plus a $40M hyperscaler follow-on for hollow-core fiber that moves light through vacuum, cutting latency roughly 30%.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch these today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">CVE-2026-15748</span>
+            <h3>Forminator Forms lets an unauthenticated attacker upload a PHP file</h3>
+          </div>
+          <div class="story-body">
+            <p>Forminator Forms, the wpmudev contact/payment/custom form builder with more than 600,000 active installs, carries an unrestricted file upload in its <code>handle_file_upload</code> function. File-type validation is insufficient, so an unauthenticated attacker can upload an executable file and get code execution. It is rated CVSS 9.8 and affects every version up to and including 1.56.1. The fix, 1.56.2, shipped July 31, 2026. Exploitation requires the site to have a form containing both a File Upload field and a Select field, which is a common combination on a quote-request form.</p>
+            <p>The gap between the patch and the attention is the problem: SecurityWeek estimated more than 300,000 sites were still on a vulnerable release when the issue got wide coverage this week.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this before anything else today. For every WordPress site you touch, host or inherited during a rebuild, check the Forminator version and get it to 1.56.2 or later. If a site is vulnerable, updating is not the whole job — assume upload and check <code>wp-content/uploads</code> for stray PHP files before you call it clean. This is also the cleanest cold-outreach line Grant and Bishop have had in weeks: a Charlotte SMB running an unpatched quote form is one scan away from a defaced site, and a paid audit-and-migrate off WordPress is exactly the conversation you want to be in.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/08/forminator-wordpress-flaw-can-enable.html" target="_blank" rel="noopener">The Hacker News — Forminator WordPress flaw</a> <a href="https://www.securityweek.com/300000-wordpress-sites-potentially-exposed-to-hacking-due-to-form-plugin-flaw/" target="_blank" rel="noopener">SecurityWeek — 300,000 sites exposed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Aug 17, 2026</span>
+            <h3>GitLab patched a GraphQL flaw that lets anonymous attackers delete projects</h3>
+          </div>
+          <div class="story-body">
+            <p>GitLab released an out-of-band security update on August 17, outside its normal twice-monthly cadence, for CVE-2026-19478. A code-injection issue in a GraphQL directive lets an unauthenticated attacker remotely modify or delete public projects and user data under certain conditions. CVSS 9.4, remote, low attack complexity, no privileges, no user interaction. Patched versions are 19.2.4, 19.1.6, 19.0.8 and 18.11.11; every self-managed CE and EE release from 18.2 up to those versions is affected. The same release fixed CVE-2026-19650, a CVSS 7.1 CSRF in the GraphQL multiplex query handler that could let an unauthenticated attacker run mutations through GET requests.</p>
+            <p>GitLab.com and GitLab Dedicated already run patched builds, so SaaS users have nothing to do.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You're on GitHub, so this is not your emergency. It is worth knowing for one reason: if a prospect or a client's internal IT runs self-managed GitLab, mentioning this by CVE on a call is a thirty-second credibility deposit that costs you nothing.</div>
+          <div class="refs"><a href="https://www.helpnetsecurity.com/2026/08/18/gitlab-critical-code-injection-flaw-cve-2026-19478/" target="_blank" rel="noopener">Help Net Security — Critical GitLab flaw</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Aug 18–19, 2026</span>
+            <h3>Vercel shipped Slack, a Microsoft connector, Algolia and free audio models</h3>
+          </div>
+          <div class="story-body">
+            <p>Five things landed on the Vercel changelog Wednesday. Vercel for Slack entered public beta, covering collaborative coding, production investigations and secure remediation actions from inside Slack. Vercel Connect added a managed connector for Microsoft that registers a Microsoft Entra app automatically and mints delegated and application tokens. Algolia joined the Vercel Marketplace, so search can be added without running search infrastructure. Fish Audio's speech and transcription models went live on the AI Gateway free for 30 days, behind one API key with no provider account and spend tracking included. And SOC 2 Type 2 attestations and other trust documents became downloadable directly from Pro and Enterprise team settings. On Tuesday, Vercel for Platforms gained the ability to deploy from an end user's own GitHub repository using short-lived tokens that are encrypted and never persisted.</p>
+            <p>Next.js still has no August advisory. The July 2026 security release, with its preannounced patch model and updates in v16.2.11 Active LTS and v15.5.21 Maintenance LTS, remains the current line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two immediate uses. The compliance-documents change means you can pull Vercel's SOC 2 Type 2 yourself and attach it to a proposal the same day a prospect's insurer or franchise HQ asks for vendor attestations, instead of stalling for a week. And free speech-to-text on the AI Gateway for 30 days is a real window: run TSD Front Desk's transcription through Fish Audio behind the Gateway, measure word error rate against your current path on actual Charlotte accents and shop-floor background noise, and you will know whether your voice margin can improve without a provider contract.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://nextjs.org/blog/july-2026-security-release" target="_blank" rel="noopener">Next.js July 2026 security release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Power and photons for the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 19, 2026</span>
+            <h3>TerraPower's reactor handles spiky AI load with a tank of molten sodium</h3>
+          </div>
+          <div class="story-body">
+            <p>TerraPower's Natrium design is a 345-megawatt molten-salt-cooled reactor, and its pitch for data centers is a storage trick rather than a reactor trick. US reactors run at maximum output about 92.5% of the time and can only adjust roughly 5% per minute, which is a poor match for AI training loads that slam up and down. Instead of throttling, Natrium keeps generating flat out and dumps surplus heat into a large vat of molten sodium, then pulls that heat back to raise extra steam when demand spikes. The expensive equipment stays busy during the troughs.</p>
+            <p>The first reactor is under construction in Wyoming and a second plant is expected to break ground in 2027. Meta agreed in January to buy eight Natrium plants. TerraPower says it will announce its first dedicated data-center project this year, customer unnamed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action, but it's the strongest tell yet on where inference prices go. Utilities and hyperscalers are solving load-following with thermal storage, which is a long, capital-heavy fix — meaning per-token costs have a floor set by physics and permitting, not by model efficiency alone. Price your Managed AI retainers with a usage band and a stated overage rate rather than flat unlimited.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/19/terrapowers-nuclear-reactor-has-a-secret-weapon-for-powering-ai-data-centers/" target="_blank" rel="noopener">TechCrunch — TerraPower's secret weapon</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 19, 2026</span>
+            <h3>Relativity Networks raised $22M to send data through vacuum instead of glass</h3>
+          </div>
+          <div class="story-body">
+            <p>Relativity Networks closed $22 million on SAFE notes led by Rhapsody Venture Partners, Bell Ventures and Faster Than Glass LLC, alongside a $40 million follow-on order from an unnamed hyperscaler. Its hollow-core fiber carries light through a vacuum channel rather than solid glass, cutting transit from roughly 5 microseconds per kilometer to 3.5 and pushing closer to the speed-of-light limit. CEO Jason Eichenholz frames the payoff as geography: a campus can spread about 50% further before latency becomes the binding constraint, which is what multi-site AI training needs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to build on. File it under the same heading as the reactor story — the AI buildout's remaining bottlenecks are electricity and the speed of light, and both are getting priced in.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/19/relativity-networks-raises-22-million-to-bring-a-faster-kind-of-fiber-to-data-centers/" target="_blank" rel="noopener">TechCrunch — Relativity Networks raises $22M</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">LandSpace landed a ZhuQue-3 booster on landing legs, the first Chinese-built orbital-class rocket to do so and the first landing by a Chinese commercial company. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag feature qh-tag">Product</span><span class="txt">Calendly launched a meeting note-taker plus an AI scheduling assistant called Callie, entering a category already crowded with Granola, Fireflies, Otter, Read AI and Fathom; its differentiator is recording consent handled through the scheduling flow. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag improve qh-tag">Consumer</span><span class="txt">Amazon made Alexa+ free on Fire TV with no Prime subscription required. <span class="ver">Aug 19</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Microsoft shipped patches on August 18 for three Varonis-disclosed Copilot Personal vulnerabilities, including CVE-2026-24301, where one click on a crafted link could silently pull data from connected apps. <span class="ver">Aug 18</span></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">SafePal disclosed an authorization flaw in an order-tracking plugin that exposed names, emails, shipping addresses, phone numbers and purchase details for roughly 39,798 customers. <span class="ver">Aug 18</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

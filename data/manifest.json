@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-20",
+    "title": "Walmart raised guidance on a tariff refund, and the Fed minutes showed a committee arguing about hikes",
+    "summary": "Walmart reported Q2 FY27 before Thursday's open with total revenue up 5.9%, Walmart U.S. comp sales up 2.6% excluding fuel, global eCommerce up 23% and global advertising up 38%, and raised its full-year sales and operating income growth guidance. Adjusted operating income grew about 17% in constant currency, but that included a 750 basis point net benefit from nearly $2.9 billion in IEEPA tariff refunds; stripping it out, growth was at the top of the existing 7-10% range. The July FOMC minutes released Wednesday showed a 9-3 hold with Hammack, Kashkari and Logan each preferring a quarter-point increase, and language that tightening would likely be necessary if inflation did not decline. Stocks snapped a three-day slide with all three indexes up about 0.2% after Treasury said it would at least double buybacks of 10- to 30-year debt starting September 9, and the 30-year yield fell 9 basis points off a 2007 high. Moderna rose 176% on positive Phase 3 melanoma vaccine results with Merck.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-20.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Two releases landed since the last briefing: a 33-entry 2.1.236 that mostly hardens multi-session work and auto mode, and a two-line 2.1.237 whose gateway prompt-cache fix is the one item with a dollar figure attached.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-20.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-20",
+    "title": "Stripe paid $7.5 billion for the router, and Binance handed agents the trade button",
+    "summary": "Stripe acquired OpenRouter for a reported $7.5 billion, a valuation that went from $1.3 billion in May to $7.5 billion in August, putting the payments company in the middle of the model-inference toll booth. Binance launched Agent OS on Thursday, letting agents in ChatGPT, Claude Code and Cursor place real trades over MCP with withdrawals blocked by default and no exchange-imposed loss cap. OpenAI announced Private Safety Processing, cross-conversation abuse detection with zero data retention, aimed squarely at enterprise buyers uncomfortable with Anthropic's 30-day retention on covered models. Google put interactive 3D simulations, generated quizzes and a learning hub into Search, Gemini and Lens. And OpenAI silently revoked at least five non-US security researchers' access to its Daybreak Blue cyber tier, then said it was a bug on their end.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-20.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-20",
+    "title": "A 9.8 in a WordPress form plugin just handed Grant and Bishop a list",
+    "summary": "Today's best move is an unglamorous one: CVE-2026-15748 is an unauthenticated arbitrary file upload in Forminator Forms, a WordPress plugin with more than 600,000 installs, and SecurityWeek estimated over 300,000 sites were still on a vulnerable version at disclosure. A scanner you can write in an evening turns that into a named local call list, and WordPress care plans price between roughly $39 and $299 a month for update-and-monitor work. Five more moves follow from the week's shifts: sell a written data-handling sheet now that OpenAI is competing with Anthropic on retention policy, productize the agent-guardrail pattern Binance just shipped with no loss cap, test Fish Audio free for 30 days on the Vercel AI Gateway to attack TSD Front Desk transcription cost, repoint TSD Concierge at customers' own document piles now that Google has normalized upload-and-ask, and add banded usage pricing with a monthly spend report to every Managed AI retainer. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-20.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-20",
+    "title": "Patch Forminator on every client WordPress site, then read the rest",
+    "summary": "CVE-2026-15748 is an unauthenticated arbitrary file upload in the Forminator Forms WordPress plugin rated CVSS 9.8, fixed in 1.56.2, and SecurityWeek estimated more than 300,000 of the plugin's 600,000-plus installs were still on a vulnerable release at disclosure. GitLab shipped an out-of-band patch for CVE-2026-19478, a CVSS 9.4 GraphQL code-injection flaw letting an unauthenticated attacker modify or delete public projects and user data on self-managed instances. Vercel put Vercel for Slack into public beta, added a managed Microsoft Entra connector to Vercel Connect, listed Algolia on the Marketplace, and made Fish Audio speech and transcription models free on the AI Gateway for 30 days. TerraPower's 345MW Natrium reactor stores excess heat in molten sodium so it can chase data-center load swings without throttling the reactor. Relativity Networks raised $22M for hollow-core vacuum fiber that cuts transit from about 5 to 3.5 microseconds per kilometer, and LandSpace landed a ZhuQue-3 booster on legs, a first for a Chinese rocket.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-20.html"
   },
   {
     "source": "america",
