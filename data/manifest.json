@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-21",
+    "title": "2.1.238 is a 39-entry repair release. Long subagent-heavy sessions were leaking memory, custom output styles were quietly reverting mid-session, and cross-session messages could vanish without telling the sender.",
+    "summary": "One release landed since the last briefing, and it is the largest of the week: thirty-nine entries, thirteen of them on Remote Control and cross-session messaging, plus three silent-failure bugs that would have been invisible in an unattended run.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-21.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

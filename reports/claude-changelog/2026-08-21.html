@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-21" />
+  <meta name="report:title" content="2.1.238 is a 39-entry repair release. Long subagent-heavy sessions were leaking memory, custom output styles were quietly reverting mid-session, and cross-session messages could vanish without telling the sender." />
+  <meta name="report:summary" content="One release landed since the last briefing, and it is the largest of the week: thirty-nine entries, thirteen of them on Remote Control and cross-session messaging, plus three silent-failure bugs that would have been invisible in an unattended run." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.238 is a 39-entry repair release. Long subagent-heavy sessions were leaking memory, custom output styles were quietly reverting mid-session, and cross-session messages could vanish without telling the sender. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, August 21, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.238</span>
+      </div>
+      <h1>2.1.238 is a 39-entry repair release, and three of its fixes are for failures you would never have seen happen.</h1>
+      <p class="standfirst">The headline item is a memory leak: long interactive sessions grew without bound because subagent tool results were never released, and they now get dropped once they scroll out of the recent display window. Underneath that sit two silent-failure fixes in cross-session messaging and one bug where custom output styles drifted back to the default voice partway through a session.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-20 briefing (2.1.237)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">39</div><div class="lbl">Entries in 2.1.238</div></div>
+      <div class="stat"><div class="num">13</div><div class="lbl">On Remote Control or cross-session</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Genuinely new capabilities</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Long sessions were leaking memory on every subagent call</h4><p>Subagent tool results are now released once they leave the recent display window. Before this, a long session that fanned out to subagents grew without bound for the life of the process.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Custom output styles were drifting back to the default voice mid-session</h4><p>Custom, project and plugin output styles all had this bug. If you set a house voice and it seemed to stop holding halfway through a session, that was real.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Cross-session messages could disappear without telling the sender</h4><p>A refusing inbox reported a silent success, and a session that dropped messages to a rate limit or a full queue said nothing at all. Both now report back.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Plugin marketplaces can now mint their own auth headers</h4><p><code>headersHelper</code> runs a command that produces HTTP headers — a short-lived token, for instance — for catalog and same-origin archive fetches. Private marketplaces behind auth become practical.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Remote Control got a thirteen-entry reliability pass</h4><p>Messages sent mid-turn no longer vanish from the transcript, phone model picks now reach the terminal, and a brief network hiccup no longer disconnects you with "login expired".</p></div>
+        <div class="signal"><div class="n">06</div><h4>The double-press Ctrl+L shortcut for <code>/clear</code> was removed</h4><p>Ctrl+L and Cmd+K in fullscreen now always just repaint. If you had muscle memory for the double press, it is gone — and 1-row nvim terminals stop triggering automatic <code>/clear</code> loops.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Failures you could not see</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3>Unbounded memory growth in long interactive sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>The entry is specific about the cause: subagent tool results were being held for the life of the session, and they are now released once they leave the recent display window. The more you fan out to subagents, the faster the session grew.</p>
+            <p>This is the profile of a session that gets sluggish after a few hours of heavy work and comes back fine after a restart. That symptom had a real cause, and this release removes it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Take the update before your next long build session. Your Explore-and-fan-out pattern on client work is exactly the shape that triggered this, and if you have been restarting Claude Code mid-afternoon to get responsiveness back, stop budgeting for that.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3>Cross-session messaging now admits when a message did not land</h3>
+          </div>
+          <div class="story-body">
+            <p>Two separate entries. Sending to a session on this machine that refuses inbound messages — one running <code>crossSessionInbound: "refuse"</code>, for example — reported a silent success to the sender; it now reports "refused". And a session whose inbox drops messages to a rate limit or a full queue now tells the sending session, where before the messages simply vanished.</p>
+            <p>Both are the worst class of bug for automation. A coordinating session had no way to distinguish "delivered and being worked" from "gone", so it waited on a reply that was never coming.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a direct fix for your loop and steward designs. Any handoff where one session messages another and waits was previously trusting a success signal that could be fiction. After the update, add explicit handling for a "refused" result on those sends, since it is now a state you can actually observe.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3>Output styles stopped holding partway through a session</h3>
+          </div>
+          <div class="story-body">
+            <p>Custom, project and plugin output styles were drifting back to the default voice mid-session. The style stayed selected; the behavior reverted underneath it.</p>
+            <p>Worth reading against yesterday's 2.1.237, which shipped the built-in "Concise" style. A style setting is only worth adopting if it survives the whole session, and until this release it did not reliably do that.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you tried a custom output style, decided it was not sticking, and went back to carrying voice rules in <code>~/.claude/CLAUDE.md</code>, re-test that decision on this build. Moving the durable voice rules into a style frees room in your global instructions for actual client context.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Plugins, MCP, and the trust boundary</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.238</span>
+            <h3><code>headersHelper</code> puts plugin marketplaces behind real auth</h3>
+          </div>
+          <div class="story-body">
+            <p>On a url marketplace or a catalog entry, <code>headersHelper</code> runs a command that mints HTTP headers — the changelog gives a short-lived token as the example — for catalog and same-origin archive fetches. A catalog entry's helper runs only when you install or update that plugin, after its command is shown to you, and <code>claude plugin install/update</code> prompt <code>[y/N]</code> unless you pass <code>-y</code>.</p>
+            <p>The confirmation design matters as much as the capability. You see the command before it runs, and it runs on install and update rather than on every catalog read.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This makes a private TSD plugin marketplace worth building. Your skills, subagents and delivery conventions could ship as versioned plugins from an authenticated endpoint instead of being copied between machines by hand. That is also the mechanism you would need if you ever package tooling for a client to install on their own.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.238</span>
+            <h3>Header helpers from untrusted folders now need the trust dialog, and lose your credentials</h3>
+          </div>
+          <div class="story-body">
+            <p>Two hardening entries land alongside the new capability. An MCP <code>headersHelper</code> in a project <code>.mcp.json</code>, and inline MCP servers in project or <code>--add-dir</code> agent files, now require that folder's trust dialog to have been accepted — including under <code>claude -p</code>. And a <code>headersHelper</code> coming from a project <code>.mcp.json</code>, a plugin, or an agent file runs without inherited credential environment variables, while user, managed and claude.ai-scope helpers run from the Claude config dir.</p>
+            <p>Read plainly: a repo you cloned can no longer define a command that runs with your API keys in its environment just because you opened the folder.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check whether any of your project-level <code>.mcp.json</code> files rely on inheriting credentials from your shell, because those will now come up empty. If a helper genuinely needs a secret, it has to source it itself. Also expect a trust prompt on <code>claude -p</code> runs in folders you had not explicitly trusted, which is worth knowing before it surprises a scheduled task.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3>Lazy stdio MCP servers stopped being woken on every session open</h3>
+          </div>
+          <div class="story-body">
+            <p>Stdio MCP servers were receiving a <code>server/discover</code> request before <code>initialize</code>, which forced lazy servers to start their backend every time a session opened. Separately, <code>claude mcp list</code> and <code>claude mcp get</code> now show disabled servers as <code>⊘ Disabled</code> instead of connecting to them for a health check.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a long list of MCP servers. Both changes cut startup work you were paying on every single session open, and the disabled-server change means the ones you switched off stop costing you a connection attempt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Remote Control, thirteen entries deep</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3>Phone and web sessions now stay in sync with the terminal</h3>
+          </div>
+          <div class="story-body">
+            <p>The cluster worth knowing: messages sent from web or Desktop while Claude was mid-turn disappeared from the transcript once the turn finished; model picks made on a phone or web did not update the model shown in the terminal; a session whose process crashed stayed unavailable until <code>claude remote-control</code> was restarted, and can now be reused when you next message it. Per-task Stop from the tasks panel did nothing on CLI-hosted sessions.</p>
+            <p>Connection handling improved too. A brief network delay in renewing your sign-in was disconnecting you with "login expired" and now retries, brief HTTP 403 refusals from a network edge, VPN or proxy are tolerated for up to three minutes with the refusing party named when a block persists, and signing out now ends the session with a clear message.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Remote Control becomes trustworthy enough to actually use for checking a long build from your phone between classes. The mid-turn message fix is the one that mattered most, since a queued instruction that silently evaporated meant you thought you had redirected a run and had not.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.238</span>
+            <h3><code>ListAgents</code> and <code>SendMessage</code> work from server-mode and Desktop hosts</h3>
+          </div>
+          <div class="story-body">
+            <p>Both tools were reporting "Remote Control is not connected" in sessions run by <code>claude remote-control</code> in server mode, or by Desktop and IDE hosts, and now list and reach Remote Control peers properly. A second entry stops them exposing the idle worker that the agent view pre-warms for your next background session; it appears only once a task claims it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you tried to wire session-to-session coordination from the Desktop app and concluded it was not supported, that was a bug. The pre-warmed worker fix also removes a phantom peer that any "message every idle session" logic would have picked up and tried to talk to.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Terminal behavior worth knowing about</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.238</span>
+            <h3>Ctrl+L and Cmd+K always just repaint now</h3>
+          </div>
+          <div class="story-body">
+            <p>The double-press shortcut for <code>/clear</code> was removed, and 1-row nvim terminals no longer trigger automatic <code>/clear</code> loops. Alongside it, a new <code>keybindingFlavor</code> setting takes <code>"readline"</code> to make Ctrl+W delete back to the previous whitespace as in Bash; the default <code>"classic"</code> is unchanged.</p>
+            <p>The Ctrl+L change is the only item in this release that removes behavior you might be relying on. Clearing context is now an explicit <code>/clear</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Low stakes, but it will feel wrong for a day. If you live in Bash keybindings elsewhere, set <code>keybindingFlavor</code> to <code>"readline"</code> and stop losing whole paths every time you reach for Ctrl+W.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.238</span>
+            <h3>Startup got out of its own way</h3>
+          </div>
+          <div class="story-body">
+            <p>Bare <code>claude</code> starts sooner on macOS, and the automatic update check now runs about ten seconds after launch instead of competing with startup for CPU.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do. It compounds quietly given how many times a day you open a session across the client repos.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude self-hosted-runner --defer-shutdown-max-min &lt;minutes&gt;</code>: on SIGTERM, keep serving attached sessions, park what is left after that many minutes, then exit <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude self-hosted-runner --proxy-authorization-command</code> and <code>--proxy-authorization-file</code> for egress proxies needing a freshly issued <code>Proxy-Authorization</code> header on every connection <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The bundled <code>claude-api</code> skill was updated for the Managed Agents Aug 19 release: web search and fetch domain settings, and memory stores on self-hosted sandboxes <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Better Bash tool permission checking for zsh-specific syntax in shell conditionals <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runners were occasionally removed by the server after a single slow or lost poll, handing their healthy session to another runner <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A proxy refusing a connection was reported as a generic network error instead of naming the proxy <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=true</code> was not keeping suggestions on when your account is near, but not over, its usage limit <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Worktree-isolation Bash refusals told you to remove a redirect when the command had none <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP elicitation dialogs showed nothing for URLs longer than 4,096 characters, and permission prompts dropped the "don't ask again" option when the project path did not fit the terminal width <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Leftover <code>/tmp/claude-*-cwd</code> files when a Bash command is killed, times out, or is interrupted <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Held Backspace was ignored on terminals that send Ctrl+H for Backspace when keystrokes arrive in large bursts, such as slow SSH or mosh links <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Text-wrapping in permission prompt diffs: lines with wide multi-code-point characters such as emoji, or tabs, are no longer clipped <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Killing a suspended (Ctrl+Z) session sometimes left the terminal in bracketed-paste mode with the cursor hidden <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>/model</code> and <code>/effort</code> cache-miss warning appeared when the prompt cache had already expired <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote sessions exited when a client delivered a user message without a valid role <span class="ver">2.1.238</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control sessions started by <code>claude remote-control</code> inherited session-scoped environment variables from the launching shell <span class="ver">2.1.238</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
