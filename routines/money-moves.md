@@ -21,7 +21,15 @@ can actually act on**. Not generic news — moves matched to his skills, assets,
    `reports/general-tech/<date>.html`, `reports/america/<date>.html`,
    `reports/claude-changelog/<date>.html` — read them; many opportunities fall straight out
    of those shifts.
-2. Then broaden with WebSearch/WebFetch: new model capabilities and price drops, tool/platform
+2. `/Users/nashdavis/Documents/macro-brain/digests/board-feed.json` — TSD's Macroscope terrain
+   map (regime, themes with direction/conviction, near-trip wires, divergences, dated
+   catalysts; `board_date` says how fresh). Use it to **rank and time** the moves: an
+   opportunity that rides a board tailwind ranks higher; one exposed to a near-trip wire gets
+   that risk named honestly in its "Why you" or the Watch list; a dated catalyst can set the
+   "First move" deadline. Cite as `TSD Macroscope board (as of <board_date>)`. Terrain only —
+   it never justifies securities/crypto trade calls, and a macro read alone is not a "shift"
+   (every move still needs a real sourced event).
+3. Then broaden with WebSearch/WebFetch: new model capabilities and price drops, tool/platform
    booms, funding signals, regulations, local Charlotte/NC economic news, SMB-buying trends.
 
 ## How to think (the core of this report)
