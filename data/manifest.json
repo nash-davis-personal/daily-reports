@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-21",
+    "title": "Walmart flashed a consumer warning, bond yields snapped back, and 75,000 Hoosiers are still dark",
+    "summary": "Walmart posted its slowest US comparable sales growth in more than six years at 2.6% and the stock fell over 9%, dragging the Dow down about 700 points on Thursday as Treasury yields rebounded and oil climbed. Weekly jobless claims fell to 206,000, still historically low, though continuing claims rose to 1.8 million. Nine days after an August 11 storm with 99 mph winds, about 75,000 northwest Indiana customers remain without power and Gary schools have been closed since August 13, with seven deaths reported. The FBI arrested an Albany woman it says planned an explosives attack on the New York State Capitol. A Cessna 150 collided with a Pennsylvania State Police helicopter at Carlisle Regional Airport, killing the plane's pilot. And a 50% tariff on about $20 billion of Canadian imports remains paused through today while the two governments finish paperwork.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-21.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release landed since the last briefing, and it is the largest of the week: thirty-nine entries, thirteen of them on Remote Control and cross-session messaging, plus three silent-failure bugs that would have been invisible in an unattended run.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-21.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-21",
+    "title": "Ramp opened a second toll booth, and Claude's proteins stuck in a real lab",
+    "summary": "One day after Stripe bought OpenRouter, Ramp launched its own model router — free through 2026 with a $26 credit — and the same company's card data shows OpenAI growing faster than Anthropic among 70,000 US businesses this quarter, even though Anthropic still leads 44% to 40%. Anthropic published wet-lab results where Claude designed 1,320 de novo protein binders and 354 of them bound, hitting 14 of 15 targets at 22.6-35.1% versus a 10-15% industry baseline. OpenAI shipped an Apple Messages plug-in that drafts, sends and deletes texts on your Mac. Pew found 35% of web pages published since ChatGPT launched carry AI-authorship signals. And Grok spent Wednesday and Thursday emitting word salad to Grok Lite users.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-21.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-21",
+    "title": "Vercel just handed you a recurring invoice with a date on it",
+    "summary": "Next.js moved to a monthly security-release cadence in July and pre-announced a critical-severity CVE for August 26 — a predictable, calendared emergency on every client site you have ever shipped, which is the cleanest recurring-revenue wedge available to you right now. Five more moves fall out of today's briefings: a provably-human content package now that Pew says 35% of the post-ChatGPT web reads as machine-written, a fixed-price document-extraction pilot off the back of Claude reading lab instrument data in 20 minutes, an AI spend audit using Ramp's free router, an attribution offer to replace the ad reporting Meta just gave away, and an approval-gated SMS add-on for Booking Bridge. Watch list covers tariff-driven landed-cost tooling, robotaxi depot services, and a consumer slowdown that changes how you frame every proposal.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-21.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-21",
+    "title": "Next.js has a critical fix landing Wednesday, and Nevada just licensed 8,000 robotaxis",
+    "summary": "Vercel gave five days' notice that a critical-severity Next.js vulnerability gets patched on August 26 in 16.3.3 and 15.5.24 — put it on the calendar now, because every TSD client site is on this framework. Vercel also shipped a heavy changelog week: always-on tracing for production and preview traffic, custom metrics in Observability, Bun 1.4 in Functions, and Vercel Agent inside Slack channels. Nevada regulators unanimously approved permits for up to 8,000 robotaxis in Clark County across Tesla, Waymo and Uber. Huntress detailed a campaign that lured security researchers with a fake crypto conference and dropped macOS infostealers. Castelion raised $1B at a $13B valuation for hypersonic missiles. And Runlayer and Rippling both dropped their lawsuits, with Rippling shipping the competing product the same day.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-21.html"
   },
   {
     "source": "america",
