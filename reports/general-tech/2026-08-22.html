@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-22" />
+  <meta name="report:title" content="Vercel put a meter on deployment storage, and the Next.js critical fix is four days out" />
+  <meta name="report:summary" content="Vercel started metering Deployment Storage at $0.10 per GB per month for new Pro and Enterprise teams, with retention controls in Deployment History — the fourth repricing in 20 months. The critical-severity Next.js patch pre-announced for August 26 is now four days away, shipping as 16.3.3 and 15.5.24. Adversa AI disclosed a zero-click prompt-injection chain against Grok that exfiltrates a user's name, location, tier and full conversation from a single summarize-this-page request, reported to xAI on June 3 and still unpatched. Apple cut more than 200 jobs across Vision Pro and Siri, largely shutting its VR gaming team. Tesla quietly discontinued the solar roof after a decade. And CBRE data put New York ahead of the Bay Area on tech headcount for the first time in 13 years." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Vercel put a meter on deployment storage, and the Next.js critical fix is four days out — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, August 22, 2026</span>
+        <span>◆</span><span>Your stack ◆ agent security ◆ big-tech reshuffles</span>
+      </div>
+      <h1>Vercel put a meter on deployment storage, and the Next.js critical fix is four days out</h1>
+      <p class="standfirst">Every deployment you have ever kept for rollback is now a billable line item on new Pro and Enterprise teams at $0.10 per GB per month, with retention controls buried in Deployment History. The critical Next.js patch lands Wednesday as 16.3.3 and 15.5.24, so this is the weekend to find out which client sites are on which minor.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 21 – August 22, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$0.10/GB</div><div class="lbl">Vercel's new monthly charge for Deployment Storage on new Pro and Enterprise teams</div></div>
+      <div class="stat"><div class="num">Aug 26</div><div class="lbl">Next.js critical-severity patch ships as 16.3.3 and 15.5.24 — four days out</div></div>
+      <div class="stat"><div class="num">394,300</div><div class="lbl">New York tech workers, now ahead of the Bay Area's 375,730 for the first time in 13 years</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js critical patch lands Wednesday</h4><p>One critical-severity vulnerability, fixed in 16.3.3 and 15.5.24, with the advisory published alongside. Inventory your client sites now so Wednesday is a bump, not an investigation.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Vercel now bills deployment storage</h4><p>$0.10 per GB per month for new Pro and Enterprise teams. Retention is controllable in Deployment History. Fourth Vercel repricing in roughly 20 months.</p></div>
+        <div class="signal"><div class="n">03</div><h4>A zero-click attack reads your whole Grok conversation</h4><p>Encrypted instructions on a web page, decrypted by Grok's own Python sandbox and treated as trusted context. Reported to xAI June 3, still unpatched as of August 19.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Apple cut 200-plus across Vision Pro and Siri</h4><p>Roughly 100 in Vision Pro — largely shutting the gaming team and trimming immersive video — and roughly 100 across Siri and software, aimed at the old Siri stack.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Tesla killed the solar roof</h4><p>Every public mention pulled from the site. Targeted 1,000 installs a week, managed 20–40 by 2022, with quotes reaching $200,000 and reported underproduction of at least 20%.</p></div>
+        <div class="signal"><div class="n">06</div><h4>New York overtook the Bay Area on tech headcount</h4><p>394,300 versus 375,730, per CBRE. Finance added 90,530 tech jobs since 2022 while the tech industry itself shed 21,262. The Bay Area still leads decisively on AI-specific talent.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> On your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Billing</span>
+            <span class="ver">Aug 21, 2026</span>
+            <h3>Vercel now meters and bills Deployment Storage</h3>
+          </div>
+          <div class="story-body">
+            <p>Deployment Storage — the build output Vercel keeps so old deployments stay rollback-ready — is now measured and billed at $0.10 per GB per month for new Pro and Enterprise teams. Retention is adjustable in Deployment History, which is the lever that actually controls the bill. Vercel's framing is that keeping deployments rollback-ready has a real cost; the practical effect is that a project with a long history of large builds now carries a recurring charge it did not carry before.</p>
+            <p>Context worth holding: this is the fourth Vercel repricing in roughly 20 months. Same-day changelog entries also cut AI Gateway rates for GPT-5.6 Sol to $4/$20 per million tokens, added DeepSeek V4 Flash Vision with a 1M-token context, expanded the CLI to cover DNS records, domain renewal, project config and member management, and let v0-built apps connect to 100-plus third-party services.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Go into Deployment History on every client project this weekend and set an explicit retention window — a marketing site does not need a year of rollback targets. Then add a line to your client proposals that separates platform costs you pass through from your own fee, because a hosting bill that quietly grows is the fastest way to lose trust on a retainer. If you are about to spin up a new Pro team for a client, price this in before you quote.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — Deployment Storage</a> <a href="https://bex.co/blog/2026/08/21/vercel-four-repricings-forecasting-your-next-quarter-bill" target="_blank" rel="noopener">bex.co — four repricings in 20 months</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Ships Aug 26, 2026</span>
+            <h3>The Next.js critical patch is four days out</h3>
+          </div>
+          <div class="story-body">
+            <p>Next.js pre-announced a scheduled security release for Wednesday, August 26, covering one critical-severity vulnerability, with patches shipping as 16.3.3 and 15.5.24 and the full advisory — impact, affected versions, upgrade path — published at the same time. Technical detail and CVE identifiers stay embargoed until the patches are out. The advance notice is part of the monthly security release program Vercel announced in July.</p>
+            <p>Nothing to patch yet. The work available today is inventory: which sites are on 16.3.x, which are still on 15.5.x, and which are on something older that the patch will not cover.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npx next --version</code> across every client repo today and write the results down. Anything below 15.5 or 16.3 needs a minor bump before Wednesday, or it will not be a one-line fix on the day. Then send the affected clients a short heads-up before the advisory lands — being the person who warned them beats being the person who patched quietly, and it is exactly the moment a monthly maintenance retainer sells itself.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-august-2026" target="_blank" rel="noopener">Next.js — upcoming August security release</a> <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Next.js — the security release program</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent security got a nasty proof of concept</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Vulnerability</span>
+            <span class="ver">Aug 20–21, 2026</span>
+            <h3>A zero-click prompt injection pulls your whole Grok conversation out through a web page</h3>
+          </div>
+          <div class="story-body">
+            <p>Adversa AI published a technique it calls Cryptographic Context Injection. An attacker hosts a page carrying instructions encrypted with PBKDF2 key derivation and AES-256-GCM. A user asks Grok to summarise that page; Grok's integrated Python sandbox decrypts the payload during execution, and the decrypted instructions are then treated as trusted internal context. The chain appends the user's name, coarse location, subscription tier and the full set of prompts in the conversation to a URL as query parameters and sends them out.</p>
+            <p>No confirmation dialog, no visible warning, no further user action after the initial "summarise this" request. Adversa reported it to xAI on June 3, 2026 and attempted coordinated disclosure on August 4 and August 10; as of August 19 it remained unpatched. Related work shows encrypted prompts bypassing guardrails in Gemini as well.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the failure mode for every agent you ship. The lesson is not "encryption is bad", it is that anything your agent's own runtime decodes or executes becomes trusted input. In Concierge and Front Desk, never let tool output re-enter the prompt as instructions, never give an agent both untrusted-page-fetching and outbound network calls in the same turn, and allowlist the domains any tool can reach. If a client asks you to bolt browsing onto their assistant, this incident is your answer for why it needs a boundary.</div>
+          <div class="refs"><a href="https://adversa.ai/blog/cryptographic-context-injection-grok-data-theft/" target="_blank" rel="noopener">Adversa AI — Cryptographic Context Injection</a> <a href="https://thehackernews.com/2026/08/new-cryptographic-context-injection.html" target="_blank" rel="noopener">The Hacker News — the disclosure</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech pruned its side bets</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Layoffs</span>
+            <span class="ver">Aug 21, 2026</span>
+            <h3>Apple cut more than 200 jobs across Vision Pro and Siri</h3>
+          </div>
+          <div class="story-body">
+            <p>Roughly 100 cuts fell in the Vision Pro division, concentrated on the team building games for the headset — which Apple is largely shutting down — and on the immersive video content team. Another roughly 100 hit Siri and software, aimed at people working on the old Siri assistant, since the rebuilt AI Siri needs different expertise. Cuts also reached the Intelligent Systems Experience group inside software engineering.</p>
+            <p>Apple's line is that it is evolving the business and will create new roles as part of the change. The direction is not subtle: money and headcount moving from immersive computing toward AI and smart glasses.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Stop pitching anything that depends on headset adoption — Apple just told you the platform is not getting the investment. If a client asks about VR showrooms or immersive product tours, redirect to what actually converts on a phone.</div>
+          <div class="refs"><a href="https://9to5mac.com/2026/08/21/apple-lays-off-200-people-across-vision-pro-and-siri-teams/" target="_blank" rel="noopener">9to5Mac — Apple lays off 200+ across Vision Pro and Siri</a> <a href="https://techcrunch.com/2026/08/21/apple-is-reportedly-cutting-hundreds-of-jobs-from-siri-vision-pro-teams/" target="_blank" rel="noopener">TechCrunch — the cuts</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Discontinued</span>
+            <span class="ver">Aug 21, 2026</span>
+            <h3>Tesla quietly killed the solar roof</h3>
+          </div>
+          <div class="story-body">
+            <p>Tesla pulled every public mention of the solar roof from its website and now routes customers to conventional panels. The product launched about a decade ago with a target of 1,000 installations a week; by 2022 it was managing 20 to 40. Customers reported quotes as high as $200,000, and reported underproduction of at least 20% against expectations.</p>
+            <p>The post-mortem is mostly physics and manufacturing. Custom tiles never got cheap the way standardised panels did, and the thin cooling gap under a roof-integrated tile let heat warp non-solar parts and drag cell efficiency down. GAF Energy and Merlin Solar are still chasing the integrated-roof market.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A clean case study for the "beautiful and integrated" versus "boring and standardised" argument that shows up in every client build. When a client wants a bespoke custom component where a standard one would do, this is the story: Tesla spent a decade and killed it because the custom version could not get cheap enough to install.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/21/teslas-solar-roof-is-dead-heres-what-went-wrong/" target="_blank" rel="noopener">TechCrunch — Tesla's solar roof is dead</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Data</span>
+            <span class="ver">Aug 21, 2026</span>
+            <h3>New York passed the Bay Area on tech headcount for the first time</h3>
+          </div>
+          <div class="story-body">
+            <p>CBRE's annual tech talent analysis puts New York at 394,300 tech workers against the Bay Area's 375,730 — the first time in the 13 years CBRE has tracked it that New York has held the top spot. The driver is where the jobs are being created: since 2022, finance, insurance and real estate added 90,530 tech jobs across the US while the high-tech industry itself shed 21,262.</p>
+            <p>The Bay Area has not lost the thing that matters most, though. AI roles made up 57% of its tech job postings as of June, against a 31% national average, and it holds 98,699 AI-skilled workers to New York's 67,949, plus about 80% of US AI venture funding since 2020.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The buyers of AI work are increasingly non-tech companies with money — banks, insurers, property firms — not tech companies. That is the same shape as your actual market: established SMBs in unglamorous niches. It is also a decent argument that a Charlotte-based studio serving finance-adjacent and trades businesses is standing in the right place.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/08/21/new-york-san-francisco-tech-talent-cbre.html" target="_blank" rel="noopener">CNBC — New York unseats San Francisco</a> <a href="https://www.implicator.ai/new-york-overtakes-san-francisco-tech-workers/" target="_blank" rel="noopener">Implicator — the CBRE numbers</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">The CLI picked up DNS record inspection, domain renewal, project configuration and member management. <span class="ver">Aug 21</span></span></li>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">Apps and agents built in v0 can now connect to 100-plus third-party services including Slack and Salesforce. <span class="ver">Aug 21</span></span></li>
+            <li><span class="tag new qh-tag">Models</span><span class="txt">DeepSeek V4 Flash Vision is live on Vercel's AI Gateway with image support and a 1M-token context window. <span class="ver">Aug 21</span></span></li>
+            <li><span class="tag improve qh-tag">Vercel</span><span class="txt">Always-on sampled tracing now covers production and preview traffic, so you can debug without reproducing. <span class="ver">Aug 21</span></span></li>
+            <li><span class="tag fix qh-tag">Legal</span><span class="txt">Oura is facing a lawsuit alleging it misled consumers about the accuracy of its sleep tracking. <span class="ver">Aug 21</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

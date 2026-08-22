@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-08-22",
+    "title": "Business activity hit a four-year high, the debt passed $40 trillion, and Amazon raised device prices overnight",
+    "summary": "S&P Global's flash composite PMI jumped to 56.0 in August from 54.5, the fastest US business expansion since April 2022, with services at 56.8 but manufacturing output at a 13-month low of 51.9. Stocks bounced Friday — Dow +517.80 to 53,277.01 — yet all three indexes lost ground on the week as long-end Treasury yields refused to come down. Treasury data put the national debt past $40 trillion for the first time, roughly $40.05 trillion, with interest costs near $1.2 trillion this year. Amazon raised prices overnight across Echo, Kindle, Fire TV and eero, blaming memory and storage component costs. Bitcoin posted its best week in more than two years, up about 22% near $78,000. And SpaceX crossed 11,000 satellites in low Earth orbit.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-22.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-22",
+    "title": "Nvidia scored a perfect 100 on ARC-AGI-3 by wrapping Claude in a better harness",
+    "summary": "Nvidia published AVO, a scaffold with persistent memory and a supervisor agent, and it took Claude Opus 5 from roughly 30% to a perfect 100.00 on ARC-AGI-3, clearing all 183 levels with 12% fewer environment actions than the prior best. The same company paid Poolside $6 billion to license its coding-model factory plus $1 billion in equity, hiring 109 staff without buying the company. OpenAI cut GPT-5.6 Sol API prices to $4 and $20 per million tokens for three months. Anthropic's backers are talking about a $2 trillion October IPO on $100-120 billion of annualized revenue, while Broadcom hunts more than $60 billion of debt to build the chips. And Gemma crossed a billion downloads with 100,000-plus community variants.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-22.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-22",
+    "title": "Nvidia just published your moat, and it isn't the model",
+    "summary": "Nvidia took Claude Opus 5 from roughly 30% to a perfect 100 on ARC-AGI-3 by adding persistent memory and a supervisor loop, which is a published, citable proof that scaffolding is the product — that is the highest-fit offer on this list, an Agent Tune-Up for SMBs whose chatbots visibly fail. Adversa's unpatched zero-click Grok exfiltration gives Grant and Bishop a concrete reason to sell an agent security review. The Next.js critical patch lands Wednesday, which is a free-value outreach deadline. CBRE data says finance, insurance and real estate added 90,530 tech jobs since 2022 while tech itself cut 21,262, pointing at Charlotte's insurance and advisory firms. And OpenAI's price cut opens a margin window that closes November 21.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-22.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-22",
+    "title": "Vercel put a meter on deployment storage, and the Next.js critical fix is four days out",
+    "summary": "Vercel started metering Deployment Storage at $0.10 per GB per month for new Pro and Enterprise teams, with retention controls in Deployment History — the fourth repricing in 20 months. The critical-severity Next.js patch pre-announced for August 26 is now four days away, shipping as 16.3.3 and 15.5.24. Adversa AI disclosed a zero-click prompt-injection chain against Grok that exfiltrates a user's name, location, tier and full conversation from a single summarize-this-page request, reported to xAI on June 3 and still unpatched. Apple cut more than 200 jobs across Vision Pro and Siri, largely shutting its VR gaming team. Tesla quietly discontinued the solar roof after a decade. And CBRE data put New York ahead of the Bay Area on tech headcount for the first time in 13 years.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-22.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-08-21",
     "title": "Walmart flashed a consumer warning, bond yields snapped back, and 75,000 Hoosiers are still dark",
     "summary": "Walmart posted its slowest US comparable sales growth in more than six years at 2.6% and the stock fell over 9%, dragging the Dow down about 700 points on Thursday as Treasury yields rebounded and oil climbed. Weekly jobless claims fell to 206,000, still historically low, though continuing claims rose to 1.8 million. Nine days after an August 11 storm with 99 mph winds, about 75,000 northwest Indiana customers remain without power and Gary schools have been closed since August 13, with seven deaths reported. The FBI arrested an Albany woman it says planned an explosives attack on the New York State Capitol. A Cessna 150 collided with a Pennsylvania State Police helicopter at Carlisle Regional Airport, killing the plane's pilot. And a 50% tariff on about $20 billion of Canadian imports remains paused through today while the two governments finish paperwork.",
