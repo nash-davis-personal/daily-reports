@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-22",
+    "title": "TSD Daily — Saturday, August 22, 2026",
+    "summary": "Nvidia scored a perfect 100 on ARC-AGI-3 by wrapping Claude in a memory-and-supervisor harness, OpenAI cut frontier API prices by a fifth, a critical Next.js patch lands Wednesday, US business activity hit a four-year high while federal debt passed 40 trillion, and Amazon raised device prices on memory costs.",
+    "file": "audio/2026-08-22.mp3",
+    "durationSec": 393,
+    "bytes": 4713165
+  },
+  {
     "date": "2026-08-21",
     "title": "TSD Daily — Friday, August 21, 2026",
     "summary": "Claude designed protein binders that worked in a real wet lab, Vercel pre-announced a critical Next.js fix landing Wednesday, Walmart posted its slowest US sales growth in six years, and the best money move on the board is turning that patch date into a monthly retainer.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-11.mp3",
     "durationSec": 397,
     "bytes": 4766445
-  },
-  {
-    "date": "2026-06-10",
-    "title": "TSD Daily — Wednesday, June 10, 2026",
-    "summary": "Anthropic ships Fable 5 to the public, Google starts a .99 AI price war, a record Patch Tuesday and live Next.js advisories mean patch now, May CPI is forecast hot, and the week's best money move is a fixed-price site-security sprint.",
-    "file": "audio/2026-06-10.mp3",
-    "durationSec": 357,
-    "bytes": 4290093
   }
 ]
