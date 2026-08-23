@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-23",
+    "title": "US-Canada talks collapsed and 50% tariffs took effect, ahead of a week carrying PCE, Jackson Hole and Nvidia",
+    "summary": "Trade negotiations between the United States and Canada failed at a midnight deadline and 50% US tariffs now apply to about $20 billion of Canadian goods including hockey sticks, building materials, liquors and some clothing; Prime Minister Mark Carney says Canada will match them dollar for dollar on September 8 across steel, dairy, appliances, agricultural equipment, pulp, paper and electronics. The coming week stacks three market events into three days: July PCE on Wednesday, Nvidia's fiscal Q2 results the same afternoon, and Fed Chair Kevin Warsh's first Jackson Hole keynote on Friday morning. All eight aboard a charter flight to a remote western Alaska radar site were killed after a missed approach in fog. Flock license-plate cameras have been vandalized in at least 36 states while more than 100 cities have deactivated or canceled contracts. And NASA's Nancy Grace Roman Space Telescope is set to launch August 30.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-23.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Three releases landed since the last briefing, but only one published any detail: 2.1.239 carries 59 entries weighted toward unattended and multi-session running, while 2.1.240 and 2.1.241 shipped as bare bug-fix notes.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-23.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-23",
+    "title": "Anthropic hired the man who built Google's TPU, and Nvidia told customers the price is going up",
+    "summary": "Anthropic put Amir Salek — founder of Google's TPU program and the man who shipped its first seven generations — on its compute team, the clearest signal yet that the lab wants its own silicon. On the same weekend Nvidia told server partners that AI system prices rise more than 15% early next year because DRAM costs are outrunning supply, which is the cost floor under every model you rent. At the cheap end, a free stealth model with a 1M-token context is sitting on OpenRouter under the name ox-alpha, fingerprinted to Z.ai with high confidence, and DeepSeek's new vision model split four benchmarks with Claude Opus 4.8 on self-reported numbers. Google's Antigravity agent escaped its own IDE into VS Code, JetBrains and Zed. And an Atlanta Fed survey of roughly 6,000 executives found about 90% see no productivity gain from AI yet.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-23.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-23",
+    "title": "A critical Next.js patch lands Wednesday — sell the emergency before it happens",
+    "summary": "Six ranked moves for the week of August 24. The best bet is the Next.js critical security release on Wednesday: you already have to patch every client site, so package it as a paid Patch Guarantee and sell it to the non-clients running Next before the advisory goes public. Behind it: an AI adoption audit priced off the Atlanta Fed finding that roughly 90% of executives see no productivity gain, document-intake automation on newly cheap vision models, Google's new Preferred Sources button as a same-day SEO deliverable, a tariff-repricing tool for Charlotte trades before Canada's September 8 counter-tariffs, and a free 1M-token stealth model you can use as a zero-cost R&D week. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-23.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-23",
+    "title": "Block Wednesday morning for the Next.js critical patch, then read the rest",
+    "summary": "Next.js publishes 16.3.3 and 15.5.24 on Wednesday, August 26 to fix one critical-severity vulnerability, with the advisory landing at the same time — every TSD client site needs a bump that morning. CISA, the NSA and the FBI issued a joint advisory on active targeting of internet-exposed Siemens S7 PLCs using AI-generated exploit scripts disguised as monitoring tools, across manufacturing, energy, water, chemical, food and commercial facilities. Tesla is recalling about 3 million vehicles in China over door handles that can trap occupants after a crash, the largest recall in that country's history. Google shipped an embeddable Preferred Sources button so publishers can be picked for Top Stories, AI Overviews and AI Mode. ChatGPT can now read, search and send Apple Messages on Apple silicon Macs, if you hand it Full Disk Access. And Charter closed its $34.5 billion purchase of Cox.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-23.html"
   },
   {
     "source": "america",
