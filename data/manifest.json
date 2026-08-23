@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-23",
+    "title": "2.1.239 is the biggest release of the month at 59 entries, and its most expensive bugs were all silent ones: a skill file with a BOM was ignored, worktree include patterns matched nothing, and Esc could leave a session looking idle while Claude was still working.",
+    "summary": "Three releases landed since the last briefing, but only one published any detail: 2.1.239 carries 59 entries weighted toward unattended and multi-session running, while 2.1.240 and 2.1.241 shipped as bare bug-fix notes.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-23.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-23" />
+  <meta name="report:title" content="2.1.239 is the biggest release of the month at 59 entries, and its most expensive bugs were all silent ones: a skill file with a BOM was ignored, worktree include patterns matched nothing, and Esc could leave a session looking idle while Claude was still working." />
+  <meta name="report:summary" content="Three releases landed since the last briefing, but only one published any detail: 2.1.239 carries 59 entries weighted toward unattended and multi-session running, while 2.1.240 and 2.1.241 shipped as bare bug-fix notes." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.239 is the biggest release of the month at 59 entries, and its most expensive bugs were all silent ones — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, August 23, 2026</span>
+        <span>◆</span><span>3 releases ◆ 2.1.239 – 2.1.241</span>
+      </div>
+      <h1>2.1.239 is 59 entries deep, and the fixes that matter most are the ones for failures that never printed an error.</h1>
+      <p class="standfirst">A skill, agent, or command file whose <code>.md</code> started with a UTF-8 byte-order mark was being ignored outright, with no warning. <code>.worktreeinclude</code> patterns beginning with <code>**/</code> silently matched nothing when the target lived in a gitignored directory, which is exactly where <code>.env</code> files live. Both are the kind of bug that reads as "the agent just didn't do the thing" until you find the entry.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-21 briefing (2.1.238)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">59</div><div class="lbl">Entries in 2.1.239</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases with no detail published</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Entries touching unattended runs</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>A UTF-8 BOM silently disabled skills, agents, and commands</h4><p>Any <code>.md</code> file for an agent, skill, or slash command that opened with a byte-order mark was ignored with no error. If something in your <code>.claude</code> tree has "never worked" and you never found out why, check its first bytes.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Esc on a queued prompt could let a turn finish early</h4><p>A race let the next turn report done while Claude was still working, leaving the session idle-looking. A later resubmit could then repeat actions that had already run.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>.worktreeinclude</code> patterns starting with <code>**/</code> matched nothing in gitignored directories</h4><p>The pattern was accepted and then quietly matched zero files. Anything you rely on being copied into an isolated worktree — env files above all — was not arriving.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The retry watchdog stops waiting on unwinnable errors</h4><p><code>CLAUDE_CODE_RETRY_WATCHDOG</code> now fails immediately on organization spend-limit and out-of-credits errors rather than waiting indefinitely for a reset that is not coming.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>ListAgents</code> finally tells a session its own name</h4><p>It also lists live teammates, which previously looked absent even when reachable. <code>SendMessage</code> addressed to your own name now says so instead of claiming no such agent exists.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Compaction was re-running a skill's original arguments as a fresh request</h4><p>The post-compaction reminder has been reworked so a skill invocation from earlier in the session does not get replayed as a new instruction after the context is squeezed.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silent failures in the agent layer</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.239</span>
+            <h3>Agents, skills, and commands starting with a UTF-8 BOM were silently ignored</h3>
+          </div>
+          <div class="story-body">
+            <p>The entry is blunt about the behavior: the file was skipped, and nothing said so. A BOM gets prepended by plenty of editors and by shell redirects on some setups, and it is invisible in every editor you would use to check.</p>
+            <p>The failure mode is one where you assume you wrote the frontmatter wrong, rewrite the file, and still get nothing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your setup is skill-heavy and you author these by hand, so sweep the tree once after updating with <code>grep -rlI $'\xef\xbb\xbf' ~/.claude --include='*.md'</code>. If anything in your command vault or a client repo's <code>.claude</code> folder shows up, that skill has been dead the whole time.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.239</span>
+            <h3>An Esc race could end a turn early and let a resubmit repeat actions</h3>
+          </div>
+          <div class="story-body">
+            <p>Pressing Esc while a prompt was queued could let the next turn finish before Claude was actually done. The session then sat there looking idle while work was still in flight, and resubmitting later could run the same actions a second time.</p>
+            <p>For read-only work that is an annoyance. For anything that writes, commits, or deploys, a repeated action is the whole problem.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the bug behind any "why did it push twice" moment you have had on client repos. Take the update before your next Bisque or Sonderwerks deploy session, and stop pressing Esc to clear a queued prompt mid-turn on anything that touches git.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.239</span>
+            <h3><code>.worktreeinclude</code> silently matched nothing for <code>**/</code> patterns in gitignored directories</h3>
+          </div>
+          <div class="story-body">
+            <p>Worktree isolation copies in the files a fresh worktree needs. Patterns starting with <code>**/</code> were matching zero files whenever the target sat inside a gitignored directory, and the pattern was accepted without complaint.</p>
+            <p>Gitignored is where secrets live, so the practical result was isolated agents starting up without the credentials or local config they were configured to receive.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant to any loop or fleet run using <code>isolation: "worktree"</code>. Re-check the <code>.worktreeinclude</code> in each client repo after updating, and confirm a worktree agent can actually read <code>.env.local</code> before you trust an unattended Supabase or Vercel task it produced.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.239</span>
+            <h3>Compaction no longer replays a skill's original arguments</h3>
+          </div>
+          <div class="story-body">
+            <p>The reminder Claude receives after a compaction has been reworked so a skill's original arguments are not re-run as a new request. Before this, a long session that compacted could re-issue work you asked for hours earlier.</p>
+            <p>Paired with the Esc fix above, this release closes two separate paths to the same outcome: an action running twice without you asking twice.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long build days on a single session are where this bit. It matters most for skills with side effects, so treat any repeat behavior you saw around a compaction boundary as this bug rather than a prompt problem.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Running Claude Code unattended</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.239</span>
+            <h3>Retry watchdog and <code>/goal</code> both stop hanging forever</h3>
+          </div>
+          <div class="story-body">
+            <p>Persistent retry mode (<code>CLAUDE_CODE_RETRY_WATCHDOG</code>) now fails immediately on organization spend-limit and out-of-credits errors instead of waiting for a reset. Separately, <code>/goal</code> check-ins on long-running background work now back off to 30 minutes, then an hour, then every two hours, and resuming a session from the <code>claude --resume</code> picker restores its active goal.</p>
+            <p>Remote sessions also keep sending keep-alives while a long <code>SessionStart</code> or <code>Setup</code> hook runs, so the container is no longer idle-reaped mid-hook.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled tasks are the beneficiary here — this daily changelog run, the loose-ends steward, anything on launchd. A credit or spend-limit failure now surfaces as a failed run you can see rather than a process sitting silent until you check on it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.239</span>
+            <h3>Multi-session addressing got a real cleanup</h3>
+          </div>
+          <div class="story-body">
+            <p><code>ListAgents</code> now tells a session its own name, the one peers use to reach it, and lists live teammates that previously did not appear at all. <code>SendMessage</code> to your own name explains that rather than reporting no such agent. Sessions whose title began with <code>/</code> were unaddressable and showed as "(untitled)"; both are fixed.</p>
+            <p>A 2.1.232 regression that caused runaway session-title syncing to Remote Control when two processes shared one background job's state is also resolved, with title updates now deduplicated and rate-limited.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you are wiring sessions together for fleet-style work, the addressing layer is now trustworthy enough to build on. Worth re-testing any handoff you abandoned because a teammate session "wasn't there".</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.239</span>
+            <h3>Resume was picking the wrong session and losing custom titles</h3>
+          </div>
+          <div class="story-body">
+            <p>Four resume-related fixes land together. <code>claude -c</code> and resume could pick up sessions from a different directory whose path differed only by characters like <code>_</code>, <code>-</code>, or <code>.</code>. Custom session titles disappeared from <code>/resume</code> after roughly 64 KB of conversation was written following the rename. <code>/resume</code> in all-projects mode told you to <code>cd</code> into a deleted directory such as a removed worktree, and it now resumes in the current directory instead. Sessions also stopped being reordered as "recently changed" when their file was merely touched or reopened.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run near-identically named project directories across the command vault, the Obsidian vault, and client repos. The path-collision fix is the one to care about, because resuming into the wrong project's session is a mistake that is hard to notice quickly.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Billing accuracy, and two releases that said nothing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.239</span>
+            <h3>A Bedrock proxy bug was silently doubling billed API calls</h3>
+          </div>
+          <div class="story-body">
+            <p>Bedrock streaming behind proxies that strip the response <code>Content-Type</code> header was falling back to re-running every turn non-streaming, which doubled the billed calls without any visible symptom. Cost estimates in <code>/cost</code>, the status line and <code>--max-budget-usd</code> also now include the 1.1× US-only-inference premium for data-residency workspaces, and the usage-limit message tells you when session or weekly limits reset.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> None of this touches you directly on the claude.ai plan, so log it and move on. It becomes relevant only if a client ever asks you to run delivery inside their Bedrock or Vertex account, which is a scenario where you would now want to verify the proxy behavior before quoting usage.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.239</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.240 / 2.1.241</span>
+            <h3>Two of the three releases in this window published no detail</h3>
+          </div>
+          <div class="story-body">
+            <p>Both 2.1.240 (August 22) and 2.1.241 (August 23) carry a single line: "Bug fixes and reliability improvements." There is nothing further in the source to summarize, and this briefing is not going to guess at what changed.</p>
+            <p>Two consecutive opaque releases immediately after a 59-entry one usually reads as follow-up repair on what just shipped.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Practical read: take 2.1.241 rather than 2.1.239, since anything broken by that large release is most likely patched in the two that followed. Nothing here needs a decision from you.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.240 and 2.1.241</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>/claude-api upgrade</code> migrates Python projects from <code>anthropic</code> 0.x to 1.x; the skill's Python reference now documents 1.x, where timeouts use <code>anthropic.Timeout</code> <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">WebFetch was holding expired page content in memory for the whole session instead of the intended 15 minutes <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Edit and Write calls paused about 5 seconds in JetBrains IDE terminals when the Claude Code plugin was connected <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote MCP servers stayed failed after a transient 5xx on a mid-session reconnect in cloud sessions or via SDK <code>setMcpServers()</code> <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hooks failed with "posix_spawn ENOENT" after the session's working directory was deleted; they now run from the project root or home directory <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claudeMdExcludes</code> did not exclude a symlinked <code>.claude/rules</code> file when the pattern named the directory or the symlink <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Marketplace <code>metadata.pluginRoot</code> had no effect; bare plugin source names now resolve under it as documented <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions resumed out of plan mode after an idle worker restart <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">OpenTelemetry traces fragmented when a <code>PreToolUse</code> hook deferred a tool execution; it now resumes in the original turn's trace <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A request rejected by an organization policy check was re-sent before the rejection was shown <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP elicitation forms taller than the terminal were clipped in fullscreen; Accept and Decline now stay visible <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Slash-command panels such as <code>/config</code> and <code>/model</code> covered the latest messages in fullscreen; the conversation now stays pinned above the panel <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Clicking the terminal window only to refocus it could answer a permission prompt or press a button in fullscreen mode <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Masked inputs such as the login code field allowed their text to be pasted back with Ctrl+Y or saved to prompt history <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Ctrl+W, Ctrl+U, Ctrl+K, Option+Backspace and vim <code>df</code>/<code>dt</code> left a broken <code>[Pasted text #N]</code> placeholder when the cursor sat inside it <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Shell-mode (<code>!</code>) Tab completion dropped the <code>./</code> from a <code>./script</code> path, leaving a command the shell could not run <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Starting Claude Code from a directory that no longer exists printed a raw crash dump; it now prints a clear message <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Linux sandbox made a nonexistent <code>.git/config.worktree</code> unreadable, breaking every sandboxed git command in repos with <code>extensions.worktreeConfig</code> set <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>dark-ansi</code> theme rendered expanded tool results in fullscreen with text the same color as the background <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Mouse movement in browser-based terminals inserted text like <code>"35;150;7M"</code> into the prompt when a mouse report arrived split across writes <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Windows gained cross-session messaging, so sessions across machines can use <code>SendMessage</code> and <code>ListAgents</code> as on macOS and Linux <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude in Chrome: <code>/clear</code> now closes the session's Chrome tab group, and empty groups close on <code>/resume</code> and exit <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cloud sessions show plugins synced from claude.ai as <code>name@synced</code>, and they no longer override a same-named plugin you installed <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Long file paths on tool-use rows now truncate in the middle to stay on one line <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>keybindingFlavor: "readline"</code> now also matches Bash for word keys (Alt+F, Alt+D, Ctrl+Y, punctuation as a separator) <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Alpine/musl builds load native image paste, clipboard and audio-capture add-ons again <span class="ver">2.1.239</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
