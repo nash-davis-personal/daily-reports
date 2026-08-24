@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-24" />
+  <meta name="report:title" content="Quiet window: no release since 2.1.241, but your local install is still on 2.1.237 and four releases behind." />
+  <meta name="report:summary" content="Zero releases published since the August 23 briefing — the changelog still ends at 2.1.241 — so the only action today is upgrading the local CLI, which is running 2.1.237 and missing the whole 2.1.239 bug-fix batch." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Quiet window: no release since 2.1.241, but your local install is still on 2.1.237 and four releases behind. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Monday, August 24, 2026</span>
+        <span>◆</span><span>Zero releases in window</span>
+      </div>
+      <h1>Nothing shipped today. The real gap is on your machine, not in the changelog.</h1>
+      <p class="standfirst">The top of the <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a> is unchanged since the last briefing: 2.1.241, dated August 23, is still the newest entry, and the <a href="./2026-08-23.html">August 23 report</a> covered that window in full. The one thing worth doing today came out of checking the local install — it is running 2.1.237, which predates the entire 59-entry 2.1.239 fix batch.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.241</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">new releases</div></div>
+      <div class="stat"><div class="num">2.1.241</div><div class="lbl">newest published</div></div>
+      <div class="stat"><div class="num">2.1.237</div><div class="lbl">running locally</div></div>
+    </div>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quiet window</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">no change</span>
+            <h3>No release published between August 23 and today</h3>
+          </div>
+          <div class="story-body">
+            <p>Checked directly against the source. The version list at the top of the changelog still reads 2.1.241, 2.1.240, 2.1.239, 2.1.238 — the same set the August 23 briefing worked from. Nothing has been added and no entry in the covered window has been revised.</p>
+            <p>One day without a publish is ordinary cadence noise. Writing it up as a full briefing would only make the next real release harder to spot.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No new behavior to plan around and nothing to re-test on Bisque, Studio C or Sonderwerks. Treat today as a maintenance slot and close the carry-overs below.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one action today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Upgrade</span>
+            <span class="ver">2.1.237 → 2.1.241</span>
+            <h3>Your CLI is four releases behind, and the gap includes every 2.1.239 fix you were briefed on</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude --version</code> on this machine reports 2.1.237. Everything the August 23 briefing told you to check — the UTF-8 BOM silently disabling agents, skills and commands; the Esc-on-a-queued-prompt race that leaves a session looking idle while Claude is still working; <code>.worktreeinclude</code> patterns starting with <code>**/</code> matching nothing inside gitignored directories — landed in <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">2.1.239</a>. None of those fixes are in the build you are actually running.</p>
+            <p>2.1.237 also predates the 2.1.238 memory fix for long interactive sessions, where subagent tool results were never released once they left the display window, and the fix for custom, project and plugin output styles drifting back to the default voice mid-session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Upgrade before the next long delivery block. The output-style drift and the unbounded memory growth both bite hardest in exactly the sessions you run longest — a full Bisque or Sonderwerks build day — and the BOM bug means a skill in your <code>.claude</code> tree could be silently inert right now on a version that cannot tell you so.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.238 and 2.1.239</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Still open from the last briefing</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Carry-over</span><span class="txt">Check the first bytes of every <code>.md</code> under <code>.claude</code> for a UTF-8 BOM. Anything that "never worked" and never errored is the prime suspect. <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Carry-over</span><span class="txt">Audit any <code>.worktreeinclude</code> pattern starting with <code>**/</code> that points into a gitignored directory — env files above all. It was accepted and then matched zero files. <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag fix qh-tag">Carry-over</span><span class="txt">If you set <code>CLAUDE_CODE_RETRY_WATCHDOG</code> anywhere, it now fails fast on org spend-limit and out-of-credits errors instead of waiting for a reset that is not coming. Re-read what your scheduled jobs do on that failure. <span class="ver">2.1.239</span></span></li>
+            <li><span class="tag improve qh-tag">Carry-over</span><span class="txt"><code>ListAgents</code> now reports a session its own name and lists live teammates. Worth a second look if you wrote off cross-session messaging as unreliable. <span class="ver">2.1.239</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

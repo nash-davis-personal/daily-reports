@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-24",
+    "title": "Quiet window: no release since 2.1.241, but your local install is still on 2.1.237 and four releases behind.",
+    "summary": "Zero releases published since the August 23 briefing — the changelog still ends at 2.1.241 — so the only action today is upgrading the local CLI, which is running 2.1.237 and missing the whole 2.1.239 bug-fix batch.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-08-24.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
