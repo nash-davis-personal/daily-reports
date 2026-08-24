@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-24",
+    "title": "TSD Daily — Monday, August 24, 2026",
+    "summary": "Treasury details its Iran sanctions package at 2 p.m. with gas at $4.09, the MCP roadmap rewrites how agents connect, a 27B model beats two frontier systems at paper replication, Vercel Sandbox goes multi-region, and Wednesday's critical Next.js patch plus Google's finished spam update give TSD two dated cold-call openings.",
+    "file": "audio/2026-08-24.mp3",
+    "durationSec": 398,
+    "bytes": 4779981
+  },
+  {
     "date": "2026-08-23",
     "title": "TSD Daily — Sunday, August 23, 2026",
     "summary": "A critical Next.js patch lands Wednesday, Anthropic hires Google's TPU founder as Nvidia raises server prices 15%, an Atlanta Fed study finds 90% of executives see no AI productivity gain, US-Canada trade talks collapse into 50% tariffs, and the week stacks PCE, Nvidia earnings and Warsh's first Jackson Hole keynote.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-14.mp3",
     "durationSec": 343,
     "bytes": 4122477
-  },
-  {
-    "date": "2026-06-12",
-    "title": "TSD Daily — Friday, June 12, 2026",
-    "summary": "A record SpaceX IPO opens, Bezos pours $12B into physical AI and an open-weight coder closes on the frontier, Next.js and an npm supply-chain attack make a security retainer the week's easiest sale, and wholesale inflation runs hot as the Fed prepares to hold.",
-    "file": "audio/2026-06-12.mp3",
-    "durationSec": 371,
-    "bytes": 4448205
   }
 ]
