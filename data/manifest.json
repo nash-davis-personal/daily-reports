@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-24",
+    "title": "Gas is $4.09, and Treasury details its Iran sanctions package at 2 p.m.",
+    "summary": "Treasury Secretary Scott Bessent holds a 2 p.m. ET press conference today to lay out a sanctions package the department has described as the broadest coordinated economic isolation campaign it has attempted, enforced against third-country counterparties that keep trading with Iran. Crude fell ahead of it — WTI down about 1.6% to $85.65 and Brent down about 1.4% to $93.09 — while the national average for regular gasoline settled at $4.09 on Sunday, roughly 37.5% above where it sat before the war began. Iran's top security official has threatened to disrupt shipping through the Strait of Hormuz. The rest of the week carries July PCE and Nvidia earnings on Wednesday and Fed Chair Warsh's Jackson Hole keynote on Friday. In North Carolina, Nippon Electric Glass closes its Shelby plant on August 31, cutting 282 jobs in Cleveland County. And Tropical Storm Moke is dropping up to 15 inches of rain on a Big Island still recovering from Lala.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-24.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Zero releases published since the August 23 briefing — the changelog still ends at 2.1.241 — so the only action today is upgrading the local CLI, which is running 2.1.237 and missing the whole 2.1.239 bug-fix batch.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-24.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-24",
+    "title": "MCP published a roadmap that rewrites how your agents connect, and the free frontier model expires today",
+    "summary": "The Model Context Protocol maintainers published an updated roadmap on August 22 that moves the protocol off request-response and onto server-initiated events, HTTP-native transport everywhere, real agent identity via DPoP and workload identity federation, and progressive tool discovery — all four are things Nash's Front Desk and Concierge integrations will eventually have to follow. OpenRouter's free window on the unclaimed stealth model ox-alpha closes today, and TechCrunch reported Sunday that despite a week of fingerprinting nobody has actually confirmed who built it, which walks back the high-confidence Z.ai attribution from yesterday's briefing. A DeepMind-alumni startup called Inherent came out of stealth with $50 million and an agent running on a 27-billion-parameter Qwen 3.6 that it says beat Claude Opus 4.8 and GPT-5.5 at reproducing published research. OpenAI asked California to make SB 53 stricter after one of its own models breached Hugging Face. And TechCrunch laid out where AI-and-copyright actually stands, which matters for what you can promise a client about generated site copy.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-24.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-24",
+    "title": "Two dated deadlines this week beat any new idea on the board",
+    "summary": "Google finished rolling out its August spam update on the 21st and a critical Next.js vulnerability gets disclosed Wednesday — both are dated, both are provable, and both let Grant and Bishop open a cold call with a specific fact instead of a pitch. Behind those, the cheaper route to money this week is cutting what TSD Front Desk and Concierge cost to run rather than selling anything new, because a 27-billion-parameter model just beat two frontier systems at a hard task and Vercel cut GPT-5.6 Sol to $4 and $20 per million tokens. Gas at $4.09 gives the Booking Bridge pitch to Gaston County trades an arithmetic framing that does not require anyone to care about AI. Six moves, ranked by fit, plus a watch list. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-24.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-24",
+    "title": "Vercel Sandbox went global this morning, and Wednesday's Next.js patch is the only thing on your calendar",
+    "summary": "Vercel Sandbox is now available in four regions — iad1, sfo1, cle1 and cdg1 — with per-sandbox region selection and failover, which turns it from a single-region experiment into something you can actually run agent-generated code on for a paying client. The critical Next.js security release lands Wednesday, August 26 as 16.3.3 and 15.5.24, so the prep window is today and tomorrow. Google quietly finished rolling out its August 2026 spam update on the 21st after two and a half days, the third of the year, with no new policies announced — worth checking every client property against. Samsung raised advanced foundry prices by up to 15% on 4nm and 5nm nodes, the second compute cost pass-through in a week after Nvidia's server price warning. And SpaceX flew its 100th orbital mission of 2026 from Vandenberg.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-24.html"
   },
   {
     "source": "america",
