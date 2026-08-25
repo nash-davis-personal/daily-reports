@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-25" />
+  <meta name="report:title" content="The Next.js critical patch lands tomorrow, and Microsoft is stamping an account ID into images you generate locally" />
+  <meta name="report:summary" content="Tomorrow, August 26, Next.js ships the critical security fix it pre-announced on the 20th, as 16.3.3 and 15.5.24, with the advisory published alongside. Today is the last full day to confirm every client project can take the bump. Vercel spent the window shipping to the rest of the stack: environment variables now split into readable Config and write-only Secret, the Bun runtime handles 5GB packages and 30-minute durations, elastic build machines read Turborepo cache data to avoid underprovisioning, and Chat SDK gained Notion and XChat adapters. Separately, a reverse-engineering writeup and a Register follow-up showed Microsoft Paint and Photos embed a server-issued GUID as an invisible pixel watermark in images generated locally on a Copilot+ NPU, tied to the user's Microsoft account. Xiaomi announced the 3nm XRING O3 with Geekbench 6.5 scores of 3,945 single and 15,221 multi-core. Tim Cook hands Apple to John Ternus on September 1. And the maintainers behind Kubo, Helia and the IPFS gateways stop work on September 30 after Protocol Labs declined to renew funding." />
+  <meta name="report:highlights" content="6" />
+
+  <title>The Next.js critical patch lands tomorrow, and Microsoft is stamping an account ID into images you generate locally — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-august-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, August 25, 2026</span>
+        <span>◆</span><span>Patch day eve ◆ your stack ◆ silicon and succession</span>
+      </div>
+      <h1>The Next.js critical patch lands tomorrow, and Microsoft is stamping an account ID into images you generate locally</h1>
+      <p class="standfirst">Today is the last full working day before Wednesday's critical Next.js release, so the only thing on this briefing that is genuinely urgent is a dependency inventory. Everything else is a good window for the stack you already sell, plus one finding worth changing your workflow over.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 24 – August 25, 2026</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-august-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Aug 26</div><div class="lbl">Next.js critical security release, shipping as 16.3.3 and 15.5.24 with the advisory published alongside</div></div>
+      <div class="stat"><div class="num">Sept 30</div><div class="lbl">Last day of IPFS maintenance at Interplanetary Shipyard, after which Kubo, Helia and Boxo have no dedicated maintainers</div></div>
+      <div class="stat"><div class="num">3,945</div><div class="lbl">Geekbench 6.5 single-core score Xiaomi claims for the 3nm XRING O3, with 15,221 multi-core</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch day is tomorrow</h4><p>One critical severity vulnerability, fixed in Next.js 16.3.3 and 15.5.24, full advisory published on release. Nothing about the flaw is public until Wednesday, which is exactly why the inventory has to happen today.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Vercel split env vars into Config and Secret</h4><p>Environment variables now carry a type. Config values stay readable in the dashboard and CLI, Secret values are write-only once set. This is a real change to how you hand a project to a client or an agent.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Microsoft watermarks locally generated images with your account ID</h4><p>Paint and Photos embed a server-issued GUID as an invisible pixel watermark under Microsoft's InvisMark, carried in a signed C2PA soft-binding assertion. Generation runs on the local NPU, but the prompt still goes to Azure for moderation and the returned GUID goes into the pixels.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Bun functions now take 5GB and 30 minutes</h4><p>Vercel raised the Bun runtime ceiling to 5GB packages and a 30-minute maximum duration, and elastic build machines now read Turborepo cache data so they stop underprovisioning and downgrading tiers mid-build.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Tim Cook hands Apple to John Ternus on September 1</h4><p>Cook becomes executive chairman after 15 years as CEO, a transition Apple announced in April. The Information reported the farewell this week. A Mac mini refresh is expected within days, ahead of the September iPhone event.</p></div>
+        <div class="signal"><div class="n">06</div><h4>IPFS loses its maintainers on September 30</h4><p>Protocol Labs declined to renew funding for Interplanetary Shipyard, so Kubo, Helia, Boxo, Rainbow, IPFS Desktop, IPFS Companion and the Service Worker Gateway will have nobody responsible for releases or fixes.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch first, everything else after</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Aug 26, 2026</span>
+            <h3>Tomorrow's Next.js release fixes one critical vulnerability across both supported majors</h3>
+          </div>
+          <div class="story-body">
+            <p>Under the security release process Next.js announced in July, the team pre-announced on August 20 that August 26 brings a single critical severity fix, shipping as 16.3.3 on the 16.x line and 15.5.24 on the 15.x line. The advisory covering impact, affected versions and upgrade instructions publishes with the release. Nothing about the vulnerability itself is public before then.</p>
+            <p>The advance notice exists so teams stage the upgrade before disclosure hands attackers a map. That window closes tonight. This briefing has now flagged the date four editions running, and today is the last one where the flag is still useful.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run the inventory today, not tomorrow morning. For every client project, record the Next major and exact minor, then run the patch bump locally and confirm the build passes before the advisory exists. Anything on 16.x goes to 16.3.3, anything on 15.x goes to 15.5.24. Do the boring dependency check now so Wednesday is a version bump and a deploy rather than a day of debugging under pressure, and remember Wednesday also carries PCE and Nvidia earnings, so it is a bad day to be improvising.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-august-2026-security-release" target="_blank" rel="noopener">Next.js — upcoming August security release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack shipped a good week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">Aug 24, 2026</span>
+            <h3>Vercel environment variables now distinguish Config from Secret</h3>
+          </div>
+          <div class="story-body">
+            <p>Environment variables carry a type in the dashboard and the CLI. Config values remain readable after they are set. Secret values are write-only, so once you save an API key nothing can read it back out through the UI or the CLI. Vercel shipped this alongside a batch of runtime work: Bun functions now support packages up to 5GB and a 30-minute maximum duration, elastic build machines read Turborepo cache data to prevent tier downgrades and underprovisioning, and v0 apps can now connect to more than 100 third-party services through Vercel Connect.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Go mark every provider key across the client projects as Secret this week, especially the Supabase service-role keys and the Anthropic and OpenAI keys. The reason is specific to how you work: you hand clients dashboard access and you point coding agents at these projects, and write-only means neither a curious client nor an agent with CLI access can exfiltrate a key that is already set. It also changes your own runbook, because you can no longer read a key back to copy it elsewhere, so store the canonical copy in your password manager at the moment you create it.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">SDK</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Vercel's Chat SDK gained Notion and XChat adapters</h3>
+          </div>
+          <div class="story-body">
+            <p>Shipped today: the same bot you run on Slack, Discord and Teams can now take part in Notion page and block comment discussions, and Chat SDK added support for XChat, X's encrypted messaging platform. Chat SDK is the open-source TypeScript library Vercel released in February for building a chat bot once and deploying it across platforms, and the Notion adapter carries webhook HMAC verification, streaming edits, conversation history and file uploads.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a productisable offer sitting on a library you already have installed. A Notion-resident agent that answers from a client's internal docs is the same RAG pipeline as Concierge with a different front door, and plenty of Charlotte SMBs run their operations in Notion. Build one against your own vault first, screenshot it answering a real question, and hand that to Grant and Bishop as a second thing to sell into accounts that already bought a website.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://vercel.com/changelog/chat-sdk" target="_blank" rel="noopener">Chat SDK introduction</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Provenance you did not ask for</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Privacy</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Paint and Photos embed a server-issued GUID in images generated on your own machine</h3>
+          </div>
+          <div class="story-body">
+            <p>Researcher Xusheng Li reverse-engineered the pipeline and The Register followed up today. When Cocreator generates an image on a Copilot+ PC, the Stable Diffusion inference runs locally on the NPU, but the prompt is still sent to Azure for a safety check and the service returns a GUID. That GUID is then encoded into the pixels themselves as an invisible watermark under Microsoft's InvisMark scheme, and named in a signed C2PA soft-binding assertion in the file manifest. The feature requires both a Microsoft account and an internet connection despite the local generation.</p>
+            <p>The two layers matter. Stripping file metadata does not remove the pixel watermark, and the identifier ties the image back to the account that made it. The likely driver is Article 50 of the EU AI Act, whose transparency rules took effect on August 2 and require AI-generated content to carry a detectable machine-readable mark.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do not run client marketing images through Paint or Photos Cocreator. An image on a client's homepage would carry an identifier traceable to your Microsoft account, which is a disclosure you never agreed to make on their behalf. Keep generation on the tools you already control, and when a client asks whether their site imagery is AI-generated, the honest answer now needs to cover what is embedded in the file as well as how it was made. If you ever sell into an EU-facing client, Article 50 is worth reading properly rather than inheriting someone else's compliance decision.</div>
+          <div class="refs"><a href="https://www.theregister.com/ai-and-ml/2026/08/25/microsoft-ai-watermarks-in-paint-and-photos-are-linked-to-user-ids-researcher-finds/5292034" target="_blank" rel="noopener">The Register — watermarks linked to user IDs</a> <a href="https://xusheng.dev/posts/reversing/mspaint_invisible_watermark/main/" target="_blank" rel="noopener">Xusheng Li — the reversing writeup</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and succession</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Chips</span>
+            <span class="ver">Aug 24, 2026</span>
+            <h3>Xiaomi announced a 3nm phone chip that matches Apple single-threaded and beats it multi-threaded</h3>
+          </div>
+          <div class="story-body">
+            <p>The XRING O3 is built on TSMC 3nm with LPDDR6 and uses a ten-core all-high-core design, dropping the efficiency cores conventional phone SoCs rely on. Xiaomi claims Geekbench 6.5 scores of 3,945 single-core and 15,221 multi-core, up 31% and 61% over the XRing O1, and 5.22 million on AnTuTu, the first flagship SoC past five million. Testing channel Geekerwan reported it well ahead of current Android flagships on energy efficiency.</p>
+            <p>The comparison worth holding lightly is the Apple one. Daniel Lemire's read is that the O3 roughly matches Apple cores single-threaded and is much faster multi-threaded, with the caveat that Apple's next processor is close and the edge may be short-lived. These are vendor-supplied benchmark numbers until independent testing lands.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do this week, and one thing to watch. If Android flagship silicon is genuinely at parity, on-device inference for a phone-based client app stops being an iPhone-only assumption in about a year. Keep building web-first, since that bet gets stronger rather than weaker when every phone can run a small model locally.</div>
+          <div class="refs"><a href="https://gigazine.net/gsc_news/en/20260825-xiaomi-xring-03/" target="_blank" rel="noopener">GIGAZINE — XRING O3 announcement</a> <a href="https://news.ycombinator.com/item?id=49420873" target="_blank" rel="noopener">Hacker News discussion</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Business</span>
+            <span class="ver">Sept 1, 2026</span>
+            <h3>Tim Cook hands Apple to John Ternus next Tuesday</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple announced in April that Cook would become executive chairman and that John Ternus, senior vice president of hardware engineering, becomes CEO effective September 1. Ternus is 51, close to the age Cook was when he took the job, and has spent nearly his entire career at Apple, running AirPods, Mac, iPad and iPhone hardware since 2013. August 24 marked fifteen years since Cook replaced Steve Jobs, and The Information reported the company held a farewell celebration this week.</p>
+            <p>Bloomberg reports the product calendar does not pause for the handover. A new Mac mini with M5 or M6 silicon is expected within days, ahead of the September iPhone event, with an OLED iPad mini by late October and new AirPods later in the year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A hardware engineer running Apple is mildly good news for anyone whose delivery machine is a Mac, and irrelevant to anything you ship this quarter. The practical note is the Mac mini refresh: if a build machine or a local inference box is on your list, waiting a week costs nothing and the current generation gets cheaper the day the new one lands.</div>
+          <div class="refs"><a href="https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/" target="_blank" rel="noopener">Apple Newsroom — the transition</a> <a href="https://www.macrumors.com/2026/08/24/tim-cook-replaced-steve-jobs-15-years-ago-today/" target="_blank" rel="noopener">MacRumors — fifteen years</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Sunset</span><span class="txt">Interplanetary Shipyard stops all IPFS work on September 30 after Protocol Labs declined to renew funding, leaving Kubo, Helia, Boxo, Rainbow, IPFS Desktop, IPFS Companion and the Service Worker Gateway without dedicated maintainers, and ending Shipyard's upstream contributions to go-libp2p and js-libp2p. <span class="ver">Sept 30</span></span></li>
+            <li><span class="tag feature qh-tag">Proofs</span><span class="txt">The seL4 microkernel's formal security proofs are now complete on AArch64, extending the verified guarantees to 64-bit Arm. <span class="ver">Aug 2026</span></span></li>
+            <li><span class="tag improve qh-tag">Hardware</span><span class="txt">Bloomberg reports Apple will unveil a new Mac mini within days on M5 or M6, with an OLED iPad mini by late October and AirPods 5 later this year. <span class="ver">Aug 25</span></span></li>
+            <li><span class="tag fix qh-tag">Accounts</span><span class="txt">Apple confirmed iCloud+ Hide My Email addresses will remain on the icloud.com domain, ending speculation about a migration that would have broken existing aliases. <span class="ver">Aug 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

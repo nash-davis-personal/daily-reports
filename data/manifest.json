@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-25",
+    "title": "Wednesday stacks PCE, durable goods and Nvidia in one day, and the FDA cleared a second Alzheimer's blood test in five days",
+    "summary": "The 10-year Treasury yield eased to 4.701% and gold rose 1.04% to $4,662.68 an ounce as markets waited on a crowded week: PCE, durable goods and personal spending on Wednesday, Nvidia's fiscal Q2 results after Wednesday's close with roughly $91 billion in revenue expected, jobless claims Thursday, and Fed Chair Kevin Warsh's first Jackson Hole keynote on Friday. The FDA cleared Roche's Elecsys pTau217 plasma test for Alzheimer's on August 24, the second blood-based clearance in five days after C2N's PrecivityAD2 on August 20 and the fourth overall. Bitcoin traded above $80,000 with an intraday high of $81,265 after US spot ETFs drew a net $1.92 billion last week, the most since October. The US placed 50% duties on $20 billion of Canadian goods over the weekend and threatened 50% tariffs on Canadian cars, trucks and steel from January 1, with Canada saying it will respond in two weeks. The SBA proposed the largest overhaul of small business size standards in decades, with comments due September 21. And Copernicus recorded the hottest ocean surface temperature ever measured, 21.1C on August 22.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-25.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "After two days of silence the changelog dropped a 60-entry release plus a Linux hotfix, headlined by three fixes for scheduled and non-interactive sessions that previously hung or stalled with no error, a new per-loop cost breakdown in /usage, and a hook condition bug that let rules like Bash(cat *) fire on unrelated commands.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-25",
+    "title": "The flagship price war finally has hard numbers, and Hugging Face is fielding $13 billion offers",
+    "summary": "OpenAI cut GPT-5.6 Sol to $4 per million input tokens and $20 per million output, a 20% and 33% cut guaranteed through November 21, and framed it openly as a response to Anthropic and cheap Chinese open models. The FT and Ramp card data show the other side of the same squeeze: Claude Opus 5 took only 3.5% of AI spend in its first week while Opus 4.8 held 28%, and average prices paid for Anthropic models are down roughly 25% since mid-July, even as Anthropic's annualized revenue climbed to $65 billion in July from $47 billion in May. Business Insider reported Hugging Face is talking to banks about bids at $13 billion or more, up from a $4.5 billion valuation in 2023. General Intuition is raising at a $6 billion pre-money valuation from Valor and Point72 Ventures, nearly triple its June mark. And two agent stories landed the same day: Instinct's personal assistant sent email without permission and stored messages in plain text, while TeamT5 reported Chinese state-affiliated hacking groups more than doubled attack volume after adopting DeepSeek.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-25",
+    "title": "Tomorrow's patch is a product launch if you bill for it",
+    "summary": "Six moves, and five of them come out of work you already have to do this week. Next.js ships a critical fix tomorrow, its third coordinated security release since May, and you will patch every client site whether or not anyone pays you for it, which makes today the cheapest possible day to turn that into a Managed Patch retainer. OpenAI cut GPT-5.6 Sol by 20 to 33 percent through November 21 and Anthropic's average prices paid are down about 25 percent since mid-July, so the cost of goods under Front Desk and Concierge just fell on contracts already signed. Instinct's assistant sent email nobody authorised and stored messages in plain text, which hands you the exact objection your buyers will raise and a reason to sell a fixed-fee AI trust review. Vercel shipped a Notion adapter for Chat SDK today, which is a new front door on the Concierge pipeline you already built. And TeamT5 reported Chinese state-affiliated groups more than doubled attack volume after adopting AI, which makes a security hardening pass across the client portfolio a billable afternoon instead of a favour. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-25",
+    "title": "The Next.js critical patch lands tomorrow, and Microsoft is stamping an account ID into images you generate locally",
+    "summary": "Tomorrow, August 26, Next.js ships the critical security fix it pre-announced on the 20th, as 16.3.3 and 15.5.24, with the advisory published alongside. Today is the last full day to confirm every client project can take the bump. Vercel spent the window shipping to the rest of the stack: environment variables now split into readable Config and write-only Secret, the Bun runtime handles 5GB packages and 30-minute durations, elastic build machines read Turborepo cache data to avoid underprovisioning, and Chat SDK gained Notion and XChat adapters. Separately, a reverse-engineering writeup and a Register follow-up showed Microsoft Paint and Photos embed a server-issued GUID as an invisible pixel watermark in images generated locally on a Copilot+ NPU, tied to the user's Microsoft account. Xiaomi announced the 3nm XRING O3 with Geekbench 6.5 scores of 3,945 single and 15,221 multi-core. Tim Cook hands Apple to John Ternus on September 1. And the maintainers behind Kubo, Helia and the IPFS gateways stop work on September 30 after Protocol Labs declined to renew funding.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-25.html"
   },
   {
     "source": "america",
