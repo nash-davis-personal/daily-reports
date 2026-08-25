@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-25" />
+  <meta name="report:title" content="2.1.243 lands 60 entries, and the ones that matter to you all fix unattended runs that used to fail without saying so." />
+  <meta name="report:summary" content="After two days of silence the changelog dropped a 60-entry release plus a Linux hotfix, headlined by three fixes for scheduled and non-interactive sessions that previously hung or stalled with no error, a new per-loop cost breakdown in /usage, and a hook condition bug that let rules like Bash(cat *) fire on unrelated commands." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.243 lands 60 entries, and the ones that matter to you all fix unattended runs that used to fail without saying so. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, August 25, 2026</span>
+        <span>◆</span><span>2 releases ◆ 2.1.243 and 2.1.245</span>
+      </div>
+      <h1>2.1.243 lands 60 entries, and the ones that matter to you all fix unattended runs that used to fail without saying so.</h1>
+      <p class="standfirst">Three separate bugs were killing scheduled and non-interactive sessions in silence: a request the API never answered could sit for 10+ minutes with no timeout, remote MCP servers in <code>-p</code> and SDK sessions never came back after a dropped connection, and background subagents did not wake when their last background Bash task finished. All three are fixed in one release. The same release adds a per-loop cost breakdown to <code>/usage</code>, which is the first way to see which of your scheduled jobs is actually burning tokens.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-24 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">60</div><div class="lbl">Entries in 2.1.243</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Entries touching unattended runs</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Releases your local 2.1.237 is behind</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sessions could go silent for 10+ minutes with no timeout</h4><p>When the Anthropic API never started a response, the client just waited. It now times out after roughly 3 minutes, retries once, then surfaces <code>API Error: No response from API</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Remote MCP servers never recovered in <code>-p</code> and SDK sessions</h4><p>A dropped connection was permanent for the rest of the run. They now reconnect automatically or report as failed, so a headless job either works or tells you it did not.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background subagents did not wake when their last background Bash task finished</h4><p>The subagent sat there with its work already done. Any pipeline that hands off to a background command and waits was exposed to this.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>/usage</code> now breaks down cost per loop</h4><p>Run count, total tokens, tokens per run, and last run for each <code>/loop</code> task. This is the first built-in way to spot a runaway or chatty scheduled job.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Hook <code>if</code> conditions were firing on unrelated Bash commands</h4><p>A condition like <code>Bash(cat *)</code> matched commands it should not have whenever the command contained <code>$()</code> or backtick substitution followed by more arguments.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Roughly 40–70 MB less memory per session, and a 75 MB download</h4><p>Native builds now load code on demand instead of keeping the whole bundle resident, the heap is garbage-collected sooner in long sessions, and the binary is zstd-compressed down from about 340 MB on Linux x64.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs stop failing quietly</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.243</span>
+            <h3>A request the API never answered had no timeout at all</h3>
+          </div>
+          <div class="story-body">
+            <p>The entry describes sessions going silent for 10 or more minutes when the Anthropic API never started a response. There was no ceiling on the wait. The client now gives up after about 3 minutes, retries once, and then prints <code>API Error: No response from API</code>.</p>
+            <p>The distinction that matters is between a job that is slow and a job that is dead. Before this, both looked identical from the outside.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the most likely cause of any scheduled task of yours that "just didn't run" and left no error behind — this changelog job included. Take the update, then stop treating a missing report as a logic bug until you have checked for the new error line.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.243</span>
+            <h3>Remote MCP servers in non-interactive and SDK sessions never reconnected</h3>
+          </div>
+          <div class="story-body">
+            <p>Once a remote MCP connection dropped inside a <code>-p</code> or SDK session, it stayed dropped for the life of the run. The server now reconnects automatically, or reports as failed so the session knows the capability is gone.</p>
+            <p>An interactive session gives you a chance to notice and restart. A headless one silently completes the job with a tool missing and produces a result that looks finished.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every scheduled job you run that touches Supabase, Vercel, or Notion through a remote MCP was exposed to this. A run that quietly lost its Supabase connection halfway through would still have written you a confident report. Worth re-reading the last week of scheduled output before trusting anything load-bearing in it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.243</span>
+            <h3>Background subagents stalled after their last background Bash task completed</h3>
+          </div>
+          <div class="story-body">
+            <p>The wake signal was not firing, so a subagent whose final background command had already finished stayed asleep. The work was done and nothing picked it up.</p>
+            <p>The same release also fixed cloud sessions resuming after a mid-turn restart with a pending hook or background-task notification re-sent as the prompt instead of the normal continuation message, which is a second way a resumed run went off the rails.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant to any fan-out you run where agents kick off builds or migrations in the background. If a fleet run has ever finished with one agent's work missing and no error, this is the entry to point at.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>--agents</code> now exits with an error on invalid JSON instead of ignoring it</h3>
+          </div>
+          <div class="story-body">
+            <p>Invalid JSON or an invalid agent definition passed to <code>--agents</code> was silently dropped. It now fails loudly, matching how <code>--mcp-config</code> already behaved.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you script agent definitions into a scheduled run, a typo used to mean the run proceeded with the default agent and never mentioned it. After updating, a job that used to "work" may start failing — that failure is the truth, and it is telling you the definition was never loading.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> You can finally see what the loops cost</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>/usage</code> gained a per-loop breakdown</h3>
+          </div>
+          <div class="story-body">
+            <p>The new section reports run count, total tokens, tokens per run, and last run for each loop. The changelog frames it as a way to spot runaway or chatty <code>/loop</code> tasks.</p>
+            <p>Tokens per run is the useful column. A job that costs a little and runs constantly and a job that costs a lot and runs daily look the same in a single total.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>/usage</code> right after updating and read the tokens-per-run column for every scheduled job you have accumulated. Your automation surface has grown faster than your visibility into it, and this is the first cheap audit available.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>/tasks</code> now shows the model and effort level each subagent ran on</h3>
+          </div>
+          <div class="story-body">
+            <p>The model and effort level now appear in <code>/tasks</code> and in the agent detail dialogs. Paired with the loop breakdown, that turns "this run was expensive" into "this run was expensive because these four subagents were on the wrong tier."</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Use this the next time a fleet run costs more than it should. Most of the overspend in fan-out work is mechanical stages inheriting a high tier they never needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>modelPicker</code> lets you curate the <code>/model</code> list</h3>
+          </div>
+          <div class="story-body">
+            <p>An ordered, labeled list of models that either appends to or replaces the built-in lineup. Any id spelling works, including Vertex and Bedrock ids.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Low priority, real payoff if you keep picking the wrong tier by muscle memory. Cut the picker down to the three models you actually use and the mis-picks stop.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The client gets meaningfully lighter</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.243</span>
+            <h3>Memory, startup, and download size all improved in one pass</h3>
+          </div>
+          <div class="story-body">
+            <p>Native builds load code on demand instead of holding the whole bundle resident, which the changelog puts at roughly 40–70 MB less memory per session. Peak memory in long-running sessions is down because the runtime garbage-collects sooner as the heap grows. Startup no longer blocks the first frame on sandbox and MCP bring-up, bare launches skip subcommand registration, and the auto-update binary is zstd-compressed to about 75 MB from about 340 MB on Linux x64.</p>
+            <p>Note the memory figure is per session. The saving scales with how many you keep open.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run parallel sessions across client repos on one Mac, so 40–70 MB each is the difference between comfortable and swapping. This is the single best argument for taking the update today rather than at the end of the week.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>/loop</code> collapses consecutive do-nothing wake-ups into one line</h3>
+          </div>
+          <div class="story-body">
+            <p>A loop that wakes up with nothing to do used to print every one of those wake-ups. They now fold into a single terminal line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Makes a long-running watch loop readable again, which means you will actually notice the wake-up where something did happen.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Config traps and one pricing change</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.243</span>
+            <h3>Hook <code>if</code> conditions matched commands they were never meant to match</h3>
+          </div>
+          <div class="story-body">
+            <p>A condition like <code>Bash(cat *)</code> fired on unrelated Bash commands whenever the command contained <code>$()</code> or backtick command substitution followed by further arguments. The hook ran on input its author never scoped it to.</p>
+            <p>Which direction that cuts depends entirely on what the hook does. An over-firing logger is noise. An over-firing gate or rewrite is a correctness problem you would have had no reason to look for.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Read every <code>if</code> condition in your <code>settings.json</code> hooks once after updating and ask what the hook did on the runs where it fired wrongly. Anything that mutates, blocks, or writes deserves the closer look.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.243</span>
+            <h3>Sonnet 5's $2/$10 per Mtok is now its standard list price</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>/model</code> picker and the bundled <code>claude-api</code> skill now present $2/$10 per Mtok as Sonnet 5's standard list price rather than a limited-time promotional rate.</p>
+            <p>The number did not move. What moved is whether you can plan around it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the one entry today with a direct line to client pricing. Any AI feature you have quoted on Sonnet 5 token cost — Bisque, Studio C, Sonderwerks — can now be modeled at $2/$10 without a promo-expiry caveat in the proposal.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.243</span>
+            <h3><code>promptCacheTtl</code> and <code>subagentPromptCacheTtl</code> settings</h3>
+          </div>
+          <div class="story-body">
+            <p>API-key and cloud-provider users can hold a 1-hour prompt cache on the main conversation while subagents stay at the 5-minute default. The split matters because subagents are short-lived and a long TTL on them buys nothing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Applies to work you run through an API key rather than your Claude account. If any client-side agent you have shipped re-sends a large system prompt on a slow cadence, this setting is the cheapest cost reduction on the list.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.243</span>
+            <h3>The sandboxed Bash prompt stopped listing allowed network hosts</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude no longer sees the allowlist, so it attempts requests and you approve new hosts as they come up, instead of assuming an unlisted host is blocked. The same release also fixed sandbox network-violation details being dropped from the Bash result when the blocked command still exited 0 — a <code>curl</code> printing the proxy's 403 page, for example.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect more host-approval prompts in sandboxed work at first. The 403-exiting-0 fix is the one to care about: a build step that "succeeded" while quietly fetching nothing is exactly the failure that reaches a client deploy.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.243</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Startup crash on Linux distributions shipping glibc 2.44 (Arch, CachyOS, Fedora Rawhide). The only entry in this release; irrelevant on your Mac, relevant on any Linux box you deploy to. <span class="ver">2.1.245</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/resume</code> only listed the 50 most recent sessions. The picker now loads more as you scroll. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude in Chrome lost its Claude Code connection after an auto-update cleaned up the version it was set up with. The native host now launches via the stable <code>claude</code> launcher. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Ctrl+R history search and up-arrow history broke entirely when <code>~/.claude/history.jsonl</code> contained one malformed entry. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The local IDE connection was routed through <code>HTTPS_PROXY</code> when <code>localhost</code> appeared in <code>NO_PROXY</code> but not lowercase <code>no_proxy</code>. Both casings are honored now. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Auto mode stayed unavailable at startup when a temporary server-side disable was cached, and tool calls were denied as "temporarily unavailable" after about a minute when the API was briefly overloaded. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cross-session messaging silently turned off inside user namespaces and rootless containers after the 2.1.232 socket-directory hardening. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin dependencies declared with a <code>marketplace</code> field never resolved when both plugins loaded together via <code>--plugin-dir</code>. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/reload-plugins</code> kept the LSP tool after the last LSP plugin was disabled. It now also warns before a plugin change that would re-read the conversation. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/status</code> reported "Found invalid entries in: ." with no filename when <code>~/.claude.json</code> held an invalid MCP server entry. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>/model</code> picker silently ignored an Ultracode selection. Picking it now applies to the current session. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/clear</code> stripped the <code>/rename</code> session name from the prompt bar even though the name carried over to the new session. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Auth, model-availability, and other client-generated errors rendered like model output rather than as error lines. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude --teleport &lt;session&gt;</code> exited on uncommitted changes instead of offering to stash and continue, which the session picker already did. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/model</code>, <code>/fast</code>, and <code>/effort</code> now run immediately instead of queueing until the turn ends on Bedrock, Vertex, and Foundry, and when telemetry is disabled. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The error for effort <code>xhigh</code>/<code>max</code> with thinking off now names the level, the setting that disabled thinking, and <code>/effort high</code> as the fix. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag breaking qh-tag">Changed</span><span class="txt">Computer use on macOS now requires granting Finder via the access dialog before clicking the desktop, Dock, or a Finder window. <span class="ver">2.1.243</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The status line <code>rate_limits</code> fields and <code>/usage</code> kept showing a window's pre-reset usage percentage after the window reset while the session sat idle. <span class="ver">2.1.243</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
