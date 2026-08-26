@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-26",
+    "title": "Three consumer readings went the same direction on Tuesday, and the market went up anyway",
+    "summary": "Consumer confidence fell to 89.4 in August, a seven-month low, with the Expectations Index down 5.8 points to 68.2 even as the Present Situation Index rose 6.8 points to 121.2. New single-family home sales fell 10.5% in July to a 607,000 annual rate, the weakest since January, with 30-year mortgage rates near their highest in more than a year. Stocks rose anyway on a semiconductor rebound and softer yields: the S&P 500 gained 0.32% to 7,677.28, the Nasdaq 0.66% to 26,151.30, and the Dow 160.24 points to 53,577.40 for a third straight win. Oil fell to a one-week low, with Brent off more than 3% near $89 and WTI near $82, after traders judged the newest US sanctions on Iran less disruptive to supply than a military conflict would be. Nvidia reports fiscal second-quarter results after today's close against roughly $91 billion of guidance, and the PCE price index lands Friday. Separately, the FTC's comment window on a proposed enforcement policy statement covering personalized pricing runs to September 18.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-26.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since the last briefing, 61 entries, and the cluster worth your attention is about permissions: a startup warning for Bash allow rules with a wildcard before the subcommand, mandatory approval for malformed commands with a dangling operator, an Auto mode tab in /permissions, and a fix that stopped Claude Code from sending a third-party gateway API key to Anthropic telemetry.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-26",
+    "title": "Anthropic is pitching a $30 trillion market, and a Chinese lab is negotiating shelf space on Azure, AWS and Google Cloud",
+    "summary": "Anthropic is expected to tell IPO investors its addressable market exceeds $30 trillion, a figure larger than the $28.5 trillion SpaceX used, alongside $11.6 billion of Q2 revenue, a raise of up to $100 billion and a target valuation near $2 trillion, with a prospectus due shortly and a debut possible in September or early October. Reuters reported Moonshot AI is negotiating revenue-sharing deals with Microsoft, Amazon and Google to host Kimi K3, seeking up to 30% of the revenue those clouds earn from it, which would be the first pact of its kind between a Chinese lab and a US hyperscaler. Bloomberg reported Huawei answered an Egyptian tender with a proposal to export 1,408 top-end Ascend 950-series chips plus 600 more for inference, on a 12-month build. On the builder side, Temporal's 2026 survey put daily-or-more AI agent use among engineers at 80.8%, up from 47.3% a year earlier, and Okta made agents first-class identities in Universal Directory with Agent SSO. MiniMax reported first-half revenue of $116.6 million, up 283%, with enterprise up more than 700%.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-26",
+    "title": "Two critical CVEs just handed your sales arm a reason to call every Next.js site in Charlotte",
+    "summary": "Six ranked moves off today's briefings. The best bet is a security sweep: Next.js shipped two critical unauthenticated RCE fixes on August 25, one of them with no workaround, which gives Grant and Bishop a specific, dated, verifiable reason to call any local business running a self-hosted Next.js site — and a clean path into a monthly maintenance retainer. Behind it: an RCS and SMS follow-up add-on built on the Linq connector that shipped with Vercel Connect's GA, a productized AI cost audit that has to run before MiniMax's free window on AI Gateway closes September 6, a monthly performance report that costs nothing now that Speed Insights is free on every plan, a short-form video add-on on Wan 3.0 with asynchronous jobs, and a pricing-disclosure technical review keyed to the FTC comment window that closes September 18. Ranked and timed against the TSD Macroscope board, which reads AI and tech capex as accelerating at high conviction and housing as frozen at high conviction.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-26",
+    "title": "The Next.js patch landed a day early with two critical RCEs, and you are still on an unpatched version",
+    "summary": "Vercel moved the August security release forward after finding a second critical vulnerability, so Next.js 16.3.3 and 15.5.24 shipped on August 25 rather than August 26. Both flaws are unauthenticated remote code execution: GHSA-2xp9-vwfh-vxw4 comes from libheif inside sharp and fires when Image Optimization processes an attacker-controlled AVIF, and CVE-2026-75604 hits Windows-hosted servers running both Pages Router and App Router without Cache Components, with no known workaround. Apps on Vercel are protected and need no redeploy because Vercel disabled AVIF optimization platform-wide; anything self-hosted needs the upgrade today. In the same window Vercel shipped Connect to general availability, replacing long-lived agent tokens with scoped runtime credentials across 100-plus services, made Speed Insights free on every plan with the paid tier renamed Speed Insights Plus, put MiniMax M3 and M2.7 on AI Gateway free through September 6, added Alibaba's Wan 3.0 with asynchronous video jobs, and extended the Chat SDK Slack adapter to Enterprise Grid. Separately, Amazon is closing Mechanical Turk on September 30 after 21 years.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-26.html"
   },
   {
     "source": "america",

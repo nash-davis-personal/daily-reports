@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-26" />
+  <meta name="report:title" content="The Next.js patch landed a day early with two critical RCEs, and you are still on an unpatched version" />
+  <meta name="report:summary" content="Vercel moved the August security release forward after finding a second critical vulnerability, so Next.js 16.3.3 and 15.5.24 shipped on August 25 rather than August 26. Both flaws are unauthenticated remote code execution: GHSA-2xp9-vwfh-vxw4 comes from libheif inside sharp and fires when Image Optimization processes an attacker-controlled AVIF, and CVE-2026-75604 hits Windows-hosted servers running both Pages Router and App Router without Cache Components, with no known workaround. Apps on Vercel are protected and need no redeploy because Vercel disabled AVIF optimization platform-wide; anything self-hosted needs the upgrade today. In the same window Vercel shipped Connect to general availability, replacing long-lived agent tokens with scoped runtime credentials across 100-plus services, made Speed Insights free on every plan with the paid tier renamed Speed Insights Plus, put MiniMax M3 and M2.7 on AI Gateway free through September 6, added Alibaba's Wan 3.0 with asynchronous video jobs, and extended the Chat SDK Slack adapter to Enterprise Grid. Separately, Amazon is closing Mechanical Turk on September 30 after 21 years." />
+  <meta name="report:highlights" content="6" />
+
+  <title>The Next.js patch landed a day early with two critical RCEs, and you are still on an unpatched version — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/august-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, August 26, 2026</span>
+        <span>◆</span><span>Two criticals ◆ agent credentials ◆ MTurk closes</span>
+      </div>
+      <h1>The Next.js patch landed a day early with two critical RCEs, and you are still on an unpatched version</h1>
+      <p class="standfirst">Yesterday's briefing said the release was coming Wednesday with one critical vulnerability. Vercel found a second one in an upstream dependency and shipped Tuesday instead, so 16.3.3 and 15.5.24 have been out since August 25 and both fixes are unauthenticated remote code execution. Your Vercel-hosted work is covered without a redeploy; anything self-hosted is not.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 25 – August 26, 2026</span>
+        <span>◆</span><a href="https://nextjs.org/blog/august-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.3 / 15.5.24</div><div class="lbl">The patched Next.js versions — Active LTS and Maintenance LTS</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Critical-severity unauthenticated RCEs fixed, one of them from an upstream image library</div></div>
+      <div class="stat"><div class="num">Sept 30</div><div class="lbl">The day Amazon closes Mechanical Turk, 21 years after launch</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Next.js today — the release moved up a day</h4><p>The release moved forward a day. Run <code>npm install next@16.3.3</code> or <code>next@15.5.24</code> on every self-hosted project. Both fixed issues are critical-severity unauthenticated remote code execution.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The AVIF flaw is in libheif, below your code</h4><p>GHSA-2xp9-vwfh-vxw4 lets an attacker-controlled AVIF image reach code execution through the <code>sharp</code> image pipeline during Image Optimization. The patch disables AVIF optimization entirely until upstream fixes it. Nothing in your own source triggers or prevents this.</p></div>
+        <div class="signal"><div class="n">03</div><h4>The Windows RCE has no workaround</h4><p>CVE-2026-75604 hits Next.js servers on a Windows filesystem in apps using both Pages Router and App Router without Cache Components. Linux and macOS are unaffected. Vercel states there is no known workaround for affected Windows hosts — upgrading is the only fix.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel Connect went GA and it is on the Hobby plan</h4><p>Scoped, short-lived credentials issued at runtime instead of long-lived tokens in env vars, across 100-plus services with named connectors for Slack, GitHub, Linear, Notion, Salesforce and more. Hobby includes 500 token requests and 1,000 triggers a month free; Pro is $3 per 10,000 token requests.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Speed Insights is now free on every plan</h4><p>Real-user performance monitoring is free everywhere, with deeper diagnostics and history moving to a paid tier called Speed Insights Plus. Previously a Pro upgrade cost you the free access unless you paid the add-on. Existing paying customers keep the same price and features under the new name.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Mechanical Turk closes September 30</h4><p>Amazon is shutting the crowdsourced micro-task marketplace after 21 years, having already stopped taking new customers on July 30. Jeff Bezos originally called it "artificial artificial intelligence." The work moved to models and to data vendors like Scale, Mercor and Prolific.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this before you do anything else today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Next.js 16.3.3 and 15.5.24 fix two critical unauthenticated RCEs</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel had announced this release for Wednesday. It found an additional critical vulnerability in an upstream dependency and pulled the release forward to Tuesday, so the patched versions have been available since August 25.</p>
+            <p>The first issue, <b>GHSA-2xp9-vwfh-vxw4</b>, originates in libheif inside the <code>sharp</code> library. When Next.js optimizes an attacker-controlled AVIF image, it can lead to unauthenticated remote code execution. The patched releases disable AVIF optimization entirely until an upstream fix propagates. The second, <b>CVE-2026-75604</b> (GHSA-p293-qw3h-jr36), affects applications that use both the Pages Router and the App Router without Cache Components when the server runs on a Windows filesystem. Linux and macOS are not affected, and Vercel says there is no known workaround for affected Windows-hosted applications.</p>
+            <p>Applications hosted on Vercel are protected and require no customer action or redeploy: the platform runs on Linux, and Vercel disabled AVIF optimization across its managed Image Optimization service, so AVIF files are now delivered unprocessed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today. For every Next.js project you maintain — Bisque, Studio C, Sonderwerks, the demo sites, anything running locally or on a client's own box — run <code>npm install next@16.3.3</code> (or <code>next@15.5.24</code> on the 15 line), commit the lockfile, and push. Your Vercel-hosted production is already safe, so this is about self-hosted and local surfaces plus keeping the lockfile honest for the next audit. One real consequence to check for: if any client site serves AVIF through <code>next/image</code>, those images now pass through unoptimized, so watch the payload size on image-heavy pages and consider forcing WebP in <code>images.formats</code> until AVIF comes back.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/august-2026-security-release" target="_blank" rel="noopener">Next.js — August 2026 Security Release</a> · <a href="https://vercel.com/changelog/nextjs-august-2026-security-release" target="_blank" rel="noopener">Vercel — Applications are protected from the Next.js August 2026 vulnerabilities</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Vercel shipped a lot on the same day</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Platform</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Vercel Connect is generally available, and it kills long-lived tokens in agent code</h3>
+          </div>
+          <div class="story-body">
+            <p>Connect issues short-lived, scoped credentials at runtime instead of storing long-lived tokens for the services an agent or app talks to. It covers 100-plus services, with dedicated connectors for Slack, GitHub, Linear, Discord, Notion, Salesforce, Figma and Snowflake in the dashboard, plus generic OAuth and API-key connectors for everything else. Adapters ship for Better Auth, Auth.js, eve, the AI SDK and MCP clients. Each token is scoped to the task, refreshed automatically, and expires on its own.</p>
+            <p>Pricing is usage-based: Hobby includes 500 token requests and 1,000 triggers a month at no cost, Pro and Enterprise bill $3 per 10,000 token requests. Vercel also added a Linq connector on the same day that pushes messages over iMessage, RCS and SMS.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Linq connector is the one to look at first — a managed way to send iMessage, RCS and SMS from a Vercel app is directly useful for Booking Bridge confirmations and Front Desk callbacks, and it removes a Twilio-shaped line item from your build. On Connect itself: the free Hobby allowance is enough to prototype, and it lets you tell a client's IT person that no standing credential for their Google Workspace or their CRM sits in your environment variables. That is a real objection you will eventually hit on a larger deal. See <a href="../general-ai/2026-08-26.html">today's General AI briefing</a> for Okta shipping the enterprise version of the same idea this week.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/vercel-connect-ga" target="_blank" rel="noopener">Vercel — Vercel Connect is now generally available</a> · <a href="https://vercel.com/changelog/vercel-connect-now-supports-linq" target="_blank" rel="noopener">Vercel — Connect now supports Linq</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Pricing</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Speed Insights got a free tier on every plan</h3>
+          </div>
+          <div class="story-body">
+            <p>Real-user performance monitoring is now free on all plans. The paid product is renamed Speed Insights Plus and keeps slow-route diagnosis, detailed breakdowns of where pages get slow, and historical data. The old arrangement gave Hobby users one free project and then took the free access away on upgrade to Pro unless you bought the add-on; the free tier now carries over. Anyone already paying keeps the same capabilities and the same price under the new name. Pro pricing for Plus is $10 per project per month.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Turn it on for every client project today. Real Core Web Vitals from actual visitors is a retainer deliverable you can now provide at zero cost — a monthly "here is what your site's speed did" line in the Managed AI report costs you nothing and is the kind of thing that makes a retainer feel worth paying. Reserve Plus for the one or two sites where you are actively chasing a slow route.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/speed-insights-free-tier" target="_blank" rel="noopener">Vercel — Speed Insights now has a free tier</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">AI Gateway</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Free MiniMax models, Wan 3.0 video, and video generation as a background job</h3>
+          </div>
+          <div class="story-body">
+            <p>MiniMax M3 and M2.7 are free on AI Gateway through September 6 when GMI Cloud serves them, via the <code>minimax/minimax-m3-free</code> and <code>minimax/minimax-m2.7-free</code> model IDs or a provider pin. M3 is MiniMax's first model with a 1M-token context window and native multimodal input, aimed at software engineering, terminal tool use and agentic browsing.</p>
+            <p>Alibaba's Wan 3.0 also landed on the gateway, generating up to 30 seconds of video with audio from text, image, video or audio references. Alongside it, AI Gateway can now run video generation as a background job with three ways to wait for the result: a webhook, a start-and-status pair, or short polling.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two weeks of free frontier-adjacent inference is a hard deadline worth using. Point one real workload at M3 before September 6 — the Concierge retrieval step is the obvious candidate — and record the quality and latency difference against what you pay now. Separately, asynchronous video generation plus a 30-second Wan 3.0 clip is enough to build a "monthly social video for your shop" add-on for the detailing and salon clients without standing up your own queue infrastructure.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/minimax-m3-and-m2-7-are-free-on-ai-gateway" target="_blank" rel="noopener">Vercel — MiniMax M3 and M2.7 are free on AI Gateway</a> · <a href="https://vercel.com/changelog/wan-3-0-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel — Wan 3.0 now available</a> · <a href="https://vercel.com/changelog/ai-gateway-now-supports-asynchronous-video-generation" target="_blank" rel="noopener">Vercel — Asynchronous video generation</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The end of a twenty-one-year experiment</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Shutdown</span>
+            <span class="ver">Aug 25, 2026</span>
+            <h3>Amazon is closing Mechanical Turk on September 30</h3>
+          </div>
+          <div class="story-body">
+            <p>AWS posted the notice on the Mechanical Turk site on Tuesday. The platform launched in 2005 and matched businesses with people willing to do Human Intelligence Tasks — data labelling, transcription, surveys — for small amounts of money. It stopped accepting new customers on July 30 and closes fully on September 30.</p>
+            <p>The stated context is decline. Models now do most of what HITs were used for, and the work that still needs humans went to a newer generation of data vendors — Scale AI, Mercor, Prolific — built specifically to recruit and manage people who train models. Bezos originally described MTurk as "artificial artificial intelligence," which reads differently now that the artificial version arrived.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct dependency. It is a clean data point for a sales conversation, though: the largest marketplace for paying humans to do small repetitive digital tasks is closing because software got good enough, and that is exactly the argument you make when a shop owner asks whether an AI receptionist can really handle their calls. Use it as one line, not a lecture.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-called-artificial-ai-is-shutting-down.html" target="_blank" rel="noopener">CNBC — Amazon service that Bezos called 'artificial artificial intelligence' is shutting down</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes &amp; what's next</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Vercel's Chat SDK Slack adapter now supports Slack Enterprise Grid. <span class="ver">Aug 25</span></span></li>
+            <li><span class="tag improve qh-tag">Watch</span><span class="txt">Nvidia reports fiscal Q2 after today's close, having guided to roughly $91 billion. It is the single largest read on whether the AI infrastructure spend holding up your API prices is still accelerating. <span class="ver">Aug 26</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Samsung holds its Galaxy Event tomorrow, expected to introduce the Galaxy S26 FE ahead of its usual September slot. <span class="ver">Aug 27</span></span></li>
+            <li><span class="tag improve qh-tag">Infra</span><span class="txt">Self-hosted Supabase has made Envoy the default API gateway in place of Kong. Only relevant if you ever run a client's Supabase on their own hardware. <span class="ver">Week of Aug 9</span></span></li>
+            <li><span class="tag new qh-tag">Edge</span><span class="txt">Nvidia's Jetson Orin Nano 2 doubles inference performance on the small edge board, at 78 TOPS with an eight-core Arm CPU. <span class="ver">Aug 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
