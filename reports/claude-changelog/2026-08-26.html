@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-26" />
+  <meta name="report:title" content="Your Bash allowlist probably matches more commands than you think, and 2.1.246 now warns you about it at startup." />
+  <meta name="report:summary" content="One release since the last briefing, 61 entries, and the cluster worth your attention is about permissions: a startup warning for Bash allow rules with a wildcard before the subcommand, mandatory approval for malformed commands with a dangling operator, an Auto mode tab in /permissions, and a fix that stopped Claude Code from sending a third-party gateway API key to Anthropic telemetry." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Your Bash allowlist probably matches more commands than you think, and 2.1.246 now warns you about it at startup. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, August 26, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.246</span>
+      </div>
+      <h1>Your Bash allowlist probably matches more commands than you think, and 2.1.246 now warns you about it at startup.</h1>
+      <p class="standfirst">A rule like <code>Bash(git * main)</code> also matches options inserted before the subcommand, so it approves a wider set of commands than it reads like it does. Claude Code now flags those rules on startup, and separately it now always asks before running a malformed command with a dangling <code>&amp;&amp;</code> or <code>||</code>. The rest of this 61-entry release is cleanup, with the useful half aimed at background sessions that failed to start and at one retention bug that deleted git worktrees you created yourself.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-25 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">61</div><div class="lbl">Entries in 2.1.246</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since the last briefing</div></div>
+      <div class="stat"><div class="num">2.1.237</div><div class="lbl">Your local version, still behind</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Bash allow rules with a wildcard before the subcommand are wider than they look</h4><p>A rule like <code>Bash(git * main)</code> also matches options inserted before the subcommand. Claude Code now warns about these at startup so you can go read your own allowlists.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Malformed commands now always require approval</h4><p>A command with a dangling <code>&amp;&amp;</code> or <code>||</code> operator could previously get through the Bash permission check. It is now an approval every time.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background sessions failed to start in two common ways</h4><p>A 45-second failure when the starting directory had been deleted, the machine had slept, or the host is slow to spawn processes; and an <code>EACCES</code> failure when another Claude Code process was reinstalling the npm package at that moment. Both fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The retention sweep was deleting worktrees you made yourself</h4><p>Git worktrees under <code>.claude/worktrees/</code> that you created were removed when an old background-session record happened to point at them. This is the closest thing to data loss in the release.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Non-interactive runs now continue through a cut-off response</h4><p><code>-p</code>, SDK, and cloud sessions automatically resume a response truncated by a server error, connection loss, or stall. Before this they ended with an error and whatever they had done stayed half-done.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>/cd</code> now reloads the project you moved into</h4><p>Project settings, hooks, <code>.mcp.json</code> servers, skills, and agents from the new directory take effect immediately instead of waiting for a <code>--resume</code>.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission rules were approving more than they read like</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.246</span>
+            <h3>Startup warning for Bash allow rules with a wildcard before the subcommand</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog's example is <code>Bash(git * main)</code>. The wildcard sits before the subcommand, so the rule also matches commands where options were inserted there. Anything the wildcard swallows is pre-approved. Claude Code now surfaces a warning at startup listing rules shaped this way.</p>
+            <p>This pairs with the hook <code>if</code> condition bug fixed in 2.1.243, where <code>Bash(cat *)</code> fired on unrelated commands containing <code>$()</code> or backticks. Two releases in a row have found the same class of problem in pattern matching against shell strings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open every <code>settings.json</code> you maintain — global, per-repo for Bisque, Studio C, Sonderwerks, and anything the scheduled tasks run under — and grep for allow rules with a <code>*</code> ahead of the subcommand. Rewrite them so the wildcard only ever appears after the subcommand you actually meant to allow. Do this before updating, so you know what the startup warning is going to complain about.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>Malformed commands with a dangling operator now always need approval</h3>
+          </div>
+          <div class="story-body">
+            <p>Bash permission checks now always require approval for a command that ends with a hanging <code>&amp;&amp;</code> or <code>||</code>. Previously the parser's handling of those was inconsistent enough that the check could be bypassed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant to any unattended run using <code>--dangerously-skip-permissions</code> or a wide allowlist, which describes most of your scheduled jobs. Nothing to change on your side, but it is a reason to take the update rather than sit on 2.1.237.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.246</span>
+            <h3>Auto mode gets a tab in <code>/permissions</code>, and stops false-denying on big sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>You can now view and edit auto mode classifier rules from a dedicated tab in <code>/permissions</code>. Alongside it, auto mode tool calls that were being denied as "temporarily unavailable" on very large sessions now work: the safety-check deadline scales with prompt size instead of using a fixed budget.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The false denials hit exactly the sessions where auto mode earns its keep — long delivery sessions with a big loaded context. If you tried auto mode on a heavy Next.js refactor and it kept bailing, that was this bug, and it is worth retrying after the update.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>A third-party gateway API key was being sent to Anthropic's telemetry endpoint</h3>
+          </div>
+          <div class="story-body">
+            <p>When <code>ANTHROPIC_BASE_URL</code> pointed at a third-party gateway, telemetry and metrics requests to Anthropic carried the key configured for that gateway. Credentials are now only sent to the host they belong to.</p>
+            <p>Two related credential fixes landed in the same release: <code>apiKeyHelper</code> setups returning short-lived JWTs now refresh an expired cached token before sending instead of showing an API error on the first prompt after idle, and 401/403 auth errors retry quietly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action — you run against Anthropic directly, not through a gateway. Worth knowing if a client ever asks you to route Claude Code through their own proxy, because it is the kind of leak that shows up in a security questionnaire.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended and background runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>Two startup failure modes for background sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Background sessions failed to open after 45 seconds when Claude Code's starting directory had been deleted, when the machine had slept, or on a host slow to start processes. Separately they failed with "Couldn't start the background service … EACCES" when another Claude Code process happened to be reinstalling the npm package at that moment.</p>
+            <p>The sleep case is the interesting one for a laptop that runs scheduled work. A closed lid between the schedule firing and the session opening was enough.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the failure mode for your scheduled tasks on the Mac — the daily changelog scout, the vault refresh, the loose-ends sweep. Any of them that silently produced nothing on a day the machine had been asleep is explained by this. Update and stop debugging the launchd side.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>The background retention sweep removed git worktrees you created</h3>
+          </div>
+          <div class="story-body">
+            <p>Worktrees living under <code>.claude/worktrees/</code> that you made yourself were deleted by the background retention sweep whenever an old background-session record pointed at that path. The sweep did not distinguish between a worktree it had created and one you had.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant to the loop pattern you build on, where each fix lands in an isolated worktree. Until you update, keep any worktree holding uncommitted work outside <code>.claude/worktrees/</code>, and commit or push loop branches rather than leaving them parked in a worktree overnight.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.246</span>
+            <h3>Non-interactive sessions continue through a cut-off response</h3>
+          </div>
+          <div class="story-body">
+            <p><code>-p</code>, SDK, and cloud sessions now automatically continue a response cut off mid-stream by a server error, connection loss, or a stall. The previous behavior was to end the run with an error.</p>
+            <p>Two subagent behaviors improved alongside it. A subagent that hits its <code>maxTurns</code> limit now returns its output marked partial with a hint to continue it via <code>SendMessage</code>, instead of looking like it finished. And pressing ← or running <code>/background</code> during a dynamic workflow no longer silently restarts finished subagents — it asks first and tells you how many would restart.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>maxTurns</code> change matters most. Any pipeline of yours that reads a subagent's return value was being handed truncated output that looked complete, which is the worst kind of failure in an unattended job. After updating, check that anything consuming subagent results handles the partial marker.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>Interrupted MCP tool calls were reported to the model as successful</h3>
+          </div>
+          <div class="story-body">
+            <p>In headless and remote sessions, an MCP tool call interrupted by an incoming message was reported to the model as "completed with no output" rather than as an interruption. The model had no way to tell a tool that returned nothing from a tool that never ran. The same release fixes MCP tool arguments being sent as JSON strings when the parameter schema is empty (<code>{}</code>) instead of their real type, and a command interrupted mid-run showing as "Ran 1 shell command" with no indication it was cut short.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on MCP heavily — Supabase, Vercel, Gmail, the vault tooling. In a headless run this bug could have an agent conclude a write succeeded when it was interrupted. If any scheduled job has ever reported a clean run against state that did not actually change, this is a candidate explanation.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>Concurrent cloud launches from one repo could pick up each other's uncommitted changes</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/ultrareview</code> runs and cloud sessions started at the same time from a single repository — for example from several worktrees — sometimes began with another launch's uncommitted changes. Also fixed: the task progress count shown for background cloud sessions such as <code>/autofix-pr</code> occasionally dropped a task, and <code>--strict-mcp-config</code> sessions prompted to approve <code>.mcp.json</code> servers they would never load, which left background sessions stuck waiting at startup.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>--strict-mcp-config</code> hang is the one to note. A background session waiting on an approval prompt for a server it was never going to load looks identical to a hung job from the outside.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Throughput in the editor</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.246</span>
+            <h3><code>/cd</code> now loads the new directory's whole configuration</h3>
+          </div>
+          <div class="story-body">
+            <p>After a <code>/cd</code>, the destination's project settings, hooks, <code>.mcp.json</code> servers (still behind the usual approval prompt), skills, and agents take effect immediately. Previously you had to resume the session for them to apply.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the one quality-of-life win that fits how you actually work — one session, hopping between client repos. Moving from a Bisque repo to a Studio C repo now brings that project's skills and hooks with it instead of leaving you in the old project's config while sitting in the new project's files.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.246</span>
+            <h3>Long single lines and large file overwrites no longer wreck the session</h3>
+          </div>
+          <div class="story-body">
+            <p>A diff containing one very long line — a base64 string, a minified bundle, a lockfile blob — caused a severe transcript slowdown. Those lines now render truncated with a marker. The Write tool separately reported "Out of memory" or froze for a long stretch after overwriting a very large existing file, even though the write had already succeeded. Memory growth in the fullscreen and <code>Ctrl+O</code> transcript views is also fixed: each rendered row no longer holds a full copy of the transcript-wide tool lookups.</p>
+            <p>Bash tool latency improved as well, by replaying snapshot functions without spawning a base64 subshell per function.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The long-line fix is the one you will feel. Any session that touches a build output, an inlined data URI, or a generated migration was paying for it in scroll lag.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.246</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">The end-of-turn duration line now includes the completion time, e.g. <code>✻ Sautéed for 23s · done 6:05 PM</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fullscreen mode showed a blank transcript after a terminal resize until the next keypress, scrolled erratically when positioned at an earlier message, and moved keyboard focus onto whatever control was under the pointer when you clicked the window just to refocus it. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Markdown rendering was disabled for a whole message when its first 500 characters contained no markdown, and for <code>+</code>/<code>N)</code> lists and setext headings. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A batch of plugin bugs: duplicate SHA-named cache directories, doubled <code>plugin:</code> prefixes in the slash menu, <code>claude plugin update</code> failing on a bare name, install failing on a <code>plugin.json</code> with a UTF-8 BOM, <code>/reload-plugins</code> reporting 0 skills for <code>skills/*/SKILL.md</code> layouts, hook errors printing a literal <code>${CLAUDE_PLUGIN_ROOT}</code>, and <code>claude plugin install</code> exiting silently on an empty or corrupted <code>known_marketplaces.json</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/rename</code> replaced your theme's prompt border color with the default cyan, and custom theme diff colors were ignored in diffs and the <code>/theme</code> preview. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A <code>keybindings.json</code> entry with an unknown action name silently deadened that key. It is now skipped so the default binding still works, with a warning under <code>--debug</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/fork</code> from an already-forked or backgrounded session started the new session with an empty conversation. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompts beginning with <code>/--</code> were rejected as an unknown slash command instead of being sent to Claude. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>@</code> file picker stayed open after the typed text stopped matching a real path, and path completion failed when the token or working directory contained a null byte. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The status line's cost and duration reset to zero after visiting the agents view and coming back. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/stats</code> showed each day's activity one heatmap cell off in timezones east of UTC. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> stopped a just-started session whose worker was still booting (common on Windows), and listed a backgrounded named session twice; repeat backgrounding now numbers the row, e.g. <code>my-session (2)</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resumed sessions failed every turn with a 400 when the saved history contained tool blocks the Anthropic API does not accept, typically written by a third-party proxy. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The UI stopped with a render error on the first tool call when a third-party Anthropic-compatible endpoint streamed a <code>tool_use</code> block with no <code>id</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sessions that ended in plan mode resumed outside plan mode in the VS Code extension and in <code>claude -p --continue</code>/<code>--resume</code> with a permission prompt tool. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>Notification</code> hook did not fire while the sandbox "Network request outside of sandbox" prompt was waiting, and sandbox filesystem configuration ignored <code>--setting-sources</code>. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP tools marked <code>requiresUserInteraction</code> still offered "Yes, and don't ask again", which wrote an allow rule the tool then ignored. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control sessions kept a placeholder name in claude.ai and the Claude app until the second prompt. The generated title now appears after the first. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The self-hosted runner ended live sessions or exited when a work-poll response was malformed, such as an intercepting proxy's HTML page. It retries the poll now. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>curl -fsSL https://claude.ai/install.sh | bash</code> failed with "Raw mode is not supported" for some Team and Enterprise users with server-managed settings. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows and macOS headless sessions left stale entries in <code>~/.claude/sessions</code> after exiting uncleanly. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Claude can now start <code>/code-review</code> on its own on Bedrock, Vertex AI, and Foundry, through the Claude apps gateway, and with telemetry or non-essential traffic disabled. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>/goal</code> idle sessions now start at most three check-ins on long-running background work per goal; your next message allows three more. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>claude install</code> and <code>claude update</code> defer a pending managed-settings consent prompt to the next interactive session instead of prompting mid-command. <span class="ver">2.1.246</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">OpenTelemetry plugin events for claude.ai-synced plugins now report the plugin's real marketplace in <code>plugin_id_hash</code>, with <code>enabled_via</code> set to <code>admin-install</code> for admin-installed plugins. Usage telemetry attribution also improved for workload identity federation sessions. <span class="ver">2.1.246</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-26",
+    "title": "Your Bash allowlist probably matches more commands than you think, and 2.1.246 now warns you about it at startup.",
+    "summary": "One release since the last briefing, 61 entries, and the cluster worth your attention is about permissions: a startup warning for Bash allow rules with a wildcard before the subcommand, mandatory approval for malformed commands with a dangling operator, an Auto mode tab in /permissions, and a fix that stopped Claude Code from sending a third-party gateway API key to Anthropic telemetry.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-26.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
