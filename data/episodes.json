@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-26",
+    "title": "TSD Daily — Wednesday, August 26, 2026",
+    "summary": "Anthropic pitches IPO investors a thirty trillion dollar market, Moonshot negotiates Kimi K3 revenue sharing with the three US clouds, Next.js ships two critical remote code execution fixes a day early, consumer confidence hits a seven-month low ahead of Nvidia and PCE, and the day's best money move is a paid security patch sweep.",
+    "file": "audio/2026-08-26.mp3",
+    "durationSec": 390,
+    "bytes": 4684941
+  },
+  {
     "date": "2026-08-24",
     "title": "TSD Daily — Monday, August 24, 2026",
     "summary": "Treasury details its Iran sanctions package at 2 p.m. with gas at $4.09, the MCP roadmap rewrites how agents connect, a 27B model beats two frontier systems at paper replication, Vercel Sandbox goes multi-region, and Wednesday's critical Next.js patch plus Google's finished spam update give TSD two dated cold-call openings.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-15.mp3",
     "durationSec": 365,
     "bytes": 4381389
-  },
-  {
-    "date": "2026-06-14",
-    "title": "TSD Daily — Sunday, June 14, 2026",
-    "summary": "Anthropic overtakes OpenAI in US business adoption, a Supabase security cutover lands on the to-do list, the Fed meets this week, and Charlotte books another big HQ.",
-    "file": "audio/2026-06-14.mp3",
-    "durationSec": 343,
-    "bytes": 4122477
   }
 ]
