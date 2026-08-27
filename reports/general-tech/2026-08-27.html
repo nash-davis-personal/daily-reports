@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-27" />
+  <meta name="report:title" content="A Gitea remote-code-execution bug is being exploited with a federal patch deadline tomorrow, and OpenAI's own chip beat Blackwell on performance per watt" />
+  <meta name="report:summary" content="CVE-2026-60004, a 9.8-severity Gitea flaw that lets anyone with repository write access plant a Git hook and run shell commands as the Gitea service account, is being exploited in the wild to drop a crypto-miner payload; CISA added it to the Known Exploited Vulnerabilities catalog on August 25 and federal civilian agencies must remediate by August 28. A second Gitea flaw, CVE-2026-59774, lets unauthenticated attackers read arbitrary files including app.ini, and is fixed in 1.27.1. OpenAI presented first benchmark results for its Jalapeno inference chip at Hot Chips on August 25, claiming 1.5 to 1.9 times more compute per watt and 1.7 to 3.6 times lower latency than Nvidia Blackwell systems, with deployment in its own infrastructure planned by the end of 2026. Vercel made its Security Dashboard generally available and added routing rules for Python projects. Meta agreed to a settlement of up to $16.68 billion over teen-safety claims. Gatik raised a $200 million Series D for driverless middle-mile freight." />
+  <meta name="report:highlights" content="6" />
+
+  <title>A Gitea remote-code-execution bug is being exploited with a federal patch deadline tomorrow, and OpenAI's own chip beat Blackwell on performance per watt — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.helpnetsecurity.com/2026/08/26/gitea-cve-2026-60004-exploited-in-the-wild/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, August 27, 2026</span>
+        <span>◆</span><span>Patch first ◆ custom silicon ◆ platform changes on your stack</span>
+      </div>
+      <h1>A Gitea remote-code-execution bug is being exploited with a federal patch deadline tomorrow, and OpenAI's own chip beat Blackwell on performance per watt</h1>
+      <p class="standfirst">Two Gitea vulnerabilities are out, one of them actively exploited and on CISA's Known Exploited Vulnerabilities list with a federal remediation deadline of August 28. Elsewhere, OpenAI put numbers behind its first in-house inference chip, Vercel shipped a security dashboard and Python routing rules, and Meta agreed to pay up to $16.68 billion to close the teen-safety claims.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 26 – August 27, 2026</span>
+        <span>◆</span><a href="https://www.helpnetsecurity.com/2026/08/26/gitea-cve-2026-60004-exploited-in-the-wild/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9.8</div><div class="lbl">CVSS score of CVE-2026-60004, the Gitea RCE now exploited in the wild</div></div>
+      <div class="stat"><div class="num">1.9x</div><div class="lbl">Peak performance per kilowatt OpenAI claims for Jalapeño over Nvidia GB200 on GPT-OSS 120B</div></div>
+      <div class="stat"><div class="num">$16.68B</div><div class="lbl">Ceiling on Meta's teen-safety settlement, of which $12.7B flows to states over ten years</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Gitea today if you or a client runs it</h4><p>CVE-2026-60004 lets a user with ordinary repo write access plant an executable Git hook and run shell commands as the Gitea service account. Exploited in the wild, dropping a shell loader and a miner-like payload. CISA KEV since August 25, federal deadline August 28.</p></div>
+        <div class="signal"><div class="n">02</div><h4>A second Gitea flaw leaks app.ini to anyone</h4><p>CVE-2026-59774 is an unauthenticated arbitrary file read in the markup-rendering endpoint, affecting 1.22.1 through 1.27.0 and fixed in 1.27.1. Targets include app.ini, OAuth credentials, JWT secrets and database settings.</p></div>
+        <div class="signal"><div class="n">03</div><h4>OpenAI's Jalapeño chip posted real benchmark numbers</h4><p>At Hot Chips on August 25, OpenAI showed 1.5–1.9x more compute per watt and 1.7–3.6x lower latency than Nvidia Blackwell on SemiAnalysis's InferenceX benchmark. Deployment into OpenAI's own fleet is planned by the end of 2026.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel's Security Dashboard went GA</h4><p>Centralized security monitoring across all projects, plus routing rules for Python projects, so FastAPI, Django and Flask apps can change response headers and request rewrites without a redeploy. Both in the August 26 changelog.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Meta settled the teen-safety claims for up to $16.68 billion</h4><p>$12.7 billion to states over ten years, $5.3 billion contingent on YouTube and TikTok adopting similar limits. Product changes include a two-hour daily cap for under-18 accounts, a midnight–6am block, school-hour notification muting and stronger age verification.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Driverless freight raised $200 million</h4><p>Gatik's Series D was led by Qatar Investment Authority with Koch Disruptive Technologies, Millennium, ARK Invest and Intact Private Capital. The company reports 85,000 fully driverless orders completed and $600 million in contracted revenue.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">CVE-2026-60004 ◆ Aug 26</span>
+            <h3>A Gitea RCE went from disclosure to active exploitation in under a month</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-60004 carries a CVSS of 9.8. An attacker holding ordinary write access to any repository can plant an executable Git hook and run arbitrary shell commands with the privileges of the Gitea service account. Observed attacks execute inside the Gitea container as the <code>git</code> user, first writing a proof of code execution back into a Git branch, then pulling a universal shell loader followed by a crypto-miner-style dropper.</p>
+            <p>CISA added the flaw to its Known Exploited Vulnerabilities catalog on August 25 and told federal civilian agencies to remediate by August 28. Separately, CVE-2026-59774 is an unauthenticated arbitrary file read in the repository markup-rendering feature, reachable by sending a crafted request to <code>POST /{owner}/{repo}/markup</code> on any suitable public repo. It affects Gitea 1.22.1 through 1.27.0, is fixed in 1.27.1, and the useful targets are exactly the ones you would guess: <code>app.ini</code>, deployment metadata, OAuth credentials, JWT secrets and database settings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You are on GitHub, so your own repos are fine. The exposure is client-side: any SMB you inherited that self-hosts Gitea on a VPS, and any legacy box a previous developer left running. Spend fifteen minutes today — grep your client notes for "gitea", and for anyone running it, upgrade to 1.27.1 or later, then rotate every credential in <code>app.ini</code> on the assumption the file already leaked. Write-access-equals-shell means a contractor account from three years ago is a live foothold. This is also a free, non-salesy reason to email dormant clients, and those emails start more retainer conversations than a newsletter does.</div>
+          <div class="refs"><a href="https://www.helpnetsecurity.com/2026/08/26/gitea-cve-2026-60004-exploited-in-the-wild/" target="_blank" rel="noopener">Help Net Security — CVE-2026-60004 exploited in the wild</a> ◆ <a href="https://thehackernews.com/2026/08/critical-gitea-rce-actively-exploited.html" target="_blank" rel="noopener">The Hacker News — miner-like payload dropped</a> ◆ <a href="https://cybersecuritynews.com/gitea-arbitrary-file-read-vulnerability/" target="_blank" rel="noopener">Cybersecurity News — CVE-2026-59774 arbitrary file read</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack moved</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Aug 26, 2026</span>
+            <h3>Security Dashboard is generally available, and Python projects got routing rules</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's August 26 changelog carries six entries. The Security Dashboard reached general availability, giving one view of security posture across every project on the account. Python projects — FastAPI, Django, Flask — gained routing rules, so response headers and request rewrites can be changed without redeploying.</p>
+            <p>The other four entries are model additions to AI Gateway: Meta's Muse Image, Gemini 3.5 Transcribe, Qwen 3.8 Flash and GLM 5.3 Flash, all behind a single API key with automatic fallbacks and spend tracking. That follows August 25, when Speed Insights got a free tier on every plan and Vercel confirmed hosted apps were protected from the August Next.js vulnerabilities.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open the Security Dashboard once for every project you host and screenshot the result. That screenshot is the cheapest possible artifact for a Managed AI retainer check-in, and it costs you one click per client per month. The Python routing rules matter if you have been keeping transcription or media jobs on a separate box — a small FastAPI service on Vercel is now closer to a first-class citizen, which removes one reason to pay for a second host.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — August 26, 2026</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and the money behind it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Chips</span>
+            <span class="ver">Aug 25–26, 2026</span>
+            <h3>OpenAI's Jalapeño beat Blackwell on performance per watt, with an asterisk</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI presented the first public results for its in-house inference accelerator at Hot Chips on August 25, measured on SemiAnalysis's InferenceX benchmark, which scores throughput, power draw and latency across the full request pipeline rather than raw FLOPs. The headline claims are 1.5 to 1.9 times more compute per watt and 1.7 to 3.6 times lower latency than Nvidia Blackwell systems. On GPT-OSS 120B the chip delivered 85,448 mixed TPS per kilowatt against 44,960 for a GB200.</p>
+            <p>The asterisk is memory. Jalapeño uses HBM4 and Blackwell does not, so analysts noted the fair comparison is Nvidia's Rubin platform, which also uses HBM4. OpenAI says it will start deploying the chip in its own infrastructure by the end of 2026, and has said it keeps buying from Nvidia regardless.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Watts per token is becoming the unit that sets your API bill, and every major buyer is now building silicon to escape one vendor's margin. For you that means inference prices keep drifting down and you should not sign a client to a multi-year fixed price with today's token cost baked in. Price retainers on outcomes — calls answered, bookings captured — and let falling inference cost widen your margin instead of triggering a renegotiation.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/08/26/openai-jalapeno-ai-chip-nvidia.html" target="_blank" rel="noopener">CNBC — OpenAI's Jalapeño chip and Nvidia margins</a> ◆ <a href="https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia" target="_blank" rel="noopener">SemiAnalysis — InferenceX results</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Legal</span>
+            <span class="ver">Aug 26, 2026</span>
+            <h3>Meta agreed to pay up to $16.68 billion and to cap teen usage by default</h3>
+          </div>
+          <div class="story-body">
+            <p>The settlement resolves claims that Facebook and Instagram were designed to keep teenagers engaged. $12.7 billion goes to states over ten years for youth safety programs, and a further $5.3 billion is contingent on YouTube and TikTok adopting comparable limits — an unusual structure that makes part of the payment depend on competitors' behavior.</p>
+            <p>The product commitments are the operative part: a two-hour daily cap for under-18 accounts, blocked usage between midnight and 6am, muted notifications during school hours, and stronger age verification.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Stronger age verification on the two biggest ad platforms means reach among under-18 audiences gets noisier and more expensive to target. That barely touches your book, which is trades, salons and specialty retail selling to adults. What does touch you is precedent: default-on protective settings and verifiable age signals are heading toward any site with accounts. If you build a client portal, put a date-of-birth field and a sane default in the schema now rather than migrating it later.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/" target="_blank" rel="noopener">Tech Startups — daily roundup, August 26, 2026</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Machines that move</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Aug 26, 2026</span>
+            <h3>Gatik raised $200 million for driverless middle-mile freight</h3>
+          </div>
+          <div class="story-body">
+            <p>The Series D was led by the Qatar Investment Authority, joined by Koch Disruptive Technologies, Millennium Management, ARK Invest and Intact Private Capital. Gatik runs driverless box trucks on fixed short-haul routes between distribution centers and stores, and reports 85,000 fully driverless orders completed against $600 million in contracted revenue.</p>
+            <p>Alongside it, XPeng's robotics unit closed more than $900 million at a post-money valuation above $6.3 billion, led by IDG Capital with Tencent and Alibaba as strategic investors — the largest single private round in China's embodied-AI sector, with IRON humanoid mass production targeted for the end of 2026. Nvidia also introduced the Jetson Orin Nano 2 for on-device AI in drones and small robots.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Contracted revenue on fixed repeatable routes is why Gatik is fundable while general autonomy is not — narrow scope, same route every day, measurable. That is the exact argument for how you should scope TSD Front Desk: one repeated job done reliably beats a general assistant that occasionally impresses. Sell the narrow version, name the routes it runs.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/08/26/startup-funding-news-today-august-26-2026-emerald-ai-gatik-stellaria-more/" target="_blank" rel="noopener">Tech Startups — Gatik $200M Series D</a> ◆ <a href="https://www.prnewswire.com/news-releases/xpeng-robotics-business-raises-over-us900-million-at-a-post-money-valuation-of-over-us6-3-billion-accelerating-physical-ai-deployment-302858203.html" target="_blank" rel="noopener">PR Newswire — XPeng robotics raises $900M+</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Delay</span><span class="txt">Waymo's London robotaxi launch is slipping past 2026 while it waits on guidance from Transport for London; safety-driver pilots first, UK government targeting broader deployments in 2027. <span class="ver">Aug 26</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Samsung's Galaxy event runs today at 8am ET, with the Galaxy S26 FE expected — 6.7-inch AMOLED at 120Hz, Exynos 2500. <span class="ver">Aug 27</span></span></li>
+            <li><span class="tag feature qh-tag">Partnership</span><span class="txt">Microsoft is working with Saudi Arabia's HUMAIN to bring ALLAM Arabic-language models into Microsoft Foundry and Copilot; no launch date yet. <span class="ver">Aug 26</span></span></li>
+            <li><span class="tag improve qh-tag">Earnings</span><span class="txt">Marvell reports fiscal Q2 after today's close — consensus around $2.71B, up 35% year over year, with custom AI silicon and optical interconnect the growth line to watch. <span class="ver">Aug 27</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
