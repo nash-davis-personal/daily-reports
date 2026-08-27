@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-27" />
+  <meta name="report:title" content="2.1.247 ships a Claude API cost audit you can bill for, and fixes the two failures most likely to wedge an unattended run." />
+  <meta name="report:summary" content="One release since the last briefing, 33 entries: a new /claude-api cost-optimize command that profiles a project's Claude API spend, fixes for a hook dumping megabytes of output that could wedge a session on Prompt is too long and for sub-agents dying on a first-call model 404, Sonnet 5 auto-compacting at its full 1M window, and a new SendFeedback tool that lets Claude draft feedback reports." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.247 ships a Claude API cost audit you can bill for, and fixes the two failures most likely to wedge an unattended run. — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, August 27, 2026</span>
+        <span>◆</span><span>1 release ◆ 2.1.247</span>
+      </div>
+      <h1>2.1.247 ships a Claude API cost audit you can bill for, and fixes the two failures most likely to wedge an unattended run.</h1>
+      <p class="standfirst">The headline item is <code>/claude-api cost-optimize</code>, which profiles an existing project's Claude API spend and works through the levers — caching, token hygiene, batch, effort, model choice — one measured change at a time. Underneath it are two reliability fixes that matter more than they read: a hook or background agent printing megabytes of error output could overflow the conversation and wedge the session on "Prompt is too long", and a sub-agent that got a 404 on its first model call simply died instead of falling back. The rest of the 33-entry release is hardening around untrusted text and a long tail of terminal fixes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers everything published since the 2026-08-26 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">33</div><div class="lbl">Entries in 2.1.247</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since the last briefing</div></div>
+      <div class="stat"><div class="num">2.1.237</div><div class="lbl">Your local version, 10 releases back</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4><code>/claude-api cost-optimize</code> turns a spend audit into a repeatable engagement</h4><p>It profiles an existing project's Claude API spend and walks the cost levers — caching, token hygiene, batch, effort, model choice — one measured change at a time.</p></div>
+        <div class="signal"><div class="n">02</div><h4>A noisy hook can no longer wedge a session on "Prompt is too long"</h4><p>A hook or background agent that printed megabytes of error output could overflow the conversation and kill the run. Separately, unbounded memory growth when a hook's output file could not be written is also fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Sub-agents survive a first-call model 404</h4><p>They now use the session's fallback model chain, and the error handed back to the parent includes the error type, status, request id, and model.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Sonnet 5 now auto-compacts at its full 1M window</h4><p>Sessions on the 1M context auto-compact at roughly 967K tokens instead of roughly 934K — about 33K more working room before a summarization.</p></div>
+        <div class="signal"><div class="n">05</div><h4>New <code>SendFeedback</code> tool: Claude can draft feedback reports about its own session</h4><p>When something goes wrong, Claude drafts a report for you to review and send from <code>/feedback</code>. Turn it off with the <code>feedbackDrafts</code> setting.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Terminal hyperlinks in rendered markdown get defanged</h4><p>Link targets pointing at a network or automounter path, containing a control character, or leading with an invisible character now render as plain text.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs now fail loudly instead of quietly</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.247</span>
+            <h3>A hook or background agent dumping megabytes of error output could overflow the conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>The output went into the conversation, the conversation blew past the context limit, and the session wedged on "Prompt is too long". A related fix stops unbounded memory growth when a hook's or background task's output file could not be written — the file now notes where the output was lost.</p>
+            <p>This is the failure mode of a long unattended run, and it does not announce itself. A hook that starts erroring at 2am takes the whole run down with it, and what you find in the morning is a stuck session rather than a stack trace.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the single best argument in the release for upgrading before your next overnight scheduled task. Your loops run hooks and background agents unattended with nobody watching the output; a noisy failure in one of them was previously enough to kill the run silently.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.247</span>
+            <h3>Sub-agents died on a first-call model 404 instead of falling back</h3>
+          </div>
+          <div class="story-body">
+            <p>A sub-agent whose first model call returned a 404 just died. It now uses the session's fallback model chain, and the error returned to the parent carries the error type, status, request id, and model, so a failure is diagnosable rather than a blank.</p>
+            <p>The 404 case shows up when an agent definition pins a model that is retired, misspelled, or unavailable on the account — which is exactly the kind of thing that only surfaces months after you wrote the agent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth a pass over the <code>model:</code> frontmatter in your custom agents anyway, since the fallback chain now hides a pinned model that no longer exists rather than failing. The richer error payload also means a fan-out that comes back short now tells you which agent broke and why.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.247</span>
+            <h3>Cloud sessions went silent when the container restarted mid-run</h3>
+          </div>
+          <div class="story-body">
+            <p>If the session's container restarted between turns while a background agent, shell, or monitor was still running, the session went quiet. The resumed session now reports the work that was lost. A companion fix stops a background session from showing "opening…" forever in <code>claude agents</code> after its terminal host process died — the row now fails within seconds with a reason, and Enter restarts it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both failures looked identical from the outside — a session that appears to be working and is not. If you kick off Claude Code on the web or the desktop app and walk away, you now get told when the work vanished instead of coming back to an idle screen.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cost, context, and the <code>/claude-api</code> skill</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.247</span>
+            <h3><code>/claude-api cost-optimize</code> profiles a project's spend and works the levers one at a time</h3>
+          </div>
+          <div class="story-body">
+            <p>The new command profiles an existing project's Claude API spend and works through cost levers — caching, token hygiene, batch, effort, model choice — one measured change at a time. The "one measured change at a time" framing is the useful part: it produces a before-and-after per lever instead of a pile of simultaneous edits you cannot attribute.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a packaged engagement. Any client with an AI feature in production has an API bill nobody has audited, and a per-lever before-and-after is the artifact that justifies the invoice. Run it against your own builds first so you have a real number to quote from before you sell it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.247</span>
+            <h3>The <code>/claude-api</code> skill picked up Admin API coverage</h3>
+          </div>
+          <div class="story-body">
+            <p>Organization members, invites, workspaces, API keys, rate limit reports, workload identity federation, and CMEK are now covered by the skill.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Mostly matters at the point where a client wants their own Anthropic org rather than billing through yours. Workspaces and per-workspace API keys are how you keep one client's spend separated from another's, and rate limit reports are how you answer "why did it get slow" without guessing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.247</span>
+            <h3>Sonnet 5's default auto-compact window moved up to the full 1M context</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions on the 1M window now auto-compact at about 967K tokens instead of about 934K. The old threshold left roughly 33K tokens of the window unused.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Small but free. Each auto-compact is a lossy summarization, and pushing the trigger later means fewer of them in a long delivery session — which is where compaction actually costs you, since the details that get dropped are the ones from early in the build.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> A new agent-written surface, and the permissions thread continues</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.247</span>
+            <h3><code>SendFeedback</code>: Claude drafts a feedback report when a session goes wrong</h3>
+          </div>
+          <div class="story-body">
+            <p>When something goes wrong in a session, Claude can draft a feedback report for you to review and send from <code>/feedback</code>. The <code>feedbackDrafts</code> setting turns it off.</p>
+            <p>You review before it sends, so nothing leaves without you. Worth knowing the setting exists regardless, since a feedback report drafted from a session is a summary of what was in that session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Decide the default now rather than the first time it fires during client work. If you are in a Bisque or Sonderwerks repo when a session breaks, read the draft before sending it — that is the moment a client's code or config would go out in a bug report.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.247</span>
+            <h3>Bash permission prompts now offer a one-keystroke switch to auto mode</h3>
+          </div>
+          <div class="story-body">
+            <p>The prompt carries a tip pointing at auto mode with a "Yes, and switch to auto mode" option. This picks up directly from yesterday's release, which added the Auto mode tab to <code>/permissions</code> and started warning about Bash allow rules with a wildcard before the subcommand.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Convenient, and it is a one-keystroke widening of what runs without asking. Take the shortcut in a scratch repo; in a client repo, go through <code>/permissions</code> deliberately — especially given yesterday's warning that your existing allow rules match more than they look like they do.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardening around text you did not write</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.247</span>
+            <h3>Terminal hyperlinks in rendered markdown are now defanged when the target looks wrong</h3>
+          </div>
+          <div class="story-body">
+            <p>Link targets that point at a network or automounter path, contain a control character, or lead with an invisible character render as plain text instead of a clickable terminal hyperlink.</p>
+            <p>The attack this closes is a link whose visible text says one thing and whose target says another, arriving through content Claude read rather than content you wrote.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant every time an agent renders scraped pages, MCP tool output, or a client's own docs. A link that suddenly renders as plain text in your terminal is now a signal worth reading, rather than a rendering glitch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.247</span>
+            <h3>Plugin marketplace names with control or invisible characters are rejected</h3>
+          </div>
+          <div class="story-body">
+            <p>Marketplace names containing control or invisible characters are refused outright, and marketplace-supplied text in <code>/plugin</code> and <code>claude plugin</code> output is now escape-safe. Both are aimed at a marketplace entry that renders as something other than what it is.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You install plugins from marketplaces you did not audit. This does not make a third-party plugin safe; it stops one from lying about its name in the install prompt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.247</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fast arrow-key + Enter sequences acted on the row above the one you navigated to, in history search, <code>/config</code>, <code>/mcp</code>, <code>/skills</code>, background tasks, and <code>/model</code> <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/compact</code> and "Summarize from here" in sessions started with <code>--agent</code> summarized under the default system prompt instead of the conversation's own <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Bash sandbox's after-command cleanup deleted a dotfile-managed <code>~/.claude/settings.json</code> symlink (nix/home-manager, stow) when repointed outside the sandbox's writable area <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/terminal-setup</code> overwrote your entire Zed <code>keymap.json</code> instead of merging in its keybinding <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/rename</code> silently confirmed when the session registry could not be updated; it now says other sessions may still show the old name <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Ctrl keyboard shortcuts did not fire under non-Latin (e.g. Cyrillic) layouts in kitty-protocol terminals <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Text like <code>&lt;35;150;7M</code> was inserted into the prompt when a mouse report arrived split across reads right after the escape prefix <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A version-less marketplace plugin's live cache directory was deleted and recreated on a second-scope install, which could disrupt a running session using it <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control sessions started with <code>/remote-control</code> did not report the working-tree diff to connected clients <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Shell commands carried over from the foreground logged an internal error or a misleading <code>[exited with code -1]</code> when finishing in background sessions <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/install-github-app</code> over SSH now says how the sign-in URL was copied instead of always claiming success, and shows the URL immediately when no browser can open <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions sometimes showed the previous permission mode when you switch modes right after sending a message <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner sessions reported <code>running</code> before Claude Code had started, triggering a premature "Claude is waiting for your input" notification <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">First-run setup exited with "Unable to connect to Anthropic services" when managed settings configure Claude apps gateway sign-in and Anthropic endpoints are unreachable <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Bedrock, Vertex, and Foundry sessions (and any with telemetry disabled) are now told when a configured MCP server failed to connect, instead of concluding its tools do not exist <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Cross-session peer messages collapse by default to a one-line <code>Message from @&lt;sender&gt;</code> preview; Ctrl+O expands the full body <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The prompt-footer PR badge skips its GitHub re-check on terminal refocus when the last check is under a minute old <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Analytics stay off from startup, not only after login, when managed settings force gateway login or a custom OAuth deployment is configured <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Claude apps gateway sign-in requests now identify Claude Code via a <code>surface=claude_code</code> device-authorization parameter and a <code>claude-code/&lt;version&gt;</code> User-Agent <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Organization sign-in enforcement exits at start when the administrator's managed settings cannot be read, even if host-supplied or per-user Windows registry settings exist <span class="ver">2.1.247</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt"><code>spinnerTipsOverride</code> gained <code>{id, text, cooldownSessions, priority}</code> entries, <code>tipsFile</code>, and <code>label</code>, so organizations can rotate their own tips alongside the built-in ones <span class="ver">2.1.247</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

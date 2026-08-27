@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-27",
+    "title": "2.1.247 ships a Claude API cost audit you can bill for, and fixes the two failures most likely to wedge an unattended run.",
+    "summary": "One release since the last briefing, 33 entries: a new /claude-api cost-optimize command that profiles a project's Claude API spend, fixes for a hook dumping megabytes of output that could wedge a session on Prompt is too long and for sub-agents dying on a first-call model 404, Sonnet 5 auto-compacting at its full 1M window, and a new SendFeedback tool that lets Claude draft feedback reports.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-27.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
