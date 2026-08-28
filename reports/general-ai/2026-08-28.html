@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-08-28" />
+  <meta name="report:title" content="Tencent open-sourced a 770B model under Apache 2.0, and Claude stopped borrowing your browser" />
+  <meta name="report:summary" content="Tencent Hunyuan released and open-sourced Hy4 preview on August 28: 770B total parameters, 49B active, 78 layers, a 1M-token context, Apache 2.0 weights on Hugging Face, and self-reported scores of 92.3 on GPQA Diamond and 65.7 on SWE-Bench Pro, priced at $0.834 per million input tokens and $2.501 per million output on Tencent Cloud TokenHub and OpenRouter. Anthropic shipped two things on August 27: a Chromium browser built into the Claude desktop app that runs in its own profile away from your tabs and passwords, and a research preview of the Model Hardware Standard, a model-agnostic spec that lets agents drive microscopes, liquid handlers and robot arms over MCP with AWS, Tecan, Automata and Universal Robots signed on. More than 100 companies including OpenAI, Anthropic, Google, Microsoft, CrowdStrike and Okta signed an open letter warning that AI-enabled attacks on critical infrastructure are about to scale. Vercel put Inclusion AI's finance-tuned Ling 3.0 Flash Fin on the AI Gateway free through September 25." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Tencent open-sourced a 770B model under Apache 2.0, and Claude stopped borrowing your browser — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Friday, August 28, 2026</span>
+        <span>◆</span><span>Open weights ◆ agents get hands ◆ the cyber letter</span>
+      </div>
+      <h1>Tencent open-sourced a 770B model under Apache 2.0, and Claude stopped borrowing your browser</h1>
+      <p class="standfirst">Hy4 preview is the third cheap Chinese open-weight release in three days and the most capable of them: 770B total parameters, 49B active, a million-token context, and a permissive license. Anthropic spent the same 24 hours giving agents two new surfaces to act on, a browser inside the desktop app and a hardware spec for lab and factory equipment.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 27 – August 28, 2026</span>
+        <span>◆</span><a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">770B</div><div class="lbl">Total parameters in Hy4 preview, 49B active per token, Apache 2.0 on Hugging Face</div></div>
+      <div class="stat"><div class="num">$0.83</div><div class="lbl">Per million input tokens for Hy4 preview, against $2.50 out and $0.042 on a cache hit</div></div>
+      <div class="stat"><div class="num">100+</div><div class="lbl">Companies signing the August 27 open letter on AI-enabled attacks against critical infrastructure</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hy4 preview is the open frontier now</h4><p>770B total, 49B active, 78 layers, 256 routed experts, 1M context, Apache 2.0. Tencent's own card reports 92.3 on GPQA Diamond, 65.7 on SWE-Bench Pro and 64.3 on DeepSWE. Weights are on Hugging Face and the API is already on OpenRouter.</p></div>
+        <div class="signal"><div class="n">02</div><h4>It is priced like a mid-tier model</h4><p>$0.834 per million input, $2.501 per million output, $0.042 on a cache hit through Tencent Cloud TokenHub. Free for two weeks inside Tencent's own WorkBuddy and CodeBuddy products.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Claude has its own browser now</h4><p>A Chromium browser is built into the Claude desktop app and opens in a side panel when a task needs the web. It runs in a separate profile with no access to your tabs, bookmarks or saved passwords, and logins are imported one site at a time, with banking and email excluded.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Anthropic published a hardware spec for agents</h4><p>The Model Hardware Standard is a model-agnostic specification that lets an agent drive microscopes, liquid handlers and robot arms over MCP. AWS, Tecan, Automata and Universal Robots are adding support. Anthropic says integration drops from weeks to hours and it intends to open-source the spec.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The industry signed a letter about its own product</h4><p>More than 100 companies including OpenAI, Anthropic, Google, Microsoft, CrowdStrike, Okta and Fortinet warned that AI-enabled attacks on hospitals, water systems and internet infrastructure will get more common and more sophisticated as models improve, and asked for coordinated public and private defense.</p></div>
+        <div class="signal"><div class="n">06</div><h4>A finance-tuned model is free on Vercel until September 25</h4><p>Inclusion AI's Ling 3.0 Flash Fin landed on the AI Gateway with a 256K context, 32K output, reasoning and function calling. The <code>-free</code> model ID costs nothing through September 25 and then stops serving instead of quietly billing you.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The open-weight frontier moved again, and it is permissively licensed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model release</span>
+            <span class="ver">Aug 28, 2026</span>
+            <h3>Tencent released and open-sourced Hy4 preview: 770B parameters, 1M context, Apache 2.0</h3>
+          </div>
+          <div class="story-body">
+            <p>Tencent Hunyuan published Hy4 preview this morning as an open-weight model. The architecture is a mixture of experts: 770B total parameters with 49B active per token, 78 layers where the first is a dense feed-forward block and the remaining 77 route across 256 experts plus one shared expert, gated sparse attention with a cross-layer index cache, a 120,832-token vocabulary and a context window past one million tokens. The model card on Hugging Face lists Apache 2.0, which is the permissive end of the license range and materially different from the custom community licenses that have shipped with several other large open releases.</p>
+            <p>Tencent's self-reported numbers put it at the top of the open pack: 92.3 on GPQA Diamond, 65.7 on SWE-Bench Pro, 64.3 on DeepSWE and 82.9 on SWE-Bench Multilingual. The company also ran an internal blind evaluation with 163 domain experts across 203 engineering tasks, scoring Hy4 preview at 2.99 out of 4.00 against 2.92 for GLM-5.3 and 2.94 for Kimi K3. Treat that last one as vendor-run and directional. The API is live on Tencent Cloud TokenHub and OpenRouter at $0.834 per million input tokens, $2.501 per million output and $0.042 on a cache hit, and it is free inside Tencent's WorkBuddy and CodeBuddy for two weeks. Tencent's own write-up says the model contributed to its own development, proposing approaches and iterating on experiment results.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Apache 2.0 at this capability level changes what you can promise a client. A custom community license makes a lawyer at a mid-sized business nervous and forces you into a hosted API; Apache 2.0 means you can quote self-hosting or on-prem for a client with data-residency worries and not be lying about the license terms. Practically, this belongs in the same routing tier you already use for cheap long-context work. Point one non-critical job at it through OpenRouter this weekend, a RAG summarization pass or a bulk classification run, and measure cost per completed job against your current default. The 1M context and the $0.042 cache-hit price are where the savings are, so structure the prompt with a big stable prefix.</div>
+          <div class="refs"><a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener">Tencent — Tencent releases and open-sources Hy4 preview</a> ◆ <a href="https://huggingface.co/tencent/Hy4-preview" target="_blank" rel="noopener">Hugging Face — tencent/Hy4-preview model card</a> ◆ <a href="https://openrouter.ai/tencent/hy4-preview" target="_blank" rel="noopener">OpenRouter — Hy4 preview pricing and providers</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Anthropic gave agents two new surfaces to act on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Product</span>
+            <span class="ver">Aug 27, 2026</span>
+            <h3>Claude ships its own browser inside the desktop app</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic built a Chromium browser directly into the Claude desktop app on Mac, Windows and Linux. When a task needs the web, the browser opens in a side panel and Claude loads pages, reads them, clicks and types, which lets it work against portals that have a login screen and no API. It replaces the Chrome extension for that job.</p>
+            <p>The isolation model is the part worth reading closely. The browser runs separately from your own, so Claude cannot see your tabs, bookmarks or saved passwords. Logins move over one site at a time from Chrome, Edge or Firefox, and banking and email sites are excluded from that import. It is on by default for Enterprise, Pro, Max and Team, with a setting to turn it off, and it rolled out to Enterprise first with the other tiers following this week.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This kills a category of "we can't automate that" objections. Half your SMB prospects run something with a web portal and no API: a scheduling system, a supplier ordering site, a state licensing board, an old property-management dashboard. You can now demo Claude filling that form or pulling those numbers without asking the client to install a browser extension, which was always the awkward part of that conversation. Pick one existing client with a portal they hate, record a 90-second screen capture of Claude doing the boring part, and send it. That clip is worth more than any deck. Note the guardrail when you pitch it: separate profile, no access to their real browser, banking and email off the table. Say it out loud, because it is the first question they will ask.</div>
+          <div class="refs"><a href="https://the-decoder.com/claude-cowork-now-runs-its-own-browser-inside-the-desktop-app/" target="_blank" rel="noopener">The Decoder — Claude Cowork now runs its own browser inside the desktop app</a> ◆ <a href="https://thenewstack.io/claude-built-in-browser-cowork/" target="_blank" rel="noopener">The New Stack — Anthropic's Claude now has a browser of its own</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Standard</span>
+            <span class="ver">Aug 27, 2026</span>
+            <h3>The Model Hardware Standard lets agents drive lab and factory equipment over MCP</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic opened the first phase of a research preview for the Model Hardware Standard, a shared specification for AI agents to operate physical devices, starting with scientific research labs and advanced manufacturers. It works with any device that exposes a programmable interface, it is model-agnostic, and agents reach it through standard protocols including the Model Context Protocol. Anthropic describes agents running several instruments in parallel, microscopes, liquid handlers and robotic arms, reasoning through each step, updating parameters mid-run and recovering from some hardware errors without a human.</p>
+            <p>The claimed benefit is integration time falling from weeks or months to hours or minutes. AWS is supporting it through Strands Robots, Automata is adding it to its LINQ lab automation platform, Tecan is adding it for Fluent liquid handlers and Universal Robots plans support on its robotics platform. Anthropic says it eventually intends to open-source the standard so any device manufacturer in any industry can adopt it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not a this-quarter revenue line, and worth watching anyway, because it is the same play that made MCP useful to you. Anthropic writes a spec, vendors implement it, and suddenly a category of integration you would have quoted at 40 hours becomes a config file. If MHS goes the way MCP did, the version of this that matters to a Charlotte business is equipment telemetry: a shop with CNC machines, a lab, a print operation, anything with a programmable controller and no software layer on top of it. File it, and check back when the spec is open-sourced. That is the moment the SMB opportunity actually opens.</div>
+          <div class="refs"><a href="https://www.anthropic.com/news/model-hardware-standard-research-preview" target="_blank" rel="noopener">Anthropic — Previewing the Model Hardware Standard</a> ◆ <a href="https://www.cnbc.com/2026/08/27/anthropic-pushes-into-physical-world-with-new-standard-to-help-ai-agents-operate-machines.html" target="_blank" rel="noopener">CNBC — Anthropic pushes into the physical world</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The industry asked for help with the problem it is shipping</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">Aug 27, 2026</span>
+            <h3>More than 100 companies signed an open letter on AI-enabled cyber attacks</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI, Anthropic, Google and Microsoft joined more than a hundred other companies, including CrowdStrike, Okta and Fortinet along with financial institutions and internet infrastructure firms, on an open letter warning that AI-enabled cyber attacks "will become far more widespread and sophisticated as models around the world become increasingly capable." The letter names hospitals, water treatment plants and internet systems as the exposed surface, and asks for new defensive tooling, new cross-industry partnerships, and coordination between governments at local, national and international levels.</p>
+            <p>The letter arrives a day after OpenAI's own report on evaluation agents breaching Hugging Face infrastructure, and alongside the defensive products the same signatories sell: OpenAI's Daybreak, Anthropic's Mythos and Microsoft's Perception. TechCrunch's coverage points at the obvious tension, which is that the companies building the capability are also the ones selling the countermeasure.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the top-of-funnel argument for the security review you should already be selling. When four of the largest AI companies in the world put their names on a document saying attacks are about to scale, you no longer have to make that case yourself in a sales conversation; you cite it and move to the fix. Pair it with yesterday's actively exploited CVEs and you have a two-paragraph cold email for Grant and Bishop that opens with a headline the prospect has probably already seen. Keep the ask small and fixed-fee. The retainer is the follow-on.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/27/openai-anthropic-google-and-100-other-companies-call-for-action-to-defend-against-rogue-ai/" target="_blank" rel="noopener">TechCrunch — OpenAI, Anthropic, Google and 100 other companies call for action</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The ship-it layer</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Gateway</span>
+            <span class="ver">Aug 27–28, 2026</span>
+            <h3>Vercel added a free finance model, Cursor in the harness layer, and a Managed Agents recipe</h3>
+          </div>
+          <div class="story-body">
+            <p>Three entries worth knowing. Inclusion AI's Ling 3.0 Flash Fin is on the AI Gateway free through September 25, a finance-tuned variant with a 256K context, up to 32K output tokens, reasoning and function calling. The free model ID is <code>inclusionai/ling-3.0-flash-fin-free</code>, and Vercel notes it returns an error after the offer ends instead of silently switching you to paid, which is the correct design for a promo.</p>
+            <p>Cursor is now available in the AI SDK harness layer through <code>@ai-sdk/harness-cursor</code> using the HarnessAgent interface. And today Vercel published a walkthrough for running Claude Managed Agents with the Chat SDK, building a Slack research bot with one persistent session per thread, streamed briefs with sources, and no Slack credentials to manage yourself.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Managed Agents plus Chat SDK recipe is the one to actually read this weekend. A Slack research bot with a persistent session per thread and no credential handling is roughly the shape of an internal-knowledge assistant you could sell to any client with more than ten employees, and Vercel has done the plumbing. The Ling free window is a cheap way to test a finance or bookkeeping-flavored feature for a month at zero token cost, though a free tier that expires September 25 is a prototype budget rather than a production dependency, so do not put a client on it.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — August 27–28, 2026</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items and one we missed</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">Skild AI released S1, a robot foundation model that learns a task from a single human video with no fine-tuning, hitting 66% success on unseen tasks against 9% for an equivalent language-prompted policy, on horizons up to ten minutes. Skild estimates one video prompt is worth roughly 380 task-specific demonstrations. <span class="ver">Aug 25 — outside our window, and too big to skip</span></span></li>
+            <li><span class="tag improve qh-tag">Compute</span><span class="txt">Nvidia Groq 3 LPX, the inference accelerator that extends the Vera Rubin platform for agentic workloads, entered full production, with Nebius the first AI cloud to adopt it. <span class="ver">Aug 24</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">World-model startup General Intuition raised at a $6 billion pre-money valuation from Valor Equity Partners and Point72 Ventures, up from $2.3 billion two months earlier. <span class="ver">Aug 27</span></span></li>
+            <li><span class="tag breaking qh-tag">Shutdown</span><span class="txt">Amazon is closing Mechanical Turk on September 30 after 21 years, taking SageMaker Ground Truth with it. If any pipeline you have ever copied depends on MTurk for human labeling, it needs a new home. <span class="ver">Aug 25</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

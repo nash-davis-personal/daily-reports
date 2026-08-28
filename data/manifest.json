@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-28",
+    "title": "Central Command says the Hormuz transit routes are clear of mines, and Warsh gives his first Jackson Hole keynote this morning",
+    "summary": "U.S. Central Command commander Adm. Brad Cooper said on August 28 that internationally recognized transit routes in the Strait of Hormuz are free of Iranian sea mines, and that any vessel laying new mines will be destroyed; Iran disputes the claim and vessel traffic remains far below normal. Brent crude fell below $87 a barrel on Thursday, a fourth consecutive session of declines, with the October contract near $86.44 and WTI near $80.09. Initial jobless claims for the week ending August 22 came in at 203,000, down 4,000 and below the 208,000 forecast, with the four-week average at 205,500. Stocks closed higher Thursday on Nvidia's results, the S&P 500 up 0.7% to 7,730.99, the Nasdaq composite up 1.6% to 26,541.35 and the Dow up 0.2% to 53,569.44. Fed Chair Kevin Warsh delivers his first Jackson Hole keynote at 10:00am ET today, three weeks before the September FOMC meeting, with markets pricing roughly one-in-three odds of a September hike. A 96% partial lunar eclipse was visible across most of the United States overnight.",
+    "highlights": 6,
+    "path": "reports/america/2026-08-28.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Two releases since the last briefing and one is a stub: 2.1.248 lands 51 entries including a new --restricted mode that strips the shell and WebFetch tools, a fix for /ultrareview uploading uncommitted prod.env and *.tfvars files to the cloud, an hourly prompt-cache miss that was silently taxing long sessions, per-agent cacheTtl frontmatter, and a Workflow tool description cut from 5.7k tokens to about 1k.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-28.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-28",
+    "title": "Tencent open-sourced a 770B model under Apache 2.0, and Claude stopped borrowing your browser",
+    "summary": "Tencent Hunyuan released and open-sourced Hy4 preview on August 28: 770B total parameters, 49B active, 78 layers, a 1M-token context, Apache 2.0 weights on Hugging Face, and self-reported scores of 92.3 on GPQA Diamond and 65.7 on SWE-Bench Pro, priced at $0.834 per million input tokens and $2.501 per million output on Tencent Cloud TokenHub and OpenRouter. Anthropic shipped two things on August 27: a Chromium browser built into the Claude desktop app that runs in its own profile away from your tabs and passwords, and a research preview of the Model Hardware Standard, a model-agnostic spec that lets agents drive microscopes, liquid handlers and robot arms over MCP with AWS, Tecan, Automata and Universal Robots signed on. More than 100 companies including OpenAI, Anthropic, Google, Microsoft, CrowdStrike and Okta signed an open letter warning that AI-enabled attacks on critical infrastructure are about to scale. Vercel put Inclusion AI's finance-tuned Ling 3.0 Flash Fin on the AI Gateway free through September 25.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-08-28.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-28",
+    "title": "Claude got a browser, so stop pitching portal automation and start demoing it",
+    "summary": "Six ranked moves off today's briefings. Anthropic put a Chromium browser inside the Claude desktop app on August 27, running in its own profile with no access to your tabs or passwords, which means TSD can now record a client operating their own no-API web portal instead of describing it, and the Chrome-extension objection is gone. A Citrix NetScaler flaw Citrix called a denial of service is being exploited as unauthenticated remote code execution with a federal patch deadline of August 29, and CISA added three more actively exploited bugs on August 27 including a CVSS 5.3 medium, which makes a scripted monthly patch-posture memo a defensible retainer line. Tencent open-sourced Hy4 preview under Apache 2.0 at $0.834 per million input tokens with a $0.042 cache hit, while contract builders warned Nvidia's largest customers that AI server prices rise more than 15% in early 2027 on memory costs, so routing work done this weekend is permanent margin. Vercel published a Claude Managed Agents plus Chat SDK recipe for a Slack research bot, and a finance-tuned model is free on the AI Gateway through September 25.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-28.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-28",
+    "title": "A NetScaler bug patched in June is being used for remote code execution, with a federal deadline tomorrow",
+    "summary": "CVE-2026-8452, disclosed by Citrix on June 30 as a memory overflow causing denial of service, is being exploited in the wild as unauthenticated remote code execution, with attackers dropping x.php and z.php web shells; CISA added it to the Known Exploited Vulnerabilities catalog on August 26 and federal civilian agencies must remediate by August 29. CISA added three more actively exploited flaws on August 27: ownCloud CVE-2023-49105 and a Linux kernel bug CVE-2026-53362, both due August 30, and JFrog Artifactory path traversal CVE-2026-66384, due September 10. Contract server builders have told Nvidia's largest customers, including Microsoft, Google and Oracle, that AI server prices will rise more than 15% in early 2027 as DRAM, LPDDR and high-bandwidth memory costs climb. Vercel rebuilt deployment filters with natural-language search and added Cursor to the AI SDK harness layer. Apple announced a Mac Studio with M5 Max and M5 Ultra and a 2nm Mac mini starting at $899, both shipping September 22.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-08-28.html"
   },
   {
     "source": "america",
