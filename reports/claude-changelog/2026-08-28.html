@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-28" />
+  <meta name="report:title" content="2.1.248 adds a locked-down --restricted mode and stops cloud reviews uploading your uncommitted secret files" />
+  <meta name="report:summary" content="Two releases since the last briefing and one is a stub: 2.1.248 lands 51 entries including a new --restricted mode that strips the shell and WebFetch tools, a fix for /ultrareview uploading uncommitted prod.env and *.tfvars files to the cloud, an hourly prompt-cache miss that was silently taxing long sessions, per-agent cacheTtl frontmatter, and a Workflow tool description cut from 5.7k tokens to about 1k." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.248 adds a locked-down --restricted mode and stops cloud reviews uploading your uncommitted secret files — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, August 28, 2026</span>
+        <span>◆</span><span>2.1.248 → 2.1.250</span>
+      </div>
+      <h1>2.1.248 adds a locked-down <code>--restricted</code> mode and stops cloud reviews uploading your uncommitted secret files</h1>
+      <p class="standfirst">One real release in this window. 2.1.248 carries 51 entries, and the two that matter most are a new <code>--restricted</code> flag that strips shell execution and <code>WebFetch</code> out of Claude Code entirely, and a fix for <code>/ultrareview</code> shipping your uncommitted <code>prod.env</code> and <code>*.tfvars</code> edits to a cloud container. 2.1.250 shipped today with a single line reading "Bug fixes and reliability improvements", so there is nothing to read into it.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the 2.1.247 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases in window</div></div>
+      <div class="stat"><div class="num">51</div><div class="lbl">Entries in 2.1.248</div></div>
+      <div class="stat"><div class="num">~4.7k</div><div class="lbl">Tokens freed per session</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Upgrade before your next <code>/ultrareview</code></h4><p>Cloud reviews were uploading uncommitted edits to <code>prod.env</code>-style and <code>*.tfvars</code> files, plus swap and backup copies of credential files. Now fixed.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>--restricted</code> strips the dangerous tools</h4><p>A new flag removes command execution and <code>WebFetch</code>, pins file tools to the working directory, and refuses <code>bypassPermissions</code>.</p></div>
+        <div class="signal"><div class="n">03</div><h4>An hourly cache miss was taxing every long session</h4><p>Tool definitions were re-rendered after each OAuth token refresh, blowing the prompt cache roughly once an hour and dropping extended-thinking context.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The Workflow tool got 5x smaller</h4><p>Its description dropped from 5.7k tokens to about 1k, with the authoring reference moved into a loadable skill.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Per-agent cache TTL is now a knob</h4><p><code>experimental.cacheTtl</code> in agent frontmatter accepts <code>"5m"</code> or <code>"1h"</code>, so long-running scouts can hold their cache without changing the global setting.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Unattended runs stop dying silently</h4><p>Backgrounded worktree sessions hold their lock, and hooks that emit malformed JSON now surface a named error instead of hanging the run.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Locking down what the agent can touch</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.248</span>
+            <h3><code>/ultrareview</code> and cloud sessions were uploading uncommitted secret files</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog is specific about what leaked: <code>/ultrareview</code> and locally seeded cloud sessions were uploading uncommitted edits to <code>prod.env</code>-style and <code>*.tfvars</code> files, and to editor swap, temp, and backup copies of credential files — the examples given are <code>key.pem.tmp</code> and <code>id_rsa.swo</code>. Those files now stay on your machine.</p>
+            <p>The exposure window is any cloud review run on a dirty tree before you upgrade to 2.1.248.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every client checkout you run reviews in — Bisque, Studio C, Sonderwerks — has local env files holding Supabase service keys and Vercel tokens, and they are frequently dirty. If you have run <code>/ultrareview</code> on any of them recently, treat those keys as having left the machine and rotate them once. Then upgrade before the next review run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.248</span>
+            <h3><code>--restricted</code> gives you a Claude Code that cannot run code</h3>
+          </div>
+          <div class="story-body">
+            <p>The new <code>--restricted</code> flag (or <code>CLAUDE_CODE_RESTRICTED=1</code>) removes the built-in tools that run commands or code and removes <code>WebFetch</code> unless it is named in <code>--tools</code>. It keeps the file tools inside the working directory, refuses <code>bypassPermissions</code>, and ignores your user, project, and local settings files.</p>
+            <p>That last clause is the one people will trip over. A restricted run deliberately ignores your <code>settings.json</code> allowlists, so nothing you have permitted elsewhere carries into it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the mode for any run whose input you did not write — parsing a client's inbox, chewing on scraped review text, processing form submissions. It is also a concrete answer when an SMB client asks what your agent can do inside their repo: read files in one directory, no shell, no outbound fetch, and no way to escalate.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Token cost and context budget</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.248</span>
+            <h3>Long sessions lost their prompt cache about once an hour</h3>
+          </div>
+          <div class="story-body">
+            <p>Tool definitions were being re-rendered after an OAuth token refresh, which caused a full prompt-cache miss roughly once an hour in long sessions and lost the extended-thinking context along with it. A second, related fix covers the <code>ScheduleWakeup</code> tool definition changing between a session and its <code>--resume</code> when the account had entered usage overage, which blew the cache on the resumed session's first turn.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This was a silent tax on every multi-hour build session and every scheduled loop you run, and there is nothing to configure — upgrading collects the savings. If you have been reading cost numbers off long client sessions to decide anything, re-baseline after the upgrade before you act on them.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.248</span>
+            <h3>The Workflow tool's description shrank from 5.7k tokens to about 1k</h3>
+          </div>
+          <div class="story-body">
+            <p>The script-writing reference moved out of the tool description and into a bundled <code>workflow-authoring</code> skill, cutting the tool's prompt footprint by roughly 4.7k tokens.</p>
+            <p>That budget comes back in every session that has the Workflow tool available, whether or not you ever call it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Free context on every run, no action needed. The tradeoff is that workflow-authoring guidance now loads on demand, so when you next write a workflow script expect the model to pull that skill in first rather than knowing the API cold.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.248</span>
+            <h3><code>experimental.cacheTtl</code> sets a cache window per agent</h3>
+          </div>
+          <div class="story-body">
+            <p>Agent frontmatter now accepts <code>experimental.cacheTtl</code> with a value of <code>"5m"</code> or <code>"1h"</code>. It applies as that agent's prompt cache TTL when no subagent TTL setting is configured.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Put <code>"1h"</code> on the agents behind your slow scheduled jobs — this changelog scout, the loose-ends steward — where a wakeup can land far apart. Leave short-lived one-shot subagents alone. The point is that it is per-agent now, so you no longer pick one TTL and live with it everywhere.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs stop failing quietly</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.248</span>
+            <h3>A backgrounded worktree session could lose its own checkout</h3>
+          </div>
+          <div class="story-body">
+            <p>Background sessions running in a git worktree now hold that worktree's lock while they run, so cleanup routines and <code>git worktree remove</code> leave the directory alone. Previously the checkout could be pulled out from under a running session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the exact failure your loop-engineering pattern is built to hit — isolated worktrees, background agents, a cleanup pass at the end. If a nightly loop has stopped producing output without an error you could find, upgrade and re-run it before you go digging through your own code.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.248</span>
+            <h3>Hooks that emit bad JSON now report a real error</h3>
+          </div>
+          <div class="story-body">
+            <p>A hook printing a stdout <code>{…}</code> object that is not valid JSON was silently treated as plain text; it is now reported as a hook error carrying the parse message. Separately, background sessions that used to wait silently when a <code>PermissionRequest</code> or <code>PreToolUse</code> hook printed an invalid answer now name the hook and the schema error in the <code>claude agents</code> row.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both of these turn a hung unattended run into a legible one. If you have hooks gating permissions on any scheduled job, this is the difference between a job that mysteriously stalls overnight and a row that tells you which hook broke.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.248</span>
+            <h3><code>/loop</code>'s self-paced and autonomous modes are now always available</h3>
+          </div>
+          <div class="story-body">
+            <p>Self-paced dynamic mode and the no-prompt autonomous default are no longer gated, including on Bedrock, Vertex, and Foundry. Cross-session messaging (<code>SendMessage</code> / <code>ListAgents</code>) between sessions on the same machine picked up the same treatment, and now also works when telemetry is disabled.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Minor for you today since you run on the first-party API where these already worked. Worth knowing if you ever stand up a client-hosted deployment on Bedrock or Vertex, because the loop and multi-session patterns you rely on will now port there unchanged.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog — 2.1.248</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Desktop and Cowork sessions disappeared after 30 days; transcript cleanup now keeps desktop-written sessions while they are in the app, capped by a new <code>desktopSessionCleanupPeriodDays</code> setting <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">You were sent to the login screen when another Claude Code process held the token refresh lock and the session token had expired; the request now fails with a retryable error <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent view resurrected weeks-old background sessions after the machine was off; such a session now shows as stopped at its real end and asks before resuming <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent view sometimes opened an older conversation and dropped the typed prompt when starting a new session <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Opening a stopped session in <code>claude agents</code> that you already resumed in another terminal started a second process on the same conversation; the row now says it is open in a terminal <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> and <code>claude rm</code> refused to delete a session for having unpushed commits when its worktree branch was already merged into your local default branch <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> crashed on launch when the PR-status cache held a malformed entry, and skipped the workspace trust prompt when <code>CI</code> was set <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/mcp</code> listed a project <code>.mcp.json</code> entry declaring the claude.ai connector type under the trusted "claude.ai" heading; it now appears under its real scope <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP servers whose <code>headersHelper</code> supplies the <code>Authorization</code> header fell into OAuth discovery on a 401 instead of re-running the helper and retrying <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Model names in <code>/model</code> and fast-mode switch notices now render as code, so suffixes like <code>[1m]</code> display literally instead of as a link <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The recommended Console sign-in in <code>/login</code> failed with an OAuth error on machines where it cannot be used (e.g. <code>ANTHROPIC_API_KEY</code> set); it now falls back to API-key sign-in <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/login</code> to a Claude apps gateway hung when the managed-settings security approval dialog was required <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Gateway model discovery never ran when <code>apiKeyHelper</code> was the only credential <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude logs</code> left mouse tracking, bracketed paste, and the alternate screen switched on in the terminal it ran from <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control sessions occasionally never showed a permission prompt or the latest messages after the CLI silently reconnected <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude remote-control</code> rejected its own flags (<code>--spawn</code>, <code>--name</code>) when a global flag or wrapper-injected option preceded the subcommand <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions occasionally failed at startup when the container's session credentials were not yet readable <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An invalid <code>crossSessionInbound</code> value was silently ignored; it now warns and holds cross-session messages, or refuses them under managed settings <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">@-mentions of other sessions did not match names typed with non-Latin characters, for example Korean entered through an IME <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Rate-limit, usage, and fast-mode messages told you to run <code>/usage-credits</code> when that command is not available for your organization <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Startup warnings such as "N MCP servers need authentication" rendered one column right of the rest of the transcript <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The permission mode indicator stayed hidden behind the "Press Ctrl-C again to exit" hint when pressing shift+tab right after ctrl+c <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The trust dialog's repo permission rule list showed a garbled character when a long rule was cut off mid-emoji <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: the <code>claude agents</code> list stopped responding to the keyboard after detaching from a session, or in a terminal tab left in win32-input-mode <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] A chat tab got stuck on "No conversation found" when its session was never saved; it now starts a new conversation <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Added <code>claude self-hosted-runner --client-label &lt;label&gt;</code> (or <code>SELF_HOSTED_RUNNER_CLIENT_LABEL</code>) to override the label the runner registers with, default hostname <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Server-managed settings diagnostics: a startup warning when settings fail to load, plus a <code>/doctor</code> and <code>/status</code> line explaining the failure or why they were not fetched <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt"><code>/web-setup</code> now warns when the GitHub CLI token lacks the <code>workflow</code> scope, since pushes to very large repos can be rejected without it <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Added <code>/usage-credits</code> for Enterprise orgs billed through AWS Marketplace, self-serve Enterprise, and Enterprise trials, so members can request a higher limit from their admin <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/ultrareview &lt;PR#&gt;</code> now checks before launch that your connected GitHub account can access the repository, and explains how to fix it, instead of failing after the cloud session starts <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The prompt-footer PR badge checks GitHub less often while the pull request is unchanged; a push or a <code>gh pr</code> command still refreshes it right away <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Managed settings: client-side timeout, MCP startup-mode, and stream-watchdog env vars no longer trigger the settings-approval prompt <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cross-session messaging falls back to a private per-user <code>/tmp</code> directory when the default cannot be used, and the notice and <code>/status</code> name the directory to fix <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">shift+enter in the agent view dispatch input now inserts a newline, matching the prompt; ctrl+enter dispatches and attaches <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>SendMessage</code> from a subagent to another session now notes that any reply is delivered to the parent session's conversation rather than to the subagent <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Anthropic telemetry export failures log at debug level as <code>[Anthropic telemetry]</code>, so they are not mistaken for your own OTel collector failing <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Cross-session messaging in Linux user namespaces limits root-equivalent trust for unmapped owners to canonical system directories <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">"Bug fixes and reliability improvements" — the entire published entry for today's release <span class="ver">2.1.250</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

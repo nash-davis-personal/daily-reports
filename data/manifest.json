@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-28",
+    "title": "2.1.248 adds a locked-down --restricted mode and stops cloud reviews uploading your uncommitted secret files",
+    "summary": "Two releases since the last briefing and one is a stub: 2.1.248 lands 51 entries including a new --restricted mode that strips the shell and WebFetch tools, a fix for /ultrareview uploading uncommitted prod.env and *.tfvars files to the cloud, an hourly prompt-cache miss that was silently taxing long sessions, per-agent cacheTtl frontmatter, and a Workflow tool description cut from 5.7k tokens to about 1k.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-28.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
