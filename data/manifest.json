@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-29",
+    "title": "2.1.251 patches six permission escapes and finally lets background sessions edit the worktrees they create",
+    "summary": "One release since the last briefing and it is a big one: 2.1.251 carries 71 entries, headlined by a symlink swap that let Read, Write and Edit escape the approved directory after the permission check, Grep and Glob ignoring Read deny rules through symlinked paths, a fix for background sessions being unable to edit files in git worktrees they created themselves, an Opus 5 failure at xhigh and max effort when thinking is off, and a quiet change to what CLAUDE_CODE_SUBAGENT_MODEL means.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-08-29.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

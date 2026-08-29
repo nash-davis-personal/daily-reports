@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-29" />
+  <meta name="report:title" content="2.1.251 patches six permission escapes and finally lets background sessions edit the worktrees they create" />
+  <meta name="report:summary" content="One release since the last briefing and it is a big one: 2.1.251 carries 71 entries, headlined by a symlink swap that let Read, Write and Edit escape the approved directory after the permission check, Grep and Glob ignoring Read deny rules through symlinked paths, a fix for background sessions being unable to edit files in git worktrees they created themselves, an Opus 5 failure at xhigh and max effort when thinking is off, and a quiet change to what CLAUDE_CODE_SUBAGENT_MODEL means." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.251 patches six permission escapes and finally lets background sessions edit the worktrees they create — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, August 29, 2026</span>
+        <span>◆</span><span>2.1.251</span>
+      </div>
+      <h1>2.1.251 patches six permission escapes and finally lets background sessions edit the worktrees they create</h1>
+      <p class="standfirst">Upgrade today. One release landed in this window and it carries 71 entries, ten of which tighten the permission and sandbox boundary. The one to read twice: file tools followed a symlink that was swapped inside the working directory <em>after</em> the permission check cleared, which could read or write outside the approved location. Separately, the bug that stopped background sessions from editing files in worktrees they had just created with <code>git worktree add</code> is fixed, which unblocks the isolated-worktree loop pattern.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Since the 2.1.250 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release in window</div></div>
+      <div class="stat"><div class="num">71</div><div class="lbl">Entries in 2.1.251</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Permission &amp; sandbox changes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Upgrade before the next unattended run</h4><p>Read, Write and Edit followed a symlink swapped inside the working directory after the permission check, which could read or write outside the approved location. Fixed in 2.1.251.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Background agents can edit their own worktrees</h4><p>Background sessions and their subagents could not edit files inside a worktree they created with <code>git worktree add</code>. That was the blocker under the isolated-worktree loop pattern.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>Grep</code> and <code>Glob</code> ignored your deny rules</h4><p>A <code>Read(...)</code> deny rule was not applied to files reached through a symlinked search path. Anything you thought was fenced off from search was readable.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Opus 5 at xhigh/max stops erroring</h4><p>Requests failed with "effort … is not supported when thinking is disabled". Effort is now downgraded to <code>high</code> in that case instead of blowing up the turn.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>CLAUDE_CODE_SUBAGENT_MODEL</code> changed meaning</h4><p>It is now a default rather than an override. An agent definition's <code>model:</code> and an explicit per-spawn model beat it. Check any config that relied on the old behavior.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>/cost</code> now shows prompt-cache health</h4><p>Per-session hit ratio, misses, tokens re-cached, warm or cold, plus a <code>prompt_cache</code> object for status line scripts. This is the follow-through on Thursday's cache-miss story.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The permission boundary got ten patches</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.251</span>
+            <h3>A symlink swapped after the permission check let file tools write outside the approved directory</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog describes it plainly: Read, Write and Edit followed "a symlink swapped inside the working directory after the permission check, which could read or write outside the approved location." That is a time-of-check-to-time-of-use gap, and it means an approval you granted for a path inside the project could land somewhere else on disk.</p>
+            <p>The same release fixed <code>Grep</code> and <code>Glob</code> not applying <code>Read(...)</code> deny rules to files reached through a symlinked search path, plugin commands declared in a marketplace entry being able to point outside the plugin directory, and the Workflow tool reading a <code>scriptPath</code> outside what the session may read before the permission check ran.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every one of these matters more to you than to someone typing in a foreground terminal, because your loops run unattended with wide permissions and no one watching the prompts. Upgrade before the next scheduled run fires, and treat any deny rules in your settings as having been advisory until now.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.251</span>
+            <h3>Bash auto-approved arithmetic assignments like <code>OPTIND=1/0</code></h3>
+          </div>
+          <div class="story-body">
+            <p>Permission checks were auto-approving commands that assign an arithmetic expression to an integer shell variable. The changelog gives <code>OPTIND=1/0</code> and <code>RANDOM=2+2</code> as examples. These now prompt for approval. In the same batch, Bash command output files created in the sandbox were changed so a sandboxed command cannot redirect or replace them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to change on your side, but this is the second consecutive release where the interesting content is the auto-approve classifier being wrong. If you have been leaning on auto mode for client repos, keep the allowlist narrow and re-read yesterday's warning about wildcards before the subcommand in <code>Bash(git * main)</code> style rules.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.251</span>
+            <h3>Project settings can no longer set <code>CLAUDE_CONFIG_DIR</code> or the temp dir</h3>
+          </div>
+          <div class="story-body">
+            <p>Project-level <code>.claude/settings.json</code> <code>env</code> no longer sets <code>CLAUDE_CONFIG_DIR</code>, <code>CLAUDE_CODE_TMPDIR</code>, or <code>TMPDIR</code>/<code>TMP</code>/<code>TEMP</code>. The changelog says to set them in your shell, user, or managed settings instead. Project settings also lost the ability to enable detailed beta tracing or raw API body logging. Server-managed settings that terminate sandbox TLS, route sandbox traffic through your own proxy, inject credentials, or weaken sandbox isolation now require approval before they apply, as does <code>ANTHROPIC_CUSTOM_HEADERS</code> from managed or project settings when it sets a credential, org, routing, or API-behavior header.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep your client repos for a project-level <code>env</code> block setting any of those three variables. If one of your project <code>.claude/settings.json</code> files pins a temp dir, it silently stops working on this version and the failure will look like something unrelated. Move it to <code>~/.claude/settings.json</code> or your shell profile.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended agents stopped tripping over themselves</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.251</span>
+            <h3>Background sessions could not edit files in worktrees they created</h3>
+          </div>
+          <div class="story-body">
+            <p>Background sessions and their subagents were unable to edit files inside a git worktree they had created with <code>git worktree add</code>. Two related fixes landed alongside it: background sessions occasionally started with no plugin skills at all, and stayed that way, when another Claude Code process was refreshing the plugin marketplace at the same moment; and the one-time "make auto mode your default" offer was appearing in unattended sessions such as agent-team teammate panes, where a stray keypress could accept it unread.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the fix that matters most for your loop work. Create-worktree-then-edit is the core move in the isolated-worktree pattern, and it was silently failing in exactly the background context loops run in. If you have a scheduled loop that has been producing empty or no-op cycles, this is a plausible cause. Re-run one cycle by hand after upgrading before you trust the schedule again.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.251</span>
+            <h3>Agent teams were losing the teammate's actual answer</h3>
+          </div>
+          <div class="story-body">
+            <p>A teammate's final answer was not reaching the team lead. It now arrives in the idle notification instead of a content-free "available" notice. Background subagents were also unable to reply to a message from an unnamed sibling or parent agent, because the <code>from</code> field carried the agent type rather than an address. TUI lag with many parallel subagents was fixed by having per-second progress ticks replace their predecessor instead of piling up in the transcript.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you tried agent teams and concluded the coordination was not worth it, the experiment was rigged. The lead was receiving a notification that a teammate finished without the work product attached. Worth one more test run on a real task before you write off the pattern.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.251</span>
+            <h3><code>ultrareview</code> stops waiting 30 minutes on a dead cloud session</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude ultrareview</code> and <code>/ultrareview</code> waited the full 30 minutes when the cloud session failed to start. They now stop early and report the reason. Session transcripts were also being silently overwritten when a directory change relocated a session onto an existing same-ID transcript.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Small, but it removes a half-hour dead stop from the review step you run before client pushes. The transcript-overwrite fix is the one to note if you move between <code>~/Documents</code> project folders mid-session, which you do constantly.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Model and cost control</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.251</span>
+            <h3>Opus 5 failed outright at xhigh or max effort with thinking turned off</h3>
+          </div>
+          <div class="story-body">
+            <p>Requests failed with "effort … is not supported when thinking is disabled" when effort was xhigh or max and thinking was off. Effort is now sent as <code>high</code> in that case. Related: <code>/effort</code> now saves your default effort level per model, so each model keeps its own setting when you switch, and a stale "switch to Opus 1M for 5x more context" tip stopped appearing for people already on a 1M-context Opus model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run Opus 5 with the 1M context window. If you have ever hit that error mid-build and blamed your prompt, it was a config combination the API rejected. Per-model <code>/effort</code> memory is the practical win: set a cheap default on your fast model and a high one on Opus without re-toggling every switch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.251</span>
+            <h3><code>CLAUDE_CODE_SUBAGENT_MODEL</code> is now a default instead of an override</h3>
+          </div>
+          <div class="story-body">
+            <p>The variable now sets the default subagent model. An agent definition's <code>model:</code> frontmatter and an explicit per-spawn model take precedence over it. Previously it overrode everything.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check this one. If you set that variable to hold subagent spend down on a cheap model, any agent definition carrying its own <code>model:</code> line now escapes the cap and your subagent bill moves. Either strip the <code>model:</code> frontmatter from agents you want capped, or accept the per-agent setting and drop the variable.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.251</span>
+            <h3>Model-switch hooks, and a prompt-cache readout in <code>/cost</code></h3>
+          </div>
+          <div class="story-body">
+            <p><code>PreModelSwitch</code> and <code>PostModelSwitch</code> hook events can block, confirm, or annotate a model switch. <code>SessionStart</code> resume hooks now receive session staleness and the estimated re-cache cost. <code>/cost</code> gained a per-session prompt-cache line covering hit ratio, misses, tokens re-cached, and warm or cold state, with a matching <code>prompt_cache</code> object exposed to status line scripts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>prompt_cache</code> status line object is the useful half. Thursday's briefing covered an hourly cache miss quietly taxing long sessions, and until now you had no way to see it happening. Put hit ratio in your status line and you will know within a session whether a long client build is re-caching instead of reusing. The re-cache cost on <code>SessionStart</code> resume is the other half: it tells you whether resuming a stale session is cheaper than starting clean.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 2.1.251</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Conversations got stuck on "text content blocks must be non-empty" after a turn where the model produced only thinking <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">Claude in Chrome browser actions now go through Claude Code's permission checks, including in telemetry-disabled sessions, which previously used the extension's own prompts <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Install size down about 5 MB on the native binary, plus 2.5 MB more from removing syntax highlighting for six rarely used languages (1c, gml, isbl, mathematica, maxima, sqf) <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Lower CPU usage during turns in interactive sessions, from cutting redundant UI re-renders <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Live streaming of a foreground subagent's tool calls and results to Remote Control clients; background subagents, the default, still show status only <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>attach</code>, <code>logs</code>, <code>stop</code>, <code>respawn</code> and <code>rm</code> added to <code>claude --help</code>, and the <code>--resume</code> message for a running background session now names the exact <code>claude attach &lt;id&gt;</code> command <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">First launch on a fresh install started in default mode instead of auto mode for accounts whose startup default is auto mode <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Managed-settings <code>disableAutoMode</code> arriving mid-session did not move an already-running auto-mode session back to default mode <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--input-format stream-json</code> merged client-injected assistant tool calls sent without a message id into the first one and lost their results <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">SDK and cloud sessions hung indefinitely when an SDK MCP server's handshake acknowledgment was lost; the wait now times out after 70 seconds and marks only that server failed <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An <code>additionalDirectories</code> entry containing a null byte crashed startup or broke <code>/add-dir</code>; it is now skipped <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Ctrl+G failed with "Emacs quit unexpectedly" in background sessions for editors that open <code>/dev/tty</code>, such as <code>emacs -nw</code> and <code>micro</code> <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Text selection in a background session inside tmux over SSH now copies to the tmux buffer instead of falling back to OSC 52 <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Italic text such as the session recap line rendered as highlighted blocks in GNU screen and tmux sessions using a <code>screen</code> terminal type <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--worktree --tmux</code> with a merge-request number on a gitlab.com origin tried a doomed GitHub-style fetch before fetching the GitLab ref <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner left a stuck session's Bash tool processes running after the session was force-stopped <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Replying to a message Claude Desktop delivered from another session: <code>SendMessage</code> to that session id now routes through Claude Desktop instead of failing with "not reachable" <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Retry after a malformed tool call now drops the broken output from the retry context, including on Bedrock, Vertex and Foundry <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude is now told a message from one of its own subagents came from a worker inside the session rather than an unrelated Claude session <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/schedule</code> explains that MCP servers configured in Claude Code cannot be attached to cloud routines, instead of a bare "No MCP connectors" message <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Plugin/LSP install suggestions and the auto-mode default offer now wait until you have sent or cleared what you are typing, so the Enter that sends your prompt cannot answer them <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Managed settings approval dialog lists only the settings that changed since you last approved them, and stops re-appearing after signing back in to the same gateway with unchanged settings <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">MCP server names are better sanitized in error messages, menus and command results <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cloud sessions now name the host and reason when the network proxy drops a connection during a Bash command, instead of only "connection reset" <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">Default commit trailer becomes <code>Co-Authored-By: Claude Code</code> when the active model is not a recognized Claude model, e.g. a third-party model behind a custom <code>ANTHROPIC_BASE_URL</code> <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/radio</code> is now available on Bedrock, Vertex AI, Foundry and Claude Platform on AWS, and when telemetry is disabled <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Spend limit bar in <code>/usage</code> and a <code>rate_limits.spend_limit</code> status line field for developers behind a Claude apps gateway <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Several gateway, Bedrock and Enterprise-billing fixes that do not apply to a direct Claude subscription: stored Anthropic profiles treated as active, <code>--bg</code> losing an exported Vertex/Bedrock gateway, <code>--bg --model fable</code> asking for credits on Max plans, <code>/usage-credits</code> with a $0 org limit, Bedrock inference-profile discovery, and Enterprise seat defaults moving to Opus 5 <span class="ver">2.1.251</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] The sign-in screen's "Bedrock, Foundry, or Vertex" button opened the docs at the top of the page instead of the third-party provider section; the Remote Control banner became a footer pill toggled with <code>/remote-control</code> <span class="ver">2.1.251</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
