@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-29",
+    "title": "Warsh told Jackson Hole the Fed may have to raise rates, and the two-year moved eight basis points",
+    "summary": "In his first Jackson Hole keynote on August 28, Fed Chair Kevin Warsh said inflation remains above the 2% goal and that the central bank may need to raise interest rates in the coming months, saying recent cooler reports do not tell him underlying trends have meaningfully improved. The two-year Treasury yield moved from 4.22% to 4.30% and September hike odds rose. Stocks eased but held a winning week: the S&P 500 fell 0.25% to 7,711.76, the Nasdaq composite fell 0.52% to 26,402.42 and the Dow slipped 9.45 points to 53,559.99. The Bureau of Labor Statistics published its preliminary annual benchmark revision the same morning, cutting estimated total nonfarm employment through March 2026 by 79,000 and private employment by 178,000. The Commerce Department is weighing extending semiconductor tariffs to finished goods including laptops, data-center servers and gaming consoles, with exemptions tied to U.S. fab investment. NASA and SpaceX cleared the Nancy Grace Roman Space Telescope for launch Sunday at 7:26 a.m. EDT.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-29.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release since the last briefing and it is a big one: 2.1.251 carries 71 entries, headlined by a symlink swap that let Read, Write and Edit escape the approved directory after the permission check, Grep and Glob ignoring Read deny rules through symlinked paths, a fix for background sessions being unable to edit files in git worktrees they created themselves, an Opus 5 failure at xhigh and max effort when thinking is off, and a quiet change to what CLAUDE_CODE_SUBAGENT_MODEL means.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-08-29.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-29",
+    "title": "Anthropic put an automated researcher on ten alignment benchmarks and it beat the humans in six hours",
+    "summary": "Anthropic published \"Automated Researchers Can Reliably Mitigate Alignment Failures\" on August 28, led by fellow Chen Yueh-Han: an automated system given ten benchmarks for specific misaligned behaviors searched the literature, proposed a method, trained for 30 minutes and iterated, and improved every one of the ten without degrading general performance, at roughly $4 an hour in API inference against $150 an hour for a human researcher. Salesforce and Anthropic announced Claudeforce on August 26 with pilot access now and open beta in September: a Salesforce plugin inside Claude with 37 prebuilt sales skills, Claude as the reasoning model behind Agentforce, and Claude as the default model in Slack. A federal judge in California ruled on August 28 that the Pentagon's supply-chain risk designation of Anthropic was unlawful retaliation. Andreessen Horowitz closed a $1.1 billion Machine Age fund for AI hardware on August 28 while Lambda took $1 billion of short-term debt arranged by JP Morgan to buy chips it leases to Microsoft. Vercel put Tencent's Hy4 Preview on the AI Gateway and made Eve agents deployable straight from the dashboard.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-29.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-29",
+    "title": "Claude is now the default model in Slack, which just handed Grant and Bishop a list",
+    "summary": "Salesforce and Anthropic's Claudeforce partnership makes Claude the default model in Slack and puts a 37-skill Salesforce plugin inside Claude with open beta in September, which means every Slack-using business in the pipeline is about to have an AI assistant nobody has configured — the highest-fit, fastest-cash offer on this page. Anthropic's automated alignment researcher paper turns a scored eval loop into a defensible retainer line. Two men charged over the Shai-Hulud worm that poisoned Trivy, KICS, LiteLLM and the Telnyx SDK opens a wedge into businesses whose AI features were built by someone else. Nvidia's reported $12.9B Hugging Face deal and Stripe's $7B OpenRouter purchase make written model portability a paid review rather than a slide. Marvell's warrant-laddered Google agreement is a template for performance-linked retainer pricing, and rate markets pricing a September hike argue for closing before the FOMC on September 15-16.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-29.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-29",
+    "title": "Two men charged over the worm that poisoned Trivy and LiteLLM, and Nvidia is buying Hugging Face",
+    "summary": "The Australian Federal Police, working with the FBI and Western Australia Police, charged two men on August 26 as principals of TeamPCP, the group behind the self-propagating Shai-Hulud worm; they appeared in Perth Magistrates Court on August 27, and authorities estimate more than 1,000 organizations compromised, over 500,000 credentials and at least 300GB of data stolen, with Trivy, KICS, LiteLLM and the Telnyx Python SDK among the confirmed poisoned packages. Nvidia has reportedly agreed to buy Hugging Face for $12.9 billion, its largest acquisition ever, part of a consolidation wave that also includes Nvidia's $6 billion Poolside agreement and Stripe's $7 billion purchase of OpenRouter. Marvell disclosed a warrant-backed custom-silicon agreement with Google worth up to $120 billion in cumulative revenue through fiscal 2033 and the stock fell about 8% on the timing. Hugging Face launched Microduck, a $399 open-source bipedal robot. Meta fixed a smart-glasses flaw that let users defeat the recording indicator.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-29.html"
   },
   {
     "source": "america",
