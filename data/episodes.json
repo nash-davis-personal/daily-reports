@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-29",
+    "title": "TSD Daily — Saturday, August 29, 2026",
+    "summary": "An Anthropic automated researcher beat human researchers on ten alignment benchmarks at four dollars an hour, Claude became the default model in Slack, two men were charged over the Shai-Hulud worm that poisoned Trivy and LiteLLM, Nvidia reportedly agreed to buy Hugging Face for 12.9 billion, and Warsh told Jackson Hole the Fed may need to raise rates.",
+    "file": "audio/2026-08-29.mp3",
+    "durationSec": 394,
+    "bytes": 4723245
+  },
+  {
     "date": "2026-08-28",
     "title": "TSD Daily — Friday, August 28, 2026",
     "summary": "Claude gets its own browser and Anthropic publishes a hardware standard for agents, Tencent open-sources a 770B model under Apache 2.0, a Citrix NetScaler bug goes from denial of service to exploited RCE with a federal deadline tomorrow, and Central Command declares the Strait of Hormuz transit routes clear of mines.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-19.mp3",
     "durationSec": 356,
     "bytes": 4277997
-  },
-  {
-    "date": "2026-06-18",
-    "title": "TSD Daily — Thursday, June 18, 2026",
-    "summary": "SpaceX buys Cursor and AI coding consolidates, a North Korean crew backdoors 144 npm packages, and the Fed holds rates but signals a hike as inflation hits 4.2%.",
-    "file": "audio/2026-06-18.mp3",
-    "durationSec": 349,
-    "bytes": 4190157
   }
 ]
