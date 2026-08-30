@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-08-30",
+    "title": "Quiet weekend: nothing shipped since 2.1.251, and every security fix in yesterday's briefing is still missing from your machine",
+    "summary": "Zero releases in the window — the changelog still ends at 2.1.251 from August 28 — but the local CLI is on 2.1.247, three releases and roughly 120 entries behind, which means all six permission escapes from yesterday's briefing plus the fix for ultrareview uploading uncommitted credential files are absent from the build actually running on this Mac.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-08-30.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

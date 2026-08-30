@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-08-30" />
+  <meta name="report:title" content="Quiet weekend: nothing shipped since 2.1.251, and every security fix in yesterday's briefing is still missing from your machine" />
+  <meta name="report:summary" content="Zero releases in the window — the changelog still ends at 2.1.251 from August 28 — but the local CLI is on 2.1.247, three releases and roughly 120 entries behind, which means all six permission escapes from yesterday's briefing plus the fix for ultrareview uploading uncommitted credential files are absent from the build actually running on this Mac." />
+  <meta name="report:highlights" content="0" />
+
+  <title>Quiet weekend: nothing shipped since 2.1.251, and every security fix in yesterday's briefing is still missing from your machine — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, August 30, 2026</span>
+        <span>◆</span><span>Zero releases in window</span>
+      </div>
+      <h1>Nothing shipped this weekend. Yesterday's six permission escapes are still unpatched on your machine.</h1>
+      <p class="standfirst">The <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a> still ends at 2.1.251, which the <a href="./2026-08-29.html">August 29 briefing</a> covered in full. The thing worth acting on came out of checking the local install: <code>claude --version</code> reports 2.1.247, three releases behind, so every symlink and permission fix in that briefing describes a build you are not running.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.251</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">new releases</div></div>
+      <div class="stat"><div class="num">2.1.251</div><div class="lbl">newest published</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">running locally</div></div>
+    </div>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quiet window</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">no change</span>
+            <h3>No release published between August 28 and today</h3>
+          </div>
+          <div class="story-body">
+            <p>Checked against the source with a cache-busting request. The version list at the top of the changelog still reads 2.1.251, 2.1.250, 2.1.248, 2.1.247 — the same set the August 29 briefing worked from, with nothing added and no covered entry revised. The npm registry agrees: <code>@anthropic-ai/claude-code</code> published 2.1.251 on August 28 and it still holds the <code>latest</code> tag.</p>
+            <p>A quiet Friday-night-through-Sunday stretch is ordinary cadence. Writing it up as a full briefing would only make the next real release harder to spot.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No new behavior to plan around and nothing to re-test on Bisque, Studio C or Sonderwerks. The upgrade below is the whole job today.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one action today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Upgrade</span>
+            <span class="ver">2.1.247 → 2.1.251</span>
+            <h3>You are three releases behind, and the gap is the entire security batch you were briefed on yesterday</h3>
+          </div>
+          <div class="story-body">
+            <p>Yesterday's briefing led on 2.1.251 patching a symlink swapped inside the working directory after the permission check, which let Read, Write and Edit reach outside the approved location, and on Grep and Glob failing to apply <code>Read(...)</code> deny rules to files reached through a symlinked search path. It also covered the Workflow tool reading a <code>scriptPath</code> outside what the session may read before the permission check ran, plugin commands in a marketplace entry pointing outside the plugin directory, project settings enabling raw API body logging, and Bash auto-approving arithmetic assignments like <code>OPTIND=1/0</code>. All six landed in <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">2.1.251</a>. None are in 2.1.247.</p>
+            <p>The same gap holds the fix for background sessions being unable to edit files in a git worktree they created with <code>git worktree add</code> — the one the briefing called the most important item for your loop work — plus the Opus 5 failure at xhigh and max effort with thinking off, and the change making <code>CLAUDE_CODE_SUBAGENT_MODEL</code> a default rather than an override.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run the upgrade before the next scheduled loop fires. Your unattended runs carry wide permissions with nobody watching the prompts, which is precisely the shape those permission escapes exploit, and the worktree-edit bug means a background loop may have been failing silently on the create-then-edit move all week.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.251</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Credentials</span>
+            <span class="ver">2.1.248</span>
+            <h3>The version you are on still uploads uncommitted credential files during ultrareview</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.248 fixed <code>/ultrareview</code> and locally seeded cloud sessions uploading uncommitted edits to prod.env-style and <code>*.tfvars</code> files, along with editor swap, temp and backup copies of credential files such as <code>key.pem.tmp</code> and <code>id_rsa.swo</code>. Those now stay on the machine. 2.1.247 predates the fix.</p>
+            <p>The same release fixed a prompt-cache miss roughly once an hour in long sessions, caused by tool definitions being re-rendered after an OAuth token refresh — the hourly tax an earlier briefing flagged and 2.1.251 gave you a <code>/cost</code> readout for. It also fixed a backgrounded worktree session losing its checkout, since the session now holds the worktree lock while it runs so <code>git worktree remove</code> leaves it alone.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the one with client blast radius. You run ultrareview against Bisque, Studio C and Sonderwerks repos that carry real <code>.env</code> files, and on 2.1.247 an uncommitted edit to one of those can ride along to the cloud. Upgrade before the next review, and if you have run ultrareview on a client repo recently, rotate anything that was sitting uncommitted in an env file at the time.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.248</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Also sitting in the gap</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>--restricted</code> (or <code>CLAUDE_CODE_RESTRICTED=1</code>) strips the tools that run commands or code plus WebFetch, keeps file tools inside the working directory, refuses bypassPermissions, and ignores user, project and local settings files. Worth a look for anything you point at a repo you do not fully trust. <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The Workflow tool's description dropped from about 5.7k tokens to about 1k, with the script-writing reference moved into a bundled workflow-authoring skill. Straight context back on every session. <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hooks that print a stdout <code>{…}</code> object which is not valid JSON were silently treated as plain text; that is now reported as a hook error with the parse message. Check your hooks after upgrading — one may have been inert. <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> and <code>claude rm</code> refused to delete a session for having unpushed commits when its worktree branch was already merged into your checked-out default branch. <span class="ver">2.1.248</span></span></li>
+            <li><span class="tag improve qh-tag">Note</span><span class="txt">npm still points the <code>stable</code> tag at 2.1.236 while <code>latest</code> is 2.1.251. If you pin to stable anywhere, you are further back than 2.1.247. <span class="ver">npm dist-tags</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
