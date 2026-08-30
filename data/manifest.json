@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-08-30",
+    "title": "A Falcon Heavy carried NASA's next flagship telescope off the pad this morning, and the White House announced a Venezuelan oil agreement",
+    "summary": "A SpaceX Falcon Heavy lifted off from Kennedy Space Center Launch Complex 39A at 7:26 a.m. EDT Sunday carrying the Nancy Grace Roman Space Telescope, bound for the Sun-Earth L2 point about a million miles out; the two side boosters were set to return to Cape Canaveral landing zones. On August 28 President Trump announced the United States had entered an agreement covering more than 65 billion barrels of Venezuelan proven oil reserves, negotiated by Secretary of State Marco Rubio and Secretary of War Pete Hegseth with Venezuelan interim president Delcy Rodriguez, and said it should lower pump prices; Brent settled at $88.29 that day, down 0.26%, with reports of the agreement and of increased Strait of Hormuz traffic both weighing on prices. Pennsylvania confirmed two measles-related deaths, the first US measles fatalities of 2026 and the state's first in 35 years; both were unvaccinated Lancaster County residents, one an infant, in an outbreak that has produced 393 confirmed cases across 28 counties this year. Markets are closed Monday for Labor Day, and the August employment report lands Friday, September 4 at 8:30 a.m.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-30.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Zero releases in the window — the changelog still ends at 2.1.251 from August 28 — but the local CLI is on 2.1.247, three releases and roughly 120 entries behind, which means all six permission escapes from yesterday's briefing plus the fix for ultrareview uploading uncommitted credential files are absent from the build actually running on this Mac.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-08-30.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-30",
+    "title": "Sony and Warner sued Anthropic on Friday night, and named Dario Amodei personally",
+    "summary": "Sony Music Publishing and Warner Chappell filed suit against Anthropic late Friday, August 28, in the Northern District of California, alleging a \"brazen campaign of illegally torrenting, scraping and downloading\" tens of thousands of copyrighted compositions to train Claude; co-founders Dario Amodei and Benjamin Mann are named as individual defendants, and Anthropic says it will defend itself robustly. All three major publishers are now litigating against Anthropic, two days after all three major labels took equity in Stability AI's $76 million Series B. OpenAI told Cursor on August 28 it will stop supplying models on November 12, invoking a change-of-control clause after SpaceX closed its $60 billion all-stock purchase of Anysphere; Anthropic co-founder Tom Brown said Anthropic will add compute to support Claude inside Cursor. Anthropic also opened a research preview of the Model Hardware Standard, a spec that lets agents drive lab and manufacturing equipment over the same protocols as MCP, with Hugging Face and Raspberry Pi as launch partners. No frontier model shipped in this window.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-30.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-30",
+    "title": "Sell the security pass this week: a $20B company still cannot ship orders, and every client you have is easier to break",
+    "summary": "Six opportunities ranked by fit, built off this weekend's shifts. Boston Scientific, a $20.07 billion medical device maker, has been unable to reliably process and ship customer orders since disclosing a cyberattack on August 26, and Troy Hunt's analysis put the Carhartt breach at 12,933,413 real accounts traced to the company's Databricks analytics platform rather than its storefront — together they are the cleanest sales story you will get all year for a fixed-fee SMB hardening pass and a paid data-location map. Apple confirmed a September 9 event with a foldable expected, which puts a dated deadline on a responsive QA sweep sold to past clients. OpenAI set November 12 as the date it stops supplying models to SpaceX-owned Cursor under a change-of-control clause, which turns model failover from a talking point into a buildable fixed-fee job. Sony Music Publishing and Warner Chappell sued Anthropic naming Dario Amodei personally, on the $1.5 billion Bartz precedent, while all three majors simultaneously took equity in Stability AI's licensed-data round — provenance is becoming a purchasable differentiator. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-30.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-30",
+    "title": "A $20 billion medical device maker still cannot ship orders five days after a cyberattack",
+    "summary": "Boston Scientific became aware of a cyberattack on its IT systems on August 25 and disclosed it on August 26; as of this weekend it still cannot reliably process and ship customer orders, and manufacturing staff at its Cork, Ireland plant have been sent home. The company reported $20.07 billion in 2025 revenue and makes pacemakers, defibrillators and cardiac stents. Troy Hunt's analysis of the Carhartt archive dumped by ShinyHunters put the real breach at 12,933,413 accounts after stripping millions of lines of synthetic padding, down from the 24.8 million the attackers implied, and traced the compromise to Carhartt's Databricks analytics platform. CXMT, China's largest DRAM maker, sued the Pentagon on August 29 in the District of Columbia seeking removal from the Section 1260H military-ties list, days after Alibaba filed a similar challenge. Apple confirmed a September 9 event at Apple Park for the iPhone 18 Pro and a foldable iPhone. OpenAI set November 12 as the date it stops supplying models to SpaceX-owned Cursor.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-30.html"
   },
   {
     "source": "america",

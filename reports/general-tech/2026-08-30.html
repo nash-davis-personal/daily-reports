@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-08-30" />
+  <meta name="report:title" content="A $20 billion medical device maker still cannot ship orders five days after a cyberattack" />
+  <meta name="report:summary" content="Boston Scientific became aware of a cyberattack on its IT systems on August 25 and disclosed it on August 26; as of this weekend it still cannot reliably process and ship customer orders, and manufacturing staff at its Cork, Ireland plant have been sent home. The company reported $20.07 billion in 2025 revenue and makes pacemakers, defibrillators and cardiac stents. Troy Hunt's analysis of the Carhartt archive dumped by ShinyHunters put the real breach at 12,933,413 accounts after stripping millions of lines of synthetic padding, down from the 24.8 million the attackers implied, and traced the compromise to Carhartt's Databricks analytics platform. CXMT, China's largest DRAM maker, sued the Pentagon on August 29 in the District of Columbia seeking removal from the Section 1260H military-ties list, days after Alibaba filed a similar challenge. Apple confirmed a September 9 event at Apple Park for the iPhone 18 Pro and a foldable iPhone. OpenAI set November 12 as the date it stops supplying models to SpaceX-owned Cursor." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A $20 billion medical device maker still cannot ship orders five days after a cyberattack — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cybersecuritydive.com/news/boston-scientific-cyberattack-disrupted-order-processing-shipping/828816/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, August 30, 2026</span>
+        <span>◆</span><span>Ransomware hits the supply chain ◆ a breach count corrected down ◆ chips in court</span>
+      </div>
+      <h1>A $20 billion medical device maker still cannot ship orders five days after a cyberattack</h1>
+      <p class="standfirst">Nothing shipped on your stack this weekend — no Next.js, Vercel, React or Supabase release, and no new advisory to patch. What moved instead was the cost side of security: Boston Scientific's order pipeline is down, and the Carhartt breach turned out to be a third smaller than the attackers claimed once someone actually counted.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 29 – August 30, 2026</span>
+        <span>◆</span><a href="https://www.cybersecuritydive.com/news/boston-scientific-cyberattack-disrupted-order-processing-shipping/828816/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$20.07B</div><div class="lbl">Boston Scientific's 2025 revenue, at a company that currently cannot reliably ship orders</div></div>
+      <div class="stat"><div class="num">12,933,413</div><div class="lbl">Real Carhartt accounts in the leaked archive, after Troy Hunt stripped millions of synthetic records</div></div>
+      <div class="stat"><div class="num">Sept 9</div><div class="lbl">Apple's confirmed event date at Apple Park, 10 a.m. Pacific</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Boston Scientific's order and shipping systems are still degraded</h4><p>Aware of the attack August 25, disclosed August 26, and as of this weekend it is still hampering its ability to process and ship. Manufacturing employees in Cork, Ireland were sent home because they could not work.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The blast radius is hospitals, not just the vendor</h4><p>Boston Scientific makes pacemakers, defibrillators, cardiac stents and neuromodulation implants, and says its products treat roughly 48 million patients a year. An order system down for a week is a hospital inventory problem.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Attackers are padding breach dumps with fake records</h4><p>ShinyHunters' Carhartt archive implied 24.8 million people. Troy Hunt found millions of lines of synthetic data; after removing them and the duplicate and deactivated accounts, the real figure was 12,933,413.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The Carhartt data came out of the analytics warehouse</h4><p>Hunt traced the compromise to Carhartt's Databricks analytics platform rather than the storefront. Customer data is usually copied into somewhere with weaker access control than the app that collected it.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chinese chipmakers are now litigating the US blacklist</h4><p>CXMT, China's largest DRAM maker, sued the Department of Defense on August 29 in the District of Columbia to get off the Section 1260H list, calling the designation arbitrary. Alibaba filed a similar challenge days earlier.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security is now an operations line item</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 25–30, 2026</span>
+            <h3>Boston Scientific's cyberattack is still stopping orders from shipping</h3>
+          </div>
+          <div class="story-body">
+            <p>Boston Scientific became aware of an incident affecting its IT systems on August 25 and disclosed it on August 26. The company said the incident has caused, and is expected to keep causing, problems accessing the information systems and business applications that support its operations, including its ability to process and ship customer orders. The disruption is global; employees at its manufacturing site in Cork, Ireland were sent home because they could not work.</p>
+            <p>The scale is what makes this instructive. Boston Scientific reported $20.07 billion in 2025 revenue and roughly $21 billion over the trailing twelve months, and its portfolio is cardiac and neurological implants. Five days into the incident, order processing is the thing that is still broken. A company that size has a security team, a SOC and an incident-response retainer, and it is still down.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Use this as the concrete story in every conversation about backups and access hygiene with a client who runs on one admin account and a shared password. The pitch line is the specific one: a $20 billion company with a real security team could not take orders for a week. Then price a $600–$900 one-time hardening pass — enforce MFA on the CMS, Supabase, Vercel and domain registrar, rotate service keys, document who has access, verify a restore actually works. Grant and Bishop can sell that with a single sentence and no technical vocabulary.</div>
+          <div class="refs"><a href="https://www.cybersecuritydive.com/news/boston-scientific-cyberattack-disrupted-order-processing-shipping/828816/" target="_blank" rel="noopener">Cybersecurity Dive — order processing and shipping disrupted</a> <a href="https://www.medtechdive.com/news/boston-scientifics-ordering-shipping-disrupted-in-cyberattack/828814/" target="_blank" rel="noopener">MedTech Dive — Cork plant sent home</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Analysis</span>
+            <span class="ver">Aug 26–28, 2026</span>
+            <h3>Half the Carhartt "breach" was synthetic, and the real data came from Databricks</h3>
+          </div>
+          <div class="story-body">
+            <p>ShinyHunters claimed the Carhartt attack on August 13, said it had taken more than 50GB of customer, employee and corporate data, and published the archive after a $3.3 million ransom demand went unpaid. Troy Hunt of Have I Been Pwned worked through the dump and found it had been injected with millions of lines of fabricated records. Stripping the synthetic entries dropped the count from 24.8 million to 13.6 million; removing duplicate Microsoft 365 addresses and accounts flagged for deactivation brought the final authentic figure to 12,933,413. Exposed fields include email addresses, names, phone numbers and physical addresses. Over 15,000 @carhartt.com employee addresses were in there too.</p>
+            <p>Hunt linked the compromise to Carhartt's Databricks analytics platform. That is the detail worth keeping: the data did not leave through the storefront, it left through the copy of the storefront's data that somebody made for reporting.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two things. First, when a client panics about a breach headline, the claimed number is frequently inflated — check Have I Been Pwned before you let them send a customer email. Second, audit where client data gets copied to. Every analytics export, every Google Sheet a marketing contractor made, every Supabase table a no-code tool reads from is a second front door with worse locks than the first one. Add "list every place this data is duplicated" to your onboarding checklist this week.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/carhartt-data-breach-exposes-information-of-129-million-accounts/" target="_blank" rel="noopener">BleepingComputer — 12.9 million accounts</a> <a href="https://www.theregister.com/security/2026/08/26/carhartt-data-breach-affects-129m-half-of-what-shinyhunters-claimed/5292626" target="_blank" rel="noopener">The Register — half of what ShinyHunters claimed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips, courts and corporate control</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 29, 2026</span>
+            <h3>CXMT sued the Pentagon to get off the Section 1260H list</h3>
+          </div>
+          <div class="story-body">
+            <p>ChangXin Memory Technologies, China's largest maker of DRAM, filed suit in the U.S. District Court for the District of Columbia seeking removal from the Defense Department's list of Chinese companies with military ties. Defense Secretary Pete Hegseth is among the named defendants. CXMT was added to the list in January 2025 and kept on it after a review in June, and argues the designation was arbitrary, unsupported by sufficient evidence, and a violation of its due-process rights. The company says its chips are designed for civilian and commercial use.</p>
+            <p>It joins a growing queue. Alibaba filed its own challenge to a similar designation shortly before. Litigating the 1260H list has become a standard corporate response rather than an exceptional one, and each case adds to the record of how much evidence the designation actually requires.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Indirect and worth tracking rather than acting on. CXMT is a meaningful share of world DRAM supply; anything that changes its access to US customers moves memory prices, and memory prices eventually move the hosting and hardware bills underneath everything you deploy. File it next to the semiconductor tariff proposal on finished electronics.</div>
+          <div class="refs"><a href="https://www.scmp.com/tech/big-tech/article/3365751/cxmt-joins-growing-list-chinese-tech-firms-suing-us-pentagon-over-blacklists" target="_blank" rel="noopener">SCMP — CXMT joins the queue suing the Pentagon</a> <a href="https://www.bloomberg.com/news/articles/2026-08-29/chinese-chipmaker-cxmt-sues-pentagon-to-get-off-us-blacklist" target="_blank" rel="noopener">Bloomberg — CXMT sues Pentagon</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 28–29, 2026</span>
+            <h3>OpenAI put a November 12 shutoff date on Cursor after the SpaceX takeover</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX completed its $60 billion all-stock acquisition of Anysphere, Cursor's parent, earlier in August. On Friday OpenAI said it will stop supplying models to Cursor, proposing November 12 as the date, invoking a change-of-control cancellation window in the contract. OpenAI's stated reason is that it cannot be confident SpaceX will operate within its terms of service, pointing to X's conduct after Musk's acquisition. Musk said on X that he "couldn't care less." Cursor co-founder Michael Truell said the company is engaged with OpenAI. Anthropic co-founder Tom Brown said Anthropic will add compute to support Claude models inside Cursor.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A live example for the client conversation about tool risk. When a business builds on a vendor's AI feature, the model behind it can be pulled by a third party's M&A, with about ten weeks of notice. Any client-facing AI you ship should route through your own key on a provider you contract with directly, and you should be able to say which model each product uses and what the fallback is. Write that down for TSD Front Desk and TSD Concierge if it is not already documented.</div>
+          <div class="refs"><a href="https://www.thestar.com.my/tech/tech-news/2026/08/29/openai-to-end-partnership-with-spacex039s-cursor" target="_blank" rel="noopener">Reuters via The Star — OpenAI to end the Cursor agreement</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Consumer hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 26, 2026</span>
+            <h3>Apple's iPhone event is September 9, and the foldable is expected</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple sent invitations on August 26 for an event at Apple Park on Wednesday, September 9 at 10 a.m. Pacific, tagged "Surprise and shine." Expected: the iPhone 18 Pro, the iPhone 18 Pro Max, and a foldable widely reported as the iPhone Ultra. There is no standard iPhone 18 this cycle — Apple is reported to be holding the more affordable models for spring 2027, which splits its phone launches across two dates for the first time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Put September 9 on the calendar as a client-site QA date. A foldable shipping in volume means a new viewport class and a new set of layout breaks on sites you built for phone and desktop. Pick your two most layout-fragile client sites now and check how they behave at unusual aspect ratios, so you are ahead of the first "it looks broken on my new phone" call instead of behind it.</div>
+          <div class="refs"><a href="https://www.macrumors.com/2026/08/26/apple-iphone-event-2026/" target="_blank" rel="noopener">MacRumors — Apple event announced for September 9</a> <a href="https://9to5mac.com/2026/08/26/apple-officially-announces-iphone-18-pro-foldable-event/" target="_blank" rel="noopener">9to5Mac — foldable event confirmed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Quiet</span><span class="txt">No Next.js, Vercel, React, Tailwind or Supabase release or advisory landed this weekend. The most recent one that matters is still the August 25 security release — Next.js 16.3.3 and 15.5.24. <span class="ver">Aug 29–30</span></span></li>
+            <li><span class="tag improve qh-tag">Autonomy</span><span class="txt">Waymo says it is running over 500,000 paid fully driverless rides a week and is targeting one million by year end, and published a post arguing that upgrading a driver-assist system into full autonomy is a "false summit." <a href="https://electrek.co/2026/08/27/waymo-tesla-self-driving-false-summit/" target="_blank" rel="noopener">Electrek</a> <span class="ver">Aug 26–27</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
