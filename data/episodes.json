@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-31",
+    "title": "TSD Daily — Monday, August 31, 2026",
+    "summary": "Anthropic cancels the Sonnet 5 price increase due tomorrow, Meta's own telemetry kills its plan to replace staff with agents, Tim Cook's last day at Apple, US strikes near the Strait of Hormuz push Brent above $90, and a Claude Code deadline on September 14.",
+    "file": "audio/2026-08-31.mp3",
+    "durationSec": 381,
+    "bytes": 4567725
+  },
+  {
     "date": "2026-08-30",
     "title": "TSD Daily — Sunday, August 30, 2026",
     "summary": "Sony and Warner sue Anthropic and name Dario Amodei personally, OpenAI sets a November shutoff for SpaceX-owned Cursor, Boston Scientific still can't ship orders five days after a cyberattack, the Roman Space Telescope leaves the pad, and the one two-hour security offer to sell this week.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-21.mp3",
     "durationSec": 325,
     "bytes": 3902733
-  },
-  {
-    "date": "2026-06-20",
-    "title": "TSD Daily — Saturday, June 20, 2026",
-    "summary": "Inference's funding war means cheaper AI products, a breach-heavy week makes patching your Next.js apps the top chore, and Charlotte's record recruitment year becomes TSD's best local lead list.",
-    "file": "audio/2026-06-20.mp3",
-    "durationSec": 329,
-    "bytes": 3946797
   }
 ]
