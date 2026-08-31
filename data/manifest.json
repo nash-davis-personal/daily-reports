@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-08-31",
+    "title": "US forces struck Iranian launchers near the Strait of Hormuz on Sunday, and oil opened above $90",
+    "summary": "US Central Command said American forces struck two Iranian rocket launchers on Larak Island on Sunday, August 30, after Islamic Revolutionary Guard Corps units were observed preparing to fire rockets carrying sea mines into the Strait of Hormuz; it was the first publicly acknowledged US strike on Iranian territory in more than a month. Iran's Revolutionary Guards acknowledged the strikes and reported casualties, and Iranian media said eight missiles were launched at two US bases in Jordan, all of which Jordan's military said were intercepted. Brent crude opened Monday around $91 a barrel, up about 3.3%, with WTI near $86. August's last trading session closes a month in which the S&P 500 gained roughly 3%, ahead of a data week carrying ISM manufacturing and JOLTS on September 1, ADP and the Beige Book on September 2, and the August jobs report on Friday, September 4. NASA's Nancy Grace Roman Space Telescope, launched Sunday morning on a Falcon Heavy, is in commissioning en route to L2. The National Hurricane Center lists no active Atlantic tropical cyclones ten days before the climatological peak.",
+    "highlights": 5,
+    "path": "reports/america/2026-08-31.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-08-31",
+    "title": "Sonnet 5's price increase was scheduled for tomorrow. Anthropic cancelled it.",
+    "summary": "Claude Sonnet 5's $2/$10 per-million-token pricing was announced at launch as introductory through August 31, 2026, with an increase to $3/$15 due on September 1. Anthropic's pricing docs now state the increase will not occur and $2/$10 is the standard price. Separately, Claude Code's weekly limits get a permanent 25% raise over the original baseline on September 14, which lands 17% below the temporary boost users have today; Anthropic pulled its first announcement and reposted with clearer framing. Reuters reported Meta scrapped Project OT, a plan to cut some team headcounts by up to 60% and hand the work to AI agents, after telemetry showed code changes up 220% year over year while features reaching users rose 36% and technical and security incidents climbed 40%. DeepSeek is closing roughly $7.4 billion at a $74 billion pre-money valuation ahead of a possible 2027 Shanghai STAR listing. No frontier model shipped in this window.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-08-31.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-08-31",
+    "title": "Your cost of goods just got fixed for you. Go sell a fixed price.",
+    "summary": "Anthropic cancelled the September 1 increase that would have taken Claude Sonnet 5 from $2/$10 to $3/$15 per million tokens and made the introductory rate standard, which removes the last real unknown from the unit economics of TSD Front Desk and TSD Concierge and makes a published flat monthly retainer safe to quote this week. Six moves ranked by fit: lock and publish retainer pricing off the frozen rate; run a paid Next.js patch audit off the two critical unauthenticated RCEs published August 25; turn Reuters' reporting on Meta's scrapped Project OT into an outbound narrative that sells bounded agents instead of headcount replacement; ship a Slack-native Claude assistant on Vercel's new Chat SDK integration as a retainer add-on; reframe Booking Bridge around fuel cost while Brent trades above $90 after Sunday's Strait of Hormuz strikes; and build a small paid product inside the Vercel AI Gateway discount window that closes September 13. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-08-31.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-08-31",
+    "title": "Today is Tim Cook's last day running Apple",
+    "summary": "John Ternus becomes Apple's chief executive tomorrow, September 1, ending Cook's fifteen years and putting a hardware engineer in the chair for the first time since Steve Jobs, with Apple Intelligence and the delayed Siri rebuild as the inherited problem; Cook becomes executive chairman. Vercel shipped a dense week on Nash's stack: expanded CLI coverage for DNS, domains and projects, eve agents deployable straight from the dashboard, Claude Managed Agents wired into the Chat SDK for Slack bots with persistent sessions, and a Cursor harness for the AI SDK. The August Next.js security release remains the outstanding action for any self-hosted site, with 16.3.3 and 15.5.24 fixing two critical unauthenticated RCE paths. TechCrunch reported the five largest humanoid robot makers by shipments are all Chinese and took 86% of global shipments in the first half of 2026, as US drone tariffs land in September. Hasbro began notifying employees that March's breach exposed Social Security numbers and financial data, after attackers got in through one compromised employee account.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-08-31.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-08-30",
     "title": "A Falcon Heavy carried NASA's next flagship telescope off the pad this morning, and the White House announced a Venezuelan oil agreement",
     "summary": "A SpaceX Falcon Heavy lifted off from Kennedy Space Center Launch Complex 39A at 7:26 a.m. EDT Sunday carrying the Nancy Grace Roman Space Telescope, bound for the Sun-Earth L2 point about a million miles out; the two side boosters were set to return to Cape Canaveral landing zones. On August 28 President Trump announced the United States had entered an agreement covering more than 65 billion barrels of Venezuelan proven oil reserves, negotiated by Secretary of State Marco Rubio and Secretary of War Pete Hegseth with Venezuelan interim president Delcy Rodriguez, and said it should lower pump prices; Brent settled at $88.29 that day, down 0.26%, with reports of the agreement and of increased Strait of Hormuz traffic both weighing on prices. Pennsylvania confirmed two measles-related deaths, the first US measles fatalities of 2026 and the state's first in 35 years; both were unvaccinated Lancaster County residents, one an infant, in an outbreak that has produced 393 confirmed cases across 28 counties this year. Markets are closed Monday for Labor Day, and the August employment report lands Friday, September 4 at 8:30 a.m.",
