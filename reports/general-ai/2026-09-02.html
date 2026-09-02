@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-09-02" />
+  <meta name="report:title" content="Fable 5.1 kept the sticker price and cut cache reads 75%" />
+  <meta name="report:summary" content="Anthropic shipped Claude Fable 5.1 and Claude Mythos 5.1 on September 1. Token pricing is unchanged at $10 and $50 per million input and output, but cache reads fell to $0.25 per million, down 75% from Fable 5, which vendors put at roughly 25% cheaper for ordinary workloads and up to 45% cheaper for heavily agentic ones. On agentic benchmarks Fable 5.1 scores 52.6% on Terminal-Bench-Science 0.1 against 24.7% for Fable 5, and 55.8% on Terminal-Bench 4.0. Mythos 5.1 is the same underlying model behind tighter safeguards, restricted to vetted cyberdefense and life-science organizations. The same day, Anthropic announced Enterprise Frontier Safeguards, a zero-data-retention arrangement built with more than 100 customers that keeps data in infrastructure the customer controls, free, rolling out in phases later this fall. CNBC reported OpenAI now says its Astra model crosses the Critical cyber threshold in its Preparedness Framework, hardening the August 7 statement that it could not rule the capability out. Anthropic signed a $35 billion compute deal with Nvidia-backed Lambda for roughly 350 megawatts in Nueces County, Texas, and Sony Music Publishing and Warner Chappell sued Anthropic over training data." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Fable 5.1 kept the sticker price and cut cache reads 75% — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, September 2, 2026</span>
+        <span>◆</span><span>A cheaper cache ◆ a Critical label ◆ $35B of Texas power</span>
+      </div>
+      <h1>Fable 5.1 kept the sticker price and cut cache reads 75%</h1>
+      <p class="standfirst">Anthropic shipped Fable 5.1 and Mythos 5.1 yesterday with input and output priced exactly where Fable 5 sat, and moved the cost somewhere agent builders feel it more: cache reads dropped to $0.25 per million tokens. The same day OpenAI said its Astra model crosses the Critical cyber threshold, the first time either lab has hung that label on a shipping-track model.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 31 (afternoon) – September 2, 2026 (morning ET)</span>
+        <span>◆</span><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$0.25 / M</div><div class="lbl">Fable 5.1 cache reads, down 75% from Fable 5 while input and output hold at $10 and $50 per million</div></div>
+      <div class="stat"><div class="num">52.6%</div><div class="lbl">Fable 5.1 on Terminal-Bench-Science 0.1, against 24.7% for Fable 5 on the same agentic research benchmark</div></div>
+      <div class="stat"><div class="num">$35B</div><div class="lbl">Anthropic's compute commitment to Nvidia-backed Lambda for roughly 350 MW in Nueces County, Texas</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Fable 5.1 is a price cut disguised as a version bump</h4><p>Per-token pricing did not move. Cache reads fell 75% to $0.25 per million, which vendors translate to roughly 25% cheaper for typical work and up to 45% for agentic loops that re-read a large prompt on every turn.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The agentic benchmarks more than doubled</h4><p>Terminal-Bench-Science 0.1 went from 24.7% to 52.6%. Terminal-Bench 4.0 landed at 55.8%. Both measure multi-step work in a terminal rather than single-shot answers, which is the shape of most of what TSD automates.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Mythos 5.1 is the same model with a tighter leash</h4><p>Anthropic describes Fable 5.1 and Mythos 5.1 as one underlying model at two safeguard levels. Mythos is restricted to vetted cyberdefense and life-science organizations rather than sold on the open platform.</p></div>
+        <div class="signal"><div class="n">04</div><h4>OpenAI put a Critical cyber label on Astra</h4><p>CNBC reported September 1 that OpenAI now says Astra crosses the Critical cyber threshold in its Preparedness Framework, firming up the August 7 position that it could not rule the capability out. Access runs through a vetted coalition.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Enterprise data retention became a product</h4><p>Anthropic announced Enterprise Frontier Safeguards, built with more than 100 customers and the three big clouds: zero data retention with data held in customer-controlled infrastructure, automated safety monitoring without human review, and no charge.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Anthropic shipped 5.1</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Sept 1, 2026</span>
+            <h3>Fable 5.1 and Mythos 5.1, with the cost moved off the sticker</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic released Claude Fable 5.1 and Claude Mythos 5.1 on September 1. Input stays at $10 per million tokens and output at $50, unchanged from Fable 5. The change is in cache reads, which dropped to $0.25 per million, a 75% cut. Coverage of the launch puts the practical effect at about 25% cheaper for ordinary workloads and as much as 45% cheaper for agentic ones, which is where a long system prompt and a growing tool history get re-read on every turn.</p>
+            <p>The capability claims are concentrated in agentic evaluation. Fable 5.1 scores 52.6% on Terminal-Bench-Science 0.1, a scientific research benchmark run in a terminal, against 24.7% for Fable 5. Terminal-Bench 4.0 comes in at 55.8%. The model carries a 1M-token context window with multimodal input and is available through the Claude API, AWS, Google Cloud and Microsoft Foundry. Mythos 5.1 is the same underlying model at a higher safeguard level, available only to vetted cyberdefense and life-science organizations.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The RAG concierge and the phone receptionist both re-read a fixed knowledge prompt on every single turn, which is exactly the workload the cache read cut targets. Re-run your per-conversation cost math on the concierge this week with $0.25/M cache reads; if it lands where the vendor claims, the concierge gets cheaper to serve without touching a line of code, and that margin is either your price cut in a competitive bid or your gross margin.</div>
+          <div class="refs"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic news</a> <a href="https://www.marktechpost.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-claude-mythos-5-1-52-6-on-terminal-bench-science-and-75-cheaper-cache-reads/" target="_blank" rel="noopener">MarkTechPost: benchmarks and cache pricing</a> <a href="https://www.digitaltrends.com/computing/claude-fable-5-1-and-mythos-5-1-debut-with-better-coding-and-cost-cuts-for-developers/" target="_blank" rel="noopener">Digital Trends</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Sept 1, 2026</span>
+            <h3>Enterprise Frontier Safeguards makes zero data retention the default answer</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic announced Enterprise Frontier Safeguards the same day, developed with more than 100 customers across financial services, healthcare, manufacturing, telecom, law, retail and the public sector, plus Amazon, Google and Microsoft. Customer data sits in cloud infrastructure the customer controls rather than Anthropic's, businesses set how data is reviewed and stored, and safety monitoring runs automatically with no Anthropic human review. Anthropic says it will not charge for it and that it works whether a customer goes direct or through a cloud provider.</p>
+            <p>It covers Claude Code, Claude Enterprise, the Claude Platform, Amazon Bedrock, Google's Agent Platform and Microsoft Foundry. Rollout is phased, beginning later this fall. CNBC framed it as a retention-policy reversal following customer pushback.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every SMB prospect who has stalled on "where does my customer data go" now has a vendor answer you can point at instead of arguing. Add one line to the receptionist and concierge proposals citing Anthropic's zero-retention posture, and stop treating data handling as the objection you improvise around on the call.</div>
+          <div class="refs"><a href="https://www.anthropic.com/news/enterprise-frontier-safeguards" target="_blank" rel="noopener">Anthropic: Enterprise Frontier Safeguards</a> <a href="https://www.cnbc.com/2026/09/01/anthropic-data-retention.html" target="_blank" rel="noopener">CNBC on the retention change</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Both labs spent September 1 on safeguards</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Sept 1, 2026</span>
+            <h3>OpenAI says Astra crosses the Critical cyber threshold</h3>
+          </div>
+          <div class="story-body">
+            <p>CNBC reported on September 1 that OpenAI says its Astra model crosses the Critical cyber capability threshold defined in its Preparedness Framework. That hardens the position OpenAI took on August 7, when it said it could not rule the capability out and slowed the model's development. The framework defines Critical cyber as a tool-augmented model able to develop functional zero-day exploits across many hardened real-world systems without a human guiding each step, or to devise and execute novel end-to-end attack strategies from a high-level goal.</p>
+            <p>OpenAI has described pausing internal Astra activity that lacks safeguards, running universal monitoring of the model, and working with government agencies and AI safety organizations on testing. Advanced cyber capabilities are being routed to a vetted set of organizations in a coalition OpenAI calls Daybreak rather than shipped broadly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Treat this as a schedule item, not a headline. If frontier models can now find and weaponize unknown flaws at scale, the window between a CVE landing and a bot hitting your client sites gets shorter. Set a recurring Monday check on Vercel and Next.js advisories for every site you host, and make patch turnaround a line in your retainer rather than a favor you do quietly.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/09/01/open-ai-astra-cyber-model.html" target="_blank" rel="noopener">CNBC, Sept 1</a> <a href="https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/" target="_blank" rel="noopener">TechCrunch on the August 7 statement</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Compute and copyright</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Aug 31, 2026</span>
+            <h3>Anthropic committed $35 billion to Lambda for Texas capacity</h3>
+          </div>
+          <div class="story-body">
+            <p>Bloomberg and the WSJ reported Anthropic signed a $35 billion computing deal on Monday, August 31, with Lambda, an Nvidia-backed cloud provider, for GPU capacity at a data center in Nueces County, Texas. The site covers roughly 350 megawatts and is being developed by Hut 8, a former crypto miner now building AI data centers. Nvidia occupies three positions in the same deal: it supplies the GPUs, it has invested in Lambda, and per a person familiar with the arrangement it holds the lease on the facility.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Anthropic is buying capacity in units of tens of billions, which is the supply side of the cache-read price cut above. Read it as a signal that per-token costs keep falling and price your AI products on a one-year horizon rather than locking a client into a three-year fixed rate you will regret from the wrong side.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-08-31/anthropic-seals-35-billion-cloud-deal-with-nvidia-backed-lambda" target="_blank" rel="noopener">Bloomberg</a> <a href="https://qz.com/anthropic-lambda-nvidia-cloud-deal-35-billion-090126" target="_blank" rel="noopener">Quartz summary</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Filed Aug 28, reported Aug 29–31</span>
+            <h3>Sony Music Publishing and Warner Chappell sued Anthropic over training data</h3>
+          </div>
+          <div class="story-body">
+            <p>The two publishers filed suit on August 28, naming Anthropic along with CEO Dario Amodei and co-founder Benjamin Mann. The complaint alleges Anthropic obtained copyrighted works through piracy archives including Library Genesis and the Pirate Library Mirror, among them books carrying lyrics and sheet music, and that training on them lets Claude reproduce near-identical compositions. The publishers are seeking a jury trial and statutory damages of up to $150,000 per infringed composition. Anthropic said it disagrees with the claims and intends to defend itself in court.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing changes in your delivery today, but it is worth knowing that vendor indemnity for AI output is now a live commercial question. When a client asks who is liable if generated copy infringes, the honest answer is that you are responsible for what you ship, so keep AI-generated marketing copy under human review before it goes on a client site.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://www.axios.com/2026/08/29/anthropic-sony-warner-music-copyright" target="_blank" rel="noopener">Axios</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Policy</span><span class="txt">Instagram is replacing its "AI creator" label with "AI-generated profile" and cutting reach for accounts whose main identity is an AI persona and that skip the label, including dropping them from Reels and Explore recommendations for non-followers. Creators who merely use AI to edit photos or write captions are not affected. <span class="ver">Aug 31 – Sept 1</span></span></li>
+            <li><span class="tag improve qh-tag">Availability</span><span class="txt">Fable 5.1 is live across the Claude API, AWS, Google Cloud and Microsoft Foundry on day one, so a client already committed to a hyperscaler can consume it without a new vendor relationship. <span class="ver">Sept 1</span></span></li>
+            <li><span class="tag fix qh-tag">Context</span><span class="txt">The Lambda arrangement puts Nvidia in three roles at once, as chip supplier, investor in the cloud provider, and reported lessee of the data center. Worth tracking as the circular-financing question in AI infrastructure keeps getting louder. <span class="ver">Aug 31</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

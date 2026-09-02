@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-02" />
+  <meta name="report:title" content="A misconfigured auth setting took Microsoft 365 down for two days" />
+  <meta name="report:summary" content="Microsoft 365 has been degraded since Monday, August 31, after a problem with a core authentication configuration shared by multiple services. Exchange Online was hit first with mail delays and sign-in failures, and the impact spread to Teams, SharePoint, OneDrive, Copilot, Purview, Defender XDR, the Microsoft 365 Admin Center and Universal Print. Microsoft said by September 2 that availability is stable above 99% and most users should no longer see impact. On Nash's stack, Vercel put Claude Fable 5.1 and Alibaba's Qwen 3.8 Max on the AI Gateway on September 1, rolled AWS PrivateLink out to Pro and Enterprise, and added per-user spending caps to the AI Gateway on August 31; there is no new Next.js or React security advisory in this window, so the outstanding action remains the August release. The FTC and 22 state attorneys general sued Amazon on August 31 over an undisclosed reserve price in its search ad auctions that they allege overcharged more than a million brands and sellers by $20 billion or more. TP-Link launched the first complete consumer Wi-Fi 8 lineup at IFA 2026, and SEMICON Taiwan opened with interconnect, not compute, framed as the AI bottleneck." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A misconfigured auth setting took Microsoft 365 down for two days — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, September 2, 2026</span>
+        <span>◆</span><span>Two days of broken email ◆ a $20B ad complaint ◆ Wi-Fi 8 arrives</span>
+      </div>
+      <h1>A misconfigured auth setting took Microsoft 365 down for two days</h1>
+      <p class="standfirst">Microsoft 365 has been degraded since Monday after a problem in a core authentication configuration shared across services, starting with Exchange Online and spreading to Teams, SharePoint, OneDrive, Copilot and the admin center. Microsoft says availability is back above 99% as of today, which is the end of the incident and the start of the awkward conversations your clients are having about their email.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: August 31 – September 2, 2026 (morning ET)</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~48 hrs</div><div class="lbl">Duration of the Microsoft 365 degradation, from Monday August 31 to stable-above-99% on September 2</div></div>
+      <div class="stat"><div class="num">$20B+</div><div class="lbl">What the FTC and 22 states allege Amazon's undisclosed ad auction reserve price cost more than a million brands and sellers</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New Next.js, React, Vercel, Tailwind or Supabase security advisories in this window. The August release is still the outstanding patch.</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Microsoft 365 broke on auth, not on email</h4><p>Microsoft attributed a multi-day Exchange Online failure to a core authentication configuration used by several services at once, which is why the blast radius covered Teams, SharePoint, OneDrive, Copilot, Purview, Defender XDR, the admin center and Universal Print.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Fable 5.1 is already on the Vercel AI Gateway</h4><p>Vercel added Claude Fable 5.1 on September 1, one day after Anthropic shipped it, plus Alibaba's Qwen 3.8 Max 0902. Same API key, no new provider account.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Per-user spend caps landed on the AI Gateway</h4><p>Vercel added per-user budget controls on August 31, so an individual team member's AI spend can be capped rather than watched. Useful the moment a client project has more than one person calling models.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The FTC says Amazon ran a phantom bidder in its own ad auctions</h4><p>The complaint alleges Amazon inserted an undisclosed internal "soft reserve price" and charged winners their own bid roughly 80% of the time, after telling advertisers they would pay one cent over the runner-up.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Wi-Fi 8 hardware is real and dated</h4><p>TP-Link launched the first complete consumer Wi-Fi 8 lineup at IFA 2026 on the 802.11bn standard. Archer 8 Ultra pre-orders open September 30; the Deco 8 Ultra mesh ships Q1 2027.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The outage</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 31 – Sept 2, 2026</span>
+            <h3>Two days of Microsoft 365 degradation, traced to shared authentication config</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft 365 customers began losing access to Outlook mail on Monday, August 31, with delivery delays, send failures and sign-in errors on Exchange Online. Because the fault sat in a core authentication configuration used by multiple Microsoft 365 services, the impact widened well past email: SharePoint, OneDrive, Teams, Copilot, Purview, Defender XDR, the Microsoft 365 Admin Center and Universal Print all showed degradation over the following two days.</p>
+            <p>Microsoft characterised the root cause as a misconfiguration rather than an attack. Service was still degraded through Tuesday, and by September 2 Microsoft said availability remained stable above 99% and that most users should no longer be seeing impact.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two of your product lines exist precisely because a business cannot afford to be unreachable, and the last 48 hours gave every Microsoft-shop prospect in the Charlotte metro a firsthand demonstration. This is a warm-outreach window with a real event attached: a short note asking how their week went, and what happened to inbound leads while email was down, is the honest version of the receptionist pitch. Also check that no client site of yours routes contact-form delivery through a single Microsoft 365 mailbox with no fallback.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/01/microsoft-365-outage-drags-on-but-things-are-improving/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-outage-causes-email-failures-auth-issues/" target="_blank" rel="noopener">BleepingComputer</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">Aug 31 – Sept 1, 2026</span>
+            <h3>Vercel shipped Fable 5.1, PrivateLink and per-user AI budgets</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's changelog carried four items worth acting on. On September 1, Claude Fable 5.1 became callable through the AI Gateway with one API key, one day after Anthropic released it, alongside Alibaba's Qwen 3.8 Max 0902. AWS PrivateLink rolled out to Pro and Enterprise plans for private network connectivity. On August 31, the AI Gateway gained per-user budget controls that cap an individual team member's spend, and Vercel Sandbox moved to daily snapshot storage cost calculations at $0.08 per GB-month.</p>
+            <p>There is no new Next.js, React, Vercel, Tailwind or Supabase security advisory in this window. The outstanding patch remains August's Next.js security release covering the two critical unauthenticated RCE paths, fixed in 16.3.3 and 15.5.24.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Switch the concierge and receptionist to Fable 5.1 through the AI Gateway rather than adding a direct Anthropic integration, and take the cache-read savings without a new key to manage. Then set a per-user budget cap on the Gateway before you hand any client project to a second pair of hands. If any self-hosted Next.js work is still on your books, confirm it is on 16.3.3 or 15.5.24 today.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platforms and regulators</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Aug 31, 2026</span>
+            <h3>The FTC and 22 states sued Amazon over a hidden reserve price in ad auctions</h3>
+          </div>
+          <div class="story-body">
+            <p>The Federal Trade Commission and 22 state attorneys general filed suit in the US District Court for the Western District of Washington, alleging that for more than seven years Amazon secretly inflated prices in its search advertising auctions. According to the complaint, Amazon told advertisers they would pay one cent more than the second-highest bidder, then inserted an undisclosed internal figure it called a "soft reserve price" that functioned as a phantom bid from Amazon itself, with the result that winners paid their own bid roughly 80% of the time.</p>
+            <p>The complaint covers Sponsored Products, Sponsored Brands and Sponsored Display, and puts the cost to more than a million brands and sellers at $20 billion or more. Amazon said the suit rests on a misunderstanding of how its auctions work and that it presents no evidence of harm to shoppers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client sells on Amazon, their ad spend history is now the subject of a federal complaint, and their reported blended acquisition cost may be wrong in a direction that favors owned channels. That is the honest opening for a website-and-SEO conversation: a channel you rent can change its pricing behind a curtain, a site you own cannot.</div>
+          <div class="refs"><a href="https://www.ftc.gov/news-events/news/press-releases/2026/08/ftc-states-sue-amazon-over-secret-ad-surcharge-scheme" target="_blank" rel="noopener">FTC press release</a> <a href="https://www.axios.com/2026/08/31/ftc-amazon-deceptive-advertising-lawsuit" target="_blank" rel="noopener">Axios</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">Sept 1, 2026</span>
+            <h3>Ternus took the Apple chair, with a hardware event eight days out</h3>
+          </div>
+          <div class="story-body">
+            <p>John Ternus became Apple's chief executive on September 1, completing the transition announced in April. Tim Cook moves to executive chairman after fifteen years as CEO, staying on to work with policymakers among other areas, and the board approved the handover unanimously. Ternus is an engineer who previously ran hardware for iPhone, iPad, Mac, Apple Watch and Vision Pro. Apple's next hardware event, expected to include a foldable iPhone, is scheduled for September 9.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do this week. Watch the September 9 event for whether Apple Intelligence and the delayed Siri rebuild get a real date, since that determines whether on-device assistants start competing with the kind of AI concierge you sell, or stay a demo for another year.</div>
+          <div class="refs"><a href="https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/" target="_blank" rel="noopener">Apple Newsroom</a> <a href="https://www.npr.org/2026/09/01/g-s1-141411/apple-ceo-tim-cook-john-ternus" target="_blank" rel="noopener">NPR</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and silicon</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Sept 1–2, 2026</span>
+            <h3>Wi-Fi 8 launches at IFA while Taiwan says the bottleneck is wiring</h3>
+          </div>
+          <div class="story-body">
+            <p>TP-Link used IFA 2026 in Berlin to launch what it calls the world's first complete consumer Wi-Fi 8 lineup, built on the IEEE 802.11bn standard. The Archer 8 Ultra is a tri-band router rated at 19Gbps aggregate with 18 internal antennas, 10Gbps wired ports and claimed coverage of 3,600 square feet. The Deco 8 Ultra mesh covers up to 9,800 square feet in a three-pack and supports more than 200 devices. Archer 8 Ultra pre-orders open September 30 in select regions; the Deco mesh is scheduled for Q1 2027, with extenders, a travel router and client adapters by Q2 2027.</p>
+            <p>SEMICON Taiwan opened September 2 in Taipei with more than 1,300 companies and 4,300 booths, and a stated theme that data movement in AI systems can now consume more energy than the computation itself, making interconnect and packaging the constraint rather than raw chip performance. TSMC's Compact Universal Photonic Engine, its co-packaged optics platform, entered mass production this year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Wi-Fi 8 is a 2027 problem for client sites, so do not let anyone talk you into re-testing for it yet. The useful read is the Taiwan one: if interconnect is the binding constraint on AI capacity, per-token prices fall more slowly than the model-release cadence suggests, so keep AI pricing on annual terms.</div>
+          <div class="refs"><a href="https://www.tp-link.com/us/press/news/22486/" target="_blank" rel="noopener">TP-Link press release</a> <a href="https://www.tomshardware.com/networking/routers/tp-link-announces-its-first-consumer-wi-fi-8-routers-archer-8-ultra-preorder-commences-september-30-in-select-regions" target="_blank" rel="noopener">Tom's Hardware</a> <a href="https://www.digitimes.com/news/a20260902PD209/taiwan-2026-packaging-technology-fab.html" target="_blank" rel="noopener">DigiTimes on SEMICON Taiwan</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Pricing</span><span class="txt">Vercel Sandbox now calculates snapshot storage daily at $0.08 per GB-month, which makes short-lived sandboxes cheaper to leave around than they were under the previous accounting. <span class="ver">Aug 31</span></span></li>
+            <li><span class="tag feature qh-tag">Network</span><span class="txt">AWS PrivateLink is available on Vercel Pro and Enterprise, so a client with resources locked inside a VPC can be reached without exposing a public endpoint. <span class="ver">Sept 1</span></span></li>
+            <li><span class="tag fix qh-tag">Earnings</span><span class="txt">Huawei's first-half profit fell 37% while revenue rose nearly 10% to 467.8 billion yuan, with R&amp;D spending up 25%. A reminder that the Chinese silicon effort is being funded through the margin. <span class="ver">Sept 1</span></span></li>
+            <li><span class="tag improve qh-tag">Autos</span><span class="txt">Honda and Nissan are collaborating on software-defined vehicle technology, with production expected around fiscal 2029 and Mitsubishi considering joining. <span class="ver">Sept 1</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
