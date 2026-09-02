@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-02",
+    "title": "TSD Daily — Wednesday, September 2, 2026",
+    "summary": "Fable 5.1 cuts cache reads 75%, OpenAI flags Astra at the Critical cyber threshold, Microsoft 365 spends two days down on an auth misconfiguration, oil hits a six-week high, and the September Fed meeting tilts toward a hike.",
+    "file": "audio/2026-09-02.mp3",
+    "durationSec": 378,
+    "bytes": 4535469
+  },
+  {
     "date": "2026-08-31",
     "title": "TSD Daily — Monday, August 31, 2026",
     "summary": "Anthropic cancels the Sonnet 5 price increase due tomorrow, Meta's own telemetry kills its plan to replace staff with agents, Tim Cook's last day at Apple, US strikes near the Strait of Hormuz push Brent above $90, and a Claude Code deadline on September 14.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-22.mp3",
     "durationSec": 387,
     "bytes": 4642029
-  },
-  {
-    "date": "2026-06-21",
-    "title": "TSD Daily — Sunday, June 21, 2026",
-    "summary": "Quiet weekend: Anthropic hardens its connector and design layers, a Next.js security patch becomes a retainer hook, oil sticks near $80, and FERC moves to fast-track AI's power demand.",
-    "file": "audio/2026-06-21.mp3",
-    "durationSec": 325,
-    "bytes": 3902733
   }
 ]
