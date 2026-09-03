@@ -3,6 +3,56 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-03",
+    "title": "The 10-year hit a 20-month high and the mortgage market passed it straight through",
+    "summary": "The benchmark 10-year Treasury yield rose about 8 basis points to 4.804% on September 2, touching 4.818% intraday, its highest since November 2023, while the 30-year rose 13 basis points to 5.28%. The 30-year fixed mortgage average moved up four basis points to about 6.70-6.72% APR, with pricing passing the bond move through almost one for one and analysts expecting rates to approach 7%. ADP said private employers added 38,000 jobs in August, the smallest gain since January and short of the roughly 47,000 consensus, with education and health services adding 45,000 while manufacturing shed 17,000 and professional and business services shed 16,000. The Federal Reserve's Beige Book described economic activity as increasing modestly since July with data-center demand a notable driver and a positive outlook, and mixed sentiment tied to energy prices and geopolitics. West Texas Intermediate crude traded above $90 a barrel after a more than 5% session gain, tied to Strait of Hormuz shipping risk. Jobless claims, the July trade balance and the August ISM Services PMI are due September 3.",
+    "highlights": 5,
+    "path": "reports/america/2026-09-03.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-03",
+    "title": "Four releases since Aug 30: Fable 5.1, Containment Escape, headless --permission-prompts none, and you are still on 2.1.247",
+    "summary": "2.1.252 through 2.1.259 shipped 147 entries while the Aug 30 briefing was the last filed and your Mac is still on 2.1.247. Headliners: Fable 5.1 as the default Fable model, a Containment Escape auto-mode rule, --permission-prompts none for unattended hosts, deeper Bash Read/Edit deny coverage, and subagents that keep going after a mid-stream cutoff from sleep or a dropped connection.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-09-03.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-03",
+    "title": "Google put a frontier-class agent model at $0.75 a million tokens",
+    "summary": "Google shipped Gemini 3.8 Flash on September 2 at the same rates as 3.7 Flash, $0.75 per million input and $3.75 per million output through December 31, doubling to $1.50 and $7.50 on January 1, 2027. On the launch table it edges Claude Opus 5 on Terminal-Bench 2.1 at 89.4% against 89.1%, Vals Finance Agent v2 at 61.4% against 58.6%, and LVBench at 87.8% against 75.4%, while losing badly on Terminal-Bench 4.0 at 19.1% against 51.8% and OSWorld-2.0 at 59.0% against 75.4%. Google, Anthropic and OpenAI all published cybersecurity model positions the same day: Gemini 3.8 Flash Cyber goes to vetted defenders through the Fairwind program with 650-plus partners, Anthropic now permits Fable 5.1 to identify software vulnerabilities and gates Mythos 5.1, and OpenAI says Astra hits 100% on ExploitBench and declines 91.5% of jailbreak attempts against 59% for GPT-5.6 Sol. Cognition is closing roughly $1 billion at a $47 billion valuation on more than $900 million of annualized revenue, up from $492 million in late May. New York City barred student-facing generative AI through eighth grade for the 2026-27 year, covering about 600,000 students.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-09-03.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-03",
+    "title": "Every AI feature built before yesterday is now overpriced, and you can bill to prove it",
+    "summary": "Gemini 3.8 Flash shipped September 2 at $0.75 input and $3.75 output per million tokens, roughly a seventh of Claude Opus 5's list rate, and beats it on several agent benchmarks; Claude Fable 5.1 cut cache reads 75% two days earlier; Vercel's AI Gateway added all of them inside 48 hours. That makes a fixed-fee AI cost audit the highest-fit move on the board, with a hard deadline attached because Google's intro pricing doubles January 1, 2027. Five more moves follow: selling enforced agent permissions as a retainer line, a patch-and-monitor tier priced against three labs shipping vulnerability-finding models the same day, an outbound play aimed at SMBs that just cut a coordinator, a speed-to-lead offer for Charlotte trades squeezed by mortgage rates near 7%, and a published cost-per-task benchmark as inbound content. Watch list covers the Texas and Pennsylvania data-center power freezes, the January price step, on-device inference, and Cognition at a $47 billion valuation.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-03.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-03",
+    "title": "Texas is auditing 474 GW of data-center power requests it does not believe",
+    "summary": "ERCOT and Governor Greg Abbott launched an audit on September 1 of data-center interconnection requests in Texas, which have gone from about 48 GW in 2023 to more than 474 GW against an all-time state peak demand of 91,089 MW set July 22; new hookups have been frozen since August 3, and Pennsylvania signed a comparable order August 18. Tim Cook handed the Apple CEO job to hardware chief John Ternus on September 1 after 15 years, staying on as executive chairman. Uber cut 3,300 jobs, about 10% of its global workforce, redirecting spend toward autonomous vehicles. Palo Alto Networks acquired AI agent startup Console for its Cortex platform, Nvidia led a $125 million round into Spanish programmable-photonics startup iPronics, and Tencent-backed Enflame's Shanghai IPO was oversubscribed more than 6,000 times while raising about 6.1 billion yuan. Vercel added AWS PrivateLink on Pro and Enterprise and extended its free-domain Pro offer to .app and .dev. Semicon Taiwan runs September 2 to 4 with more than 1,300 companies.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-09-03.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-02",
     "title": "Oil jumped about 6% and the market is now pricing a September rate hike",
     "summary": "Crude rose more than 5% on Tuesday, September 1, to around $90.80 for WTI and roughly $94 to $95 for Brent, the highest since late July, after US strikes on Iranian targets around the Strait of Hormuz that followed attacks on two oil tankers. Equities fell with yields: the Dow closed down 419.02 points or 0.79% at 52,766.88, the S&P 500 fell 0.71% to 7,631.47, the Nasdaq fell 1.03% to 26,099.77, and the 30-year Treasury yield rose 3 basis points to 5.243%. Fed funds futures now put roughly a 56% probability on a quarter-point increase at the September meeting following Chair Warsh's Jackson Hole remarks, making the decision close to a coin flip in the direction of tightening. July JOLTS showed openings up 89,000 to 7.27 million while hires fell 278,000 and the hiring rate slipped to 3.2%, the lowest since February. The House passed stopgap funding on Tuesday, removing a near-term shutdown. The FTC and 22 states sued Amazon over its search advertising auctions. ADP, oil inventories and the Beige Book land today; the August jobs report is Friday, September 4.",
