@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-03" />
+  <meta name="report:title" content="Four releases since Aug 30: Fable 5.1, Containment Escape, headless --permission-prompts none, and you are still on 2.1.247" />
+  <meta name="report:summary" content="2.1.252 through 2.1.259 shipped 147 entries while the Aug 30 briefing was the last filed and your Mac is still on 2.1.247. Headliners: Fable 5.1 as the default Fable model, a Containment Escape auto-mode rule, --permission-prompts none for unattended hosts, deeper Bash Read/Edit deny coverage, and subagents that keep going after a mid-stream cutoff from sleep or a dropped connection." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Four releases since Aug 30: Fable 5.1, Containment Escape, headless --permission-prompts none, and you are still on 2.1.247 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, September 3, 2026</span>
+        <span>◆</span><span>2.1.252 → 2.1.259</span>
+      </div>
+      <h1>Four releases and 147 entries since Aug 30. Your Mac is still on 2.1.247.</h1>
+      <p class="standfirst">The window after the <a href="./2026-08-30.html">August 30 briefing</a> covers <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">2.1.252, 2.1.257, 2.1.258, and 2.1.259</a>. The upgrade gap flagged that weekend is now eight published versions behind the tip, and every security and loop fix from 2.1.248 onward is still missing from the build <code>claude --version</code> reports on this machine.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.251</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">releases in window</div></div>
+      <div class="stat"><div class="num">147</div><div class="lbl">entries shipped</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">running locally</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Upgrade is overdue, not optional</h4><p>Local CLI is still 2.1.247. Tip is 2.1.259. That gap holds last week's permission batch plus everything below. Run the update before the next unattended loop.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>--permission-prompts none</code> for headless hosts</h4><p>2.1.259: anything that would prompt is denied automatically while auto mode keeps deciding. Built for unattended runs that must never hang on a dialog.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Containment Escape lands in auto mode</h4><p>2.1.257: cloud metadata-credential fetches, egress evasion, and cross-tenant reach are no longer auto-approved unless the environment marks them expected.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Bash deny rules got much wider</h4><p>2.1.257 and 2.1.259 close gaps on option values (<code>--ignore-revs-file=.env</code>), <code>git diff</code>/<code>git grep</code> operands, redirects, <code>tac</code>/<code>egrep</code>, and compound <code>cd &amp;&amp; cat</code>. Plugin symlink escapes are refused.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Subagents survive sleep and dropped connections</h4><p>2.1.257: a mid-stream cutoff from computer sleep, a dropped connection, or a server error now auto-continues instead of ending with an incomplete response.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Fable 5.1 is the new default Fable</h4><p>2.1.257: <code>claude-fable-5-1</code>, 1M context, $10/$50 per Mtok with $0.25/Mtok cache reads. Gateway aliases <code>fable</code>/<code>best</code> still resolve to Fable 5 until gateways catch up.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one action today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Upgrade</span>
+            <span class="ver">2.1.247 → 2.1.259</span>
+            <h3>You are eight published versions behind the tip</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude --version</code> on this Mac still reports 2.1.247. The changelog tip is 2.1.259. Between them sit 2.1.248, 2.1.250, 2.1.251 (covered Aug 29), then this window's 2.1.252, 2.1.257, 2.1.258, and 2.1.259. The Aug 30 briefing already told you the security batch in 2.1.248–2.1.251 was absent from the running binary. That is still true, and the new releases stack more permission and loop fixes on top.</p>
+            <p>2.1.252 alone fixed Bash failing with "task output swap refused (tasks dir moved or linked)" on some Macs, and "always allow" not saving when a project had no <code>.claude/settings.local.json</code> yet. Both are everyday friction on this machine.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update Claude Code before any scheduled loop or ultrareview against a client repo. Do not wait for the next quiet morning. Confirm with <code>claude --version</code> that you land on 2.1.259, then re-check any project that relied on <code>defaultMode: "bypassPermissions"</code> in <code>.claude/settings.json</code> (see below).</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.252–2.1.259</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and the permission wall</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.259</span>
+            <h3><code>--permission-prompts none</code> denies prompts instead of hanging the host</h3>
+          </div>
+          <div class="story-body">
+            <p>Headless hosts can pass <code>--permission-prompts none</code>: anything that would prompt is denied automatically while the active permission mode (including auto mode) keeps deciding. Same release adds <code>managedMcpServers</code> so orgs can ship HTTP/SSE MCP servers to every user, and changes <code>allowedMcpServers</code> so it only governs servers users add — a literal <code>managed-mcp.json</code> server that used to get filtered out now loads on upgrade unless you put it in <code>deniedMcpServers</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Put <code>--permission-prompts none</code> on any unattended loop that must never sit forever on a dialog. Pair it with a tight allowlist so a deny fails closed instead of improvising. If you ever pin managed MCP allowlists, re-read them after upgrade so a previously filtered managed server does not suddenly appear.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.259</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.257</span>
+            <h3>Containment Escape stops auto mode from approving cloud credential and egress tricks</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode gains a Containment Escape rule: cloud metadata-credential fetches, egress evasion, and cross-tenant reach are no longer auto-approved unless the environment marks them expected. The same release adds a one-time prompt before the first file read outside the working directories, with <code>permissions.blockReadsOutsideWorkingDirectories</code> to hard-block those reads, and closes more Bash auto-approve holes around zsh-vs-bash <code>[[ ]]</code> conditionals and <code>permissions.ask</code> rules inside compound commands or subshells.</p>
+            <p>Also in 2.1.257: <code>defaultMode: "bypassPermissions"</code> in project <code>.claude/settings.json</code> or <code>.claude/settings.local.json</code> is ignored (same treatment as <code>"auto"</code>). Set it in user or managed settings, or pass <code>--permission-mode</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Auto mode on client repos just got less naive about credential and egress patterns — good. If any Bisque, Studio C, or Sonderwerks project relied on project-level <code>bypassPermissions</code>, that setting is now a no-op and the session will fall back to a stricter mode. Move the setting to user scope or pass the flag explicitly after you upgrade.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.257</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.257 · 2.1.259</span>
+            <h3>Read/Edit deny rules finally cover the paths agents actually use</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.259 extends Bash <code>Read()</code> deny rules to files given as option values (<code>--ignore-revs-file=.env</code>, <code>-f.env</code>, <code>@file</code>), <code>git diff</code>/<code>git grep</code> file operands, and <code>cd DIR &amp;&amp; cat FILE</code> compounds; <code>grep -r</code>/<code>cp -r</code> over a directory holding a denied file now asks. 2.1.257 already closed redirects (<code>&lt; file</code>) and readers like <code>tac</code> and <code>egrep</code>, and refused plugin component paths that are symlinks pointing outside the plugin directory.</p>
+            <p>2.1.259 also stops concurrent sessions from silently reverting each other's <code>~/.claude.json</code> changes — workspace trust, MCP, and project state no longer get stomped when many sessions run at once.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Deny rules on <code>.env</code> and secrets directories were leaky through ordinary agent command shapes. After upgrade, treat those rules as real again, and stop assuming two parallel Claude sessions will leave shared config alone — that race is fixed, but only on 2.1.259+.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.257 / 2.1.259</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Loop reliability and models</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.257</span>
+            <h3>Subagents keep going after sleep, disconnects, and mid-stream server errors</h3>
+          </div>
+          <div class="story-body">
+            <p>When a response was cut off mid-stream by computer sleep, a dropped connection, or a server error, subagents used to stop with an incomplete response. They now automatically continue. Related fixes in the same release: backgrounding a turn while a subagent ran no longer treats that tool as rejected; stopping a background subagent also stops its monitors; <code>claude -p</code> waits for an armed Monitor instead of exiting ~5 seconds after the final result; and worktree-isolated sessions stop refusing common Bash loops, <code>$VAR</code> reads, command substitutions, and heredocs that never touch git.</p>
+            <p><code>/fork</code> keeps the original conversation's prompt cache in the new background session by delivering the worktree briefing as a message instead of a system-prompt change. <code>CLAUDE_CODE_SUBAGENT_MODEL_FORCE</code> forces the subagent model env (or the main model) onto every subagent, ignoring per-spawn and agent-definition overrides.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Lid-close and Wi-Fi blips on this Air used to strand background workers mid-turn. After upgrade, expect those workers to resume instead of dying incomplete — and stop fighting worktree isolation over ordinary shell patterns that never leave the checkout.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.257</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.257</span>
+            <h3>Fable 5.1 ships as the default Fable model</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude-fable-5-1</code> is now the default Fable model: 1M context, $10/$50 per Mtok with $0.25/Mtok cache reads. Gateway sessions keep resolving aliases <code>fable</code> and <code>best</code> to Fable 5 for now, because gateways that are not yet configured for 5.1 reject it — pick Fable 5.1 explicitly in <code>/model</code> when you want it. Session-only effort changes land via <code>s</code> in <code>/effort</code>, matching <code>/model</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you use Fable for long client digests or 1M-window reviews, plan for the new default and the cache-read price. If a gateway session quietly stays on Fable 5, that is intentional until the gateway is updated — switch in <code>/model</code> when you mean 5.1.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.257</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Mac: Bash "task output swap refused (tasks dir moved or linked)" and Remote Control sessions stalling for minutes after a tool finished under a degraded claude.ai connection. <span class="ver">2.1.252</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">"Always allow" now saves even when the project has no <code>.claude/settings.local.json</code> yet. <span class="ver">2.1.252</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background task notifications with huge failure output (e.g. git errors on a full disk) no longer blow past the API request size limit. <span class="ver">2.1.252</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">macOS 12 Monterey launch regression from 2.1.255; remote/scheduled sessions failing with "user messages must have non-empty content" after a re-sent permission approval. <span class="ver">2.1.258</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Frontmatter <code>model:</code> on custom commands and skills was ignored in interactive sessions; auto mode no longer runs a turn on an unsupported model named in that frontmatter. <span class="ver">2.1.259</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt cache no longer invalidates on OAuth refresh when telemetry is disabled; Remote Control mid-session reconnect no longer re-sends the Bash tool definition and misses the cache. <span class="ver">2.1.259 · 2.1.257</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Schedule routines whose prompt was saved without a message role no longer run with nothing to do. <span class="ver">2.1.257</span></span></li>
+            <li>bg session self-update fix (2.1.257)</li>
+            <li>rendering / prompt-input responsiveness (2.1.257, 2.1.259)</li>
+            <li>timeFormat/timeZone; plugin validate --json; GitLab MR badges (2.1.257, 2.1.259)</li>
+            <li>network paths refused by --add-dir; cloud artifact read always asks (2.1.257)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
