@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-03",
+    "title": "TSD Daily — Thursday, September 3, 2026",
+    "summary": "Google put a frontier-class agent model at 75 cents a million tokens, three labs shipped cyber models on one day, Texas is auditing 474 gigawatts of ghost data-center demand, and the 10-year hit a 20-month high while private hiring came in at 38,000.",
+    "file": "audio/2026-09-03.mp3",
+    "durationSec": 401,
+    "bytes": 4817709
+  },
+  {
     "date": "2026-09-02",
     "title": "TSD Daily — Wednesday, September 2, 2026",
     "summary": "Fable 5.1 cuts cache reads 75%, OpenAI flags Astra at the Critical cyber threshold, Microsoft 365 spends two days down on an auth misconfiguration, oil hits a six-week high, and the September Fed meeting tilts toward a hike.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-23.mp3",
     "durationSec": 385,
     "bytes": 4618701
-  },
-  {
-    "date": "2026-06-22",
-    "title": "TSD Daily — Monday, June 22, 2026",
-    "summary": "Anthropic's top models stay offline a week into the export ban, the agentjacking attack hijacks AI coding agents, the Fed drops its rate-cut plan as inflation runs hot, and Salesforce's .6B Fin deal validates TSD's own AI receptionist offer.",
-    "file": "audio/2026-06-22.mp3",
-    "durationSec": 387,
-    "bytes": 4642029
   }
 ]
