@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-04" />
+  <meta name="report:title" content="2.1.260 ships fullscreen /diff, prompt-cache miss causes, and a Read-deny revert — you are still on 2.1.247" />
+  <meta name="report:summary" content="2.1.260 alone dropped 66 entries while your Mac is still on 2.1.247 — nine published versions behind tip. Headliners: a fullscreen /diff panel for uncommitted changes, likely-cause labels on prompt-cache misses, a revert of yesterday's Read-deny-on-Bash-args change that was blocking npm run build, sandbox permission fixes for paths with parentheses, and longer ultrareview / subagent background limits." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.260 ships fullscreen /diff, prompt-cache miss causes, and a Read-deny revert — you are still on 2.1.247 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, September 4, 2026</span>
+        <span>◆</span><span>2.1.260</span>
+      </div>
+      <h1>One release, 66 entries. Your Mac is still on 2.1.247 — nine versions behind tip.</h1>
+      <p class="standfirst">The window after the <a href="./2026-09-03.html">September 3 briefing</a> covers only <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">2.1.260</a>. Tip moved one notch; the running binary did not. Everything from 2.1.248 through this release — permission hardening, Containment Escape, Fable 5.1, headless <code>--permission-prompts none</code>, and today's /diff + cache diagnostics — is still missing from <code>claude --version</code> on this machine.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.259</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">releases in window</div></div>
+      <div class="stat"><div class="num">66</div><div class="lbl">entries shipped</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">running locally</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nine published versions behind tip</h4><p>Local CLI is still 2.1.247. Tip is 2.1.260. Yesterday's eight-version gap is now nine. Update before the next unattended loop.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Fullscreen <code>/diff</code> panel</h4><p>2.1.260: a diff panel opens beside the conversation and shows uncommitted changes as Claude edits. Toggle with <code>/diff</code>.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Prompt-cache miss gets a cause</h4><p>2.1.260: <code>/cost</code> and the status line <code>prompt_cache</code> field now name the likely reason (tool defs changed, system prompt changed, idle past TTL).</p></div>
+        <div class="signal"><div class="n">04</div><h4>2.1.259 Read-deny-on-Bash revert</h4><p>The change that denied <code>npm run build</code> under <code>Read(./**/build/**)</code> and made <code>cd &amp;&amp; grep</code> prompt in auto mode is gone. Build loops stop false-denying on that rule shape.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Parentheses paths and bad deny patterns fixed</h4><p>Edit/Write/Read rules with <code>()</code> in the path were dropped or ignored by the Bash sandbox — "read-only" folders stayed writable. Uncompilable deny patterns no longer break every edit.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Longer waits for reviews and subagent jobs</h4><p><code>/ultrareview</code> waits 45 min (was 30). Subagent background commands lose the 1-hour cap. Auto-compact for 1M Opus/Fable. Mid-session <code>/effort</code> on Fable 5.1 keeps the prompt cache.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The one action today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Upgrade</span>
+            <span class="ver">2.1.247 → 2.1.260</span>
+            <h3>You are nine published versions behind the tip</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude --version</code> on this Mac still reports 2.1.247. The changelog tip is 2.1.260. Between them sit every security and loop fix from 2.1.248 onward, yesterday's Fable 5.1 / Containment Escape / <code>--permission-prompts none</code> batch, and today's 66-entry release. The Aug 30 and Sep 3 briefings already said the gap was the load-bearing problem. It grew by one more release overnight.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update Claude Code before the next scheduled loop, ultrareview, or client worktree session. Confirm with <code>claude --version</code> that you land on 2.1.260. Until then, none of the headliners below — /diff, cache-miss causes, the Read-deny revert, parentheses-path sandbox fixes — apply on this machine.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Visibility while Claude edits</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.260</span>
+            <h3>Fullscreen <code>/diff</code> panel tracks uncommitted changes live</h3>
+          </div>
+          <div class="story-body">
+            <p>A diff panel opens beside the conversation in fullscreen mode and shows your uncommitted changes as Claude edits. Toggle it with <code>/diff</code>. Same release adds a likely cause for prompt-cache misses (tool definitions or system prompt changed, idle past the TTL) to <code>/cost</code> and the status line's <code>prompt_cache</code> field.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> On Next.js/Vite client repos (Bisque, Studio C, Sonderwerks), keep <code>/diff</code> open during multi-file edits so you catch scope creep before commit. When cache hit ratio tanks mid-session, read the new cause label before blaming the model — idle TTL and tool-def churn are the usual culprits.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.260</span>
+            <h3>Longer ultrareview window, uncapped subagent background jobs, Fable cache stays warm</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/ultrareview</code> and <code>claude ultrareview</code> now wait up to 45 minutes (was 30) for long-running cloud reviews. Background commands started by subagents lose the one-hour time limit — they run until they exit or are stopped, matching the main session. Auto-compact for 1M-context Opus and Fable sessions now fires shortly before the 1M-token limit, and recovery compaction on very large contexts no longer times out at 10 minutes. Changing effort mid-session on Claude Fable 5.1 via <code>/effort</code> no longer invalidates the prompt cache.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Big PR ultrareviews against client repos stop dying at the 30-minute wall. Long install/build/test jobs from subagents can finish. If you use Fable 5.1 for 1M-window digests, tweak effort without paying a full re-cache.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission wall: revert + real sandbox holes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.260</span>
+            <h3>2.1.259 Read-deny-on-Bash-args change is reverted</h3>
+          </div>
+          <div class="story-body">
+            <p>Yesterday's extension of <code>Read()</code> deny rules to Bash arguments is gone. That change denied <code>npm run build</code> under a <code>Read(./**/build/**)</code> rule in every mode and made <code>cd … &amp;&amp; grep</code> prompt even in auto mode. The Sep 3 briefing called the wider deny coverage a win; the ship broke ordinary build loops, so it came back out.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> After you upgrade past 2.1.259, Vite/Next build scripts stop false-denying against build-output deny rules. Keep the deny rules — they still apply to Read/Edit/Write and the older Bash shapes — but do not expect the 2.1.259 Bash-arg coverage to stick.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.260</span>
+            <h3>Parentheses in paths and uncompilable deny patterns left folders writable or broke every edit</h3>
+          </div>
+          <div class="story-body">
+            <p><code>Edit</code>/<code>Write</code>/<code>Read</code> permission rules whose path contains parentheses were dropped as invalid or ignored by the Bash sandbox, which left "read-only" folders writable. A single file permission rule with an uncompilable pattern (e.g. an unclosed <code>[</code>) made every file edit fail with <code>Invalid regular expression</code>; such a deny rule now guards the literal path it spells. Bash permission checks also stop auto-approving zsh commands that hide a command substitution inside a <code>REPORTTIME</code>, <code>REPORTMEMORY</code>, or <code>DIRSTACKSIZE</code> assignment — those now prompt.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Audit any deny/allow rules that name folders with <code>()</code> in the path (common on Mac project trees). After upgrade, those rules actually enforce. A typo'd pattern no longer takes down the whole edit surface — it falls back to a literal match. zsh users: REPORTTIME-style assignments can no longer smuggle a substitution past auto mode.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent teams, rewind, and headless surface</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.260</span>
+            <h3>Transcript loss, wrong SendMessage wakeups, phantom ListAgents twins, and false rewind success</h3>
+          </div>
+          <div class="story-body">
+            <p>Agent teams: an in-process teammate's transcript no longer loses messages (or goes blank) during long API retry waits under <code>CLAUDE_CODE_RETRY_WATCHDOG</code>. A subagent that resumed another agent via SendMessage was never woken by that agent's completion — the notification went to the main conversation; fixed. A session moved to the background appeared twice in ListAgents (phantom "interactive" twin) and received SendMessage deliveries in the viewer; fixed. <code>/rewind</code> and <code>--rewind-files</code> reported success when checkpoint backups were missing and nothing was restored; they also left stale file-read tracking that caused "File unchanged since last read" stubs. Intermittent "task output swap refused" when many sessions share a project directory is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Multi-agent client builds stop dropping teammate context during retries. Do not trust a pre-2.1.260 rewind success line — verify the files. Parallel sessions on one Next.js repo should hit fewer Mac "task output swap refused" failures (the 2.1.252 fix left residual cases).</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.260</span>
+            <h3><code>/reload-plugins</code> in headless, text <code>/advisor</code>, and <code>!</code> bash-mode outside strict sandbox</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/reload-plugins</code> is available in headless sessions (Desktop and SDK command lists). A text form of <code>/advisor</code> (<code>/advisor</code>, <code>/advisor &lt;name&gt;</code>, <code>/advisor off</code>) works in the desktop app, Remote Control, and other headless (<code>-p</code> / Agent SDK) sessions. Commands typed at the <code>!</code> bash-mode prompt now run outside the sandbox even when strict sandbox mode (<code>sandbox.allowUnsandboxedCommands: false</code>) is on — same as typing into your own terminal.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Headless loops and Desktop sessions can reload plugins and drive advisor without an interactive TUI. Treat <code>!</code> as an intentional sandbox escape under strict mode — useful for local diagnostics, dangerous if you assume every shell line is sandboxed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.260</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fable 5.1 prompt caching now covers context attached after tool results (was re-sent uncached every tool-call turn). <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> picker now shows Fable 5.1 for orgs that can use it (was only accepted when typed as <code>/model claude-fable-5-1</code>). <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Managed settings load for claude.ai Enterprise/Team users who still had a leftover API key from an earlier <code>/login</code>. <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/status</code> no longer lists a signed-in claude.ai account and a configured API key as both active; the unused credential is marked. <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Glob/Grep: search path is no longer probed on disk before the permission check (matches Read's order). <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">IDE line selections survive skill/slash-command runs ("N lines selected" context reaches Claude). <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">GitLab nested subgroups detect correctly; <code>owner/repo#123</code> links go to gitlab.com inside GitLab repos. <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>ctrl+l</code> / <code>cmd+k</code> in fullscreen clear the transcript view like terminal <code>clear</code>. <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Managed <code>claudeMd</code> no longer triggers the security approval dialog (hooks/shell/sandbox/unsafe env still do). <span class="ver">2.1.260</span></span></li>
+            <li><span class="tag feature qh-tag">VSCode</span><span class="txt">Effort level on the footer model pill; Open/Closed session-list filters; several Remote Control and retry UI fixes. <span class="ver">2.1.260</span></span></li>
+            <li>Bedrock corporate CA / SSO cert store; <code>blockReadsOutsideWorkingDirectories</code> no longer hides macOS git config or worktree checkout</li>
+            <li>model switch re-checks after plugin hook / marketplace load failure; SDK MCP servers on first turn; Chrome "Not connected" mid-task</li>
+            <li>flag/emoji wrap clipping; Remote Control invalid model pick refused; Ctrl+Z alternate-screen leave; Workflow stall during compaction</li>
+            <li>URL marketplace plugin install path; extra browser tab on artifact publish; Artifact tool first-call validation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
