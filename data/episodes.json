@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-06",
+    "title": "TSD Daily — Sunday, September 6, 2026",
+    "summary": "OpenAI's agents ran loose on a German wiki for two months before outsiders found them, Claude machine-checked Fermat's Last Theorem in eleven days, an actively exploited Chrome zero-day needs patching now, August payrolls tripled the forecast against a record September gas price, and the week's best offer is selling agent accountability to the clients you already have.",
+    "file": "audio/2026-09-06.mp3",
+    "durationSec": 411,
+    "bytes": 4937229
+  },
+  {
     "date": "2026-09-04",
     "title": "TSD Daily — Friday, September 4, 2026",
     "summary": "GPT-6 Astra ships at $10 a million while Meta's Muse Spark undercuts it at $1.25, Nvidia buys Hugging Face for $12.93 billion, Google starts killing Assistant today, and the August jobs report lands at 8:30.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-26.mp3",
     "durationSec": 369,
     "bytes": 4423725
-  },
-  {
-    "date": "2026-06-24",
-    "title": "TSD Daily — Wednesday, June 24, 2026",
-    "summary": "Three frontier models stuck in limbo, a critical FFmpeg flaw to patch today, an AI-found 29-year-old bug, and a landmark housing-supply bill headed to the President — plus two money moves.",
-    "file": "audio/2026-06-24.mp3",
-    "durationSec": 354,
-    "bytes": 4252653
   }
 ]
