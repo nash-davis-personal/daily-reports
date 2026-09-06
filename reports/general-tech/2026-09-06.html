@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-06" />
+  <meta name="report:title" content="Patch Chrome today, then read the rest" />
+  <meta name="report:summary" content="Google shipped an emergency Chrome update for CVE-2026-85046, an actively exploited type-confusion bug in V8 rated CVSS 8.8 — the sixth Chrome zero-day of 2026 — fixed in 152.0.7977.82/.83 on Windows and macOS and .82 on Linux. Microsoft published research showing ASCII smuggling, a technique built for AI prompt injection, has crossed over into ordinary phishing: invisible Unicode Tags characters break up filtered keywords, and volume in one campaign jumped from 5,000-20,000 emails a day to 1.3 million. Rhysida published the full 5.79 TB it stole from Berlin's state network, roughly 1.44 million files including personnel records, plaintext credentials and passports, after the Senate refused a 30 BTC demand. Microsoft announced Project Zenith, a preconfigured developer build of Windows 11 that requires 64 GB of unified memory and 250 GB/s of bandwidth so 30B-parameter coding models run locally, shipping first on AMD Ryzen AI Halo. Swiss Re put data-center insurance premiums on a path to $24.2 billion by 2030 from $10.6 billion, with over 40% of US capacity in significant-to-very-high tornado zones. Uber confirmed $100 million into Travis Kalanick's Atoms, which bought Anthony Levandowski's Pronto and rehired him, and Betaworks disclosed a 5.5% Hugging Face stake worth roughly $650 million from Nvidia's acquisition." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch Chrome today, then read the rest — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.helpnetsecurity.com/2026/09/04/google-chrome-zero-day-cve-2026-85046/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, September 6, 2026</span>
+        <span>◆</span><span>Dev tools, hardware, security, business</span>
+      </div>
+      <h1>Patch Chrome today, then read the rest</h1>
+      <p class="standfirst">An actively exploited V8 zero-day is out in the wild and the fix is a browser restart, so do that before anything else on this page. The rest of the weekend was a security story too: invisible Unicode is now doing mass phishing, and Berlin's entire stolen state network is public because a ransomware crew was told no.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 4 through September 6</span>
+        <span>◆</span><a href="https://www.helpnetsecurity.com/2026/09/04/google-chrome-zero-day-cve-2026-85046/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">CVSS 8.8</div><div class="lbl">Chrome V8 zero-day, exploited in the wild</div></div>
+      <div class="stat"><div class="num">5.79 TB</div><div class="lbl">Berlin state data published by Rhysida</div></div>
+      <div class="stat"><div class="num">64 GB</div><div class="lbl">memory floor for Microsoft's Project Zenith</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Chrome zero-day, patch now</h4><p>CVE-2026-85046, type confusion in V8, exploited in the wild. Fixed in 152.0.7977.82/.83. Sixth Chrome zero-day of 2026.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Prompt-injection tricks moved to spam</h4><p>Invisible Unicode Tags characters split filtered keywords. One campaign went from ~20,000 emails a day to 1.3 million.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Berlin's data is fully public</h4><p>Rhysida dumped 5.79 TB, about 1.44 million files, after the state refused 30 BTC. Personnel files, plaintext credentials, passports.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Windows gets a developer SKU</h4><p>Project Zenith ships preloaded toolchains and demands 64 GB unified memory and 250 GB/s bandwidth, on AMD Ryzen AI Halo first.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Data centers are an insurance problem</h4><p>Swiss Re: premiums heading to $24.2B by 2030 from $10.6B, with 40%+ of US capacity sitting in serious tornado country.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Kalanick is back in autonomy</h4><p>Atoms bought Anthony Levandowski's Pronto and rehired him. Uber confirmed $100 million into the company it once sued over him.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security — do these first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">Sept 3–4</span>
+            <h3>Google patched an actively exploited V8 zero-day in Chrome</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-85046 is a type-confusion flaw in V8, the JavaScript and WebAssembly engine, rated CVSS 8.8. A malicious page can get arbitrary code execution inside the renderer sandbox, and Google confirmed an exploit exists in the wild without naming the actors or targets. The fix landed in the September 3 Stable Channel update: Chrome 152.0.7977.82/.83 on Windows and macOS, 152.0.7977.82 on Linux, rolling out progressively. Salvatore Gulizia reported it on August 4. This is the sixth Chrome zero-day Google has fixed in 2026, and Chromium-based browsers — Edge, Brave, Arc, Opera — inherit it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open <code>chrome://settings/help</code> on every machine you touch, confirm you are on 152.0.7977.82 or higher, and relaunch. Do the same on any client machine you have access to and send a two-line note to the rest — this is the kind of thing an SMB owner never does on their own, and it costs you nothing to be the person who told them. Staged rollout means "checked yesterday" is not the same as "patched."</div>
+          <div class="refs"><a href="https://www.helpnetsecurity.com/2026/09/04/google-chrome-zero-day-cve-2026-85046/" target="_blank" rel="noopener">Help Net Security</a> ◆ <a href="https://thehackernews.com/2026/09/google-releases-chrome-update-to-patch.html" target="_blank" rel="noopener">The Hacker News</a> ◆ <a href="https://www.esecurityplanet.com/threats/news-google-chrome-cve-2026-85046-zero-day/" target="_blank" rel="noopener">eSecurity Planet</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Threat</span>
+            <span class="ver">Sept 3–6</span>
+            <h3>ASCII smuggling crossed over from AI prompt injection to plain phishing</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft's security team went looking for prompt-injection attempts against Defender for Office 365 and found something else: attackers using the Unicode Tags block (U+E0000–U+E007F), which holds invisible shadow copies of printable ASCII, to break up keywords that trigger signature-based mail filters. A word like "funding" gets split by characters no human sees but every parser reads. Volume of that block in email went from roughly 5,000–20,000 a day to more than 1.3 million on February 9, 2026, in the campaign Microsoft traced. Microsoft's recommendation is to strip or normalize invisible Unicode before running spam signatures, and to do the same normalization before any email content reaches an AI assistant.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This one lands directly on your products. Anything that reads untrusted text and hands it to a model — TSD Concierge over a client's site content, an inbox summarizer, a lead-intake form — needs a Unicode normalization pass on ingest. Strip the Tags block and other zero-width characters before the text reaches Claude. That is a ten-line utility in your shared package and it closes a hole that will otherwise be somebody's incident report.</div>
+          <div class="refs"><a href="https://www.microsoft.com/en-us/security/blog/2026/09/03/ascii-smuggling-crosses-over-from-ai-prompt-injection-to-phishing-evasion/" target="_blank" rel="noopener">Microsoft Security Blog</a> ◆ <a href="https://thehackernews.com/2026/09/phishing-campaign-sends-millions-of.html" target="_blank" rel="noopener">The Hacker News</a> ◆ <a href="https://www.theregister.com/security/2026/09/04/ascii_smuggling_isnt_just_an_ai_security_risk/" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Sept 5–6</span>
+            <h3>Rhysida published all 5.79 TB it took from Berlin's state network</h3>
+          </div>
+          <div class="story-body">
+            <p>Berlin's Senate refused a 30 BTC demand, worth around €2 million, and the Rhysida crew released the full set: roughly 1.44 million files spanning more than 5,000 personnel records, health and severe-disability data, plaintext credentials, passports and ID documents, and Bundestag committee protocols. It is the largest claim the group has made against a European public body. The interesting detail for anyone running infrastructure is the timeline — suspicious data outflow was first detected around August 7 and the affected departments were not disconnected from the Landesnetz until August 14. Seven days between detection and isolation is where the terabytes went.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Write down, for each client, who can pull the plug and how long it takes. For your deployments that is: revoke the Supabase service key, rotate the Vercel deploy token, kill the API keys. If you cannot do all three in under ten minutes from your phone, fix that before you sell another retainer. "We detected it fast" is worth nothing without an isolation step attached to it.</div>
+          <div class="refs"><a href="https://thecybersecguru.com/news/rhysida-berlin-government-data-leak-5-8-tb/" target="_blank" rel="noopener">The CyberSec Guru</a> ◆ <a href="https://shattered.io/berlin-rhysida-ransomware-isolation-gap-2026/" target="_blank" rel="noopener">Shattered — the seven-day gap</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Sept 4</span>
+            <h3>Microsoft announced Project Zenith, a Windows 11 build that arrives ready to code</h3>
+          </div>
+          <div class="story-body">
+            <p>Zenith is a preconfigured developer image: VS Code, GitHub Copilot, PowerToys, Git and GitHub CLI, PowerShell 7, Python 3.14+, uv, NVM, Node 24+, WSL 2 with Ubuntu, .NET 10, plus MCP-based agent security, all installed with developer settings already applied. The hardware bar is the story — at least 64 GB of unified memory and at least 250 GB/s of memory bandwidth, which Microsoft says is what it takes to run 30B-plus-parameter coding models locally without metered cloud usage. It ships first on AMD's Ryzen AI Halo, with more OEM and silicon partners promised.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not a purchase for you — a MacBook and the Claude API is a better dollar-per-output trade than a 64 GB Windows box. What it signals is that "the model runs on the machine" is becoming a normal enterprise expectation, which will eventually show up as an SMB asking whether their data leaves the building. Have an answer ready: what you send to the API, what you store in Supabase, and what never leaves their site. That conversation sells retainers.</div>
+          <div class="refs"><a href="https://www.tomshardware.com/software/windows/stripped-down-windows-11-for-ai-developers-demands-64gb-ram-and-insane-250-gb-s-bandwidth-project-zenith-will-debut-on-amds-flagship-ryzen-ai-halo-platform" target="_blank" rel="noopener">Tom's Hardware</a> ◆ <a href="https://4sysops.com/archives/microsoft-project-zenith-ready-to-code-windows-11-for-developer-hardware/" target="_blank" rel="noopener">4sysops — full tool list</a> ◆ <a href="https://www.engadget.com/2251018/microsoft-announces-project-zenith-clutter-free-windows-experience/" target="_blank" rel="noopener">Engadget</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Analysis</span>
+            <span class="ver">Sept 6</span>
+            <h3>Swiss Re says the AI buildout is becoming an insurance concentration problem</h3>
+          </div>
+          <div class="story-body">
+            <p>Global data-center insurance premiums are projected to reach $24.2 billion by 2030, up from $10.6 billion, which makes it the biggest new growth line reinsurers have. The risk picture behind that number: more than 40% of US data-center capacity sits in significant-to-very-high tornado zones — places with at least three days a year of EF1-or-stronger tornadoes — and more than a quarter is in areas seeing three or more large-hail days a year. Single sites can cost north of $20 billion to build, lenders want limits covering full construction cost, and developers keep clustering campuses within about 20 miles of each other in places like Abilene, Texas and Northern Virginia. That clustering is what turns weather into a correlated loss.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Read this as a second-order cost signal. Insurance, power and land are all pushing the same direction, and none of them get cheaper on the schedule token prices have been falling. Anything you sell with a fixed monthly price and unbounded model usage is a bet that inference stays cheap. Cap the usage in the contract or meter it.</div>
+          <div class="refs"><a href="https://www.intelligentinsurer.com/monte-carlo-today/data-centres-biggest-new-growth-opportunity-for-reinsurance" target="_blank" rel="noopener">Intelligent Insurer</a> ◆ <a href="https://www.insurancebusinessmag.com/reinsurance/news/breaking-news/ai-data-centers-face-mounting-insurance-risks-swiss-re-warns-576926.aspx" target="_blank" rel="noopener">Insurance Business</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deals and moves</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Business</span>
+            <span class="ver">Sept 6</span>
+            <h3>Kalanick's Atoms bought Pronto, rehired Levandowski, and took $100 million from Uber</h3>
+          </div>
+          <div class="story-body">
+            <p>Atoms, Travis Kalanick's industrial-AI holding company, acquired Anthony Levandowski's Pronto and brought Levandowski back to lead autonomy work that the FT reports is aimed at robotaxis. Atoms publicly denies it is building robotaxis. Uber confirmed a $100 million investment as part of the $1.7 billion a16z-led round from July — the same Uber whose trade-secrets fight over Levandowski cost it roughly $350 million and helped push Kalanick out as CEO. Pronto's pitch is autonomy that ports across OEMs rather than a single vehicle platform.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct read for your stack. Worth tracking as a marker for how much capital is flowing into physical automation versus software — the same buyer psychology reaches SMBs eventually, and Charlotte-area logistics and trades clients will start asking about it. File it, do not chase it.</div>
+          <div class="refs"><a href="https://thenextweb.com/news/atoms-kalanick-levandowski-robotaxi-uber-100m" target="_blank" rel="noopener">TNW</a> ◆ <a href="https://finance.yahoo.com/markets/stocks/articles/uber-uber-backs-travis-kalanick-190828682.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Next.js</span><span class="txt">Vercel published experimental Turbopack chunking controls for tuning navigation performance and cross-page code sharing. Worth a look on your heavier client sites, but it is experimental — do not put it on a live storefront yet. <span class="ver">Sept 3</span></span></li>
+            <li><span class="tag fix qh-tag">Reminder</span><span class="txt">Supabase removes the <code>logs.all</code> Management API endpoint on September 23. If anything you own queries it, move to the ClickHouse-backed endpoint this month. <span class="ver">Sept 23 deadline</span></span></li>
+            <li><span class="tag improve qh-tag">Tooling</span><span class="txt">Vercel AI SDK shipped GPT-6 reasoning configuration updates across the OpenAI, Azure and Bedrock providers; the workflow package now preserves per-tool types in execution callbacks. <span class="ver">Sept 4–5</span></span></li>
+            <li><span class="tag feature qh-tag">Deals</span><span class="txt">Betaworks disclosed a 5.5% Hugging Face stake worth roughly $650 million on Nvidia's $12.93 billion acquisition. <span class="ver">Sept 6</span></span></li>
+            <li><span class="tag feature qh-tag">Fintech</span><span class="txt">Indian small finance bank Slice raised $100 million at about a $450 million valuation, down from a prior $1.4 billion mark. <span class="ver">Sept 6</span></span></li>
+            <li><span class="tag new qh-tag">Policy</span><span class="txt">The US and UK signed a first-of-its-kind agreement to coordinate investigations and prosecutions against Southeast Asian scam compounds, expanding the Scam Center Strike Force, with a private-sector disruption operation planned in London in early October. <span class="ver">Sept 6</span></span></li>
+            <li><span class="tag feature qh-tag">Geopolitics</span><span class="txt">The WSJ reported US negotiators offered Armenia access to Nvidia chips for a data center as part of brokering a peace deal with Azerbaijan. <span class="ver">Sept 5</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
