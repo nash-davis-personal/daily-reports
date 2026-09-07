@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-07" />
+  <meta name="report:title" content="Vercel let an agent triage 2,244 bug reports and published the receipts" />
+  <meta name="report:summary" content="The Next.js team published a full writeup on September 4 of the agent it built to clear its issue backlog: a research agent called closability, running on Vercel's open-source eve framework in fresh sandboxes with the repo, Node, Playwright and Chromium, investigating each issue in about 30 minutes at 200 concurrent sessions on GPT-5.6 Luna at max reasoning. It closed 1,462 issues in roughly three weeks — 37% already fixed, 19% duplicates, 16% expected behavior — brought the backlog from 2,244 to under 1,000, and was deliberately built read-only outside its sandbox and hardened against prompt injection from issue text. Blockstream paused its Liquid sidechain on September 6 after purported white hats exploited a consensus bug in Elements to move about 4,000 BTC, roughly $320 million, out of the 11-of-15 federation multisig, leaving about 207 BTC; the attackers demanded a patch before returning funds and Blockstream signed an on-chain message saying bridge nodes are patched. Huawei launched the Mate XT2 tri-fold in Guangzhou on September 7 with a Kirin 9050 Pro built using LogicFolding 3D stacking, a 10.2-inch 3K 120Hz display and a claimed 42% performance gain, from 19,999 yuan. Bloomberg reported Apple plans to raise App Store margins and recurring revenue under Ternus and Cue, a factor in Phil Schiller stepping away from the store, with a product event September 9. No new Next.js, React, Tailwind, Vercel or Supabase security advisory landed in this window." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Vercel let an agent triage 2,244 bug reports and published the receipts — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/how-we-closed-1500-github-issues" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, September 7, 2026</span>
+        <span>◆</span><span>Dev tools, chips, security, hardware, space</span>
+      </div>
+      <h1>Vercel let an agent triage 2,244 bug reports and published the receipts</h1>
+      <p class="standfirst">The Next.js team wrote up exactly how it built a research agent to clear its issue backlog, including the architecture, the model, the confidence thresholds and the reopen rate — the most copyable agent case study a solo shop is going to get this month. Elsewhere, someone drained $320 million of bitcoin out of Blockstream's Liquid federation and asked politely for a patch before giving it back.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 4 through September 7</span>
+        <span>◆</span><a href="https://nextjs.org/blog/how-we-closed-1500-github-issues" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1,462</div><div class="lbl">Next.js issues closed in ~3 weeks by agent-assisted review</div></div>
+      <div class="stat"><div class="num">~4,000 BTC</div><div class="lbl">moved out of Blockstream's Liquid federation wallet</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">new advisories on Nash's stack this window</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>No new patch on your stack</h4><p>Nothing new from Next.js, React, Tailwind, Vercel or Supabase. The August critical RCE fix is still the outstanding action: 16.3.3 or 15.5.24.</p></div>
+        <div class="signal"><div class="n">02</div><h4>A production agent case study with numbers</h4><p>Next.js published its backlog agent end to end: eve framework, sandboxes, 200 concurrent sessions, confidence scores, reopen rates.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Read-only by design</h4><p>The agent cannot comment, close, push or deploy. Humans act on its research. It also ignores instructions found in issue text.</p></div>
+        <div class="signal"><div class="n">04</div><h4>$320m walked out of a sidechain</h4><p>A consensus bug in Elements made an invalid withdrawal look valid, so the federation's HSMs signed it. Liquid is paused.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Huawei shipped a tri-fold on a domestic chip</h4><p>Mate XT2 with Kirin 9050 Pro, built with 3D stacking rather than a smaller node. Claimed 42% faster than the original.</p></div>
+        <div class="signal"><div class="n">06</div><h4>The App Store is about to get more expensive</h4><p>Apple is looking for margin and recurring revenue from the store. Its outgoing store chief reportedly left over it.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Status check</span>
+            <h3>No new advisory landed on Next.js, React, Tailwind, Vercel or Supabase</h3>
+          </div>
+          <div class="story-body">
+            <p>Clean window. The Next.js blog published nothing security-related after the August 25 coordinated release, the Vercel changelog has been quiet since September 4, and the Supabase changelog's most recent entry is still August 21 (read replicas moved to Project Settings → Infrastructure, no API changes).</p>
+            <p>The outstanding item has not changed. The August 2026 security release fixed two Critical-severity issues — unauthenticated remote code execution on Windows-hosted servers, and a path through the Image Optimization API when AVIF files are used. Fixed in 16.3.3 (Active LTS) and 15.5.24 (Maintenance LTS).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npx next --version</code> across every client repo you still touch and confirm 16.3.3 or 15.5.24. A quiet week is the cheapest possible time to do it. Also note the Supabase <code>logs.all</code> Management API endpoint retires September 23 — if anything you built queries it, that is a two-week clock.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/august-2026-security-release" target="_blank" rel="noopener">Next.js — August 2026 security release</a> ◆ <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> ◆ <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Case study</span>
+            <span class="ver">Sept 4</span>
+            <h3>The Next.js team published its issue-triage agent in full</h3>
+          </div>
+          <div class="story-body">
+            <p>The backlog peaked at 3,109 open reports in January 2025 and was still 2,244 on August 10, 2026, against about 36 new reports a week. Auto-closing on inactivity had helped but was closing real bugs, because a timestamp cannot tell a fixed issue from an ignored one. So the team built <code>closability</code>, a research agent on <a href="https://vercel.com/blog/introducing-eve">eve</a>, Vercel's open-source agent framework, running each investigation in a fresh sandbox loaded with the Next.js repo, Node, Playwright and Chromium. Per issue it reads the conversation, checks supported versions, searches related PRs, commits, releases and docs, attempts a reproduction on the reported version plus latest stable plus canary, and then explicitly looks for evidence contradicting its own conclusion. It returns structured JSON with a confidence score, a primary reason, an evidence list and reference links.</p>
+            <p>They ran it on GPT-5.6 Luna at max reasoning effort. Investigations averaged 30 minutes, so they scaled to 200 concurrent eve sessions. Results went into a Close Queue that maintainers actually read before acting. By September 4 that produced 1,462 closures and a backlog under 1,000, even with 218 new reports arriving: 37% already fixed, 19% duplicates, 16% expected behavior, 6% no longer reproducible, 5% unsupported, 17% other. Two design decisions carry the whole thing. The agent is read-only outside its sandbox — it cannot comment, close, push or deploy — and it is configured to ignore instructions found in issue text or repo content, which is the prompt-injection defense. They also shipped a GitHub Action letting anyone reopen a wrongly closed issue before the sweep started. The ongoing version reviews up to 100 stale issues every Monday, and full auto-close is limited to cases where <code>closability</code> scores 80+ and a second adversarial agent independently agrees, capped at 25 a week.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the blueprint for a productized service, and it is free. The pattern — research agent proposes, human disposes, second agent argues the other side, hard cap on autonomous actions, read-only outside the sandbox — is exactly what an SMB needs for inbox triage, quote requests, warranty claims or review responses. Steal the shape wholesale: confidence score, evidence list, human queue, reopen path. It is also the answer to "what if the AI does something wrong" that you can point at a real company running it in public.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/how-we-closed-1500-github-issues" target="_blank" rel="noopener">Next.js — How we closed 1,500 GitHub issues in one month</a> ◆ <a href="https://vercel.com/blog/introducing-eve" target="_blank" rel="noopener">Vercel — introducing eve</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Sept 6–7</span>
+            <h3>About 4,000 BTC left Blockstream's Liquid federation and the attackers want a patch first</h3>
+          </div>
+          <div class="story-body">
+            <p>Liquid, Blockstream's bitcoin sidechain, is paused and its bridge nodes are disabled after roughly 4,000 BTC — about $320 million — moved out of the federation wallet backing L-BTC on September 6. The treasury held over 4,200 BTC before; Blockstream's proof-of-reserves page now shows a little over 200. The mechanism was a consensus bug in Elements, the software underpinning Liquid: the withdrawal transaction looked valid under the buggy rules, so the federation's 11-of-15 multisig HSM signers signed it. The security model held exactly as designed and produced the wrong answer.</p>
+            <p>The party holding the coins immediately signed an on-chain message reading "we are whitehats. contact us on chain," and has said it will return most of the funds once the underlying vulnerability is fixed and every node is patched. Blockstream has since sent a PGP-signed on-chain reply: "Bridge nodes are patched, safe to return the funds." As of Monday the return had not completed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not your market, but the lesson is portable and worth one line in your next security conversation. Multi-party approval does not protect you when the thing being approved is validated by broken code — every signer independently reached the same wrong conclusion. Applied to client work: if your booking or payment flow validates the same input the same way at every layer, you have one check, not five.</div>
+          <div class="refs"><a href="https://www.theblock.co/news/defi/2026-09-07-liquid-network-attacker-says-they-will-return-most-of-4000-btc-after-bug-fix-413673" target="_blank" rel="noopener">The Block — attacker says they will return most of 4,000 BTC</a> ◆ <a href="https://bitcoinmagazine.com/news/alleged-white-hat-hackers-withdraw-4000-bitcoin-from-blockstreams-liquid-network-federation-reserves" target="_blank" rel="noopener">Bitcoin Magazine</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and platforms</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">Sept 7</span>
+            <h3>Huawei's tri-fold ships on a domestic chip built by stacking, not shrinking</h3>
+          </div>
+          <div class="story-body">
+            <p>Huawei launched the Mate XT2 Ultimate Design in Guangzhou on Monday, its third tri-fold, with an inward-folding mechanism, a 10.2-inch 3K 120Hz main display, a 5,600 mAh battery and three 50MP rear cameras. It goes on sale in China September 12 at 19,999 yuan (about $2,980) rising to 24,999 yuan (about $3,725).</p>
+            <p>The interesting part is the silicon. The Kirin 9050 Pro uses what Huawei calls LogicFolding, a 3D stacking architecture that puts components vertically instead of laying them out on one layer, and Huawei claims a 42% performance gain over the original Mate XT from two years ago. That is a company routing around process-node restrictions with packaging rather than lithography, and getting a flagship-class part out of it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to buy, but keep the foldable form factor in the back of your mind on layout work. Tri-folds are still a rounding error in traffic, and a site that breaks between 1000 and 1400px CSS pixels is a real bug on far more common tablets. If your responsive testing stops at 768 and 1024, add a wide-tablet breakpoint to the checklist.</div>
+          <div class="refs"><a href="https://www.gizmochina.com/2026/09/07/huawei-mate-xt-2-tri-fold-launches-with-new-kirin-9050-pro-and-lingdun-privacy-screen/" target="_blank" rel="noopener">GizmoChina — Mate XT 2 launch</a> ◆ <a href="https://www.androidheadlines.com/2026/09/huawei-mate-xt-2-ultimate-design-is-official-and-its-the-most-advanced-tri-fold-yet.html" target="_blank" rel="noopener">Android Headlines</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Business</span>
+            <span class="ver">Sept 6</span>
+            <h3>Apple is hunting App Store margin, and its store chief left over it</h3>
+          </div>
+          <div class="story-body">
+            <p>Mark Gurman reported that Apple, under new CEO John Ternus and services chief Eddy Cue, wants to raise App Store margins and pull more recurring revenue out of the platform. The specifics have not been disclosed and could land over the coming weeks or months. Gurman reports the push was a factor in Phil Schiller, the longtime executive running the App Store, stepping away from the role, on the view that the changes would further irritate developers, governments and regulators. The same newsletter noted Tim Cook's new pay package as executive chairman — roughly $2 million salary plus about $45 million in stock for 2027 — reads more like a CEO package than a retirement one. Apple has a product event scheduled for September 9.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A reason to keep steering SMB clients toward web-first. Anything you ship as a responsive web app with a home-screen install avoids store fees and store policy entirely, and that argument gets stronger if Apple raises its take. If a client is set on a native app, price the store cut into the proposal now rather than after Apple announces.</div>
+          <div class="refs"><a href="https://www.macrumors.com/2026/09/07/apple-squeeze-more-revenue-from-app-store/" target="_blank" rel="noopener">MacRumors — Apple plans to squeeze more App Store revenue</a> ◆ <a href="https://9to5mac.com/2026/09/06/apple-might-soon-make-app-store-changes-to-raise-revenue-increase-margins-report/" target="_blank" rel="noopener">9to5Mac</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Pixxel raised a $100m Series C led by Temasek and Seraphim Space, with Radical Ventures, growX, 360 ONE Asset and IMM. India's largest space-tech round; total funding $195m, going to its Honeybee hyperspectral constellation plus SWIR, SAR and high-res optical. <span class="ver">Sept 7</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Vercel added Ling 3.0 Flash Sante to the AI Gateway free through October 4, plus GPT-6 Astra, and made basic 2 vCPU / 8 GB build machines available on Pro. <span class="ver">Sept 3–4</span></span></li>
+            <li><span class="tag improve qh-tag">Update</span><span class="txt">Cursor Cloud Agents can now run inside Vercel Sandbox on isolated microVMs with scale-to-zero workers, so agent execution stays on your own infrastructure. <span class="ver">Sept 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

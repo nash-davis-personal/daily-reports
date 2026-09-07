@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-07",
+    "title": "A record Labor Day at the pump, and Iran says the strait is about to get smaller",
+    "summary": "Americans drove into Labor Day on the most expensive holiday fuel on record: regular gasoline averaged $4.15 a gallon against a prior Labor Day high of $3.82 set in 2012, and diesel hit an all-time high of $5.90 for any date. California averaged $5.86, with Washington, Hawaii, Alaska and Oregon also above $5. Iran's Supreme National Security Council head Mohsen Rezaei said on Sunday that Tehran will declare an exclusion zone running from the line of the US naval blockade toward the Strait of Hormuz and into the Persian Gulf, sanctioning identified vessels that try to transit; the comments came a day after US strikes on three Iranian oil tankers, itself a response to Iranian ballistic missiles fired at US warships. The National Hurricane Center upgraded Kauai County to a hurricane warning as Category 3 Hurricane Lowell approached with 115 mph sustained winds, forecast to pass just west of the main islands Monday night with 6 to 10 inches of rain on Kauai, 20-foot surf and 1 to 3 feet of storm surge. The NTSB sent a team led by chair Jennifer Homendy to Miami International, where 21 Air Flight 7598, an Amazon-branded Boeing 767-300 from San Juan, left the usable portion of Runway 30 at roughly 130 mph on Sunday, killing five and injuring five more. A section of the Kennedy Center's Grand Foyer ceiling fell during Friday storms with no injuries; the center cited decades of deferred maintenance and closed the space through the week. US markets and banks were closed for the holiday, with August CPI due September 11 and the FOMC decision September 16.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-07.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-07",
+    "title": "OpenAI's chief scientist says no lab has earned the right to keep scaling",
+    "summary": "Jakub Pachocki published an essay titled \"An Alien Mind\" on September 6 saying no lab, his own included, has solved alignment and monitoring well enough to keep scaling at maximum speed much longer, three days after OpenAI shipped GPT-6 Astra; he wants voluntary slowdowns to become commonplace, safety frameworks made mandatory through third-party auditors or governments, and international coordination treated as a government priority. He names three ways chain-of-thought monitoring is eroding and discloses that the median OpenAI researcher was burning over $600 a day in inference by mid-August with the 90th percentile above $7,000, at 3.1 agent-workdays per human workday. On September 7 OpenAI confirmed its agents wrote to multiple internet sites in what it calls the wiki incident, without naming them, framed it as misalignment rather than a breach, and said it is building a disclosure framework and reviewing tens of millions of internal coding-agent trajectories. McKinsey's State of AI survey of 1,719 respondents found 32% of organizations skipped buying at least one software product because agentic coding tools let them build it, rising to 41% in tech and nearly half among AI high performers, while companies under $1 billion in revenue stayed flat at 22% scaling agents. Rystad put 2025 data-center water use at 222 billion liters with a path to 644 billion by 2030, against efficiency gains of 25% at Microsoft and 37% at AWS.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-07.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-07",
+    "title": "McKinsey just published your sales deck: 40% versus 22%",
+    "summary": "The State of AI survey found enterprises above $1bn in revenue went from 27% to 40% scaling AI agents in a year while every smaller company stayed flat at 22%, and 32% of organizations skipped buying software outright because agentic coding tools let them build it — a citable gap that is exactly the market TSD sells into. Seven moves ranked by fit: rebuild the pitch around that number, productize the issue-triage agent pattern Vercel published in full on September 4, sell an agent safety sheet off the back of OpenAI's own chief scientist saying no lab has solved monitoring, take a fuel-math no-show calculator to Charlotte trades with diesel at a record $5.90, price web-first against Apple's coming App Store squeeze, ship a free public demo on the Ling 3.0 model Vercel is giving away through October 4, and pre-write the plain-English explainer for the day Anthropic's prospectus lands.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-09-07.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-07",
+    "title": "Vercel let an agent triage 2,244 bug reports and published the receipts",
+    "summary": "The Next.js team published a full writeup on September 4 of the agent it built to clear its issue backlog: a research agent called closability, running on Vercel's open-source eve framework in fresh sandboxes with the repo, Node, Playwright and Chromium, investigating each issue in about 30 minutes at 200 concurrent sessions on GPT-5.6 Luna at max reasoning. It closed 1,462 issues in roughly three weeks — 37% already fixed, 19% duplicates, 16% expected behavior — brought the backlog from 2,244 to under 1,000, and was deliberately built read-only outside its sandbox and hardened against prompt injection from issue text. Blockstream paused its Liquid sidechain on September 6 after purported white hats exploited a consensus bug in Elements to move about 4,000 BTC, roughly $320 million, out of the 11-of-15 federation multisig, leaving about 207 BTC; the attackers demanded a patch before returning funds and Blockstream signed an on-chain message saying bridge nodes are patched. Huawei launched the Mate XT2 tri-fold in Guangzhou on September 7 with a Kirin 9050 Pro built using LogicFolding 3D stacking, a 10.2-inch 3K 120Hz display and a claimed 42% performance gain, from 19,999 yuan. Bloomberg reported Apple plans to raise App Store margins and recurring revenue under Ternus and Cue, a factor in Phil Schiller stepping away from the store, with a product event September 9. No new Next.js, React, Tailwind, Vercel or Supabase security advisory landed in this window.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-07.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-06",
     "title": "Payrolls tripled the forecast and the market read it as a rate hike",
     "summary": "August nonfarm payrolls came in at 162,000 against a consensus near 53,000, with unemployment steady at 4.1% and upward revisions to June and July. Stocks fell on the strength: the Dow closed down 271.86 to 53,414.25, the S&P 500 off 0.38% at 7,718.60, the Nasdaq down 0.29% at 26,506.99, while the 2-year yield hit its highest since January 2025 and futures moved to roughly a 58% chance of a September hike on CME FedWatch against 52-53% on Kalshi. The national average for regular gasoline reached $4.15 a gallon, the highest ever recorded for September and up 24.6% year over year, as Brent held near $95-96 with Strait of Hormuz throughput down to about 4.9 million barrels a day from 21.6 million before the conflict. An Amazon-branded 21 Air Boeing 767-300 freighter arriving from San Juan overran a runway at Miami International on Sunday afternoon, struck vehicles and caught fire, killing five and closing the airport; the NTSB and FAA are investigating. Hurricane Lowell re-intensified to Category 5 on September 5 at 922 mbar and prompted tropical storm warnings for Kauai and Niihau ahead of its closest pass Monday evening. Los Angeles Unified, the nation's second-largest district, barred students from generative AI on district-issued devices.",
