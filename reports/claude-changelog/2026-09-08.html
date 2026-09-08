@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-08" />
+  <meta name="report:title" content="2.1.261 ships /skill-doctor, 128K inline output, and a breaking keybinding change — you are still on 2.1.247" />
+  <meta name="report:summary" content="Two releases landed over the long weekend: 2.1.261 with 67 entries and 2.1.263 with a one-line bug-fix note. The headliners for TSD are /skill-doctor (which names the loaded skills eating your context and what they cost), bashOutputMaxChars and taskOutputMaxChars raising inline output to 128K, a breaking switch of Ctrl+W / Alt+F / Alt+D to Bash word semantics that kills keybindingFlavor, auto mode no longer rubber-stamping diagram-renderer links that pack your content into a URL, and two fixes aimed straight at unattended agent loops." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.261 ships /skill-doctor, 128K inline output, and a breaking keybinding change — you are still on 2.1.247 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, September 8, 2026</span>
+        <span>◆</span><span>2.1.261 · 2.1.263</span>
+      </div>
+      <h1><code>/skill-doctor</code> finally tells you which skills are burning your context — and your keybindings just changed underneath you.</h1>
+      <p class="standfirst">Two releases since the <a href="./2026-09-04.html">September 4 briefing</a>: <a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">2.1.261</a> with 67 entries and <a href="https://code.claude.com/docs/en/changelog#2-1-263" target="_blank" rel="noopener">2.1.263</a>, which says only "Bug fixes and reliability improvements." The two that matter most on this machine are <code>/skill-doctor</code>, given how many skills your global config loads, and the word-editing key change that quietly retires <code>keybindingFlavor</code>. Local CLI still reports 2.1.247.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.260</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">releases in window</div></div>
+      <div class="stat"><div class="num">68</div><div class="lbl">entries shipped</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">running locally</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4><code>/skill-doctor</code> audits your skill roster</h4><p>2.1.261 adds a command that shows which loaded skills go unused and what each one costs in context, so you can prune. Your global setup loads well over a hundred.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Inline output up to 128K characters</h4><p>New <code>bashOutputMaxChars</code> and <code>taskOutputMaxChars</code> settings raise how much command and background-task output reaches Claude inline before it gets spilled to a file.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Word-editing keys changed — <code>keybindingFlavor</code> is dead</h4><p><code>Ctrl+W</code> now deletes back to whitespace; <code>Alt+F</code> and <code>Alt+D</code> stop at word end; punctuation separates words. The <code>keybindingFlavor</code> setting no longer has any effect.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Auto mode stops rubber-stamping diagram links</h4><p>A link that packs content into a public diagram renderer's URL is now treated as an upload to that site and is no longer auto-approved unless you asked for it.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Subagent system prompts can come from a file</h4><p><code>--append-subagent-system-prompt-file</code> reads the subagent system prompt from disk, for prompts too large to pass on the command line.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Two fixes aimed at unattended loops</h4><p>A background agent that could not be resumed was retrying in a tight loop and pinning CPU. Separately, agent-team teammates were re-announcing tools on turn two and blowing the prompt cache.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Context and throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.261</span>
+            <h3><code>/skill-doctor</code> shows which loaded skills go unused and what they cost</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog entry is plain: it shows "which loaded skills go unused and what they cost in context, so you can prune them." That is the first built-in measurement of a cost you have been paying blind. Every skill description sits in the system prompt of every session on this machine — the advisor roster, the vault skills, the Vercel plugin set, the Anthropic bundle.</p>
+            <p>2.1.261 also adds <code>--append-subagent-system-prompt-file</code>, which reads a subagent's system prompt from a file when it is too large for the command line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>/skill-doctor</code> the first session after you update, and cut anything it flags as unused. The advisor skills and the client-specific ones are worth their weight; a hundred descriptions you never invoke are pure tax on every Bisque and Studio C session, and they also make the prompt prefix churn more often. Use the subagent-prompt-file flag for the loop scaffolding so the skeptic and steward prompts live in version control instead of a shell string.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.261</span>
+            <h3><code>bashOutputMaxChars</code> and <code>taskOutputMaxChars</code> raise inline output to 128K</h3>
+          </div>
+          <div class="story-body">
+            <p>Both settings control how much command and background-task output Claude receives inline before it is saved to a file, and the ceiling is 128,000 characters. Today the truncation is the reason a long <code>next build</code> failure or a full Vitest run gets summarized down to a file path and then re-read a chunk at a time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Raise <code>bashOutputMaxChars</code> in your global settings once you are on 2.1.261 — Next.js build and type-check output is exactly the shape that gets clipped right before the useful stack frame. Raise <code>taskOutputMaxChars</code> too if the scheduled loops hand back long reports. Watch the token cost on the sessions that run builds repeatedly; a 128K dump is not free.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.261</span>
+            <h3><code>/context</code> stops spending extra requests to count tokens</h3>
+          </div>
+          <div class="story-body">
+            <p>When the token-counting API is unavailable, <code>/context</code> now falls back to a local estimate instead of firing extra small-model requests. Related: the <code>/model</code> picker and the VS Code model pill now show a model's name instead of its raw Bedrock, Vertex AI, or gateway ID when Claude Code recognizes it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Minor, and it removes a small mystery line item from usage. Nothing to configure.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Behavior changes that will surprise you</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.261</span>
+            <h3>Prompt word-editing keys switched to Bash semantics and <code>keybindingFlavor</code> was retired</h3>
+          </div>
+          <div class="story-body">
+            <p>Verbatim from the changelog: "Changed the prompt's word-editing keys to match Bash: Ctrl+W deletes back to whitespace, Alt+F and Alt+D stop at word end, punctuation separates words; keybindingFlavor no longer has any effect."</p>
+            <p><code>Ctrl+W</code> deleting back to whitespace means a path like <code>src/app/api/route.ts</code> disappears in one keystroke where the old behavior would have stopped at a slash. If you set <code>keybindingFlavor</code> at any point, that setting is now inert and silently ignored.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect your muscle memory to overshoot for a day after updating. Check whether <code>keybindingFlavor</code> is still sitting in your <code>~/.claude/settings.json</code> and delete the line so it does not read as live config to future-you. If you have a custom <code>~/.claude/keybindings.json</code>, this is the moment to confirm it still does what you think.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Safety</span>
+            <span class="ver">2.1.261</span>
+            <h3>Diagram-renderer links now count as an upload, and <code>rm -rf</code> detection got wider</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode now treats a link that packs content into a public diagram renderer's URL as an upload to that site, so it is no longer auto-approved unless you asked for it. That is the mermaid.live / kroki pattern, where the diagram source is base64'd into the URL and therefore sent to a third party.</p>
+            <p>The dangerous-<code>rm</code> safety prompt also widened to catch <code>rm -rf</code> on positional parameters and inside double-quoted <code>sh -c</code> scripts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This one has a client-confidentiality edge. Any time you render an architecture diagram of a client system through a link like that, the content leaves your machine. If you want diagrams in briefings and proposals, keep drawing them as inline SVG or fenced mermaid in the artifact, where nothing gets shipped to a public renderer.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent, loop, and session reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.261</span>
+            <h3>Background agents stop pinning the CPU, and teammates stop missing the prompt cache</h3>
+          </div>
+          <div class="story-body">
+            <p>Two entries land on the same surface you automate against. First: "Fixed sustained high CPU usage when a background agent could not be resumed and its wake-up was retried in a tight loop." Second: "Fixed in-process agent-team teammates re-sending their first-turn tool and skill announcements on the second turn, which changed the request prefix and missed the prompt cache."</p>
+            <p>A third one matters for long sessions: resuming a session was losing hook output and other context around parallel tool calls, which changed the resumed request.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have ever come back to this Mac and found a fan spinning with no visible session, the retry loop is a candidate explanation. The cache fix is money — a changed request prefix on turn two means the whole prefix reprices at full rate on every teammate turn. Both are reasons to get the scheduled tasks and the Fleet Steward loops onto 2.1.261 or later before the next unattended run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.261</span>
+            <h3>Remote Control and SDK sessions get a stop button that actually stops</h3>
+          </div>
+          <div class="story-body">
+            <p>The batch: SDK and cloud sessions were ignoring a Stop or interrupt sent just after the first prompt, before the turn had started, and would run to completion regardless. Remote Control sessions showed a stuck spinner after a stop from a phone or browser, showed a stale permission mode when a device attached, and uploaded a <code>/teleport</code>-pulled session into the connected one so it appeared appended to the original. <code>SendMessage</code> to an offline Remote Control session on another machine used to read as delivered; it now says delivery is queued until that machine reconnects.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant the moment you drive a session from your phone between Charlotte site visits. The interrupt fix is the one worth knowing: before this, killing a run right after sending it did nothing, and it billed the whole turn.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The VS Code half of the release</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.261</span>
+            <h3>26 of the 67 entries are VS Code, led by in-IDE MCP server management</h3>
+          </div>
+          <div class="story-body">
+            <p>The additions: an Add server form and a Remove action in the MCP servers dialog, so servers can be added and removed without leaving the IDE; a "Build a custom style" walkthrough in the Output styles menu that writes the file and lists it immediately; a fold button on permission and question prompts so you can read the conversation behind them; "Archive session" in the session list right-click menu; and a hollow ring marking sessions open elsewhere. The model picker became one flat list of every model, with older model spellings listed last.</p>
+            <p>The rest is a long tail of session-list, tab-group, and teleport fixes.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The MCP add/remove form is the practical one — your MCP config is large and several servers currently fail to connect. Being able to add and remove them from inside the editor beats hand-editing JSON and restarting. Ignore the rest unless you live in the VS Code extension.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-261" target="_blank" rel="noopener">Changelog · 2.1.261</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.263</span>
+            <h3>2.1.263 published one line and nothing else</h3>
+          </div>
+          <div class="story-body">
+            <p>The entire release note for September 6 reads "Bug fixes and reliability improvements." No enumerated entries. There is no 2.1.262 on the changelog page.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to act on. Noted so a future briefing does not treat the gap as a missed release.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-263" target="_blank" rel="noopener">Changelog · 2.1.263</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Typed or pasted characters occasionally landed out of order or were dropped during fast input or key repeat <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Could not delete the character immediately before an inline <code>[Image #N]</code> chip in the prompt input <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Terminal progress indicator (iTerm2, Ghostty, ConEmu) showed the session as finished while a background workflow or agent was still running <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">claude.ai connectors stayed absent for the whole session when the startup connector fetch timed out; the CLI now retries in the background <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/usage</code> and the VS Code usage panel dropped a model-specific weekly limit row when the usage endpoint was rate limited or opened right after startup <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin install hints from CLIs run in background Bash commands leaked a raw <code>&lt;claude-code-hint&gt;</code> tag into the conversation <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude -p --resume &lt;file&gt;</code> adopted a malformed session ID from the transcript; it now resumes under a fresh ID <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/add-dir &lt;subdirectory&gt;</code> printed a false "couldn't be resolved" error when the working directory was on a <code>/net</code> automount <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Feature flags gated to a newer version occasionally applied to an older Claude Code running on the same machine <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Desktop and web showed a session as busy while it was only watching an artifact for updates <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude in Chrome <code>file_upload</code> failed with "paths: expected array, received undefined" in local Cowork sessions run from the Desktop app <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Streaming performance: already-rendered blocks are no longer re-checked by layout on each update <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">When the API sends no response headers, the retry now waits up to <code>API_TIMEOUT_MS</code> (10 min default) instead of another 3 minutes <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">An "Organization policy" line in <code>/status</code> and <code>claude doctor</code> explains why an org policy failed to load <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Enterprise</span><span class="txt">Long tail of Bedrock, Vertex AI, gcpAuthRefresh, TLS-inspecting-proxy, and Claude apps gateway fixes — none apply to a solo Anthropic-account setup <span class="ver">2.1.261</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Whole release described only as "Bug fixes and reliability improvements" <span class="ver">2.1.263</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
