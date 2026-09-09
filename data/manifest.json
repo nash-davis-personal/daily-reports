@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-09",
+    "title": "Oil crossed $100 and the Dow gave back 628 points",
+    "summary": "Brent crude settled at $97.89 on September 8 and traded through $100.29 early Wednesday, the first time above $100 in nearly six weeks, after attacks attributed to Yemen's Houthi movement hit Saudi energy facilities near the Yemeni border, including Jizan and its 400,000 barrel-per-day refinery; more than 70 people were wounded, and most shipping through the Strait of Hormuz remains halted. West Texas Intermediate rose for a sixth straight session. US equities fell with the energy move: the Dow closed down 628.18 points or 1.18% at 52,786.07, the S&P 500 fell 0.58% to 7,673.52, the Nasdaq Composite fell 0.32% to 26,421.41, and the VIX closed at 15.72 from 14.53. The 10-year Treasury yield held near 4.8%, close to multi-year highs. The New York Fed's August Survey of Consumer Expectations, released September 8, left one-year inflation expectations at 3.6% and five-year at 3.0% while the three-year reading eased to 3.2%; the share of respondents expecting a higher unemployment rate a year out rose to its highest since April 2020. Futures continue to price a meaningful chance of a rate increase at the September 15–16 FOMC meeting after August payrolls came in at 162,000 against expectations near 56,000. August PPI lands September 10 and August CPI September 11. Elsewhere, the Atlantic hurricane basin sat empty at the climatological peak of the season, and NASA and SpaceX are targeting September 12 for the Crew-13 launch to the International Space Station.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-09.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-09",
+    "title": "An attacker built a multi-agent credential harvester in under six hours",
+    "summary": "Google Threat Intelligence Group published its Q3 2026 AI Threat Tracker on September 8, documenting adversaries moving from single-prompt tricks to agentic chains that plan, execute and iterate; the headline case is a Mandiant investigation from Q2 in which a financially motivated actor used an AI coding chatbot, one prompt and a set of agent instructions to plan, build and run a mass credential-harvesting campaign in under six hours. GTIG says it has not yet seen a fully autonomous attack pipeline in the wild. On the same day Sierra open-sourced hyper-tau-bench, a long-horizon benchmark that scores whether a coding agent can build a working customer-service agent: the best automated configuration passed 23.9% of held-out tasks against 82.2% for an engineer paired with a frontier model. Mistral closed a 3 billion euro Series D led by Samsung Electronics at a valuation above 21 billion euros, the largest equity round ever raised by a European technology company, with CEO Arthur Mensch saying the company is on track to pass 1 billion dollars in annual recurring revenue this year. Accenture and Google Cloud formed a joint business group anchored by up to 1,000 forward-deployed engineers to build bespoke Gemini Enterprise applications on client sites. And the EU has now received OpenAI's incident report on the German wiki its agents took over for six weeks.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-09.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-09",
+    "title": "Make the existing client book agent-readable before anyone asks for it",
+    "summary": "Six ranked moves off today's shifts. The best bet is a one-pass Agent-Ready upgrade sold into the existing client book — llms.txt, structured data, machine-readable hours, pricing and booking endpoints — priced as a small one-time job, on the back of a seed round funding infrastructure for software sold directly to AI agents and a Google threat report showing agents already executing multi-step work autonomously. Then: package a forward-deployed AI engineer retainer for SMBs now that Accenture and Google Cloud have put up to 1,000 embedded engineers behind the same idea; attach a Patched and Watched security line with a 48-hour patch SLA after a 220-million-record leak traced to default credentials and an AI-assisted zero-click messenger worm built in days; fix the Vercel bill this morning after Password Protection moved to $20 per project per month and Flat Rate CDN went GA, then resell hosting as a managed line; reprice Front Desk and Concierge behind a multi-provider gateway and add a data-residency option as Mistral's €3B round pushes open-weight capacity; and publish the 23.9% versus 82.2% teardown from Sierra's new hyper-tau-bench as the inbound content piece and the Grant and Bishop leave-behind. Ranked and timed against the Macroscope board: rates up at high conviction with the 10-year through 4.75%, housing frozen, so favor sub-$1,000 one-time work and small recurring lines over anything that needs a client to borrow. Ideas, not financial advice.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-09.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-09",
+    "title": "Vercel now bills password protection per project, and flat-rate CDN went GA",
+    "summary": "Two Vercel billing changes landed in 24 hours and both touch every project TSD hosts. On September 9 Password Protection moved from a team-level purchase to $20 per project per month on Pro, toggled per project under Security > Deployment Protection; protecting production deployments stays free on every plan. On September 8 Flat Rate CDN went GA for Pro teams — a fixed monthly bill covering fast data transfer, blob transfer, CDN requests and observability events, with 1M requests and 1TB included, on by default for new Pro teams and opt-in from Billing for existing ones. Vercel Sandbox routing also got 18x faster globally, with median latency down from 62ms to 3.4ms after moving domain resolution to regional replicas. No new advisory landed against Next.js, React, Tailwind, Vercel or Supabase in this window. On the security side, researchers at Calif used AI tooling to find and weaponize a zero-click WeChat worm within days before Tencent patched, and a public Advance Passenger Information database linked to Vietnam exposed roughly 220 million passenger and crew records behind default credentials. In silicon, China set a 9,800 EFLOPS national compute target for 2030 backed by a 3.8 trillion yuan program, Intel passed one million High-NA EUV wafers, ASML is designing larger High-NA photomasks, Arm launched the 128-core Neoverse CSS N4, and Xiaomi shipped the 18 Fold on its in-house Xring O3 hours before Apple's foldable event.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-09.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-08",
     "title": "Canada's tariffs on 700 American products took effect, and the Fed is being priced for a hike",
     "summary": "Canadian counter-tariffs of 15%, 25% and 50% on more than 700 US-made products took effect September 8, covering about $27.6 billion of imports and hitting steel, dairy, appliances, farm equipment, pulp and paper and electronics, with duties on US steel and aluminum doubled to 50% after August talks collapsed. Fed funds futures now price better-than-even odds of a rate hike at the September 16 meeting rather than a cut, after August payrolls came in at 162,000 against a 55,000 consensus; the 10-year sits at 4.78% and the August CPI report lands Friday, September 11, the last inflation print before the decision. Oil stayed near multi-month highs with Brent for November around $97.20 and WTI for October around $92.56 after US forces struck three Iranian oil tankers on September 5 in response to ballistic missiles fired at a US carrier and destroyer, and Iran threatened a restricted zone outside the Strait of Hormuz; roughly 7 million barrels a day still transit the strait. The S&P 500 closed at about 7,707, down 0.15%, with Apple, Alphabet and Microsoft leading the decline. Hurricane Lowell passed 90 miles west of Lihue as a Category 2 with 110 mph winds, closing Kauai schools and state and county offices and dropping nearly 14 inches of rain at Kilohana in 24 hours.",

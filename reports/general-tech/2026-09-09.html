@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-09" />
+  <meta name="report:title" content="Vercel now bills password protection per project, and flat-rate CDN went GA" />
+  <meta name="report:summary" content="Two Vercel billing changes landed in 24 hours and both touch every project TSD hosts. On September 9 Password Protection moved from a team-level purchase to $20 per project per month on Pro, toggled per project under Security &gt; Deployment Protection; protecting production deployments stays free on every plan. On September 8 Flat Rate CDN went GA for Pro teams — a fixed monthly bill covering fast data transfer, blob transfer, CDN requests and observability events, with 1M requests and 1TB included, on by default for new Pro teams and opt-in from Billing for existing ones. Vercel Sandbox routing also got 18x faster globally, with median latency down from 62ms to 3.4ms after moving domain resolution to regional replicas. No new advisory landed against Next.js, React, Tailwind, Vercel or Supabase in this window. On the security side, researchers at Calif used AI tooling to find and weaponize a zero-click WeChat worm within days before Tencent patched, and a public Advance Passenger Information database linked to Vietnam exposed roughly 220 million passenger and crew records behind default credentials. In silicon, China set a 9,800 EFLOPS national compute target for 2030 backed by a 3.8 trillion yuan program, Intel passed one million High-NA EUV wafers, ASML is designing larger High-NA photomasks, Arm launched the 128-core Neoverse CSS N4, and Xiaomi shipped the 18 Fold on its in-house Xring O3 hours before Apple's foldable event." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Vercel now bills password protection per project, and flat-rate CDN went GA — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, September 9, 2026</span>
+        <span>◆</span><span>Platforms, silicon, security, hardware</span>
+      </div>
+      <h1>Vercel now bills password protection per project, and flat-rate CDN went GA</h1>
+      <p class="standfirst">No new advisory hit Next.js, React, Tailwind, Vercel or Supabase in this window, so the item that actually costs you money is a billing change: Password Protection went per-project at $20 a month on Pro, and Flat Rate CDN became generally available the day before. Both are worth ten minutes in the dashboard today.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 8 through the morning of September 9</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$20</div><div class="lbl">per project per month for Vercel Password Protection on Pro</div></div>
+      <div class="stat"><div class="num">62ms → 3.4ms</div><div class="lbl">median Vercel Sandbox routing latency after the regional-replica change</div></div>
+      <div class="stat"><div class="num">220M</div><div class="lbl">passenger and crew records exposed behind default credentials</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Password Protection is now per project</h4><p>$20/project/month on Pro as of September 9. It replaces the old team-level purchase. Toggling it off in a project stops that project's charge.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Protecting production is still free</h4><p>Free deployment protection for production deployments exists on every plan. The $20 buys password gating on a project's deployments.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Flat Rate CDN is GA for Pro</h4><p>A fixed monthly bill instead of usage-based CDN billing: 1M requests and 1TB transfer included. Default on for new Pro teams, opt-in for existing ones.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nothing new against your framework stack</h4><p>No fresh advisory landed against Next.js, React, Tailwind, Vercel or Supabase in this window. The May coordinated release and the React Server Components DoS CVEs remain the ones to have patched.</p></div>
+        <div class="signal"><div class="n">05</div><h4>AI found and weaponized a zero-click messenger worm in days</h4><p>Researchers at Calif built a proof-of-concept WeChat worm off a call-stack flaw using AI tooling, compressing what used to be months of exploit work. Tencent patched.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Default credentials leaked 220 million traveler records</h4><p>A public Advance Passenger Information database linked to Vietnam exposed passports, names, birth dates and flights from 2017 to 2026 behind a default-credential cloud path.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack, this morning</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Pricing</span>
+            <span class="ver">September 9</span>
+            <h3>Vercel moved Password Protection to $20 per project per month</h3>
+          </div>
+          <div class="story-body">
+            <p>Pro teams used to buy password protection once at the team level and apply it everywhere. As of September 9 it is billed per project at $20 a month, enabled or disabled from Security &gt; Deployment Protection inside each project. Turning it off on a project stops future charges for that project. Vercel paired the change with a reminder that protecting production deployments remains free on every plan.</p>
+            <p>The practical read: the feature got more flexible and, if you had it switched on broadly, more expensive. A studio with five client projects sitting behind a shared password now has a $100/month line item where it previously had one flat charge.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open the Vercel dashboard today and walk every project under Security &gt; Deployment Protection. Turn password protection off anywhere it was habit rather than a client requirement — demo sites, stale previews, anything already gated another way. Where a client genuinely needs it, that $20 belongs in their monthly retainer line rather than your overhead.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/password-protection-now-costs-20-per-project-per-month-on-pro" target="_blank" rel="noopener">Vercel changelog — Password Protection</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Billing</span>
+            <span class="ver">September 8</span>
+            <h3>Flat Rate CDN went generally available for Pro teams</h3>
+          </div>
+          <div class="story-body">
+            <p>Flat Rate CDN swaps usage-based CDN billing for a fixed monthly bill covering fast data transfer, blob data transfer, CDN requests and observability events. Pro teams get 1M requests and 1TB of transfer in the base tier, with higher tiers for more. New Pro teams have it on by default; existing teams opt in through Billing settings.</p>
+            <p>Predictability is the whole pitch. Usage-based CDN charges are the line that spikes when a client's site gets picked up somewhere, which is exactly the month you do not want a surprise invoice to explain.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Pull last three months of CDN usage from Billing and compare against the flat tier. If your portfolio sits under 1M requests and 1TB — likely, for a book of SMB sites — opting in converts a variable cost into a fixed one you can price retainers against with confidence. Do the comparison before switching; the flat rate is not automatically cheaper, it is automatically predictable.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams" target="_blank" rel="noopener">Vercel changelog — Flat Rate CDN</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">September 8</span>
+            <h3>Vercel Sandbox routing got 18x faster by moving to regional replicas</h3>
+          </div>
+          <div class="story-body">
+            <p>Sandbox now resolves public domains from regional replicas rather than a centralized store. Median routing latency dropped from 62ms to 3.4ms, with p99 improvements up to 112x in Sydney and 146x in Cape Town. The change is automatic on all sandbox domain requests, with no pricing change.</p>
+            <p>Same window, Vercel added GPT Image 2.5 Flare and Sunburst to the AI Gateway, following GPT-6 Astra on September 4 and Ling 3.0 Flash Sante on the free tier.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you have been avoiding Sandbox for anything user-facing because of cold routing latency, the objection is gone — it is now viable for agent-run preview environments and client-facing code execution demos. The AI Gateway additions mean you can A/B image models behind one key instead of wiring a second provider.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/vercel-sandbox-routing-is-now-18x-faster-globally" target="_blank" rel="noopener">Vercel changelog — Sandbox routing</a> <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Full changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">September 8</span>
+            <h3>Researchers used AI to build a zero-click WeChat worm in days</h3>
+          </div>
+          <div class="story-body">
+            <p>Security firm Calif built a proof-of-concept worm exploiting a flaw in WeChat's call stack, using AI tooling to find the vulnerability and weaponize it within days. Reporting on the work described a worm that could have spread across the platform in hours had it been released. Tencent patched the affected versions.</p>
+            <p>Set this next to Google's threat tracker from the same day and the pattern is consistent: the discovery-to-exploit interval is collapsing on both sides of the fence.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch windows that used to be measured in weeks are now measured in days. Set Dependabot or Renovate to auto-open PRs on every client repo and commit to shipping security patches within 48 hours as a stated line in your retainer — it is a real differentiator against the "we built it and left" shops you compete with.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/08/top-tech-news-today-september-8-2026-asml-google-intel-mistral-openai-xiaomi-more/" target="_blank" rel="noopener">Tech Startups roundup (orig. New York Times)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">September 8</span>
+            <h3>220 million traveler records sat behind default credentials</h3>
+          </div>
+          <div class="story-body">
+            <p>A public Advance Passenger Information System database linked to Vietnam exposed roughly 220 million passenger and crew records — passport numbers, names, dates of birth, nationalities and flight details spanning 2017 through 2026. Researchers reached the system through a cloud-access path protected by default credentials.</p>
+            <p>No exotic exploit, no zero-day. The largest traveler-data exposure of the year came from a credential nobody changed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Audit every client Supabase project for service-role keys sitting in client-side code, and every third-party integration for a default or shared credential you set up during a build and never rotated. This is a fifteen-minute sweep that prevents the single most embarrassing kind of incident on a site you own the reputation for.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/08/top-tech-news-today-september-8-2026-asml-google-intel-mistral-openai-xiaomi-more/" target="_blank" rel="noopener">Tech Startups roundup (orig. BleepingComputer)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Policy</span>
+            <span class="ver">September 8</span>
+            <h3>China set a 9,800 EFLOPS compute target for 2030 behind a $532B program</h3>
+          </div>
+          <div class="story-body">
+            <p>MIIT's five-year plan commits 3.8 trillion yuan — about $532 billion — across 2026 to 2030 to quadruple national AI compute from roughly 2,450 EFLOPS as of July 2026 to 9,800 EFLOPS. Alongside it, Huawei is testing a Kirin 9050 Pro built on a LogicFolding architecture that stacks logic vertically to gain performance without access to leading-edge nodes.</p>
+            <p>On the Western side of the same race, Intel disclosed it has processed more than one million 300mm wafers on High-NA EUV in under two and a half years, and ASML is designing larger High-NA photomasks — roughly 40% more productivity — to allow bigger AI processor dies. Arm launched Neoverse CSS N4, an 8-to-128-core platform for TSMC N3P aimed at cloud providers building custom server silicon.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to act on this week, but this is the supply side of the token prices you build margin on. More global inference capacity through 2027 means the per-call cost of Front Desk and Concierge keeps falling while your retainer price stays put. Price contracts on today's cost rather than on a hoped-for drop, and pocket the difference.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/08/top-tech-news-today-september-8-2026-asml-google-intel-mistral-openai-xiaomi-more/" target="_blank" rel="noopener">Tech Startups roundup (SCMP, Tom's Hardware, Reuters)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">September 8–9</span>
+            <h3>Xiaomi shipped a foldable on its own silicon hours before Apple's event</h3>
+          </div>
+          <div class="story-body">
+            <p>Xiaomi launched the 18 Fold running its in-house Xring O3 processor, with a 7.58-inch interior OLED, starting at 10,999 yuan. Apple's "Surprise and shine" event runs today, September 9, at 10:00 a.m. Pacific — 1:00 p.m. Eastern — where the iPhone 18 Pro, 18 Pro Max and a first foldable are expected. There is no base iPhone 18 this year; Apple is reportedly holding the cheaper models for spring 2027.</p>
+            <p>Nothing is announced as of this filing. Treat every specification circulating this morning as rumor until the keynote.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a foldable ships with a ~5.5-inch cover screen unfolding to ~7.8 inches, your responsive breakpoints get a new awkward middle. Nothing to change today, but once real viewport numbers exist, spot-check client sites at those widths — a broken layout on a brand-new flagship is the kind of thing a client notices before you do.</div>
+          <div class="refs"><a href="https://www.macrumors.com/guide/apple-september-2026-what-to-expect/" target="_blank" rel="noopener">MacRumors — event preview</a> <a href="https://techstartups.com/2026/09/08/top-tech-news-today-september-8-2026-asml-google-intel-mistral-openai-xiaomi-more/" target="_blank" rel="noopener">Tech Startups (orig. The Verge)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">Google redesigned European search results to comply with the Digital Markets Act after a €460M fine, putting rival specialist engines at the top and stripping features like live hotel and airline pricing; Google called it the biggest quality drop in 29 years. <span class="ver">Sep 8</span></span></li>
+            <li><span class="tag improve qh-tag">Cost</span><span class="txt">High-bandwidth memory demand for AI data centers is pulling capacity away from consumer parts and pushing up smartphone and laptop component prices; Samsung, SK Hynix and Micron hold roughly 90% of the memory market, with new capacity landing 2027–2030. <span class="ver">Sep 8</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Stoke Space closed an initial $1B Series E for its fully reusable Nova rocket, bringing total raised to about $2.3B, with the first pathfinder flight pushed to early 2027. <span class="ver">Sep 8</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Lightsage raised a $4M seed to build infrastructure that lets software companies sell directly to autonomous AI agents — agent-facing discovery and purchase as a distribution channel. <span class="ver">Sep 8</span></span></li>
+            <li><span class="tag feature qh-tag">Policy</span><span class="txt">Australia drafted a "My Feed, My Way" Digital Duty of Care law requiring platforms to offer algorithmic or follow-only feeds to users over 16, with penalties above A$100M. <span class="ver">Sep 8</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
