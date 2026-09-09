@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-09",
+    "title": "TSD Daily — Wednesday, September 9, 2026",
+    "summary": "Attackers ran a multi-agent credential campaign in under six hours, a new benchmark puts solo agents at 23.9% against 82.2% for a human-driven one, Vercel re-cut two billing lines overnight, and Brent crossed $100 after strikes on Saudi energy facilities.",
+    "file": "audio/2026-09-09.mp3",
+    "durationSec": 371,
+    "bytes": 4457421
+  },
+  {
     "date": "2026-09-07",
     "title": "TSD Daily — Monday, September 7, 2026",
     "summary": "OpenAI's chief scientist calls for a slowdown while his own model rolls out, Vercel publishes the full blueprint for an agent that closed 1,462 bug reports, diesel sets an all-time record as Iran moves to narrow the Strait of Hormuz, and McKinsey hands small-business AI its best sales number yet: 40 percent versus 22.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-06-29.mp3",
     "durationSec": 361,
     "bytes": 4329549
-  },
-  {
-    "date": "2026-06-28",
-    "title": "TSD Daily — Sunday, June 28, 2026",
-    "summary": "The frontier goes behind a government gate as OpenAI ships GPT-5.6 partner-only and Anthropic's Fable 5 stays dark, cheaper inference reshapes TSD's AI products, markets rotate out of megacap tech amid sticky inflation, and the West burns under a historic fire warning.",
-    "file": "audio/2026-06-28.mp3",
-    "durationSec": 388,
-    "bytes": 4652397
   }
 ]
