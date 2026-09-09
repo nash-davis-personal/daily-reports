@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-09.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-09",
+    "title": "Scripted sessions finally remember cd, and three prompt-cache leaks in subagent resume are closed",
+    "summary": "2.1.265 makes cd persist across turns in non-interactive sessions, restores prompt-cache reuse for resumed subagents and teammates, and gives legacy http MCP servers an SSE fallback; 2.1.266 reverts a same-day gateway regression.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-09-09.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

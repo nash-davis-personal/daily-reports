@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-09" />
+  <meta name="report:title" content="Scripted sessions finally remember cd, and three prompt-cache leaks in subagent resume are closed" />
+  <meta name="report:summary" content="2.1.265 makes cd persist across turns in non-interactive sessions, restores prompt-cache reuse for resumed subagents and teammates, and gives legacy http MCP servers an SSE fallback; 2.1.266 reverts a same-day gateway regression." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Scripted sessions finally remember cd, and three prompt-cache leaks in subagent resume are closed — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, September 9, 2026</span>
+        <span>◆</span><span>2.1.265 · 2.1.266</span>
+      </div>
+      <h1>Scripted sessions finally remember <code>cd</code>, and three prompt-cache leaks in subagent resume are closed.</h1>
+      <p class="standfirst">Two releases landed after yesterday's briefing, both dated September 8: <a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">2.1.265</a> with 50 entries and <a href="https://code.claude.com/docs/en/changelog#2-1-266" target="_blank" rel="noopener">2.1.266</a> with one, a same-day revert of a gateway regression 2.1.265 introduced. Almost everything worth your attention here is plumbing under unattended runs: working directory persistence in <code>-p</code> and SDK sessions, prompt-cache reuse for resumed subagents, crash-resume integrity, and an SSE fallback that may wake up MCP servers that have never connected on this machine. Local CLI still reports 2.1.247.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.263</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">releases in window</div></div>
+      <div class="stat"><div class="num">51</div><div class="lbl">changelog entries</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">local CLI version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4><code>cd</code> persists across turns in scripted sessions</h4><p>Non-interactive runs no longer reset the shell working directory at every new user message. Your scheduled tasks stop silently landing back in the wrong folder.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Three prompt-cache leaks in subagent resume, closed</h4><p>Resumed subagents and agent teammates were mutating their own prompt prefix, which killed cache reuse. That was billing you full input rates on repeat turns.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Legacy <code>http</code> MCP servers get an SSE fallback</h4><p>Servers that only speak HTTP+SSE never connected at all before. Worth a retry on anything in your config that has been permanently dead.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Crash-resume keeps the interrupted tool call</h4><p>Resuming after a dead process no longer rewrites your last prompt, and the in-flight tool call survives marked as interrupted.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>--plugin-dir</code> takes a folder of plugins</h4><p>Point it at a parent directory and every child with a manifest loads, with adds and removals picked up while running.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Artifact reads now treat other people's pages as untrusted</h4><p>Reading an artifact someone else wrote flags embedded instructions instead of relaying them into your context.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs got more trustworthy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.265</span>
+            <h3>Non-interactive sessions stop resetting the working directory every turn</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog is specific about which surfaces this covers: <code>-p</code> with stream-json input, the Agent SDK, and cloud sessions. Before this, each new user message reset the shell's working directory, so a <code>cd</code> issued on turn one was gone by turn two. Now it persists across turns.</p>
+            <p>This is the kind of bug that produces wrong results instead of errors. A multi-turn scripted run that assumed it was still inside a repo would quietly execute against whatever the default directory was.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled tasks are exactly this shape — a stream-json <code>-p</code> session doing several turns of work inside a repo. Any of them that <code>cd</code> once and then rely on it have been running from the wrong directory on later turns. Go read the ones that touch more than one folder, and where you see a bare <code>cd</code> early in the flow, switch to absolute paths anyway so the behavior is the same on 2.1.247 as it is after you upgrade.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.265</span>
+            <h3>Resume after a crash keeps the interrupted tool call</h3>
+          </div>
+          <div class="story-body">
+            <p>When the previous process died mid-tool, resume used to rewrite the last prompt. Now the prompt is left alone and the interrupted tool call is kept in the transcript, marked interrupted. Two related fixes shipped alongside: background <code>--bg</code> sessions are no longer occasionally retired mid-turn when a message arrives just before the idle timeout, and resuming a workflow run after its container restarted now fails with a clear error when the run journal is missing instead of rerunning every agent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> That workflow-resume fix is the expensive one. A missing run journal used to mean a full re-fan-out of every agent in the workflow, which you pay for in tokens and wall-clock. If you ever resumed a multi-agent run and it felt like it started over, that was this.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent context and token cost</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.265</span>
+            <h3>Prompt-cache reuse restored for resumed subagents and teammates</h3>
+          </div>
+          <div class="story-body">
+            <p>Two separate fixes, same root cause. Resuming a foreground-spawned subagent changed its tool list and system prompt prefix, which broke prompt-cache reuse for that agent. Separately, agent teammates and resumed subagents were moving <code>SubagentStart</code> hook context and preloaded skills out of the prompt prefix on later turns, breaking cache reuse there too.</p>
+            <p>A prompt prefix that changes between turns cannot be cached. Every turn after the mutation pays full input token price on the whole prefix, including all those preloaded skills.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a direct line item on your bill, and it hits hardest where your config is heaviest — a global CLAUDE.md, a long skill roster, and hook context all sit in that prefix. Pair this with <code>/skill-doctor</code> from 2.1.261: prune the skills that never fire, then upgrade so the ones that stay actually get cached.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.265</span>
+            <h3>A 1 GB cap on tool results saved to disk, and faster resume for read-heavy sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Tool results written to disk are now capped at 1 GB, and the in-conversation preview says when a saved file was truncated. Resuming long sessions that read many files also got faster. Both are quality-of-life on the same axis: sessions that accumulate a lot of tool output.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The truncation notice is the useful half. Previously a giant saved result could be silently incomplete when you went back to read it, which matters on the bulk file sweeps your vault and repo work does.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Plugins, skills and MCP wiring</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.265</span>
+            <h3><code>http</code> MCP servers that only speak legacy HTTP+SSE now connect</h3>
+          </div>
+          <div class="story-body">
+            <p>An MCP server configured as <code>http</code> that only implements the older HTTP+SSE transport never connected. Claude Code now falls back to SSE the way the MCP spec describes. Two adjacent fixes: some claude.ai connectors in cloud sessions showed as needing authentication despite being connected, because the server answered an unsupported request with HTTP 401, and Claude Code no longer registers an OAuth client with a remote MCP server until you actually authenticate.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You have servers that fail to connect every session. After you upgrade, retry the dead ones before you assume they are misconfigured — a permanently-failing <code>http</code> entry is the exact signature this fixes. The 401 fix also means a connector that looked unauthorized in a cloud session may have been fine the whole time.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.265</span>
+            <h3><code>--plugin-dir</code> accepts a folder of plugins, with hot add and remove</h3>
+          </div>
+          <div class="story-body">
+            <p>Point <code>--plugin-dir</code> at a parent folder and every child folder with a manifest loads. Children added or removed while the session is running are picked up. Alongside it, plugin display metadata now prefers the marketplace entry over <code>plugin.json</code> on the Installed tab and in <code>claude plugin details</code>, and <code>/plugin</code> Discover/Browse plus <code>claude plugin list --json --available</code> stopped showing blank descriptions for marketplace plugins whose metadata lives only in <code>plugin.json</code>.</p>
+            <p>Two security-adjacent plugin fixes shipped too: a plugin path containing a backslash could bypass the symlink containment check on macOS and Linux, and a default component folder the OS cannot check (a symlink loop, for instance) was silently skipped and is now reported in <code>/plugin</code> with its error code.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth it if you are developing plugins locally — one flag instead of one per plugin, and edits to the set land without a restart. The backslash containment bypass is the reason to actually upgrade rather than sit on 2.1.247, since it is a real path-escape hole in plugin loading.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.265</span>
+            <h3>Slash commands typed mid-prompt show a list, and plugin skills resolve by bare name</h3>
+          </div>
+          <div class="story-body">
+            <p>Typing a slash command in the middle of a prompt now shows matches as a list, with Tab to open it outside fullscreen, instead of a single suggestion. A plugin skill is now found by its bare name.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The bare-name resolution is the practical part. Your plugin skills currently need the <code>plugin:skill</code> form to be found, and that goes away.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Artifacts, worktrees and the gateway revert</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.265</span>
+            <h3>Artifact reads treat someone else's page as untrusted content</h3>
+          </div>
+          <div class="story-body">
+            <p>When the Artifact tool reads an artifact another person wrote, the summary now treats the page as untrusted and flags embedded instructions rather than relaying them. A second artifact fix: publishing is refused when none of the declared connector tool names exist on the connector, and warns when only some are missing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Straight prompt-injection hardening on a surface you use for client deliverables. If you ever read a shared artifact into a session that also has write access to a client repo, this is the guardrail that was missing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.265</span>
+            <h3><code>--worktree</code> starts faster on large repos, and <code>/workflows</code> shows per-agent detail</h3>
+          </div>
+          <div class="story-body">
+            <p>New worktrees are now checked out in parallel on git 2.32+. Separately, <code>/workflows</code> agent detail marks tool calls running, failed or done, shows a subagent's task list when it has one, and unfolds listed calls with their inputs and results on Enter.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Both help the isolated-worktree pattern your loop work is built on. The <code>/workflows</code> detail view is the first decent way to see why one agent in a fan-out stalled while the others finished.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">Changelog 2.1.265</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.266</span>
+            <h3>Same-day revert: <code>CLAUDE_CODE_USE_GATEWAY</code> stopped forcing gateway sign-in</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.265 changed the undocumented <code>CLAUDE_CODE_USE_GATEWAY</code> environment variable so it forced Cloud-gateway sign-in on its own. Previously it was ignored unless both <code>ANTHROPIC_BASE_URL</code> and <code>ANTHROPIC_AUTH_TOKEN</code> were set. Setups that had it alongside an API key, <code>apiKeyHelper</code>, or custom auth headers failed every request with "Not signed in to the Cloud gateway". 2.1.266 makes the variable on its own ignored again, and the changelog says no configuration change is needed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do, you have no gateway or proxy setup. The reason it is here is the upgrade rule it implies: if you go to 2.1.265, go to 2.1.266 in the same step.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-266" target="_blank" rel="noopener">Changelog 2.1.266</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model opusplan[1m]</code> was rejected with "Model not found" <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Code's own git status and diff probes were running clean filters configured by a nested repository inside the working tree <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Two-key keyboard shortcuts cancelled silently when the second key arrived over a second later, as happens inside tmux; they now wait 3 seconds and show a notice on timeout <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> claimed a model was "saved as your default" when the settings file could not be written; it now says the save failed and why <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Forked skills (<code>context: fork</code>) did not stream their kickoff prompt, or with <code>--forward-subagent-text</code> their text turns, as stream-json progress events <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>claude-api</code> skill's error-code reference was wrong: model access failures return 404 and unavailable beta headers return 400 <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The advisor tool and its instructions were re-decided per request from the request's model; the decision is made once and announced when it changes <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/add-dir &lt;subdirectory&gt;</code> refused to load a subdirectory's agents when managed settings lock only skills to plugins <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin directories whose names begin with two dots were wrongly refused as outside the plugin root <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Syntax-highlighted code in permission prompts sometimes dropped a character after a Ruby <code>?</code>, Erlang <code>$</code> or Perl <code>$</code> sigil <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The fullscreen transcript jumped a row whenever the slash-command or @-file suggestion list opened or closed <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The <code>/config</code> dialog changed height when switching tabs <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code and SDK sessions occasionally required re-login when a session closed while refreshing its token <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control sent the end-of-turn signal before the reply's last message, so a reply could look finished in the Claude app early <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/clear</code> from Remote Control waited on SessionStart hooks and open terminal dialogs before completing <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote sessions kept their sandbox container alive while a connector approval or sign-in link waited <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resumed sessions showed long model-facing recovery instructions in "background task didn't finish" notices instead of a short status line <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/login</code> said "no gateway URL is configured" when re-run in a session signed in to a managed-settings gateway <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Claude apps gateway's OTLP telemetry relay paused all forwarding for 30 seconds after rejecting a few malformed or oversized payloads <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: Read, Write and Edit refused every file inside an AppContainer or restricted-token sandbox <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The error for an oversized image that cannot be decoded now names the cause and the fix instead of only citing the limit <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The <code>.claude</code> folder permission option now says what it allows: editing files in the project's <code>.claude</code> folder or <code>~/.claude</code> for the session <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag breaking qh-tag">Change</span><span class="txt">Machines with <code>forceLoginGatewayUrl</code> in managed settings are Claude apps gateway sessions from startup; a leftover claude.ai login or API key is not used <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Image processing uses the runtime's built-in image support; the CLI no longer extracts a native image module to the temp directory <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Claude apps gateway sessions export OpenTelemetry directly to a collector named in <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> instead of through the gateway's relay <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Telemetry sent by Claude Desktop and Cowork through a Claude apps gateway now includes <code>user.email</code> and <code>user.groups</code>, matching terminal sessions <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[VS Code] Automatic archiving of sessions inactive for a set period, new "Archive inactive sessions" setting, default 14 days <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VS Code] The sidebar chat came back blank after Reload Window or a restart when the conversation had been open over 10 minutes <span class="ver">2.1.265</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VS Code] The timeline dot sat below the text on the "Remote Control is active" message <span class="ver">2.1.265</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
