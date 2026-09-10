@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-10",
+    "title": "Treasury tripled its long-bond buyback and yields went up anyway",
+    "summary": "The first operation under the expanded buyback program bought up to $6 billion of long-dated debt, the 10-year still closed at its highest since November 2023, and August CPI lands Friday morning.",
+    "highlights": 5,
+    "path": "reports/america/2026-09-10.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-10",
+    "title": "DeepSeek shipped 98% of GPT-6 for about 1% of the price",
+    "summary": "V4.1-Flash landed the same week Ramp measured effective token prices down 41% since March, while Anthropic published an alignment post-mortem on four evaluation breaches and the Senate opened a probe into OpenAI's.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-10.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-10",
+    "title": "Agents started buying things this week, and most client sites cannot be bought from",
+    "summary": "Meta shipped an agent that checks out with a real card while token costs fell 41% since March — seven moves that turn both shifts into billable work, led by an agent-readiness audit Grant and Bishop can sell cold.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-09-10.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-10",
+    "title": "The largest Patch Tuesday on record, and two of the holes are already open",
+    "summary": "Microsoft closed roughly 974 CVEs including two exploited Windows zero-days with a September 22 federal deadline, while Vercel took Sandbox multi-region and put DeepSeek V4.1 Flash on AI Gateway.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-10.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-09",
     "title": "Oil crossed $100 and the Dow gave back 628 points",
     "summary": "Brent crude settled at $97.89 on September 8 and traded through $100.29 early Wednesday, the first time above $100 in nearly six weeks, after attacks attributed to Yemen's Houthi movement hit Saudi energy facilities near the Yemeni border, including Jizan and its 400,000 barrel-per-day refinery; more than 70 people were wounded, and most shipping through the Strait of Hormuz remains halted. West Texas Intermediate rose for a sixth straight session. US equities fell with the energy move: the Dow closed down 628.18 points or 1.18% at 52,786.07, the S&P 500 fell 0.58% to 7,673.52, the Nasdaq Composite fell 0.32% to 26,421.41, and the VIX closed at 15.72 from 14.53. The 10-year Treasury yield held near 4.8%, close to multi-year highs. The New York Fed's August Survey of Consumer Expectations, released September 8, left one-year inflation expectations at 3.6% and five-year at 3.0% while the three-year reading eased to 3.2%; the share of respondents expecting a higher unemployment rate a year out rose to its highest since April 2020. Futures continue to price a meaningful chance of a rate increase at the September 15–16 FOMC meeting after August payrolls came in at 162,000 against expectations near 56,000. August PPI lands September 10 and August CPI September 11. Elsewhere, the Atlantic hurricane basin sat empty at the climatological peak of the season, and NASA and SpaceX are targeting September 12 for the Crew-13 launch to the International Space Station.",

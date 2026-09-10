@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-10" />
+  <meta name="report:title" content="The largest Patch Tuesday on record, and two of the holes are already open" />
+  <meta name="report:summary" content="Microsoft closed roughly 974 CVEs including two exploited Windows zero-days with a September 22 federal deadline, while Vercel took Sandbox multi-region and put DeepSeek V4.1 Flash on AI Gateway." />
+  <meta name="report:highlights" content="6" />
+
+  <title>The largest Patch Tuesday on record, and two of the holes are already open — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.securityweek.com/microsoft-patches-record-974-vulnerabilities-including-two-exploited-zero-days/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, September 10, 2026</span>
+        <span>◆</span><span>Dev tools, silicon, security, platforms</span>
+      </div>
+      <h1>The largest Patch Tuesday on record, and two of the holes are already open</h1>
+      <p class="standfirst">Microsoft's September release closes roughly 974 vulnerabilities — the biggest single month anyone has counted — including two Windows privilege-escalation bugs already exploited in the wild and now on CISA's catalog with a September 22 deadline. On the stack Nash actually ships, Vercel took Sandbox multi-region and put DeepSeek's new V4.1 Flash on AI Gateway a day after it shipped.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 8 through the morning of September 10</span>
+        <span>◆</span><a href="https://www.securityweek.com/microsoft-patches-record-974-vulnerabilities-including-two-exploited-zero-days/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~974</div><div class="lbl">CVEs in one Patch Tuesday, with 110+ rated critical</div></div>
+      <div class="stat"><div class="num">Sept 22</div><div class="lbl">CISA deadline on both exploited Windows zero-days</div></div>
+      <div class="stat"><div class="num">180</div><div class="lbl">vulnerabilities in the September Android bulletin</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Two Windows zero-days are being exploited now</h4><p>CVE-2026-85880 (ALPC heap overflow) and CVE-2026-81963 (Windows Update Stack link resolution) both give local privilege escalation to SYSTEM. Patch client machines this week.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Android shipped 180 fixes, several critical RCE</h4><p>September's bulletin patches remote code execution paths across Framework, System and Kernel.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel Sandbox now runs in every compute region</h4><p>Region per sandbox, a project default, and configurable failover regions. Agent workloads stop being pinned to one place.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Production deployments can be locked down for free</h4><p>Vercel Authentication now covers production domains at no cost on every plan — a real answer to the $20-per-project password protection change.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Meta shipped an agent that spends money</h4><p>Muse acts inside email, calendar and checkout, using Stripe Link one-time card numbers. Free metered tier, $20 and $100 paid tiers.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Qualcomm bought its way into the AI datacenter</h4><p>Warrants for 25M Qualcomm shares at $161.26 handed to Amazon — about $4B — alongside an AWS deal reported at up to $60B of inference silicon.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">September 8</span>
+            <h3>Microsoft closed a record ~974 vulnerabilities, two already exploited</h3>
+          </div>
+          <div class="story-body">
+            <p>Counts differ by tracker — Microsoft's own notes tally 974, BleepingComputer counted 966, ZDI 972, Tenable 964 — but every count makes this the largest Patch Tuesday ever shipped, with more than 110 rated critical. The two that matter immediately are the ones attackers already have. CVE-2026-85880 is a heap buffer overflow in Windows Advanced Local Procedure Call that takes a low-privilege foothold to SYSTEM. CVE-2026-81963 is an improper link resolution flaw in the Windows Update Stack that does the same job by a different route.</p>
+            <p>Both are in CISA's Known Exploited Vulnerabilities catalog with a September 22 remediation deadline for federal agencies, which is the practical signal for everyone else. Two more unexploited flaws rated 9.8 sit in Remote Desktop Services and Windows DNS. Google's Android bulletin the same week patched 180 issues including critical remote code execution across Framework, System and Kernel.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Neither zero-day touches your Vercel or Supabase surface, and both touch the Windows machines your clients run your sites on. That is a fifteen-minute email that makes you look like the technical adult in the room: "Microsoft shipped an unusually large update this week and two of the flaws are being used right now — reboot into it before the 22nd." Send it to every retainer client. It costs nothing and it is the cheapest reminder that you exist between invoices.</div>
+          <div class="refs"><a href="https://www.securityweek.com/microsoft-patches-record-974-vulnerabilities-including-two-exploited-zero-days/" target="_blank" rel="noopener">SecurityWeek</a> <a href="https://www.tenable.com/blog/microsofts-september-2026-patch-tuesday-addresses-964-cves-cve-2026-81963-cve-2026-85880" target="_blank" rel="noopener">Tenable — the two zero-days</a> <a href="https://www.securityweek.com/androids-september-2026-updates-patch-180-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek — Android bulletin</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">September 10</span>
+            <h3>Vercel Sandbox went multi-region, with failover</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel Sandbox now runs in every Vercel compute region. You pick a region per sandbox, set a project default, and configure failover regions for when one is unavailable. This lands a day after Vercel reported an 18x routing speedup from moving Sandbox onto regional replicas, so the two changes are the same project finishing.</p>
+            <p>Sandbox is where untrusted or agent-generated code executes — the thing you reach for when a user, or an agent, hands you code you did not write and you still have to run it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the piece that makes an agent feature safe to sell. If a Concierge or Front Desk build ever needs to execute something it generated — a computed quote, a data transform, a client-uploaded script — Sandbox with a pinned region and a failover is the boundary, and it now runs close enough to your users that latency stops being the excuse. Worth an hour to wire into one build so you know the shape before a client asks.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Models</span>
+            <span class="ver">September 9</span>
+            <h3>DeepSeek V4.1 Flash is on AI Gateway, and production auth went free</h3>
+          </div>
+          <div class="story-body">
+            <p>Three Vercel changes on September 9 matter to a solo shop. DeepSeek's brand-new V4.1 Flash is available through AI Gateway with one API key, native image support, spend tracking and request tracing — so the cheapest capable long-context model of the week is one string change away, with the billing already instrumented. Vercel Authentication can now protect production domains at no additional cost on every plan, requiring a Vercel sign-in with project access before a visitor sees the deployment. And v0 added one-click Marketplace integrations for Resend, MongoDB Atlas, Auth0, Clerk and Amazon OpenSearch.</p>
+            <p>The free production authentication is worth reading against yesterday's news that Password Protection moved to $20 per project per month on Pro. If the people who need to see a staging build have Vercel accounts, the free path now covers it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. First, audit which client projects are actually paying $20 for password protection and move any internal-only ones to Vercel Authentication — that is recurring cost you can delete today. Client stakeholders without Vercel accounts still need the paid door, so bill it through as a line item rather than absorbing it. Second, the AI Gateway listing is the fastest possible version of the DeepSeek cost test in today's AI briefing: swap the model string, run last month's Concierge transcripts, read the spend tracking.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="../general-ai/2026-09-10.html">TSD General AI — V4.1 Flash pricing</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents reach the checkout, silicon reaches the datacenter</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Launch</span>
+            <span class="ver">September 8</span>
+            <h3>Meta's Muse acts inside your inbox, calendar and payments</h3>
+          </div>
+          <div class="story-body">
+            <p>Meta launched Muse, a personal agent that connects to email, calendar, payments and a long list of consumer services, and carries out multi-step errands: booking travel, sending mail, filling forms, buying things. Checkout runs through Link by Stripe, which mints a one-time card number so the merchant never sees the real card. It runs in its own isolated VM. Distribution is the point — muse.ai, iOS, Android and inside WhatsApp, with Meta's glasses to follow. Free tier is metered; Power is $20 a month and Maximum is $100.</p>
+            <p>This is the first consumer-scale product from Meta's "personal superintelligence" push and the first serious attempt to convert its planned 2026 AI infrastructure spend into revenue that is not advertising. Coverage is skeptical on exactly one axis, and it is the right one: Meta's engineers retain paths into the data the agent handles.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Agents that complete a purchase are about to hit your clients' websites as traffic. Two immediate consequences for every site you ship: the booking and quote flows need to work without a human reading a layout — real form labels, real semantic HTML, a machine-readable path to availability — and the analytics need to tell you when a bot converted. Being the shop in Charlotte whose client sites are already agent-legible is a differentiator with a shelf life, so use it now.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://www.business-standard.com/technology/tech-news/meta-muse-ai-agent-book-buy-work-how-it-works-126090900322_1.html" target="_blank" rel="noopener">Business Standard — how it works</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Silicon</span>
+            <span class="ver">September 8–9</span>
+            <h3>Qualcomm paid Amazon $4B in warrants to get into AI inference</h3>
+          </div>
+          <div class="story-body">
+            <p>Qualcomm issued Amazon warrants for 25 million shares at $161.26 — roughly $4B — as part of a data-center partnership under which AWS is reported to buy up to $60B of Qualcomm AI chips. The work spans multiple generations of custom silicon aimed specifically at inference, plus high-speed optical interconnect reaching 1.6 terabits per second. Qualcomm stock rose about 3% on the announcement.</p>
+            <p>A day later Apple's "Surprise and Shine" event shipped the iPhone 18 Pro and Pro Max plus a book-style foldable, all on the A20 Pro built at 2nm, alongside Apple's own C2 modem — another step away from Qualcomm's modem revenue. The two stories are the same story from both ends: Qualcomm is buying its way into inference because its phone business is being designed out from underneath it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference silicon is getting a serious second supplier, which is the structural reason the token prices in today's AI briefing keep falling. Plan your AI product margins on costs that keep dropping and price on outcomes instead of usage, so the savings land in your pocket rather than in a per-token discount you already gave away.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html" target="_blank" rel="noopener">CNBC — Qualcomm and Amazon</a> <a href="https://www.cnbc.com/2026/09/09/apple-event-today-live-updates.html" target="_blank" rel="noopener">CNBC — Apple's September event</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Clay raised $115M led by Wellington at a $7.1B valuation, up from $3.1B in August 2025 — outbound-data tooling is repricing fast. <span class="ver">Sept 9</span></span></li>
+            <li><span class="tag feature qh-tag">M&amp;A</span><span class="txt">Salesforce is reported in talks to buy AI customer-research platform Listen Labs for about $2B; Meta is acquiring Stilla, a multiplayer AI teammate product. <span class="ver">Sept 9</span></span></li>
+            <li><span class="tag improve qh-tag">Tooling</span><span class="txt">Vercel's changelog is now readable and searchable from the CLI, and eve agents got persistent memory with Vercel owning the slots and lifecycle. <span class="ver">Sept 9</span></span></li>
+            <li><span class="tag new qh-tag">Fabs</span><span class="txt">TSMC and Samsung both committed to ASML's newest lithography tools as AI demand pulls capacity forward. <span class="ver">Sept 8</span></span></li>
+            <li><span class="tag breaking qh-tag">Threat</span><span class="txt">Cyberattacks on chipmakers are up roughly sixfold since 2022, with industry ransomware losses passing $1B in 2026. <span class="ver">Sept 2026</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
