@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-10" />
+  <meta name="report:title" content="The prompt cache stops breaking on resume, and effort levels get a hard cap" />
+  <meta name="report:summary" content="2.1.267 lands 53 changes in one release: ten separate prompt-cache leaks in resumed sessions, model switches and MCP reconnects are closed, a new maxEffortLevel setting caps spend across every provider, and effort: frontmatter finally works on Opus 4.7, 4.8 and Fable 5." />
+  <meta name="report:highlights" content="5" />
+
+  <title>The prompt cache stops breaking on resume, and effort levels get a hard cap — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, September 10, 2026</span>
+        <span>◆</span><span>One release: 2.1.267</span>
+      </div>
+      <h1>The prompt cache stops breaking on resume, and effort levels get a hard cap</h1>
+      <p class="standfirst">2.1.267 is a single release carrying 53 changes, and roughly a fifth of them are one story: every path that quietly rewrote the tool block mid-conversation and blew the prompt cache. The other thing worth your attention is <code>maxEffortLevel</code>, a new ceiling you can set per model or globally.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the 2026-09-09 briefing (covered 2.1.265–2.1.266)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">53</div><div class="lbl">changelog entries</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">local CLI version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Ten prompt-cache leaks closed at once</h4><p>Resumes, <code>/model</code> switches, MCP reconnects and forked background workers all stopped silently rewriting the tool block. Cache hits and extended thinking survive now.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>maxEffortLevel</code> caps spend</h4><p>New setting, top-level or per model under <code>modelSettings</code>. Enforced on every provider including Bedrock, Vertex and Foundry. Users can still go lower.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>effort:</code> frontmatter actually applies</h4><p>It was being ignored on Opus 4.7, Opus 4.8 and Fable 5 because their default effort is pinned. Your skills and subagents were running at the wrong level.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>-p --resume</code> fidelity fixes</h4><p>No more phantom "Continue from where you left off." turn, and transcripts over 5 MB stop dropping parallel tool calls and hook output on reload.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Marketplace path containment bypass</h4><p>A backslash in a fetched marketplace entry path could slip past the containment check on macOS and Linux. Patched.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The prompt-cache repair wave</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.267</span>
+            <h3>Ten separate paths were rewriting the tool block mid-conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>This is the bulk of the release. Each of these independently broke prompt-cache reuse, and several also dropped earlier extended thinking: an MCP server re-sending a tool the model already loaded; a tool vanishing mid-conversation from a disconnected server or an upgrade; a background worker forked from a conversation injecting <code>EnterWorktree</code> into the tool block; mid-session MCP and plugin tools being appended in sessions without ToolSearch (supported models now get them as deferred definitions); <code>/model</code> re-sending every tool definition on a switch.</p>
+            <p>The resume-specific half is just as long: resumed sessions rewriting the inline tool set when an MCP connector reconnects at a different moment, re-rendering tool descriptions instead of replaying recorded ones, rewriting earlier MCP tool announcements before connectors reconnect, and a cache break when a print-mode conversation is resumed interactively. Separately, subagents and sessions started with <code>--system-prompt</code> or <code>--append-system-prompt</code> now record the system prompt and tool definitions once instead of re-rendering them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a lot of MCP servers — supabase, vercel, notion, nash-os, tsd-portal — and they reconnect at unpredictable moments. Every one of those reconnects has been costing you a full cache miss on long client sessions, which is real money on Bisque and Sonderwerks builds and is why resumed sessions sometimes felt dumber than the originals. Upgrade past 2.1.247 before the next long build session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.267</span>
+            <h3>Large and scripted sessions reload cleanly</h3>
+          </div>
+          <div class="story-body">
+            <p>Two resume bugs that hit automation specifically. Resuming after <code>/compact</code> or another slash command ran via <code>-p --resume</code> no longer inserts a spurious "Continue from where you left off." turn. And resuming a transcript over 5 MB no longer drops parallel tool calls and their hook output from the reloaded conversation. <code>--resume</code> first-render time also improved for sessions with many Bash calls.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled tasks are print-mode runs. The phantom turn was polluting the very context those runs depend on, and the 5 MB drop means any long-running steward loop was resuming with holes in its history. If a scheduled task has been producing slightly-off output, this is a plausible cause worth ruling in.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Effort, cost, and prompt iteration</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.267</span>
+            <h3><code>maxEffortLevel</code> puts a ceiling on every provider</h3>
+          </div>
+          <div class="story-body">
+            <p>A new setting placed either top-level or per model under <code>modelSettings</code>. It caps the effort level on every provider, including Bedrock, Vertex and Foundry. Users can still choose something lower than the cap; they just cannot go above it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the knob for unattended work. Cap the effort on your scheduled tasks and steward loops — the daily changelog scout, the loose-ends sweep — where a high effort level buys nothing, and leave your interactive delivery sessions uncapped. It is a settings change, so it costs you one edit and pays out every night.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.267</span>
+            <h3><code>effort:</code> frontmatter was silently ignored on three models</h3>
+          </div>
+          <div class="story-body">
+            <p><code>effort:</code> frontmatter on custom commands, skills, and subagents was being dropped on models whose default effort is still pinned — Opus 4.7, Opus 4.8, and Fable 5. It now applies.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You have a large custom skill library — the advisor skills, sales-psychology, the-humanizer, loop-engineering. Any <code>effort:</code> you set in those was doing nothing on those three models. Worth re-reading your frontmatter now that it is load-bearing, because the levels you wrote are about to actually take effect.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.267</span>
+            <h3><code>--system-prompt-snapshot off</code> for prompt iteration</h3>
+          </div>
+          <div class="story-body">
+            <p>Renders the system prompt fresh on every request instead of reusing the conversation's recorded prompt. Built for iterating on prompt text — it deliberately gives up the caching behavior the rest of this release works to protect.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful when you are tuning a skill's system prompt and want each edit to land without restarting the session. Turn it back off before doing real work, since it defeats the snapshot the cache relies on.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security, plugins, and the surfaces you deploy from</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">2.1.267</span>
+            <h3>Marketplace containment bypass, and managed settings now fail closed</h3>
+          </div>
+          <div class="story-body">
+            <p>A marketplace entry path containing a backslash could bypass the containment check for fetched marketplaces on macOS and Linux. Alongside it, managed <code>allowedHttpHookUrls</code>, <code>httpHookAllowedEnvVars</code> and <code>allowedChannelPlugins</code> were fixed to admit nothing when unreadable, rather than everything.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You install plugins from marketplaces — vercel, codex, anthropic-skills. The containment bypass is the kind of thing that turns a third-party marketplace into a path-traversal vector on your delivery machine. Straight upgrade reason on its own.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.267</span>
+            <h3>Claude Code on the web stops failing <code>gh</code> calls in orgs without the GitHub App</h3>
+          </div>
+          <div class="story-body">
+            <p><code>gh</code> and GitHub API calls in organizations without the Claude GitHub App installed now fall back to your connected GitHub account, and say so explicitly when no account is connected. GitHub Enterprise Server sessions also refresh an expired token automatically instead of reporting the account as disconnected.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant if you push client work from the web client. The bisqueimports repos sit under a team you are a member of rather than one you own, so the no-App fallback path is exactly your situation. It failing quietly is worse than it failing loudly, and now it tells you.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.267</span>
+            <h3>Artifact publishing retries a dropped upload, and explains refusals</h3>
+          </div>
+          <div class="story-body">
+            <p>Publishes cut off by a dropped connection mid-upload now retry once when Claude Code can tell the upload never completed, instead of reporting an unknown outcome. Refused publishes now say why and what to do. Publishing a page file that isn't valid UTF-8 or contains a replacement character now names the line and column.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Artifacts are how you hand clients a preview without standing up a deployment. "Unknown outcome" on a dropped upload meant re-publishing and hoping you hadn't made two. That ambiguity is gone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-267" target="_blank" rel="noopener">Changelog · 2.1.267</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code extension host hanging at 100% CPU when forking, editing an earlier message, or rewinding a conversation whose transcript contains a cyclic parent link <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code chat diff blocks always rendering dark; they now follow the active editor theme, including high contrast <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: accepting an edit in the diff view on a CRLF file failing with "String not found in file" <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code @-mentions dropping files whose paths contain spaces <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code runaway ripgrep processes when viewing files in large or symlink-heavy workspaces <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: pasting a screenshot on WSL2/WSLg inserting raw image bytes into the chat input <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code sessions list failing to load over Remote-SSH when the workspace folder exists only on the remote host <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: mixed right-to-left and English text rendering out of order while typing <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Workflow <code>agent()</code> calls with large output schemas being refused in auto mode instead of checked by the safety classifier <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude remote-control</code> exiting and dropping every attached session when its server credential expires around 30 days in; the host now re-registers <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control clients joining a Claude Desktop or VS Code session showing a stale permission mode <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Expired AWS or Google Cloud credentials under a host app retrying ten times with a generic "request failed" before the re-authenticate error appeared <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cowork scheduled tasks in the cloud failing at startup for orgs whose managed settings require sandboxing <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/context</code> and other local command output rendering blank on mobile clients <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">shift+enter and option+backspace not working after reconnecting to a tmux or ssh session inside an agent view <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The dim last-prompt header not appearing when scrolling up in fullscreen mode <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> <code>@</code> directory menu not listing repositories created after the session started <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The usage-limit warning flickering when requests for different models or modes report different limit windows <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/login</code> on machines whose managed settings require Claude apps gateway sign-in: Esc now closes the dialog <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The <code>/diff</code> panel no longer flashes "0 files changed" and a spinner before settling <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Bash tool description guidance, so Claude describes what a command does in plain words instead of echoing the command <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Sandbox guidance: Claude now suggests <code>/copy</code> when clipboard commands such as <code>pbcopy</code> fail inside the sandbox <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Prompt input responsiveness; keystrokes no longer wait a frame behind spinner or streaming repaints <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Self-hosted runner: <code>--use-anthropic-git-proxy</code> is reported at registration and warns per session on the legacy git proxy <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Gateway: <code>forward_user_identity</code> upstreams return a 429 as-is instead of failing over, so per-user limits hold <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Claude Tag: a "Use a custom connector" link on preset connection forms in admin settings <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: out-of-credits replies said "The API rejected the request as invalid"; they now say so and explain how to add credits <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: thread requests to edit or delete a top-level message Claude posted now reach the session that posted it <span class="ver">2.1.267</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: <b>Connect</b> on Tool access requests failing with "Authorization failed" or showing the bundle as deleted <span class="ver">2.1.267</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

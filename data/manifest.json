@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-10.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-10",
+    "title": "The prompt cache stops breaking on resume, and effort levels get a hard cap",
+    "summary": "2.1.267 lands 53 changes in one release: ten separate prompt-cache leaks in resumed sessions, model switches and MCP reconnects are closed, a new maxEffortLevel setting caps spend across every provider, and effort: frontmatter finally works on Opus 4.7, 4.8 and Fable 5.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-10.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
