@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-09-11" />
+  <meta name="report:title" content="OpenAI shipped the two halves of a phone agent in one day" />
+  <meta name="report:summary" content="GPT-Live-1 put full-duplex voice in the API at five cents a minute and the Agents API opened OpenAI's managed Codex harness to everyone, while Cognition's SWE-2 landed within a point of Fable 5.1 on coding at a fraction of the cost." />
+  <meta name="report:highlights" content="6" />
+
+  <title>OpenAI shipped the two halves of a phone agent in one day — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.unite.ai/openais-gpt-live-1-arrives-in-the-api-at-0-05-per-minute/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Friday, September 11, 2026</span>
+        <span>◆</span><span>Models, agents, tooling, money</span>
+      </div>
+      <h1>OpenAI shipped the two halves of a phone agent in one day</h1>
+      <p class="standfirst">On September 10 OpenAI put GPT-Live-1 in the API, a full-duplex voice model priced at $0.05 a minute and billed by the second, and opened its Agents API to every developer as a public beta with no fee on top of tokens, tools and container time. A voice layer that can be interrupted plus a managed harness that runs tools and long sessions is most of the plumbing inside an AI receptionist, which is the product TSD already sells.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 10 through the morning of September 11, plus one September 8 story not yet covered</span>
+        <span>◆</span><a href="https://www.unite.ai/openais-gpt-live-1-arrives-in-the-api-at-0-05-per-minute/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$0.05</div><div class="lbl">per minute for GPT-Live-1's voice layer, billed per second, backend models extra</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">partner sandboxes for the Agents API at launch, Vercel and Cloudflare among them</div></div>
+      <div class="stat"><div class="num">50.0%</div><div class="lbl">Cognition SWE-2 on FrontierCode 1.1 Main, within a point of Fable 5.1</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Voice you can interrupt, at five cents a minute</h4><p>GPT-Live-1 listens while it speaks, stops when a caller cuts in, and calls tools mid-conversation. Twelve voices; Tier 1 accounts get 25 concurrent sessions.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The Codex harness is now a public API</h4><p>The Agents API handles subagents, context compaction and long sessions. You bring the tools and pick a sandbox: OpenAI's, your own, or one of nine partners.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Near-frontier coding got cheaper again</h4><p>Cognition's SWE-2, post-trained from Moonshot's Kimi K3, scores 50.0% on FrontierCode 1.1 Main and Cognition says it costs 64% less to run than Fable 5.1 at that score.</p></div>
+        <div class="signal"><div class="n">04</div><h4>OpenAI published a Navier-Stokes blowup proof</h4><p>A 165-page proof with a Lean formalization, produced by up to 10,000 agents over about 88 hours. It covers a forced version of the problem and carries a priority dispute.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Amazon's advertisers can now buy ChatGPT ads</h4><p>A U.S. pilot runs through Amazon DSP. OpenAI's ad business is at a reported $1B annualized run rate.</p></div>
+        <div class="signal"><div class="n">06</div><h4>California signed the first AI audit framework</h4><p>SB 813 creates independent verification organizations and a standards commission. AB 1405 requires AI auditors to register with the state starting in 2029.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The phone-agent stack got cheaper and more managed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">September 10</span>
+            <h3>GPT-Live-1 arrives in the API at $0.05 a minute</h3>
+          </div>
+          <div class="story-body">
+            <p>GPT-Live-1 is OpenAI's full-duplex voice model, now available to developers. Full duplex means it keeps listening while it talks: a caller can cut in mid-sentence and the reply stops and adapts, and the model can pause or call a tool in the middle of the exchange. It launches with 12 voices across accents and languages, with custom voices through sales. Concurrency scales with spend tier, from 25 simultaneous sessions on Tier 1 to 500 on Tier 5.</p>
+            <p>The $0.05 per minute covers the voice front end only. Any backend model, tool or service the conversation reaches is billed separately, so the all-in number depends on what the agent does behind the voice. For comparison, independent pricing breakdowns this year put all-in AI receptionist costs at roughly $0.09 to $0.36 a minute across the major voice platforms once speech, model, voice and telephony are stacked.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a new benchmark for TSD Front Desk's cost of goods, and possibly a simpler architecture. Before Monday, stand up one test line on GPT-Live-1 alongside the current Front Desk build and run the same ten scripted calls through both: a caller who interrupts, a caller who changes the appointment time halfway through, a caller with background noise. Log latency, how often it talks over people, and the true per-minute cost including telephony and the backend model. Coverage describes telephony support; confirm the exact SIP or phone path in OpenAI's docs before you promise a client anything. If it wins on interruption handling, that is the feature an HVAC owner notices on the first call.</div>
+          <div class="refs"><a href="https://www.unite.ai/openais-gpt-live-1-arrives-in-the-api-at-0-05-per-minute/" target="_blank" rel="noopener">Unite.AI — pricing and billing</a> <a href="https://tbreak.com/openai-gpt-live-1-api/" target="_blank" rel="noopener">tbreak — capabilities and concurrency</a> <a href="https://www.famulor.io/blog/ai-voice-agent-pricing-2026-what-10-platforms-actually-cost-per-minute" target="_blank" rel="noopener">Famulor — all-in voice agent costs compared</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">September 10</span>
+            <h3>The Agents API puts OpenAI's managed Codex harness behind one call</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI opened the Agents API as a public beta for all developers. It exposes the same harness that runs Codex: the loop that coordinates model calls, tools and context, lets a main agent split work across subagents with separate context, and compacts earlier context automatically in long sessions. The harness is built on the open-source Codex codebase, so the orchestration logic is readable. It supports MCP servers, custom functions and built-in tools such as web search, and loads tool definitions only when they are needed.</p>
+            <p>Execution runs in an OpenAI-hosted sandbox, on your own infrastructure through <code>codex exec-server</code>, or in one of nine partner sandboxes: Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop and Vercel. There is no separate fee; you pay for tokens, tools and container time. Vercel published a same-day guide for running Agents API apps on Next.js, Functions, Queues and Sandbox.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The orchestration you would otherwise hand-build for a long-running client agent, like a Booking Bridge flow that checks availability, holds a slot, texts the customer and waits for a reply, is now a managed service on a platform you already deploy to. The trade is lock-in. Keep every client tool behind your own MCP server so the same tools work under the Agents API or the Claude Agent SDK, and choose the model per job. Run one internal prototype on Vercel Sandbox this month so you know the shape before a client asks for it.</div>
+          <div class="refs"><a href="https://www.marktechpost.com/2026/09/10/openai-launches-the-agents-api-in-public-beta-putting-the-codex-harness-behind-one-api-call/" target="_blank" rel="noopener">MarkTechPost — the Agents API in public beta</a> <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — Build with OpenAI Agents API on Vercel</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Coding got cheaper and math got stranger</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model</span>
+            <span class="ver">September 10</span>
+            <h3>Cognition's SWE-2 lands within a point of Fable 5.1 on coding</h3>
+          </div>
+          <div class="story-body">
+            <p>Cognition released SWE-2, post-trained from Moonshot's Kimi K3 with reinforcement learning that trains medium, high and max effort levels in one run. It scores 50.0% on FrontierCode 1.1 Main, about a point behind Anthropic's Fable 5.1, and Cognition says it costs 64% less to run at that score. It also beats xAI's Grok 4.6 and comes within a few points of GPT-6 Astra at roughly a quarter of the price. It is live in Devin Desktop and the Devin CLI and rolling out to Devin Web. Cognition has not published a per-token price.</p>
+            <p>The same day, reporting on Cognition's finances put Devin near $900M in annualized revenue with gross margins around 50%. A frontier-adjacent coding model built on a Chinese open-weight base is how Cognition protects that margin.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The cost of a competent second coding agent keeps falling, and the benchmark numbers are Cognition's own until independent runs land. Do not re-tool mid-semester. Give SWE-2 one real, bounded ticket from a client build, such as a form refactor with tests, and compare its diff and time against what you ship with Claude Code today. If it holds, it becomes a cheap reviewer on low-risk work.</div>
+          <div class="refs"><a href="https://officechai.com/ai/cognition-releases-swe-2-says-it-performs-close-to-frontier-at-70-lower-cost/" target="_blank" rel="noopener">OfficeChai — SWE-2 release</a> <a href="https://ai-tldr.dev/releases/cognition-swe-2/" target="_blank" rel="noopener">AI/TLDR — benchmarks and availability</a> <a href="https://www.theinformation.com/articles/inside-cognitions-booming-growth-high-cash-burn" target="_blank" rel="noopener">The Information — Cognition's revenue and burn</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Research</span>
+            <span class="ver">September 8</span>
+            <h3>OpenAI published a Navier-Stokes blowup proof, and a priority fight came with it</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI released a 165-page proof, with a Lean formalization that machine-checks each step, showing finite-time blowup in the three-dimensional Navier-Stokes equations: a configuration where a vortex tightens and spins faster without limit while the fluid's energy stays bounded. The Wall Street Journal reported the work used up to 10,000 agents in parallel over about 88 hours, on an unreleased model OpenAI describes as significantly more capable than GPT-6 Astra, at a compute cost in the millions of dollars. OpenAI says it will not claim the $1M Millennium Prize.</p>
+            <p>Two caveats matter. The result includes a smooth forcing term, so it does not settle the Millennium Problem in its classic form. And NYU mathematician Tristan Buckmaster suggested the system may have drawn on private research stored in Codex; OpenAI says the related work addressed the forced Euler equations, a distinct problem, and now credits it as concurrent. Epoch AI separately reported that every Tier 4 FrontierMath problem has now been solved.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to build this week, but the method is the lesson. The headline result is trustworthy to the degree a checker verified it, and the checker was Lean. Apply the same rule to agent output in client work: generated code is accepted when tests and type checks pass, and never on the strength of a confident summary. The privacy question in the Buckmaster episode is also worth one sentence in your client contracts about which AI tools can see their data.</div>
+          <div class="refs"><a href="https://www.scientificamerican.com/article/openai-claims-blockbuster-math-breakthrough-amid-swirl-of-controversy/" target="_blank" rel="noopener">Scientific American — the claim and the controversy</a> <a href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/" target="_blank" rel="noopener">Quanta — what was proven</a> <a href="https://thenextweb.com/news/openai-navier-stokes-proof-published-millennium-prize" target="_blank" rel="noopener">The Next Web — no prize claim</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Ads, audits and distillation</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Business</span>
+            <span class="ver">September 10</span>
+            <h3>Amazon is selling ChatGPT ad space to its own advertisers</h3>
+          </div>
+          <div class="story-body">
+            <p>Amazon announced a U.S. pilot that lets select advertisers extend Amazon DSP campaigns into ChatGPT. Amazon sets up and manages the campaigns; OpenAI's ad system decides which eligible ads show and where. Placements are labeled text or image units beneath ChatGPT's answers and are kept out of the answer itself. CNBC reports OpenAI's ad business recently reached a $1B annualized run rate, and Delta Vacations is among the first participants. Amazon had been the leading retail advertiser on ChatGPT from April through August, per Sensor Tower data cited by CNBC.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your clients will start asking whether they should advertise in ChatGPT, and OpenAI's self-serve Ads Manager has been open to U.S. businesses since May. Have a real answer ready: pick one client with a clear local offer, run a small capped test, and measure booked calls against what the same budget does on Google. A measured result from a Charlotte business is worth more in a sales conversation than any article on the topic.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/09/10/amazon-chatgptads-open-ai.html" target="_blank" rel="noopener">CNBC</a> <a href="https://advertising.amazon.com/library/news/amazon-ads-chat-gpt-advertising-integration" target="_blank" rel="noopener">Amazon Ads — announcement</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">September 9</span>
+            <h3>California created the first U.S. framework for auditing AI systems</h3>
+          </div>
+          <div class="story-body">
+            <p>Governor Newsom signed SB 813 and AB 1405. SB 813 sets up independent verification organizations that can assess AI systems for compliance with state law and creates a California Artificial Intelligence Standards and Safety Commission to write voluntary safety standards. AB 1405 creates a state registry for AI auditors with independence rules modeled on accounting; starting in 2029, no one can conduct a covered AI audit in California without registering. Coverage notes frontier labs and AI hiring tools fall in scope.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your clients are in North Carolina, so nothing binds you today. The direction is still clear: AI that screens people, especially job applicants, is heading toward mandatory third-party audits. Stay out of hiring-screening builds for SMB clients unless the client carries the compliance work, and keep writing down what each deployed agent can touch, since that document is what any future auditor asks for first.</div>
+          <div class="refs"><a href="https://www.gov.ca.gov/2026/09/09/governor-newsom-signs-first-in-the-nation-ai-safeguards-to-protect-californians-calls-on-the-federal-government-to-do-its-part/" target="_blank" rel="noopener">Office of the Governor</a> <a href="https://www.techtimes.com/articles/327159/20260910/california-signs-first-us-ai-audit-law-frontier-labs-hiring-tools-now-scope.htm" target="_blank" rel="noopener">Tech Times — what is in scope</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">September 8</span>
+            <h3>NSA, FBI and CISA named six Chinese AI firms in a distillation advisory</h3>
+          </div>
+          <div class="story-body">
+            <p>A joint advisory, AA26-251A, says China-based AI companies have run industrial-scale knowledge distillation against U.S. frontier models since at least late 2024, pulling billions of tokens across millions of queries from Claude, GPT, Gemini and Grok. It names DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun and Z.AI, describes distillation as the core of their development strategy, and says the campaigns likely ran with the Chinese government's knowledge. China rejected the accusations and warned of possible retaliation, per the South China Morning Post.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This lands one day after yesterday's brief suggested testing DeepSeek V4.1 Flash for Concierge margins. The test is still worth running, with one rule: use the open weights through a U.S.-hosted provider, confirm which provider actually serves the model behind AI Gateway, and send no client personal data to a China-hosted endpoint. If federal restrictions follow this advisory, a client build wired to DeepSeek's first-party API turns into a migration you do for free.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a" target="_blank" rel="noopener">CISA — advisory AA26-251A</a> <a href="https://www.helpnetsecurity.com/2026/09/09/china-malicious-ai-knowledge-distillation-against-us-companies/" target="_blank" rel="noopener">Help Net Security</a> <a href="../general-ai/2026-09-10.html">TSD General AI — the DeepSeek cost test</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Also worth knowing</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Positron raised $875M at a $5B post-money valuation for inference silicon built on LPDDR5X memory, with 50-plus racks already running at Oracle Cloud. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">Skild AI reached a $100M annualized revenue run rate across 60-plus industrial customers, per Bloomberg. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag improve qh-tag">Tooling</span><span class="txt">Cursor launched Projects in beta, a persistent coordinator thread that runs cloud workers, watches Slack and pull requests, and fixes CI failures. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag breaking qh-tag">Capacity</span><span class="txt">An OpenAI executive said the company paused new $200-a-month Pro sign-ups to protect GPT-6 Astra capacity for existing customers; existing plans and the API were unaffected. Source is a public post on X. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag feature qh-tag">Pricing</span><span class="txt">OpenAI ended its $1-per-year pilot for federal agencies and moved them to usage-based pricing at a 50% discount, per Bloomberg. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag new qh-tag">Payments</span><span class="txt">Visa, Mastercard and Ant International agreed to make their "Know Your Agent" protocols for registering AI shopping agents interoperable through Singapore's BuildFin.ai, per Reuters. <span class="ver">Sept 10</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

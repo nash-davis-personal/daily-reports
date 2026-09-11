@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-11" />
+  <meta name="report:title" content="Tailwind now has a corporate owner, and the framework stays MIT" />
+  <meta name="report:summary" content="Tailwind Labs is joining Shopify with Tailwind CSS kept MIT-licensed, Supabase's logs.all endpoint disappears September 23, Vercel doubled Sandbox storage, and the DOJ formally opened a probe of Nvidia's Groq deal." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Tailwind now has a corporate owner, and the framework stays MIT — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://tailwindcss.com/blog/tailwind-is-joining-shopify" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, September 11, 2026</span>
+        <span>◆</span><span>Dev tools, silicon, security, platforms</span>
+      </div>
+      <h1>Tailwind now has a corporate owner, and the framework stays MIT</h1>
+      <p class="standfirst">Tailwind Labs is joining Shopify. Tailwind CSS and its open-source projects stay MIT-licensed, while new sign-ups close for the paid Tailwind Plus and ui.sh products. Elsewhere on Nash's stack, Supabase removes its <code>logs.all</code> Management API endpoint on September 23, and Vercel doubled Sandbox storage the morning after wiring up OpenAI's new Agents API.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 9 through the morning of September 11</span>
+        <span>◆</span><a href="https://tailwindcss.com/blog/tailwind-is-joining-shopify" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">110M+</div><div class="lbl">weekly installs of Tailwind CSS, per Tailwind Labs</div></div>
+      <div class="stat"><div class="num">Sept 23</div><div class="lbl">removal date for Supabase's <code>logs.all</code> Management API endpoint</div></div>
+      <div class="stat"><div class="num">64 GB</div><div class="lbl">default Vercel Sandbox storage, doubled from 32 GB</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Tailwind Labs is joining Shopify</h4><p>The framework stays MIT and actively maintained. Tailwind Plus and ui.sh stop taking new customers; existing customers keep access.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase breaking change in 12 days</h4><p>The <code>logs.all</code> analytics endpoint is removed September 23. Its replacement accepts ClickHouse SQL only.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel shipped five agent-shaped changes</h4><p>Sandbox storage to 64 GB, an Agents API deploy guide, GitHub Copilot in the AI SDK harness layer, FastAPI static files on the CDN, and free Tako Search on AI Gateway through September 30.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The DOJ is probing Nvidia's Groq license</h4><p>A formal information demand asks whether the roughly $20B license-plus-hiring deal was structured to avoid merger review.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chinese AI chips got 20% to 50% pricier</h4><p>Huawei and Cambricon raised accelerator prices as grey-market high-bandwidth memory costs several times what buyers elsewhere pay.</p></div>
+        <div class="signal"><div class="n">06</div><h4>PlanetScale shipped sharded Postgres</h4><p>Neki, in platform preview, keeps real Postgres on every shard behind one connection string.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Ownership</span>
+            <span class="ver">September 9</span>
+            <h3>Tailwind Labs is joining Shopify</h3>
+          </div>
+          <div class="story-body">
+            <p>Tailwind Labs announced it is joining Shopify, describing the move as a stable long-term home for a framework installed more than 110 million times a week and used to style products including ChatGPT, X, Cloudflare, Reddit and Shopify itself. Tailwind says its open-source projects stay MIT-licensed and nothing changes for existing open-source users. The company is closing new sign-ups for its commercial products, Tailwind Plus and ui.sh; existing customers retain access.</p>
+            <p>Shopify's side of the story is storefronts. PYMNTS frames the deal as fuel for Shopify's custom storefront push, which is where you would expect Tailwind's roadmap attention to drift over the next year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No client build needs to change. MIT code cannot be taken back, and a maintained framework under a profitable owner is a better bet than a small company selling templates to pay for it. Two practical notes. If any build depends on Tailwind Plus components, confirm your license still covers it and do not plan a template or kit product around Tailwind Plus licensing. And for any client that sells products, a Shopify storefront with Tailwind is now the most first-party pairing on the market, so lead with it when an ecommerce prospect asks what you build on.</div>
+          <div class="refs"><a href="https://tailwindcss.com/blog/tailwind-is-joining-shopify" target="_blank" rel="noopener">Tailwind CSS blog</a> <a href="https://www.pymnts.com/commerce/ecommerce/2026/shopify-brings-on-tailwind-labs-team-to-drive-custom-storefront-push" target="_blank" rel="noopener">PYMNTS — the storefront angle</a> <a href="https://alternativeto.net/news/2026/9/tailwind-labs-joins-shopify-and-keeps-tailwind-css-mit-licensed/" target="_blank" rel="noopener">AlternativeTo — licensing and product changes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Removal September 23</span>
+            <h3>Supabase removes the <code>logs.all</code> endpoint in twelve days</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase's Management API <code>logs.all</code> analytics endpoint is removed on September 23, 2026. Scripts calling it must move to the new ClickHouse-backed <code>logs</code> endpoint, which accepts ClickHouse SQL only, so existing queries need a rewrite on top of the URL change. The notice has been on the changelog since July 23. Supabase's other recent entries are fixes worth knowing about: daily backups could occasionally be skipped during a 10-minute scheduling window (fixed August 12), and physical restores could leave stale database credentials behind (fixed July 30).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: search every repo you own for <code>logs.all</code> today, including any monitoring or status scripts for client projects, and rewrite those queries in ClickHouse SQL before the 23rd. If nothing turns up, the backup fix is still a prompt to confirm each client project's most recent backup exists and that a restore actually connects.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">September 10–11</span>
+            <h3>Vercel doubled Sandbox storage and wired in OpenAI's Agents API</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel Sandbox now provides 64 GB of storage per sandbox by default, up from 32 GB, on the latest SDK and CLI and when created from an image. A day earlier Vercel published a guide to building OpenAI Agents API apps on Next.js, Functions, Queues and Sandbox, and Vercel is one of the nine launch sandbox partners for that API. GitHub Copilot joined the AI SDK harness layer through <code>@ai-sdk/harness-github-copilot</code>, using the same interface as the other supported harnesses. FastAPI frontends and static files are now promoted to the CDN at build time, so they no longer invoke Functions. And Tako Search, live web search usable by any AI Gateway model, is free through September 30.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The free Tako Search window is the cheapest experiment on this list. A Concierge that can answer "are you open on the holiday" from a live search costs you nothing to prototype this month, so wire it into one demo site before the 30th and decide whether it earns a line item. The Agents API guide plus 64 GB sandboxes means an agent that clones a client repo, runs a build and reports back now fits comfortably on infrastructure you already pay for.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="../general-ai/2026-09-11.html">TSD General AI — the Agents API</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Database</span>
+            <span class="ver">September 10</span>
+            <h3>PlanetScale's Neki brings sharding to real Postgres</h3>
+          </div>
+          <div class="story-body">
+            <p>PlanetScale released Neki in platform preview: horizontally sharded Postgres from the team behind Vitess, built from scratch. Every shard is a full Postgres cluster with one primary and at least two replicas across three availability zones. Applications connect to a Neki router over the standard Postgres wire protocol, so existing drivers, ORMs and connection strings keep working, and Neki handles routing, resharding, online schema changes and version upgrades.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No SMB client of yours needs sharding, and Supabase stays the right default. What Neki gives you is an honest answer when a prospect asks whether a Postgres app will scale: there is now a managed path to scale real Postgres horizontally without rewriting the application. Keep your schemas plain Postgres and that path stays open.</div>
+          <div class="refs"><a href="https://planetscale.com/blog/announcing-neki" target="_blank" rel="noopener">PlanetScale — announcing Neki</a> <a href="https://planetscale.com/changelog/neki" target="_blank" rel="noopener">PlanetScale changelog</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon and antitrust</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Antitrust</span>
+            <span class="ver">September 9–10</span>
+            <h3>The DOJ opened a formal probe of Nvidia's Groq deal</h3>
+          </div>
+          <div class="story-body">
+            <p>The Justice Department is investigating whether Nvidia structured its licensing agreement with AI chip startup Groq, valued at roughly $17B to $20B across reports, to avoid antitrust review. Nvidia took a non-exclusive license to Groq's chip technology and hired several executives including founder Jonathan Ross. No merger notice was filed. The DOJ has sent Nvidia a formal demand for information. Reporting says the agency may fine the company but would probably not require the deal to be undone.</p>
+            <p>The legal question is broader than Nvidia: whether a technology license paired with a mass talent transfer counts as an acquisition that should have been reported before it closed. That structure has been used repeatedly across AI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The pattern regulators are now testing is the one where a startup's product survives on paper after its leadership and core team leave. If a small AI vendor you depend on gets licensed-and-hired, expect the product to stall. Keep model and voice providers behind an interface you control, such as AI Gateway or your own adapter, so a vendor event costs you a config change.</div>
+          <div class="refs"><a href="https://www.bloomberg.com/news/articles/2026-09-10/doj-probes-nvidia-s-license-deal-with-groq-on-antitrust-concerns" target="_blank" rel="noopener">Bloomberg</a> <a href="https://www.axios.com/2026/09/10/doj-nvidia-groq-antitrust" target="_blank" rel="noopener">Axios</a> <a href="https://www.techtimes.com/articles/327154/20260910/doj-opens-formal-probe-nvidia-groq-deal-reverse-acquihire-playbook-faces-first-legal-test.htm" target="_blank" rel="noopener">Tech Times — the reverse-acquihire question</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Silicon</span>
+            <span class="ver">September 10</span>
+            <h3>Memory shortages pushed Chinese AI chip prices up 20% to 50%</h3>
+          </div>
+          <div class="story-body">
+            <p>Reuters reported that Huawei lifted the indicated price of its Ascend 950DT accelerator card above 250,000 yuan, about $37,255, a 20% to 50% jump from quotes two months ago, and Cambricon repriced its next-generation chip 20% to 30% higher. The cause is high-bandwidth memory. Since U.S. export controls on advanced HBM tightened in December 2024, Chinese chipmakers have leaned on grey-market supply that costs several times what buyers outside China pay, and memory is a large share of an accelerator's cost.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct cost to you today. Memory is the choke point across the whole industry, and rising memory prices are already squeezing PC and phone configurations, so client hardware refreshes will cost more this year. The number to watch is whether memory scarcity slows the token price declines your AI product margins now depend on.</div>
+          <div class="refs"><a href="https://ca.finance.yahoo.com/news/exclusive-chinas-ai-chipmakers-raise-050223278.html" target="_blank" rel="noopener">Reuters via Yahoo Finance</a> <a href="https://404kresearch.substack.com/p/404k-semi-ai-tech-evening-brief-september" target="_blank" rel="noopener">404K — memory inflation and device budgets</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Reminder</span><span class="txt">No new Next.js security advisory since the August 25 release. Every client app should already be on 16.3.3 (Active LTS) or 15.5.24 (Maintenance LTS), which close two critical unauthenticated remote code execution flaws. <span class="ver">Checked Sept 11</span></span></li>
+            <li><span class="tag improve qh-tag">Languages</span><span class="txt">Microsoft made Rust a Tier-1 language alongside C++, C# and TypeScript, with an MSVC-compatible backend and shared ABI and crash analysis with C++, per a Rust Foundation guest post. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag new qh-tag">Robotaxis</span><span class="txt">Zoox runs about 100 robotaxis in San Francisco and roughly 10,000 U.S. rides a week, against Waymo's roughly 4,000 vehicles across 15 cities and 500,000-plus weekly rides, per The New York Times. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Defense-tech maker Mach Industries raised another $600M at a $3.7B valuation, up from $1.8B in June. <span class="ver">Sept 10</span></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">Huawei introduced the Kirin 9050 Pro phone processor with CPU, GPU, NPU and modem on one chip, per the Financial Times. <span class="ver">Sept 10</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

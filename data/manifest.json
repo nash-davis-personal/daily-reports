@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-11",
+    "title": "Wholesale prices ran 5.4% hot on diesel, and consumer prices land at 8:30",
+    "summary": "August producer prices rose 5.4% over a year with energy doing most of the work, stocks fell a fourth straight day with Brent above $107, and August CPI is due this morning ahead of a September 16 Fed meeting where a hike is the market's base case.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-11.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-11",
+    "title": "OpenAI shipped the two halves of a phone agent in one day",
+    "summary": "GPT-Live-1 put full-duplex voice in the API at five cents a minute and the Agents API opened OpenAI's managed Codex harness to everyone, while Cognition's SWE-2 landed within a point of Fable 5.1 on coding at a fraction of the cost.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-11.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-11",
+    "title": "A five-cent voice model just made Front Desk cheaper to run and easier to demo",
+    "summary": "OpenAI's GPT-Live-1 resets the cost floor for AI phone agents the same week diesel jumped 24% and listings started sitting longer, so six moves: a flat-rate after-hours line, zone booking for fuel-squeezed trades, a measured ChatGPT ads test, listing concierges, a public bake-off, and Shopify storefronts.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-11.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-11",
+    "title": "Tailwind now has a corporate owner, and the framework stays MIT",
+    "summary": "Tailwind Labs is joining Shopify with Tailwind CSS kept MIT-licensed, Supabase's logs.all endpoint disappears September 23, Vercel doubled Sandbox storage, and the DOJ formally opened a probe of Nvidia's Groq deal.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-11.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-10",
     "title": "Treasury tripled its long-bond buyback and yields went up anyway",
     "summary": "The first operation under the expanded buyback program bought up to $6 billion of long-dated debt, the 10-year still closed at its highest since November 2023, and August CPI lands Friday morning.",
