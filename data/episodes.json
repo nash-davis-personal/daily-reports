@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-11",
+    "title": "TSD Daily — Friday, September 11, 2026",
+    "summary": "OpenAI's five-cent voice model and Agents API, Tailwind joining Shopify, hot producer prices ahead of CPI, the 9/11 anniversary, and a flat-rate after-hours phone line as today's money move.",
+    "file": "audio/2026-09-11.mp3",
+    "durationSec": 383,
+    "bytes": 4591917
+  },
+  {
     "date": "2026-09-10",
     "title": "TSD Daily — Thursday, September 10, 2026",
     "summary": "DeepSeek ships 98 percent of GPT-6 for a hundredth of the cost as token prices fall 41 percent, Anthropic names why four agent breaches happened, Microsoft patches a record 974 flaws, Meta launches an agent that pays with a real card, and Treasury's tripled bond buyback fails to hold the long end.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-02.mp3",
     "durationSec": 350,
     "bytes": 4203693
-  },
-  {
-    "date": "2026-07-01",
-    "title": "TSD Daily — Wednesday, July 1, 2026",
-    "summary": "Cheap 1M-context Sonnet 5 on a promo clock while top models get gated, a patch-your-Next.js security week, a record quarter into Thursday's jobs report, and money moves that repackage what TSD already ships.",
-    "file": "audio/2026-07-01.mp3",
-    "durationSec": 411,
-    "bytes": 4931181
   }
 ]
