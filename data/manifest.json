@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-11.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-11",
+    "title": "WebFetch stops hanging forever, and code review stops giving up mid-verdict",
+    "summary": "2.1.268 lands 95 changes: WebFetch now dies after 300 seconds instead of hanging indefinitely, a review no longer ends incomplete when a verifying agent fails, an in-process teammate can no longer inherit tools from an untrusted same-named agent file, and MCP tool calls stop occasionally coming back as a fake empty reply.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-11.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

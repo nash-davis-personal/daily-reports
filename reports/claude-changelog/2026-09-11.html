@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-11" />
+  <meta name="report:title" content="WebFetch stops hanging forever, and code review stops giving up mid-verdict" />
+  <meta name="report:summary" content="2.1.268 lands 95 changes: WebFetch now dies after 300 seconds instead of hanging indefinitely, a review no longer ends incomplete when a verifying agent fails, an in-process teammate can no longer inherit tools from an untrusted same-named agent file, and MCP tool calls stop occasionally coming back as a fake empty reply." />
+  <meta name="report:highlights" content="5" />
+
+  <title>WebFetch stops hanging forever, and code review stops giving up mid-verdict — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, September 11, 2026</span>
+        <span>◆</span><span>One release: 2.1.268</span>
+      </div>
+      <h1>WebFetch stops hanging forever, and code review stops giving up mid-verdict</h1>
+      <p class="standfirst">2.1.268 is a single release, 95 changes, mostly reliability plumbing rather than new capability. The two worth your attention: WebFetch finally has a timeout, and <code>/ultrareview</code> keeps a verdict even when one of its own verifying agents dies partway through.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the 2026-09-10 briefing (covered 2.1.267)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">95</div><div class="lbl">changelog entries</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">local CLI version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>WebFetch gets a 300-second deadline</h4><p>A server that keeps the response open without finishing used to hang the tool indefinitely. Now it fails after 300 seconds; override with <code>CLAUDE_CODE_WEBFETCH_DEADLINE_MS</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Code review survives a dead verifier</h4><p>If one of the agents verifying a finding failed midway, the whole review used to end incomplete. It now swaps in a replacement and still reaches a verdict.</p></div>
+        <div class="signal"><div class="n">03</div><h4>In-process teammates can't inherit an untrusted agent's identity</h4><p>A respawned teammate could pick up tools or a system prompt from a same-named agent file sitting in a folder you never trusted. Closed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>MCP tool calls stop faking an empty reply</h4><p>Claude would sometimes tell you "your message came through empty" right after a normal MCP tool call finished. Fixed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Plugin management is now fully scriptable</h4><p><code>--json</code> added to <code>claude plugin install/uninstall/update/enable/disable</code>, plus error detail fields on <code>plugin list --json</code>.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent reliability: fewer silent stalls</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.268</span>
+            <h3>WebFetch no longer hangs on a server that never finishes</h3>
+          </div>
+          <div class="story-body">
+            <p>A server that keeps the connection open without completing the response used to leave WebFetch waiting forever. It now fails after 300 seconds by default. <code>CLAUDE_CODE_WEBFETCH_DEADLINE_MS</code> overrides the deadline, and setting it to 0 turns the limit off entirely.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any research or competitor-scan task you've handed to an agent — pulling a client's current site, checking a vendor's docs — could stall a whole session on one bad server with zero indication why. Now it fails loud and moves on. Worth knowing the env var exists if you ever need a longer window for a slow but legitimate endpoint.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-268" target="_blank" rel="noopener">Changelog · 2.1.268</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.268</span>
+            <h3>MCP tool calls stop returning a fake "empty message" reply</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude would sometimes reply "your message came through empty" right after a legitimate MCP tool call completed — a rendering bug, not an actual empty response. Fixed. Alongside it, a separate fix stops sustained high CPU usage from a busy loop in long-running idle sessions, and from rapid terminal focus reports during a session recap.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run Supabase, Vercel, and nash-os as MCP servers through most of your delivery sessions. A tool call quietly reporting "empty" when it wasn't is the kind of bug that erodes trust in agent output for no real reason — worth knowing it wasn't your MCP config. The CPU fix matters if you leave sessions idle on a laptop; it was pinning a core for nothing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-268" target="_blank" rel="noopener">Changelog · 2.1.268</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code review gets more trustworthy</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.268</span>
+            <h3>A dead verifier no longer kills the whole review</h3>
+          </div>
+          <div class="story-body">
+            <p>If one of the agents verifying a finding failed midway through, the review used to end as incomplete. It now replaces that agent and still reaches a verdict. Two smaller companion fixes: resolving a finding's comment thread (not just replying to it) is now what stops later reviews from re-counting it as open, and a push-triggered review queued behind another running review no longer posts after the pull request has since been converted to draft.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you've used <code>/ultrareview</code> on a client repo and gotten an "incomplete" result with no clear reason, this was a plausible cause — one verifier dying shouldn't have tanked the whole run. And if you resolve findings by just replying instead of hitting resolve on the thread, later runs were still flagging them as open; that's now consistent.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-268" target="_blank" rel="noopener">Changelog · 2.1.268</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security and the surfaces you script from</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">2.1.268</span>
+            <h3>A respawned teammate could borrow an untrusted agent's identity</h3>
+          </div>
+          <div class="story-body">
+            <p>A respawned in-process teammate could pick up the tools or system prompt of a same-named agent file sitting in a folder you have not trusted. Closed. Separately, permission deny/ask rules on symlinked directories (<code>/etc</code>, <code>/tmp</code>, <code>/var</code> on macOS; <code>/bin</code> on Linux) now apply when a path is given by its real location instead of its symlink spelling, and plugin/marketplace errors and MCP config output no longer print a token, password, or <code>${VAR}</code>-resolved secret in plain text.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ever run agent teams inside a client repo that has stray agent-definition files you haven't vetted — a cloned template, a fork with leftover config — this closes a real identity-spoofing path. The secret-leak fixes matter if you've ever pasted an MCP error or a plugin log into a client Slack channel or support ticket; check whether older logs you still have around are clean.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-268" target="_blank" rel="noopener">Changelog · 2.1.268</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.268</span>
+            <h3>Plugin management is now fully scriptable</h3>
+          </div>
+          <div class="story-body">
+            <p><code>--json</code> added to <code>claude plugin install</code>, <code>uninstall</code>, <code>update</code>, <code>enable</code>, and <code>disable</code>; <code>errorDetails</code> and <code>noteDetails</code> now show on every row of <code>claude plugin list --json</code>. Also added: <code>configDirectory</code> in <code>claude auth status --json</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you ever standardize plugin setup across a fresh machine or a client's dev environment with a script instead of clicking through <code>/plugin</code>, this is the missing piece — you can now install and verify in one shot with a parseable exit state instead of screen-scraping CLI output.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-268" target="_blank" rel="noopener">Changelog · 2.1.268</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Every turn failing with HTTP 400 on third-party Anthropic-compatible endpoints since 2.1.265 — a regex in the Artifact tool's input schema those endpoints reject <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt caching and extended thinking breaking mid-session for SDK sessions using <code>excludeDynamicSections</code>; the first message is no longer re-rendered each request <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The conversation summary from <code>/compact</code> and auto-compact mangling text that contained <code>$</code> sequences <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resuming a conversation that ended with <code>/compact</code>: restored-file notes now load in the same order every time <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Entitled users being told a model is restricted after restart when a cached model-access denial was stale <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A running session silently switching to the org's default model when another process refreshed a stale model-access entry <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Long-context 429s on Fable models showing the usage-credits prompt instead of the 1M-context message on Pro/Team plans <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP server OAuth sign-in failing with "No available ports for OAuth redirect" when the local callback port range can't be bound <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>@</code> file and <code>/</code> command suggestions not appearing after recalling a previous prompt with the up arrow and editing it <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> session delete getting stuck when a worktree can't be removed; the message now names the cause and next step <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background agent and workflow rows in the agents panel expanding to many lines when their text contained line breaks <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Fullscreen mode: adding or removing a prompt line now repaints as fast as typing a character <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>--continue</code>/<code>--resume</code>: the conversation appears immediately instead of waiting for SessionStart hooks <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Responsiveness during tool-heavy turns; the transcript no longer redraws for a hidden per-tool-batch reminder <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Startup time in projects with <code>.claude/workflows/</code> scripts; listing them no longer parses each script <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Auto mode denials now name the rule that blocked the action and ask Claude to try a safer method before stopping to ask <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">MEMORY.md truncation warning now says how many lines were cut and where the cut starts <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/plugin</code>: installing, enabling or disabling now takes effect on menu close; <code>/reload-plugins</code> no longer needed <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Browser-tab icons for published artifacts, chosen by Claude to match each page <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: model pill, model picker and command menu going blank for a few seconds after a login, logout or account switch <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: Auto disappearing from the mode picker when a project or local setting overrides the model in <code>settings.json</code> <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: session names reverting to the last prompt after a window reload when a SessionStart hook is configured <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: Windows WSL install prompt appearing on machines without WSL, and IDE diagnostics not returning for Windows files with WSL installed <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Code on the web: cloud sessions running past ~6 hours silently losing files saved to persisted session folders; saves now persist up to a day <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Code on the web: "Invalid effort level" errors on resume, or session start, in orgs where an admin caps a model's effort <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: admin settings page hanging on a loading skeleton after a transient load failure; failed sections now show a Retry button <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: a Slack Enterprise Grid channel losing its Claude settings after an admin moved it to another workspace <span class="ver">2.1.268</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude Tag: reply speed — several read-only Slack lookups now run at once instead of one after another <span class="ver">2.1.268</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
