@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-12",
+    "title": "TSD Daily — Saturday, September 12, 2026",
+    "summary": "OpenAI closes its top tier as Astra demand outruns compute, Sakana ships a router that undercuts it, three separate failures hit small-business infrastructure, and August inflation lands firm ahead of Wednesday's Fed decision.",
+    "file": "audio/2026-09-12.mp3",
+    "durationSec": 411,
+    "bytes": 4932045
+  },
+  {
     "date": "2026-09-11",
     "title": "TSD Daily — Friday, September 11, 2026",
     "summary": "OpenAI's five-cent voice model and Agents API, Tailwind joining Shopify, hot producer prices ahead of CPI, the 9/11 anniversary, and a flat-rate after-hours phone line as today's money move.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-03.mp3",
     "durationSec": 412,
     "bytes": 4941549
-  },
-  {
-    "date": "2026-07-02",
-    "title": "TSD Daily — Thursday, July 2, 2026",
-    "summary": "Fable 5 returns and cheaper AI tiers arrive, Supabase auto-upgrades old Postgres, a record heat dome bakes the East as the Fed leans hawkish, and the best money move is selling the AI receptionist into slammed home-services shops.",
-    "file": "audio/2026-07-02.mp3",
-    "durationSec": 350,
-    "bytes": 4203693
   }
 ]
