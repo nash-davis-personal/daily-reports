@@ -1,5 +1,35 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-12",
+    "title": "Workflow fan-outs can go up to 256 agents, and unattended runs stop failing silently",
+    "summary": "2.1.269 lands 95 changes: the Workflow tool's concurrent-agent cap can now be raised to 256, Bash can attach a diff of what it changed, /goal retries with backoff instead of silently stalling, and a CLAUDE.md 'no attribution' rule finally sticks on commits and PRs.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-09-12.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-12",
+    "title": "OpenAI stopped selling its top tier while Sakana shipped a router around the frontier",
+    "summary": "OpenAI closed new $200 ChatGPT Pro signups because Astra demand outran its capacity, Sakana put an orchestration model in front of a pool of open models at $2 per million input tokens, and Sam Altman told staff he is open to pacing frontier development while asking Congress whether coordinating one is legal.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-12.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-12",
+    "title": "A 10.0 in GitLab, a Patch Tuesday that broke Remote Desktop, and 395 orgs breached by agents",
+    "summary": "GitLab patched a maximum-severity unauthenticated file-read flaw that attackers were probing within a day, Microsoft's September server updates are killing Remote Desktop Services with no fix yet, and researchers documented an AI-assisted campaign that compromised 440 PaperCut servers across 395 organizations.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-12.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

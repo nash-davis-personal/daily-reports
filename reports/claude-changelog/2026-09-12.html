@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-12" />
+  <meta name="report:title" content="Workflow fan-outs can go up to 256 agents, and unattended runs stop failing silently" />
+  <meta name="report:summary" content="2.1.269 lands 95 changes: the Workflow tool's concurrent-agent cap can now be raised to 256, Bash can attach a diff of what it changed, /goal retries with backoff instead of silently stalling, and a CLAUDE.md 'no attribution' rule finally sticks on commits and PRs." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Workflow fan-outs can go up to 256 agents, and unattended runs stop failing silently — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, September 12, 2026</span>
+        <span>◆</span><span>One release: 2.1.269</span>
+      </div>
+      <h1>Workflow fan-outs can go up to 256 agents, and unattended runs stop failing silently</h1>
+      <p class="standfirst">2.1.269 is a single release, 95 changes. The throughput story: the Workflow tool's per-run concurrency cap is now configurable up to 256, and Bash can hand back a diff of what it just edited. The reliability story: <code>/goal</code> no longer stalls silently on an API error, and a CLAUDE.md rule against commit attribution finally overrides the built-in reminder.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the 2026-09-11 briefing (covered 2.1.268)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">release in window</div></div>
+      <div class="stat"><div class="num">95</div><div class="lbl">changelog entries</div></div>
+      <div class="stat"><div class="num">2.1.247</div><div class="lbl">local CLI version</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Workflow tool's agent cap goes up to 256</h4><p><code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code> raises the per-run concurrent-agent limit above the default, for fan-outs that are bound by inference time rather than CPU.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Bash can show you a diff of what it changed</h4><p>New setting <code>bashEditDiffEnabled</code>: when the Bash tool edits a file, the tool result now includes a diff, same as Edit and Write already do.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>/goal</code> stops silently stalling</h4><p>API errors, network drops, and token limits used to just stop a goal run cold. It now retries with backoff, or pauses and states the reason — including a usage-limit reset.</p></div>
+        <div class="signal"><div class="n">04</div><h4>CLAUDE.md's "no attribution" rule finally sticks</h4><p>The built-in attribution reminder used to override a CLAUDE.md or memory rule telling Claude not to attribute commits and PRs to itself. Now the project rule wins.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Prompt cache stops quietly breaking on resume</h4><p>Two separate cache bugs fixed: a cut-off, auto-resumed response partially invalidated the cache, and interrupting Claude mid-thought before resuming could change what got re-sent.</p></div>
+        <div class="signal"><div class="n">06</div><h4>VS Code gets a map of running sub-agents</h4><p>An "N agents" footer pill now opens a map of a session's sub-agents, with per-agent cards, a Stop agent control, and read-only transcripts.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs get more honest about failure</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.269</span>
+            <h3><code>/goal</code> retries instead of dying quietly</h3>
+          </div>
+          <div class="story-body">
+            <p>A goal run that hit an API error, a network drop, or a token limit used to just stall with nothing telling you why. It now retries with backoff, or pauses and states the reason out loud — including waiting out a usage-limit reset. A related fix: remote and headless sessions were reporting "waiting for your input" while a background agent was still working; that's now accurate.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This routine you're reading right now runs unattended overnight via Nash OS. A silent stall used to mean you'd find out the next morning that nothing shipped, with no error to point at. Same logic applies to any scheduled or headless job you build for a client — a retry-with-reason beats a dead session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.269</span>
+            <h3>Prompt cache stops silently invalidating on resume</h3>
+          </div>
+          <div class="story-body">
+            <p>Two fixes: a response cut off at the output-token limit and auto-resumed was partially invalidating the prompt cache on the next turn, and resuming a session after interrupting Claude mid-thought could change how earlier context got re-sent — also hurting cache reuse. Separately, sessions that got permanently stuck on "Prompt is too long" during auto-compaction (mostly Agent SDK sessions with very large prompts, when there was no complete earlier exchange to summarize) are fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You pay by the token. Interrupting Claude mid-answer to redirect it is a normal move in a long build session — it shouldn't quietly cost you a full cache rebuild on the next message. If you're building anything on the Agent SDK with large prompts, the compaction stuck-state fix removes a real dead end.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Bigger fan-outs, auditable Bash</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.269</span>
+            <h3>Workflow tool concurrency cap raised to 256</h3>
+          </div>
+          <div class="story-body">
+            <p><code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code> (1–256) raises the Workflow tool's per-run concurrent-agent limit, aimed at fan-outs that are bound by inference wait time rather than local CPU.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The default cap is already ~10 concurrent agents per workflow, which covers almost anything you'd run for a single client. This matters only if you build a workflow that genuinely needs a much wider fan-out — a bulk content migration across dozens of pages, say — where the bottleneck is waiting on model responses, not your machine.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.269</span>
+            <h3>Bash tool can attach a diff of what it edited</h3>
+          </div>
+          <div class="story-body">
+            <p>New setting <code>bashEditDiffEnabled</code>: when a Bash command edits a file, the tool result now includes a diff of the change, matching what the Edit and Write tools already show.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A lot of agent-driven file edits on your projects happen via sed/awk-style Bash one-liners rather than the Edit tool, and those were previously a black box in the transcript — you'd have to go check git diff yourself. Turning this on gives you the same in-line accountability for Bash edits as for everything else, worth flipping on for client repos.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Client repo hygiene</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.269</span>
+            <h3>A CLAUDE.md "no attribution" rule now actually wins</h3>
+          </div>
+          <div class="story-body">
+            <p>The built-in attribution reminder was overriding a CLAUDE.md or memory rule that told Claude not to attribute commits or pull requests to itself. That's fixed — the project-level rule now takes precedence. Lines set by managed settings still apply on top.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any Bisque, Studio C, or Sonderwerks repo has a CLAUDE.md rule against "Co-Authored-By: Claude" on commits, it was quietly being ignored before this fix. Worth a spot-check on recent commit history for those repos to confirm the rule is actually holding now — and a good reason to add the rule anywhere you haven't yet.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> VS Code: watching sub-agents without leaving the editor</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.269</span>
+            <h3>Agent map, Hooks dialog, and Permission rules dialog</h3>
+          </div>
+          <div class="story-body">
+            <p>Three additions: an "N agents" footer pill opens a map of a session's sub-agents with per-agent cards, a Stop agent control, and read-only transcripts; a Hooks dialog in the command menu lists hooks and lets you add, edit, or remove them across user/project/local settings; and a Permission rules dialog does the same for permission rules. Managed, plugin, session-only, and startup-option entries stay read-only in both.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run multi-agent workflows or teams inside the VS Code extension, you get a way to see and kill a runaway sub-agent without dropping to the terminal, and to fix a permission rule mid-session instead of editing settings.json by hand. Small, but it closes the gap between the terminal and VS Code workflows.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">Changelog · 2.1.269</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude plugin eval</code>: run a plugin's eval suite and get a scored, reproducible JSON/HTML report <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>/output-style [name]</code> to list and switch output styles, including in headless and cloud sessions <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">CMYK JPEG images failing to attach with "cannot decode"; now converted and resized like other JPEGs <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A deny/ask permission rule starting with <code>!</code> leaking beyond the settings source that wrote it <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Git status shown after a compaction was stale (from session start) instead of current <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">F1/F2/F4 and other key handling broken in kitty-protocol, st, rxvt-unicode, and WezTerm terminals since 2.1.247 <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resumed headless sessions losing a turn's replies when the model was switched or a request retried mid-turn <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin archives extracted for a session readable by other local users, or keeping world-writable bits <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>Edit()</code> deny rules and write-path checks not applying to a Bash <code>tee</code> command's output file <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Prompt suggestion filtering and cache behavior for Japanese, Chinese, Korean, and Thai text <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/diff</code> panel opens fully rendered instead of showing a loading state first <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Keyboard shortcuts over SSH and in kitty-keyboard-protocol terminals (foot, Alacritty 0.16+) <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Changed <code>/ultrareview --post</code> to post the PR comment directly instead of spinning up a second cloud session <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[VS Code] Cancel button on the Switch account screen; screen reader/keyboard accessibility improvements across menus and cards <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[Claude Code on the web] Take back a queued message before Claude reads it (Esc or Up returns it to the box) <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[Claude Code on the web] <code>/model default</code> breaking every later message in orgs that restrict models <span class="ver">2.1.269</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[Claude Tag] Threads going silent after a failed turn when Slack rate-limited the failure notice <span class="ver">2.1.269</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
