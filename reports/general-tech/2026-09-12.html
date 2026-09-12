@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-12" />
+  <meta name="report:title" content="A 10.0 in GitLab, a Patch Tuesday that broke Remote Desktop, and 395 orgs breached by agents" />
+  <meta name="report:summary" content="GitLab patched a maximum-severity unauthenticated file-read flaw that attackers were probing within a day, Microsoft's September server updates are killing Remote Desktop Services with no fix yet, and researchers documented an AI-assisted campaign that compromised 440 PaperCut servers across 395 organizations." />
+  <meta name="report:highlights" content="6" />
+
+  <title>A 10.0 in GitLab, a Patch Tuesday that broke Remote Desktop, and 395 orgs breached by agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, September 12, 2026</span>
+        <span>◆</span><span>Dev tools, chips, platforms, security</span>
+      </div>
+      <h1>A 10.0 in GitLab, a Patch Tuesday that broke Remote Desktop, and 395 orgs breached by agents</h1>
+      <p class="standfirst">GitLab shipped fixes for an unauthenticated arbitrary-file-read flaw scored CVSS 10.0, and attackers were probing for it a day after disclosure, with CISA adding it to the Known Exploited Vulnerabilities catalog. Separately, Microsoft's September server updates are breaking Remote Desktop Services on Windows Server 2019, 2022 and 2025 with no fix yet, which is the kind of thing that takes a small business offline on a Monday morning.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 10 through the morning of Saturday, September 12</span>
+        <span>◆</span><a href="https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS score for CVE-2026-85706, an unauthenticated arbitrary file read in GitLab's commits API</div></div>
+      <div class="stat"><div class="num">395</div><div class="lbl">organizations across 48 countries compromised through 440 exposed PaperCut servers</div></div>
+      <div class="stat"><div class="num">38 GW</div><div class="lbl">Microsoft's datacenter capacity target for 2032, up from roughly 12 GW today</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>GitLab's maximum-severity flaw is already being exploited</h4><p>CVE-2026-85706 lets an unauthenticated attacker read arbitrary server files in a single HTTP request. Patched in 19.1.8, 19.2.6 and 19.3.2; now in CISA's KEV catalog.</p></div>
+        <div class="signal"><div class="n">02</div><h4>September's server updates break Remote Desktop</h4><p>KB5122876, KB5122882 and KB5122871 kill RDS hours after install on Windows Server 2019, 2022 and 2025. No out-of-band fix; rolling back drops the security patches with it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>An AI-assisted crew burned through 395 organizations</h4><p>440 exposed PaperCut print servers in 48 countries, credentials stolen from 280 victims, and seven minutes from initial access to domain admin at one school.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Oracle's AI quarter ran free cash flow negative</h4><p>$7.4B of infrastructure revenue against $28.5B of capex, up from $8.5B a year ago, with backlog reported at $664B. The AI race is now a balance-sheet contest.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Microsoft mapped 38 gigawatts</h4><p>More than New York State's peak electricity use, targeted for 2032, against roughly 12 GW today. 88 sites brought on in FY2026, 31 of them in a single quarter.</p></div>
+        <div class="signal"><div class="n">06</div><h4>The Pentagon's largest strategic-capital loan went to a compute provider</h4><p>About $5 billion to Fluidstack, from the DoD Office of Strategic Capital. Compute supply is being treated as defense infrastructure.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this weekend</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">September 10–11</span>
+            <h3>GitLab's CVE-2026-85706 is a 10.0, and attackers moved in a day</h3>
+          </div>
+          <div class="story-body">
+            <p>The flaw sits in GitLab's repository commits API. Improper path confinement plus missing authentication enforcement lets an unauthenticated attacker read arbitrary files off the server in a single HTTP request — source, secrets, tokens, whatever the process can reach. GitLab scored it CVSS 3.1 10.0 and it affects Community and Enterprise editions from 18.7 before 19.1.8, 19.2 before 19.2.6, and 19.3 before 19.3.2.</p>
+            <p>Fixes are in 19.1.8, 19.2.6 and 19.3.2. Internet-wide probing started the day after disclosure, and CISA has added the bug to its Known Exploited Vulnerabilities catalog. GitLab.com itself is run by GitLab; the exposure is self-managed instances.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your own repos are on GitHub, so nothing to patch on your side. The exposure is client-side: any SMB or agency partner running a self-hosted GitLab behind their firewall is one unauthenticated request from leaking every credential in it. If you have touched a client's self-managed GitLab, send the version numbers above today — that is a free, high-trust touch that costs you one text message.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/" target="_blank" rel="noopener">BleepingComputer — GitLab urges users to patch max severity flaw</a> · <a href="https://www.securityweek.com/gitlab-vulnerability-exploited-one-day-after-disclosure/" target="_blank" rel="noopener">SecurityWeek — exploited one day after disclosure</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">September 8–11</span>
+            <h3>Microsoft's September server updates are killing Remote Desktop Services</h3>
+          </div>
+          <div class="story-body">
+            <p>KB5122876 for Windows Server 2019, KB5122882 for 2022 and KB5122871 for 2025, all released September 8, are cutting off Remote Desktop connections. The failure pattern is nasty: servers run normally for a few hours after install, then new connections hang and time out while existing sessions cannot disconnect or log off. Debugging points at a deadlock between Remote Desktop and the Local Session Manager with no timeout set, and the worst cases need a hard reboot.</p>
+            <p>Microsoft told BleepingComputer it is investigating. As of September 10 there was no out-of-band fix and no timeline. Admins report that removing the September updates restores RDS — and removes this month's security fixes along with it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not your stack, but it is the stack under a lot of Charlotte-area shops with an on-prem server their bookkeeper logs into. This is a concrete reason to move a client's scheduling or intake off a Remote Desktop session and onto something you host — and it is a real, checkable event to open that conversation with rather than a pitch.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/microsoft/september-windows-server-updates-break-remote-desktop-services/" target="_blank" rel="noopener">BleepingComputer — September Windows Server updates break RDS</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">September 11</span>
+            <h3>An AI-assisted operator hit 395 organizations through print servers</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers documented a campaign that compromised 440 exposed PaperCut instances across 395 organizations in 48 countries, stealing credentials from 280 victims. Education was the heaviest-hit sector at 204 victims. The operator, described as likely Russian-speaking, used OpenAI Codex and DeepSeek to assist the work, and in one school went from initial access to domain admin in seven minutes.</p>
+            <p>The interesting part is the speed, not the vulnerability. Print management software is exactly the kind of forgotten internet-facing box a small organization never patches, and agent assistance collapses the time between finding one and owning the domain.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The attacker economics changed in the direction of small targets. Any client site you host should have its admin surface off the public internet and its dependency alerts watched — sell that as a line item in the Managed AI retainer rather than absorbing it, because "we patch and monitor" is now a thing a shop owner understands the reason for.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/" target="_blank" rel="noopener">BleepingComputer / GreyNoise reporting</a> · <a href="https://techstartups.com/2026/09/11/top-tech-news-today-september-11-2026-anthropic-deepseek-google-pentagon-oracle-spacex-more/" target="_blank" rel="noopener">TechStartups summary, September 11</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Compute became a balance-sheet problem</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">September 11</span>
+            <h3>Oracle booked $7.4B of AI infrastructure revenue and spent $28.5B to get it</h3>
+          </div>
+          <div class="story-body">
+            <p>Oracle's infrastructure revenue came in at $7.4 billion with cloud growth reported in the 64–70% range year over year. Capex for the period ran $28.5 billion against $8.5 billion a year earlier, which pushed free cash flow to roughly negative $5 billion. Backlog was reported at $664 billion, and the company raised $20 billion in equity.</p>
+            <p>That is the whole shape of the AI infrastructure trade in one quarter. Revenue is real and growing fast; the spend to serve it is growing faster, and the gap is being financed rather than earned.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Inference prices are being subsidized by balance sheets that are currently cash-flow negative. Budget your client AI products at today's token prices with a margin that survives a 2x increase, and avoid signing a fixed-price retainer whose economics only work at promotional rates.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/11/top-tech-news-today-september-11-2026-anthropic-deepseek-google-pentagon-oracle-spacex-more/" target="_blank" rel="noopener">TechStartups, citing Financial Times reporting</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Infrastructure</span>
+            <span class="ver">September 11</span>
+            <h3>Microsoft maps 38 gigawatts while the Pentagon lends $5B to a compute provider</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft laid out a path to 38 gigawatts of datacenter capacity by 2032, up from roughly 12 GW today, a figure that exceeds New York State's peak electricity demand, with AI workloads around a third of the 2032 total. It brought 88 sites online in FY2026, 31 in one quarter, on $145 billion of capex this year.</p>
+            <p>On the same day, the Department of Defense's Office of Strategic Capital moved on a loan of about $5 billion to Fluidstack, a London-founded, New York-based compute provider previously backed by $1.5 billion from Jane Street. It would be the office's largest loan to date.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Power and siting are now the binding constraint on AI capacity, not chips. That is the real reason a provider can pause signups overnight, and it argues for keeping a second model provider wired into every product you ship.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/11/top-tech-news-today-september-11-2026-anthropic-deepseek-google-pentagon-oracle-spacex-more/" target="_blank" rel="noopener">TechStartups, citing Bloomberg, WSJ and Reuters reporting</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon money keeps arriving</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Markets</span>
+            <span class="ver">September 11</span>
+            <h3>Enflame closed up 188% on its Shanghai debut</h3>
+          </div>
+          <div class="story-body">
+            <p>The Tencent-backed AI chip designer jumped 188% on its first day of trading, peaking at 475 yuan, after raising about 6.12 billion yuan — roughly $911 million. Retail demand oversubscribed the offer about 4,000 times and the post-IPO market capitalization landed near $26.3 billion.</p>
+            <p>Enflame is still unprofitable and projects breakeven somewhere in 2026–2027, and Tencent holds roughly 18% of it while accounting for the large majority of its 2025 revenue. Domestic financing for Chinese accelerators is not scarce, which is the context for this week's 20–50% price rises on Chinese AI chips under a memory shortage.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action, but it tells you the cheap open-weight models you rely on will keep having hardware to train and serve on. That is what makes a multi-provider routing strategy durable rather than a temporary arbitrage.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/11/top-tech-news-today-september-11-2026-anthropic-deepseek-google-pentagon-oracle-spacex-more/" target="_blank" rel="noopener">TechStartups, citing South China Morning Post</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Stack</span><span class="txt">Vercel Connect now lets Pro and Enterprise teams restrict who can create and manage connectors — worth setting before you add a client to a team. <span class="ver">Sep 11</span></span></li>
+            <li><span class="tag fix qh-tag">Legal</span><span class="txt">IDScan is facing multiple lawsuits over the breach behind 153 million driver's license scans offered on a dark-web marketplace. <span class="ver">Sep 11</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Salesforce announced a Trusted Enterprise AI Harness, a governance layer meant to sit across models from OpenAI, Anthropic, Google and Microsoft at once. <span class="ver">Sep 11</span></span></li>
+            <li><span class="tag improve qh-tag">Infra</span><span class="txt">The UAE is redesigning its 5 GW Abu Dhabi AI campus into distributed, blast-resistant sites with air defense after Iranian military attacks. <span class="ver">Sep 11</span></span></li>
+            <li><span class="tag feature qh-tag">Money</span><span class="txt">The Boring Co. raised $3B at a $23B valuation led by UAE entities, and Maven Robotics came out of stealth with a $100M Series A for warehouse automation. <span class="ver">Sep 10–11</span></span></li>
+            <li><span class="tag improve qh-tag">Watch</span><span class="txt">Clearview AI is prototyping InquiryIQ, which builds digital profiles — aliases, addresses, employers, associates — from a facial-recognition match. <span class="ver">Sep 11</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

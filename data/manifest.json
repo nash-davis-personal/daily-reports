@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-12",
+    "title": "Inflation came in firm, stocks rallied anyway, and the Fed decides Wednesday",
+    "summary": "August CPI rose 0.4% for a 3.4% annual rate with gasoline supplying over a third of the monthly increase, stocks snapped a four-session slide as crude pulled back, and traders now put the odds of a rate hike at the September 15-16 FOMC meeting above 85%.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-12.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -18,6 +28,16 @@
     "summary": "OpenAI closed new $200 ChatGPT Pro signups because Astra demand outran its capacity, Sakana put an orchestration model in front of a pool of open models at $2 per million input tokens, and Sam Altman told staff he is open to pacing frontier development while asking Congress whether coordinating one is legal.",
     "highlights": 6,
     "path": "reports/general-ai/2026-09-12.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-12",
+    "title": "A bad security week for small business is your best sales week",
+    "summary": "Three checkable failures hit SMB infrastructure this week while inference routing got 40-60% cheaper, which together argue for a standing-agent retainer, a paid exposure check as the front door, and a lower-priced Concierge tier that matches what SMBs actually spend on AI.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-12.html"
   },
   {
     "source": "general-tech",
