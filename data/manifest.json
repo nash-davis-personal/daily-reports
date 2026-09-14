@@ -3,6 +3,16 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-09-14",
+    "title": "Nothing new: still on 2.1.270, zero releases since yesterday",
+    "summary": "The changelog has not moved since the September 13 briefing — 2.1.270 is still the newest version, so there's nothing to report today.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-14.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-09-13",
     "title": "One release, one line: the read-only git permission prompt regression is fixed",
     "summary": "2.1.270 is the only release since yesterday's briefing on 2.1.269 — a single fix for read-only git commands in Bash spuriously asking for permission again on long-running sessions.",
