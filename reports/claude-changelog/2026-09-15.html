@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-15" />
+  <meta name="report:title" content="2.1.271 ships sandboxed auto-mode domains, workflow-pause-on-limit, and a billing multiplier" />
+  <meta name="report:summary" content="Two releases landed — 2.1.271 is a large one worth reading for anyone running autonomous agents or workflows, 2.1.272 is undetailed bug fixes." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.271 ships sandboxed auto-mode domains, workflow-pause-on-limit, and a billing multiplier — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, September 15, 2026</span>
+        <span>◆</span><span>2 releases in window</span>
+      </div>
+      <h1>2.1.271 is the release to read: sandboxed domains, workflow resilience, a billing lever</h1>
+      <p class="standfirst">2.1.271 (Sep 14) is a big one — over 60 changes spanning auto-mode sandboxing, subagent config, and Code Review reliability. 2.1.272 (Sep 15) followed same-day with only "bug fixes and reliability improvements," no detail given.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.270</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Per-command allowed_domains in auto mode</h4><p>Bash, PowerShell and Monitor can now scope network access to exactly the hosts a command needs, reviewed with it — instead of a blanket auto-mode allow or deny.</p></div>
+        <div class="signal"><div class="n">02</div><h4>omitClaudeMd for subagents</h4><p>Custom and plugin subagents can skip loading CLAUDE.md files entirely via agent frontmatter or the --agents JSON flag.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Dynamic workflows pause instead of drop on usage limits</h4><p>A workflow that hits a usage cap now pauses and resumes automatically when the limit resets — agents no longer get silently dropped.</p></div>
+        <div class="signal"><div class="n">04</div><h4>modelPricing multiplier up to 10x</h4><p>The modelPricing managed setting and Claude apps gateway pricing block now accept a markup multiplier above 1, for internal chargeback.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Code Review reliability fixes</h4><p>Duplicate findings, re-flagged resolved findings after a rebase, and /ultrareview restarting from scratch on reopen are all fixed.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Fast mode reaches Remote sessions</h4><p>Fast mode now applies in Claude Code Remote sessions — cloud and self-hosted runners — following the host's setting or an in-session /fast.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Autonomous agents &amp; sandboxing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.271</span>
+            <h3>Auto mode gets per-command domain scoping</h3>
+          </div>
+          <div class="story-body">
+            <p>Bash, PowerShell and Monitor commands running under auto mode with sandboxing can now declare <code>allowed_domains</code>. The hosts a specific command needs are reviewed alongside it and opened for that command alone — every other host stays refused. Previously auto mode's network access was coarser: broad allow or a refusal.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run unattended jobs (this daily scout is one) under auto mode, this is the control you want — a command that needs to hit one API doesn't get blanket network access. Worth tightening any existing auto-mode automation to use it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.271</span>
+            <h3>Subagents can now skip CLAUDE.md entirely</h3>
+          </div>
+          <div class="story-body">
+            <p><code>omitClaudeMd</code> in agent frontmatter (or in the <code>--agents</code> JSON flag) lets a custom or plugin subagent run without loading the user, project and local CLAUDE.md files. Managed policy files still load regardless.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful for narrow-purpose subagents (a linter, a one-off data-transform agent) where the parent project's CLAUDE.md conventions are irrelevant noise. Cuts prompt weight and avoids the subagent inheriting rules meant for a different task.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.271</span>
+            <h3>Dynamic workflows survive hitting a usage limit</h3>
+          </div>
+          <div class="story-body">
+            <p>A dynamic workflow that runs into a usage-limit ceiling now pauses and continues automatically once the limit resets, instead of dropping the agents that were mid-run. A related fix: cloud sessions were rejecting every subagent tool call with a schema-validation error when a workflow or agent approval landed after the session's worker restarted — that's fixed too.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you're running multi-agent workflows against a Pro or Max plan cap, this removes a real failure mode — a long fan-out job no longer silently loses work when it bumps the ceiling. Lower risk running bigger workflows unattended.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Billing &amp; client delivery</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.271</span>
+            <h3>modelPricing now supports a markup multiplier</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>modelPricing</code> managed setting and the Claude apps gateway's <code>pricing</code> block accept a <code>multiplier</code> above 1, up to 10, for marking up internal chargeback rates on top of actual model cost.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is built for internal chargeback, not straight client rebilling — read the actual setting docs before leaning on it for invoicing Bisque, Studio C or Sonderwerks. Worth a look if you want a defensible, built-in way to mark up usage rather than tracking it by hand.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.271</span>
+            <h3>Code Review stops double-posting and re-flagging resolved findings</h3>
+          </div>
+          <div class="story-body">
+            <p>Three Code Review bugs fixed: the same findings posting two or three times when GitHub errored on a review that actually succeeded; a security finding re-appearing after a later push moved the lines it was anchored to, even though a person had already resolved it; and reopening a finished /ultrareview cloud session in the Claude app restarting the whole review unprompted.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you've enabled Code Review on client repos, this was noise clients would notice — duplicate comments and re-litigated findings look sloppy on a PR. Cleaner now if you're using it as part of what you sell as quality assurance.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.271</span>
+            <h3>Fast mode now works in Remote sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Fast mode is now available in Claude Code Remote sessions — both cloud and self-hosted runners. It follows the host's fast-mode setting, or an in-session <code>/fast</code>, wherever the org allows it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you kick off remote/background Claude Code runs (CI-style jobs, this scout job's own automation pattern), they can now run at fast-mode speed instead of standard — worth turning on if your org allows fast mode.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.271</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">2.1.272 shipped same-day with "bug fixes and reliability improvements" — no itemized detail given <span class="ver">2.1.272</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Several Bash permission-check hardenings: wildcard-expanded files, options like fmt/column, shell variable declaration flags, and two-directory-change/subshell/cd+git chains now correctly trigger the permission prompt <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">Dynamic workflow default size dropped to small on Pro plans; medium-size guideline lowered from 15 to 10 agents <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">Markdown files published as artifacts now render as styled document pages instead of plain text <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">A session can now watch up to 10 published artifacts for republishes, up from 5 <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude no longer starts a duplicate background command (e.g. a dev server) that was still running after the conversation was compacted <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP OAuth client-registration bugs around consent, redirect URIs, and concurrent writes <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag qh-tag new">New</span><span class="txt">Mouse support added to the /config panel in fullscreen mode — scroll wheel and click-to-change <span class="ver">2.1.271</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">PowerShell commands failing with "Exit code 1" and no output when the session's temp output path hit 260 characters (Windows) <span class="ver">2.1.271</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
