@@ -3,6 +3,16 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-09-16",
+    "title": "2.1.273 fixes an auto-compact bug that was firing at half the real context window",
+    "summary": "One release — the standout fix stops auto-compact from triggering way too early, plus subagent/background-report reliability fixes and tighter Code Review posting.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-16.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-09-15",
     "title": "2.1.271 ships sandboxed auto-mode domains, workflow-pause-on-limit, and a billing multiplier",
     "summary": "Two releases landed — 2.1.271 is a large one worth reading for anyone running autonomous agents or workflows, 2.1.272 is undetailed bug fixes.",

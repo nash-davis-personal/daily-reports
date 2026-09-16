@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-16" />
+  <meta name="report:title" content="2.1.273 fixes an auto-compact bug that was firing at half the real context window" />
+  <meta name="report:summary" content="One release — the standout fix stops auto-compact from triggering way too early, plus subagent/background-report reliability fixes and tighter Code Review posting." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.273 fixes an auto-compact bug that was firing at half the real context window — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, September 16, 2026</span>
+        <span>◆</span><span>1 release in window</span>
+      </div>
+      <h1>Auto-compact was firing at half your real context window — now fixed</h1>
+      <p class="standfirst">2.1.273 (Sep 15) is mostly plumbing and enterprise-integration fixes, but one bug fix matters for anyone running long sessions: the context meter was overcounting advisor-tool turns by roughly 2x, tripping auto-compact way earlier than it needed to. Also in: subagent/background-report reliability fixes and tighter /ultrareview posting.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.272</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Auto-compact overcounting fixed</h4><p>The context meter and auto-compact were counting advisor-tool turns at roughly 2x their real size, firing compaction at about half the actual window.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Background agents no longer silently "fail"</h4><p>Sub-agents and background agents whose final streamed reply omitted token usage or a model id were reported as failed with no result ever delivered — fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Backgrounded subagents stop dropping their final report</h4><p>SDK and stream-json output was losing a subagent's remaining messages and final report when it got moved to the background mid-run.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Fork a Remote Control session to run locally in the background</h4><p>A session started with --remote-control or /remote-control from the Claude app can now be forked into a background session running on your own machine.</p></div>
+        <div class="signal"><div class="n">05</div><h4>/ultrareview --post is now exactly-once</h4><p>A retry after a GitHub error used to risk posting the findings comment zero or two times; it now posts once and names the reviewed commit.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.273</span>
+            <h3>Auto-compact was cutting your working context in half</h3>
+          </div>
+          <div class="story-body">
+            <p>The context meter and auto-compact logic counted advisor-tool turns at roughly twice their real context footprint. That made auto-compact trigger at about half the actual window size — sessions were losing history and re-summarizing far earlier than the real token budget required.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you've felt Claude Code "forget" earlier context sooner than it should on long build sessions, this was likely why. No action needed beyond updating — you should see noticeably longer sessions before compaction kicks in, which means fewer re-explains mid-task on client work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.273</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation &amp; agent reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.273</span>
+            <h3>Background and subagent runs stop losing their results</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related bugs: sub-agents and background agents were reported as failed — with their result never delivered — whenever the final streamed reply omitted token usage or carried no model id. Separately, SDK and <code>--output-format stream-json</code> consumers lost a subagent's remaining messages and final report entirely when that subagent got moved to the background mid-run (for example via <code>CLAUDE_AUTO_BACKGROUND_TASKS</code>).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This directly affects the pattern this scout job itself uses — fire-and-forget subagents and background runs. Fewer silent "it ran but I never got the output" failures if you're leaning on background agents for unattended work.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.273</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.273</span>
+            <h3>Fork a phone/remote session into a local background run</h3>
+          </div>
+          <div class="story-body">
+            <p>A session started with <code>--remote-control</code> or <code>/remote-control</code> from the Claude app can now be forked; the fork runs as a background session on your own computer instead of staying tied to the remote-controlled session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you kick off a task from your phone away from the desk, you can now branch it into a background run on your dev machine without babysitting the remote session — useful for starting client work mid-commute and having it waiting when you sit down.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.273</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code Review</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.273</span>
+            <h3>/ultrareview posting and re-review triggers tightened</h3>
+          </div>
+          <div class="story-body">
+            <p>A retry after a GitHub error on <code>/ultrareview --post</code> could previously post the findings comment zero or two times; it now posts exactly once and names the commit reviewed. Separately, merging the base branch into a PR that already had an "Additional findings" review no longer forces a full re-review — it gets the lighter follow-up pass instead. A whole <code>REVIEW.md</code> being withheld because of a stray @-mention or a wrapped code span is also fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If Code Review is running on client repos (Bisque, Studio C, Sonderwerks), duplicate or missing review comments look sloppy on a PR you're billing for. This is cleanup, not a new capability — but worth knowing the noise is gone if a client ever asks about it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.273</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag qh-tag new">New</span><span class="txt">Opt-in gateway hint headers (request class, agent type, compaction state) for anyone fronting Claude Code with an LLM gateway <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A subshell could hide a dangerous rm from the permission checker in bypass mode; also closed a gap where unanalyzable Bash commands skipped the blockReadsOutsideWorkingDirectories prompt <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">/login, /upgrade and /extra-usage no longer discard earlier thinking, which used to force a full prompt-cache rewrite on the next request <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">Notification when an MCP server disconnects mid-session and auto-reconnect gives up, pointing at /mcp <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Reverted a 2.1.268 change that over-eagerly denied Bash lines like "time -p make build" the checker can't fully analyze — they prompt again instead of being auto-denied <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Read on macOS no longer refuses a dragged-in screenshot or file reported under a second resolved path <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">401/403 errors on Bedrock, Vertex, Foundry and the Claude apps gateway now name the credential to refresh instead of a generic "run /login" <span class="ver">2.1.273</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">2.1.272 shipped same-day (Sep 15) with "bug fixes and reliability improvements" — no itemized detail given <span class="ver">2.1.272</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
