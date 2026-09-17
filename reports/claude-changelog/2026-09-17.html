@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-17" />
+  <meta name="report:title" content="2.1.274 fixes an endless retry loop on corrupted transcripts and stops charging a model call per finished background task" />
+  <meta name="report:summary" content="One release — the standout fix ends a stuck 400-error retry loop on corrupted transcripts, plus background-task call batching, a background-agent tool-batch bug fix, and cheaper /code-review on untuned models." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.274 fixes an endless retry loop on corrupted transcripts and stops charging a model call per finished background task — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, September 17, 2026</span>
+        <span>◆</span><span>1 release in window</span>
+      </div>
+      <h1>The endless retry loop on corrupted transcripts is fixed, and background tasks stop burning a model call each</h1>
+      <p class="standfirst">2.1.274 (Sep 17) closes a session-killing bug: a corrupted transcript used to trigger an endless "unexpected tool_use_id" 400-error retry loop with no way out. It now self-heals where possible, or ends the loop with a clear error and a /rewind hint. Also in: headless/SDK sessions stop making a separate model call for every background task that finishes, a resumed background agent no longer drops half an interrupted tool batch, /code-review gets leaner and cheaper on models without tuned settings, and VS Code adds dedicated Memory and Instructions panels.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.273</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>No more endless retry loop on a bad transcript</h4><p>A corrupted transcript used to send a session into an endless "unexpected tool_use_id" 400 retry loop. It now self-heals where possible, or stops with a clear error and a /rewind hint.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Background tasks stop costing one model call each</h4><p>Headless and SDK sessions made a separate model call for every background task that finished. Queued completions are now answered by a single call.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Resumed background agents stop dropping tool results</h4><p>A resumed background agent was keeping only half of an interrupted tool batch when one of its calls had been approved with a message.</p></div>
+        <div class="signal"><div class="n">04</div><h4>/code-review gets leaner on untuned models</h4><p>Any model without its own tuned review settings now gets leaner inline review prompts instead of Claude spinning up a swarm of review subagents.</p></div>
+        <div class="signal"><div class="n">05</div><h4>VS Code Customize menu gets Memory and Instructions panels</h4><p>Memory shows your auto-memory toggles and saved memories; Instructions edits your CLAUDE.md files — both now one click away instead of hunting through settings.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation &amp; agent reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.274</span>
+            <h3>A corrupted transcript no longer strands a session in an infinite retry loop</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions could get stuck endlessly retrying "unexpected tool_use_id" 400 errors with no exit. Corrupted transcripts now self-heal where that's possible; when it isn't, the session stops with a clear error and a pointer to <code>/rewind</code> instead of spinning forever.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the kind of bug that silently eats a background run's whole time budget — you'd come back to an unattended job that never actually finished. Worth knowing about if a scheduled or background session on client work ever seemed to hang for no reason; it should now fail loud instead of quiet.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.274</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.274</span>
+            <h3>Background task completions no longer cost a separate model call each</h3>
+          </div>
+          <div class="story-body">
+            <p>Headless and SDK sessions were making one model call per finished background task. Completions already queued up are now answered by a single call instead.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly relevant to how this scout job and any other unattended/background automation you run gets billed — fewer redundant model calls means lower token spend on the same automation work, with no behavior change to chase down.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.274</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.274</span>
+            <h3>Resumed background agents stopped dropping half an interrupted tool batch</h3>
+          </div>
+          <div class="story-body">
+            <p>When one call in a batch of tool calls had been approved with a message, resuming a background agent afterward kept only half of that interrupted batch instead of all of it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you approve a background agent's tool call with a note attached and then resume it later, you were at risk of silently losing part of the work it had queued. Fixed now — no workaround needed, but good to know if you noticed a background agent seeming to "forget" a step recently.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.274</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code Review &amp; editor</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.274</span>
+            <h3>/code-review drops the subagent swarm for models without tuned settings</h3>
+          </div>
+          <div class="story-body">
+            <p>Any model that doesn't have its own tuned review configuration now gets leaner inline review prompts, instead of Claude spawning many separate review subagents for that pass.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you're running /code-review against a non-default model on a client PR (Bisque, Studio C, Sonderwerks), this should mean a faster, cheaper review pass with the same coverage — worth a quick before/after check if you're billing review time or tokens on a project.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.274</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.274</span>
+            <h3>VS Code Customize menu adds dedicated Memory and Instructions entries</h3>
+          </div>
+          <div class="story-body">
+            <p>Memory now shows the auto-memory toggles, your saved memories, and the folders they live in. Instructions is a direct path to editing your CLAUDE.md files. Both were previously buried in general settings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You lean on memory across sessions to keep context on Bisque/Studio C/Sonderwerks work straight — this makes reviewing or pruning what's actually been saved (and fixing CLAUDE.md) a couple clicks instead of a settings hunt, if you're working from the VS Code extension.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.274</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag qh-tag new">New</span><span class="txt">Visible warning when memory usage is critical, with steps to free memory or restart safely <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A subagent's progress summary being silently replaced by a runaway multi-paragraph reply <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> losing <code>--model</code>, <code>--effort</code>, <code>--permission-mode</code> and other flags after an auto-update relaunch <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Streamable HTTP MCP tool calls timing out around 5 minutes even with a longer configured per-server timeout <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A per-turn slowdown when a language server publishes project-wide diagnostics for thousands of files <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Clickable local file-path links doing nothing in VS Code and other terminals requiring a <code>file://</code> URI <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Typed ordered lists like "3. 2. 1." getting renumbered on display instead of shown as typed <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Bash tool re-sourcing your shell profile (a multi-second stall) after every plugin reload, now only when a plugin's <code>bin/</code> actually changed <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">[VS Code] Continuation of the step a window reload interrupted, labeled in the chat, with a setting to turn it off <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[Claude Code on the web] Cloud-session git operations failing with "service unavailable" during brief GitHub token-renewal errors <span class="ver">2.1.274</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[Claude Code on the web] "Compare against" branch picker in a cloud session's diff view, to diff against any branch, not just the base <span class="ver">2.1.274</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
