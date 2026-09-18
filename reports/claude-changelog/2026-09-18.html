@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-18" />
+  <meta name="report:title" content="A send-now key ships for queued messages, a memory bug that was quietly busting prompt caches gets fixed, and npm plugin installs get locked down" />
+  <meta name="report:summary" content="2.1.275 and 2.1.276 — the standouts are a send-now key for queued messages, a fix for a memory-file bug that was silently busting prompt caches on resume, and npm-sourced plugins now installing with scripts blocked and integrity checked." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A send-now key ships for queued messages, a memory bug that was quietly busting prompt caches gets fixed, and npm plugin installs get locked down — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, September 18, 2026</span>
+        <span>◆</span><span>2 releases in window</span>
+      </div>
+      <h1>A send-now key ships for queued messages, and a memory bug that was quietly busting prompt caches on every resume gets fixed</h1>
+      <p class="standfirst">2.1.275 (Sep 17) is the bulk of this window: a ctrl+enter "send now" key that interrupts the current turn and fires all queued messages at once, claude.ai skills and plugins syncing straight into terminal sessions, a fix for a memory-file bug that was breaking prompt cache hits on every compaction or resume, and npm-sourced plugins now installing with their scripts blocked and integrity-checked. 2.1.276 (Sep 18) is a single regression fix for sessions running behind a proxy or gateway.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.274</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>A send-now key for queued messages</h4><p>ctrl+enter (or ctrl+x ctrl+s) interrupts the current turn and sends every queued message at once, instead of waiting for the turn to finish or sending them one by one.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Prompt cache no longer breaks on a resumed session</h4><p>A restored memory file's age note was changing between requests after a compaction or resume, which quietly busted the prompt cache on that request. Fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>npm-sourced plugins can't run install scripts anymore</h4><p>Plugins installed from an npm source are now fetched with <code>npm pack --ignore-scripts</code> and integrity-verified, so a malicious package's install script no longer executes on your machine.</p></div>
+        <div class="signal"><div class="n">04</div><h4>claude.ai skills and plugins now sync to your terminal</h4><p>Whatever skills and plugins are enabled on your claude.ai account now sync into terminal sessions signed in with it. Opt out with <code>syncClaudeAiSkills: false</code> / <code>syncClaudeAiPlugins: false</code>.</p></div>
+        <div class="signal"><div class="n">05</div><h4>/code-review stops dropping part of its analysis</h4><p>Reviews occasionally lost part of their findings when one of the reviewing agents returned its output in an unexpected format. Fixed.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Working faster</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.275</span>
+            <h3>A send-now key clears your queued messages immediately</h3>
+          </div>
+          <div class="story-body">
+            <p>ctrl+enter, or ctrl+x ctrl+s, interrupts whatever turn is currently running and sends every message you've queued up in one shot. Sent and queued messages show in gray until the model actually receives them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you're stacking up follow-up instructions while Claude works through a long client task — say, three build tweaks on the Bisque storefront back to back — you no longer have to wait out the current turn or watch them trickle in one at a time. Worth building into how you queue work on longer sessions.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.275</span>
+            <h3>claude.ai skills and plugins now sync into terminal sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Skills and plugins enabled on your claude.ai account now show up automatically in terminal sessions signed in with that account. It can be turned off per-type with <code>syncClaudeAiSkills: false</code> or <code>syncClaudeAiPlugins: false</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you build or enable a skill in the claude.ai web UI for one client's workflow, it now shows up in your terminal sessions on that project without a manual reinstall. Check your settings if you rely on a lean, project-specific toolset per client — this syncs by default.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.275</span>
+            <h3>Scheduled and routine runs can now edit an artifact you already gave them access to, without asking each time</h3>
+          </div>
+          <div class="story-body">
+            <p>A scheduled or "Run now" routine run can now save data to, and republish, an artifact you can already edit — no permission prompt. Public artifacts, first publishes, and deletes still ask.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This scout routine itself is exactly this kind of unattended run — the pattern applies to any client-facing recurring report or dashboard you build on artifacts instead of the git-based flow this repo uses. Less friction if you go that route for a client deliverable.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cost &amp; reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.275</span>
+            <h3>A resumed session's memory file was quietly busting the prompt cache on every request</h3>
+          </div>
+          <div class="story-body">
+            <p>A restored memory file's age note was changing between requests after a compaction or resume, which caused prompt cache misses. It's fixed, so the cached prefix should now hold across those requests.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Directly tied to what you're already tracking on token spend for this scout job and any other long-running or resumed session — a stale cache means paying full price to re-process context that should've been a cache hit. This should show up as lower spend on resumed sessions without you doing anything.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.275</span>
+            <h3>[Code Review] Reviews stop dropping part of their analysis</h3>
+          </div>
+          <div class="story-body">
+            <p>Reviews occasionally lost part of their findings when one of the reviewing agents returned its results in an unexpected format. Fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run /code-review or ultrareview against client PRs and a pass has ever come back thinner than expected, this was a live cause. No action needed, but worth re-running a review on anything you suspected got a shallow pass recently.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security &amp; editor</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.275</span>
+            <h3>npm-sourced plugins install with scripts blocked and integrity verified</h3>
+          </div>
+          <div class="story-body">
+            <p>Plugins installed from an npm source are now fetched with <code>npm pack --ignore-scripts</code> and integrity-verified, so a package's install scripts no longer run on install.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Standard supply-chain hardening — an npm-sourced Claude Code plugin can no longer run arbitrary code on your machine just by being installed. Relevant if you or a client ever pull in a plugin from an unfamiliar npm publisher.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.275</span>
+            <h3>[VS Code] Diff tab gets accept/reject buttons per change</h3>
+          </div>
+          <div class="story-body">
+            <p>The proposed-change diff tab now shows accept and reject buttons under each individual change, instead of only an all-or-nothing accept for the whole file.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you review Claude's edits in the VS Code extension before they land on a client repo, you can now keep the three good hunks in a diff and reject the one bad one, instead of accepting everything or redoing the edit from scratch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.275</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Every request failing with a 400 "Input tag 'advisor_20260301'" error when <code>ANTHROPIC_BASE_URL</code> points at a proxy or gateway — a 2.1.275 regression <span class="ver">2.1.276</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>/plugin install &lt;plugin&gt; --marketplace &lt;source&gt;</code>, which offers to add the marketplace before installing <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Grep, Glob and @-file suggestions hanging or running out of memory on searches over the 20MB output cap <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sandboxed Bash commands on Linux reporting exit code 0 for failed commands when the shell is zsh <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A crash when resuming a conversation whose transcript contains a malformed message entry <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin and marketplace messages, logs and <code>claude plugin marketplace list</code> showing a password or token stored in a git, ssh or marketplace URL <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/rewind</code> in a forked or background session restoring a zero-filled or truncated file when file-history backups couldn't be fully copied <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[Code Review] PRs with more than 100 Claude reviews getting a full re-review on every clean merge instead of a lighter merge-focused one <span class="ver">2.1.275</span></span></li>
+            <li><span class="tag qh-tag improve">Improve</span><span class="txt">[VS Code] Memory and Instructions dialogs get viewing, editing and deleting saved memories, plus sending an attached image without typing text <span class="ver">2.1.275</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

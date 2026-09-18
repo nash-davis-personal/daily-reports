@@ -3,6 +3,16 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-09-18",
+    "title": "A send-now key ships for queued messages, a memory bug that was quietly busting prompt caches gets fixed, and npm plugin installs get locked down",
+    "summary": "2.1.275 and 2.1.276 — the standouts are a send-now key for queued messages, a fix for a memory-file bug that was silently busting prompt caches on resume, and npm-sourced plugins now installing with scripts blocked and integrity checked.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-18.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-09-17",
     "title": "2.1.274 fixes an endless retry loop on corrupted transcripts and stops charging a model call per finished background task",
     "summary": "One release — the standout fix ends a stuck 400-error retry loop on corrupted transcripts, plus background-task call batching, a background-agent tool-batch bug fix, and cheaper /code-review on untuned models.",
