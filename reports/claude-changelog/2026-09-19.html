@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-19" />
+  <meta name="report:title" content="AGENTS.md support lands, auto mode's classifier stops billing overhead on the API, and three separate bugs that were quietly breaking prompt cache hits all get fixed" />
+  <meta name="report:summary" content="2.1.277 and 2.1.278 — the standouts are AGENTS.md support for projects without a CLAUDE.md, auto mode's classifier no longer adding billed overhead on API/Enterprise/gateway usage, three unrelated bugs that were each breaking prompt cache hits on resume all fixed together, and subagent output now walled off so it can't pass as the session's own instructions." />
+  <meta name="report:highlights" content="5" />
+
+  <title>AGENTS.md support lands, auto mode's classifier stops billing overhead on the API, and three separate bugs that were quietly breaking prompt cache hits all get fixed — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, September 19, 2026</span>
+        <span>◆</span><span>2 releases in window</span>
+      </div>
+      <h1>AGENTS.md support lands, auto mode's classifier stops billing overhead on the API, and three separate bugs that were quietly breaking prompt cache hits all get fixed</h1>
+      <p class="standfirst">2.1.277 (Sep 18) adds AGENTS.md support, walls subagent and workflow-agent output off from being read as the session's own instructions, and fixes three unrelated bugs that were each silently busting prompt cache hits on resume. 2.1.278 (Sep 19) carries the same set forward and adds a billing change: auto mode's classifier now runs free on the server for API, Enterprise, Bedrock, Vertex, Foundry and gateway usage.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: everything after 2.1.276</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>AGENTS.md support lands</h4><p>In a project with no CLAUDE.md, Claude Code now reads AGENTS.md instead. Configurable under "Project instructions" in /config. Not yet on Bedrock, Vertex or Foundry.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Auto mode's classifier stops costing tokens on the API</h4><p>Auto mode for Claude API, Enterprise, Bedrock, Vertex, Foundry and gateway users now defaults to a server-side classifier that isn't billed for its own overhead. A new "Auto mode server" row in /status shows whether a session is on it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Three unrelated bugs were each quietly breaking prompt cache hits</h4><p>A missed cache on every session resumed after /clear, a cache break on every resumed subagent or teammate, and a cache miss whenever an old attachment got re-rendered on resume — all fixed in the same window.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Subagent and workflow output can no longer pass as the session's own instructions</h4><p>Subagent results now reach the main agent under a header marking them as subagent output, and workflow scripts' computed agent() prompts reach the subagent framed as script-authored text — both close a prompt-injection path.</p></div>
+        <div class="signal"><div class="n">05</div><h4>/ultrareview gets clearer no-op messaging and reviews a new repo's first commit in full</h4><p>When there's nothing to review, it now says which case you're in and offers a command that reviews your latest commit instead. A brand-new repository's first commit gets a full review rather than being skipped.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Interop &amp; cost</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.277</span>
+            <h3>AGENTS.md support: a project with no CLAUDE.md now reads AGENTS.md instead</h3>
+          </div>
+          <div class="story-body">
+            <p>AGENTS.md is the emerging cross-tool convention other coding assistants already write. Claude Code now falls back to it when a project has no CLAUDE.md, and the choice is configurable under "Project instructions" in /config. Not yet supported on Bedrock, Vertex or Foundry.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a client repo already has an AGENTS.md from another tool in the stack, Claude Code now picks it up without you writing a duplicate CLAUDE.md. Worth checking any repo where you've used a second AI coding tool alongside Claude Code — you may be able to delete a redundant instructions file instead of maintaining two.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.277</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.278</span>
+            <h3>Auto mode's classifier no longer bills for its own overhead on the API</h3>
+          </div>
+          <div class="story-body">
+            <p>Auto mode for Claude API and Enterprise users, and on Bedrock, Vertex, Foundry and gateways, now defaults to a server-side classifier that isn't charged as extra tokens; <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> opts out on Bedrock/Vertex/Foundry/gateways, and Claude Code warns if it falls back to a billed classifier. A new "Auto mode server" row in <code>/status</code> shows which one a session is using.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This only matters if you're calling Claude through the API or a gateway rather than a Pro/Max subscription — for example if you're metering Claude usage inside a client-facing AI feature you built. If any TSD build uses Auto mode over the API, check <code>/status</code> for the new "Auto mode server" row to confirm you're getting the free classifier, not the billed fallback.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.278</a> · <a href="https://code.claude.com/docs/en/auto-mode-classifier-billing" target="_blank" rel="noopener">Auto mode classifier billing docs</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cost &amp; reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.277</span>
+            <h3>Three separate bugs were each quietly breaking prompt cache hits</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions continued after /clear (restart, --continue, --resume) were missing part of their first message when a SessionStart hook printed output, causing a full cache miss. Resumed subagents and teammates were re-rendering the MCP tool definitions they'd already loaded, breaking cache for that agent. And attachments recorded earlier in a conversation were being re-rendered after a resume or relaunch, which dropped extended thinking and missed the cache too. All three are fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same theme as yesterday's memory-file cache fix — three more independent leaks in the same area, all plugging silent cost. If you run hooks on session start, resume subagents/teammates in workflows, or work in long sessions with attached files or images, this should show up as lower spend on resumed work without you changing anything.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.277</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">2.1.277</span>
+            <h3>Messages typed while Claude is still working were sometimes ignored</h3>
+          </div>
+          <div class="story-body">
+            <p>Messages sent mid-turn could be dropped by the model instead of being queued and processed. Fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you've had a follow-up instruction silently vanish while Claude was mid-task on a client build, this was a live cause, not you mistyping or the UI eating it. No action needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.277</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent &amp; workflow security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.277</span>
+            <h3>Subagent and workflow output can no longer pass as the session's own instructions</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagent results now reach the main agent under a header marking them explicitly as subagent output, with the result indented. Separately, workflow scripts' computed <code>agent()</code> prompts reach the subagent framed as script-authored text, so the safety classifier doesn't mistake them for the user talking.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Direct relevance if you're delegating research or fan-out work to subagents or Workflow scripts that touch untrusted content — a scraped page, a client's ticket text, a PR description. Previously, text in that content designed to look like an instruction had more room to slip through as if it came from you; this closes part of that path. No workflow changes needed on your end.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.277</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.277</span>
+            <h3>/ultrareview gives clearer guidance and now fully reviews a new repo's first commit</h3>
+          </div>
+          <div class="story-body">
+            <p>When there's nothing to review, /ultrareview now says which case you're in and offers a command that reviews your latest commit instead of a vague message. A brand-new repository's first commit gets a full review rather than being skipped. Separately, non-interactive sessions now refuse to run /ultrareview when the repository has no base branch or shared history.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant the next time you spin up a fresh client repo (a new Sonderwerks build, say) and want a review pass on day one — the first commit no longer gets silently skipped. If you ever script /ultrareview into an automated or headless run, know it will now refuse cleanly instead of erroring on a repo with no history yet.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog — 2.1.277</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Added an "Auto mode server" row to <code>/status</code> showing whether this session's auto mode classifier runs on the server <span class="ver">2.1.278</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude -p</code> and Agent SDK sessions that could hang with no result after an internal error; they now report the error and exit with code 1 <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude plugin install</code> sometimes failing and breaking the installed copy when reinstalling a plugin version already in use; an unchanged copy is now left alone <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Grep and Glob reporting no matches, instead of an error, when the search couldn't start because the system was out of processes, memory or file handles <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Write tool silently ending the turn as a declined permission when the target path is an existing directory; it now reports a clear error <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A <code>sandbox.excludedCommands</code> glob exempting an entire compound Bash command from the sandbox when only one part matched; every part must now match <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">The dangerous-rm permission prompt now names the flagged command and suggests a <code>${VAR:?}</code> guard, so headless runs can recover <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A headless resume (<code>claude -p --resume</code>, the SDK, a VS Code extension window reload) starting the session's cost and usage totals at zero <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag qh-tag improve">Removed</span><span class="txt">The deprecated TaskOutput tool; Claude now reads a background task's output file with Read instead <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[VS Code] Background shells and other running tasks added to the agent map, each with a Stop button, and a typed <code>/tasks</code> that opens it; plus a Copy response button on responses <span class="ver">2.1.277</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VS Code] <code>/fast</code> not saving fast mode as the default, so it was lost when the extension relaunched Claude Code <span class="ver">2.1.277</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
