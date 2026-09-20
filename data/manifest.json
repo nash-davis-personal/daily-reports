@@ -3,6 +3,16 @@
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
+    "date": "2026-09-20",
+    "title": "Nothing new: still on 2.1.278, zero releases since yesterday",
+    "summary": "The changelog has not moved since the September 19 briefing — 2.1.278 is still the newest version, so there's nothing to report today.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-20.html"
+  },
+  {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
     "date": "2026-09-19",
     "title": "AGENTS.md support lands, auto mode's classifier stops billing overhead on the API, and three separate bugs that were quietly breaking prompt cache hits all get fixed",
     "summary": "2.1.277 and 2.1.278 — the standouts are AGENTS.md support for projects without a CLAUDE.md, auto mode's classifier no longer adding billed overhead on API/Enterprise/gateway usage, three unrelated bugs that were each breaking prompt cache hits on resume all fixed together, and subagent output now walled off so it can't pass as the session's own instructions.",
