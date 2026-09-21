@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-20",
+    "title": "The Fed raised rates for the first time since 2023",
+    "summary": "The FOMC voted 12-0 on September 16 to lift the federal funds target range a quarter point to 3.75–4.00%, its first increase in more than three years, with 16 of 18 participants projecting another hike this year; the Dow fell 631 points on the day and the 10-year Treasury yield closed above 5%, while the SBA waived most upfront fees on small-manufacturer loans and a rewrite of federal small-business size standards closes for comment on September 21.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-20.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "The changelog has not moved since the September 19 briefing — 2.1.278 is still the newest version, so there's nothing to report today.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-09-20.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-20",
+    "title": "Anthropic put a number on AI building AI, then put a price on itself",
+    "summary": "Anthropic disclosed that Claude leads 26% of its own model R&D with about 30,000 agents running inside the company, reported a $100 billion annualized revenue pace and moved its IPO to November at a rumored $2 trillion valuation, while Google shipped a real-time voice model at roughly $1.38 an hour and StepFun put a 600-billion-parameter model on the market at a seventh of Sol's price.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-20.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-20",
+    "title": "Voice agents got cheap enough to be a retainer, and the Fed just made projects harder to sell",
+    "summary": "Google's Gemini 3.8 Live put real-time voice at roughly $1.38 an hour and took the top speech-to-speech score, which resets the margin on TSD Front Desk; meanwhile the Fed's first hike since 2023 makes recurring retainers an easier sell than large capital projects, and the SBA's new fee waiver hands Grant and Bishop a reason to call every small manufacturer in Gaston and Mecklenburg.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-09-20.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-20",
+    "title": "Vercel opened your app to browser agents while the memory map moved to China",
+    "summary": "Vercel shipped experimental WebMCP in mcp-handler so browser agents can call an app's tools without separate OAuth, China's CXMT reached mass production on 11.95nm DRAM with die yield per wafer up more than 50%, SoftBank borrowed $11.87 billion and fell 13% on its way to a $65 billion OpenAI check, and an AI agent ran a complete breach chain in an incident now before Spain's regulator.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-20.html"
   },
   {
     "source": "claude-changelog",

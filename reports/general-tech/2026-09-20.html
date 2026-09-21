@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-20" />
+  <meta name="report:title" content="Vercel opened your app to browser agents while the memory map moved to China" />
+  <meta name="report:summary" content="Vercel shipped experimental WebMCP in mcp-handler so browser agents can call an app's tools without separate OAuth, China's CXMT reached mass production on 11.95nm DRAM with die yield per wafer up more than 50%, SoftBank borrowed $11.87 billion and fell 13% on its way to a $65 billion OpenAI check, and an AI agent ran a complete breach chain in an incident now before Spain's regulator." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Vercel opened your app to browser agents while the memory map moved to China — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, September 20, 2026</span>
+        <span>◆</span><span>Dev platform, silicon, security, space</span>
+      </div>
+      <h1>Vercel opened your app to browser agents while the memory map moved to China</h1>
+      <p class="standfirst">Vercel's September 17–18 changelog batch shipped experimental WebMCP support in mcp-handler, which exposes an app's MCP tools to browser-based agents without a separate OAuth setup. In the same eight days CXMT hit mass production on fifth-generation DRAM, Infineon sold two memory lines to Winbond for $1.12 billion, SoftBank took an $11.87 billion loan on the way to a $65 billion OpenAI investment, and Spain's regulator opened a file on a breach an AI agent appears to have executed end to end.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: September 12 through Sunday, September 20 — a catch-up edition covering eight days</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">11.95nm</div><div class="lbl">CXMT's fifth-generation DRAM now in mass production, with die yield per wafer up more than 50% against the previous generation</div></div>
+      <div class="stat"><div class="num">$11.87B</div><div class="lbl">two-year loan SoftBank secured; the stock fell 13% on September 14, its worst drop since mid-July</div></div>
+      <div class="stat"><div class="num">$46.67B</div><div class="lbl">South Korea's August chip exports, up 209% year over year, inside $59.98B of total ICT exports</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>WebMCP landed in mcp-handler</h4><p>Vercel's experimental WebMCP support lets you expose MCP tools to browser-based agents without configuring separate OAuth. This is the plumbing for "an agent uses your customer's website."</p></div>
+        <div class="signal"><div class="n">02</div><h4>Sub-second artifact deploys</h4><p>The Vercel CLI can now push static artifacts in under a second, and Turbo build machines became opt-in per deployment for cost control on standard deploys.</p></div>
+        <div class="signal"><div class="n">03</div><h4>China got a real second memory source</h4><p>CXMT reached mass production on 11.95nm G5 DRAM with die yield per wafer up more than 50%. Chinese system builders now have a domestic option that does not route through Korea or the US.</p></div>
+        <div class="signal"><div class="n">04</div><h4>SoftBank levered up for OpenAI</h4><p>An $11.87 billion two-year loan, a 13% single-day stock drop, and a stated plan to put $65 billion into OpenAI by October. Chip names sold off the same session.</p></div>
+        <div class="signal"><div class="n">05</div><h4>An agent ran the whole breach</h4><p>Spain's data regulator is investigating an incident where an AI agent found the vulnerability, logged in, altered personal data and read billing records. Separately, researchers reached an OpenAI employee's ChatGPT account through a third-party community forum.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Apple and Nvidia are talking servers</h4><p>Reports put Apple in AI server discussions with Nvidia, which would extend Apple silicon past consumer devices into data-center systems. iOS 27 shipped September 14.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The dev platform Nash actually ships on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">September 18</span>
+            <h3>Vercel shipped WebMCP in mcp-handler</h3>
+          </div>
+          <div class="story-body">
+            <p>Experimental WebMCP support in mcp-handler exposes an application's MCP tools to browser-based agents without a separate OAuth configuration. The same changelog day added Spend Management for Enterprise Flexible Commitment plans, with email alerts, webhooks and optional pausing of production deployments; npm credential support in v0, which now reads NPM_TOKEN and NPM_RC to install private packages from custom registries; and Z.ai's GLM 5.3 FlashX on the AI Gateway at 200 tokens per second behind one API key with automatic fallbacks, spend tracking and request traces.</p>
+            <p>The day before brought sub-second static artifact deployments in the Vercel CLI, per-deployment Turbo build machines as an opt-in cost control, Harbor 0.22.0 evals running Terminal-Bench inside Vercel Sandbox microVMs, and Notion-hosted skills installable through the skills CLI without a Git repo.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> WebMCP is the first cheap way to make a client site do something useful when an agent shows up instead of a person. Build one this week on a demo site — a "check availability and book" tool — record an agent using it, and that video is the entire pitch for a new productized service. The GLM 5.3 FlashX gateway entry is also worth a look for the cheap lane of Nash's own agent stack.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog, September 17–18</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Housekeeping</span>
+            <span class="ver">Current as of September 20</span>
+            <h3>No new Next.js advisory this window — confirm you are on the patched floor anyway</h3>
+          </div>
+          <div class="story-body">
+            <p>Nothing new landed on Nash's stack between September 12 and 20. The framework's most recent stable release is 16.3.5, published September 11 on the LTS branch. The standing patch floors from earlier in the year remain the ones that matter: the React Server Components denial-of-service and source-exposure issues tracked as CVE-2026-23864 and CVE-2026-23869, patched in Next.js 15.5.16 and 16.2.5 alongside react-server-dom-* 19.0.6, 19.1.7 and 19.2.6; the August security release requiring 16.3.3 or 15.5.24; and CVE-2026-44578, the 8.6-CVSS SSRF in the WebSocket upgrade handler that affects self-hosted Next.js on the built-in Node server from 13.4.13 up to 15.5.16 and 16.2.5.</p>
+            <p>Vercel-hosted applications are not affected by the SSRF, and Vercel's WAF carries rules for the RSC denial-of-service class.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npx next --version</code> across every client repo and confirm nothing is below 16.3.3 or 15.5.24. Anything Nash self-hosts on a plain Node server is the real exposure, since the Vercel-hosted sites are covered by the platform WAF. Ten minutes of checking beats explaining an SSRF to a client.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/summary-of-cve-2026-23864" target="_blank" rel="noopener">Vercel: summary of CVE-2026-23864</a> <a href="https://bastion.tech/blog/nextjs-cve-2026-44578-websocket-ssrf-self-hosted/" target="_blank" rel="noopener">CVE-2026-44578 breakdown</a> <a href="https://nextjs.org/blog" target="_blank" rel="noopener">Next.js blog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Silicon, and the money behind it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply chain</span>
+            <span class="ver">September 20</span>
+            <h3>CXMT reached mass production on fifth-generation DRAM</h3>
+          </div>
+          <div class="story-body">
+            <p>China's CXMT is in mass production on 11.95nm fifth-generation DRAM, with die yield per wafer up more than 50% against the previous generation. That gives Chinese manufacturers a second sourcing option for memory at a moment when AI demand has made memory the tight part of every bill of materials.</p>
+            <p>The contrast on the other side of the same market is stark. South Korea posted $59.98 billion in August ICT exports, up 162.6% year over year, with $46.67 billion of that in chips, up 209%. Infineon agreed to sell its NOR flash and F-RAM businesses to Winbond for $1.12 billion in cash to concentrate on core lines. Huawei used its Connect conference to lay out a 2027 roadmap: Ascend 960DT in Q1 and 960PR in Q3, both on its UnifiedBus interconnect.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Memory prices set the floor under every laptop, phone and server Nash or his clients buy for the next two years. A second high-volume source is the only thing that caps that. No action today; it is the variable to watch before quoting any hardware-inclusive project.</div>
+          <div class="refs"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly: CXMT mass production</a> <a href="https://techstartups.com/2026/09/14/top-tech-news-today-september-14-2026-apple-anthropic-microsoft-revolut-softbank-more/" target="_blank" rel="noopener">Tech Startups, September 14</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Markets</span>
+            <span class="ver">September 14</span>
+            <h3>SoftBank borrowed $11.87 billion and the chip trade wobbled</h3>
+          </div>
+          <div class="story-body">
+            <p>SoftBank secured an $11.87 billion two-year loan and its stock fell 13%, the worst single-day drop since mid-July, against a stated plan to put $65 billion into OpenAI by October. Nvidia, Intel, Marvell and Micron all fell the same session, with Nasdaq 100 futures down more than 1.5% and TSMC off roughly 2%.</p>
+            <p>The same day, Microsoft circulated a draft AI code of conduct framework and several lab chiefs publicly called for slower frontier development — a pairing that made the session read as a referendum on how much debt the buildout can carry.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The AI buildout is now financed with borrowed money at a moment when the Fed is raising rates. That does not change what Nash builds; it changes how he prices. Favor retainers a client can cancel monthly over large fixed-scope projects that need a credit decision on the buyer's side.</div>
+          <div class="refs"><a href="https://techstartups.com/2026/09/14/top-tech-news-today-september-14-2026-apple-anthropic-microsoft-revolut-softbank-more/" target="_blank" rel="noopener">Tech Startups: September 14 roundup</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: the attacker had an agent</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">September 18</span>
+            <h3>An AI agent executed a complete login, probe and exfiltration chain</h3>
+          </div>
+          <div class="story-body">
+            <p>Spain's data regulator received a breach notification describing an AI agent that identified system vulnerabilities, accessed a system, modified personal information and viewed billing records. The investigation is open. In a separate incident the same day, security researchers reached an OpenAI employee's ChatGPT account by way of a weakness in a third-party-hosted community forum.</p>
+            <p>The rest of the week's list is conventional and still expensive. Check Point Security Management and Log Servers carry a critical flaw allowing remote code execution with root privileges. CVE-2026-58138 is an unauthenticated RCE exploitable through inline workflow definitions. Microsoft patched across Azure and its AI-branded products, mostly privilege escalation. Revolut disclosed a customer data breach against a base of more than 80 million. Identity-verification provider IDScan confirmed a third party may have accessed customer information in its cloud. And a RubyGems supply-chain attack first seen in May, in which AI agents uploaded hundreds of malicious packages, surfaced publicly this month.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two concrete jobs. First, audit Nash's own third-party account surface — the forums, community tools and SaaS logins attached to work email are now a credible path into a client system. Second, lock dependency versions and scan on install in every repo; the RubyGems pattern will repeat on npm, and a poisoned package in a client build is the one mistake the money-back guarantee cannot cover cheaply.</div>
+          <div class="refs"><a href="https://bostoninstituteofanalytics.org/blog/cyber-security-news-this-week-september-12-18-2026-ai-attacks-data-breaches-and-emerging-threats/" target="_blank" rel="noopener">Cyber security news, September 12–18</a> <a href="https://securityboulevard.com/2026/09/top-10-breaches-of-the-week-10/" target="_blank" rel="noopener">Security Boulevard: breaches of the week</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Space</span><span class="txt">SpaceX flew its 700th Falcon rocket on September 13, carrying the final three O3b mPOWER satellites for SES, and it was the 81st Starlink mission of the year. <span class="ver">Sept 13</span></span></li>
+            <li><span class="tag improve qh-tag">Space</span><span class="txt">Starship Flight 14 slipped past its September 15 FCC-filed date and is now targeted no earlier than September 28, pending regulatory approval. It would be the first Starship flight to reach orbit, deploying 26 V3 Starlink satellites. <span class="ver">Sept</span></span></li>
+            <li><span class="tag new qh-tag">Energy</span><span class="txt">Nvidia and Google launched a framework letting AI data centers shed load on demand through compute shifting and paired generation. SemiAnalysis separately found only 2.3 GW of US capacity actually delayed by 300-plus local restrictions. <span class="ver">Sept 17</span></span></li>
+            <li><span class="tag feature qh-tag">Platform</span><span class="txt">Google Home's MCP interface entered early access, letting agents query device state and issue commands across connected smart-home devices. <span class="ver">Sept 17</span></span></li>
+            <li><span class="tag feature qh-tag">Consumer</span><span class="txt">Apple shipped iOS 27 on September 14, supporting iPhone 11 and later with advanced features gated to iPhone 15 Pro and up. <span class="ver">Sept 14</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Three former Apple researchers raised $50 million for Nuance, a Seattle startup working on more natural AI conversation. Satellite operator Open Cosmos closed a €300 million round. <span class="ver">Sept</span></span></li>
+            <li><span class="tag improve qh-tag">Oddity</span><span class="txt">Kalshi removed a market tracking future GPU rental prices after what was reported as a Commerce Department request; Commerce denied making it. <span class="ver">Sept 16</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
