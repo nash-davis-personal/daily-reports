@@ -1,5 +1,35 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-21",
+    "title": "Nothing new: still on 2.1.278, zero releases in two days",
+    "summary": "The changelog has not moved since September 19 — 2.1.278 is still the newest version, so there's nothing to report for the second day running.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-21.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-21",
+    "title": "Amazon slammed the door on Meta's shopping agent",
+    "summary": "Amazon began blocking Meta's Muse AI assistant from buying on Amazon.com on the night of September 20, twelve days after launch, over credential handling and undisclosed browsing; meanwhile Google's AX agent runtime hit v0.3.0 with task state moved to Redis Streams, Huawei opened an Ascend-based agent stack with more than 5,000 MCP assets, a researcher documented OpenAI's __obi cookie following ChatGPT accounts across retail sites, and AI-written code reached 17.25% of Linux kernel patches this month.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-09-21.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-21",
+    "title": "Patch your coding agent, then your Supabase calls — one deadline lands Wednesday",
+    "summary": "Plugin4Shell, a zero-click RCE that defeats SHA pinning in the plugin systems of Claude Code, Codex, Copilot and Gemini CLI, means the floor is Claude Code 2.1.179 and Codex 0.146.0; Supabase removes the Management API logs.all endpoint on September 23; Vercel shipped npm credentials in v0, sub-second artifact deploys and GLM 5.3 FlashX on AI Gateway; Ireland's DPC fined Google 403 million euros over location data; and the IFR counted about 7,000 humanoid robots sold worldwide in 2025.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-21.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
