@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-21",
+    "title": "Xi lands in Washington, and the SBA's definition of small closes today",
+    "summary": "Xi Jinping arrives for a state visit with a Thursday bilateral at the White House, the agenda led by whether the 2025 trade truce gets extended; US stock futures opened the week higher as Brent fell a fourth straight session; the SBA's comment window on rewriting small-business size standards closes September 21 after more than 65,000 comments; and the administration extended most-favored-nation drug pricing to Medicaid programs in all 50 states.",
+    "highlights": 5,
+    "path": "reports/america/2026-09-21.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -18,6 +28,16 @@
     "summary": "Amazon began blocking Meta's Muse AI assistant from buying on Amazon.com on the night of September 20, twelve days after launch, over credential handling and undisclosed browsing; meanwhile Google's AX agent runtime hit v0.3.0 with task state moved to Redis Streams, Huawei opened an Ascend-based agent stack with more than 5,000 MCP assets, a researcher documented OpenAI's __obi cookie following ChatGPT accounts across retail sites, and AI-written code reached 17.25% of Linux kernel patches this month.",
     "highlights": 5,
     "path": "reports/general-ai/2026-09-21.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-21",
+    "title": "Two privacy stories and a Wednesday deadline are this week's easiest money",
+    "summary": "A researcher documented OpenAI's __obi cookie following ChatGPT accounts onto retail sites the same week Ireland fined Google 403 million euros over location data, which makes a fixed-price tag-and-consent audit the highest-fit offer on the board; Supabase removes the logs.all endpoint on September 23, giving a free reason to contact every past client today; and Vercel's private-npm support in v0 turns a TSD component library into real delivery margin.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-09-21.html"
   },
   {
     "source": "general-tech",

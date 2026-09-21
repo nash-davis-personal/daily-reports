@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-21" />
+  <meta name="report:title" content="Patch your coding agent, then your Supabase calls — one deadline lands Wednesday" />
+  <meta name="report:summary" content="Plugin4Shell, a zero-click RCE that defeats SHA pinning in the plugin systems of Claude Code, Codex, Copilot and Gemini CLI, means the floor is Claude Code 2.1.179 and Codex 0.146.0; Supabase removes the Management API logs.all endpoint on September 23; Vercel shipped npm credentials in v0, sub-second artifact deploys and GLM 5.3 FlashX on AI Gateway; Ireland's DPC fined Google 403 million euros over location data; and the IFR counted about 7,000 humanoid robots sold worldwide in 2025." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch your coding agent, then your Supabase calls — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.air.security/blog-posts/plugin4shell" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, September 21, 2026</span>
+        <span>◆</span><span>Dev tools, chips, hardware, security</span>
+      </div>
+      <h1>Patch your coding agent, then your Supabase calls — one deadline lands Wednesday</h1>
+      <p class="standfirst">Plugin4Shell is a zero-click remote code execution flaw in the plugin systems of the four most-used coding agents, and it works by defeating the SHA pin developers trust to freeze a plugin at reviewed code. Anthropic and OpenAI have patched; two vendors have not. Separately, Supabase pulls the Management API <code>logs.all</code> endpoint on September 23, which is a two-day clock on anything still calling it.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the September 20 edition, plus one security item filed late</span>
+        <span>◆</span><a href="https://www.air.security/blog-posts/plugin4shell" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2.1.179</div><div class="lbl">the Claude Code version that fixes Plugin4Shell; Codex's fix is 0.146.0</div></div>
+      <div class="stat"><div class="num">Sept 23</div><div class="lbl">the day Supabase removes the Management API <code>logs.all</code> endpoint</div></div>
+      <div class="stat"><div class="num">€403M</div><div class="lbl">Ireland's DPC fine against Google over location-data processing, with six months to comply</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Plugin4Shell breaks SHA pinning</h4><p>The agent checks out the exact commit the marketplace pinned but never verifies it landed there. An attacker controlling a plugin repo makes the checkout resolve to malicious code while the pin still looks honored. Background auto-update makes it zero-click.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Two of four vendors are fixed</h4><p>Claude Code 2.1.179 and Codex 0.146.0 carry the fix. GitHub Copilot had no fix at disclosure, and Google reportedly will not patch the deprecated Gemini CLI at all.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase kills <code>logs.all</code> on Wednesday</h4><p>The Management API's <code>logs.all</code> endpoint is removed September 23; callers migrate to the ClickHouse-backed <code>logs</code> endpoint. Announced July 23, so the notice period is over.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel shipped a useful batch</h4><p>v0 can now install private npm packages from environment variables, static artifacts deploy via CLI in under a second, build machines are selectable per deployment, and GLM 5.3 FlashX joined AI Gateway.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Ireland fined Google €403 million</h4><p>The DPC closed a 2020 inquiry into Web &amp; App Activity, Location History and Location Accuracy covering May 2018 to February 2020, and ordered compliance within six months.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Humanoid robots sold ~7,000 units</h4><p>IFR data reviewed by Reuters puts 2025 worldwide humanoid sales around 7,000, mostly to research buyers collecting data, against roughly 542,000 industrial robots installed in 2024.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Disclosed September 17–18</span>
+            <h3>Plugin4Shell: zero-click RCE in Claude Code, Codex, Copilot and Gemini CLI</h3>
+          </div>
+          <div class="story-body">
+            <p>AIR Security disclosed a high-severity flaw in how the four most popular coding agents install plugins. Marketplaces pin a plugin to a reviewed commit SHA; the agent checks out that SHA but never verifies the checkout actually resolved to it. An attacker who controls the plugin's repository can make the resolution land on malicious code while the pin still appears honored. Because Claude Code and Codex update installed plugins in the background by default, no click, approval or reinstall is required — hence zero-click.</p>
+            <p>The blast radius is the developer's own machine. Plugins inherit the permissions of whoever runs the agent: local source, cloud credentials, SSH keys, internal repos, production access, secrets. Anthropic fixed it in Claude Code 2.1.179 and OpenAI in Codex 0.146.0. Microsoft had no GitHub Copilot fix out at disclosure, and Google is reported to be leaving the deprecated Gemini CLI unpatched.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>claude --version</code> on every machine today and make sure you are at or above 2.1.179 — the changelog has the line at 2.1.278, so a normal auto-updated install is fine, but a pinned CI image or an old laptop may not be. Then audit installed plugins and drop any whose repo you do not personally trust, because SHA pinning was the thing making third-party plugins safe and it did not work. If a client's dev team runs Copilot, tell them the flaw exists and that the fix was not shipped at disclosure.</div>
+          <div class="refs"><a href="https://www.air.security/blog-posts/plugin4shell" target="_blank" rel="noopener">AIR Security: Plugin4Shell</a> <a href="https://www.helpnetsecurity.com/2026/09/18/plugin4shell-ai-coding-agents-vulnerability/" target="_blank" rel="noopener">Help Net Security: two of four remain unpatched</a> <a href="https://www.theregister.com/security/2026/09/17/ai_coding_agents_0-click_rce_flaw_could_hand_attackers_keys_to_the_kingdom/5297335" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Effective September 23</span>
+            <h3>Supabase removes the Management API <code>logs.all</code> endpoint</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase announced on July 23 that the Management API's <code>logs.all</code> endpoint would be removed on September 23, 2026, with callers migrating to the new ClickHouse-backed <code>logs</code> endpoint. That date is Wednesday. Anything still hitting the old path — a monitoring script, a client dashboard widget, a cron job that pulls error counts — starts failing rather than degrading.</p>
+            <p>In the same stretch Supabase added Health Check Advisors on September 18, which surfaces error rates across Auth, Storage, Edge Functions and the Data APIs with a severity level and a link straight to the investigation view. There is no new Next.js security advisory this window; the August release remains the floor at 16.3.3 on Active LTS or 15.5.24 on Maintenance LTS.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep every project for <code>logs.all</code> before Wednesday — <code>rg "logs\.all" ~/Documents/Projects</code> takes ten seconds and a silent Thursday-morning breakage in a client's ops dashboard costs an afternoon. While you are in there, turn on Health Check Advisors for each client project; it is free monitoring you can put on a retainer report without writing any code.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a> <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js security advisories</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">September 17–18</span>
+            <h3>Vercel: private npm in v0, sub-second artifact deploys, GLM 5.3 FlashX on the Gateway</h3>
+          </div>
+          <div class="story-body">
+            <p>Four items from the Vercel changelog worth knowing. v0 can now read environment variables to install private npm packages, so an internal component library works inside v0 instead of being stripped out on every generation. Static artifacts deploy through the CLI in under a second. Turbo build machines can be enabled per deployment rather than per project, which turns a blanket cost into a targeted one. And Zhipu's GLM 5.3 FlashX is available through AI Gateway under the same consolidated key.</p>
+            <p>Enterprise teams on Flexible Commitment also got Spend Management budgets with email alerts, webhooks and optional pausing of production deploys. Yesterday's briefing covered the fifth item in that batch, experimental WebMCP in <code>mcp-handler</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The v0 change is the one with money in it. Push TSD's reusable pieces — booking widget, concierge chat embed, the standard site shell — into a private npm package, and v0 output starts arriving already on-brand instead of needing a rewrite. That is the difference between v0 as a toy and v0 as the first hour of every client build.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Regulation, hardware, robots</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Regulation</span>
+            <span class="ver">September 21</span>
+            <h3>Ireland's DPC fined Google €403 million over location data</h3>
+          </div>
+          <div class="story-body">
+            <p>The Data Protection Commission closed an inquiry opened in 2020 after complaints from several European consumer-rights organisations, and imposed administrative fines totalling €403 million (about $463 million). Investigators examined three features — Web &amp; App Activity, Location History and Location Accuracy — across the period from 25 May 2018, when GDPR took effect, to 4 February 2020. Deputy Commissioner Graham Doyle framed the failure as users being unable to know their location was being used to target ads or infer their interests. Google has six months to bring the processing into compliance.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The finding is about consent clarity, not about location tech being illegal, and that same test applies to the tracking a small business bolts onto its site. Pair this with the OpenAI <code>__obi</code> item in today's AI briefing and you have a clean two-slide case for a paid privacy-and-tags review: what loads, what it collects, what the banner says.</div>
+          <div class="refs"><a href="https://www.dataprotection.ie/en/news-media/latest-news/data-protection-commission-fines-google-eu403-million-following-inquiry-googles-processing-location" target="_blank" rel="noopener">Data Protection Commission statement</a> <a href="https://www.irishtimes.com/business/2026/09/21/irish-data-protection-watchdog-fines-google-403m-over-gdpr-breaches/" target="_blank" rel="noopener">Irish Times</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">September 20</span>
+            <h3>iFixit opened the iPhone 18 Pro: a new thermal package and an unrepairable aperture</h3>
+          </div>
+          <div class="story-body">
+            <p>The A20 Pro moves to a package that sits the silicon die side by side with memory rather than stacking it, taking the memory out of the SoC's thermal path so the chip couples directly to a vapor chamber with three times the surface area of the iPhone 17 Pro's. That is the engineering behind the sustained-performance and faster-charging claims.</p>
+            <p>The variable aperture is six blades about the thickness of a human hair, driven by electromagnets independent of the stabiliser. One blade flew out during disassembly. A stuck aperture will likely mean replacing the whole main camera assembly. iFixit also damaged the plastic frame around the display on three of four units, and gave both Pro models a provisional 7 out of 10 for repairability.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Mostly context, with one practical edge: sustained thermal headroom on flagship phones is what makes on-device capture and real-time video features viable for client apps. If a client wants a camera-heavy mobile experience, the hardware is getting out of the way faster than the repair story suggests.</div>
+          <div class="refs"><a href="https://www.ifixit.com/News/119329/inside-the-tiny-unfixable-eye-iphone-18-pro-and-pro-max-teardown" target="_blank" rel="noopener">iFixit teardown</a> <a href="https://9to5mac.com/2026/09/20/ifixit-tears-down-iphone-18-pro-explores-variable-aperture-finds-concerning-repair-issue/" target="_blank" rel="noopener">9to5Mac</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Robotics</span>
+            <span class="ver">September 21</span>
+            <h3>About 7,000 humanoid robots sold worldwide last year</h3>
+          </div>
+          <div class="story-body">
+            <p>Reuters reviewed International Federation of Robotics data ahead of its official release: roughly 7,000 humanoid robots were sold globally in 2025 for industrial and professional service use, and many of those went to research institutes and companies buying them to collect training data rather than to do productive work. For scale, about 542,000 industrial robots were installed in 2024 and roughly 199,000 service robots sold for transport, hospitality and cleaning.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful calibration when a client brings up robots taking over. The deployed number is tiny and mostly experimental, while the software side — agents, voice, scheduling — is where the actual near-term automation money is. That is the business Nash is already in, and the gap between the two numbers is the argument.</div>
+          <div class="refs"><a href="https://technode.global/2026/09/21/global-humanoid-robot-sales-7000-2025-ifr/" target="_blank" rel="noopener">TechNode on the IFR figures</a> <a href="https://tass.com/economy/2190497" target="_blank" rel="noopener">Reuters figure summarised</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">The Linux kernel is nearing 2,000 CVEs per release as AI bug hunters sweep 40 million lines of code, with maintainers describing themselves as completely overwhelmed by the volume of findings. <span class="ver">Sept 2026</span></span></li>
+            <li><span class="tag breaking qh-tag">Commerce</span><span class="txt">Amazon began blocking Meta's Muse agent from purchasing on Amazon.com — the full story is in today's <a href="../general-ai/2026-09-21.html">General AI briefing</a>. <span class="ver">Sept 20</span></span></li>
+            <li><span class="tag improve qh-tag">Frameworks</span><span class="txt">Microsoft's AutoGen stays in maintenance mode — bug fixes, security patches and stability only — with Microsoft Agent Framework, GA since April 2, carrying new development. Migration risk for anyone still building on it. <span class="ver">Ongoing</span></span></li>
+            <li><span class="tag feature qh-tag">Tooling</span><span class="txt">Supabase's agent skills and a structured <code>query_logs</code> tool landed alongside the September observability push, aimed at debugging across services from inside an agent. <span class="ver">Sept 13–18</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
