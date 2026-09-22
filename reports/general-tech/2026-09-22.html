@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-22" />
+  <meta name="report:title" content="Patch Next.js today: a critical out-of-band release lands" />
+  <meta name="report:summary" content="Vercel gave 24 hours' notice of a critical out-of-band Next.js security update — 16.3.6 and 15.5.26, for an unnamed upstream dependency — publishing today alongside advisory GHSA-vcvr-r3jv-pc5j; Vercel also added billable duration and CPU minutes to every deployment view and put Grok 4.7 on AI Gateway at 40% off; AMD closed above a $1 trillion market cap for the first time; Ireland's DPC fined Google 403 million euros over location data; and SoftBank launched an $11 billion junk-bond deal to fund its next OpenAI tranche." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js today: a critical out-of-band release lands — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, September 22, 2026</span>
+        <span>◆</span><span>Dev tools, chips, platforms, money</span>
+      </div>
+      <h1>Patch Next.js today: a critical out-of-band release lands</h1>
+      <p class="standfirst">Vercel posted 24 hours' notice on September 21 that Next.js 16.3.6 and 15.5.26 would ship out-of-band today for a critical issue in an upstream dependency, with the advisory held back until the patch is out. Everything else on the board — AMD through a trillion dollars, a €403 million privacy fine for Google, an $11 billion bond deal to pay for OpenAI — is downstream of the same AI buildout.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the September 21 edition</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.6 / 15.5.26</div><div class="lbl">the Next.js versions to be on once today's out-of-band security release publishes</div></div>
+      <div class="stat"><div class="num">$1T</div><div class="lbl">AMD's market cap on September 21 — the fourth US semiconductor company past the line</div></div>
+      <div class="stat"><div class="num">€403M</div><div class="lbl">Ireland's DPC fine against Google over Web &amp; App Activity, Location History and Location Accuracy</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js critical patch, today</h4><p>16.3.6 (Active LTS line) and 15.5.26 (Maintenance) publish out-of-band for a critical upstream-dependency issue. Advisory GHSA-vcvr-r3jv-pc5j goes public with the release. As of this briefing npm still showed 16.3.5 as <code>latest</code> and 15.5.25 on the backport tag — watch for the bump.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Vercel put a cost meter on every deployment</h4><p>The dashboard, <code>vc inspect</code> and the REST API now show billable duration and CPU minutes per deployment. First time you can attribute spend to a specific deploy without exporting anything.</p></div>
+        <div class="signal"><div class="n">03</div><h4>AI Gateway picked up Grok 4.7 at 40% off and MiMo V2.6</h4><p>xAI's new flagship landed on AI Gateway, fx and eve with promotional pricing from September 21. Xiaomi's MiMo V2.6 Pro, Flash and Pro UltraSpeed arrived the same day with 1M context, multimodal input, reasoning and tool calling.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AMD joined the trillion-dollar club</h4><p>AMD rose more than 8% on September 21 to an all-time high of $613.92, crossing $1 trillion for the first time and becoming the fourth US semiconductor company past that mark after Nvidia, Broadcom and Micron. Up roughly 24% in five sessions.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Google's location-data bill came due</h4><p>Ireland's Data Protection Commission fined Google €403 million ($463 million) over how it processed location data in Web &amp; App Activity, Location History and Android's Location Accuracy. The inquiry opened in February 2020.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Notice Sept 21 · ships Sept 22</span>
+            <h3>Next.js 16.3.6 and 15.5.26 ship out-of-band for a critical upstream issue</h3>
+          </div>
+          <div class="story-body">
+            <p>Josh Story, Karim Rahal and Sebastian Silbermann posted a one-paragraph heads-up on September 21: a critical security issue was identified in an upstream dependency, and Next.js 16.3.6 and 15.5.26 would be published out-of-band on September 22. The full advisory, GHSA-vcvr-r3jv-pc5j, is being withheld until the patch lands, so impact, affected versions and upgrade instructions are unknown as of this writing. The advisory URL returned 404 when checked for this briefing, and the npm registry still listed 16.3.5 as <code>latest</code> with 15.5.25 on the <code>backport</code> tag.</p>
+            <p>The pattern is the one to read. "Critical," "upstream dependency," and an advisory held back until release usually means the maintainers think the fix is easier to reverse-engineer than to defend against. Next.js has now shipped critical security releases in May, August and September.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today. Run <code>npm view next version</code>; the moment it reads 16.3.6, upgrade every client project on the 16.x line and every project still on 15.x to 15.5.26, then redeploy. Projects on Vercel still need the upgrade — hosting does not patch your lockfile. Inventory first: <code>grep -h '"next"' ~/Documents/**/package.json</code> across the client repos so nothing gets missed, and read GHSA-vcvr-r3jv-pc5j the moment it publishes to see whether self-hosted or App Router deployments carry extra exposure.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026" target="_blank" rel="noopener">Next.js — Upcoming Security Update for a Critical Upstream Issue</a> <a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j" target="_blank" rel="noopener">GHSA-vcvr-r3jv-pc5j (publishes with the release)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack, this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">September 21</span>
+            <h3>Vercel deployments now report billable duration and CPU minutes</h3>
+          </div>
+          <div class="story-body">
+            <p>Billable duration and CPU metrics now appear in the Vercel dashboard, in <code>vc inspect</code>, and through the REST API, per deployment. Alongside it, Vercel Connect gained Microsoft Teams support — agents can receive and reply to Teams messages with tokens managed across the Connect SDK, eve and the Chat SDK — and AI Gateway added both Grok 4.7 (40% off from September 21) and Xiaomi's MiMo V2.6 Pro, Flash and Pro UltraSpeed with 1M context, multimodal input and tool calling.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Per-deployment CPU minutes is the missing number for pricing Managed AI retainers honestly. Pull it via the REST API for one live client project, multiply out a month, and you finally know the real hosting floor under a retainer instead of guessing. The AI Gateway additions mean Grok 4.7 and MiMo can be A/B'd against Claude behind one API key — worth 30 minutes on the Concierge retrieval path while the Grok discount is running.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog — September 21</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The money behind the compute</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Markets</span>
+            <span class="ver">September 21</span>
+            <h3>AMD crossed $1 trillion, and SoftBank borrowed $11 billion to keep paying OpenAI</h3>
+          </div>
+          <div class="story-body">
+            <p>AMD climbed more than 8% on September 21 to an all-time high of $613.92, taking its market capitalization above $1 trillion for the first time and making it the fourth US semiconductor company to get there, after Nvidia, Broadcom and Micron. The stock has run roughly 24% in five sessions and more than 180% this year, on expectations that AI agent inference will pull hard on CPU capacity as well as GPU.</p>
+            <p>On the financing side, SoftBank launched a bond deal of more than $11 billion — $10 billion in dollar notes across 3.5-, 5.5- and 7.5-year maturities plus €1 billion in euro paper — to fund the $10 billion third tranche of its OpenAI investment, expected to close October 1, and to retire a bridge loan raised for the same purpose. At intended size it would be the largest non-financial corporate bond deal ever out of Asia Pacific and Japan. SoftBank's cumulative OpenAI investment would reach about $64.6 billion for roughly 13%. Separately, Huawei's rotating chairman said Chinese demand for its AI compute already exceeds what it can build, so overseas Ascend shipments are limited to small test batches.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Frontier compute is increasingly financed with debt rather than cash flow, which is what makes today's cheap inference prices structurally temporary. Do not build a client offer whose margin depends on a specific model's current price. Quote outcomes, keep the model behind an adapter, and write a one-line "model and pricing may change" clause into the retainer so a repricing is a config change rather than a renegotiation.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/stocks/articles/amd-storms-1-trillion-club-192641920.html" target="_blank" rel="noopener">Yahoo Finance — AMD storms into the $1 trillion club</a> <a href="https://finance.yahoo.com/markets/stocks/articles/softbank-launches-11-billion-junk-115346334.html" target="_blank" rel="noopener">Reuters via Yahoo — SoftBank's $11B junk bond for OpenAI</a> <a href="https://www.usnews.com/news/top-news/articles/2026-09-16/chinas-huawei-sets-2027-launch-for-new-ai-chips-as-it-targets-nvidia" target="_blank" rel="noopener">Reuters via US News — Huawei demand outstrips supply</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Regulation</span>
+            <span class="ver">September 21</span>
+            <h3>Ireland's DPC fined Google €403 million over location data</h3>
+          </div>
+          <div class="story-body">
+            <p>Ireland's Data Protection Commission found Google did not lawfully or fairly process location data in Web &amp; App Activity — the setting that records browsing and search history — or in Location History, which maps where a phone has been. It also found the company fell short on lawfulness, fairness and transparency in Android's Location Accuracy feature. The fine is €403 million, about $463 million, and closes an inquiry opened in February 2020. It is the fourth largest privacy penalty the Irish regulator has issued, behind fines against TikTok and Meta.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The finding is about consent quality and transparency, not about exotic tracking — which is exactly where a small business site gets caught. Spend an hour this week auditing what every client site actually loads: analytics, session replay, pixels, chat widgets. If a client site sets tracking before consent, or its privacy page does not name each processor, that is a fixable problem and a legitimate reason to open a conversation about a paid compliance pass.</div>
+          <div class="refs"><a href="https://www.securityweek.com/google-hit-with-463-million-fine-for-eu-location-data-rule-breach/" target="_blank" rel="noopener">SecurityWeek — Google fined $463M over EU location data</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Vercel's <code>mcp-handler</code> gained experimental WebMCP support — browser-based MCP tools exposed without a separate OAuth setup. <span class="ver">Sept 18</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">v0 now reads npm credentials from shared environment variables (<code>NPM_TOKEN</code> or <code>NPM_RC</code>), so private packages install without per-project wiring. <span class="ver">Sept 18</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">The European Commission published an A-to-G sustainability labelling scheme for datacenters above 500 kW, effective August 2027. <span class="ver">Sept 21</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">GlobalFoundries finalized a $375 million CHIPS Act award to expand its Quantum Technology Solutions unit in Malta, New York, using its 22FDX process for cryogenic CMOS and advanced packaging. <span class="ver">Sept 18</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

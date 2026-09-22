@@ -1,5 +1,35 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-22",
+    "title": "Third straight quiet day: still 2.1.278",
+    "summary": "The changelog has not moved since September 19 — 2.1.278 is still the newest version, three days running.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-22.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-22",
+    "title": "The best open-weights model on earth now ships under MIT",
+    "summary": "Xiaomi's MiMo-V2.6-Pro took the top open-weights slot on Artificial Analysis' Intelligence Index at 46 under an MIT license, tying xAI's brand-new closed Grok 4.7 on the same index; Alibaba used its Apsara conference to unveil the Zhenwu V900 accelerator, a 20GW datacenter target and a Qwen roadmap running to 10 trillion parameters; Patrick Wardle published a local zero-day in Meta's four-day-old Muse Mac client that reaches linked iPhones; and 20 countries plus the EU called at the UN for an international AI standards body, without the US or China.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-09-22.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-22",
+    "title": "Patch Next.js today: a critical out-of-band release lands",
+    "summary": "Vercel gave 24 hours' notice of a critical out-of-band Next.js security update — 16.3.6 and 15.5.26, for an unnamed upstream dependency — publishing today alongside advisory GHSA-vcvr-r3jv-pc5j; Vercel also added billable duration and CPU minutes to every deployment view and put Grok 4.7 on AI Gateway at 40% off; AMD closed above a $1 trillion market cap for the first time; Ireland's DPC fined Google 403 million euros over location data; and SoftBank launched an $11 billion junk-bond deal to fund its next OpenAI tranche.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-09-22.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
