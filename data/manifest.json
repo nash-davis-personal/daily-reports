@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-22",
+    "title": "Crude broke $100 down, and diesel kept climbing anyway",
+    "summary": "Oil fell to a 12-day low on September 21 as investors priced diplomatic progress on the Iran war and a partial recovery in Saudi shipments, with Brent closing at $100.06 and WTI near $96 — while pump diesel rose to $6.511 a gallon, up 16.3% so far in September. Falling crude and softer yields carried the Nasdaq to a record close; Colorado confirmed foreign actors altered pumping controls at two small water utilities; the SBA's comment window closed on a rule that would newly classify about 114,500 firms as small; and Albania became the 73rd Artemis Accords signatory.",
+    "highlights": 5,
+    "path": "reports/america/2026-09-22.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -18,6 +28,16 @@
     "summary": "Xiaomi's MiMo-V2.6-Pro took the top open-weights slot on Artificial Analysis' Intelligence Index at 46 under an MIT license, tying xAI's brand-new closed Grok 4.7 on the same index; Alibaba used its Apsara conference to unveil the Zhenwu V900 accelerator, a 20GW datacenter target and a Qwen roadmap running to 10 trillion parameters; Patrick Wardle published a local zero-day in Meta's four-day-old Muse Mac client that reaches linked iPhones; and 20 countries plus the EU called at the UN for an international AI standards body, without the US or China.",
     "highlights": 5,
     "path": "reports/general-ai/2026-09-22.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-22",
+    "title": "A critical Next.js patch drops today. That is a sellable emergency.",
+    "summary": "Six moves ranked by fit: productize the out-of-band Next.js 16.3.6 / 15.5.26 emergency patch into a same-day service and a monthly patching retainer; build a self-updating fuel-surcharge tool for Charlotte trades getting crushed by $6.51 diesel; run a consent-and-tags audit off Google's 403 million euro location-data fine; widen Concierge margin by routing cheap hops to MiMo and Grok on Vercel's AI Gateway; sell a one-page agent blast-radius review off the Muse zero-day; and reprice TSD Front Desk against the $8,200 median SMB AI budget.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-22.html"
   },
   {
     "source": "general-tech",
