@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-23" />
+  <meta name="report:title" content="Opus 5.5 becomes the default model in 2.1.280 — and a cluster of headless-automation bugs get fixed alongside it" />
+  <meta name="report:summary" content="After three quiet days, 2.1.280 lands with Opus 5.5 as the new default Opus model and a default-model flip on Pro/Team Standard plans, plus fixes for background-subagent messages getting silently lost and other headless-automation failure modes." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Opus 5.5 becomes the default model in 2.1.280 — and a cluster of headless-automation bugs get fixed alongside it — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, September 23, 2026</span>
+        <span>◆</span><span>One release since the 2.1.278 briefing</span>
+      </div>
+      <h1>Opus 5.5 becomes the default model — and a cluster of headless-automation bugs get fixed alongside it</h1>
+      <p class="standfirst">Three quiet days end with 2.1.280, a large release. The headline is a model change: Opus 5.5 is now the default Opus model, and Pro/Team Standard plans default to Opus instead of Sonnet. Buried in the same release is a run of fixes for exactly the failure modes that bite unattended, scheduled Claude Code jobs — including one that silently drops messages sent to a background subagent.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.280 (September 22, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">Opus 5.5</div><div class="lbl">New default Opus model</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Top signals</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Opus 5.5 is the new default Opus model</h4><p>1M context window, $4/$20 per Mtok input/output, $0.20/Mtok for cache reads.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Pro and Team Standard plans default to Opus, not Sonnet</h4><p>The out-of-the-box model for those plans just got more capable and more expensive.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background-subagent messages no longer vanish</h4><p>Messages sent to a background subagent were being silently lost in headless and SDK sessions.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Auto mode stops looping on a stalled safety check</h4><p>It used to retry an action endlessly, or deny it endlessly with no pause, when a safety check gave no answer.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Benign non-zero exits stop being reported as failures</h4><p>Background shell tasks that exit non-zero for a non-error reason were flagged as failed. Fixed.</p></div>
+        <div class="signal"><div class="n">06</div><h4>/ultrareview stops misreporting stopped reviews as completed</h4><p>A stopped cloud review no longer shows as finished, or as an error worth retrying.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Opus 5.5 lands as the default — and the default plan model flips with it</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.280</span>
+            <h3>Claude Opus 5.5 (claude-opus-5-5) is now the default Opus model</h3>
+          </div>
+          <div class="story-body">
+            <p>1M context window, $4 per Mtok input / $20 per Mtok output, $0.20 per Mtok for cache reads. It replaces the prior Opus default across Claude Code.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a capability bump for the hard problems — long-context Next.js/Supabase debugging, multi-file refactors on client codebases. Run <code>/model</code> to see what you're actually on before a big session, and keep the cache-read discount in mind: it's a fraction of the input rate, so structuring long sessions to reuse context still pays off.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.280</span>
+            <h3>Default model on Pro and Team Standard plans changes from Sonnet to Opus</h3>
+          </div>
+          <div class="story-body">
+            <p>New sessions on those plans now default to Opus instead of Sonnet. Paired with the Opus 5.5 launch, this means the out-of-the-box experience just got more expensive per token — and, for anyone metering usage against a plan cap, will burn through it faster.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check which plan the TSD account is on and confirm what a fresh session opens with. If routine work — quick edits, this daily scout job, small client tickets — doesn't need Opus-level reasoning, pin Sonnet explicitly for those sessions rather than letting the new default eat into usage that Opus-tier work actually needs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Headless and background-agent reliability — the bugs that bite scheduled jobs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.280</span>
+            <h3>Messages sent to a background subagent were silently lost in headless and SDK sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>No error, no retry — a message sent to a running background subagent in a headless or SDK-driven session just disappeared. A related fix stops a finished subagent's report from being lost when the launching conversation gets compacted.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is exactly the failure class that matters for a job like this scout run — unattended, headless, no human watching for a dropped message. If a scheduled job's subagent step ever produced no output with no visible error, this bug is a plausible cause. Worth a mental note, not an action: nothing to change, just don't rule out silent message loss as an explanation for a past no-op run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.280</span>
+            <h3>Auto mode stops looping when a safety check stalls</h3>
+          </div>
+          <div class="story-body">
+            <p>Two related bugs: auto mode would retry an action over and over when a safety check declined to review it, and would deny actions over and over with no pause when a safety check gave no answer at all. Both are fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any Nash OS automation runs in auto mode with safety checks enabled, this closes a spin-loop failure mode that would have burned tokens or stalled a run indefinitely without surfacing as a clean error. No config change needed, just fewer mystery hangs going forward.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.280</span>
+            <h3>Background shell tasks no longer flag benign non-zero exits as failures</h3>
+          </div>
+          <div class="story-body">
+            <p>A background shell command that exits non-zero for a non-error reason — a lint warning threshold, a tool that uses exit codes as status flags — was being reported as a failed task.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant if a scheduled job shells out to build/deploy tooling that uses non-zero exits as anything other than "it broke." Fewer false-failure alerts from background steps going forward.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> /ultrareview — two straightforward fixes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.280</span>
+            <h3>Stopped cloud reviews no longer misreport as completed or as a retryable error</h3>
+          </div>
+          <div class="story-body">
+            <p>A stopped <code>/ultrareview</code> cloud review used to show as finished, or as an error worth retrying, instead of showing as stopped. A separate improvement keeps renamed copies of key files on your machine during upload instead of sending them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a review run was ever cancelled mid-flight, trust the status less before this fix — a "completed" or "retry" label could have been wrong. Going forward the status should be accurate, so no workaround needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.280</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_MAX_MCP_DESCRIPTION_LENGTH</code> lets you change the 2,048-character cap on MCP tool descriptions <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A model switch made from a host app no longer causes a prompt-cache miss on the next prompt <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resumed fork subagents rebuilt their whole tool list instead of re-sending the one they first used <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Writes through a symlinked path were judged by their in-tree spelling <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Skills in <code>~/.claude/skills/</code> were being moved to a <code>.trash/</code> folder when a manifest listed their names <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Conversations were failing on every turn with a "role 'system' must precede an 'assistant' message" API error <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Background subagents can now use the LSP tool when an LSP plugin is active <span class="ver">2.1.280</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">[VS Code] Typed <code>/status</code>, <code>/sandbox</code>, <code>/chrome</code>, <code>/export</code>, and <code>/plan</code> dialogs added <span class="ver">2.1.280</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
