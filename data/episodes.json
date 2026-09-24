@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-24",
+    "title": "TSD Daily — Thursday, September 24, 2026",
+    "summary": "Two labs cut AI prices the same day, a critical Next.js patch is live, Treasury yields hit a 19-year high, and the best money move this week is a supervised-action tier riding Heidi Health's M raise.",
+    "file": "audio/2026-09-24.mp3",
+    "durationSec": 379,
+    "bytes": 4549005
+  },
+  {
     "date": "2026-09-22",
     "title": "TSD Daily — Tuesday, September 22, 2026",
     "summary": "A critical out-of-band Next.js patch lands today, Xiaomi's MiMo V2.6 Pro ties a closed flagship at the top of the open-weights rankings under an MIT license, a zero-day in Meta's four-day-old Muse Mac client reaches linked iPhones, and crude fell ten percent while diesel rose sixteen.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-07.mp3",
     "durationSec": 336,
     "bytes": 4033773
-  },
-  {
-    "date": "2026-07-06",
-    "title": "TSD Daily — Monday, July 6, 2026",
-    "summary": "California standardizes on Claude and the AI fight shifts to distribution, a Linux root flaw hits the patch list, markets reopen off a record first half, and this week's best money move is a cheap AI video add-on for clients you already have.",
-    "file": "audio/2026-07-06.mp3",
-    "durationSec": 384,
-    "bytes": 4604589
   }
 ]
