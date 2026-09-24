@@ -17,7 +17,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const AUDIO_DIR = join(ROOT, 'audio');
 
 // ---- Channel config (edit to taste; SITE can be overridden for a custom domain) ----
-const SITE = process.env.PODCAST_SITE || 'https://nashyd.github.io/daily-reports';
+const SITE = process.env.PODCAST_SITE || 'https://nashs-macbook-air.tailde80a2.ts.net/apps/daily';
 const SHOW = {
   title: 'TSD Daily',
   description: 'A short daily audio briefing — the day\'s most interesting AI, technology, and US news, scouted and hosted by a TSD agent.',

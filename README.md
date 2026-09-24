@@ -4,7 +4,7 @@ Automated daily intelligence briefings. A scout agent reads chosen sources, writ
 polished HTML briefing, and pushes it here. GitHub Pages serves the site; CI rebuilds
 the index and deploys on every push.
 
-**Live:** https://nashyd.github.io/daily-reports/ *(enable Pages → Source: GitHub Actions)*
+**Live:** https://nashs-macbook-air.tailde80a2.ts.net/apps/daily *(served privately by Nash OS on Nash's Mac and tailnet; the repo is private and GitHub Pages is off since 2026-09-24)*
 
 ## How it works
 
