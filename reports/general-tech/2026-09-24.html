@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-24" />
+  <meta name="report:title" content="Patch Next.js today: a critical RCE hit next/og in 16.2–16.3.5" />
+  <meta name="report:summary" content="Vercel shipped an out-of-band Next.js security release fixing a critical remote-code-execution bug in the Node.js next/og ImageResponse path (versions 16.2.0–16.3.5, fixed in 16.3.6), the same day Supabase cut over its Management API logs.all endpoint to a new ClickHouse-backed logs endpoint; Qualcomm unveiled its first 2nm Snapdragon chips built for on-device agentic AI, SpaceX stacked Starship for its first full orbital flight targeting September 28, and SoFi moved its entire card program onto stablecoin settlement through Mastercard." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js today: a critical RCE hit next/og in 16.2–16.3.5 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, September 24, 2026</span>
+        <span>◆</span><span>Stack, chips, space, fintech infra</span>
+      </div>
+      <h1>Patch Next.js today: a critical RCE hit next/og in 16.2–16.3.5</h1>
+      <p class="standfirst">Vercel shipped an out-of-band security release for Next.js on September 22 fixing a critical remote-code-execution hole in the Node.js <code>ImageResponse</code> path used by <code>next/og</code>. Same window: Supabase's Management API dropped its old logs endpoint for good, Qualcomm put its first 2nm chips into phones, SpaceX stacked Starship for its first full orbital attempt, and SoFi went live routing $25B a year in card volume over stablecoin rails.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 22 evening – Sept 24</span>
+        <span>◆</span><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.6</div><div class="lbl">Patched Next.js version — versions 16.2.0 through 16.3.5 are vulnerable to RCE via next/og</div></div>
+      <div class="stat"><div class="num">2nm</div><div class="lbl">Process node on Qualcomm's new Snapdragon 8 Elite Gen 6 / Extreme — first mass-market mobile chips on it</div></div>
+      <div class="stat"><div class="num">$25B</div><div class="lbl">Annualized card volume SoFi is now routing over Mastercard's stablecoin settlement rail</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js RCE: patch to 16.3.6 / 15.5.26 now</h4><p>Critical remote-code-execution bug in the Node.js next/og ImageResponse path, versions 16.2.0–16.3.5. Edge ImageResponse is not affected. Fixed via an upstream Satori dependency bump.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase's logs.all Management API endpoint is dead</h4><p>Removed September 23. Anything calling analytics/endpoints/logs.all directly — scripts, custom dashboards, older MCP servers — breaks today; the dashboard Logs Explorer is unaffected.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Qualcomm's first 2nm phone chips are built for on-device agents</h4><p>Snapdragon 8 Elite Gen 6 and Extreme, unveiled September 22, run a 30B-parameter MoE model locally and add a cache architecture (FlexCache) aimed at cutting agent-orchestration latency.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Starship stacked for its first true orbital attempt</h4><p>SpaceX stacked Ship 41 on Super Heavy B21 September 23, targeting no earlier than September 28 pending FAA approval — the first flight of the fully integrated stack, carrying 26 Starlink V3 satellites.</p></div>
+        <div class="signal"><div class="n">05</div><h4>SoFi took stablecoin settlement live on Mastercard at scale</h4><p>SoFi's entire debit/credit program now settles through SoFiUSD on Mastercard's network, live production (not pilot), projected at $25B in annualized volume.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Nash's stack, this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">September 22</span>
+            <h3>Critical RCE in Next.js's next/og — patch to 16.3.6 or 15.5.26 today</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel published GHSA-vcvr-r3jv-pc5j and shipped an out-of-band release: Next.js 16.3.6 (Active LTS) and 15.5.26 (Maintenance LTS). The bug is in the Node.js <code>ImageResponse</code> implementation inside <code>next/og</code> — improper escaping in the SVG output that Satori generates could lead to remote code execution, traced to vulnerabilities in Satori's own upstream dependencies (fixed via GHSA-wx4j-mvgx-mqwp). Affected range is Next.js &gt;=16.2.0 &lt;16.3.6. Next.js 15.x is not affected by the RCE itself; 15.5.26 ships related hardening only.</p>
+            <p>The narrow but important detail: this only hits the <strong>Node.js</strong> ImageResponse path. Apps generating OG images on the Edge runtime are not affected. That still leaves anyone on the Node runtime — which is the default for most self-hosted or non-Edge Vercel deployments — exposed on any 16.2.0–16.3.5 build.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Tonight: run <code>npm ls next</code> across every client repo and the daily-reports/portfolio repos. For anything on 16.2.0–16.3.5, run <code>npm install next@16.3.6</code> and redeploy; for 15.5.x, bump to 15.5.26. Specifically check any site using dynamic OG-image generation (next/og) for social cards — that's the exposed surface, and it's a common feature on marketing/landing pages TSD ships for SMB clients. If a site doesn't use next/og at all, the patch is still cheap insurance — apply it anyway.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026" target="_blank" rel="noopener">Next.js — Security Update for a Critical Upstream Issue</a> <a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j" target="_blank" rel="noopener">GitHub — GHSA-vcvr-r3jv-pc5j</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">September 23</span>
+            <h3>Supabase killed the logs.all Management API endpoint</h3>
+          </div>
+          <div class="story-body">
+            <p>As scheduled, Supabase removed the <code>analytics/endpoints/logs.all</code> Management API endpoint on September 23 and moved log querying to a new ClickHouse-backed <code>analytics/endpoints/logs</code> endpoint. The new endpoint takes ClickHouse SQL only and returns every log source through one unified table instead of Supabase's old per-source tables, filtered with a <code>source_name</code> column. Anyone hitting the old endpoint via a script, integration, or custom tool gets a hard break, not a deprecation warning. Dashboard Logs Explorer users are unaffected. Supabase's own MCP server needs to be on v0.10.0 or later to point at the right endpoint automatically.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client automation, uptime check, or custom admin panel Nash built queries Supabase logs programmatically (rather than through the dashboard), it silently broke this week. Grep client repos for "logs.all" and check any MCP-based tooling is on server v0.10.0+. Low blast radius, but it's exactly the kind of quiet cutover that turns into a support ticket from a client three weeks from now if it's not checked proactively.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/48235-migration-of-supabase-management-api-logs-all-analytics-endpoint-to-logs-endpoint" target="_blank" rel="noopener">Supabase Changelog — logs.all migration</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips, silicon, and what it costs to build</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">September 22</span>
+            <h3>Qualcomm's first 2nm chips are built around on-device AI agents</h3>
+          </div>
+          <div class="story-body">
+            <p>At the Snapdragon Summit, Qualcomm unveiled the Snapdragon 8 Elite Gen 6 and 8 Elite Extreme Gen 6 — the first mass-market mobile chips on TSMC's 2nm process and the first to push a phone CPU past 5GHz. Both center on FlexCache, a new cache architecture aimed specifically at cutting latency in the orchestration loops that autonomous on-device AI agents run. The Extreme variant can run a 30-billion-parameter mixture-of-experts model entirely offline. Qualcomm claims 13% more CPU performance and 44% more GPU performance over last year's 8 Elite Gen 5. Devices from Motorola, OnePlus, Xiaomi and iQOO ship later this year; the bulk of the 2027 flagship class (Galaxy S27, OnePlus 16) lands Q1 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not an immediate build item, but it's the leading edge of a real trend: capable local inference on the device a client's customer is already holding. Filed for later — if TSD ever ships an on-device or hybrid version of the receptionist/concierge products for offline-tolerant use cases, this is the hardware generation that makes it plausible without a server round-trip.</div>
+          <div class="refs"><a href="https://www.techtimes.com/articles/327887/20260923/snapdragon-8-elite-gen-6-lands-tsmc-2nm-first-5-ghz-mobile-cpu-built-ai-agents.htm" target="_blank" rel="noopener">Tech Times — Snapdragon 8 Elite Gen 6 lands on TSMC 2nm</a> <a href="https://www.unite.ai/qualcomm-unveils-two-flagship-snapdragon-chips-built-for-agentic-ai/" target="_blank" rel="noopener">Unite.AI — Qualcomm's flagship agentic chips</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space and payments infrastructure</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">September 21–23</span>
+            <h3>Starship stacked for its first true orbital flight, targeting September 28</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX rolled Super Heavy booster B21 to the pad at Starbase on September 21 and stacked Starship S41 on top September 23 — the first flight of the fully integrated stack, pending FAA orbital-license approval, no earlier than September 28. The mission would deploy 26 Starlink V3 satellites, each rated at roughly 1 Tbps of added capacity — about 10x a V2 Mini satellite — for 26 Tbps added to the constellation in a single launch.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to act on directly, but Starlink capacity is the thing worth tracking for any rural NC client (detailing routes, chambers outside the Charlotte core) where broadband is the bottleneck for booking software or a phone AI receptionist to even work reliably. A 10x capacity jump per satellite eventually shows up as cheaper, more available rural connectivity.</div>
+          <div class="refs"><a href="https://spaceflightnow.com/2026/09/21/spacexs-super-heavy-booster-arrives-at-pad-ahead-of-first-orbital-starship-launch/" target="_blank" rel="noopener">Spaceflight Now — Super Heavy booster arrives at pad</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">September 23</span>
+            <h3>SoFi moved its entire card program onto stablecoin settlement, live</h3>
+          </div>
+          <div class="story-body">
+            <p>SoFi took its full debit and credit card program off pilot and onto production stablecoin settlement through Mastercard's network on September 23, projected to process over $25 billion in annualized volume. Settlement runs through SoFiUSD, a bank-issued, dollar-redeemable stablecoin from SoFi Bank; transactions are recorded on-chain, but merchants don't need to hold stablecoins or change anything — funds land in a standard SoFi Bank account with 24/7 no-fee withdrawal. Both companies say cross-border payments and remittances are next.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the exact pain point Nash flagged as a bottleneck in his own payment rail — a real bank-and-network-backed stablecoin settlement product just went live at scale, not as a crypto-native experiment. Nothing to switch to yet since SoFiUSD isn't a merchant-facing product, but it's worth a look in a few months once smaller processors start offering similar rails, since faster settlement with no card-network float would directly help a cash-thin one-person studio.</div>
+          <div class="refs"><a href="https://fintech.global/2026/09/23/sofi-brings-stablecoin-settlement-to-mastercard-network/" target="_blank" rel="noopener">Fintech Global — SoFi brings stablecoin settlement to Mastercard network</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">NVIDIA released Isaac ROS 5.0, free and open source, adding ROS Lyrical/Ubuntu 24.04 support and reusable agentic setup, manipulation and pick-and-place skills; Flexiv and Robotiq shipped day-one Isaac integrations. <span class="ver">Sept 23</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Palo Alto Networks launched Unit 42 Continuous Frontier AI Defense, an always-on agentic pentesting service built on Anthropic's Claude Mythos and OpenAI's GPT-5.6-Cyber, available worldwide on subscription. <span class="ver">Sept 22</span></span></li>
+            <li><span class="tag improve qh-tag">Context</span><span class="txt">Samsung and SK Hynix memory shortages are pushing DDR5 contract prices up over 100% since early 2025; analysts expect PC, tablet and phone prices to rise 10–20% by year end, with the squeeze persisting through 2027 as fabs prioritize AI-accelerator HBM. <span class="ver">Sept 22</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

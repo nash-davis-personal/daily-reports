@@ -1,5 +1,45 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-24",
+    "title": "Treasury yields hit a 19-year high, and Wall Street sold off",
+    "summary": "The 10-year Treasury yield closed at 5.11% on September 23, its highest since 2007, after a hot flash PMI reading lifted the odds of another Fed rate hike and pulled the Dow, S&P 500 and Nasdaq lower; crude snapped a five-day slide after Iran said it would not surrender at the UN. Xi Jinping arrived in Washington for a state visit as the US and China extended their trade truce to January 10, Charlotte-Mecklenburg Schools fired its superintendent and the DA asked the SBI to investigate district finances, a hacking group's claimed breach knocked the FBI's own job-application site offline, and a hurricane watch went up for Hawaii's Big Island.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-24.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-24",
+    "title": "Anthropic and OpenAI both cut flagship prices on the same day",
+    "summary": "Anthropic shipped Claude Opus 5.5 at a 20% lower list price (about 40% cheaper in practice) on September 22 while OpenAI shipped GPT-6 Sol and Luna at roughly half the prior generation's cost the same day; a day later Anthropic took Claude Code cloud sessions out of preview and opened a Claude Marketplace, its new biology lab said Claude helped find a CRISPR-like enzyme system in bacteriophage DNA, and Heidi Health raised $340M at a $900M valuation for moving its clinical AI from notetaking to supervised action.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-09-24.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-24",
+    "title": "A $340M raise just showed you Front Desk's next tier",
+    "summary": "Five moves ranked by fit: build a supervised-action tier above TSD Front Desk off Heidi Health's $340M scribe-to-agent raise and Opus 5.5's cheaper agentic pricing; sell a 48-hour patch-straggler sweep and start a small recurring version-watch product off Next.js's third critical CVE this year and Supabase's quiet API cutover; turn Opus 5.5's price cut into a public cost case-study that reprices Front Desk and Concierge; claim Anthropic's $250 Claude Code cloud credit before October 7 and convert the spare capacity into a new client; and pitch Charlotte SMBs on automation over hiring while the 10-year Treasury sits at a 19-year high.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-09-24.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-24",
+    "title": "Patch Next.js today: a critical RCE hit next/og in 16.2–16.3.5",
+    "summary": "Vercel shipped an out-of-band Next.js security release fixing a critical remote-code-execution bug in the Node.js next/og ImageResponse path (versions 16.2.0–16.3.5, fixed in 16.3.6), the same day Supabase cut over its Management API logs.all endpoint to a new ClickHouse-backed logs endpoint; Qualcomm unveiled its first 2nm Snapdragon chips built for on-device agentic AI, SpaceX stacked Starship for its first full orbital flight targeting September 28, and SoFi moved its entire card program onto stablecoin settlement through Mastercard.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-09-24.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
