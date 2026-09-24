@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-24.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-24",
+    "title": "2.1.281 fixes the failure modes that break scheduled and headless Claude Code jobs",
+    "summary": "2.1.281 is a large maintenance release focused on reliability for scheduled tasks, /loop wakeups, and headless sessions, plus a new /insights estimate of auto mode's payoff and a closed gap in the dangerous-rm guard.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-09-24.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

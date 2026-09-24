@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-24" />
+  <meta name="report:title" content="2.1.281 fixes the failure modes that break scheduled and headless Claude Code jobs" />
+  <meta name="report:summary" content="2.1.281 is a large maintenance release focused on reliability for scheduled tasks, /loop wakeups, and headless sessions, plus a new /insights estimate of auto mode's payoff and a closed gap in the dangerous-rm guard." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.281 fixes the failure modes that break scheduled and headless Claude Code jobs — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, September 24, 2026</span>
+        <span>◆</span><span>One release since the 2.1.280 briefing</span>
+      </div>
+      <h1>2.1.281 fixes the failure modes that break scheduled and headless Claude Code jobs</h1>
+      <p class="standfirst">The day after Opus 5.5 landed, 2.1.281 ships as a large maintenance release almost entirely about the mechanics of unattended work: wakeup delivery failures that could kill a session, a <code>--max-turns</code> guard that could be silently ignored, and settings restrictions that weren't reaching spawned subagents. It also gives auto mode a report card and closes a <code>rm -rf "$(pwd)"</code>-shaped hole in the dangerous-command guard.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.281 (September 23, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Fixes for scheduled/headless jobs</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Top signals</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Scheduled tasks and /loop wakeups could retry every second and exit Claude Code</h4><p>A failed delivery used to loop back instantly instead of backing off, which could end the session outright.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Remote scheduled routines acted before knowing the date or their toolset</h4><p>Turn-start context arrived after the first tool call instead of before it.</p></div>
+        <div class="signal"><div class="n">03</div><h4><code>--max-turns</code> could be silently ignored in a bad retry loop</h4><p>A turn could retry forever when the model alternated unparseable tool calls with output-limit truncation.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Settings restrictions weren't reaching spawned subagents</h4><p><code>--setting-sources</code> stopped at the parent session — teammates, /bg, and worktree sessions started unrestricted.</p></div>
+        <div class="signal"><div class="n">05</div><h4>New: /insights now estimates auto mode's real payoff</h4><p>It counts how many permission prompts in your recent sessions auto mode could have cleared.</p></div>
+        <div class="signal"><div class="n">06</div><h4>A command-substitution <code>rm -rf</code> could run unprompted in auto mode</h4><p>A target built entirely from a subshell, like <code>rm -rf "$(pwd)"</code>, slipped past the dangerous-rm guard.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Scheduled &amp; headless job reliability — the class of bug that kills runs like this one</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.281</span>
+            <h3>Scheduled tasks and /loop wakeups firing every second on a failed delivery could end the session</h3>
+          </div>
+          <div class="story-body">
+            <p>When a scheduled task or a /loop wakeup failed to deliver, it used to retry immediately and repeatedly instead of backing off — and that spin could make Claude Code exit at the end of a turn.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This scout job runs unattended off a schedule, and the loop/wakeup mechanism is exactly the kind this bug hit. If a past scheduled run ever vanished with no filed report and no visible error, this is a plausible cause — nothing to change now, just don't rule it out when auditing old runs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.281</span>
+            <h3>Scheduled routine and notification turns in remote sessions acted before getting turn-start context</h3>
+          </div>
+          <div class="story-body">
+            <p>Newly available tools, MCP changes, the current date, and todos are normally sent to the model at the start of a turn. In remote sessions, scheduled routine and notification turns weren't getting that context until after the first tool call already ran.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is scoped to remote/cloud sessions, not this local-clone job — but if any TSD automation ever moves to Claude Code on the web or a hosted routine, this closes a case where the first action of a scheduled run could fire without the model knowing today's date.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.281</span>
+            <h3><code>--max-turns</code> could be ignored while a turn retried indefinitely</h3>
+          </div>
+          <div class="story-body">
+            <p>When the model alternated between unparseable tool calls and output-limit truncation, a turn could keep retrying forever — ignoring the <code>--max-turns</code> cap that's supposed to be the hard stop.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any headless job (this one included, or anything run via <code>-p</code>) relies on <code>--max-turns</code> as a runaway-cost guard, that guard could have silently failed. Worth trusting it as a real ceiling again — and worth double-checking token spend on any old run that looked unusually long.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.281</span>
+            <h3><code>--setting-sources</code> restrictions weren't forwarded to spawned sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>A parent session's <code>--setting-sources</code> restriction (or the SDK's <code>settingSources</code>) wasn't being passed down to teammates, <code>/bg</code> sessions, <code>claude agents</code> sessions, or <code>--worktree --tmux</code> sessions — they started with no restriction at all.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Relevant to any TSD tooling that spawns subagents or background sessions from a locked-down parent — a restriction you thought applied everywhere wasn't actually inherited. No action needed now that it's fixed, but a good reminder that inheritance across spawned sessions isn't something to assume without checking.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Auto mode — safer, and now measurable</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.281</span>
+            <h3>/insights adds an auto mode recommendation</h3>
+          </div>
+          <div class="story-body">
+            <p>/insights now estimates how many permission prompts auto mode could have handled in your recent sessions, turning "should I turn this on" into a number instead of a guess.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>/insights</code> before deciding whether to flip auto mode on for lower-stakes, repetitive work — bulk content or styling passes for Bisque or Studio C — versus keeping prompts on for anything touching Supabase schema, auth, or payment code on Sonderwerks or client-facing builds.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.281</span>
+            <h3>A command-substitution <code>rm -rf</code> could run unprompted under auto mode</h3>
+          </div>
+          <div class="story-body">
+            <p>A recursive <code>rm</code> whose target is entirely command-substitution output — <code>rm -rf "$(pwd)"</code> is the example given — was running without a prompt in auto mode and <code>--dangerously-skip-permissions</code> mode. It now asks even with a Bash allow rule, unless overridden with <code>CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT=1</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any TSD automation runs with auto mode or skip-permissions enabled, this closes a real gap in the safety net. The broader takeaway: keep those modes scoped to directories that are backed up or disposable, since edge cases in the dangerous-command guard are still being found.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.281</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>"attribution": false</code> in <code>settings.json</code> hides all commit and PR attribution lines <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">MCP URL-mode elicitation lets a server open a browser auth flow without leaving a stuck waiting dialog <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude plugin validate</code> now flags MCP entries that would be silently dropped, undeclared config references, and insecure URLs <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A crash ("unrecoverable interface error") could end a session mid API-retry <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A tool returning an oversized image could leave sibling tool calls unanswered or end the turn with no final message <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt cache was lost when an MCP server disconnected mid-conversation or was still reconnecting after a resume <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resuming a very large session sometimes restored only its last few messages <span class="ver">2.1.281</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows: a race between updating sessions could delete each other's <code>claude.exe</code> backup <span class="ver">2.1.281</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
