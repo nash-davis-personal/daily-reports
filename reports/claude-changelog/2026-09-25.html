@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-25" />
+  <meta name="report:title" content="2.1.282 stops long and resumed sessions from losing Claude's earlier reasoning" />
+  <meta name="report:summary" content="2.1.282 is another large maintenance release: extended thinking now survives resumes and mid-turn slash commands, compaction and a web-search 400 no longer dead-end a session, and several permission, skill-namespace and settings rules change how config is read." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.282 stops long and resumed sessions from losing Claude&#39;s earlier reasoning — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, September 25, 2026</span>
+        <span>◆</span><span>One release since the 2.1.281 briefing</span>
+      </div>
+      <h1>2.1.282 stops long and resumed sessions from losing Claude&#39;s earlier reasoning</h1>
+      <p class="standfirst">2.1.282 is the third big release in three days and, like 2.1.281, it is mostly fixes. The ones that matter to a solo builder are about long sessions: extended thinking was being dropped on <code>--continue</code>/<code>--resume</code> and when you ran <code>/model</code> mid-turn, and two errors that could brick a session on every turn now recover. The rest is config hygiene worth a two-minute check: <code>:*</code> Bash rules in settings files now actually apply, the <code>anthropic-skills</code>/<code>claude-ai</code> skill namespaces are reserved, and auto mode&#39;s classifier default changed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.282 (September 24, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Fixes for lost reasoning or dead sessions</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Top signals</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Resumed sessions and mid-turn slash commands were dropping extended thinking</h4><p><code>--continue</code>, <code>--resume</code>, a narrower <code>--tools</code> list, or <code>/model</code> while Claude worked could all cost Claude its earlier reasoning.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Two errors that failed every turn now recover on their own</h4><p>A bad <code>redacted_thinking</code> block and undecryptable web search results in history both used to dead-end the session.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Compaction retries on a fallback model when refused</h4><p>A refused summarization request used to fail compaction outright.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Bash rules with a mid-pattern <code>:*</code> now work from settings files</h4><p>They were silently skipped there while <code>--allowedTools</code> honored them.</p></div>
+        <div class="signal"><div class="n">05</div><h4>The <code>anthropic-skills</code> and <code>claude-ai</code> namespaces are now reserved for synced skills</h4><p>Local skill folders and commands using those names stop loading, and allow rules for them narrow.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long sessions keep their reasoning</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.282</span>
+            <h3>Extended thinking survives resumes, <code>--tools</code> relaunches and mid-turn slash commands</h3>
+          </div>
+          <div class="story-body">
+            <p>Three separate paths were throwing away Claude&#39;s earlier thinking: continued or resumed sessions re-sending old messages in a changed form (more cases fixed), relaunching with a <code>--tools</code> list that omits a built-in tool used earlier, and running <code>/model</code>, <code>/rename</code>, <code>/artifacts</code> or another immediate slash command while Claude was working. Resuming very large sessions, including never-compacted ones, is also faster.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is how most multi-day client builds actually run: pick up yesterday&#39;s Bisque or Sonderwerks session with <code>--resume</code>, switch model partway. Before this, a resumed session could quietly reason worse than the original. Update, and if a resumed session felt dumber than it should have this month, this is the likely reason.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.282</span>
+            <h3>Sessions that failed on every turn now self-recover</h3>
+          </div>
+          <div class="story-body">
+            <p>Two failure modes locked a session into erroring on every request. An &quot;Invalid <code>data</code> in <code>redacted_thinking</code> block&quot; error now makes Claude Code drop the conversation&#39;s thinking blocks and retry once. A 400 on every request, caused by web search results in history the API can&#39;t decrypt (for example from a turn answered through a third-party gateway), is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you&#39;ve been abandoning sessions that start throwing the same API error on every message, update before doing that again. Research-heavy sessions (competitor scans for pitches, vendor docs lookups) are the ones that accumulate web search results.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.282</span>
+            <h3>Compaction retries on a fallback model when the summarization request is refused</h3>
+          </div>
+          <div class="story-body">
+            <p>Compaction used to fail when the summarization request was refused. It now retries on a fallback model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long unattended runs rely on compaction to keep going. One fewer way for a scheduled job or a long build session to stall at the context limit.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permissions, skills and settings — rules that now read differently</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.282</span>
+            <h3>Bash permission rules with a mid-pattern <code>:*</code> now apply from settings files</h3>
+          </div>
+          <div class="story-body">
+            <p>Rules with <code>:*</code> in the middle of the pattern were skipped when they came from settings files, while <code>--allowedTools</code> honored them. They now work from every source, with a startup warning explaining how they match.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A rule that was dead may now be live, so it can approve commands that used to prompt. The scout checked <code>~/.claude/settings.json</code> and the project settings under <code>~/Documents</code> and found no mid-pattern <code>:*</code> rules, so nothing changes on this Mac today. If you see the new startup warning in a client repo, read it before approving anything.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.282</span>
+            <h3><code>anthropic-skills</code> and <code>claude-ai</code> are reserved for skills synced from claude.ai</h3>
+          </div>
+          <div class="story-body">
+            <p>Skill folders, command files and workflow commands in those namespaces no longer load. MCP servers named <code>anthropic-skills</code> or <code>claude-ai</code> list no skills or prompts (tools still work). <code>Skill(anthropic-skills:*)</code> and <code>Skill(claude-ai:*)</code> allow rules now cover only claude.ai-synced skills.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The skills you call as <code>anthropic-skills:the-humanizer</code> or <code>anthropic-skills:hormozi-analyst</code> look like claude.ai-synced skills, and no local folder in <code>~/.claude/skills</code> uses either name, so they should keep loading. If one of them goes missing after the update, this change is why. When you build a skill for a client repo, don&#39;t name it into those namespaces.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.282</span>
+            <h3>Auto mode uses the server-side classifier by default when telemetry is off</h3>
+          </div>
+          <div class="story-body">
+            <p>On a direct Anthropic API connection with telemetry off, auto mode now uses the server-side classifier by default. <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> opts out. Separately, project and local settings files can no longer turn on OpenTelemetry export, set its endpoint, or capture content.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only matters if you run auto mode on an API key with telemetry disabled. The OpenTelemetry change is a quiet security win for you: a cloned client or template repo can no longer ship a settings file that exports your session content somewhere.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code Changelog — 2.1.282</a></div>
+        </article>
+
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>maxProseWidth</code> setting caps prose width in wide terminals; tables and code keep full width <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Cloud sessions can attach a repository from a different GitHub owner, such as a fork&#39;s upstream, mid-session <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Cloud sessions settings show whether the Claude GitHub App is installed and reachable, with reconnect steps <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Artifact publishes no longer fail when the version label is over 60 characters <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Requests stalled up to a minute on &quot;another Claude Code process is refreshing it&quot; after that process died mid-refresh <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash and PowerShell no longer hide a full disk quota behind &quot;Exit code 1&quot; <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/install-github-app</code> no longer pushes the branch and saves the API key secret after saying &quot;cancelled&quot; <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin uninstall no longer deletes saved options and secrets when the plugin list can&#39;t be read <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: long replies no longer fall behind the stream from re-parsing the whole reply on every update <span class="ver">2.1.282</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hourly cloud routines showed a next-run time 30 minutes off in half-hour-offset time zones <span class="ver">2.1.282</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

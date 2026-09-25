@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-25.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-25",
+    "title": "2.1.282 stops long and resumed sessions from losing Claude's earlier reasoning",
+    "summary": "2.1.282 is another large maintenance release: extended thinking now survives resumes and mid-turn slash commands, compaction and a web-search 400 no longer dead-end a session, and several permission, skill-namespace and settings rules change how config is read.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-25.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
