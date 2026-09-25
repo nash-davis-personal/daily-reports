@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-25",
+    "title": "The 30-year mortgage rate crossed 7% for the first time in 20 months",
+    "summary": "Freddie Mac's 30-year rate hit 7.03% as the 10-year Treasury touched 5.22%, stocks ended Thursday flat, jobless claims fell to 197,000, Hurricane Nolo is strengthening south of Hawaii, and Costco credited tariff refunds for part of its beat.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-25",
+    "title": "Gemini started phoning businesses, and your clients' front desks are next",
+    "summary": "Google is testing Gemini calls to businesses on Pixel phones, ElevenLabs says callers should be told they're talking to AI, the big labs took AI oversight to the UN and are reportedly forming a standards body, Lovable passed $600M ARR, and DHH says he no longer writes code by hand.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-25",
+    "title": "AI is about to start calling your clients. Sell them a front desk that can take the call",
+    "summary": "Six moves ranked by fit: a bot-caller-ready Front Desk upgrade, a WordPress and Magento exposure check that leads to migrations, a Lovable rescue gig, a cheaper Front Desk Lite tier, speed-to-lead for home-service trades squeezed by 7% mortgages, and an agent-built-studio case study.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-25",
+    "title": "Cloudflare leaked one customer's deleted disk to another, and Bitget lost $351.6M",
+    "summary": "No new advisory on the TSD stack, but Cloudflare disclosed a fixed cross-tenant data leak in Containers, Bitget lost $351.6M in a suspected North Korean hack, CISA flagged exploited WSO2 and Adobe Commerce flaws, Vercel made Blob stores unlimited, and Google is sending four TPUs to orbit.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-25.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-24",
     "title": "Treasury yields hit a 19-year high, and Wall Street sold off",
     "summary": "The 10-year Treasury yield closed at 5.11% on September 23, its highest since 2007, after a hot flash PMI reading lifted the odds of another Fed rate hike and pulled the Dow, S&P 500 and Nasdaq lower; crude snapped a five-day slide after Iran said it would not surrender at the UN. Xi Jinping arrived in Washington for a state visit as the US and China extended their trade truce to January 10, Charlotte-Mecklenburg Schools fired its superintendent and the DA asked the SBI to investigate district finances, a hacking group's claimed breach knocked the FBI's own job-application site offline, and a hurricane watch went up for Hawaii's Big Island.",

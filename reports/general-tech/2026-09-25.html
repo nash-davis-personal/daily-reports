@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-25" />
+  <meta name="report:title" content="Cloudflare leaked one customer's deleted disk to another, and Bitget lost $351.6M" />
+  <meta name="report:summary" content="No new advisory on the TSD stack, but Cloudflare disclosed a fixed cross-tenant data leak in Containers, Bitget lost $351.6M in a suspected North Korean hack, CISA flagged exploited WSO2 and Adobe Commerce flaws, Vercel made Blob stores unlimited, and Google is sending four TPUs to orbit." />
+  <meta name="report:highlights" content="6" />
+  <title>Cloudflare leaked one customer's deleted disk to another, and Bitget lost $351.6M — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/09/cloudflare-fixes-flaw-that-let-one.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, September 25, 2026</span>
+        <span>◆</span><span>Security, platforms, space</span>
+      </div>
+      <h1>Cloudflare leaked one customer's deleted disk to another, and Bitget lost $351.6M</h1>
+      <p class="standfirst">Your own stack is quiet: no new Next.js, React, Vercel, Tailwind or Supabase advisory landed since Tuesday's next/og patch. The security news is next door, in a fixed Cloudflare isolation bug, a nine-figure exchange hack and a fresh batch of exploited web-platform flaws.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 24 – Sept 25</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">New security advisories on Next.js, React, Vercel, Tailwind or Supabase in the window. If you haven't patched to Next.js 16.3.6 / 15.5.26, that's still open</div></div>
+      <div class="stat"><div class="num">18 / 24</div><div class="lbl">Attempts in which researchers recovered another Cloudflare customer's leftover data</div></div>
+      <div class="stat"><div class="num">$351.6M</div><div class="lbl">Drained from Bitget's hot and warm wallets</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack check: clear</h4><p>No new advisory on Next.js, React, Vercel, Tailwind or Supabase. The only open item is Tuesday's next/og RCE patch.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Cloudflare Containers leaked leftovers</h4><p>Unwiped disk blocks exposed other tenants' .env files and databases. Fixed Sept 19; no action needed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Bitget hacked for $351.6M</h4><p>Suspected North Korean attackers forged transaction data and tricked the exchange's own approval flow.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Exploited web flaws, again</h4><p>CISA added WSO2 and Adobe Commerce bugs to its exploited list; a WordPress RCE was hit within hours.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel: unlimited Blob stores</h4><p>Every plan now gets unlimited Blob stores, and Sandbox Drives (up to 16 TiB) entered public beta.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Four TPUs headed to orbit</h4><p>Google's Project Suncatcher test satellite is slated to ride Transporter-18 around Oct 1.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">Disclosed September 24</span>
+            <h3>A Cloudflare Containers bug let one customer read another's deleted data</h3>
+          </div>
+          <div class="story-body">
+            <p>When a container was deleted, its 64KB thin-provisioned disk blocks went back into a shared pool without being wiped. Researchers who spun up new containers recovered other customers' .env files, SQLite databases and credential files on 18 of 24 attempts. The bug was reported September 4 and fully fixed September 19.</p>
+            <p>Cloudflare says customers don't need to do anything and it found no exploitation beyond the researchers' own tests.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to patch, but if any TSD or client project ran in Cloudflare Containers before September 19 with secrets baked into the image or written to disk, rotate those keys. The broader rule for client work: keep secrets in the platform's secret store (Vercel env vars, Wrangler secrets), never in files on a container's disk.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/09/cloudflare-fixes-flaw-that-let-one.html" target="_blank" rel="noopener">The Hacker News — Cloudflare fixes flaw that let one customer read another's data</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">September 25</span>
+            <h3>Bitget loses $351.6M in a suspected North Korean hack</h3>
+          </div>
+          <div class="story-body">
+            <p>Attackers got into a backend wallet system, fabricated transaction data and triggered Bitget's own authorization process to move ETH, XRP, BNB, AVAX, USDT and USDC out of hot and warm wallets. The CEO says customer balances are intact and cold storage is safe; withdrawals are paused. Mandiant and SlowMist are investigating, and several chain foundations froze the attacker's addresses.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The attack didn't break the approval system; it fed the system forged inputs. Any client automation where an AI agent or webhook can trigger refunds, payouts or bookings needs the same check: verify the source data independently before the action fires, and cap what one automated action can move.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/09/bitget-says-suspected-north-korean.html" target="_blank" rel="noopener">The Hacker News — Bitget suspected North Korean hack</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">September 24–25</span>
+            <h3>CISA flags exploited WSO2 and Adobe Commerce flaws; WordPress and Roundcube bugs are live too</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA added CVE-2026-5430 (CVSS 9.8), a path-traversal-to-RCE bug in WSO2 API Manager and Gateway exploited since September 13, and CVE-2026-71362 (CVSS 9.1), an authorization flaw in Adobe Commerce and Magento, to its Known Exploited Vulnerabilities list. Federal agencies must patch by September 27.</p>
+            <p>Separately, WordPress CVE-2026-87902 (CVSS 9.2 RCE) was reportedly exploited within hours of disclosure, and a Roundcube pre-auth SQL injection (CVE-2026-48842, fixed in 1.6.16 and 1.7.1 back in May) is now under active attack, with about 523,000 exposed instances.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a prospecting list. Local SMBs on WordPress or Magento are exposed this week. Grant and Bishop can open with "your site platform had a critical bug exploited within hours; here's a free check," and the migration pitch sells itself: a Next.js site with owned code and no plugin surface.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/09/24/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Two known exploited vulnerabilities added</a> <a href="https://thehackernews.com/2026/09/attackers-exploit-wordpress-cve-2026.html" target="_blank" rel="noopener">The Hacker News — WordPress CVE-2026-87902 exploited</a> <a href="https://thehackernews.com/2026/09/roundcube-pre-auth-sql-injection-flaw.html" target="_blank" rel="noopener">The Hacker News — Roundcube SQLi</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">September 23–24</span>
+            <h3>Vercel lifted the Blob store limit and put Sandbox Drives in public beta</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's changelog: unlimited Blob stores on every plan, Sandbox Drives in public beta with up to 16 TiB of storage, and TanStack AI support in Vercel Connect. Next.js shipped only canaries (16.4.0-canary.40 through .45) with no security fixes. Supabase's last changelog entry is September 21, when Replication was renamed Pipelines.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Unlimited Blob stores means one store per client project, which keeps each client's uploads separable when you hand over the code. Make that the default in the project starter. No upgrades required today.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a> <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Deal</span>
+            <span class="ver">September 24</span>
+            <h3>Databricks bought Row Zero, a spreadsheet that handles a million-plus rows</h3>
+          </div>
+          <div class="story-body">
+            <p>Row Zero had raised $10M at about a $40M valuation; the price wasn't disclosed. It will plug into Databricks' Genie agent. It's Databricks' fourth acquisition this year, after a $5B raise in August and at a $7B revenue run rate.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Big platforms are buying "the spreadsheet your ops person already lives in, plus an agent." The SMB version is a small Supabase-backed dashboard with a Claude chat over the client's own bookings and sales. That's a sellable add-on to any existing client.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/24/databricks-buys-row-zero-and-is-scouting-for-more-startups-to-acquire/" target="_blank" rel="noopener">TechCrunch — Databricks buys Row Zero</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space &amp; robotics</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">September 24–25</span>
+            <h3>Google is putting four TPUs in orbit for Project Suncatcher</h3>
+          </div>
+          <div class="story-body">
+            <p>The test satellite, built with Planet, carries four TPUs and about 1,000W of solar power. It will run AI workloads in roughly 15-minute bursts, pausing to shed heat, for about a year. It rides SpaceX's Transporter-18 from Vandenberg, reported for about October 1. A two-satellite laser-link test is planned for 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No near-term effect. It's a marker for where AI compute costs may head as power becomes the constraint on the ground.</div>
+          <div class="refs"><a href="https://www.technology.org/2026/09/25/google-project-suncatcher-tpu-orbit-test/" target="_blank" rel="noopener">Technology.org — Project Suncatcher TPU orbit test</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Scale</span>
+            <span class="ver">September 24</span>
+            <h3>Waymo runs about 4,000 robotaxis and 500,000 paid rides a week</h3>
+          </div>
+          <div class="story-body">
+            <p>Waymo now operates in 15 US cities, up from 3 in September 2024. Its Texas fleet is 1,102 vehicles, up nearly half in three weeks, and about a third are the Zeekr-built "Ojai" minivans. MoffettNathanson projects 5,100 Ojais imported by year-end.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Charlotte isn't on the list yet. When it lands, local businesses near pickup zones will want "robotaxi drop-off" directions and booking links on their sites. Small, but an easy upsell to have ready.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/24/waymo-is-scaling-fast-heres-what-the-fleet-data-shows/" target="_blank" rel="noopener">TechCrunch — Waymo fleet data</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Supply chain</span><span class="txt">The placeholder domain third-party[.]com, referenced in 1,700+ repos, is now serving ClickFix malware; malicious Terraform providers on the HashiCorp registry are shipping Go malware. Grep your repos for placeholder URLs. <a href="https://thehackernews.com/2026/09/placeholder-third-partycom-referenced.html" target="_blank" rel="noopener">The Hacker News</a> <span class="ver">Sept 24</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Starship Flight 14 is still listed for no earlier than September 28 at 7:15 a.m. CDT from Starbase Pad 2, carrying 26 Starlink V3 satellites. <a href="https://spaceflightnow.com/launch-schedule/" target="_blank" rel="noopener">Spaceflight Now</a> <span class="ver">Sept 25</span></span></li>
+            <li><span class="tag improve qh-tag">IPO</span><span class="txt">Oura's IPO is on track to price the week of September 28: 50M shares at $40–44 under ticker OURA, about a $15.6B valuation. <a href="https://www.bnnbloomberg.ca/markets/nasdaq/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">BNN Bloomberg</a> <span class="ver">Sept 21</span></span></li>
+            <li><span class="tag feature qh-tag">EV</span><span class="txt">Tesla opened its 1.7M sq ft Semi plant in Sparks, NV, built for up to 50,000 trucks a year; Rivian recalled 98,828 vehicles over a rear-camera display issue, fixed by a free OTA update. Secondary roundup source. <a href="https://theautowire.com/2026/09/24/auto-industry-news-roundup-tesla-semi-rivian-recall-byd/" target="_blank" rel="noopener">The Auto Wire</a> <span class="ver">Sept 24</span></span></li>
+            <li><span class="tag improve qh-tag">Compute</span><span class="txt">Oracle sent Blue Owl a force majeure notice on its 2.45 GW New Mexico Stargate campus as a gas pipeline slipped to February 2027; Oracle says it's on schedule. <a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/" target="_blank" rel="noopener">TechCrunch</a> <span class="ver">Sept 24</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
