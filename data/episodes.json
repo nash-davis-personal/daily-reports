@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-26",
+    "title": "TSD Daily — Saturday, September 26, 2026",
+    "summary": "Devin hits a $1B run rate and Copilot goes agentic, a critical Next.js patch lands Wednesday, 16,000 Supabase databases sit open, sentiment slides to 48.1, and a Supabase lockdown audit to sell this week.",
+    "file": "audio/2026-09-26.mp3",
+    "durationSec": 371,
+    "bytes": 4453389
+  },
+  {
     "date": "2026-09-25",
     "title": "TSD Daily — Friday, September 25, 2026",
     "summary": "Gemini starts phoning businesses, ElevenLabs backs AI disclosure, Cloudflare and Bitget security fallout, mortgages cross 7%, and a pitch to make Front Desk ready for AI callers.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-09.mp3",
     "durationSec": 325,
     "bytes": 3904749
-  },
-  {
-    "date": "2026-07-08",
-    "title": "TSD Daily — Wednesday, July 8, 2026",
-    "summary": "Anthropic takes Cowork mobile and mostly does back-office work, cheap Chinese models grab up to 46% of US developer use, a rough week for GitHub security, hawkish Fed minutes and a buckling Midtown tower, plus the AI-coworker retainer play.",
-    "file": "audio/2026-07-08.mp3",
-    "durationSec": 388,
-    "bytes": 4658445
   }
 ]
