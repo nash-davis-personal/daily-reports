@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-26" />
+  <meta name="report:title" content="Next.js patches nine bugs Wednesday, and 16,000 Supabase databases are sitting open" />
+  <meta name="report:summary" content="Next.js ships 16.3.7 on Sept 30 for nine vulnerabilities including one critical, UpGuard found about 16,000 Supabase databases exposing personal data, Kiteworks told customers to shut servers down, and Starship&#x27;s first orbital try is Monday." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Next.js patches nine bugs Wednesday, and 16,000 Supabase databases are sitting open — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, September 26, 2026</span>
+        <span>◆</span><span>Patch week, open databases, file-transfer alarm</span>
+      </div>
+      <h1>Next.js patches nine bugs Wednesday, and 16,000 Supabase databases are sitting open</h1>
+      <p class="standfirst">Both halves of your stack are in the news. Next.js has a scheduled security release Wednesday with one critical bug, and a TechCrunch report says thousands of Supabase projects leak personal data because their owners never locked down the tables.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 25 – Sept 26</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9</div><div class="lbl">Next.js vulnerabilities fixed Sept 30: 1 critical, 2 high, 5 medium, 1 low</div></div>
+      <div class="stat"><div class="num">~16,000</div><div class="lbl">Supabase databases UpGuard found exposing some personal data</div></div>
+      <div class="stat"><div class="num">6 hrs</div><div class="lbl">How long Kiteworks asked customers to keep servers shut down</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js security release Sept 30</h4><p>16.3.7 and 15.5.27 fix nine bugs, one critical. Plan the upgrade now.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase projects leaking data</h4><p>UpGuard found ~16,000 databases exposing names, addresses, phones and passwords.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Kiteworks: turn it off</h4><p>The file-transfer vendor cited law-enforcement intel of an imminent attack.</p></div>
+        <div class="signal"><div class="n">04</div><h4>FBI data claimed stolen</h4><p>ShinyHunters says it took 2–3TB of FBI employee and applicant records.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Anthropic's $11.6B CPU bet</h4><p>Akamai stock jumped about 15% on a seven-year cloud deal.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Starship tries orbit Monday</h4><p>Flight 14 targets Sept 28, 7:15 a.m. CT, with 26 Starlink V3 satellites.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Release Sept 30</span>
+            <h3>Next.js will fix nine vulnerabilities on Wednesday, one of them critical</h3>
+          </div>
+          <div class="story-body">
+            <p>The Next.js team gave advance notice (posted Sept 23) of a scheduled release on Sept 30: one critical, two high, five medium and one low. Versions 16.3.7 and 15.5.27 ship alongside full advisories with affected versions. This is separate from last week's out-of-band 16.3.6 fix for the next/og remote-code-execution bug.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: on Wednesday, bump every client site to 16.3.7 (or 15.5.27 on the 15 line), run the build, and push. Today, list every repo and its Next version so it's a one-hour job, and confirm last week's 16.3.6 bump landed everywhere.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Next.js blog ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">September 25</span>
+            <h3>About 16,000 Supabase databases are exposing personal data</h3>
+          </div>
+          <div class="story-body">
+            <p>UpGuard found publicly readable tables across roughly 16,000 Supabase-hosted databases, including names, addresses, phone numbers and user passwords: private chats on an adult streaming site, thousands of license plates from a US valet service, and contacts from an immigration service. The pattern is tables reachable with the public anon key and no row-level security.</p>
+            <p>Supabase's CISO Bil Harmer called projects "secure by default" and security a shared responsibility. Follow-up coverage ties many of the exposed apps to AI coding tools.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Audit every client Supabase project this weekend: RLS enabled on every table in exposed schemas, no permissive policies, the service key never in the browser. Then sell that same audit (see Money Moves).</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/25/some-supabase-customers-are-publicly-exposing-reams-of-peoples-data-to-the-web/" target="_blank" rel="noopener">TechCrunch ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Platform</span>
+            <span class="ver">September 25</span>
+            <h3>Vercel Sandbox added memory observability</h3>
+          </div>
+          <div class="story-body">
+            <p>Sandbox memory usage now shows in the dashboard and CLI. A same-day CLI release fixed reading Builder package manifests without platform-specific tar flags.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful if you run agent code in Sandbox; nothing to change otherwise.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a></div>
+        </article>
+
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security, beyond your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Threat</span>
+            <span class="ver">September 25</span>
+            <h3>Kiteworks told customers to shut down servers ahead of a possible zero-day attack</h3>
+          </div>
+          <div class="story-body">
+            <p>The file-transfer vendor (formerly Accellion) said it received "credible threat intelligence from law enforcement" that an attacker may target customer systems, and asked for a six-hour shutdown while it investigates. It says all known bugs are fixed in 9.5.1 and worries about flaws it doesn't know about yet. Heise first reported an attack could come this weekend.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Accellion's 2021 breach hit dozens of organizations. If a client sends files through Kiteworks, tell them today to follow the vendor notice and move to 9.5.1.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/25/kiteworks-urges-customers-to-shut-down-their-servers-amid-imminent-threat-of-cyberattack/" target="_blank" rel="noopener">TechCrunch ↗</a> · <a href="https://www.bleepingcomputer.com/news/security/kiteworks-urges-6-hour-server-shutdown-over-potential-zero-day-attacks/" target="_blank" rel="noopener">BleepingComputer ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Breach</span>
+            <span class="ver">Week of Sept 18–24</span>
+            <h3>ShinyHunters claims it took FBI employee and applicant records</h3>
+          </div>
+          <div class="story-body">
+            <p>The group says it used a zero-day in the FBI's Oracle PeopleSoft system to pull 2–3TB of data, including names, home addresses, phone numbers, birth dates and spouse details. The claim is the group's own; treat the scope as unconfirmed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Another reminder that stolen PII fuels targeted phishing. Keep MFA on every client admin login you manage.</div>
+          <div class="refs"><a href="https://www.privacyguides.org/news/2026/09/25/data-breach-roundup-sep-18-24-2026/" target="_blank" rel="noopener">Privacy Guides roundup ↗</a></div>
+        </article>
+
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business and deep tech</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Compute</span>
+            <span class="ver">September 25</span>
+            <h3>Anthropic will pay Akamai $11.6B over seven years, mostly for CPUs</h3>
+          </div>
+          <div class="story-body">
+            <p>The deal could grow to about $20B, is the largest in Akamai's history, and comes with a warrant for up to about 5% of Akamai stock. Akamai expects about $5.5B in related capex; first services are due late Q2 2027. Akamai rose about 15%, and CoreWeave and Cloudflare ticked up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Agent workloads are driving demand for general-purpose compute at the edge. Expect more agent-hosting options from CDN-style providers you already know.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/" target="_blank" rel="noopener">TechCrunch ↗</a> · <a href="https://247wallst.com/investing/2026/09/25/akamai-surges-15-on-11-6b-anthropic-cloud-deal-coreweave-and-cloudflare-tick-up/" target="_blank" rel="noopener">24/7 Wall St. ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Space</span>
+            <span class="ver">Sept 28</span>
+            <h3>Starship Flight 14 is set for its first orbital attempt Monday</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX targets Sept 28 with a 75-minute window from 7:15 a.m. CT at Starbase, with backups Sept 29–30. Ship 41 will carry 26 upgraded Starlink V3 satellites, the first operational payload for Starship.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If it works, Starlink capacity jumps, which matters over time for rural NC clients on bad broadband. Nothing to act on now.</div>
+          <div class="refs"><a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-next-starship-launch-now-on-sept-28-for-1st-orbital-flight" target="_blank" rel="noopener">Space.com ↗</a> · <a href="https://www.spacex.com/launches/starship-flight-14" target="_blank" rel="noopener">SpaceX ↗</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Meta's smart glasses dominated Meta Connect, and Meta opened early access to new Muse features. <a href="https://techcrunch.com/2026/09/" target="_blank" rel="noopener">TechCrunch ↗</a></span></li>
+            <li><span class="tag improve qh-tag">WordPress</span><span class="txt">Automattic has a new board after a failed attempt to put its CEO on leave. <a href="https://techcrunch.com/2026/09/" target="_blank" rel="noopener">TechCrunch ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Compute</span><span class="txt">Crusoe abandoned a $1.25B plan to run AI data centers on Boom turbines. <a href="https://techcrunch.com/2026/09/" target="_blank" rel="noopener">TechCrunch ↗</a></span></li>
+            <li><span class="tag new qh-tag">IPO</span><span class="txt">UK AI cloud Nscale secured $3.36B in convertible financing ahead of a US listing. <a href="https://techcrunch.com/2026/09/" target="_blank" rel="noopener">TechCrunch ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-26",
+    "title": "Stocks ended the week higher even as consumer sentiment fell to 48.1",
+    "summary": "The Dow rose 0.93% Friday and all three indexes posted weekly gains, the final September sentiment reading fell to 48.1, the 10-year held near 5.18%, and Hurricane Nolo sat south of Hawaii&#x27;s Big Island.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-26",
+    "title": "Devin crossed $1B a year, and Microsoft rebuilt Copilot around agents",
+    "summary": "Cognition hit a $1B run rate, Microsoft relaunched Copilot as Home, Code and Autopilot, an appeals court kept the Pentagon&#x27;s Anthropic ban, and Alibaba cut voice API prices up to 95%.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-26",
+    "title": "Sell a Supabase lockdown audit while 16,000 open databases are in the news",
+    "summary": "Five moves ranked by fit: a fixed-price Supabase RLS audit, a Next.js patch-day care plan, a $19 RLS checker, a cheaper Front Desk voice tier to test, and an ROI-first pitch for a 48.1-sentiment economy.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-09-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-26",
+    "title": "Next.js patches nine bugs Wednesday, and 16,000 Supabase databases are sitting open",
+    "summary": "Next.js ships 16.3.7 on Sept 30 for nine vulnerabilities including one critical, UpGuard found about 16,000 Supabase databases exposing personal data, Kiteworks told customers to shut servers down, and Starship&#x27;s first orbital try is Monday.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-09-26.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-25",
     "title": "The 30-year mortgage rate crossed 7% for the first time in 20 months",
     "summary": "Freddie Mac's 30-year rate hit 7.03% as the 10-year Treasury touched 5.22%, stocks ended Thursday flat, jobless claims fell to 197,000, Hurricane Nolo is strengthening south of Hawaii, and Costco credited tariff refunds for part of its beat.",
