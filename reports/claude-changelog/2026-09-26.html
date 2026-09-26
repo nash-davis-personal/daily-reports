@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-26" />
+  <meta name="report:title" content="2.1.283 ships a prompt audit for your CLAUDE.md files and skills and makes MCP connections harder to break" />
+  <meta name="report:summary" content="2.1.283 adds /doctor prompt-audit to flag stale prompting patterns in CLAUDE.md, skills and agents, fixes several ways an MCP server could silently die mid-session, and quietly flips some sessions into auto mode by default." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.283 ships a prompt audit for your CLAUDE.md files and skills and makes MCP connections harder to break — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, September 26, 2026</span>
+        <span>◆</span><span>1 release: 2.1.283</span>
+      </div>
+      <h1>2.1.283 ships a prompt audit for your CLAUDE.md files and skills and makes MCP connections harder to break</h1>
+      <p class="standfirst">The one release since yesterday's briefing is big again. The piece worth doing today is running the new prompt audit against your global CLAUDE.md and the skill library, because a lot of that config was written for older models.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.283 (September 25, 2026), after the 2.1.282 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">MCP-related fixes &amp; improvements</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Default behavior change to check</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>/doctor prompt-audit</h4><p>Audits CLAUDE.md files, skills, agents and commands for prompting patterns written for older models. Run it once this weekend.</p></div>
+        <div class="signal"><div class="n">02</div><h4>MCP servers stop dying quietly</h4><p>A brief 404 from a remote MCP server no longer leaves it dead but shown as connected for the rest of the session.</p></div>
+        <div class="signal"><div class="n">03</div><h4>MCP images land on disk</h4><p>Images returned by MCP tools are now saved to a file, so Bash and Read can open them.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Auto mode becomes a default</h4><p>Interactive sessions with telemetry off or on third-party providers now start in auto mode when no permission mode is set.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Workflows keep the right model</h4><p>Dynamic workflows started during a model fallback no longer run every agent on the fallback model.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Config hygiene</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.283</span>
+            <h3>A built-in audit for stale prompts in your CLAUDE.md, skills and agents</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/doctor prompt-audit</code> (also <code>/checkup prompt-audit</code>) scans CLAUDE.md files, skills, agents and commands for prompting patterns written for older models. The same release says stale paths, stale commands and contradicting instruction files now lead the report, and thinking keywords Claude Code documents are left alone.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your setup is exactly what this targets: a long global CLAUDE.md with dated rules, 60-plus skills, and two vaults of memory. Run it from an interactive <code>claude</code> terminal in <code>~/Documents</code>, fix the contradictions it surfaces first, and treat the rest as a cleanup list. The advisor skills and the older client skills are the likeliest to carry dead phrasing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.283</span>
+            <h3>The claude-ai name reservation from 2.1.282 is reverted, and auto-memory edits from subdirectories work again</h3>
+          </div>
+          <div class="story-body">
+            <p>Skills, commands, workflows and MCP prompts named <code>claude-ai</code> load again, and <code>Skill(claude-ai:*)</code> rules go back to ordinary prefix rules. Separately, Claude's edits to its own auto-memory notes were being blocked as sensitive-file writes when Claude Code was started in a subdirectory of a git repo; that is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If yesterday's briefing made you rename anything to dodge the reservation, you can leave it or revert it. The memory fix matters less for you since durable memory lives in the command vault, but sessions opened inside a client repo subfolder will stop throwing blocked-write prompts on memory.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.283</span>
+            <h3>Remote MCP servers survive a redeploy blip, and background tool calls keep reporting progress</h3>
+          </div>
+          <div class="story-body">
+            <p>A brief HTTP 404 from a stateless remote MCP server, such as a proxy mid-redeploy, used to leave that server unusable for the rest of the session while still showing as connected. That is fixed. Progress notifications are no longer discarded once a long-running MCP call moves to the background, stdio servers are no longer left running when a session ends while they are starting, and <code>claude mcp add</code>/<code>remove</code> no longer report success when the config file could not be written.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run your own remote MCP servers (tsd-portal, nash-os) and redeploy them on Vercel. Before this, a deploy during a live session could leave Claude calling a server that looked connected but was dead. Update and that failure mode goes away. Orphaned stdio processes were also a plausible source of stray node processes on the Air.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.283</span>
+            <h3>Images from MCP tools are saved to disk, and /context now counts MCP instructions</h3>
+          </div>
+          <div class="story-body">
+            <p>Images returned by MCP tools are now also written to a file so Bash, Read and other tools can open them. <code>/context</code> now shows MCP server instructions as their own row and counts them toward the total; before, they were not counted at all.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Screenshots from chrome-devtools and Higgsfield or Canva outputs can now be piped straight into ffmpeg, the likeness-gate evidence step, or a commit without a manual save. And with a dozen-plus MCP servers connected, check <code>/context</code> once: the instruction blocks from Higgsfield, Calendly and others were invisible overhead until now.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents, automation and defaults</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.283</span>
+            <h3>Sessions with telemetry off or on third-party providers now start in auto mode</h3>
+          </div>
+          <div class="story-body">
+            <p>Interactive sessions on third-party providers, or with telemetry off, now start in auto mode when no permission mode is configured. <code>permissions.defaultMode</code> still overrides it. Relatedly, Remote Control was unavailable on paid plans with <code>DISABLE_TELEMETRY</code> or <code>DO_NOT_TRACK</code> set; that is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any machine or client handoff box runs with telemetry off and no <code>defaultMode</code>, it will now act with less prompting than before. Set <code>permissions.defaultMode</code> explicitly anywhere you care, especially on anything touching the Bisque Vercel scope.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.283</span>
+            <h3>Workflows retry the configured model after a fallback, and headless runs start faster</h3>
+          </div>
+          <div class="story-body">
+            <p>Dynamic workflows started during a model fallback used to run every agent on the fallback model; they now retry the configured model. <code>claude -p</code> and Claude Code Remote no longer load the interactive UI at startup, first-request latency reuses the preconnected API connection, and the weekly Fable limit now shows in <code>/usage</code> even with telemetry disabled.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A workflow kicked off during a rough patch could have spent a whole fan-out on a weaker model without telling you. That is closed. The <code>-p</code> startup change trims a little off every headless and scheduled run, which adds up across the daily scouts and stewards.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.283</span>
+            <h3>Cloud sessions stop redoing finished steps, and timed-out Code Reviews aren't billed</h3>
+          </div>
+          <div class="story-body">
+            <p>Cloud sessions could redo an already-finished step, such as posting a duplicate comment or push, after recovering from a server-side restart; fixed. A Code Review that hit its time limit with nothing verified now shows as incomplete, is not charged, and is retried once. "@claude review" requests that went silent when GitHub failed to return the PR are now retried once, with a comment if it still fails. New cloud routine schedules default to a few minutes past the hour, since on-the-hour routines can start several minutes late.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Duplicate pushes from a cloud session are the kind of thing that triggers a second Vercel deploy on a client repo. If you've seen doubled comments or deploys from cloud runs, this is the likely cause. When you next schedule a cloud routine, take the off-the-hour default.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.283</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">New</span><span class="txt">Managed settings <code>deniedModels</code> and <code>availableModelsMatch: "exact"</code> let an org block specific models or pin exact versions. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt"><code>/mcp</code> tool list shows more tools, scrolls, and marks org-blocked tools; <code>/tasks</code> and most pickers gain page keys, mouse wheel and clicks. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Compaction spinner now times from the start of compaction and counts the summary's tokens as they stream. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">An automatically armed artifact watch now ends after 3.5 hours with no activity; publishing or watching again re-arms it. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>/ultrareview</code> launch dialog now warns that reviewing a local branch may upload uncommitted changes to tracked files. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>--system-prompt</code> and <code>--append-system-prompt</code> accept text and <code>-file</code> forms together; the file's text comes first. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin tooling: <code>claude plugin validate</code> catches uninstallable names and bad paths; uninstall no longer removes a case-variant plugin; <code>installed_plugins.json</code> is backed up before rebuild. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Managed <code>sandbox</code> settings no longer get ignored wholesale when one nested value is invalid; the bad value fails closed. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Windows PowerShell tool no longer lets <code>cmd /c rd</code>/<code>del</code> delete drive roots or the home folder. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: permission indicator no longer shows Default while the session runs in auto or bypass; web-teleported sessions keep messages sent mid-turn. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: duplicate replies on interrupt, stalled routines in older private channels, and a new admin setting limiting Slack search to joined public channels. <span class="ver">2.1.283</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Assorted vim-mode, keybinding, Warp hyperlink and screen-reader fixes. <span class="ver">2.1.283</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

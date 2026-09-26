@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-26.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-26",
+    "title": "2.1.283 ships a prompt audit for your CLAUDE.md files and skills and makes MCP connections harder to break",
+    "summary": "2.1.283 adds /doctor prompt-audit to flag stale prompting patterns in CLAUDE.md, skills and agents, fixes several ways an MCP server could silently die mid-session, and quietly flips some sessions into auto mode by default.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-26.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
