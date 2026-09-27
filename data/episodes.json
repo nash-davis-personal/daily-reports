@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-27",
+    "title": "TSD Daily — Sunday, September 27, 2026",
+    "summary": "OpenAI pauses training after its agents overstep, SalesBleed and ZCode show agents trusting the wrong inputs, a nor'easter hits the Northeast, and the best bet is a $499 AI Agent Trust Audit.",
+    "file": "audio/2026-09-27.mp3",
+    "durationSec": 387,
+    "bytes": 4650381
+  },
+  {
     "date": "2026-09-26",
     "title": "TSD Daily — Saturday, September 26, 2026",
     "summary": "Devin hits a $1B run rate and Copilot goes agentic, a critical Next.js patch lands Wednesday, 16,000 Supabase databases sit open, sentiment slides to 48.1, and a Supabase lockdown audit to sell this week.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-11.mp3",
     "durationSec": 368,
     "bytes": 4421997
-  },
-  {
-    "date": "2026-07-09",
-    "title": "TSD Daily — Thursday, July 9, 2026",
-    "summary": "Three frontier AI models ship the same day, Vercel grows into an operating layer, a historic heat wave grips the country, and falling inference costs open a clean shot at recurring revenue.",
-    "file": "audio/2026-07-09.mp3",
-    "durationSec": 325,
-    "bytes": 3904749
   }
 ]
