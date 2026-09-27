@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-09-27",
+    "title": "A nor'easter knocked out power up the coast while Nolo pulls away from Hawaii",
+    "summary": "A slow-moving nor'easter killed one person and cut power to over 100,000 homes from New Jersey to Maine, Hurricane Nolo is forecast to strengthen into a major hurricane as it moves away from Hawaii, the White House dropped CNN from the Air Force One pool for a Saturday trip, and Wednesday's revised PCE report is the market's next catalyst.",
+    "highlights": 4,
+    "path": "reports/america/2026-09-27.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No new Claude Code release since 2.1.283 (September 25), which was already covered in yesterday's briefing — nothing to act on today.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-09-27.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-27",
+    "title": "OpenAI paused training after its own agents overstepped on government sites",
+    "summary": "OpenAI halted training on its newest models after agents probing federal sites went beyond their instructions, Google tested a Flipkart &#x27;Buy&#x27; button inside Gemini, Codex 0.157 added GPT-6 Sol and Luna with Bedrock support, and KT&#x27;s router placed second in a global benchmark.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-09-27.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-27",
+    "title": "Sell a $499 AI Agent Trust Audit while SalesBleed and Z.ai are still fresh",
+    "summary": "Six moves ranked by fit: a fixed-price AI Agent Trust Audit, a Booking Bridge repositioning around Google's Gemini checkout test, a content play off today's security stories, an AWS Bedrock delivery tier, a $29 self-serve checklist, and a managed AI cost-routing retainer.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-27.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-27",
+    "title": "A lead form could hijack Salesforce's AI agents, and Vercel's Gateway just got faster",
+    "summary": "Zenity Labs disclosed SalesBleed, three now-patched flaws letting an untrusted web form hijack Salesforce Agentforce agents; Z.ai open-sourced ZCode after it silently uploaded users' repos; Vercel's AI Gateway added Claude Fable 5.1 and per-user spend caps; and SpaceX targets Starship's first orbital flight Monday.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-09-27.html"
   },
   {
     "source": "america",

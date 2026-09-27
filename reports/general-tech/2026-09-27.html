@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-27" />
+  <meta name="report:title" content="A lead form could hijack Salesforce's AI agents, and Vercel's Gateway just got faster" />
+  <meta name="report:summary" content="Zenity Labs disclosed SalesBleed, three now-patched flaws letting an untrusted web form hijack Salesforce Agentforce agents; Z.ai open-sourced ZCode after it silently uploaded users' repos; Vercel's AI Gateway added Claude Fable 5.1 and per-user spend caps; and SpaceX targets Starship's first orbital flight Monday." />
+  <meta name="report:highlights" content="4" />
+
+  <title>A lead form could hijack Salesforce's AI agents, and Vercel's Gateway just got faster — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.securityweek.com/salesbleed-flaws-in-salesforce-agentforce-enabled-zero-click-data-exfiltration/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, September 27, 2026</span>
+        <span>◆</span><span>Two AI-agent trust failures, one stack upgrade</span>
+      </div>
+      <h1>A lead form could hijack Salesforce's AI agents, and Vercel's Gateway just got faster</h1>
+      <p class="standfirst">Two stories this window are the same lesson from different angles: an AI agent that trusts its inputs too much is a liability, whether the input is a stranger's web form or a "helpful" background upload. On the stack side, Vercel kept shipping.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 26 – Sept 27</span>
+        <span>◆</span><a href="https://www.securityweek.com/salesbleed-flaws-in-salesforce-agentforce-enabled-zero-click-data-exfiltration/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">SalesBleed flaws in Salesforce Agentforce, all now patched</div></div>
+      <div class="stat"><div class="num">64%</div><div class="lbl">Faster cold starts on Vercel Secure Compute and Static IP builds (6.7s → 2.4s)</div></div>
+      <div class="stat"><div class="num">Sept 28</div><div class="lbl">SpaceX's target date for Starship's first orbital launch attempt</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>SalesBleed hijacked trusted agents</h4><p>A single fake lead form could turn a Salesforce Agentforce agent against its own company — now patched.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Z.ai's coding assistant leaked repos</h4><p>ZCode quietly uploaded full workspaces, including secrets, to cloud storage; Z.ai open-sourced it after the backlash.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel's AI Gateway added Claude Fable 5.1</h4><p>Plus per-user spend caps and much faster Secure Compute cold starts.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Starship's first orbital try is Monday</h4><p>Flight 14 aims to put 26 Starlink V3 satellites into orbit.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> AI agents keep leaking through their own trust</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">September 24</span>
+            <h3>"SalesBleed": three Agentforce flaws let a fake lead hijack a trusted agent</h3>
+          </div>
+          <div class="story-body">
+            <p>Zenity Labs disclosed three vulnerabilities in Salesforce Agentforce exploitable through Web-to-Lead, Salesforce's public lead-capture forms. An attacker plants hidden instructions in a submitted lead; the payload sits dormant until an employee asks an Agentforce agent to process that lead, at which point the agent silently exfiltrates CRM data or impersonates a trusted Slack-connected agent to phish coworkers — no click required. Zenity reported it to Salesforce on June 1; Salesforce shipped fixes for all three by August 19, and says it found no evidence of exploitation before the patch.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Front Desk and Concierge are built to accept text from strangers by design. Audit every action your agents can take off unverified input (send email, update a record, follow a link) and make sure nothing a customer types can silently trigger a privileged action.</div>
+          <div class="refs"><a href="https://www.securityweek.com/salesbleed-flaws-in-salesforce-agentforce-enabled-zero-click-data-exfiltration/" target="_blank" rel="noopener">SecurityWeek ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Privacy</span>
+            <span class="ver">September 22</span>
+            <h3>Z.ai open-sourced ZCode after it silently uploaded users' full repos</h3>
+          </div>
+          <div class="story-body">
+            <p>An independent developer traced abnormal disk activity in Z.ai's ZCode coding assistant to a background process that packaged an entire workspace — full .git history, LFS cache, reflogs and global configs — encrypted it, and uploaded it to Alibaba Cloud storage whenever a user was logged in. One company said the uploads included database passwords and employee data (a claim it later retracted). Z.ai apologized, blamed a repository-indexing feature, disabled the upload mechanism, deleted the cloud storage, and open-sourced the client.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Before recommending or embedding any third-party coding agent for a client, check what it phones home with. A background upload of a repo containing a client's .env secrets is a trust-ending mistake TSD can't afford to make once.</div>
+          <div class="refs"><a href="https://www.infoworld.com/article/4225022/z-ai-disables-coding-assistant-feature-after-flaw-exposed-enterprise-code-upload-risk.html" target="_blank" rel="noopener">InfoWorld ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack this week</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Update</span>
+            <span class="ver">Vercel Weekly, Sept 21</span>
+            <h3>Vercel's AI Gateway added Claude Fable 5.1 and per-user spend budgets</h3>
+          </div>
+          <div class="story-body">
+            <p>The AI Gateway now offers Claude Fable 5.1 behind one API key with automatic fallbacks, spend tracking and request traces, and adds user-scoped budgets alongside existing team, project and key limits. Separately, Secure Compute and Static IP builds now start 64% faster (6.7s down to 2.4s), and open-weight models handled the majority of Gateway tokens for the first time in August as average price-per-token fell 23.2%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you're billing usage-based AI features to SMB clients, turn on per-client spend caps in the Gateway now — it's a one-line change that prevents a runaway agent loop from becoming your problem.</div>
+          <div class="refs"><a href="https://community.vercel.com/t/vercel-weekly-2026-09-21/49532" target="_blank" rel="noopener">Vercel Weekly ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Reminder</span><span class="txt">Next.js 16.3.7 / 15.5.27 still ship Wednesday, Sept 30, fixing nine vulnerabilities including one critical — patch day, not optional. <a href="../general-tech/2026-09-26.html">Yesterday's briefing ↗</a></span></li>
+            <li><span class="tag fix qh-tag">Exploited</span><span class="txt">ShinyHunters' group updated its Oracle PeopleSoft exploit (CVE-2026-35273) to bypass WAF rules blocking the vulnerable endpoint, extending a campaign that's already hit 100+ mostly-academic organizations. <a href="https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html" target="_blank" rel="noopener">The Hacker News ↗</a></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">SpaceX targets Monday, Sept 28, 7:15am CT for Starship Flight 14 — its first attempt at reaching orbit, carrying 26 upgraded Starlink V3 satellites. <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-starship-flight-14-1st-orbital-launch-what-time" target="_blank" rel="noopener">Space.com ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
