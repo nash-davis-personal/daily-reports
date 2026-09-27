@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-27",
+    "title": "Quiet window: nothing shipped since 2.1.283",
+    "summary": "No new Claude Code release since 2.1.283 (September 25), which was already covered in yesterday's briefing — nothing to act on today.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-27.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
