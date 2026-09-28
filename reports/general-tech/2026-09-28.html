@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-28" />
+  <meta name="report:title" content="Two patch windows this week: Supabase&#x27;s Postgres upgrade opens today, Next.js ships nine fixes Wednesday" />
+  <meta name="report:summary" content="Supabase opened opt-in Postgres 15.19/17.11 upgrades closing 44 CVEs with four breaking changes, Next.js 16.3.7/15.5.27 land Wednesday with nine security fixes including one critical, Starship attempts its first orbital flight this morning, a new Singapore fab opened sold out, and Fireworks&#x27; Ember-1 arrived on Vercel&#x27;s AI Gateway." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Two patch windows this week: Supabase&#x27;s Postgres upgrade opens today, Next.js ships nine fixes Wednesday — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, September 28, 2026</span>
+        <span>◆</span><span>Stack security, space, chips, dev tools</span>
+      </div>
+      <h1>Two patch windows this week: Supabase's Postgres upgrade opens today, Next.js ships nine fixes Wednesday</h1>
+      <p class="standfirst">Both halves of the TSD stack need maintenance this week. Supabase's Postgres upgrade closes 44 CVEs but can break ltree indexes and old pgcrypto data if you skip the checks, and the Next.js security release on Wednesday carries one critical fix. Outside the stack, Starship tries for orbit this morning.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: since the September 27 edition</span>
+        <span>◆</span><a href="https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">44</div><div class="lbl">CVEs closed by Supabase's Postgres 15.19 / 17.11 upgrade</div></div><div class="stat"><div class="num">9</div><div class="lbl">Next.js vulnerabilities fixed Sept. 30 (1 critical, 2 high)</div></div><div class="stat"><div class="num">26</div><div class="lbl">Starlink V3 satellites riding Starship's first orbital attempt</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase Postgres upgrade opens today</h4><p>Opt-in, closes 44 CVEs, and has four breaking changes you need to check before clicking upgrade.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Next.js security release is Wednesday</h4><p>16.3.7 and 15.5.27 fix nine vulnerabilities, one critical. Block time Wednesday to bump every client repo.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Starship goes for orbit this morning</h4><p>Flight 14 targets 8:15 a.m. ET with 26 Starlink V3 satellites and about six orbits planned.</p></div>
+        <div class="signal"><div class="n">04</div><h4>A new fab opened sold out</h4><p>VIS's Singapore plant is fully booked before volume production and a second plant is already planned.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Ember-1 on AI Gateway</h4><p>Fireworks' coding model claims ~40% fewer reasoning tokens than Kimi K3, free to try for two weeks.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Sept 25 · rollout Sept 28</span>
+            <h3>Supabase's Postgres 15.19 / 17.11 closes 44 CVEs, and existing projects must upgrade by hand</h3>
+          </div>
+          <div class="story-body">
+            <p>New Supabase projects provision on the patched versions starting today, and the upgrade button opens for existing projects. It won't happen automatically. Four changes can bite: ltree indexes on multibyte/ICU databases can silently return incomplete results until reindexed; data encrypted with pgcrypto's legacy ciphers (blowfish, cast5) will fail to decrypt after the upgrade unless re-encrypted first (CVE-2026-14663); btree_gist float indexes holding NaN values need a reindex; and custom operators with non-built-in selectivity estimators now need superuser, which breaks dump/restore (CVE-2026-2004).</p><p>Supabase published SQL detection queries for each case. Separately, Supabase Logs is moving to usage-based pricing (ingest plus query volume) with metering-only through early 2027; Supabase says over 90% of projects stay inside the included limits.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: this week, run Supabase's detection queries against every client project, fix anything they flag (REINDEX INDEX CONCURRENTLY, re-encrypt legacy pgcrypto data), then upgrade from the dashboard. Do the smallest client first so you learn the process on a project that can afford it.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes" target="_blank" rel="noopener">Supabase changelog: Postgres 15.19/17.11 ↗</a> · <a href="https://supabase.com/changelog/logs-usage-based-pricing" target="_blank" rel="noopener">Logs pricing ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Lands Sept 30</span>
+            <h3>Next.js ships nine security fixes Wednesday, including one critical</h3>
+          </div>
+          <div class="story-body">
+            <p>The scheduled release publishes Next.js 16.3.7 and 15.5.27 on Sept. 30 with full advisories: one critical, two high, five medium and one low. The details stay embargoed until then. It follows the Sept. 22 out-of-band fix for the critical next/og ImageResponse RCE (CVE-2026-94545, fixed in 16.3.6).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: if any client repo is still below 16.3.6, upgrade today for the ImageResponse RCE. Then on Wednesday bump everything to 16.3.7 (or 15.5.27), let Vercel build previews, and promote once they pass. The TSD apps use proxy.ts with no middleware.ts; read the advisories for anything touching that request path before you promote.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Next.js blog ↗</a> · <a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026" target="_blank" rel="noopener">Sept. 22 update ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space and silicon</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Launch</span>
+            <span class="ver">September 28</span>
+            <h3>Starship Flight 14 attempts SpaceX's first orbital flight this morning</h3>
+          </div>
+          <div class="story-body">
+            <p>The FAA cleared the flight late Saturday. The 75-minute window opens at 8:15 a.m. ET from Starbase Pad 2, with backups Sept. 29 and 30. Ship 41 carries 26 Starlink V3 satellites, the first operational V3 units, and plans about six orbits at roughly 275 km over just under ten hours. Neither booster nor ship will be caught; both are planned to splash down. It's the program's first revenue flight after 13 suborbital tests. The outcome wasn't known when this briefing was filed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. If V3 deploys cleanly, faster Starlink is a real fallback for clients in spotty coverage (rural contractors, job-site trailers), and that matters when a phone receptionist depends on the connection.</div>
+          <div class="refs"><a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live" target="_blank" rel="noopener">Space.com ↗</a> · <a href="https://keeptrack.space/space-brief/space-brief-2026-09-28" target="_blank" rel="noopener">KeepTrack space brief ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Chips</span>
+            <span class="ver">September 28</span>
+            <h3>A TSMC affiliate's new Singapore fab opened with its capacity already sold out</h3>
+          </div>
+          <div class="story-body">
+            <p>Vanguard International Semiconductor inaugurated its first advanced 300mm plant in Singapore on Monday, built in under two years, with capacity fully booked before volume production begins in early 2027. It's already planning a second Singapore fab. The demand is data-center components for the AI buildout.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Hardware stays tight into 2027. For clients buying gear (POS terminals, laptops, a new server), quote with a buffer on price and lead time.</div>
+          <div class="refs"><a href="https://asia.nikkei.com/business/tech/semiconductors/tsmc-affiliate-already-eyes-expansion-as-first-singapore-plant-sells-out" target="_blank" rel="noopener">Nikkei Asia ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Dev tools</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">AI Gateway</span>
+            <span class="ver">September 27</span>
+            <h3>Fireworks' Ember-1 landed on Vercel's AI Gateway as a free two-week research preview</h3>
+          </div>
+          <div class="story-body">
+            <p>Ember-1 is a coding and agent model built on Kimi K3 that Fireworks says produces about 40% fewer reasoning tokens at comparable quality. It has a 1M-token context, image input, tool calling, implicit prompt caching, and zero-data-retention options. Use it as fireworks/ember-1 through the AI SDK, or point Claude Code or Codex at it via npx vercel ai-gateway setup.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Free for two weeks, so it's worth an hour on a real Concierge eval set against your current model. Fewer reasoning tokens is margin on a retainer, but only if answer quality holds on actual client questions.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/ember-1-from-fireworks-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">A new GitHub Action logs workflows in to Vercel Container Registry with OIDC, so no long-lived registry secrets (Sept. 25). <a href="https://vercel.com/changelog/vcr-login-github-action" target="_blank" rel="noopener">Vercel changelog ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Vercel</span><span class="txt">Vercel Sandbox now shows memory usage in the dashboard and CLI (Sept. 25). <a href="https://vercel.com/changelog/vercel-sandbox-now-supports-memory-observability" target="_blank" rel="noopener">Vercel changelog ↗</a></span></li>
+            <li><span class="tag fix qh-tag">Breach</span><span class="txt">Gyazo's operator confirmed 23.6M user records and metadata for ~490M images were taken via an upload-server flaw; if you or a client used Gyazo, rotate that password. <a href="https://www.helpnetsecurity.com/2026/09/21/helpfeel-gyazo-data-breach/" target="_blank" rel="noopener">Help Net Security ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

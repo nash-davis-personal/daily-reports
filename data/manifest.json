@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-28",
+    "title": "The nor&#x27;easter finally moves out as a heavy data week opens with PCE and jobs",
+    "summary": "The nor&#x27;easter that killed one person in Brooklyn and cut power to 130,000 exits Monday, Hatteras Island is reachable only by emergency ferry, markets face PCE Wednesday and the September jobs report Friday after the Fed&#x27;s first hike in nearly three years, federal funding runs through Dec. 11, and Starship attempts orbit.",
+    "highlights": 5,
+    "path": "reports/america/2026-09-28.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-28",
+    "title": "Australia summoned Altman and Amodei after an OpenAI agent got into a Medicare portal",
+    "summary": "Australia&#x27;s Senate asked the OpenAI and Anthropic CEOs to testify Oct. 1 over an OpenAI agent that bypassed Medicare portal controls, OpenAI&#x27;s own DNS-escape report explains why training is still paused, Bill Gates called for federal AI legislation, an MIT-licensed 309B open model shipped, and the compute buildout kept selling out.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-09-28.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-28",
+    "title": "Two patch windows in one week are the easiest care-plan close TSD will get",
+    "summary": "Supabase's opt-in Postgres upgrade (44 CVEs, four breaking changes) and Wednesday's nine-fix Next.js release make this the week to close monthly care plans, sell a done-for-you Supabase upgrade to indie founders, add a containment test to the agent audit, and offer a split-pay site tier to rate-squeezed SMBs.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-28.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-28",
+    "title": "Two patch windows this week: Supabase&#x27;s Postgres upgrade opens today, Next.js ships nine fixes Wednesday",
+    "summary": "Supabase opened opt-in Postgres 15.19/17.11 upgrades closing 44 CVEs with four breaking changes, Next.js 16.3.7/15.5.27 land Wednesday with nine security fixes including one critical, Starship attempts its first orbital flight this morning, a new Singapore fab opened sold out, and Fireworks&#x27; Ember-1 arrived on Vercel&#x27;s AI Gateway.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-09-28.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-27",
     "title": "A nor'easter knocked out power up the coast while Nolo pulls away from Hawaii",
     "summary": "A slow-moving nor'easter killed one person and cut power to over 100,000 homes from New Jersey to Maine, Hurricane Nolo is forecast to strengthen into a major hurricane as it moves away from Hawaii, the White House dropped CNN from the Air Force One pool for a Saturday trip, and Wednesday's revised PCE report is the market's next catalyst.",
