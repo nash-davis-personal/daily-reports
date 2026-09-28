@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-28.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-28",
+    "title": "Quiet window: nothing shipped since 2.1.283",
+    "summary": "No new Claude Code release since 2.1.283 (September 25), covered in the September 26 briefing; second quiet day running, nothing to act on.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-09-28.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
