@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-09-30",
+    "title": "The 10-year hit 5.25%, its highest since 2007, and inflation data lands this morning",
+    "summary": "The 10-year Treasury yield climbed to about 5.25%–5.28% and the 30-year to its highest since 2002 as stocks slipped, job openings and consumer confidence both fell, August PCE lands at 8:30 a.m. ET with the jobs report Friday, NC 12 reopened to one-way traffic on Hatteras, and Starship reached orbit on its first try.",
+    "highlights": 6,
+    "path": "reports/america/2026-09-30.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-09-30",
+    "title": "Claude Sonnet 5.5 and GPT-6.1 Sol both landed at $2/$10, so the mid-tier price war is on",
+    "summary": "Anthropic shipped Sonnet 5.5 (faster, cheaper per task, same $2/$10 list price) and OpenAI answered at DevDay with GPT-6.1 Sol at the same price plus $100/month always-on Dots agents; the MCP Python SDK patched a credential-stealing OAuth flaw; six AI CEOs signed a voluntary White House safety pact; Anthropic&#x27;s leaked IPO prospectus shows $518B in compute commitments; and Altman and Amodei are sending deputies to Australia&#x27;s Oct. 1 hearing.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-09-30.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-09-30",
+    "title": "Two AI models at the same price make this the week to sell Managed AI",
+    "summary": "Sonnet 5.5 and GPT-6.1 Sol landed at the same $2/$10 price, so TSD can upgrade every AI client with a failover and bill it as a retainer; the Next.js 16.3.7-to-16.3.8 switch is fresh care-plan proof; JadePuffer opens a $199 leaked-key sweep; OpenAI&#x27;s $100 Dots anchors Front Desk pricing; plus a head-to-head model test and a licensed-content Concierge clause.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-09-30.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-09-30",
+    "title": "Next.js moved its security fixes to 16.3.8, so upgrading to 16.3.7 won&#x27;t protect you",
+    "summary": "Vercel says today&#x27;s nine-fix Next.js security release will ship as 16.3.8 / 15.5.27 because 16.3.7 went out as a plain bug fix; JadePuffer showed an AI-run attack wiping Azure resources minutes after a key leaked on GitHub; Starship reached orbit; the Pentagon confirmed a 3 million-person records breach; Nvidia added $150B to its buyback and AMD is buying World Labs.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-09-30.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-09-28",
     "title": "The nor&#x27;easter finally moves out as a heavy data week opens with PCE and jobs",
     "summary": "The nor&#x27;easter that killed one person in Brooklyn and cut power to 130,000 exits Monday, Hatteras Island is reachable only by emergency ferry, markets face PCE Wednesday and the September jobs report Friday after the Fed&#x27;s first hike in nearly three years, federal funding runs through Dec. 11, and Starship attempts orbit.",

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-09-30" />
+  <meta name="report:title" content="Next.js moved its security fixes to 16.3.8, so upgrading to 16.3.7 won&#x27;t protect you" />
+  <meta name="report:summary" content="Vercel says today&#x27;s nine-fix Next.js security release will ship as 16.3.8 / 15.5.27 because 16.3.7 went out as a plain bug fix; JadePuffer showed an AI-run attack wiping Azure resources minutes after a key leaked on GitHub; Starship reached orbit; the Pentagon confirmed a 3 million-person records breach; Nvidia added $150B to its buyback and AMD is buying World Labs." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js moved its security fixes to 16.3.8, so upgrading to 16.3.7 won&#x27;t protect you — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, September 30, 2026</span>
+        <span>◆</span><span>Next.js patch day, agentic cloud attacks, Starship, chips</span>
+      </div>
+      <h1>Next.js moved its security fixes to 16.3.8, so upgrading to 16.3.7 won't protect you</h1>
+      <p class="standfirst">Today is Next.js patch day, but the version number changed: the nine security fixes are coming in 16.3.8 and 15.5.27, and they weren't published when this was filed. Meanwhile JadePuffer made the leaked-key risk concrete: an AI-driven attacker went from a public GitHub issue to mass deletion in about 35 minutes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 28 – Sept 30 (checked 6:50 a.m. ET)</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">9</div><div class="lbl">Next.js vulnerabilities in today's release: 1 critical, 2 high, 5 medium, 1 low</div></div><div class="stat"><div class="num">~35 min</div><div class="lbl">JadePuffer's destructive phase, including 100+ storage-deletion attempts in ~7 minutes</div></div><div class="stat"><div class="num">$235B</div><div class="lbl">Nvidia's total buyback authorization after a record $150B add</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>The patched version is 16.3.8</h4><p>Next.js 16.3.7 shipped with only a bug fix; the nine security fixes move to 16.3.8 and 15.5.27.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Leaked keys are getting used within minutes</h4><p>JadePuffer used a service-principal secret from a public GitHub issue to try to wipe an Azure tenant.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Starship reached orbit</h4><p>Flight 14 deployed 26 Starlink V3 satellites; an engine issue cut the mission to about three hours.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Pentagon breach: 3.05M records</h4><p>A file-sharing flaw exposed unencrypted SSNs and personnel data from Oct. 2025 to July 2026.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chip money keeps moving</h4><p>Nvidia added a record $150B to its buyback; AMD is buying World Labs for about $8.2B in stock.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch now: your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Sept 29–30</span>
+            <h3>Next.js's nine security fixes will ship as 16.3.8 and 15.5.27, and 16.3.7 doesn't include them</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel updated its advance notice Sept. 29: 16.3.7 was published with a bug fix and does not contain the security fixes planned for Sept. 30. Those now ship as 16.3.8 (16.x line) and 15.5.27 (15.x line) and cover nine vulnerabilities: one critical, two high, five medium and one low. At about 6:40 a.m. ET, npm <code>latest</code> was still 16.3.7 and <code>backport</code> was 15.5.26, with no new advisories on GitHub yet, so CVE IDs and affected ranges are not public.</p><p>This follows the Sept. 22 out-of-band fix for CVE-2026-94545, a critical remote-code-execution bug in <code>next/og</code> ImageResponse on the Node runtime (CVSS 9.5 per The Hacker News), fixed in 16.3.6.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: when 16.3.8 / 15.5.27 hit npm today, bump every client site on Next 15 or 16 and redeploy. Don't treat 16.3.7 as patched. Confirm every site is at least on 16.3.6 right now for the ImageResponse RCE.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026" target="_blank" rel="noopener">Next.js blog ↗</a> · <a href="https://github.com/vercel/next.js/releases/tag/v16.3.7" target="_blank" rel="noopener">v16.3.7 release ↗</a> · <a href="https://thehackernews.com/2026/09/critical-nextjs-imageresponse-flaw-can.html" target="_blank" rel="noopener">The Hacker News, CVE-2026-94545 ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Sept 28</span>
+            <h3>JadePuffer: an AI-driven attacker tried to wipe an Azure tenant minutes after a secret leaked on GitHub</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft (tracking it as Storm-3168) and Sysdig describe two compromised service principals from one tenant. One ran 300+ read operations over about 15.5 hours to map the environment. The other ran 150+ destructive or credential-harvesting operations in about 35 minutes, including 100+ storage-account deletion attempts in roughly seven minutes, and removed Azure Site Recovery locks to block restoration. Credentials for one principal had appeared in a public GitHub issue. Sysdig calls it the first ransomware operation run end to end by an LLM.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Supabase <code>service_role</code> key and Vercel tokens are the equivalent in TSD's world. Run a secret scan on every repo and issue tracker, rotate anything ever exposed, and turn on Supabase PITR or backups for any client with data worth ransoming.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/jadepuffer-agentic-ai-attacks-target-azure-destroy-cloud-resources/" target="_blank" rel="noopener">BleepingComputer ↗</a> · <a href="https://www.darkreading.com/cloud-security/jadepuffer-ai-actor-azure-tenant-destructive-cloud-attack" target="_blank" rel="noopener">Dark Reading ↗</a> · <a href="https://thehackernews.com/2026/09/jadepuffer-linked-attackers-used.html" target="_blank" rel="noopener">The Hacker News ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space &amp; security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Space</span>
+            <span class="ver">Sept 28</span>
+            <h3>Starship reached orbit on Flight 14 and deployed 26 Starlink V3 satellites</h3>
+          </div>
+          <div class="story-body">
+            <p>The booster landed offshore as planned, the ship reached orbit, deployed its 26 Starlink V3 satellites, and completed its deorbit burn and reentry. One Raptor Vacuum engine on Ship 41 shut down early during ascent, so controllers shortened the mission from nearly 10 hours to 3 hours 9 minutes, ending with a splashdown in the North Pacific.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct stack impact. More Starlink capacity does widen rural broadband, which over time reaches the small-town clients whose sites and voice agents currently run on weak connections.</div>
+          <div class="refs"><a href="https://www.npr.org/2026/09/28/nx-s1-5983418/spacex-starship-first-orbital-flight-14-nasa" target="_blank" rel="noopener">NPR ↗</a> · <a href="https://satnews.com/2026/09/28/spacex-launches-starship-flight-14-from-starbase-in-inaugural-orbital-test-flight/" target="_blank" rel="noopener">SatNews ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Breach</span>
+            <span class="ver">Sept 29</span>
+            <h3>The Pentagon confirmed a personnel-records breach covering about 3.05 million people</h3>
+          </div>
+          <div class="story-body">
+            <p>Attackers were inside a Defense Manpower Data Center system from October 2025 to July 2026 through a file-sharing vulnerability patched July 16. Exposed records, stored unencrypted, cover about 2.76 million living and 294,000 deceased people and include names, SSNs, birth dates, contact details and service data. Notices went out Sept. 18 with a year of credit monitoring.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> It's a clean example for client conversations: data you don't collect can't leak. Use it to argue for trimming intake forms and encrypting sensitive fields in Supabase.</div>
+          <div class="refs"><a href="https://cybersecuritynews.com/pentagon-data-breach/" target="_blank" rel="noopener">Cybersecurity News ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips &amp; big tech</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Business</span>
+            <span class="ver">Sept 28</span>
+            <h3>Nvidia added a record $150B to its buyback, and AMD is buying World Labs for about $8.2B</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia's $150 billion increase brings its authorization to $235 billion, which it calls the largest increase in history, and it expects to use the rest through fiscal 2028. It bought back $39 billion in the first half of this fiscal year. The same day, AMD agreed to buy Fei-Fei Li's World Labs, which builds models that generate and simulate 3D environments, in an all-stock deal expected to close by year-end. It is AMD's second-largest acquisition after Xilinx.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> AI-infrastructure cash flow is still enormous, which keeps inference prices falling. That's good for margins on TSD's AI retainers.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/09/28/nvidia-share-buyback-plan-gets-150-billion-boost.html" target="_blank" rel="noopener">CNBC on Nvidia ↗</a> · <a href="https://ir.amd.com/news-events/press-releases/detail/1299/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute" target="_blank" rel="noopener">AMD press release ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Supabase</span><span class="txt">Reminder: the Postgres 15.19 / 17.11 upgrade (44 CVEs) needs btree_gist-on-float and ltree index rebuilds, and pgcrypto PGP calls with unsupported ciphers now fail. Check client projects before opting in. <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog (Sept 25) ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">Domain availability and pricing can now be queried from the Vercel CLI and Registrar API without auth, and the CLI can search trace spans (Sept 28–29). <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Reco raised $55M to discover and monitor AI agents and their permissions inside companies; Samsung led a $1B investment in data-center builder Helix (roundup, primary sources not opened). <a href="https://techstartups.com/2026/09/29/top-tech-news-today-september-29-2026-anthropic-bytedance-google-meta-openai-samsung-more/" target="_blank" rel="noopener">TechStartups ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Quiet</span><span class="txt">No React or Tailwind releases in the window; Tailwind's latest stable is still 4.3.2.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
