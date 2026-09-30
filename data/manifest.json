@@ -10,6 +10,16 @@
     "path": "reports/america/2026-09-30.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-09-30",
+    "title": "Sonnet 5.5 is the new default Sonnet, and auto mode is now everyone's default",
+    "summary": "Releases 2.1.284 and 2.1.285 ship Sonnet 5.5 at $2/$10 per Mtok with 1M context, make auto mode the default permission mode for terminal and VS Code, split Ultracode into its own toggle, and cap background shell commands at 30 minutes by default.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-09-30.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

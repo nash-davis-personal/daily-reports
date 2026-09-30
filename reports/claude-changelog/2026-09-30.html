@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-09-30" />
+  <meta name="report:title" content="Sonnet 5.5 is the new default Sonnet, and auto mode is now everyone's default" />
+  <meta name="report:summary" content="Releases 2.1.284 and 2.1.285 ship Sonnet 5.5 at $2/$10 per Mtok with 1M context, make auto mode the default permission mode for terminal and VS Code, split Ultracode into its own toggle, and cap background shell commands at 30 minutes by default." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Sonnet 5.5 is the new default Sonnet, and auto mode is now everyone's default — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, September 30, 2026</span>
+        <span>◆</span><span>2 releases: 2.1.284, 2.1.285</span>
+      </div>
+      <h1>Sonnet 5.5 is the new default Sonnet, and auto mode is now everyone's default</h1>
+      <p class="standfirst">The window broke a three-day quiet streak with a new model and two defaults that change how every session behaves. Re-price any client AI feature running on Sonnet, and check your permission and background-process assumptions before the next unattended run.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.284 (September 28) and 2.1.285 (September 29), after the 2.1.283 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases covered</div></div>
+      <div class="stat"><div class="num">$2/$10</div><div class="lbl">Sonnet 5.5 per Mtok in/out</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Default behavior changes to check</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Sonnet 5.5 ships as default Sonnet</h4><p><code>claude-sonnet-5-5</code>: 1M context, $2/$10 per Mtok, $0.20 cache reads. Re-run the math on every client AI feature.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Auto mode is the default everywhere</h4><p>Terminal and VS Code sessions with no <code>defaultMode</code> now start in auto mode on every plan and provider.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Background commands now time out</h4><p>Background Bash/PowerShell stops at its <code>timeout</code>, default 30 min, max 2 h. Long watchers need an explicit limit.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Ultracode is its own switch</h4><p>Toggle with Tab in <code>/effort</code> or <code>/effort ultracode on|off</code>; it no longer forces xhigh effort.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>/mcp reconnect all</code></h4><p>One command retries every failed or unauthenticated MCP server; resumed sessions also wait up to 10s for a connecting server.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models, cost and effort</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.284</span>
+            <h3>Claude Sonnet 5.5 is the default Sonnet on the Anthropic API</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.284 adds <code>claude-sonnet-5-5</code> and makes it the default Sonnet on the Anthropic API. The changelog lists a 1M context window at $2 input and $10 output per million tokens, with cache reads at $0.20. A related 2.1.285 change: sessions behind a custom <code>ANTHROPIC_BASE_URL</code> now use the 1M window on models that have one (Opus 4.7+, Sonnet 5+, Fable); run <code>/autocompact 200k</code> if your gateway caps at 200K.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client feature that calls Sonnet by a pinned older ID keeps its old price and behavior until you change it. Spend 20 minutes this week listing every model string in the Bisque, Studio C and Sonderwerks repos, run each feature's eval or smoke test against <code>claude-sonnet-5-5</code>, and update the per-client cost line in the retainer math with the new rate.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.284</a> ◆ <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.285 (custom base URL 1M)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.284</span>
+            <h3>Ultracode split out of the effort slider</h3>
+          </div>
+          <div class="story-body">
+            <p>Ultracode is now a separate toggle in <code>/effort</code> (Tab, or <code>/effort ultracode [on|off]</code>). It stays on at any effort level and no longer forces xhigh. New keybinding actions <code>effortSlider:decreaseEffort</code>, <code>increaseEffort</code> and <code>toggleUltracode</code> let you rebind the slider keys. VS Code gets a matching switch under the Effort slider.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You can now run multi-agent Ultracode at medium effort on routine client tickets and keep xhigh for the hard ones, which should cut token burn on big fan-out jobs. Try it on the next Bisque batch task and compare cost in <code>/cost</code>.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.284</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Defaults that changed under you</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Default change</span>
+            <span class="ver">2.1.284 / 2.1.285</span>
+            <h3>Auto mode becomes the default permission mode</h3>
+          </div>
+          <div class="story-body">
+            <p>In 2.1.284, interactive terminal and VS Code sessions start in auto mode when no permission mode is configured, on every plan and provider. <code>permissions.defaultMode</code> still overrides it. In 2.1.285, <code>claude -p</code> and Python Agent SDK sessions on third-party providers or with telemetry off follow suit; <code>--permission-mode</code> still wins. Auto mode also gains a "Yes, but ask again next time" answer for one-off reads outside the working directories.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The 2.1.283 briefing flagged the narrower version of this; now it covers every fresh machine and every repo without a settings file. Put an explicit <code>permissions.defaultMode</code> in user settings on both Macs, and in any project that can reach the Bisque Vercel scope or a client's production Supabase, so the behavior is a choice you made.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.284</a> ◆ <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.285</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Default change</span>
+            <span class="ver">2.1.285</span>
+            <h3>Background shell commands get a hard time limit</h3>
+          </div>
+          <div class="story-body">
+            <p>Background Bash and PowerShell commands now stop after their <code>timeout</code> when run with <code>run_in_background</code>. The default is 30 minutes and the maximum is 2 hours. Claude is notified when one is killed. Separately, synchronous hooks no longer hang when they spawn a daemon with <code>&amp;</code> that holds its output open.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Anything you or a scheduled task starts in the background and expects to outlive half an hour (a long Vercel build tail, a video render, a watcher) will now be killed silently from your point of view. Pass an explicit timeout up to 2 h, or move truly long jobs to launchd where the Nash OS runners already live.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.285</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs, MCP and artifacts</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.284</span>
+            <h3><code>/mcp reconnect all</code> and steadier MCP on resume</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/mcp reconnect all</code> retries every MCP server that failed or needs auth in one go. MCP tool calls in a resumed session now wait up to 10 seconds for a still-connecting server before failing with "No such tool available". 2.1.285 also makes <code>claude mcp list</code> show WebSocket servers with health status.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your setup routinely has a few servers timing out at startup (this very run saw chrome-devtools and notebooklm drop). Make <code>/mcp reconnect all</code> the first move when a session looks tool-starved, before restarting it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.284</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.284 / 2.1.285</span>
+            <h3>Scheduled-run and workflow reliability fixes</h3>
+          </div>
+          <div class="story-body">
+            <p>A failed <code>agent()</code>, <code>parallel()</code> or <code>pipeline()</code> call that a workflow script awaits late (or never) no longer counts as an unhandled rejection that can end a background session. <code>/loop</code> in self-paced mode now writes each status update as visible text. "Prompt is too long" after compaction now triggers a second, tighter compaction. Damaged response streams are retried instead of writing "undefined" into answers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These hit the daily scout, the Fleet Steward style loops and any multi-agent Workflow you run overnight. Nothing to change; if a scheduled task was dying mysteriously last week, rerun it on 2.1.285 before debugging.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.284</a> ◆ <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.285</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.285</span>
+            <h3><code>claude --desktop</code>, resuming background sessions, and a VS Code diagnostics tool</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude --desktop</code> opens the desktop app on the current folder, or on a session with <code>--continue</code> / <code>--resume &lt;id&gt;</code>. <code>/resume</code> on a session running in the background now opens it, and <code>claude --resume &lt;id&gt; "prompt"</code> sends that prompt as its next turn. In VS Code, Claude can now read the Problems panel on demand, beyond the check right after an edit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> <code>claude --resume &lt;id&gt; "prompt"</code> is a clean way to nudge a long-running background build from a script or phone shortcut. The VS Code diagnostics tool means type errors in Next.js client repos get caught mid-task; ask Claude to check Problems before it declares a feature done.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.285</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Artifact publishes after a rewind (Esc Esc) no longer overwrite newer file content; dismissing a row in <code>/artifacts</code> no longer unlinks its file. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An Artifact "don't ask again" rule no longer lets a publish reach files outside the working directories; use <code>--add-dir</code>. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude plugin configure &lt;plugin&gt;</code> and <code>--config server.key=value</code> on install for bundled <code>.mcpb</code> servers. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_DISABLE_WEB_FETCH</code> env var turns off WebFetch. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sandbox auto-allow stops prompting on every <code>python3 -c</code> / <code>node -e</code> containing <code>=</code>. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fork subagents now inherit the parent's plan mode or <code>dontAsk</code> mode and cannot exit plan mode. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A failing streaming request could retry up to 21 times; the fallback now shares the retry budget. <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/usage</code> and the status line show gateway spend in dollars; auto-memory neutralizes invisible characters and fake markup in <code>MEMORY.md</code>. <span class="ver">2.1.284</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Symlinked <code>.claude/rules</code> from outside the project now asks for approval instead of being skipped. <span class="ver">2.1.284</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">MCP server name <code>widgets</code> is reserved in cloud sessions; <code>/tasks</code> folds internal work under "System tasks". <span class="ver">2.1.285</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Long lists of <code>/ultrareview</code> upload, VS Code tab-restore and Claude Tag admin fixes; skip unless you hit one. <span class="ver">2.1.284 / 2.1.285</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
