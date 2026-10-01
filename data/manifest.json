@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-01",
+    "title": "Inflation cooled in August, long-term yields rose anyway, and the Dow closed September down 4.9%",
+    "summary": "Core PCE eased to 3.0% while the 10-year Treasury ended near 5.30%; layoffs hit a four-year low for September as hiring plans sank, and the jobs report lands Friday.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-01.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Release 2.1.286 tells Claude to run a skill named verify before committing, strips --bare down to command-line MCP servers with no background tasks, caps retries at 14 requests per model call, closes several secret-leak paths in logs, and locks plugin installs to registry packages.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-01.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-01",
+    "title": "Google announced Gemini 4 Argon but kept it gated, and the FTC opened a probe into OpenAI and Anthropic",
+    "summary": "Gemini 4 Argon arrives at $2/$10 intro pricing for cyber defenders only, the FTC starts the first US enforcement look at rogue agents, and voice AI gets a $22B proof point plus a 320ms model that plugs into Vapi.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-01.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-01",
+    "title": "Employers are skipping holiday hires, so sell them an AI front desk for the season",
+    "summary": "Six moves ranked by fit: a 90-day Holiday Coverage package for existing clients, a local SBDC referral play, a same-day Next.js patch note, an AI trust sheet, a Mercury Voice margin test, and pool-service outreach.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-01.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-01",
+    "title": "Next.js 16.3.8 and 15.5.27 are out with the security fixes, so patch every site today",
+    "summary": "The delayed Next.js security release shipped Sept. 30, an autonomous AI agent breached a security nonprofit through two ticketing-system zero-days, and Micron posted a $54B quarter on AI memory demand.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-01.html"
   },
   {
     "source": "america",

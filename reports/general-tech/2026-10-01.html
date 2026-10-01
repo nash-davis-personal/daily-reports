@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-01" />
+  <meta name="report:title" content="Next.js 16.3.8 and 15.5.27 are out with the security fixes, so patch every site today" />
+  <meta name="report:summary" content="The delayed Next.js security release shipped Sept. 30, an autonomous AI agent breached a security nonprofit through two ticketing-system zero-days, and Micron posted a $54B quarter on AI memory demand." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Next.js 16.3.8 and 15.5.27 are out with the security fixes, so patch every site today — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, October 1, 2026</span>
+        <span>◆</span><span>Patch day, an AI-run breach, and a record chip quarter</span>
+      </div>
+      <h1>Next.js 16.3.8 and 15.5.27 are out with the security fixes, so patch every site today</h1>
+      <p class="standfirst">The release yesterday's edition told you to wait for has shipped. Elsewhere, a Dutch security nonprofit published what an autonomous AI attacker did inside its network, and Micron's quarter showed how much money the AI buildout is moving through memory chips.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept 30 – Oct 1</span>
+        <span>◆</span><a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.8</div><div class="lbl">The Next.js version that carries the September security fixes (15.5.27 on the 15 line)</div></div>
+      <div class="stat"><div class="num">$54.23B</div><div class="lbl">Micron's fiscal fourth-quarter revenue, against $11.32B a year earlier</div></div>
+      <div class="stat"><div class="num">11:10 a.m.</div><div class="lbl">Eastern launch time today for NASA's SpaceX Crew-13 flight to the ISS</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Next.js now</h4><p>16.3.8 and 15.5.27 fix an image-optimizer SSRF, five medium cache and disclosure bugs, and a dev-server leak.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Vercel changed a cache rule</h4><p>The CDN no longer caches responses that list Cookie in the Vary header.</p></div>
+        <div class="signal"><div class="n">03</div><h4>An AI agent breached DIVD</h4><p>It chained two Zammad zero-days to root in seconds. Zammad 7 is the fix.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Micron's record quarter</h4><p>$54.23B in revenue and a $61.5B guide for next quarter on AI memory demand.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Supabase Middleware 1.0</h4><p>A typed per-request middleware engine that runs on Edge Functions, Vercel, Workers and Node 22+.</p></div>
+        <div class="signal"><div class="n">06</div><h4>MetaMask disclosed an incident</h4><p>It is pulling affected Ethereum validators and says wallets show no direct threat so far.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Patch</span>
+            <span class="ver">Sept 30</span>
+            <h3>Next.js shipped its September security release: 16.3.8 and 15.5.27</h3>
+          </div>
+          <div class="story-body">
+            <p>The fixes postponed last week over an upstream dependency are now available. The headline bug is a high-severity server-side request forgery in Image Optimization (CVE-2026-94483): an attacker who controls an allow-listed remote URL can make your server fetch internal addresses. Apps with no <code>images.remotePatterns</code> configured are not affected.</p>
+            <p>Five medium-severity issues ride along. Two are cache-poisoning bugs in SSG and ISR pages, one of which only hits self-hosted Pages Router apps and does not affect Vercel deployments. One lets metadata image routes ignore <code>dynamicParams</code> in webpack builds. Two involve <code>'use cache'</code>: a cache-key bug with root params, and Draft Mode content leaking into regular responses when Cache Components is on. A low-severity bug lets a malicious website read project paths, source snippets and logs from the MCP endpoint that <code>next dev</code> exposes on your machine.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm install next@16.3.8</code> (or <code>next@15.5.27</code>) in every TSD and client repo today and redeploy. Prioritize any site with <code>images.remotePatterns</code> set, any site using Draft Mode with Cache Components, and your own laptop, since the dev-server leak applies whenever you run <code>next dev</code> and browse the web.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Next.js ↗</a> · <a href="https://github.com/vercel/next.js/security/advisories/GHSA-cjq9-62q9-8jv4" target="_blank" rel="noopener">SSRF advisory ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Platform</span>
+            <span class="ver">Sept 30</span>
+            <h3>Vercel stopped caching responses that vary on Cookie, and renamed Edge Requests</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's CDN no longer caches a response whose <code>Vary</code> header includes <code>Cookie</code>. The response is still served; it just won't be stored. "Edge Requests" are now called "CDN Requests" with no change to pricing, limits or metering. Vercel Agent can also install private npm packages using a team <code>NPM_TOKEN</code>, and Sandboxes can connect to Secure Compute networks. These come from a changelog aggregator; the entries on vercel.com were not opened individually.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client route sets <code>Vary: Cookie</code> and you were counting on it being cached, it now hits the function every time. Check cache-hit rates on your busiest pages this week and watch function usage on the next invoice.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a> · <a href="https://releasebot.io/updates/vercel" target="_blank" rel="noopener">Releasebot summary ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Release</span>
+            <span class="ver">Sept 30</span>
+            <h3>Supabase released Middleware 1.0</h3>
+          </div>
+          <div class="story-body">
+            <p>It is a type-safe engine for per-request logic: you write units with <code>defineMiddleware</code> and chain them with <code>pipeline()</code>. CORS and feature-flag middleware ship built in, along with stable server middleware for Supabase auth, client helpers and OAuth discovery. It runs anywhere <code>fetch</code> runs, including Supabase Edge Functions, Vercel Functions, Cloudflare Workers, Deno, Bun and Node 22 or newer, and plugs into Hono, H3, Elysia, NestJS and TanStack Start. It is on npm and JSR and follows semver from here. Details are from a changelog aggregator.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful for Edge Functions and standalone API workers where you hand-roll auth checks today. It does not replace the <code>proxy.ts</code> pattern in your Next 16 apps, so leave those alone.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a> · <a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Releasebot summary ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Sept 29–30</span>
+            <h3>An autonomous AI agent breached a security nonprofit by chaining two Zammad zero-days</h3>
+          </div>
+          <div class="story-body">
+            <p>The Dutch Institute for Vulnerability Disclosure says an attacker used two previously unknown flaws in the open-source Zammad ticketing system (CVE-2026-102489 and CVE-2026-102490) to hijack sessions, run code and escalate to root "in seconds." An AI agent then ran the rest of the intrusion on its own, choosing each next step itself. DIVD called it "loud and very, very messy": the agent even disrupted its own interception attack by password-spraying. Data was taken before network segmentation stopped it from moving further. The agent left written explanations of its decisions, which let DIVD reconstruct the attack. Zammad 7 is the safe version.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Sloppy attackers moving at machine speed still get in when an internet-facing tool is unpatched. For every client, list the self-hosted or third-party tools exposed to the internet (ticketing, booking, forms, admin panels) and confirm who patches each one. If a client runs Zammad, upgrade it to 7 or take it offline.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/divd-says-zammad-zero-days-enabled-ai-driven-network-breach/" target="_blank" rel="noopener">BleepingComputer ↗</a> · <a href="https://www.bleepingcomputer.com/news/security/automated-ai-agent-used-to-breach-cybersecurity-nonprofit-divd/" target="_blank" rel="noopener">Earlier report ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Incident</span>
+            <span class="ver">Oct 1</span>
+            <h3>MetaMask disclosed a security incident in its staking infrastructure</h3>
+          </div>
+          <div class="story-body">
+            <p>MetaMask says part of its infrastructure is affected and that it is exiting the affected Ethereum validators in its non-custodial staking operation, including validators in the Lido protocol, with the last exits expected by the end of Oct. 7. It says it has found no immediate threat to users' wallets. It has not said what happened, how the attackers got in, or whether internal data was accessed. The investigation is ongoing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action for client work. If you or a client hold assets through MetaMask staking, read the official notice and expect delays while validators exit.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/metamask-discloses-security-incident-affecting-its-infrastructure/" target="_blank" rel="noopener">BleepingComputer ↗</a> · <a href="https://thehackernews.com/2026/10/metamask-security-incident-prompts-exit.html" target="_blank" rel="noopener">The Hacker News ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips, hardware &amp; space</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Earnings</span>
+            <span class="ver">Sept 30</span>
+            <h3>Micron reported a $54.23B quarter and guided to $61.5B</h3>
+          </div>
+          <div class="story-body">
+            <p>Fiscal fourth-quarter revenue was $54.23 billion against $11.32 billion a year earlier, ahead of the $51.49 billion analysts expected. Full-year revenue reached $133.19 billion, up from $37.38 billion. Adjusted earnings were $33.42 a share. Micron guided the current quarter to about $61.5 billion. CNBC reports data-center revenue rose roughly eleven-fold. Memory is the part of an AI server that every model vendor needs more of, and Micron says supply is tight.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Tight memory supply is one reason model prices may stop falling as fast as they have. Don't promise clients that AI running costs will keep dropping. Price retainers on today's token costs and treat any future drop as margin.</div>
+          <div class="refs"><a href="https://www.globenewswire.com/news-release/2026/09/30/3372366/14450/en/micron-technology-inc-reports-record-fiscal-fourth-quarter-and-full-year-2026-results.html" target="_blank" rel="noopener">Micron release ↗</a> · <a href="https://www.cnbc.com/2026/09/30/micron-mu-q4-earnings-report-2026.html" target="_blank" rel="noopener">CNBC ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Sept 30</span>
+            <h3>Apple is reported to unveil a smart-home hub on Oct. 13</h3>
+          </div>
+          <div class="story-body">
+            <p>Bloomberg's Mark Gurman reports Apple plans to show a home hub with a 6-inch display on Oct. 13, alongside a new HomePod mini and Apple TV 4K. The hub mounts on a wall or sits on a stand, recognizes who is using it by voice or face, and runs on the Siri AI platform that entered beta in September. This is a report; Apple has not announced an event.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to build yet. If it ships, a voice-first screen in the kitchen becomes another place people ask for a plumber or a salon. Keep client business listings, hours and booking links accurate, because assistants answer from that data.</div>
+          <div class="refs"><a href="https://www.macrumors.com/2026/09/30/apple-event-on-october-13/" target="_blank" rel="noopener">MacRumors ↗</a> · <a href="https://www.bloomberg.com/news/articles/2026-09-30/apple-is-finally-ready-to-enter-its-next-big-category-the-smart-home" target="_blank" rel="noopener">Bloomberg ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">NASA's SpaceX Crew-13 is set to launch four astronauts to the ISS at 11:10 a.m. ET today on a Falcon 9, with docking about eight hours later. Forecasters gave a 55% chance of acceptable weather. <a href="https://www.space.com/news/live/spacex-nasa-crew-13-astronauts-launch-to-iss-october-1-2026" target="_blank" rel="noopener">Space.com ↗</a></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Cisco Catalyst SD-WAN Manager has an actively exploited authentication bypass (CVE-2026-76504, CVSS 9.8) with no workaround; fixed builds are out. Relevant only if a client runs Cisco SD-WAN (roundup; advisory not opened). <a href="https://www.cisoplatform.com/profiles/blogs/breach-watch-sept-30-cisco-sdwan" target="_blank" rel="noopener">CISO Platform ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">AI Gateway added Browserbase search and fetch tools, and Streamdown 2.7.0 speeds up code blocks, tables and Mermaid rendering in streamed chat UIs (changelog aggregator). <a href="https://releasebot.io/updates/vercel" target="_blank" rel="noopener">Releasebot ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Reminder</span><span class="txt">Supabase's Postgres 15.19 / 17.11 upgrade still needs the ltree and btree_gist index checks and the pgcrypto legacy-cipher check before you opt a project in. <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Web</span><span class="txt">Reddit will end RSS support on Nov. 13, per Implicator's roundup (primary not opened). Any client feed widget or monitoring script that reads Reddit RSS will break. <a href="https://implicator.ai/white-house-accord-no-penalty-meta-ai-data-centers" target="_blank" rel="noopener">Implicator ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Deals</span><span class="txt">HPE booked a $1.2B order from Vultr for AMD Helios AI racks, and Amazon signed a custom-silicon IP deal with Synopsys worth more than $1B, per Implicator's roundup (primaries not opened). <a href="https://implicator.ai/white-house-accord-no-penalty-meta-ai-data-centers" target="_blank" rel="noopener">Implicator ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Stack</span><span class="txt">No React or Tailwind release turned up in today's searches.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
