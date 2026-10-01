@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-01",
+    "title": "2.1.286: a verify skill now runs before commits, and --bare gets stricter",
+    "summary": "Release 2.1.286 tells Claude to run a skill named verify before committing, strips --bare down to command-line MCP servers with no background tasks, caps retries at 14 requests per model call, closes several secret-leak paths in logs, and locks plugin installs to registry packages.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-10-01.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

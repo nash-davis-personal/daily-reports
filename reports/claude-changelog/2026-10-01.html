@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-01" />
+  <meta name="report:title" content="2.1.286: a verify skill now runs before commits, and --bare gets stricter" />
+  <meta name="report:summary" content="Release 2.1.286 tells Claude to run a skill named verify before committing, strips --bare down to command-line MCP servers with no background tasks, caps retries at 14 requests per model call, closes several secret-leak paths in logs, and locks plugin installs to registry packages." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.286: a verify skill now runs before commits, and --bare gets stricter — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, October 1, 2026</span>
+        <span>◆</span><span>1 release: 2.1.286</span>
+      </div>
+      <h1>2.1.286: a verify skill now runs before commits, and --bare gets stricter</h1>
+      <p class="standfirst">One release since the last briefing, and it is mostly fixes. Five items are worth acting on: a free pre-commit gate, a stricter <code>--bare</code>, a retry cap, redaction leaks, and a tighter plugin install path.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.286 (September 30), after the 2.1.284 / 2.1.285 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">14</div><div class="lbl">Max requests per failing model call</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Secret-redaction leaks fixed</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4><code>verify</code> skill runs before commits</h4><p>Name a skill <code>verify</code> and Claude runs it right before committing, except docs-only and tests-only commits.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>--bare</code> is stricter</h4><p>Only command-line MCP servers, no system reminders, no background tasks; timed-out shell commands stop.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Retry cap and model fallback</h4><p>At most 14 requests per failing model call by default; a refused model retries once on the previous same-tier model.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Redaction leaks closed</h4><p>Bearer tokens, URL passwords with punctuation and oddly named keys could show in logs and MCP errors. Fixed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Plugins install from the registry only</h4><p>npm sources that are git repos or folders are refused; dependencies come only from registry packages.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code quality and supply chain</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.286</span>
+            <h3>A skill named <code>verify</code> now runs right before commits</h3>
+          </div>
+          <div class="story-body">
+            <p>If your project or user skills include one named <code>verify</code>, Claude is now told to run it right before committing. The changelog lists two exceptions: docs-only and tests-only commits.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is a free pre-commit gate with no hook wiring. Write one user-level <code>verify</code> skill that runs typecheck, lint and <code>next build</code> (or <code>vite build</code>) and add a project-level one in the Bisque, Studio C and Sonderwerks repos where the checks differ. Broken builds then get caught before the push reaches Vercel.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.286</span>
+            <h3>Plugin installs only accept registry packages</h3>
+          </div>
+          <div class="story-body">
+            <p>Plugin installs now refuse npm sources that are git repositories or folders, and plugin dependencies install only from registry packages. Plugin errors for a marketplace Claude Code refuses to load now say why and how to fix it instead of "not found".</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any plugin you installed points at a git URL or a local folder through npm, its next install or update will fail. Run <code>/plugin</code> once on each Mac and confirm the ones you depend on (vercel, codex) still load.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended and headless runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.286</span>
+            <h3><code>--bare</code> now means bare</h3>
+          </div>
+          <div class="story-body">
+            <p>Under <code>--bare</code>, Claude Code connects only the MCP servers named on the command line, sends the model no system reminders, and starts no background tasks. A shell command that reaches its timeout now stops instead of moving to the background.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check every launchd job and script that calls <code>claude --bare</code>. Any that relied on MCP servers from settings files will now run without them; name the servers on the command line. Long shell steps in those scripts need an explicit timeout that covers the full run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.286</span>
+            <h3>Retries capped at 14 requests per model call, plus a model fallback</h3>
+          </div>
+          <div class="story-body">
+            <p>One retry limit now covers a whole model call, so with default retry settings a failing call sends at most 14 requests. Separately, when the Anthropic API refuses the model your default or an alias resolves to, Claude Code retries once on the previous model of the same tier. Fallback retries that cannot run fast now run at standard speed with a one-time notice, and the fallback notice says when the context window dropped from 1M to 200K.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Scheduled jobs fail faster and more predictably during an API incident, and a bad alias no longer kills every turn. If a nightly run comes back thinner than usual, look for the fallback notice in its log before blaming the prompt: it may have run on the older model with a 200K window.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.286</span>
+            <h3>Crashed sessions, stalled workflows and phantom "Succeeded" runs</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude --resume</code> and <code>--continue</code> no longer lose every turn after a batch of parallel tool calls when the earlier session crashed or was killed. Workflow tool subagents are no longer restarted from their original prompt when a connection stalls for a few minutes mid-response. Background jobs no longer show done while waiting for your approval. In cloud sessions, routine runs whose session never started now show as Failed where they used to show Succeeded, and a late run reads "Due" with its scheduled time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Succeeded-but-never-ran bug matters most: if you have any cloud routines, scan last week's run history for green rows with no output and rerun them. Update both Macs to 2.1.286 before the next long multi-agent job so a dropped connection stops costing a full restart.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Secrets and safety rails</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.286</span>
+            <h3>Six secret-redaction leaks closed in logs, transcripts and MCP errors</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP error messages no longer show a credential's value when "Bearer" or "Basic" came before its key name. Percent-encoded Bearer tokens are now fully masked. Redacted logs and transcripts no longer show a secret whose key name hides an invisible character, or part of a URL password containing punctuation such as <code>)</code>, quotes, <code>&amp;</code> or a second <code>@</code>. The transcript in the <code>/feedback</code> zip is valid JSON again after redaction.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Transcripts from before this release may contain client Supabase or Vercel credentials in plain text. Treat old session transcripts and <code>/feedback</code> zips as sensitive, keep them out of anything you share with Grant, Bishop or a client, and rotate any database URL password you know appeared in an MCP error.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.286</span>
+            <h3><code>/compact</code>, <code>/clear</code> and <code>/rewind</code> ask before hitting the wrong conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>Typing those commands while viewing a background agent's or teammate's transcript used to act silently on the main conversation. A dialog now names the target and asks first. The permission prompt also shows a count such as "2 of 5" when several requests stack up.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> One less way to wipe the main thread of a long client session while checking on a subagent. No action needed beyond updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.286</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Send now (ctrl+enter) in a subagent's view moves its running command to the background so your message is read right away; the same key backgrounds a skill's own shell command instead of ending it. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">API 400 errors after a tool or hook returned an object, number or boolean instead of text. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagents with worktree isolation no longer load the project CLAUDE.md a second time; foreground subagents no longer miss the task-tracking tools. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP connectors listing no tools for up to a day after their server dropped the older handshake; a repeat MCP sign-in request no longer breaks the pending link. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Headless sessions stop repeating the "MCP servers require authentication" reminder after a successful re-auth when the MCP discovery cache is on. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude auth status</code> reports a Console sign-in's stored key as <code>api_key</code>; <code>/status</code> marks an unused Anthropic profile as not in use; macOS no longer shows "Not logged in" after <code>/login</code> succeeds in another window. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control: a message arriving during exit stays queued for the next run, and Claude is told when an attached file did not arrive. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Apps gateway spend meter priced 1-hour cache writes at the 5-minute rate and undercounted input tokens on streamed turns with a server-side tool. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Slash command suggestions respond faster with many skills installed, and descriptions match by word prefix. Ctrl+G opens your external editor on the cursor's line. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>/hooks</code> opens on one list grouped by event; list screens align details in one column; theme and output style pickers no longer take number keys. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>/exit</code>'s Remove worktree runs after Claude Code stops the servers and shells it started there. <code>/ultrareview</code> output drops the browser link. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">VS Code: bookmarks side panel for saved responses, a Questions row recording your answers to question cards, and option previews on those cards. Stop and Escape now end only the current turn; background agents keep running. <span class="ver">2.1.286</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud session, Windows and Claude Tag (Slack) admin fixes; skip unless you hit one. <span class="ver">2.1.286</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
