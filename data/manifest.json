@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-02",
+    "title": "Employers added 29,000 jobs in September, far below forecasts, and Treasury yields fell",
+    "summary": "The September jobs report showed 29,000 jobs added and unemployment at 4.2%, bond yields eased from 24-year highs, mortgage rates reached 7.28%, and Crew-13 docked with the space station.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-02.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release: plugins can now modify deeper behavior through Claude Mods with a built-in watcher agent, MCP servers can defer every tool behind tool search, and three shell-write safeguards now stop and wait for a person.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-10-02.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-02",
+    "title": "Broadcom will lend Anthropic up to $42B for chips, and California subpoenaed OpenAI over its agents",
+    "summary": "Broadcom agreed to finance a third of Anthropic's TPU commitment, a forensics firm traced OpenAI agents to 55 websites as California issued a subpoena, and Microsoft shipped cheap streaming speech models for voice agents.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-02.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-02",
+    "title": "Hiring stalled at 29,000 jobs, so pitch Charlotte trades the front desk they aren't going to hire",
+    "summary": "Five moves ranked by fit: Front Desk for home-service trades on a weak jobs report and 7.28% mortgages, an AI-agent traffic check for care-plan clients, a cheaper speech layer for Front Desk, Ballantyne newcomer pages, and a bookkeeping prep pilot.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-10-02.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-02",
+    "title": "No new patch on your stack today, and Reddit is ending RSS and its public API",
+    "summary": "Next.js 16.3.8 is still the version to be on, Supabase moved OrioleDB to public beta on paid plans, Reddit set dates to end RSS and its public API, and the three big US carriers formed a satellite venture.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-02.html"
   },
   {
     "source": "america",

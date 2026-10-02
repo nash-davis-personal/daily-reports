@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-02" />
+  <meta name="report:title" content="No new patch on your stack today, and Reddit is ending RSS and its public API" />
+  <meta name="report:summary" content="Next.js 16.3.8 is still the version to be on, Supabase moved OrioleDB to public beta on paid plans, Reddit set dates to end RSS and its public API, and the three big US carriers formed a satellite venture." />
+  <meta name="report:highlights" content="6" />
+
+  <title>No new patch on your stack today, and Reddit is ending RSS and its public API — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, October 2, 2026</span>
+        <span>◆</span><span>Stack status, platform lockdowns, chips and space</span>
+      </div>
+      <h1>No new patch on your stack today, and Reddit is ending RSS and its public API</h1>
+      <p class="standfirst">Next.js, React, Tailwind and Supabase published no new security advisories since Wednesday, so 16.3.8 remains the target. The platform news is Reddit closing its open data doors on fixed dates, and the hardware news is carriers pooling satellite coverage and Google putting AI chips in orbit.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 1 – Oct 2</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.8</div><div class="lbl">Still the patched Next.js release; nothing newer has shipped since Sept. 30</div></div>
+      <div class="stat"><div class="num">Nov 13</div><div class="lbl">The day Reddit turns off RSS feeds; the public API closes by March 2027</div></div>
+      <div class="stat"><div class="num">$300M+</div><div class="lbl">Value of GPU servers a California man is charged with smuggling to China</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new to patch</h4><p>Next.js 16.3.8 and 15.5.27 are still current. Any client site below them is the open item.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OrioleDB reaches public beta</h4><p>Supabase now allows it on Pro, Team and Enterprise. It is still for testing, with no SLA.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Reddit closes RSS and its API</h4><p>RSS ends Nov. 13. New API requests stop Oct. 31. Public API access ends by March 2027.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Carriers pool satellite coverage</h4><p>AT&amp;T, T-Mobile and Verizon formed a venture for direct-to-phone service in dead zones.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Google's chips are in orbit</h4><p>A Suncatcher test satellite with four TPUs launched on a Falcon 9 on Oct. 1.</p></div>
+        <div class="signal"><div class="n">06</div><h4>A $300M chip-smuggling case</h4><p>The Justice Department arrested a server reseller accused of routing Nvidia systems to China.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security status</span>
+            <span class="ver">checked Oct 2</span>
+            <h3>No new advisories for Next.js, React, Tailwind or Supabase; 16.3.8 and 15.5.27 remain the patched versions</h3>
+          </div>
+          <div class="story-body">
+            <p>The GitHub release and advisory feeds show nothing newer than the Sept. 30 Next.js security release. The latest stable versions are Next.js 16.3.8 and 15.5.27, React 19.3.0 (Sept. 9), Tailwind 4.3.3 (July 16) and supabase-js 2.117.2 (Sept. 25). Vite shipped 8.3.2 on Oct. 1, a routine patch release. The Sept. 30 Next.js advisories included a high-severity server-side request forgery in Image Optimization, and the critical next/og remote-code-execution advisory from Sept. 22 still applies to anything older.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Today's job is finishing Wednesday's. List every client repo's Next.js version and confirm each one reads 16.3.8 or 15.5.27. A site still on 16.3.7 or lower is exposed to a published SSRF.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases ↗</a> · <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories ↗</a> · <a href="https://github.com/vitejs/vite/releases" target="_blank" rel="noopener">Vite releases ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Supabase</span>
+            <span class="ver">Oct 1</span>
+            <h3>Supabase moved OrioleDB to public beta and opened it to paid plans</h3>
+          </div>
+          <div class="story-body">
+            <p>OrioleDB is Supabase's alternative storage engine for Postgres. Projects using it can now be created on Pro, Team and Enterprise plans and are billed the same as standard Postgres projects. The beta adds compute and disk resizing, pause and restore, version upgrades, read replicas and scheduled backups. New projects run OrioleDB beta18 on Postgres 17.11.</p>
+            <p>Supabase says the beta is for testing, recommends against production use and offers no SLA. Point-in-time recovery and restoring a backup into a new project are unavailable.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Keep every client on standard Postgres. No point-in-time recovery rules it out for anything that holds bookings or customer records. It is worth one throwaway project to see whether Concierge's vector queries run faster.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/orioledb-public-beta" target="_blank" rel="noopener">Supabase changelog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Vercel</span>
+            <span class="ver">Sept 30 – Oct 1</span>
+            <h3>Vercel's Sandbox can join a Secure Compute network, and the AI Gateway added web tools and audio models</h3>
+          </div>
+          <div class="story-body">
+            <p>On Sept. 30 Vercel let Sandboxes connect to a dedicated Secure Compute network, gave Vercel Agent the ability to install private npm packages using team environment variables, and added Browserbase Search and Fetch as tools any gateway model can call. On Oct. 1 the gateway added Microsoft's new speech and transcription models and two more models, one of them free through Oct. 31. The two changes covered here yesterday still stand: the CDN no longer stores responses whose Vary header includes Cookie, and Edge Requests are now called CDN Requests with no price change.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Search and fetch through the gateway means Concierge could look up a live page without you running a scraper. The Microsoft transcription model is the one to test for Front Desk, covered in <a href="../general-ai/2026-10-02.html">today's AI brief</a>.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platforms and security</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Platform</span>
+            <span class="ver">Oct 1 – 2</span>
+            <h3>Reddit will end RSS on Nov. 13 and close its public API by March 2027</h3>
+          </div>
+          <div class="story-body">
+            <p>Reddit says RSS feeds are being abused for large-scale scraping and automation, and it will stop serving them on Nov. 13. It stops accepting new public API requests on Oct. 31. Developers of approved third-party apps and bots must register them by Jan. 12, 2027, and public API access closes in March 2027, with Reddit steering developers to its Developer Platform. Commercial access will require a deal with Reddit. Old Reddit will be limited to logged-in moderators and people who used the classic interface in the past 90 days.</p>
+            <p>The change hits social-listening tools, research projects and AI assistants that read Reddit to answer questions.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check whether any scout routine, lead-monitoring script or client tool reads a Reddit .rss URL or the public API. Anything that does stops working Nov. 13. It is also a reminder to build on data the client owns, such as their reviews, their inbox and their call logs.</div>
+          <div class="refs"><a href="https://www.androidheadlines.com/2026/10/reddit-is-ending-rss-feeds-amid-scraping-concerns.html" target="_blank" rel="noopener">Android Headlines ↗</a> · <a href="https://www.how2shout.com/news/reddit-rss-public-api-shutdown-dates.html" target="_blank" rel="noopener">How2Shout ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Exploited</span>
+            <span class="ver">Sept 30</span>
+            <h3>CISA added an exploited Cisco SD-WAN Manager login bypass to its must-patch list, due Oct. 3</h3>
+          </div>
+          <div class="story-body">
+            <p>CVE-2026-76504, rated 9.8, lets an unauthenticated attacker reach the admin API of Cisco Catalyst SD-WAN Manager through a URL-encoding flaw in an HTTP request. Cisco confirms attacks are under way. CISA listed it on Sept. 30 and gave federal agencies until Oct. 3. Rapid7 advises upgrading to a fixed release and searching logs for POST requests to encoded variants of "/j_security_check".</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is not on your stack and needs no action from you. If a client with multiple locations mentions a Cisco SD-WAN, forward their IT contact the Rapid7 link.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html" target="_blank" rel="noopener">The Hacker News ↗</a> · <a href="https://www.rapid7.com/blog/post/etr-critical-cisco-catalyst-sd-wan-manager-api-authentication-bypass-exploited-in-the-wild-cve-2026-76504/" target="_blank" rel="noopener">Rapid7 ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips, networks and space</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Telecom</span>
+            <span class="ver">this week</span>
+            <h3>AT&amp;T, T-Mobile and Verizon formed a joint venture to cover dead zones by satellite</h3>
+          </div>
+          <div class="story-body">
+            <p>The three carriers signed a joint-venture agreement to offer direct-to-device satellite connectivity where cell towers don't reach, and to set common technical specifications. It follows their May plan to pool spectrum for satellite service. Paul Roth, a former AT&amp;T and Cingular executive, is interim CEO. A board with members from each carrier will run it, and each company keeps its existing satellite agreements.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Rural coverage is a real gap for trades and mobile businesses, including detailing routes outside the metro. Nothing to build yet. Once phones hold a signal everywhere, missed-call and text-back tools reach more of a field crew's day.</div>
+          <div class="refs"><a href="https://www.prnewswire.com/news-releases/att-t-mobile-and-verizon-launch-joint-venture-that-helps-end-dead-zones-name-paul-roth-interim-ceo-302895249.html" target="_blank" rel="noopener">PR Newswire ↗</a> · <a href="https://www.lightreading.com/satellite/us-telcos-unite-in-satellite-d2d-rural-coverage-jv" target="_blank" rel="noopener">Light Reading ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Space</span>
+            <span class="ver">Oct 1</span>
+            <h3>Google's first Project Suncatcher satellite launched with four AI chips aboard</h3>
+          </div>
+          <div class="story-body">
+            <p>The refrigerator-size prototype rode a SpaceX Falcon 9 from Vandenberg on the Transporter-18 rideshare and reached low Earth orbit, according to the Tech Startups roundup. It carries four Trillium-generation TPUs on about 1 kilowatt of solar power and will process short Gemini queries in roughly 15-minute windows before shutting down to cool. The flight tests whether the chips survive. Google plans a pair of TPU satellites with Planet Labs in 2027 to test the laser links a real cluster would need. The full design calls for 81 satellites flying within a kilometer of each other.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No effect on anything you ship. It shows how far the search for AI power has gone, and that is why cloud inference pricing is worth watching before you lock in a multi-year client quote.</div>
+          <div class="refs"><a href="https://cybernews.com/news/google-space-data-center/" target="_blank" rel="noopener">Cybernews ↗</a> · <a href="https://futurumgroup.com/insights/project-suncatcher-prepares-to-launch-tpus-is-google-ahead-in-the-orbital-ai-race/" target="_blank" rel="noopener">Futurum ↗</a> · <a href="https://techstartups.com/2026/10/01/top-tech-news-today-october-1-2026-amd-broadcom-google-lg-meta-micron-openai-reddit-more/" target="_blank" rel="noopener">Tech Startups roundup ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Export controls</span>
+            <span class="ver">Oct 1</span>
+            <h3>The Justice Department arrested a California reseller accused of smuggling over $300 million in GPU servers to China</h3>
+          </div>
+          <div class="story-body">
+            <p>Greg Lui, 38, of San Gabriel, ran Earthmade Computer Inc. Prosecutors say that in 2023 and 2024 he bought export-restricted servers with Nvidia GPUs from US manufacturers using paperwork that named other destinations, shipped them to Malaysia and Singapore through freight forwarders, and had them rerouted to China. They say Malaysia-based companies paid him $176 million between January and October 2024. He is charged with conspiracy to violate the Export Control Reform Act, smuggling and conspiracy to commit money laundering. The charges are allegations.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct effect. It is a measure of how scarce high-end GPUs remain, and scarcity is what keeps model prices from falling faster.</div>
+          <div class="refs"><a href="https://www.justice.gov/opa/pr/california-man-arrested-smuggling-more-300-million-export-controlled-computer-servers-china" target="_blank" rel="noopener">US Department of Justice ↗</a> · <a href="https://www.courthousenews.com/california-man-charged-with-smuggling-300-million-in-restricted-ai-hardware-to-china/" target="_blank" rel="noopener">Courthouse News ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Crypto</span><span class="txt">Bitget says the Sept. 24 theft of $387.5M came through a zero-day in a third-party security product; about $1.1M has been frozen. <a href="https://techstartups.com/2026/10/01/top-tech-news-today-october-1-2026-amd-broadcom-google-lg-meta-micron-openai-reddit-more/" target="_blank" rel="noopener">Tech Startups roundup ↗</a></span></li>
+            <li><span class="tag fix qh-tag">Breach claim</span><span class="txt">ShinyHunters listed O'Reilly Automotive and Dexcom on its leak site with a Friday deadline and no proof samples. Neither claim is confirmed. <a href="https://cybernews.com/news/shinyhunters-oreilly-auto-dexcom-breach-fbi-hack/" target="_blank" rel="noopener">Cybernews ↗</a></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">AMD launched the Ryzen AI Max+ Pro 400 series for running large language models locally on workstations and high-end laptops. <a href="https://techstartups.com/2026/10/01/top-tech-news-today-october-1-2026-amd-broadcom-google-lg-meta-micron-openai-reddit-more/" target="_blank" rel="noopener">Tech Startups roundup ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Energy</span><span class="txt">Amazon signed a 20-year power deal with Constellation for the Calvert Cliffs nuclear plant in Maryland, with about $3B in upgrades, Maryland Matters reports via the same roundup. <a href="https://techstartups.com/2026/10/01/top-tech-news-today-october-1-2026-amd-broadcom-google-lg-meta-micron-openai-reddit-more/" target="_blank" rel="noopener">Tech Startups roundup ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Armadin, Kevin Mandia's AI penetration-testing startup, raised $255.5M at a valuation above $2.5B. <a href="https://www.securityweek.com/kevin-mandias-armadin-raises-255-million-at-2-5-billion-valuation/amp/" target="_blank" rel="noopener">SecurityWeek ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Volantis raised $88M for optical links that would let one GPU address far more memory chips, Reuters reports via the roundup. <a href="https://techstartups.com/2026/10/01/top-tech-news-today-october-1-2026-amd-broadcom-google-lg-meta-micron-openai-reddit-more/" target="_blank" rel="noopener">Tech Startups roundup ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
