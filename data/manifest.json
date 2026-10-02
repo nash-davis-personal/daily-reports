@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-02",
+    "title": "2.1.287: Claude Mods arrive, and MCP servers can hide all their tools behind search",
+    "summary": "One release: plugins can now modify deeper behavior through Claude Mods with a built-in watcher agent, MCP servers can defer every tool behind tool search, and three shell-write safeguards now stop and wait for a person.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-10-02.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

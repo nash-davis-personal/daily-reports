@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-02" />
+  <meta name="report:title" content="2.1.287: Claude Mods arrive, and MCP servers can hide all their tools behind search" />
+  <meta name="report:summary" content="One release: plugins can now modify deeper behavior through Claude Mods with a built-in watcher agent, MCP servers can defer every tool behind tool search, and three shell-write safeguards now stop and wait for a person." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.287: Claude Mods arrive, and MCP servers can hide all their tools behind search — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, October 2, 2026</span>
+        <span>◆</span><span>1 release: 2.1.287</span>
+      </div>
+      <h1>2.1.287: Claude Mods arrive, and MCP servers can hide all their tools behind search</h1>
+      <p class="standfirst">One release since the last briefing, and most of it is fixes. Six items deserve attention: a new plugin tier called Mods, a setting that defers a whole MCP server's tools, a possible MCP connection break with a one-line fix, three shell-write safeguards that now wait for a person, a batch of headless MCP fixes, and queued replies in <code>claude agents</code>.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.287 (October 1), after the 2.1.286 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">1M</div><div class="lbl">Default context on Bedrock, Vertex, Foundry and the apps gateway</div></div>
+      <div class="stat"><div class="num">30s</div><div class="lbl">Remote Control reconnect wait before it retries</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Claude Mods and "You should know"</h4><p>Plugins may now modify deeper behavior. The first built-in mod runs a side agent that flags things you or Claude might miss.</p></div>
+        <div class="signal"><div class="n">02</div><h4><code>alwaysLoad: false</code> defers a whole MCP server</h4><p>Set it on a server and all of its tools sit behind tool search until needed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>MCP URL prompts, with a known break</h4><p>Servers on the 2025-11-25 protocol can prompt with a URL, for example to sign in. A server that stops connecting needs one config line.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Three shell-write safeguards tightened</h4><p>Symlink writes, credential-file writes and a dangerous <code>rm</code> edge case now stop for a person.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Headless MCP runs got more reliable</h4><p>False "needs authentication" flags, slow startup retries and double-run connector calls are fixed.</p></div>
+        <div class="signal"><div class="n">06</div><h4><code>claude agents</code> replies now queue</h4><p>Replies arrive as queued messages, and waiting permission prompts show oldest first.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Plugins and MCP</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.287</span>
+            <h3>Claude Mods: plugins that change deeper behavior, plus a built-in watcher agent</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog adds Claude Mods with one line of description: plugins may now modify deeper behavior. It does not say which behaviors are open to mods, so treat the scope as unknown until the docs fill in.</p>
+            <p>The first built-in mod is called You should know. A side agent watches the session and flags things you or Claude might miss. Turn it on with <code>/plugin enable cc-plugin-you-should-know@builtin</code>. The changelog limits it to first-party sessions with telemetry on.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Enable You should know on one real client session this week (a Bisque or Studio C change with a deploy at the end) and see whether its flags catch anything your <code>verify</code> skill and the skeptic step in your loops miss. If it only repeats them, turn it off. Hold off on writing your own mod until the docs say what a mod can touch.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.287</span>
+            <h3><code>alwaysLoad: false</code> now defers every tool on that MCP server</h3>
+          </div>
+          <div class="story-body">
+            <p>Setting <code>alwaysLoad: false</code> on an MCP server now puts all of that server's tools behind tool search. Related changes in the same release: large MCP tool results use less memory and produce smaller session files, and Claude is no longer told to page a large JSON result with Read's offset and limit, which cannot split one long line.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your sessions carry a long tail of MCP servers that most runs never call (Canva, Calendly, Higgsfield, Notion, Vapi). Set <code>alwaysLoad: false</code> on each of those in the MCP config so their tool definitions stay out of context until a task asks for them. Leave it off for the servers a scheduled job calls on every run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.287</span>
+            <h3>MCP servers can send URL prompts, and some servers may stop connecting</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code now supports URL prompts from MCP servers on the 2025-11-25 protocol, for example to sign in. The changelog ships the workaround in the same line: if a server no longer connects after this update, add <code>"bareElicitationCapability": true</code> to its MCP config entry.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> After updating, run <code>/mcp</code> on both Macs and compare against what connected before. For any server that newly fails, add the <code>bareElicitationCapability</code> line to its entry first, before spending time on auth or network debugging. Check the ones your launchd jobs depend on (supabase, nash-os, tsd-portal) before the next unattended run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permissions and safety</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.287</span>
+            <h3>Three shell-write paths now stop and wait for a person</h3>
+          </div>
+          <div class="story-body">
+            <p>First, a shell write through a repo-committed symlink onto a sensitive file, or out of the working tree, now names where it lands and waits for a person. This applies to lines with a <code>~</code> target too.</p>
+            <p>Second, whole-tool <code>Bash</code> allow rules and allowing hooks now prompt for shell writes to files that Claude Code's file tools refuse outright. The changelog names the Anthropic profile store and the host credentials file.</p>
+            <p>Third, a fix: a dangerous <code>rm</code>, such as one on <code>/</code> or the home directory, lost its always-ask safeguard when the same command also redirected output to a <code>~</code> or wildcard path. The safeguard holds now.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>rm</code> fix is the reason to update today on any Mac that runs loops with a broad <code>Bash</code> allow rule. The other two changes can stall an unattended job that writes through a symlink or touches a credentials file, because nobody is there to answer the prompt. Scan the last few launchd run logs after updating for a job that hangs on a permission prompt, and move any such write into a script outside the agent.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and background agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.287</span>
+            <h3>Headless MCP: fewer false auth flags, faster startup, no double calls</h3>
+          </div>
+          <div class="story-body">
+            <p>Headless sessions no longer report an MCP server as needing authentication after one refused call when later calls succeed. A remote server whose first connect fails transiently is now retried without waiting for the slowest server to finish connecting. An MCP connector tool call could occasionally run twice, or the connector's calls could fail until restart, when its server changed which protocol version it supports. That is fixed.</p>
+            <p>Two more for scripted runs: <code>claude -p</code> and SDK sessions no longer repeat a model fallback on every later message after a mid-reply model switch, and a hook configured with <code>asyncRewake</code> whose script file is missing is now reported once instead of waking Claude over and over.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The double-run fix matters most for jobs that write through a connector (CRM dispositions, Notion pages, calendar events), since a repeated call there creates a duplicate record. Update the Macs that run the scheduled tasks, then check the next morning's runs for duplicates that used to appear and for "requires authentication" lines that no longer do.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.287</span>
+            <h3><code>claude agents</code>: queued replies, a name filter, and prompts in order</h3>
+          </div>
+          <div class="story-body">
+            <p>Replies sent from <code>claude agents</code> now arrive as queued messages. Slash commands other than <code>/stop</code> sent while a turn is running now run when the turn ends. The agents view gains an <code>n:&lt;text&gt;</code> filter that matches session names and tasks, and Enter opens the first match.</p>
+            <p>Waiting permission prompts now show oldest first, so a new prompt no longer covers the one you are reading. Two fixes ride along: <code>claude agents</code> sometimes hid the permission prompt a background session was waiting on, and a background session could not be reopened after its agent exited and removed the worktree it started in.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you steer background agents mid-turn, expect your message to land after the current step finishes. Use <code>/stop</code> when you need to interrupt. With several client sessions running, name them by client (bisque, studio-c, sonderwerks) so <code>n:bisque</code> pulls the right one in one keystroke.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.287</span>
+            <h3>1M context is the default on Bedrock, Vertex, Foundry and the apps gateway</h3>
+          </div>
+          <div class="story-body">
+            <p>Opus 4.7 and later, plus Fable, now use a 1M context window by default on Bedrock, Vertex, Foundry and the Claude apps gateway, with no <code>[1m]</code> suffix. Setting <code>CLAUDE_CODE_DISABLE_1M_CONTEXT=1</code> keeps 200K.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This only touches you if a client deployment routes Claude Code through one of those four providers. If you ever set one up for a client on their own cloud account, a larger default window means larger possible bills per session, so decide on the 200K env var at setup time.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.287</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A folder's CLAUDE.md was attached a second time after resuming a session or after a compaction. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Switching between Opus 5.5 and Sonnet 5.5 (<code>/model</code>, <code>opusplan</code>) rewrote earlier MCP tool announcements, which could drop earlier extended thinking. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Picking Fable in <code>/model</code> on a claude.ai login saved the current version's id; the saved default now follows the newest Fable. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/advisor</code> pairing: Sonnet 5.5 can now advise Opus 4.7 and 4.8, and advisors the API would refuse are flagged up front. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control went minutes without receiving messages when a reconnect request got no response; it now gives up after 30 seconds and retries. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">macOS: sessions started with <code>claude remote-control</code> stopped mid-turn when the Mac went to idle sleep. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Messages sent from the Claude apps with 17 to 20 attached files delivered only the first 16. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Images over 8,000 pixels on a side failed to send from a remote session; Claude now sends a scaled-down copy. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">SessionStart hooks from synced plugins did not run in new cloud sessions. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions sometimes lost the earlier conversation when the session restarted during compaction. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The "N hooks ran" summary counted Claude Code's internal callbacks, so one configured hook showed as two. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash permission prompts showed internal parser names such as "Contains simple_expansion" in place of a plain explanation. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--include-partial-messages</code> sent a cut-short reply's <code>message_stop</code> late or never, so apps could show the reply as still in progress. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A revoked claude.ai login showed a generic <code>API Error: 401</code>; it now says "OAuth token revoked", and in <code>-p</code> mode the error starts with "Failed to authenticate". <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Code Review skipped a pull request after a new push when its review had failed twice on the previous commit; it now reviews the latest commit. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Eight screen reader mode fixes across search boxes, approval prompts, diffs, <code>/permissions</code>, <code>/mcp</code> and <code>claude agents</code>. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Files Claude sends from cloud and Remote Control sessions retry once on a timeout, network error or 502/503/504, and large files stream from disk. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/skill</code> names typed mid-message are now identified to Claude as skills, including <code>disable-model-invocation</code> ones. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/config</code>: cycling settings step both ways with ←/→, narrow terminals stack values under labels, PgUp/PgDn page the list. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Plugin listings note when a plugin's dependencies were not installed, and updating a plugin retries an unfinished install. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">SDK: a message sent with priority "now" no longer cancels a running web fetch or web search. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">OpenTelemetry <code>user_prompt</code> events gain <code>prompt_text</code>, a copy of <code>prompt</code>; drop or mask it wherever you mask <code>prompt</code>. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">VS Code: "Run in background" on a running command or sub-agent, and background shell and Monitor output on agent map cards. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag breaking qh-tag">Changed</span><span class="txt">Automatic model switches after a flagged message keep your current effort level. <span class="ver">2.1.287</span></span></li>
+            <li><span class="tag breaking qh-tag">Changed</span><span class="txt">VS Code: the Claude in Chrome "Enabled by default" switch also connects the editor's own sessions, which still ask before browser actions. <span class="ver">2.1.287</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
