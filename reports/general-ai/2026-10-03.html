@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-03" />
+  <meta name="report:title" content="Supabase raised $150M and bought Turso to host AI agents, and Apple is locking down Mac disk access because of them" />
+  <meta name="report:summary" content="Supabase raised $150M, agreed to buy Turso and launched hosted sandboxes for long-running agents, while Apple, Microsoft, GitLab and AWS all moved on the security cost of agents that can reach too much." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Supabase raised $150M and bought Turso to host AI agents, and Apple is locking down Mac disk access because of them — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://siliconangle.com/2026/10/02/database-startup-supabase-raises-150m-acquires-turso/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Saturday, October 3, 2026</span>
+        <span>◆</span><span>Your database, agent security, lab turnover</span>
+      </div>
+      <h1>Supabase raised $150M and bought Turso to host AI agents, and Apple is locking down Mac disk access because of them</h1>
+      <p class="standfirst">No frontier model shipped in the window. The story that touches your stack directly is Supabase: new money, a SQLite company, and hosted sandboxes for agents that run for hours. Everything else points one way: Apple, Microsoft, GitLab and AWS each spent Friday dealing with agents that can reach more than they should.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 2 – Oct 3</span>
+        <span>◆</span><a href="https://siliconangle.com/2026/10/02/database-startup-supabase-raises-150m-acquires-turso/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">70%</div><div class="lbl">Share of new Supabase databases created by agents or AI tools, per the company</div></div>
+      <div class="stat"><div class="num">&lt;24 hrs</div><div class="lbl">Median time from a vulnerability surfacing to a working exploit, per Microsoft</div></div>
+      <div class="stat"><div class="num">$6,950</div><div class="lbl">New price of Nvidia's 128GB DGX Spark, up from $3,999 at launch</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase is building for agents</h4><p>$150M led by GIC, a deal to buy Turso, and Supabase Compute, hosted sandboxes for long-running agents.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Apple is tightening Full Disk Access</h4><p>Apple says agents raise the risk "substantially" and will require "very explicit user action" to grant it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Attackers got AI first</h4><p>Microsoft's annual defense report puts vulnerability-to-exploit time under 24 hours and 2026 CVEs on track for about 72,000.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agent platforms are the new hole</h4><p>GitLab patched a 9.9 sandbox escape in its AI Gateway. AWS patched a 10.0 auth bypass in its Loom agent platform.</p></div>
+        <div class="signal"><div class="n">05</div><h4>More safety exits at OpenAI</h4><p>Three staff were fired over sharing sensitive information with an outside evaluator, and a safety lead reportedly resigned.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding + launch</span>
+            <span class="ver">Oct 2</span>
+            <h3>Supabase raised $150M, agreed to buy Turso and launched Supabase Compute for long-running agents</h3>
+          </div>
+          <div class="story-body">
+            <p>Singapore's GIC led the $150 million round, joined by Alphabet's CapitalG, IronArc and SquarePeg. It comes four months after a $500 million Series F; no new valuation was stated. Supabase also agreed to acquire Turso, the SQLite-compatible database built for spinning up huge numbers of small, isolated databases, for an undisclosed sum. Turso founder Glauber Costa becomes Head of Agentic Services. Both companies say nothing changes for existing users: Supabase stays on Postgres, Turso stays open source, and Turso users get a migration path to Postgres when they outgrow SQLite.</p>
+            <p>The third piece is Supabase Compute, hosted sandboxes for agents that run for long stretches. No pricing has been published in the coverage so far. Supabase says it now adds more than 1 million users and 4 million databases a month, and that agents or AI tools create 70% of those new databases. Those are company figures with no stated counting method.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your backend vendor just raised again and is building agent hosting next to your data, so Supabase is a safe bet to keep standardizing on. Watch for Compute pricing. If it is reasonable, it could run Front Desk's after-call follow-ups and Booking Bridge reminder jobs in the same project as the client's data, which avoids Vercel function timeouts. Turso's one-database-per-agent model also fits giving each client's Concierge its own isolated store. Wait for the docs before moving anything.</div>
+          <div class="refs"><a href="https://siliconangle.com/2026/10/02/database-startup-supabase-raises-150m-acquires-turso/" target="_blank" rel="noopener">SiliconANGLE ↗</a> · <a href="https://turso.tech/blog/turso-is-joining-supabase" target="_blank" rel="noopener">Turso blog ↗</a> · <a href="https://runtimewire.com/article/supabase-raises-150m-acquires-turso" target="_blank" rel="noopener">Runtime Wire ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The security cost of agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Platform</span>
+            <span class="ver">Oct 2</span>
+            <h3>Apple is tightening macOS Full Disk Access, citing AI agents</h3>
+          </div>
+          <div class="story-body">
+            <p>Full Disk Access lets a Mac app read files, mail, messages and browsing history. Apple says "some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems" without users' full understanding, and that agents will increase that risk substantially. New controls will make sure people who "genuinely wish to grant an app this extraordinary level of access" can do so only through "very explicit user action." Apple gave no macOS version or date.</p>
+            <p>The statement follows an Inc. columnist's report that Meta's Muse agent knew the contents of his private messages without his permission, which Meta disputes, and a Wired report on a flaw in ChatGPT's Mac app that could have exposed user data.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your own coding agents and Claude Code probably run with broad disk access on your Mac. Expect an extra permission prompt after a macOS update, and use the change as a reason to check which apps have Full Disk Access today. For clients, this is the argument for the narrow-tools design you already use: an agent that can only call the tools you wired up won't be on the receiving end of a platform crackdown.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/10/02/apple-says-its-tightening-macos-full-disk-access-controls-due-to-new-risks-from-ai-agents/" target="_blank" rel="noopener">TechCrunch ↗</a> · <a href="https://hardware.slashdot.org/story/26/10/02/2056223/apple-tightens-macos-full-disk-access-controls-as-ai-agents-substantially-increase-risk" target="_blank" rel="noopener">Slashdot ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Report</span>
+            <span class="ver">Oct 1 – 2</span>
+            <h3>Microsoft's Digital Defense Report: AI has handed attackers the near-term advantage</h3>
+          </div>
+          <div class="story-body">
+            <p>The 2026 report covers July 2025 through June 2026 and draws on what Microsoft says are 165 trillion security signals a day. Its headline finding is that the median time from a vulnerability being found in the wild to being weaponized has fallen below 24 hours. Finding and exploiting bugs used to take experts; in many cases, Microsoft says, it now comes down to "simply writing a prompt." Tracked CVEs for 2026 are on pace for a record of about 72,000. Phishing was the way in for 23% of the intrusions Microsoft investigated, and Chinese, Russian and North Korean state-linked groups already use AI in live operations.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A one-day exploit window means "we patch monthly" no longer protects a client site. Turn on Dependabot or Renovate auto-PRs for every client repo and let Vercel preview deploys catch breakage. Then sell that as a line item in the care plan. Quoting this report gives the price a reason.</div>
+          <div class="refs"><a href="https://www.helpnetsecurity.com/2026/10/02/ai-cybersecurity-threats-microsoft-report/" target="_blank" rel="noopener">Help Net Security ↗</a> · <a href="https://www.bleepingcomputer.com/news/security/microsoft-says-threat-actors-are-ahead-in-the-early-ai-race/" target="_blank" rel="noopener">BleepingComputer ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">Oct 2</span>
+            <h3>GitLab and AWS patched critical flaws in their AI agent platforms</h3>
+          </div>
+          <div class="story-body">
+            <p>GitLab fixed CVE-2026-90970, rated 9.9, in its self-hosted AI Gateway. A signed-in user with Duo Agent Platform access could craft a custom flow that escapes the prompt-template sandbox and runs commands on the gateway host. Fixed versions are 19.2.4, 19.3.2 and 19.4.1; CISA listed exploitation as "none" on Oct. 2.</p>
+            <p>AWS disclosed four flaws in its open-source Loom agent orchestration platform and SageMaker Unified Studio. The worst, CVE-2026-103956, is rated 10.0: on a Loom deployment without an identity provider configured, any network client could take full admin control of the agent control plane, register malicious tool servers and pull stored integration credentials. AWS recommends upgrading to Loom 1.7.0, rotating OAuth2 client secrets and checking CloudTrail.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You don't run either product, so there is nothing to patch. The lesson carries over: the dangerous parts of an agent system are the template layer and the tool registry. Never let client-supplied text reach a template engine unescaped, and keep the list of tools Front Desk and Concierge can call hard-coded on the server.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html" target="_blank" rel="noopener">The Hacker News ↗</a> · <a href="https://cyberpress.org/aws-fixes-critical-loom-and-sagemaker-flaws-enabling-code-execution-and-credential-theft/" target="_blank" rel="noopener">CyberPress ↗</a> · <a href="https://gbhackers.com/aws-ai-agent-vulnerabilities/" target="_blank" rel="noopener">GBHackers ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Labs and hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">People</span>
+            <span class="ver">Oct 1 – 3</span>
+            <h3>OpenAI fired three staff over sharing information with an outside evaluator, and a safety lead reportedly resigned</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI said it "parted ways with three individuals for violating our policies on accessing and handling sensitive company information." The Register describes them as two safety researchers and a program manager who shared sensitive information with an outside organization that evaluates AI systems. OpenAI cited "other misconduct beyond that disclosure" without details and said the employees "were not dismissed for raising AI safety concerns."</p>
+            <p>Business Insider then reported that David Robinson, who led safety transparency work including system cards, has resigned. Secondary coverage counts it as at least the sixth or seventh senior safety departure in about two years; that tally is not from OpenAI. This lands one day after California's attorney general subpoenaed OpenAI over its agent incidents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> It doesn't affect anything you build. It does add to the story clients are reading about OpenAI this week, and it supports defaulting to Claude in proposals while keeping GPT-6.1 Sol as the tested fallback.</div>
+          <div class="refs"><a href="https://www.theregister.com/ai-and-ml/2026/10/02/openai-shows-three-staff-the-door-over-alleged-information-misuse/5300820" target="_blank" rel="noopener">The Register ↗</a> · <a href="https://cryptobriefing.com/openai-safety-lead-david-robinson-resigns/" target="_blank" rel="noopener">Crypto Briefing (citing Business Insider) ↗</a> · <a href="https://www.techmeme.com/261003/p4" target="_blank" rel="noopener">Techmeme ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Oct 2</span>
+            <h3>Nvidia launched a 64GB DGX Spark at $4,999 and raised the 128GB model to $6,950</h3>
+          </div>
+          <div class="story-body">
+            <p>The new 64GB desktop runs models up to about 100 billion parameters and is pitched at local agent development. Two units can be linked. Acer, ASUS and other partners start selling it Oct. 23. The 128GB model launched at $3,999, rose to $4,699 earlier this year and is now $6,950, close to 75% above launch. Nvidia blames tight memory supply. The new half-memory model costs more than the original 128GB box did a year ago.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Skip it. Local inference hardware is getting more expensive while API prices keep falling, so the math for a solo studio still favors paying per token. If a client asks for "private AI on our own box," this is your price anchor: $5,000 or more before any work starts.</div>
+          <div class="refs"><a href="https://hothardware.com/news/nvidia-dgx-spark-64gb-release" target="_blank" rel="noopener">HotHardware ↗</a> · <a href="https://hwbusters.com/news/nvidia-dgx-spark-64gb-arrives-at-4999-as-the-128gb-model-jumps-to-6950/" target="_blank" rel="noopener">Hardware Busters ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Model</span><span class="txt">Perplexity launched a Decisions API on Oct. 1, built on the open pplx-decider-v1-27b (Apache 2.0, on Hugging Face). It returns a probability for each answer in a list you define, at $0.04 per million input tokens. It's a cheap fit for routing calls or tickets to the right intent. <a href="https://docs.perplexity.ai/docs/decisions/quickstart" target="_blank" rel="noopener">Perplexity docs ↗</a> · <a href="https://huggingface.co/perplexity-ai/pplx-decider-v1-27b" target="_blank" rel="noopener">Hugging Face ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Hardware</span><span class="txt">Meta released Muse Gadgets on Oct. 2: open-source ESP32 firmware and a Linux SDK, Apache 2.0, for wiring cheap boards with mics, speakers and screens to its Muse agent. <a href="https://runtimewire.com/article/meta-muse-gadgets-open-source-hardware-sdk" target="_blank" rel="noopener">Runtime Wire ↗</a> · <a href="https://www.techmeme.com/261002/p24" target="_blank" rel="noopener">Techmeme / Engadget ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Money</span><span class="txt">A Bank for International Settlements study found that 55.2% of investment into AI firms from 2021 to 2025 came from other AI firms, and warned that circular deals concentrated among a few large players could spread shocks. <a href="https://cryptobriefing.com/bis-ai-funding-circular-relationships/" target="_blank" rel="noopener">Crypto Briefing ↗</a> · <a href="https://www.interest.co.nz/technology/140516/bank-international-settlements-warns-potential-macroeconomic-risks-stemming" target="_blank" rel="noopener">interest.co.nz ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Deal</span><span class="txt">Nebius is acquiring Inferize, which optimizes GPU utilization to cut AI request costs, for $100M to $150M according to CTech's sources. <a href="https://www.techmeme.com/261003/p4" target="_blank" rel="noopener">Techmeme / CTech ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

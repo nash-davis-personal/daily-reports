@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-03",
+    "title": "G7 agrees to release 100 million barrels of oil as stocks rise and long-term rates climb after the jobs report",
+    "summary": "The G7 agreed to release 100 million barrels of oil with diesel at $6.37, stocks closed higher Friday while the 10-year yield rose to 5.28%, stricter SBA rules for business-acquisition loans took effect, and flooding rains hit Texas and the Plains.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-03.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "This release fixes the two things that quietly break automated Claude Code runs and per-project rule enforcement: stalled sessions now recover instead of hanging, and nested CLAUDE.md/.claude/rules files load when Claude writes or edits a file, not only when it reads one.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-10-03.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-03",
+    "title": "Supabase raised $150M and bought Turso to host AI agents, and Apple is locking down Mac disk access because of them",
+    "summary": "Supabase raised $150M, agreed to buy Turso and launched hosted sandboxes for long-running agents, while Apple, Microsoft, GitLab and AWS all moved on the security cost of agents that can reach too much.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-03.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-03",
+    "title": "Exploits now land in under a day, so sell clients a 48-hour patch promise",
+    "summary": "Six moves ranked by fit: a 48-hour critical-patch guarantee in the care plan, a Prime Big Deal Days counter-offer for the retail client, an agent-safety explainer post, a Clef call router to cut Front Desk costs, zone-day booking for diesel-squeezed trades, and a sale-ready records pitch on the new SBA loan rules.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-03.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-03",
+    "title": "Still nothing to patch, and Apple is locking down Full Disk Access because of AI agents",
+    "summary": "Next.js 16.3.8 remains current, Apple said it will require explicit user action for Full Disk Access on Macs because of AI agents, Microsoft found exploits now arrive in under 24 hours, two senators proposed criminal liability for agent hacks, and Amazon is weighing moving $8B of Nvidia chips off its books.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-03.html"
   },
   {
     "source": "america",

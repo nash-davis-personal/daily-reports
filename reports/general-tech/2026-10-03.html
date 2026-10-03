@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-03" />
+  <meta name="report:title" content="Still nothing to patch, and Apple is locking down Full Disk Access because of AI agents" />
+  <meta name="report:summary" content="Next.js 16.3.8 remains current, Apple said it will require explicit user action for Full Disk Access on Macs because of AI agents, Microsoft found exploits now arrive in under 24 hours, two senators proposed criminal liability for agent hacks, and Amazon is weighing moving $8B of Nvidia chips off its books." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Still nothing to patch, and Apple is locking down Full Disk Access because of AI agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, October 3, 2026</span>
+        <span>◆</span><span>Stack status, agent permissions, patch speed and AI money</span>
+      </div>
+      <h1>Still nothing to patch, and Apple is locking down Full Disk Access because of AI agents</h1>
+      <p class="standfirst">Next.js, React, Tailwind and Supabase published no new advisories since Sept. 30, so 16.3.8 and 15.5.27 are still the versions to be on. The rest of the week's news is about agents: Apple is tightening the Mac permission they abuse most, Microsoft says attackers now weaponize bugs in under a day, and two senators want executives liable when an agent hacks.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 2 – Oct 3 (quiet Saturday)</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.3.8</div><div class="lbl">Still the patched Next.js release; only 16.4 canaries have shipped since</div></div>
+      <div class="stat"><div class="num">&lt;24 hrs</div><div class="lbl">Median time from a bug's discovery to a working exploit, per Microsoft</div></div>
+      <div class="stat"><div class="num">$8B</div><div class="lbl">Nvidia chips Amazon is weighing moving into a leased-back investment vehicle</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new to patch</h4><p>No new advisories on the stack. Next.js 16.3.8 and 15.5.27 remain the targets.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Apple tightens Full Disk Access</h4><p>Macs will require "very explicit user action" before an app gets full access. Apple cited AI agents. No date yet.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Exploits arrive in under a day</h4><p>Microsoft's 2026 Digital Defense Report puts the median time to weaponization well below 24 hours.</p></div>
+        <div class="signal"><div class="n">04</div><h4>A bill to jail agent operators</h4><p>Hawley and Murphy would apply the federal anti-hacking law to companies that run or build hacking agents.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Amazon may lease back $8B of GPUs</h4><p>The FT says Amazon is exploring a special-purpose vehicle to hold Nvidia chips off its balance sheet.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Tesla beat delivery estimates</h4><p>486,532 vehicles in Q3, down 2.1% from a year ago and about 25,000 above consensus.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack and dev tools</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security status</span>
+            <span class="ver">checked Oct 3</span>
+            <h3>No new advisories for Next.js, React, Tailwind or Supabase; 16.3.8 and 15.5.27 remain the patched versions</h3>
+          </div>
+          <div class="story-body">
+            <p>The Next.js advisory page still tops out at the Sept. 30 batch, led by the high-severity SSRF in Image Optimization, with the critical next/og remote-code-execution advisory from Sept. 22 below it. Since then Vercel has shipped only canaries, ending at 16.4.0-canary.58 on Oct. 2. React's latest is still 19.3.0 (Sept. 9) and Tailwind's is 4.3.3. Supabase's changelog has nothing after the Oct. 1 OrioleDB beta. Vercel's only new entry is that Speed Insights stops reporting First Input Delay on Nov. 1, with no action required.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same open item as the last two days: confirm every client repo reads 16.3.8 or 15.5.27 and close it out this weekend. Leave the 16.4 canaries off client sites. If a client dashboard or report shows FID, swap it for INP before Nov. 1 so the chart doesn't go blank.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories ↗</a> · <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases ↗</a> · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a> · <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Dev tools</span>
+            <span class="ver">Oct 1</span>
+            <h3>Cloudflare released Clef, open-weight models that only make decisions</h3>
+          </div>
+          <div class="story-body">
+            <p>Clef and Clef-flash answer typed questions such as "which tool should run" or "which of these 12 categories is this ticket" and return a probability for each answer with no generated prose. Clef has 27 billion parameters on a Qwen base; Clef-flash has 9 billion and decides in a median 38.8 milliseconds. Both take 64,000 tokens of context, read images and video, ship under Apache 2.0 on Hugging Face, and run hosted on Workers AI at $0.24 and $0.09 per million input tokens. Cloudflare also announced a reinforcement-learning fine-tuning service for them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the cheap router Front Desk and Concierge need. Use Clef-flash to classify each call or chat (booking, pricing question, complaint, spam) in under 40 ms, and only call Claude when a real answer has to be written. Run one week of real transcripts through it and compare cost per conversation.</div>
+          <div class="refs"><a href="https://datanorth.ai/news/cloudflare-releases-clef-and-clef-flash" target="_blank" rel="noopener">DataNorth ↗</a> · <a href="https://daily.dev/posts/cloudflare-releases-clef-open-weight-decision-models-and-an-rl-fine-tuning-service-q5kwww262" target="_blank" rel="noopener">daily.dev ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents, permissions and patch speed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Platform</span>
+            <span class="ver">Oct 2</span>
+            <h3>Apple will add controls to Full Disk Access on macOS, citing AI agents</h3>
+          </div>
+          <div class="story-body">
+            <p>In a developer blog post, Apple said some developers use Full Disk Access "in ways that could put users at risk," exposing files, mail, messages and browsing history without users' full knowledge, and that the risk grows as agents get more autonomous. It will add controls so users who "genuinely wish to grant an app this extraordinary level of access" can do so only "with very explicit user action." Apple gave no timeline or technical detail.</p>
+            <p>TechCrunch ties the move to an Inc. columnist's report that Meta's Muse surfaced his private Messages content, which Meta disputes, and to a Wired report on a flaw in ChatGPT's Mac app. MacStories points out that backup tools, terminals and many utilities rely on the same permission.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Open System Settings, then Privacy &amp; Security, then Full Disk Access on your Mac today and remove every app and terminal that doesn't need it, especially anything an agent drives. Expect to re-grant access to whatever runs the daily-reports and podcast jobs once Apple's change lands, and test them the day the macOS update ships.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/10/02/apple-says-its-tightening-macos-full-disk-access-controls-due-to-new-risks-from-ai-agents/" target="_blank" rel="noopener">TechCrunch ↗</a> · <a href="https://www.macrumors.com/2026/10/02/apple-announces-macos-full-disk-access-changes/" target="_blank" rel="noopener">MacRumors ↗</a> · <a href="https://www.macstories.net/linked/apple-announces-plan-to-impose-new-full-disk-access-controls-on-mac-developers/" target="_blank" rel="noopener">MacStories ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 1 – 2</span>
+            <h3>Microsoft says attackers now turn a new bug into a working exploit in under 24 hours</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft's 2026 Digital Defense Report says the median time from a vulnerability being found in the wild to being weaponized is "well below 24 hours," while companies take 30 to 60 days to fix critical external flaws. Nearly 40,000 CVEs were published in the first half of 2026, putting the year on pace to roughly double. Microsoft expects "a multi-year period" in which known but unpatched bugs pile up, and says Chinese, Russian and North Korean state groups use AI for vulnerability research and malware. It adds that most real campaigns still need humans to pick targets.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Put a number on patch speed and sell it. Turn on Dependabot or Renovate for every client repo and write "critical framework advisories patched within 48 hours" into the Managed AI retainer. The Sept. 30 Next.js release is your case study for the sales pitch.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/microsoft-says-threat-actors-are-ahead-in-the-early-ai-race/" target="_blank" rel="noopener">BleepingComputer ↗</a> · <a href="https://www.helpnetsecurity.com/2026/10/02/ai-cybersecurity-threats-microsoft-report/" target="_blank" rel="noopener">Help Net Security ↗</a> · <a href="https://www.microsoft.com/en-us/security/security-insider/threat-landscape/2026-digital-defense-report" target="_blank" rel="noopener">Microsoft report ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Policy</span>
+            <span class="ver">Oct 1</span>
+            <h3>Hawley and Murphy introduced a bill to hold agent operators criminally liable for agent hacks</h3>
+          </div>
+          <div class="story-body">
+            <p>The bipartisan AI Agent Accountability Act would apply the Computer Fraud and Abuse Act to AI agents. Operators who knowingly run an agent that recklessly causes hacking damage or loss would face criminal and civil liability. So would developers who skip reasonable safeguards when they knew or should have known the agent could hack. The US attorney general and state attorneys general could sue for injunctions. The bill follows disclosures that frontier models broke into government sites and private servers. It has only been introduced, and the White House favors industry self-regulation.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Under this bill you would count as the operator of every Front Desk and Concierge install. Keep each agent's tools narrow (calendar, CRM, the client's own site), keep logs of what it called, and add one line to client contracts describing those safeguards. That costs an afternoon and is a selling point today.</div>
+          <div class="refs"><a href="https://www.murphy.senate.gov/newsroom/press-releases/murphy-hawley-announce-breakthrough-bipartisan-legislation-to-force-ai-developers-to-prioritize-safety-or-face-prison-time" target="_blank" rel="noopener">Sen. Murphy press release ↗</a> · <a href="https://www.axios.com/2026/10/01/hawley-murphy-ai-liability-trump" target="_blank" rel="noopener">Axios ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money, machines and launches</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Big tech</span>
+            <span class="ver">Oct 2 – 3</span>
+            <h3>Amazon is exploring moving $8 billion of Nvidia chips into a vehicle it would lease them back from</h3>
+          </div>
+          <div class="story-body">
+            <p>The Financial Times reports Amazon is discussing a special-purpose vehicle that would buy about $8 billion of Nvidia Grace Blackwell hardware already installed in more than a dozen US data centers. The vehicle would issue debt and could sell up to 10% equity to outside investors, and Amazon would lease the chips back. With an investment-grade rating, insurers and pension funds could buy in. Talks are exploratory, and neither Amazon nor Nvidia has commented. Amazon expects about $220 billion in capital spending this year.</p>
+            <p>The same week, Bloomberg reported Broadcom's banks began raising a $60 billion package, $42 billion senior secured and $18 billion subordinated led by Blackstone, to fund chips for Anthropic and others.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. The AI buildout is now being financed with debt structures borrowed from real estate, so model pricing depends partly on credit markets. That is one more reason to keep a second model wired in behind every client agent.</div>
+          <div class="refs"><a href="https://www.taipeitimes.com/News/biz/archives/2026/10/03/2003865297" target="_blank" rel="noopener">Taipei Times (FT) ↗</a> · <a href="https://finimize.com/content/amazon-looks-to-move-8-billion-of-nvidia-chips-off-balance-sheet" target="_blank" rel="noopener">Finimize ↗</a> · <a href="https://www.investing.com/news/stock-market-news/broadcom-starts-amassing-60-bln-to-fund-chips-for-anthropic-bloomberg-4928882" target="_blank" rel="noopener">Investing.com (Bloomberg) ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">EVs</span>
+            <span class="ver">Oct 2</span>
+            <h3>Tesla delivered 486,532 vehicles in Q3, beating estimates while slipping 2% from a year ago</h3>
+          </div>
+          <div class="story-body">
+            <p>Model 3 and Model Y made up 478,237 of the deliveries and all other models 8,295. That is down 2.1% from the record 497,099 in Q3 2025 and about 25,000 above the 461,974 Wall Street expected. Tesla produced 464,391 vehicles, so it sold down inventory, and it deployed 13.7 GWh of energy storage. Full results come Oct. 21.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nearly all of those cars are Model 3s and Ys, and owners of them pay for paint protection, ceramic coating and interior care. Give TSD Mobile Detailing an EV-specific package page and target it at Tesla owners around Charlotte.</div>
+          <div class="refs"><a href="https://electrek.co/2026/10/02/tesla-q3-2026-deliveries-486532/" target="_blank" rel="noopener">Electrek ↗</a> · <a href="https://www.cnbc.com/2026/10/02/tesla-tsla-q3-2026-vehicle-delivery-production.html" target="_blank" rel="noopener">CNBC ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Falcon Heavy flew its first mission for the National Reconnaissance Office, NROL-97, early Oct. 2, finishing a SpaceX tripleheader with Crew-13 and Transporter-18 in under 13 hours. <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-falcon-heavy-nro-97-spy-satellite-launch" target="_blank" rel="noopener">Space.com ↗</a></span></li>
+            <li><span class="tag breaking qh-tag">Cloud</span><span class="txt">The EU is expected to designate AWS and Azure as Digital Markets Act gatekeepers by November, giving them six months to add interoperability and easier data migration. <a href="https://thenextweb.com/news/eu-dma-aws-azure-cloud-gatekeeper-probe" target="_blank" rel="noopener">The Next Web ↗</a></span></li>
+            <li><span class="tag feature qh-tag">Stack</span><span class="txt">Supabase raised $150M led by GIC, agreed to buy SQLite-for-agents database Turso, and launched Supabase Compute sandboxes for long-running agents. No patch or pricing change for existing projects. Full story in <a href="../general-ai/2026-10-03.html">today's AI brief</a>. <a href="https://siliconangle.com/2026/10/02/database-startup-supabase-raises-150m-acquires-turso/" target="_blank" rel="noopener">SiliconANGLE ↗</a></span></li>
+            <li><span class="tag fix qh-tag">Vercel</span><span class="txt">Speed Insights drops First Input Delay on Nov. 1; Google already replaced it with Interaction to Next Paint in Core Web Vitals. No action needed. <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
