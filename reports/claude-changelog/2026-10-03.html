@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-03" />
+  <meta name="report:title" content="2.1.288: Unattended sessions stop dying mid-stream, and CLAUDE.md rules finally load on Write/Edit" />
+  <meta name="report:summary" content="This release fixes the two things that quietly break automated Claude Code runs and per-project rule enforcement: stalled sessions now recover instead of hanging, and nested CLAUDE.md/.claude/rules files load when Claude writes or edits a file, not only when it reads one." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.288: Unattended sessions stop dying mid-stream, and CLAUDE.md rules finally load on Write/Edit — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, October 3, 2026</span>
+        <span>◆</span><span>1 release: 2.1.288</span>
+      </div>
+      <h1>2.1.288: Unattended sessions stop dying mid-stream, and CLAUDE.md rules finally load on Write/Edit</h1>
+      <p class="standfirst">One release since yesterday's briefing, and it's almost entirely fixes — but two of them matter directly: automated/headless sessions (like the one that files these reports) now recover from stream failures instead of hanging or giving up, and a long-standing bug meant nested CLAUDE.md and path-scoped rules only loaded when Claude read a file in scope, not when it wrote or edited one.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.288 (Oct 2) — the one release since the 2.1.287 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">70+</div><div class="lbl">Fixes and improvements in 2.1.288</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Fixes aimed at unattended/headless session reliability</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Unattended sessions auto-recover from stalled streams</h4><p>Mid-response API timeouts now continue from the partial response instead of failing the turn; thinking-only replies retry.</p></div>
+        <div class="signal"><div class="n">02</div><h4>CLAUDE.md and .claude/rules load on Write/Edit, not just Read</h4><p>Path-scoped rules silently skipped unless Claude read a file in scope first — now they load on write too.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Plugin-defined agents keep their own config when spawned by name</h4><p>Agent teams were falling back to default prompt/tools/effort instead of the plugin's settings.</p></div>
+        <div class="signal"><div class="n">04</div><h4>/code-review --max-findings &lt;n&gt;|all</h4><p>Dial review verbosity up or down per project; the choice persists until reset.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Dangerous rm inside bash -c/sh -c can't skip the safety prompt</h4><p>Closes a gap where bypassPermissions or a shell allow rule let a destructive rm run unprompted.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Background command time limit now only applies to unattended sessions</h4><p>Terminal, desktop app and VS Code sessions no longer get killed by the background command timer.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation reliability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.288</span>
+            <h3>Unattended sessions recover from stalled streams instead of dying</h3>
+          </div>
+          <div class="story-body">
+            <p>A cluster of related fixes: mid-response API timeouts in non-interactive sessions and subagents now continue from the partial response instead of failing the whole turn, and thinking-only responses retry instead of erroring out. Long conversations that previously failed with "Prompt is too long" now auto-compact instead. The unattended retry watchdog (<code>CLAUDE_CODE_RETRY_WATCHDOG</code>) used to retry for hours after a very long response stream failed; it now re-streams and gives up after three timeouts. Auto mode also now compacts a conversation that's grown too long for the safety classifier, instead of prompting for or failing every tool call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the exact failure mode that would quietly break a cron-triggered agent job — a stalled stream or an oversized context used to mean a hung or dead run with no output. If you're running (or planning to run) anything unattended against client repos — scheduled scans, batch content generation, nightly builds — this release is less babysitting and more actual delivery per run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.288</span>
+            <h3>CLAUDE.md and .claude/rules load on Write and Edit, not only Read</h3>
+          </div>
+          <div class="story-body">
+            <p>Path-scoped <code>.claude/rules</code> and nested CLAUDE.md files were only loading when a Read tool call touched a file in their scope. If Claude created or changed a file in that scope without reading it first, the applicable rules never loaded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you keep per-folder CLAUDE.md conventions in any client repo (Bisque, Studio C, Sonderwerks) — say, a rules file scoped to an API routes folder or a Supabase migrations directory — and Claude ever wrote a new file there before reading an existing one, those rules were silently skipped. Worth a spot-check on any repo where you lean on nested rules rather than one root CLAUDE.md.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.288</span>
+            <h3>Plugin-defined agents spawned by name now use their own config</h3>
+          </div>
+          <div class="story-body">
+            <p>In agent teams, a plugin-defined agent spawned by name was running with Claude Code's default prompt, tools, disallowedTools and effort instead of the settings the plugin actually configured for it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you've built or plan to build reusable subagents for repeatable client work (a content-reviewer agent, a migration-runner agent) and ship them as a plugin, they'll now actually run with the tool access and effort level you set — not a generic fallback.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code review &amp; guardrails</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.288</span>
+            <h3>/code-review gets a findings dial: --max-findings &lt;n&gt;|all</h3>
+          </div>
+          <div class="story-body">
+            <p>Pass <code>--max-findings &lt;n&gt;</code> or <code>--max-findings all</code> to report more or fewer findings than the usual cap. The choice sticks until you run <code>--max-findings default</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Tune review noise per job — a quick landing-page tweak doesn't need the same finding count as a Supabase schema migration. Useful if you've ever felt a review was cut short on a bigger diff, or too noisy on a small one.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.288</span>
+            <h3>Dangerous rm inside bash -c/sh -c can no longer skip the safety prompt</h3>
+          </div>
+          <div class="story-body">
+            <p>A destructive <code>rm</code> (one targeting <code>/</code> or a home directory) nested inside a <code>bash -c</code> or <code>sh -c</code> script was running without approval under bypassPermissions mode or a shell allow rule — the always-ask safeguard didn't catch it there.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A concrete, citable example if a client asks how you keep AI-assisted dev from going rogue on their machine or CI. Worth knowing the gap existed if you run with broad bash allow rules or bypassPermissions on any client-facing automation.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.288</span>
+            <h3>Background command time limit now only applies to unattended sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>The background command time limit now applies only in unattended sessions (<code>-p</code>, Agent SDK, CI, cloud). Terminal, desktop app and VS Code sessions have no limit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long-running local dev servers, watch builds or indexing jobs kicked off from an interactive session won't get killed by a timer anymore — that limit is now reserved for scripted/CI runs where it actually belongs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.288</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Added</span><span class="txt">Built-in <code>gh api</code> for cloud sessions whose image has no GitHub CLI <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag feature qh-tag">Added</span><span class="txt">A cleared prompt (Ctrl+C) comes back on Up arrow, pasted text and images included <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag feature qh-tag">Added</span><span class="txt">Re-authenticate prompt when an MCP server asks for more OAuth scope mid-call <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag feature qh-tag">Added</span><span class="txt">Ctrl+F session search and Alt+↑/↓ group jumps in the agents view <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">LSP tool calls now time out after 60s instead of hanging indefinitely <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resumed sessions no longer drop context a recent compaction had just restored <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP tool calls no longer occasionally run twice on large or unparseable remote results <span class="ver">2.1.288</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A plugin's pane no longer blanks out when a diff inside it fails to parse — it falls back to plain code <span class="ver">2.1.288</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
