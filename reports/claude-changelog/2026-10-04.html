@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-04" />
+  <meta name="report:title" content="2.1.289: Bash deny rules stop leaking under sandbox auto-allow, and plugins can spawn teammate agents" />
+  <meta name="report:summary" content="A mostly-fixes release: two ways to slip a command past Bash deny/ask rules under sandbox auto-allow are closed, Read deny rules now hold through symlinks, plugin faults no longer kill background sessions, and the agent API gains agent.spawn for teammates." />
+  <meta name="report:highlights" content="4" />
+
+  <title>2.1.289: Bash deny rules stop leaking under sandbox auto-allow, and plugins can spawn teammate agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, October 4, 2026</span>
+        <span>◆</span><span>1 release · v2.1.289</span>
+      </div>
+      <h1>2.1.289: Bash deny rules stop leaking under sandbox auto-allow, and plugins can spawn teammate agents</h1>
+      <p class="standfirst">Light window: one release, almost all fixes. The part worth updating for is permissions — if you run with the sandbox auto-allowing commands, your Bash deny rules had two holes that are now closed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.288 (Oct 2) through 2.1.289 (Oct 3)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release</div></div>
+      <div class="stat"><div class="num">27</div><div class="lbl">Changelog lines</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">New capability</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Bash deny rules hold under sandbox auto-allow</h4><p>Commands behind an env-var prefix (e.g. <code>TZ="$HOME" rm -rf build</code>) or a bare variable assignment could skip deny/ask rules. Fixed.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Read deny rules follow symlinks</h4><p>Files @-mentioned or selected in the IDE through a symlink were bypassing <code>Read</code> deny rules. Fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Plugin crashes stop killing background sessions</h4><p>An async throw in a plugin's on-screen handler used to end supervised and background sessions. Fixed, with several related fault-isolation fixes.</p></div>
+        <div class="signal"><div class="n">04</div><h4><code>agent.spawn</code> for teammates</h4><p>Plugins get <code>agent.spawn</code> for teammates, one agent id across hook events, and idle/waiting states in <code>$.agent.list()</code>.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permission rules: gaps closed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.289</span>
+            <h3>Two ways past Bash deny/ask rules under sandbox auto-allow are closed</h3>
+          </div>
+          <div class="story-body">
+            <p>When the sandbox auto-allows commands, a deny or ask rule could miss a command that had an environment-variable prefix with an expanded value — the changelog's own example is <code>TZ="$HOME" rm -rf build</code> — or a bare variable assignment in front of it. Both now match. Separately, on managed machines, a deny/ask rule on a nested part of a compound shell command now holds even when a user-installed mod approved it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your unattended scout and hub jobs are exactly the sessions where a deny rule is the only guardrail. Update to 2.1.289 on the Mac running Nash OS, then re-check that your <code>rm</code>/<code>git push --force</code>/<code>supabase db reset</code> deny rules actually fire on a prefixed form like <code>FOO=1 rm -rf x</code>.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.289</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.289</span>
+            <h3><code>Read</code> deny rules now apply to symlinked files from the IDE</h3>
+          </div>
+          <div class="story-body">
+            <p>Files that were @-mentioned, changed, or selected in the IDE through a symlink weren't checked against <code>Read</code> deny rules. They are now. Also closed: a user-installed plugin could rewrite the descriptions of an organization-managed MCP server's sign-in tools.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client repo symlinks a shared <code>.env</code> or credentials folder (common in monorepo-ish Vercel setups), your <code>Read(.env*)</code> deny rule was leaky in VS Code until this release. No action beyond updating; worth knowing if you ever told a client their secrets were fenced off.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.289</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Plugins &amp; agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">v2.1.289</span>
+            <h3>Plugin and mod faults are contained instead of ending the session</h3>
+          </div>
+          <div class="story-body">
+            <p>Several fixes in one direction: supervised and background sessions no longer end when a plugin's on-screen handler throws asynchronously; a bad value from a mod's <code>ui.render</code> hook no longer causes an "unrecoverable interface error"; a mod's <code>Client</code> that fails while drawn now fails alone and raises <code>ui.fault</code>; zero-height plugin regions and unknown Box border styles no longer crash or freeze the session. Installed mods also now load in the first session after an upgrade.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This pairs with yesterday's stalled-stream fix — background runs are less likely to die from something unrelated to the task. If a scheduled job silently stopped in the last week and you have UI plugins installed, this is a likely culprit; update and let it run before debugging further.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.289</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">v2.1.289</span>
+            <h3><code>agent.spawn</code> for teammates, stable agent ids, idle/waiting states</h3>
+          </div>
+          <div class="story-body">
+            <p>The only additive item in the release: <code>agent.spawn</code> for teammates, one agent id carried across plugin hook events, and idle and waiting states exposed in <code>$.agent.list()</code>. The changelog gives no further detail.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A stable agent id across hooks means a plugin can track one teammate from spawn to finish, which is what you'd need to build a "build / review / deploy" crew that reports status. Low priority for client work this week; bookmark it if you get to automating the Bisque or Sonderwerks build pipelines with teammates.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.289</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">[VSCode] Reverted a 2.1.288 change to <code>claude auth status</code> that may have made sign-outs more frequent. If you got signed out yesterday, this is why. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Terminal no longer freezes on short code blocks with many unclosed <code>&lt;script&gt;</code> tags or deeply nested <code>${</code> substitutions; published artifact pages no longer freeze the reader's browser tab on the same input. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>plugin list</code>/<code>eval</code>/<code>update</code> no longer show a stale copy of a plugin from a local-folder marketplace; hot reload works for a symlinked <code>--plugin-dir</code>. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude plugin validate</code> no longer skips a plugin whose folder also holds a marketplace manifest, or fails Anthropic's own marketplace plugins. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin panes now draw links using localhost, an <code>@</code> in the path, an uppercase host, or a <code>file:</code> path. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Large files open faster in a plugin code pane; failed mod bands/panes now name the mod in the error line. <span class="ver">v2.1.289</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Assorted rendering fixes: tabs/escape/C1 control text drawing over rows below, right-aligned mod content under the close mark, stale rows with the Background tasks dialog open. <span class="ver">v2.1.289</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
