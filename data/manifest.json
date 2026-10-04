@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-04",
+    "title": "Tennessee halts executions after a botched lethal injection, the Coast Guard searches for a missing air ambulance off Nantucket, and flooding spreads into the Carolinas",
+    "summary": "Tennessee's prisons chief resigned and all 2026 executions were paused after Wednesday's botched lethal injection of Christa Pike, the Coast Guard entered a second day searching for a medical jet that vanished off Nantucket with six aboard, Paramount Skydance will rename itself Skydance and move to the NYSE this week, and heavy rain pushed into the Carolinas.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-04.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "A mostly-fixes release: two ways to slip a command past Bash deny/ask rules under sandbox auto-allow are closed, Read deny rules now hold through symlinks, plugin faults no longer kill background sessions, and the agent API gains agent.spawn for teammates.",
     "highlights": 4,
     "path": "reports/claude-changelog/2026-10-04.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-04",
+    "title": "Anthropic shipped unsandboxed plugins for Claude Code, and separately put $100M into training 10,000 people to deploy Claude",
+    "summary": "Claude Code's new mods run with full machine privileges right as researchers published a 92.5%-success attack on that exact plugin mechanism, while Anthropic committed $100M to train 10,000 enterprise engineers and Google quietly let Gemini 4 Argon out to cyber defenders only.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-04.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-04",
+    "title": "Claude Code's plugins run unsandboxed now, so sell clients a plugin-trust audit",
+    "summary": "Six moves ranked by fit: a plugin-trust audit add-on built on this week's unsandboxed-mods research, a $125 Claude Partner Network certification before Frontier Academy badges exist, a Googlebook-ready site check for launch day, a rained-out rebooking blast for Mobile Detailing and trades clients, a plugin-risk explainer post, and a timed experiment with Claude Code's new teammate agents.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-04.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-04",
+    "title": "Still nothing to patch, and Google just replaced ChromeOS with a $899 Googlebook",
+    "summary": "Next.js, React, Tailwind and Supabase published no new advisories since Sept. 30, Google shipped its ChromeOS-killing Googlebook laptops starting today at $899, Anthropic is targeting a pre-Thanksgiving IPO while the FTC circles, Toshiba's HDD expansion wiped billions off Seagate and Western Digital, and Core Lightning says attackers are actively hitting unpatched Bitcoin nodes.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-04.html"
   },
   {
     "source": "america",

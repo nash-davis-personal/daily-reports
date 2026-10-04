@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-04" />
+  <meta name="report:title" content="Still nothing to patch, and Google just replaced ChromeOS with a $899 Googlebook" />
+  <meta name="report:summary" content="Next.js, React, Tailwind and Supabase published no new advisories since Sept. 30, Google shipped its ChromeOS-killing Googlebook laptops starting today at $899, Anthropic is targeting a pre-Thanksgiving IPO while the FTC circles, Toshiba's HDD expansion wiped billions off Seagate and Western Digital, and Core Lightning says attackers are actively hitting unpatched Bitcoin nodes." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Still nothing to patch, and Google just replaced ChromeOS with a $899 Googlebook — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, October 4, 2026</span>
+        <span>◆</span><span>Stack status, a new laptop OS, IPO timing and a storage-stock shock</span>
+      </div>
+      <h1>Still nothing to patch, and Google just replaced ChromeOS with a $899 Googlebook</h1>
+      <p class="standfirst">Next.js, React, Tailwind and Supabase are unchanged since the Sept. 30 batch, so 16.3.8 and 15.5.27 stay the target versions. The bigger move today is Google folding ChromeOS into Android as "Googlebook," with real laptops on shelves from Acer, Dell, HP, Lenovo and Asus — plus Anthropic's IPO clock, a storage-stock selloff, and an active attack on unpatched Bitcoin Lightning nodes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 2 – Oct 4</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$899</div><div class="lbl">Starting price of the first Googlebook laptops, shipping today in the US</div></div>
+      <div class="stat"><div class="num">-11%</div><div class="lbl">Seagate's one-day stock drop after Toshiba said it would double HDD output</div></div>
+      <div class="stat"><div class="num">26.06.8</div><div class="lbl">Core Lightning version node operators must run now; attackers target older ones</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new to patch</h4><p>No new advisories on the stack since Sept. 30. Next.js 16.3.8 and 15.5.27 remain the targets.</p></div>
+        <div class="signal"><div class="n">02</div><h4>ChromeOS gets folded into Android</h4><p>Google's Googlebook OS ships today on five laptop brands starting at $899, with ChromeOS phased out over time.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Anthropic eyes a pre-Thanksgiving IPO</h4><p>Amodei is pushing ahead despite an FTC probe and Oura's own IPO staying pulled over market jitters.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Toshiba spooks the AI storage trade</h4><p>A plan to double HDD output wiped double-digit percentages off Seagate and Western Digital in one session.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Bitcoin Lightning nodes under active attack</h4><p>Core Lightning says attackers are hitting nodes still on 26.06.7 or earlier; patch 26.06.8 closed the holes two weeks ago.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack and dev tools</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security status</span>
+            <span class="ver">checked Oct 4</span>
+            <h3>No new advisories for Next.js, React, Tailwind or Supabase; 16.3.8 and 15.5.27 remain the patched versions</h3>
+          </div>
+          <div class="story-body">
+            <p>The Next.js advisory page still tops out at the Sept. 30 batch: the high-severity SSRF in Image Optimization, the critical next/og remote-code-execution fix from Sept. 22, and three moderate/low cache and Draft Mode leaks. Nothing has shipped above those since. React's latest is still 19.3.0 (Sept. 9), Tailwind sits at 4.3.3 (July 16), and Supabase's changelog has nothing new since the Oct. 1 OrioleDB beta. Vercel's changelog is quiet aside from the already-known First Input Delay sunset on Nov. 1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Same open item as the last few days: confirm every client repo reads 16.3.8 or 15.5.27 and close it out this weekend. Nothing new to pull in, so this is just a verification pass, not a scramble.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories ↗</a> · <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases ↗</a> · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog ↗</a> · <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platforms</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Platform</span>
+            <span class="ver">Oct 4</span>
+            <h3>Google shipped Googlebook, a ChromeOS-Android fusion laptop OS, with real hardware on sale today at $899+</h3>
+          </div>
+          <div class="story-body">
+            <p>Googlebook OS is built on the Android stack with ChromeOS's desktop shell and multi-window support bolted on, and it drops Windows-app compatibility that Chromebooks had been adding. Five launch laptops went on sale in the US today — Acer Googlebook 14 from $899, Dell XPS Googlebook from $999 or $1,199, HP and Asus Googlebook 14 at $1,299, and Lenovo Googlebook 15 at $1,299 — running Intel Core Ultra or Snapdragon X Elite chips, up to 2.8K OLED touchscreens, and Gemini baked into the OS (Magic Pointer, Magic Cues, Rambler voice-to-text). Google is promising 10 years of direct OS updates, Pixel-style, and is pushing Play Store "desktop" app categories alongside the browser. UK, Ireland, France, Germany and Australia get it Oct. 5. Google says current Chromebooks keep support, but court filings suggest ChromeOS gets phased out over several years.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Google's own pitch is that "70% of time on laptops is in a browser," so your Next.js sites and PWAs still work fine on day one — add a Googlebook-class Chrome build to your QA matrix and confirm your PWA install prompts fire correctly on it. Longer term, budget Chromebooks (common in SMB front-desk and school-adjacent client setups) are on a slow path out; don't spec new client hardware around ChromeOS-only assumptions going forward.</div>
+          <div class="refs"><a href="https://www.computerworld.com/article/4224465/googlebook-android-chromeos-faq.html" target="_blank" rel="noopener">Computerworld ↗</a> · <a href="https://9to5google.com/2026/09/21/googlebook-launch/" target="_blank" rel="noopener">9to5Google ↗</a> · <a href="https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/" target="_blank" rel="noopener">Google blog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money, chips and the AI buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Big tech</span>
+            <span class="ver">Oct 2</span>
+            <h3>Anthropic is targeting a pre-Thanksgiving IPO while the FTC investigates it and Oura's own listing stays shelved</h3>
+          </div>
+          <div class="story-body">
+            <p>Dario Amodei is pushing to list before Thanksgiving despite fading IPO sentiment generally: smart-ring maker Oura postponed its $2.1 billion Nasdaq debut on Sept. 29 citing market uncertainty, and another recent offering priced below range. A leaked Anthropic filing shows a roughly $8 billion operating loss against fast-growing revenue, and the FTC is reportedly reviewing both Anthropic and OpenAI over consumer-risk concerns. Anthropic confidentially filed its draft S-1 back in June; lead underwriters are reported as Morgan Stanley, Goldman Sachs, JPMorgan and Citigroup.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action, but it's a signal the capital behind Claude's pricing is under real market scrutiny right now. Keep a second model wired in behind every client agent as a fallback, and don't assume current Claude API pricing is locked in past year-end while this IPO and the FTC review play out.</div>
+          <div class="refs"><a href="https://siliconangle.com/2026/10/02/despite-ipo-jitters-and-ai-safety-worries-anthropic-sticks-to-a-2026-offering/" target="_blank" rel="noopener">SiliconANGLE ↗</a> · <a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">CNBC (Oura) ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Chips &amp; storage</span>
+            <span class="ver">Oct 2</span>
+            <h3>Toshiba's plan to double hard-drive output wiped 11% off Seagate and 7% off Western Digital in a single session</h3>
+          </div>
+          <div class="story-body">
+            <p>Nikkei Asia reported Toshiba will spend roughly ¥60 billion ($400 million) to double its HDD production capacity by fiscal 2027, aiming to grow its market share from about 10% to 30% to fill an AI-driven chip-memory supply gap. Seagate and Western Digital, whose stocks had run up 240% and 170% this year on the thesis that tight hard-drive supply would keep AI-datacenter storage prices high, dropped 11% and 7% respectively on the news. Morgan Stanley, Citi and Rosenblatt called the selloff overdone; the broader memory sector (Micron, SK Hynix) was unaffected.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If more HDD supply eventually eases storage pricing, that flows through to cloud storage costs over time — worth revisiting Supabase storage tiers and backup-provider pricing in a quarter or two, but nothing to act on today.</div>
+          <div class="refs"><a href="https://247wallst.com/investing/2026/10/02/seagate-tumbles-10-western-digital-drops-7-as-toshiba-moves-to-double-hard-disk-output/" target="_blank" rel="noopener">24/7 Wall St. ↗</a> · <a href="https://asia.nikkei.com/business/electronics/toshiba-to-double-hard-disk-drive-supply-to-fill-ai-chip-memory-gap" target="_blank" rel="noopener">Nikkei Asia ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security beyond your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Crypto infra</span>
+            <span class="ver">Oct 2</span>
+            <h3>Core Lightning warns attackers are actively targeting Bitcoin nodes that haven't patched to 26.06.8</h3>
+          </div>
+          <div class="story-body">
+            <p>Blockstream's Core Lightning team issued an urgent advisory saying attackers are scanning for and hitting nodes still running v26.06.7 or earlier. Version 26.06.8, shipped Sept. 22, closed three vulnerability classes, including a channel-closing flaw that could force operators to forfeit funds through Bitcoin's penalty mechanism, plus bugs that could crash nodes or exhaust memory. No confirmed fund losses have been disclosed, but the gap between patch and active exploitation was about 10 days.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> TSD doesn't run Lightning infrastructure today, but if a future client project ever adds Bitcoin/Lightning payment rails, treat node patching exactly like a Next.js advisory: subscribe to release notes and patch within 48 hours, not weeks.</div>
+          <div class="refs"><a href="https://www.tftc.io/core-lightning-active-attack-warning-upgrade-v26-06-8" target="_blank" rel="noopener">TFTC ↗</a> · <a href="https://www.crowdfundinsider.com/2026/10/315000-open-source-bitcoin-lightning-implementation-core-lightning-warns-that-attackers-are-targeting-unpatched-nodes/" target="_blank" rel="noopener">Crowdfund Insider ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Amazon's 2026 Kindle lineup landed Oct. 1: a $149.99 6-inch Kindle (on sale now), plus a $199.99 Paperwhite and $289.99 Colorsoft shipping Oct. 28, all with redesigned aluminum-unibody options. <a href="https://techmymoney.com/2026/10/02/new-kindle-lineup-starts-at-149-99-paperwhite-and-colorsoft-ship-october-28/" target="_blank" rel="noopener">TechMyMoney ↗</a></span></li>
+            <li><span class="tag improve qh-tag">Hardware</span><span class="txt">Amazon's new Fire TV Stick 4K ($59.99, shipping since Sept. 30) runs on the new Vega OS with Alexa+ built in, promising 35% faster app launches; a redesigned remote ships separately in late October for $14.99. <a href="https://variety.com/2026/digital/news/amazon-fire-tv-4k-stick-remote-alexa-plus-hub-1236878493/" target="_blank" rel="noopener">Variety ↗</a></span></li>
+            <li><span class="tag breaking qh-tag">Security</span><span class="txt">Fortra patched eight BoKS Core privileged-access-manager vulnerabilities on Oct. 3, including three critical bugs (CVSS up to 9.9) enabling AD authentication bypass and root command injection. No exploitation confirmed. <a href="https://www.securityweek.com/fortra-patches-critical-vulnerabilities-in-boks/" target="_blank" rel="noopener">SecurityWeek ↗</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
