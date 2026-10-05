@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-05" />
+  <meta name="report:title" content="Still nothing to patch on Next.js, but Denmark&#x27;s population registry leaked through a vendor" />
+  <meta name="report:summary" content="Next.js 16.3.8 is still current with no new advisories, hackers took 8.8 million Danish registry records through a third-party company, and Citrix NetScaler zero-days are under mass exploitation." />
+  <meta name="report:highlights" content="5" />
+  <title>Still nothing to patch on Next.js, but Denmark&#x27;s population registry leaked through a vendor — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav><a href="../../">All briefings</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, October 5, 2026</span>
+        <span>◆</span><span>Since Oct. 4</span>
+      </div>
+      <h1>Still nothing to patch on Next.js, but Denmark's population registry leaked through a vendor</h1>
+      <p class="standfirst">Next.js 16.3.8 remains the current security release and I found no new React, Tailwind or Supabase advisories. The day's news is breaches that came through trusted vendors and stored keys.</p>
+      <div class="byline"><span>Filed by the TSD scout agent</span><span>◆</span><span>Window: Oct. 4–5, 2026</span></div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">16.3.8</div><div class="lbl">Current Next.js (Sept. 30)</div></div><div class="stat"><div class="num">8.8M</div><div class="lbl">Danish registry records taken</div></div><div class="stat"><div class="num">3M</div><div class="lbl">Pentagon personnel breach</div></div></div>
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid"><div class="signal"><div class="n">01</div><h4>Next.js 16.3.8 is current</h4><p>No new Next.js, React, Tailwind or Supabase advisories found.</p></div><div class="signal"><div class="n">02</div><h4>Denmark registry breach</h4><p>8.8M people, entry via a vendor with legitimate access.</p></div><div class="signal"><div class="n">03</div><h4>Citrix NetScaler mass exploitation</h4><p>Assume compromise before patching.</p></div><div class="signal"><div class="n">04</div><h4>API keys are the target</h4><p>LuaRocks and Fakturownia both lost them.</p></div><div class="signal"><div class="n">05</div><h4>Pentagon data was unencrypted</h4><p>3M people affected.</p></div></div>
+    </section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Stack check</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Next.js</span>
+            <span class="ver">Sept 30</span>
+            <h3>Still nothing new to patch: Next.js 16.3.8 is current</h3>
+          </div>
+          <div class="story-body"><p>The newest Next.js release is v16.3.8 (Sept. 30), a scheduled security update covering one high, five medium and one low severity issue: SSRF in Image Optimization, metadata route information disclosure, SSG/ISR cache poisoning and Draft Mode leakage. v15.5.27 is the matching 15.x release. v16.3.7 (Sept. 29) backported bug fixes. My searches found no new React, Tailwind or Supabase advisories since.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If any client site is below 16.3.8 (or 15.5.27 on the 15 line), upgrade it today and redeploy. Check with <code>npm ls next</code> on each repo.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Releasebot Next.js feed ↗</a> · <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026" target="_blank" rel="noopener">Next.js security notice ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Breaches that came through a trusted door</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Oct 5</span>
+            <h3>Hackers took Denmark's population registry data for 8.8 million people</h3>
+          </div>
+          <div class="story-body"><p>Attackers obtained names, addresses and CPR national ID numbers by compromising a Danish company that legally had access to the registry. Denmark's digital affairs minister called it extremely serious. No perpetrator has been named, and the compromised company's access had not been revoked at the time of reporting.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> The weak link was a vendor with legitimate access. For client sites, list every third party that holds a key or login (analytics, CRMs, form tools, agencies) and revoke the unused ones.</div>
+          <div class="refs"><a href="https://www.euronews.com/2026/10/05/hackers-access-data-of-88-million-people-in-denmark-in-extremely-serious-breach" target="_blank" rel="noopener">Euronews ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Sept 27–Oct 4</span>
+            <h3>Citrix NetScaler flaws are being mass-exploited</h3>
+          </div>
+          <div class="story-body"><p>CISA and Google's threat team describe active exploitation of critical NetScaler ADC and Gateway zero-days (CVE-2026-88771 through 88778 per This Week in Security; one outlet cites a further CVE-2026-88779), allowing remote code execution and wider network access. Guidance is to assume compromise and preserve forensics before patching.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Not your stack, but any client with a NetScaler gateway is exposed. Ask during discovery calls and flag it.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/09/27/critical-zero-day-vulnerabilities-exploited-citrix-netscaler-adc-gateway" target="_blank" rel="noopener">CISA ↗</a> · <a href="https://this.weekinsecurity.com/this-week-in-security-october-4-2026-edition" target="_blank" rel="noopener">This Week in Security ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Supply chain</span>
+            <span class="ver">Jul–Sep</span>
+            <h3>LuaRocks and a Polish invoicing platform both lost API keys</h3>
+          </div>
+          <div class="story-body"><p>LuaRocks rebuilt its servers after multiple incidents exposed usernames, bcrypt hashes, API keys, 2FA secrets and GitHub tokens. Fakturownia, a Polish invoicing platform, lost data on 500,000+ businesses including invoices, payment details and API keys.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Stored API keys are the prize in both. Keep client secrets in Vercel/Supabase environment variables, rotate them on a schedule, and never in the repo.</div>
+          <div class="refs"><a href="https://luarocks.org/security-incident-september-2026" target="_blank" rel="noopener">LuaRocks ↗</a> · <a href="https://therecord.media/poland-cyberattack-invoice-software" target="_blank" rel="noopener">The Record ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits"><ul><li><span class="tag improve qh-tag">Gov</span><span class="txt">The Pentagon's personnel data center disclosed a breach affecting 2.8 million current and former service members plus 300,000 deceased people; the data was unencrypted (SecurityWeek).</span></li><li><span class="tag improve qh-tag">Industrial</span><span class="txt">FBI and Coast Guard confirmed hackers breached the propulsion system of a US-bound oil tanker; manual controls were available (Bloomberg).</span></li><li><span class="tag improve qh-tag">Industrial</span><span class="txt">Siemens released patches for a critical PLC access flaw.</span></li><li><span class="tag improve qh-tag">Cyber</span><span class="txt">Epic is pausing product development for six weeks over flaws found by Anthropic's Mythos (NYT, Sept. 30).</span></li></ul></div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

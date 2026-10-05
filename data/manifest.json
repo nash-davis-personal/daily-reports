@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-05",
+    "title": "September payrolls rose just 29,000, diesel hit a record $6.505, and flood watches cover the Southeast",
+    "summary": "Hiring slowed to 29,000 jobs and cut odds of another Fed hike, diesel hit a record $6.505 a gallon, and flooding rain hit the Southeast and Carolinas.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-05.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "No new Claude Code release since 2.1.289 (October 3), covered in the October 4 briefing; nothing new to act on.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-10-05.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-05",
+    "title": "Nvidia puts Anthropic&#x27;s compute contracts above $180B while China&#x27;s best model closes to within 3%",
+    "summary": "Nvidia says Anthropic&#x27;s compute contracts exceed $180B, the US lead over China&#x27;s top model is about 3%, and an autonomous AI agent hacked a Dutch security group.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-05.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-05",
+    "title": "Denmark&#x27;s breach came through a vendor, so sell clients a vendor-access checkup",
+    "summary": "Six moves ranked by fit: a vendor-access checkup, a model-cost review for managed AI retainers, spend caps on client AI keys, fuel-surcharge quote forms, flood-cleanup pages, and a vendor-risk post.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-05.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-05",
+    "title": "Still nothing to patch on Next.js, but Denmark&#x27;s population registry leaked through a vendor",
+    "summary": "Next.js 16.3.8 is still current with no new advisories, hackers took 8.8 million Danish registry records through a third-party company, and Citrix NetScaler zero-days are under mass exploitation.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-05.html"
   },
   {
     "source": "america",
