@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-06",
+    "title": "Treasury yields stay near 5.3% after the weak jobs report, with oil above $100 and Southeast flood risk building",
+    "summary": "Markets read Friday&#x27;s payroll miss as relief for hike odds but not for bond yields; Brent sits near $102 and flood watches continue across the Southeast.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-06.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Two releases (2.1.290, 2.1.291): /loop and scheduled tasks survive compaction, resume and Mac sleep, WebFetch stops truncating at 100k characters, /code-review medium now flags conventions on Opus 5.5, and a batch of Bash permission holes closed.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-06.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-06",
+    "title": "OpenAI puts agents on their own cloud computers while a $0.15-per-million DeepSeek model closes on frontier coding scores",
+    "summary": "OpenAI&#x27;s DevDay agent push, DeepSeek V4.1 Flash pricing, Microsoft&#x27;s low-latency voice models, and a run of coding-agent security findings.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-06.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-06",
+    "title": "A Supabase deadline on Oct. 30 hands you a maintenance offer you can send this week",
+    "summary": "Seven ranked moves led by a Supabase grants-change check, plus faster voice AI, rescue work on agent-built apps and a margin cut from cheap models.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-10-06.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-06",
+    "title": "A Next.js RCE is being exploited on Windows hosts, and Supabase turns on a Data API grants change Oct. 30",
+    "summary": "Patch Next.js if any deployment runs on Windows, audit Supabase table grants before Oct. 30, and note Supabase&#x27;s Turso deal and Vercel&#x27;s Node 20 cutoff.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-06.html"
   },
   {
     "source": "america",

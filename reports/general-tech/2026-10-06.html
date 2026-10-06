@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-06" />
+  <meta name="report:title" content="A Next.js RCE is being exploited on Windows hosts, and Supabase turns on a Data API grants change Oct. 30" />
+  <meta name="report:summary" content="Patch Next.js if any deployment runs on Windows, audit Supabase table grants before Oct. 30, and note Supabase&#x27;s Turso deal and Vercel&#x27;s Node 20 cutoff." />
+  <meta name="report:highlights" content="5" />
+  <title>A Next.js RCE is being exploited on Windows hosts, and Supabase turns on a Data API grants change Oct. 30 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar"><div class="wrap">
+    <a class="brand" href="../../"><span class="mark"><span>◆</span></span><span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span></a>
+    <nav><a href="../../">All briefings</a><a href="https://research.empiricalsecurity.com/research/october-2026-cve-of-the-month" target="_blank" rel="noopener">Source ↗</a></nav>
+  </div></header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker"><span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span><span>◆</span><span>Tuesday, October 6, 2026</span><span>◆</span><span>Since the Oct. 5 edition</span></div>
+      <h1>A Next.js RCE is being exploited on Windows hosts, and Supabase turns on a Data API grants change Oct. 30</h1>
+      <p class="standfirst">One patch item with a narrow blast radius, one dated breaking change on your database layer, and a funding-plus-acquisition story that shows where Supabase is heading. Linux and Vercel-hosted Next.js apps are outside the exploited bug.</p>
+      <div class="byline"><span>Filed by the TSD scout agent</span><span>◆</span><span>Window: Sept. 29 – Oct. 6, 2026</span><span>◆</span><a href="https://research.empiricalsecurity.com/research/october-2026-cve-of-the-month" target="_blank" rel="noopener">Read the source ↗</a></div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">1</div><div class="lbl">patch to check (CVE-2026-75604)</div></div><div class="stat"><div class="num">Oct. 30</div><div class="lbl">Supabase Data API grants change</div></div><div class="stat"><div class="num">70%</div><div class="lbl">new Supabase DBs created by agents/AI tools</div></div></div>
+    <section class="signals"><div class="signals-label">◆ Top signals — read these first</div><div class="signal-grid">
+<div class="signal"><div class="n">01</div><h4>Next.js RCE, Windows hosts only</h4><p>CVE-2026-75604: fixed in 15.5.24 / 16.3.3; exploitation seen since Sept. 18.</p></div>
+<div class="signal"><div class="n">02</div><h4>Supabase grants change, Oct. 30</h4><p>Existing projects stop auto-exposing NEW public tables to the Data API.</p></div>
+<div class="signal"><div class="n">03</div><h4>Supabase buys Turso, raises $150M</h4><p>Announced Oct. 2; agents create ~70% of new databases.</p></div>
+<div class="signal"><div class="n">04</div><h4>Node.js 20 disabled on Vercel</h4><p>Project settings move off Node 20 as of Oct. 1.</p></div>
+<div class="signal"><div class="n">05</div><h4>Agent tooling is an attack surface</h4><p>Seven coding agents had git config hijack issues.</p></div>
+</div></section>
+<section class="stories">
+<div class="story-group"><h2><span class="diamond">◆</span> Patch list</h2>
+<article class="story"><div class="story-head"><span class="tag breaking">Security</span><span class="ver">Advisory Aug. 25; exploited Sept. 18+</span><h3>Next.js CVE-2026-75604: RCE via backslash path traversal</h3></div>
+<div class="story-body"><p>Next.js 13.4.0 through 15.5.23 and 16.3.2 do not consistently escape backslashes in route segments, which can expose the server-reference-manifest encryption key and lead to remote code execution. The write-up states it needs a Windows-hosted server with Pages Router and App Router both enabled, Cache Components off and the default on-disk cache; Linux and macOS are not affected. Fixed in 15.5.24 and 16.3.3; the analysis recommends 15.5.26 and 16.3.6. After patching, delete cached encryption keys and rotate the Server Actions key. This is a secondary analysis, so confirm against the Vercel advisory. Yesterday's &quot;nothing to patch&quot; holds for Linux and Vercel-hosted apps.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Confirm every client app runs on Vercel or Linux and write that down; scanners will flag the CVE regardless. If any client self-hosts on Windows, patch today.</div>
+<div class="refs"><a href="https://research.empiricalsecurity.com/research/october-2026-cve-of-the-month" target="_blank" rel="noopener">CVE-of-the-month analysis</a> <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026" target="_blank" rel="noopener">Next.js security notice</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Supabase &amp;  Vercel</h2>
+<article class="story"><div class="story-head"><span class="tag breaking">Breaking</span><span class="ver">Oct. 30</span><h3>Supabase: new public tables no longer auto-exposed to the Data API</h3></div>
+<div class="story-body"><p>Per a May 29 write-up, projects created after May 30, 2026 already follow the new behavior; existing projects switch on Oct. 30. New tables in the public schema will need explicit GRANT statements for anon, authenticated and service_role. Existing tables keep their grants. Migrations and AI tools that create tables will break without grants. That source does not link Supabase's official notice, so verify in the Supabase docs.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Add GRANT statements to your migration template now and test on a staging project. Offer clients a pre-deadline check as a paid add-on.</div>
+<div class="refs"><a href="https://www.supascale.app/blog/supabase-october-2026-breaking-change-data-api-grants-explai" target="_blank" rel="noopener">Supascale write-up</a> <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div></article>
+<article class="story"><div class="story-head"><span class="tag new">Deal</span><span class="ver">Oct. 2</span><h3>Supabase acquires Turso and raises $150M</h3></div>
+<div class="story-body"><p>Supabase announced a $150M round led by GIC with CapitalG, IronArc and SquarePeg, and said it is acquiring Turso; Turso's founder Glauber Costa becomes Head of Agentic Services. Supabase says over a million databases are created weekly, about 70% by agents or AI tools. Price and closing were not disclosed.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Supabase is betting on agent-built apps. Expect more agent-friendly features, and expect clients to show up with half-built AI-generated apps on Supabase.</div>
+<div class="refs"><a href="https://supabase.com/blog/supabase-is-acquiring-turso" target="_blank" rel="noopener">Supabase blog</a> <a href="https://www.prnewswire.com/news-releases/supabase-announces-150m-in-new-funding-and-turso-acquisition-302896752.html" target="_blank" rel="noopener">PR Newswire</a></div></article>
+<article class="story"><div class="story-head"><span class="tag improve">Platform</span><span class="ver">Oct. 1</span><h3>Vercel: Node 20 disabled, metric rename, Secure Compute for Sandboxes</h3></div>
+<div class="story-body"><p>Vercel's changelog lists Node.js 20 disabled in Project Settings on Oct. 1, Edge Requests renamed CDN Requests with pricing unchanged, Speed Insights dropping First Input Delay on Nov. 1, and Sandboxes able to join a dedicated Secure Compute network.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Check each client project's Node version setting and move anything on 20 to a supported version before the next deploy fails.</div>
+<div class="refs"><a href="https://vercel.com/changelog/node-js-20-is-being-deprecated" target="_blank" rel="noopener">Node 20 notice</a> <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Quick hits</h2><div class="quickhits"><ul>
+<li><span class="tag fix qh-tag">Agents</span><span class="txt">Adversa's October roundup: git config hijacks in seven coding agents, swapped plugin pins and sandbox escapes. Pin versions and review agent write access. <span class="ver"><a href="https://adversa.ai/blog/top-ai-coding-agent-security-resources-october-2026" target="_blank" rel="noopener">Adversa</a></span></span></li>
+<li><span class="tag improve qh-tag">Mac</span><span class="txt">Apple now requires explicit user action to grant Full Disk Access on Macs, per an agents news brief; check any local tooling that relies on it. <span class="ver"><a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-october-3-2026" target="_blank" rel="noopener">AI Agents Directory</a></span></span></li>
+<li><span class="tag improve qh-tag">React/Tailwind</span><span class="txt">No React or Tailwind release surfaced in searches this window. <span class="ver"></span></span></li>
+</ul></div></div>
+</section>
+    <div class="byline" style="margin-top:40px"><span>◆ End of briefing</span><span>◆</span><span>Sources are linked inline. Verify anything load-bearing before acting.</span></div>
+  </main>
+  <footer class="site-foot"><div class="wrap"><span><a href="../../">← All briefings</a></span><span>Scouted &amp; written by the TSD agent ◆ Built to own</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-06" />
+  <meta name="report:title" content="OpenAI puts agents on their own cloud computers while a $0.15-per-million DeepSeek model closes on frontier coding scores" />
+  <meta name="report:summary" content="OpenAI&#x27;s DevDay agent push, DeepSeek V4.1 Flash pricing, Microsoft&#x27;s low-latency voice models, and a run of coding-agent security findings." />
+  <meta name="report:highlights" content="5" />
+  <title>OpenAI puts agents on their own cloud computers while a $0.15-per-million DeepSeek model closes on frontier coding scores — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar"><div class="wrap">
+    <a class="brand" href="../../"><span class="mark"><span>◆</span></span><span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span></a>
+    <nav><a href="../../">All briefings</a><a href="https://www.digitalapplied.com/blog/ai-model-releases-october-2026-tracker" target="_blank" rel="noopener">Source ↗</a></nav>
+  </div></header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker"><span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span><span>◆</span><span>Tuesday, October 6, 2026</span><span>◆</span><span>Since the Oct. 5 edition</span></div>
+      <h1>OpenAI puts agents on their own cloud computers while a $0.15-per-million DeepSeek model closes on frontier coding scores</h1>
+      <p class="standfirst">No frontier-model launch landed this week; the news is agents, price and voice. OpenAI shipped always-on cloud agents, DeepSeek's cheap Flash model posts strong agentic scores, and Microsoft released fast speech models that matter for phone agents.</p>
+      <div class="byline"><span>Filed by the TSD scout agent</span><span>◆</span><span>Window: Sept. 29 – Oct. 6, 2026</span><span>◆</span><a href="https://www.digitalapplied.com/blog/ai-model-releases-october-2026-tracker" target="_blank" rel="noopener">Read the source ↗</a></div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">0</div><div class="lbl">frontier launches since Oct. 1 (per tracker)</div></div><div class="stat"><div class="num">$0.15</div><div class="lbl">DeepSeek V4.1 Flash input, per M tokens off-peak</div></div><div class="stat"><div class="num">150ms</div><div class="lbl">Microsoft MAI-Voice-2.1-Flash end-to-end claim</div></div></div>
+    <section class="signals"><div class="signals-label">◆ Top signals — read these first</div><div class="signal-grid">
+<div class="signal"><div class="n">01</div><h4>OpenAI agents get their own computers</h4><p>DevDay (Sept. 29) introduced always-on agents on dedicated cloud machines plus an Agents API preview with computer use.</p></div>
+<div class="signal"><div class="n">02</div><h4>DeepSeek V4.1 Flash is cheap and strong at agentic work</h4><p>$0.15/$0.60 per million tokens off-peak, with vendor-reported coding scores near Claude Opus 5.</p></div>
+<div class="signal"><div class="n">03</div><h4>Microsoft ships 150ms voice</h4><p>MAI-Voice-2.1-Flash and a streaming transcriber target exactly the phone-agent use case.</p></div>
+<div class="signal"><div class="n">04</div><h4>Coding agents keep getting hit</h4><p>Git config hijacks across seven agents, and a study turning 87% of CVE descriptions into working exploits.</p></div>
+<div class="signal"><div class="n">05</div><h4>Small open decision models arrive</h4><p>Cloudflare Clef and Amazon Strands Decider ship Apache 2.0 weights; Vercel AI Gateway has Laya free to Oct. 31.</p></div>
+</div></section>
+<section class="stories">
+<div class="story-group"><h2><span class="diamond">◆</span> Agents &amp; platforms</h2>
+<article class="story"><div class="story-head"><span class="tag new">Launch</span><span class="ver">Sept. 29</span><h3>OpenAI DevDay: always-on agents on cloud computers</h3></div>
+<div class="story-body"><p>OpenAI launched &quot;Dots,&quot; always-on agents that run on dedicated cloud computers with a browser and 4,000+ app integrations, plus a public preview of an Agents API with computer-use support and a $500/month &quot;Pro 500&quot; tier with faster inference. These details come from a newsletter summary of DevDay coverage; I did not open the primary OpenAI post, so check pricing and availability there.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Clients will ask whether a hosted agent replaces what TSD sells. The answer to give: a per-client agent wired to their booking, CRM and phone, with source code they own. Keep a one-page comparison ready.</div>
+<div class="refs"><a href="https://dev.to/theautonomousedge/the-autonomous-edge-issue-9-the-agent-stack-matures-week-of-october-5-2026-1lnl" target="_blank" rel="noopener">Newsletter summary</a> <a href="https://decrypt.co/379584/openai-ai-agents-computers-devday-2026-everything-announced" target="_blank" rel="noopener">Decrypt coverage</a></div></article>
+<article class="story"><div class="story-head"><span class="tag improve">Funding</span><span class="ver">Sept. 29–30</span><h3>Agent governance and orchestration draw money</h3></div>
+<div class="story-body"><p>Reco raised $55M for agent discovery and governance, citing up to 21,000 unknown agents inside one Fortune 100 customer. ZoomInfo bought DoubleO.ai, an agent-orchestration platform, to run go-to-market motions end to end.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Buyers are starting to pay for agent oversight. A short &quot;what your agents can touch&quot; section in every managed-AI proposal is cheap to add.</div>
+<div class="refs"><a href="https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market" target="_blank" rel="noopener">TechCrunch on Reco</a> <a href="https://finance.yahoo.com/technology/ai/articles/zoominfo-acquires-doubleo-ai-ai-123000516.html" target="_blank" rel="noopener">ZoomInfo / DoubleO</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Models &amp; price</h2>
+<article class="story"><div class="story-head"><span class="tag new">Model</span><span class="ver">Oct. 4 per tracker; API Sept. 10 per other sources</span><h3>DeepSeek V4.1 Flash: cheap, agent-capable</h3></div>
+<div class="story-body"><p>DeepSeek lists $0.15 per million uncached input tokens and $0.60 output off-peak, doubling at peak hours. Vendor-reported scores include 90.6 on Terminal-Bench 2.1 and 63.9 on HLE with tools versus 63.6 for Claude Opus 5; without tools it trails frontier models. Sources disagree on the release date (Sept. 10 API launch versus an Oct. 4 tracker entry), so treat the date as unconfirmed. Benchmarks are the vendor's own.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Good candidate for high-volume, low-stakes jobs such as classifying inbound leads or summarizing call transcripts. Do not send client data to a China-hosted API; use a US-hosted route and check the client contract first.</div>
+<div class="refs"><a href="https://www.eesel.ai/blog/deepseek-v4-1-flash" target="_blank" rel="noopener">Pricing and benchmarks</a> <a href="https://openrouter.ai/deepseek/deepseek-v4.1-flash" target="_blank" rel="noopener">OpenRouter listing</a></div></article>
+<article class="story"><div class="story-head"><span class="tag feature">Voice</span><span class="ver">Oct. 1</span><h3>Microsoft MAI-Voice-2.1 and streaming transcription</h3></div>
+<div class="story-body"><p>Microsoft AI released MAI-Voice-2.1 and a Flash variant (23 languages, claimed 150ms end to end, $22/$15 per million characters, on Azure and OpenRouter) and MAI-Transcribe-2-Streaming at $0.54 per audio hour, intro pricing through 2026. Latency figures are Microsoft's claims.</p></div>
+<div class="so-what"><b>So what for TSD:</b> TSD Front Desk lives or dies on response lag. Run the same scripted call through the current voice stack and the Flash model this week and compare lag and cost per minute.</div>
+<div class="refs"><a href="https://www.digitalapplied.com/blog/ai-model-releases-october-2026-tracker" target="_blank" rel="noopener">Release ledger</a></div></article>
+<article class="story"><div class="story-head"><span class="tag new">Open</span><span class="ver">Oct. 1</span><h3>Cloudflare Clef and Amazon Strands Decider</h3></div>
+<div class="story-body"><p>Cloudflare released Clef (27B) and Clef-flash (9B) decision models, Apache 2.0, priced at $0.24/$0.09 per million input tokens, and Amazon released a 2B Strands Decider for local use. Vercel AI Gateway lists Laya from Convai free through Oct. 31.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Small routing/decision models fit receptionist call triage (book, transfer, take a message) at lower cost than a large model. Worth a test, not a rebuild.</div>
+<div class="refs"><a href="https://vercel.com/changelog/laya-decision-model-now-available-on-ai-gateway-free-through-october-31" target="_blank" rel="noopener">Vercel on Laya</a> <a href="https://www.digitalapplied.com/blog/ai-model-releases-october-2026-tracker" target="_blank" rel="noopener">Release ledger</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Security &amp; trust</h2>
+<article class="story"><div class="story-head"><span class="tag breaking">Security</span><span class="ver">Oct. 3–6</span><h3>Coding agents: hijacks, leaks, and automated exploits</h3></div>
+<div class="story-body"><p>An October roundup lists git config hijacks in seven coding agents, swapped plugin pins, sandbox escapes and 13,000 leaked screenshots. Separately, InfoQ reports a study where agents turned 87% of CVE descriptions into working exploits, and open-source maintainers report more vulnerability disclosures. Nvidia announced an Open Agent Safety Platform with OpenShell sandboxing.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Patch windows are shrinking. Review which repos your coding agent can write to, pin plugin versions, and keep client secrets out of agent-readable env files.</div>
+<div class="refs"><a href="https://adversa.ai/blog/top-ai-coding-agent-security-resources-october-2026" target="_blank" rel="noopener">Adversa roundup</a> <a href="https://www.infoq.com/news/2026/10/open-source-ai-security/" target="_blank" rel="noopener">InfoQ</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Smaller items</h2><div class="quickhits"><ul>
+<li><span class="tag improve qh-tag">Anthropic</span><span class="txt">Anthropic is prompting Claude voice users to opt in to sharing voice conversations for model training (reported Oct. 4). If a client uses Claude voice, tell them it is a setting. <span class="ver"><a href="https://bleepingcomputer.com/news/artificial-intelligence/anthropic-asks-claude-users-to-share-voice-data-for-ai-model-training" target="_blank" rel="noopener">BleepingComputer</a></span></span></li>
+<li><span class="tag fix qh-tag">Outage</span><span class="txt">Claude had elevated errors on Sept. 29 (sign-in, voice, Code and Cowork sessions); mitigated 10:36 AM ET. Another reason to keep a fallback model in client builds. <span class="ver"><a href="https://www.techradar.com/news/live/claude-down-september-29-2026" target="_blank" rel="noopener">TechRadar</a></span></span></li>
+<li><span class="tag improve qh-tag">Benchmark</span><span class="txt">ReviewBench, a new open benchmark for AI code-review agents built on real GitHub PRs, was announced this week. <span class="ver"><a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-october-3-2026" target="_blank" rel="noopener">AI Agents Directory</a></span></span></li>
+</ul></div></div>
+</section>
+    <div class="byline" style="margin-top:40px"><span>◆ End of briefing</span><span>◆</span><span>Sources are linked inline. Verify anything load-bearing before acting.</span></div>
+  </main>
+  <footer class="site-foot"><div class="wrap"><span><a href="../../">← All briefings</a></span><span>Scouted &amp; written by the TSD agent ◆ Built to own</span></div></footer>
+</body>
+</html>
