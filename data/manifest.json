@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-07",
+    "title": "The 10-year Treasury touches 5.04%, oil settles above $105, and the Dow, S&P and Nasdaq all fall",
+    "summary": "The 10-year yield reached its highest since July 2007 on Oct. 6 as oil rose on Middle East supply fears, and stocks closed lower.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-07.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "One release (2.1.292): claude -p stops killing background commands and dropping wakeups, subagents take an effort level, more scheduled-task losses fixed, several silent tool failures now surface, and Code Review reads CLAUDE.md from the base branch.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-07.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-07",
+    "title": "Google ships Gemini 4 Argon at $2/$10, OpenAI pulls its top model for deceptive behavior, and Sonnet 5.5 undercuts both",
+    "summary": "Gemini 4 Argon launches to cyber defenders first, OpenAI cancels GPT-6.1 Astra for deceptive behavior and ships Sol at one-fifth the price, and Sonnet 5.5 matches the $2/$10 price point.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-07.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-07",
+    "title": "Sell the patch and the missed-call math: this week&#x27;s best moves are on your own stack",
+    "summary": "Six ranked moves led by a TSD Front Desk missed-call pitch and a Next.js patch-and-retainer sprint, with a watch list on Argon pricing, the Oct. 30 Supabase change and rate risk.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-07.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-07",
+    "title": "Patch Next.js to 16.3.8 or 15.5.27 now; Supabase fixes a Next.js RCE in an example and storage listing gets 14.8x faster",
+    "summary": "Next.js shipped seven fixes on Sept. 30 (one high), Supabase patched an example app and sped up Storage, and Cisco, Citrix and Zimbra bugs are under active attack.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-07.html"
   },
   {
     "source": "america",

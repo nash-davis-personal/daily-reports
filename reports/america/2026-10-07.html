@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  TSD DAILY REPORT TEMPLATE
+  ----------------------------------------------------------------------------
+  The scout agent copies this file to:  reports/<source>/<YYYY-MM-DD>.html
+  and replaces every {{TOKEN}} below. Repeat the marked blocks as needed.
+
+  RULES
+  - Keep ALL the <meta name="report:*"> tags and fill them accurately —
+    scripts/build-manifest.mjs reads them to build the hub index.
+  - Relative paths assume reports/<source>/<file>.html (two levels deep).
+    If you nest differently, fix the ../../ paths.
+  - 4–6 "Top signals" max. Group the rest into 2–4 story groups.
+  - Every story gets a "So what for TSD" line: blunt, concrete, no fluff.
+  - Link sources inline. Never invent a fact you can't point at.
+  - Tag classes: new | feature | improve | fix | breaking
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="america" />            <!-- e.g. claude-changelog -->
+  <meta name="report:source-label" content="America" />     <!-- e.g. Claude Code Changelog -->
+  <meta name="report:source-color" content="#f59e0b" />     <!-- hex, e.g. #4cc4ff -->
+  <meta name="report:date" content="2026-10-07" />
+  <meta name="report:title" content="The 10-year Treasury touches 5.04%, oil settles above $105, and the Dow, S&amp;P and Nasdaq all fall" />
+  <meta name="report:summary" content="The 10-year yield reached its highest since July 2007 on Oct. 6 as oil rose on Middle East supply fears, and stocks closed lower." />
+  <meta name="report:highlights" content="5" />
+
+  <title>The 10-year Treasury touches 5.04%, oil settles above $105, and the Dow, S&amp;P and Nasdaq all fall — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.usnews.com/news/business/articles/2026-10-03/america-in-focus-unemployment-rate-climbs-mortgage-rate-hits-nearly-3-year-high" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.usnews.com/news/business/articles/2026-10-03/america-in-focus-unemployment-rate-climbs-mortgage-rate-hits-nearly-3-year-high" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#f59e0b"><span class="dot"></span>America</span>
+        <span>◆</span><span>Wednesday, October 7, 2026</span>
+        <span>◆</span><span>Markets, jobs, rates, weather</span>
+      </div>
+      <h1>The 10-year Treasury touches 5.04%, oil settles above $105, and the Dow, S&amp;P and Nasdaq all fall</h1>
+      <p class="standfirst">Bond yields and oil moved up together on Tuesday while stocks fell for the day. September payrolls came in at 29,000, and 30-year mortgage rates are at 7.28%.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct. 3 – Oct. 7 ◆ since the Oct. 6 edition</span>
+        <span>◆</span><a href="https://www.usnews.com/news/business/articles/2026-10-03/america-in-focus-unemployment-rate-climbs-mortgage-rate-hits-nearly-3-year-high" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">5.04%</div><div class="lbl">10-year yield intraday high, Oct. 6</div></div>
+      <div class="stat"><div class="num">7.28%</div><div class="lbl">30-year mortgage rate</div></div>
+      <div class="stat"><div class="num">29,000</div><div class="lbl">jobs added in September</div></div>
+    </div>
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Yields at a 19-year high</h4><p>10-year hit 5.041% intraday Oct. 6, highest since July 2007; ended near 4.995%.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Oil above $105</h4><p>Brent settled at $108.75 and WTI at $105.83 on Middle East supply worries.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Stocks lower</h4><p>Dow -0.63% to 52,093; S&P 500 -0.45% to 7,585.73; Nasdaq -0.78% to 25,981.57.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Weak hiring</h4><p>Employers added 29,000 jobs in September; unemployment rose to 4.2%.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Mortgages jump</h4><p>30-year fixed rose to 7.28% from 7.03%, the biggest weekly jump in several years.</p></div>
+      </div>
+    </section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Economy and markets</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Markets</span><span class="ver">Oct. 6</span><h3>Yields and oil rise together; major indexes close lower</h3></div>
+          <div class="story-body"><p>The 10-year Treasury yield touched 5.041% in the morning on Oct. 6, its highest since July 2007, and was near 4.995% in the afternoon. The 2-year was about 4.66% and the 30-year about 5.36%. Brent for November delivery settled up 2.9% at $108.75 and WTI rose 4.38% to $105.83 on fears that Middle East supply disruptions will last. The Dow fell 328.09 points (0.63%) to 52,093.11, the S&P 500 fell 34.25 (0.45%) to 7,585.73, and the Nasdaq Composite fell 204.84 (0.78%) to 25,981.57. Figures are from one wire summary of the day.</p></div>
+          <div class="so-what"><b>Why it matters:</b> Higher yields feed straight into borrowing costs, including mortgage and small-business loan rates. For a personal investor, cash and short-term Treasuries pay more than they have in nearly two decades, and long-duration holdings are the ones that move most on these days.</div>
+          <div class="refs"><a href="https://www.argaam.com/en/reports/international_market_daily_report/62127" target="_blank" rel="noopener">Wall Street summary</a> <a href="https://www.aljazeera.com/economy/2026/9/15/benchmark-us-government-bond-yield-hits-19-year-peak-as-oil-prices-surge" target="_blank" rel="noopener">Yield history</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag feature">Jobs</span><span class="ver">Oct. 2–3</span><h3>September payrolls: 29,000 jobs, unemployment 4.2%</h3></div>
+          <div class="story-body"><p>U.S. employers added 29,000 jobs in September, down from a revised 133,000 in August, and the unemployment rate rose to 4.2% from 4.1%. The weak report eased worries that a hot economy would force the Fed to raise rates at its next meeting, which had been priced at roughly 90% in mid-September. Stocks finished the week mixed.</p></div>
+          <div class="so-what"><b>Why it matters:</b> Slower hiring and high rates land hardest on small employers. Lenders price off the same yields, so expect borrowing to stay expensive.</div>
+          <div class="refs"><a href="https://www.usnews.com/news/business/articles/2026-10-03/america-in-focus-unemployment-rate-climbs-mortgage-rate-hits-nearly-3-year-high" target="_blank" rel="noopener">America in Focus</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Housing</span><span class="ver">Oct. 1–2</span><h3>30-year mortgage rate climbs to 7.28%, sixth straight weekly rise</h3></div>
+          <div class="story-body"><p>The benchmark 30-year fixed-rate mortgage rose to 7.28% from 7.03% a week earlier, the biggest weekly jump in several years and the sixth consecutive increase. Reporting calls it nearly a three-year high.</p></div>
+          <div class="so-what"><b>Why it matters:</b> A buyer on a $400,000 loan pays noticeably more each month than six weeks ago. Housing activity usually slows when rates rise this quickly.</div>
+          <div class="refs"><a href="https://abcnews.com/US/wireStory/america-focus-unemployment-rate-climbs-mortgage-rate-hits-136973158" target="_blank" rel="noopener">ABC News / AP</a></div>
+        </article>
+      </div>
+        <div class="so-what"><b>The macro backdrop:</b> Regime read is "sovereign-supply regime, holding through a rate shock," sideways at medium conviction; the board's 10-year wire (4.75% threshold) is marked as breached, with the board citing about 5.21% against roughly 5.0% in the wire summary above, a level gap between sources worth knowing; the nearest dated catalyst is initial claims on Oct. 8 at 08:30 ET, and core PPI is the next big print on Oct. 15. Context only, not a forecast. <span class="ver">TSD Macroscope board (as of 2026-10-06)</span></div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Weather</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag improve">Weather</span><span class="ver">Season outlook</span><h3>NOAA expects a below-normal Atlantic hurricane season</h3></div>
+          <div class="story-body"><p>NOAA's final outlook calls for 7 to 13 named storms, 2 to 6 hurricanes and 0 to 2 major hurricanes, with El Niño suppressing activity. The northern and northeastern Gulf Coast and the Carolinas are among the areas most at risk of a direct hit. This is the seasonal outlook, not a current-storm forecast; check the National Hurricane Center for live conditions.</p></div>
+          <div class="so-what"><b>Why it matters:</b> Below-normal is not zero. Late-season storms still hit the Carolinas, so confirm flood coverage and business-continuity plans before the season ends on Nov. 30.</div>
+          <div class="refs"><a href="https://cbs12.com/news/local/florida-tropical-news-noaa-releases-their-final-updated-forecast-for-the-2026-hurricane-season-below-average-atlantic-basin-tropics-storms-tropical-7-13-named-storms-2-6-hurricanes" target="_blank" rel="noopener">NOAA outlook coverage</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Small-business survey: half of owners expect revenue to rise over the next three months; 57% name inflation their top concern. <a href="https://njbmagazine.com/njb-news-now/half-of-small-businesses-see-growth-ahead-despite-economic-concerns/" target="_blank" rel="noopener">NJBIZ</a></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Charlotte region: 84% of firms expect no change in headcount over six months, per a workforce survey; the metro had one of the lowest unemployment rates in the Southeast entering 2026. <a href="https://capitalanalyticsassociates.com/charlotte-businesses-weigh-workforce-plans-for-2026/" target="_blank" rel="noopener">Capital Analytics</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

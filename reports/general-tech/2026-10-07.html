@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  TSD DAILY REPORT TEMPLATE
+  ----------------------------------------------------------------------------
+  The scout agent copies this file to:  reports/<source>/<YYYY-MM-DD>.html
+  and replaces every {{TOKEN}} below. Repeat the marked blocks as needed.
+
+  RULES
+  - Keep ALL the <meta name="report:*"> tags and fill them accurately —
+    scripts/build-manifest.mjs reads them to build the hub index.
+  - Relative paths assume reports/<source>/<file>.html (two levels deep).
+    If you nest differently, fix the ../../ paths.
+  - 4–6 "Top signals" max. Group the rest into 2–4 story groups.
+  - Every story gets a "So what for TSD" line: blunt, concrete, no fluff.
+  - Link sources inline. Never invent a fact you can't point at.
+  - Tag classes: new | feature | improve | fix | breaking
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />            <!-- e.g. claude-changelog -->
+  <meta name="report:source-label" content="Technology" />     <!-- e.g. Claude Code Changelog -->
+  <meta name="report:source-color" content="#2dd4bf" />     <!-- hex, e.g. #4cc4ff -->
+  <meta name="report:date" content="2026-10-07" />
+  <meta name="report:title" content="Patch Next.js to 16.3.8 or 15.5.27 now; Supabase fixes a Next.js RCE in an example and storage listing gets 14.8x faster" />
+  <meta name="report:summary" content="Next.js shipped seven fixes on Sept. 30 (one high), Supabase patched an example app and sped up Storage, and Cisco, Citrix and Zimbra bugs are under active attack." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Patch Next.js to 16.3.8 or 15.5.27 now; Supabase fixes a Next.js RCE in an example and storage listing gets 14.8x faster — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, October 7, 2026</span>
+        <span>◆</span><span>Dev stack, security, chips</span>
+      </div>
+      <h1>Patch Next.js to 16.3.8 or 15.5.27 now; Supabase fixes a Next.js RCE in an example and storage listing gets 14.8x faster</h1>
+      <p class="standfirst">Lead item is a patch: Next.js 16.3.8 (Active LTS) and 15.5.27 (Maintenance LTS) fix one high, five medium and one low severity issue. Vercel-hosted apps are shielded from the cache issue, but self-hosted ones are not.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Sept. 30 – Oct. 7 ◆ since the Oct. 6 edition</span>
+        <span>◆</span><a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">7</div><div class="lbl">Next.js vulns patched Sept. 30</div></div>
+      <div class="stat"><div class="num">14.8x</div><div class="lbl">faster Supabase Storage listing (60M+ rows)</div></div>
+      <div class="stat"><div class="num">$300M+</div><div class="lbl">GPU servers allegedly smuggled to China</div></div>
+    </div>
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js September security release</h4><p>Upgrade to 16.3.8 or 15.5.27. One high, five medium, one low.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase patches realtime-js example</h4><p>Oct. 2 release fixes a Next.js RCE in the example; Storage listing up to 14.8x faster.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Active exploitation, edge gear</h4><p>Cisco SD-WAN, Citrix NetScaler, Zimbra and others reported exploited this week.</p></div>
+        <div class="signal"><div class="n">04</div><h4>LibreOffice file-open RCE</h4><p>CVE-2026-63277 fixed in Oct. 5 updates.</p></div>
+        <div class="signal"><div class="n">05</div><h4>GPU export arrest</h4><p>California company owner charged over alleged $300M+ GPU server smuggling.</p></div>
+      </div>
+    </section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Next.js</span><span class="ver">Sept. 30</span><h3>Next.js September security release: SSRF, cache poisoning, info disclosure</h3></div>
+          <div class="story-body"><p>The Next.js team disclosed seven vulnerabilities fixed on Sept. 30 in 16.3.8 and 15.5.27. They include an SSRF through Image Optimization when an allow-listed remote URL is attacker-controlled (CVE-2026-94483; not affected if <code>images.remotePatterns</code> is unset) and a cache-poisoning flaw where a self-hosted Pages Router app using SSG or ISR can have a page cache entry replaced with another route's content (CVE-2026-94543; apps on Vercel are not affected). Other fixes cover Draft Mode leakage and a dev-server MCP endpoint leak. Next.js now publishes security releases monthly, so expect the next one around late October.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm i next@16.3.8</code> (or 15.5.27 on the 15 line) on every client project this week, starting with any self-hosted ones. Check each site for <code>images.remotePatterns</code>. This is separate from the Windows RCE covered Oct. 6.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/september-2026-security-release" target="_blank" rel="noopener">Security release</a> <a href="https://rewterz.com/threat-advisory/next-js-patches-ssrf-auth-bypass-and-dos-bugs" target="_blank" rel="noopener">Advisory summary</a> <a href="https://nextjs.org/blog/next-security-release-program" target="_blank" rel="noopener">Release program</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag fix">Supabase</span><span class="ver">Oct. 2</span><h3>Supabase patches a Next.js RCE in its realtime-js example and rebuilds Storage listing</h3></div>
+          <div class="story-body"><p>Supabase's Oct. 2 release notes include a fix for a Next.js remote-code-execution issue in the realtime-js example, plus Functions now sending a Blob or File with its own content type. Separately, a Storage overhaul replaces the prefixes table and its six triggers with a hybrid skip-scan algorithm and cursor pagination, with object listing reported up to 14.8x faster on tables of 60 million-plus rows. Supabase is also listed as a Tailwind CSS partner. Reminder from the Oct. 6 edition: the Data API grants change takes effect Oct. 30.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If any client app was seeded from the realtime-js example, bump Next.js and re-check. The Storage speedup only matters for very large buckets; the Oct. 30 grants change is the one with a deadline.</div>
+          <div class="refs"><a href="https://releases.sh/supabase" target="_blank" rel="noopener">Supabase releases</a> <a href="https://tailwindcss.com/partners/supabase" target="_blank" rel="noopener">Tailwind partners page</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag improve">Next.js</span><span class="ver">Early Oct.</span><h3>Canary builds: Suspense fallback fix and React Compiler memoization options</h3></div>
+          <div class="story-body"><p>Early-October canaries fix a Suspense fallback triggered by URL updates, stop suspending client params on shallow URL updates, and add options to preserve React Compiler memoization. Canary only; not for client production.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to ship. Read the notes if a client site shows flicker on filter or tab URL changes.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security and chips</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Security</span><span class="ver">Sept. 28 – Oct. 2</span><h3>Edge and mail gear exploited: Citrix, Cisco SD-WAN, Zimbra, Apache, ModSecurity</h3></div>
+          <div class="story-body"><p>A weekly roundup lists active exploitation of Citrix NetScaler RCE zero-days (Sept. 28), a Cisco SD-WAN critical bug (Oct. 1), Zimbra unauthenticated code execution (Oct. 1), Apache HTTP Server request smuggling (Oct. 2) and ModSecurity WAF bypasses (Oct. 1), plus an OpenSSL high-severity fix (Sept. 30) and Linux kernel local privilege escalation CVE-2026-72018. The roundup gives few CVE ids, so check vendor advisories for specifics. A GitHub Copilot CLI flaw that lets prompt injection steal developer secrets, and LibreOffice CVE-2026-63277 (malicious spreadsheet runs code on open, fixed Oct. 5), were also reported this week.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If any client runs Zimbra mail, Apache or a self-managed VPN, send them a patch note; it is a cheap retainer touchpoint. Update LibreOffice on your own machine.</div>
+          <div class="refs"><a href="https://gbhackers.com/weekly-cybersecurity-newsletter-september-28-october-2-2026" target="_blank" rel="noopener">Weekly roundup</a> <a href="https://helpnetsecurity.com/2026/10/07/software-security-vulnerability-management-survey" target="_blank" rel="noopener">Help Net Security</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag new">Chips</span><span class="ver">Oct. 1</span><h3>California company owner arrested over alleged $300M GPU server smuggling to China</h3></div>
+          <div class="story-body"><p>Greg Lui, owner of Earthmade Computer Inc., was arrested Oct. 1 after a three-count indictment returned Sept. 29. Prosecutors allege he helped smuggle more than $300 million of export-controlled servers containing US-made GPUs to China between 2023 and 2024. He faces export-control conspiracy, smuggling and money-laundering conspiracy charges. These are allegations.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Export enforcement is tightening, which keeps GPU supply and cloud GPU pricing tight. Keep client AI on API calls rather than owned hardware.</div>
+          <div class="refs"><a href="https://cryptobriefing.com/california-man-arrested-nvidia-chip-smuggling-china/" target="_blank" rel="noopener">Report</a> <a href="https://www.justice.gov/opa/pr/us-authorities-shut-down-major-china-linked-ai-tech-smuggling-network" target="_blank" rel="noopener">DOJ release</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cybersecurity M&A: 39 deals announced in September. <a href="https://securityweek.com/cybersecurity-ma-roundup-39-deals-announced-in-september-2026" target="_blank" rel="noopener">SecurityWeek</a></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Agents exposed roughly 13,000 private developer screenshots containing sensitive data, per a search-result summary; I could not open the primary report, so treat as unverified.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
