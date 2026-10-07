@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-07" />
+  <meta name="report:title" content="2.1.292 makes headless claude -p runs wait for their own work" />
+  <meta name="report:summary" content="One release (2.1.292): claude -p stops killing background commands and dropping wakeups, subagents take an effort level, more scheduled-task losses fixed, several silent tool failures now surface, and Code Review reads CLAUDE.md from the base branch." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.292 makes headless claude -p runs wait for their own work — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, October 7, 2026</span>
+        <span>◆</span><span>1 release since the last briefing</span>
+      </div>
+      <h1>2.1.292 makes headless claude -p runs wait for their own work</h1>
+      <p class="standfirst">One release, 2.1.292 (dated October 6, shipped after yesterday's briefing closed at 2.1.291). The part that touches the hub: one-shot <code>claude -p</code> runs no longer kill background commands 5 seconds after the result or drop scheduled wakeups. Also new: an <code>effort</code> setting per subagent. Update to 2.1.292.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.292 (October 6, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release</div></div>
+      <div class="stat"><div class="num">~90</div><div class="lbl">Changelog items</div></div>
+      <div class="stat"><div class="num">2.1.292</div><div class="lbl">Version to run</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Headless runs finish their work</h4><p><code>claude -p</code> and Agent SDK runs stopped background commands 5 seconds after the final result, and <code>-p</code> dropped scheduled wakeups. Both are now waited for. First turn starts faster too.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Subagents take an effort level</h4><p>The Agent tool has an <code>effort</code> parameter: ask for a cheap low-effort scan or a max-effort review per subagent.</p></div>
+        <div class="signal"><div class="n">03</div><h4>More scheduled-task losses closed</h4><p>Tasks created after <code>/resume</code>, <code>/branch</code> or <code>/clear</code> never fired; a background <code>/loop</code> stopped after a process restart. Fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Silent tool failures now speak up</h4><p>Grep/Glob said "no matches" on unreadable paths, PDF page lists returned one page, and @-mentioned files over 256KB were dropped. All now report.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Code Review uses base-branch CLAUDE.md</h4><p>A PR that edits CLAUDE.md used to get reviewed with its rules ignored. Reviews now read the base-branch version.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.292</span>
+            <h3>One-shot <code>claude -p</code> and SDK runs wait for background commands and wakeups</h3>
+          </div>
+          <div class="story-body">
+            <p>Before this, a one-shot <code>claude -p</code> or Agent SDK run stopped any background command 5 seconds after the final result, and <code>claude -p</code> dropped a scheduled wakeup. Both are now waited for. Separately, the first turn of <code>claude -p</code> and SDK sessions no longer waits for HTTP and SSE MCP servers to answer <code>resources/list</code>, and stdio MCP servers that are slow on the newer protocol check are remembered for 7 days and connected the older way.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every Nash OS hub job is a headless run. Any job that kicks off a build, a <code>next build</code>, a deploy check or a long script in the background and then wraps up was getting that process killed after 5 seconds. Update the hub Mac to 2.1.292, then check which jobs' outputs looked truncated or "never finished" and rerun them.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.292</span>
+            <h3><code>effort</code> parameter on the Agent tool</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude can now run a sub-agent at the effort level you ask for. Related: subagent definitions with <code>permissionMode: auto</code> no longer enter auto mode when it's unavailable (disabled by settings, circuit breaker, or an unsupported model), and agent names are capped at 256 characters.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cost and speed control per task. In client builds, tell Claude to fan out file searches and lint sweeps at low effort and keep high effort for the RLS/auth review on Supabase work. Worth adding a line to your standard CLAUDE.md so it happens without asking.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.292</span>
+            <h3>Scheduled tasks and <code>/loop</code>: another round of dropped runs fixed</h3>
+          </div>
+          <div class="story-body">
+            <p>Saved scheduled tasks created after <code>/resume</code>, <code>/branch</code> or <code>/clear</code> never fired. Saved tasks ignored later creates and deletes after two writes to the tasks file milliseconds apart. A background session's <code>/loop</code> stopped silently when its process restarted (for example after a crash) because the pending wakeup was lost. In cloud sessions, scheduled tasks and queued notifications were lost when a message was retried or edited mid-read. Scheduled and Run-now routine runs now publish a private artifact without asking for approval.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This follows yesterday's 2.1.290 batch. If you set up any schedule right after a <code>/clear</code> or <code>/resume</code>, assume it never fired and recreate it on 2.1.292. Routine runs that stalled on an artifact approval prompt should now complete unattended.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code quality and review</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.292</span>
+            <h3>Grep, Glob, Read and @-mentions stop failing silently</h3>
+          </div>
+          <div class="story-body">
+            <p>Grep and Glob reported no matches when the given file or folder couldn't be read; Claude now retries once or tells you. Read returned only the first page, with no error, when a PDF's <code>pages</code> was a list such as "6,9,15"; it now errors. @-mentioned text files over 256KB were left out silently; Claude is now told the size and to read in portions. Grep also accepts <code>file_path</code> for <code>path</code>, and Write, WebFetch and Read ignore a few stray parameters instead of failing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A "no matches" answer from Grep was sometimes a lie, which means Claude could have concluded a function or env var wasn't used when it was. If a refactor on Bisque, Studio C or Sonderwerks deleted something "unused" recently, spot-check it. Large generated files (Supabase types, lockfiles) @-mentioned in prompts were likely being dropped.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">Code Review</span>
+            <h3>GitHub Code Review reads CLAUDE.md from the base branch; analytics added</h3>
+          </div>
+          <div class="story-body">
+            <p>Reviews ignored a CLAUDE.md's rules when the pull request edited that file; they now use the base-branch version. A queued review no longer fails when the PR moves to a new base and the old one is deleted. Code Review analytics gained a period total, change from the previous period, and a per-repository breakdown.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A PR can no longer loosen the rules it's reviewed against. That makes CLAUDE.md conventions a real gate on client repos. The per-repo chart is a cheap artifact for client reporting: "N PRs reviewed this month" is a line item for a retainer.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security and plugins</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security fix</span>
+            <span class="ver">2.1.292</span>
+            <h3>Permission and sandbox holes closed</h3>
+          </div>
+          <div class="story-body">
+            <p>PreToolUse hook approvals and auto mode bypassed the permission prompt for file reads from network (UNC) paths. Sandboxed commands could read staged <code>/ultrareview</code> upload copies under <code>~/.claude/seed-admin</code>. A notebook or PDF read on macOS could return a file outside what was approved via a link swapped mid-read. A skill's <code>allowed-tools</code> rule could come back in a later turn after leaving auto or plan mode. <code>&lt;system-reminder&gt;</code> tags in hook output are now escaped before reaching Claude.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to change in your setup; update and move on. If any hub hook echoes untrusted text (scraped pages, client form input), the system-reminder escaping closes a prompt-injection path you'd otherwise have to handle yourself.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.292</span>
+            <h3><code>claude plugin install --marketplace</code></h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude plugin install</code> takes <code>--marketplace &lt;source&gt;</code>: it adds the marketplace if needed, under the same policy checks as <code>claude plugin marketplace add</code>, then installs the plugin. Mods also got <code>prompt.autocomplete</code>, prompt caching on <code>$.model.complete</code>, and workflow agents in <code>agent.spawn</code>; <code>claude plugin test</code> now fails on a failed <code>expect</code> inside a hook.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> One command to put your own plugin on a fresh machine or a client's dev box. If you package your Next.js/Supabase skills as a plugin, the setup step in a client handoff doc shrinks to one line.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.292</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_OVERLOADED_RETRY_BASE_DELAY_MS</code> sets a longer base backoff for 529 overloaded retries. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>NO_PROXY</code> is honored for Claude Code's own API requests when <code>HTTPS_PROXY</code> is set. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An MCP tool name over 128 characters no longer fails every request; the tool is left out and named in an error. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plan mode restored when resuming from the <code>--resume</code> picker or <code>/resume</code>. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Usage-limit alert no longer repeats once per background agent. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Fullscreen mode stops sending a full-screen clear on every resize in iTerm2, a likely cause of stale scrollback pages. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Vim mode cursor and <code>f</code>/<code>t</code>/<code>j</code>/<code>k</code> motion fixes in the prompt box. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Long bulleted or numbered replies render and reopen in the transcript much faster. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Strict sandbox mode runs <code>FOO=bar python3 app.py</code>-style commands unprompted. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Artifact tool lists up to 200 published artifacts (was 50). <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">stdio MCP servers negotiate protocol version 2026-07-28 by default; <code>MCP_PROTOCOL_NEGOTIATION=legacy</code> opts out. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Cloud</span><span class="txt">Routine runs no longer stay listed as running for hours; SVG/HEIC/TIFF files attach as regular files. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Slack</span><span class="txt">Claude Tag: thread replies sent during the first request are no longer held or missed; <code>!status</code> explains when Claude stopped reading untagged messages. <span class="ver">2.1.292</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">About two dozen plugin/mod hook fixes (guard <code>.catch</code> handling, hooks-worker restarts, <code>claude plugin validate</code>). <span class="ver">2.1.292</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
