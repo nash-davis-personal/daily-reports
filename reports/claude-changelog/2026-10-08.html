@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-08" />
+  <meta name="report:title" content="Haiku 5.5 ships at $0.10/$0.50 with 1M context, and instruction-style hooks stop letting blocked commands through" />
+  <meta name="report:summary" content="Two releases (2.1.293, 2.1.294): Claude Haiku 5.5 becomes the default Haiku, prompt and agent hooks written as instructions are fixed after allowing what they should block, a compaction bug that redid finished work is closed, and the 2.1.290 cloud-wakeup fix is reverted." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Haiku 5.5 ships at $0.10/$0.50 with 1M context, and instruction-style hooks stop letting blocked commands through — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, October 8, 2026</span>
+        <span>◆</span><span>2 releases since the last briefing</span>
+      </div>
+      <h1>Haiku 5.5 ships at $0.10/$0.50 with 1M context, and instruction-style hooks stop letting blocked commands through</h1>
+      <p class="standfirst">Two releases: 2.1.293 (October 7) and 2.1.294 (October 8). The sellable item is Claude Haiku 5.5 as the default Haiku. The item to act on today is the hook fix: guardrails written as plain-English instructions were allowing the commands they named. One step backward too, with the 2.1.290 cloud wakeup fix reverted.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.293 to 2.1.294 (October 7 to 8, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases</div></div>
+      <div class="stat"><div class="num">~58</div><div class="lbl">Changelog items</div></div>
+      <div class="stat"><div class="num">2.1.294</div><div class="lbl">Version to run</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Haiku 5.5 is the default Haiku</h4><p><code>claude-haiku-5-5</code>: 1M context, listed at $0.10/$0.50 per Mtok ($0.50/$2.50 for prompts over 100K).</p></div>
+        <div class="signal"><div class="n">02</div><h4>Instruction-style hooks were failing open</h4><p><code>prompt</code> and <code>agent</code> hooks phrased as instructions ("Block commands that...") allowed what they should block. Fixed in 2.1.294.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Compaction stops undoing finished work</h4><p>Claude sometimes treated its last actions before a compaction as done after it, then retracted or redid them. Fixed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Cloud wakeup fix reverted</h4><p>The 2.1.290 fix for cloud sessions that lose a <code>/loop</code> wakeup or scheduled task on container restart is rolled back. Those sessions stay asleep.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Rules load on cat, head and grep</h4><p>Path-scoped rules and nested CLAUDE.md files now load when Claude views a file through Bash, same as through Read.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Remote Control: push and queued messages</h4><p>PushNotification no longer reports "Remote Control inactive" under <code>claude remote-control</code>, and a message sent mid-work survives backgrounding.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and what you can sell</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.293</span>
+            <h3>Claude Haiku 5.5 (<code>claude-haiku-5-5</code>) is now the default Haiku on the Anthropic API</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog lists it with a 1M context window at $0.10/$0.50 per Mtok, rising to $0.50/$2.50 for prompts over 100K. Anything in Claude Code that resolves to "Haiku" on the Anthropic API now gets this model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the model for high-volume client features: Studio C booking and FAQ chat, Bisque product-description and catalog tagging, Sonderwerks intake triage. Re-run the per-conversation cost math on any quote that assumed older Haiku pricing, and keep prompts under 100K where you can, since the rate is 5x above that line. Before swapping a production model ID, confirm the price and ID on the Anthropic pricing page; the changelog line is the only source checked here.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.293</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Guardrails and unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.294</span>
+            <h3><code>prompt</code> and <code>agent</code> hooks written as instructions allowed what they should block</h3>
+          </div>
+          <div class="story-body">
+            <p>A hook phrased as an instruction, such as "Block commands that...", was letting those commands through. 2.1.294 fixes that. The same release changes how instruction-style <code>prompt</code> hooks on Stop and SubagentStop (such as "Carry on if the build is broken") are judged, so Claude is less likely to stop early.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any guardrail you wrote as a plain-English hook may have been doing nothing. Update to 2.1.294, then open the hooks in <code>~/.claude/settings.json</code> and each client repo and test every <code>prompt</code>/<code>agent</code> hook with a command it should refuse. Priority: anything guarding the Bisque Vercel scope, production deploys, or destructive Supabase SQL.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.294</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.293</span>
+            <h3>Claude no longer retracts or redoes finished work after a context compaction</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude sometimes treated its own last actions before a compaction as done after it, and retracted or redid work that was already complete.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This hits long sessions hardest: big refactors, multi-hour client builds, the commercial pipeline. If you have seen a duplicate commit, a re-run migration or a reverted edit right after a compaction, this was the likely cause. Update before the next long build.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.293</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Reverted</span>
+            <span class="ver">2.1.293</span>
+            <h3>Two earlier changes rolled back: the cloud wakeup fix and the auto mode denial message</h3>
+          </div>
+          <div class="story-body">
+            <p>The 2.1.290 fix for cloud sessions staying asleep after a container restart lost a pending <code>/loop</code> wakeup or scheduled task is reverted. Per the changelog, Claude is no longer told, and the session stays asleep. Also reverted: the 2.1.281 auto mode denial message that told Claude a denial covers the outcome as well as the exact command.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Tuesday's briefing reported that cloud hole as closed. It is open again. Keep anything that must fire on the hub Mac under launchd, and treat a cloud <code>/loop</code> or cloud scheduled task as best-effort until a new fix lands. The Nash OS run log is your check that a job ran.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.293</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Daily driving</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.293</span>
+            <h3>Path-scoped rules and nested CLAUDE.md files load when Claude reads through Bash</h3>
+          </div>
+          <div class="story-body">
+            <p>Rules scoped to a path and CLAUDE.md files in subfolders did not load when Claude viewed a file with a single-file <code>cat</code>, <code>head</code>, <code>tail</code>, <code>sed -n</code> or <code>grep</code> command in the Bash tool. They loaded only through the Read tool. Now both routes load them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any per-folder rules or nested CLAUDE.md files in client repos were being skipped whenever Claude peeked at a file with <code>cat</code>. If Claude ignored a nested rule recently, this explains it. No action beyond updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.293</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.293</span>
+            <h3>Remote Control: push notifications, queued messages and streaming</h3>
+          </div>
+          <div class="story-body">
+            <p>PushNotification reported "Remote Control inactive" in sessions started with <code>claude remote-control</code>; fixed. A message sent while Claude was working was lost when <code>←</code> moved the session to the background; now, if a queued message can't move, <code>←</code> stays put and says so. <code>←</code> no longer backgrounds a session after 10 seconds while the prompt holds unsent text or a question is waiting. Very long Remote Control and cloud sessions stream replies again, and a session's starting history is no longer re-uploaded after every credential recovery.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your standing rule is a push to your phone when a task runs long or needs a decision. Sessions launched with <code>claude remote-control</code> were silently failing that step. After updating, send one test push from a remote-control session to confirm it reaches the phone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.293</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">HTTP MCP connections leaked memory by keeping every request sent until the connection closed. Relevant with a dozen MCP servers attached. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model</code> effort ←/→ wrapped past the highest or lowest level and could save Low as a model's default effort. Check your defaults. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude agents</code> offered bypass permissions that background sessions ignored when consent lived only in <code>.claude/settings.local.json</code> or a <code>--settings</code> file; it now asks first. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagents and <code>--agent</code> sessions were told a built-in tool was disabled session-wide when only their own tool list omitted it; Claude was also told to use <code>SendMessage</code> where that tool had been removed. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude logs</code>, <code>stop</code>, <code>kill</code>, <code>rm</code> and <code>claude daemon</code> commands sometimes signed you out when a login was expired or about to expire. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude purge</code> stopped silently when a file couldn't be deleted; it now deletes the rest, lists failures and exits 1. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/tui</code> disconnected Claude in Chrome in <code>--chrome</code> sessions and ignored <code>--no-chrome</code>. Chrome page actions are also refused less often when the browser is slow to report tabs. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A claude.ai-synced skill's edited description sometimes didn't reach the model until a new conversation or <code>/clear</code>. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude plugin eval</code> refused every Bash-granting run on Macs with Docker Desktop; <code>claude plugin test</code> failed for mods calling <code>$.session.append</code>. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Pasted text that begins and ends with the same words was sometimes sent as if typed. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Artifacts: Claude pins libraries to exact versions two weeks old or older. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">claude.ai skill syncing checks about every 40 minutes instead of every 10 while no session is in use. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>agentType</code> in the <code>subagentStatusLine</code> payload; <code>isDeferred</code> on <code>$.tool.register</code> for mods. <span class="ver">2.1.293</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag (Slack) and Code Review admin fixes, vim mode cursor fixes, keybindings.json validation, a Windows process-ID fix, and <code>/ultrareview</code> upload refusals on Linux. <span class="ver">2.1.293</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

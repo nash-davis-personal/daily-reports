@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-08.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-08",
+    "title": "Haiku 5.5 ships at $0.10/$0.50 with 1M context, and instruction-style hooks stop letting blocked commands through",
+    "summary": "Two releases (2.1.293, 2.1.294): Claude Haiku 5.5 becomes the default Haiku, prompt and agent hooks written as instructions are fixed after allowing what they should block, a compaction bug that redid finished work is closed, and the 2.1.290 cloud-wakeup fix is reverted.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-10-08.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
