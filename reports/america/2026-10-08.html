@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  TSD DAILY REPORT TEMPLATE
+  ----------------------------------------------------------------------------
+  The scout agent copies this file to:  reports/<source>/<YYYY-MM-DD>.html
+  and replaces every {{TOKEN}} below. Repeat the marked blocks as needed.
+
+  RULES
+  - Keep ALL the <meta name="report:*"> tags and fill them accurately —
+    scripts/build-manifest.mjs reads them to build the hub index.
+  - Relative paths assume reports/<source>/<file>.html (two levels deep).
+    If you nest differently, fix the ../../ paths.
+  - 4–6 "Top signals" max. Group the rest into 2–4 story groups.
+  - Every story gets a "So what for TSD" line: blunt, concrete, no fluff.
+  - Link sources inline. Never invent a fact you can't point at.
+  - Tag classes: new | feature | improve | fix | breaking
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="america" />            <!-- e.g. claude-changelog -->
+  <meta name="report:source-label" content="America" />     <!-- e.g. Claude Code Changelog -->
+  <meta name="report:source-color" content="#f59e0b" />     <!-- hex, e.g. #4cc4ff -->
+  <meta name="report:date" content="2026-10-08" />
+  <meta name="report:title" content="The 10-year yield touches 5.365%, Fed minutes point to another hike this year, and Hurricane Isaias heads for the Gulf Coast" />
+  <meta name="report:summary" content="The 10-year hit its highest level since 2002 on Oct. 7, stocks eased from records, Fed minutes lean toward another increase, and Isaias is forecast to reach the northern Gulf Coast late Friday or early Saturday." />
+  <meta name="report:highlights" content="5" />
+
+  <title>The 10-year yield touches 5.365%, Fed minutes point to another hike this year, and Hurricane Isaias heads for the Gulf Coast — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.cnbc.com/2026/10/06/stock-market-today-live-updates.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#f59e0b"><span class="dot"></span>America</span>
+        <span>◆</span><span>Thursday, October 8, 2026</span>
+        <span>◆</span><span>Rates, the Fed, markets, Gulf hurricane</span>
+      </div>
+      <h1>The 10-year yield touches 5.365%, Fed minutes point to another hike this year, and Hurricane Isaias heads for the Gulf Coast</h1>
+      <p class="standfirst">Stocks slipped from Tuesday's records on Wednesday as the 10-year Treasury yield hit its highest level since 2002 before a $39 billion auction pulled it back. Isaias became the season's first Atlantic hurricane late Wednesday, with landfall expected late Friday or early Saturday.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct. 7 – Oct. 8, 6:45 a.m. ET ◆ since the Oct. 7 edition</span>
+        <span>◆</span><a href="https://www.cnbc.com/2026/10/06/stock-market-today-live-updates.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">5.365%</div><div class="lbl">10-year yield intraday high, Oct. 7</div></div>
+      <div class="stat"><div class="num">7,801.77</div><div class="lbl">S&amp;P 500 close, down 0.22%</div></div>
+      <div class="stat"><div class="num">Fri–Sat</div><div class="lbl">Isaias landfall window, Mississippi to the Florida Panhandle</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Yields at a 24-year high</h4><p>The 10-year reached 5.365% intraday on Oct. 7, the highest since April 2002, then eased after a $39B auction.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Stocks step back from records</h4><p>Dow -0.66% to 51,179.87; S&amp;P 500 -0.22% to 7,801.77; Nasdaq -0.22% to 27,538.69.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Fed minutes lean toward another hike</h4><p>Most officials judged another increase would likely be appropriate by year end. No timing was given.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Isaias is a hurricane</h4><p>Hurricane warning from Ocean Springs, Miss., to Florida's Bay/Gulf county line. Surge up to 7 feet possible.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Rain reaches the Carolinas</h4><p>Forecasts call for 1 to 5 inches across the Southeast through the Carolinas and Tennessee Valley into Saturday.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Economy and markets</h2>
+
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Markets</span><span class="ver">Oct. 7</span><h3>10-year yield hits 5.365% intraday; indexes close modestly lower</h3></div>
+          <div class="story-body">
+            <p>The benchmark 10-year Treasury yield reached 5.365% on Wednesday, its highest since April 2002. It backed off after the Treasury sold $39 billion of 10-year notes, which helped stocks trim their losses. The Dow Jones Industrial Average fell 341.41 points, or 0.66%, to 51,179.87. The S&amp;P 500 lost 0.22% to 7,801.77 and the Nasdaq Composite lost 0.22% to 27,538.69. Both the S&amp;P 500 and the Nasdaq had closed at records on Tuesday, with the S&amp;P at 7,818.93. Crude oil was trading near $92 a barrel Wednesday morning, up almost 5% on the day.</p>
+          </div>
+          <div class="so-what"><b>Why it matters:</b> The 10-year sets the tone for mortgages, car loans and small-business credit. For a personal investor, short-term Treasuries and cash accounts are paying more than they have in two decades, and long-dated bonds are the holdings that swing most on days like this.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/10/06/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC market wrap</a> <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-07-2026" target="_blank" rel="noopener">TheStreet</a> <a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-7-133458375.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head"><span class="tag feature">The Fed</span><span class="ver">Oct. 7</span><h3>September minutes: most officials see another rate increase by year end</h3></div>
+          <div class="story-body">
+            <p>Minutes of the Federal Reserve's Sept. 15–16 meeting, released Wednesday afternoon, say most participants judged that another increase in the federal funds rate would likely be appropriate by year end. The minutes gave no indication of when. Officials agreed unanimously that inflation was still elevated and had made little progress toward the 2% target in recent months. At that meeting the Fed raised its key rate by a quarter point to about 3.9%, its first increase in three years. Analysts quoted Wednesday morning put the chance of another quarter-point move later in October at around 20%.</p>
+          </div>
+          <div class="so-what"><b>Why it matters:</b> Variable-rate debt, credit cards and business lines of credit follow the Fed's rate. A business or household carrying floating-rate debt should plan for payments staying where they are or rising through year end.</div>
+          <div class="refs"><a href="https://www.usnews.com/news/economy/articles/2026-10-07/fed-telegraphs-another-interest-rate-hike-this-year" target="_blank" rel="noopener">U.S. News / AP</a> <a href="https://finance.yahoo.com/economy/policy/articles/fed-minutes-another-rate-hike-191630856.html" target="_blank" rel="noopener">Yahoo Finance</a> <a href="https://thehill.com/business/6135206-fed-officials-project-future-increases/" target="_blank" rel="noopener">The Hill</a></div>
+        </article>
+      </div>
+
+        <div class="so-what"><b>The macro backdrop:</b> Regime read is "sovereign-supply regime, holding through a rate shock," sideways at medium conviction. The nearest alert-grade wire is the 10-year above 4.75%, already breached, with the board logging an official close of 5.28% on Oct. 7 against the 5.365% intraday high reported above. The board also flags a gap between the minutes, where most officials expect a hike by year end, and a prediction market pricing an October hike at 16–17%. Next dated catalysts: initial jobless claims today at 8:30 a.m. ET, bank earnings from Oct. 13, and core PPI on Oct. 15. Context only, no forecast. <span class="ver">TSD Macroscope board (as of 2026-10-07)</span></div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Weather and public safety</h2>
+
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Hurricane</span><span class="ver">Oct. 7–8</span><h3>Isaias becomes the season's first hurricane; northern Gulf Coast landfall expected late Friday or early Saturday</h3></div>
+          <div class="story-body">
+            <p>Isaias, the ninth named storm of the 2026 Atlantic season, strengthened into a hurricane late Wednesday night in the Gulf of Mexico. The National Hurricane Center expects landfall along the northern Gulf Coast late Friday or early Saturday, somewhere between Gulfport, Mississippi, and Panama City, Florida. Forecasts cited by Fox Weather call for a Category 2 storm with winds that could reach 110 mph. A hurricane warning runs from Ocean Springs, Mississippi, to Florida's Bay/Gulf county line, with a tropical storm warning from Louisiana to the Aucilla River. Storm surge of up to 7 feet is possible along roughly 300 miles of coast, and the central Gulf Coast could see 3 to 7 inches of rain with up to 10 in places.</p>
+            <p>Florida declared a state of emergency for 25 counties and Alabama for 40. Evacuations were ordered for Dauphin Island, Alabama, and zones in Okaloosa County, Florida. Chevron is moving non-essential staff off Gulf platforms as a precaution; the forecast track runs east of the main offshore production area. Inland, 1 to 5 inches of rain is forecast across the Southeast through the Carolinas and Tennessee Valley, with flash-flood risk into Saturday. A first hurricane this late in the year is rare: the usual date is early August.</p>
+          </div>
+          <div class="so-what"><b>Why it matters:</b> People on the warned coast have about two days to act on evacuation orders. In the Charlotte area the likely effect is heavy rain late in the week, so check drains and travel plans. Follow the National Hurricane Center and local emergency management for current guidance; forecasts change quickly.</div>
+          <div class="refs"><a href="https://cbsnews.com/news/hurricane-season-tropical-threat-gulf-us" target="_blank" rel="noopener">CBS News</a> <a href="https://www.foxweather.com/weather-news/tropical-storm-isaias-gulf-coast-landfalling-atlantic-hurricane" target="_blank" rel="noopener">Fox Weather</a> <a href="https://www.claimsjournal.com/news/national/2026/10/07/340599.htm" target="_blank" rel="noopener">Claims Journal</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Recall</span><span class="txt">More than 122,000 cases of 28-ounce Gatorade (Lemon Lime, Lemon Lime Zero, Orange, Orange Zero) are under a voluntary recall for undeclared Yellow No. 5 and No. 6 dyes. The FDA classified it Class II on Oct. 2; North Carolina and South Carolina are among the states where it was sold. <a href="https://goodmorningamerica.com/food/story/122k-cases-gatorade-recalled-due-undeclared-food-dyes-137002347" target="_blank" rel="noopener">ABC / GMA</a></span></li>
+            <li><span class="tag improve qh-tag">Jobs data</span><span class="txt">Weekly initial jobless claims for the week ending Oct. 3 are due at 8:30 a.m. ET today, after this edition was filed. The prior reading was 197,000 for the week ending Sept. 26. <a href="https://tradingeconomics.com/united-states/jobless-claims" target="_blank" rel="noopener">Trading Economics</a></span></li>
+            <li><span class="tag improve qh-tag">Charlotte</span><span class="txt">Capital Group raised its Uptown Charlotte hiring target to as many as 1,000 jobs, 400 more than first pledged, at an average wage of $194,141 (reported in September). <a href="https://businessnc.com/capital-group-raises-charlotte-job-target-to-1000/" target="_blank" rel="noopener">Business North Carolina</a></span></li>
+            <li><span class="tag fix qh-tag">Correction</span><span class="txt">The Oct. 7 edition gave Oct. 6 index closes and oil settlements from a single wire summary. Those figures conflict with CNBC, TheStreet and Yahoo Finance, which show the S&amp;P 500 and Nasdaq closing at records on Oct. 6 and crude under $100. Treat yesterday's index and oil numbers as unreliable; the yield, payroll and mortgage figures were not affected. <a href="https://www.riotimesonline.com/global-economy-briefing-october-7-2026/" target="_blank" rel="noopener">Oct. 6 record close</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

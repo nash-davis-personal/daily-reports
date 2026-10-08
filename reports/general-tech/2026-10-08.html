@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  TSD DAILY REPORT TEMPLATE
+  ----------------------------------------------------------------------------
+  The scout agent copies this file to:  reports/<source>/<YYYY-MM-DD>.html
+  and replaces every {{TOKEN}} below. Repeat the marked blocks as needed.
+
+  RULES
+  - Keep ALL the <meta name="report:*"> tags and fill them accurately —
+    scripts/build-manifest.mjs reads them to build the hub index.
+  - Relative paths assume reports/<source>/<file>.html (two levels deep).
+    If you nest differently, fix the ../../ paths.
+  - 4–6 "Top signals" max. Group the rest into 2–4 story groups.
+  - Every story gets a "So what for TSD" line: blunt, concrete, no fluff.
+  - Link sources inline. Never invent a fact you can't point at.
+  - Tag classes: new | feature | improve | fix | breaking
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />            <!-- e.g. claude-changelog -->
+  <meta name="report:source-label" content="Technology" />     <!-- e.g. Claude Code Changelog -->
+  <meta name="report:source-color" content="#2dd4bf" />     <!-- hex, e.g. #4cc4ff -->
+  <meta name="report:date" content="2026-10-08" />
+  <meta name="report:title" content="Next.js 16.4 recommends Cache Components for every app and ships an agent-run upgrade command; no new advisory on your stack" />
+  <meta name="report:summary" content="No new Next.js, Vercel or Supabase advisory this window; Next.js 16.4 adds agent upgrades, ensureStatic and React 19.3, and Vercel AI Gateway adds four models." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Next.js 16.4 recommends Cache Components for every app and ships an agent-run upgrade command; no new advisory on your stack — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/next-16-4" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, October 8, 2026</span>
+        <span>◆</span><span>Next.js, Vercel, Supabase, deep tech</span>
+      </div>
+      <h1>Next.js 16.4 recommends Cache Components for every app and ships an agent-run upgrade command; no new advisory on your stack</h1>
+      <p class="standfirst">Next.js 16.4 came out Oct. 6 with React 19.3, a smaller Turbopack cache and a command that hands the upgrade to a coding agent. No new Next.js, Vercel or Supabase security advisory turned up in this window, so the earlier patch guidance stands.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct. 6 – Oct. 8 ◆ since the Oct. 7 edition</span>
+        <span>◆</span><a href="https://nextjs.org/blog/next-16-4" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.4</div><div class="lbl">Next.js release, Oct. 6</div></div>
+      <div class="stat"><div class="num">20–25%</div><div class="lbl">less disk used by the Turbopack cache</div></div>
+      <div class="stat"><div class="num">Oct. 30</div><div class="lbl">Supabase Data API grants change, still ahead</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Security status: nothing new</h4><p>No new advisory found for Next.js, Vercel or Supabase since the Sept. 30 release. Stay at or above 16.3.8 or 15.5.27.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Cache Components is the recommended model</h4><p>On by default in create-next-app now, and the default for everyone in Next.js 17.</p></div>
+        <div class="signal"><div class="n">03</div><h4>next upgrade --agent</h4><p>One command prepares migration guides, codemods and verification steps for a coding agent to apply.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Security-upgrade nudges</h4><p>A new experimental flag reminds you during dev and build when your installed version has a known vulnerability.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel AI Gateway adds four models</h4><p>Claude Haiku 5.5, Mistral Large 4, Nano Banana 2.1 and OpenAI's Decisions model, plus confidence-based fallbacks.</p></div>
+        <div class="signal"><div class="n">06</div><h4>SpaceX reportedly seeks $40B for chips</h4><p>Bloomberg-sourced report: $10B in bank loans and $30B in investment-grade debt for Nvidia hardware. Unconfirmed.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Status, Oct. 8</span>
+            <h3>No new advisory on Next.js, Vercel or Supabase in this window</h3>
+          </div>
+          <div class="story-body">
+            <p>Searches of the Next.js release feed, the Vercel changelog and Supabase's release index found no new security advisory dated Oct. 6 to Oct. 8. The most recent Next.js security release is still Sept. 30: 16.3.8 on the active line and 15.5.27 on maintenance, covering one high-severity SSRF in Image Optimization, five medium issues and one low. The Windows path-traversal RCE covered in the Oct. 7 edition is unchanged. Absence of a result in a search is weaker than a vendor statement, so check the GitHub advisories page before a client asks.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If every client and demo site is already at 16.3.8 or 15.5.27 or later, there is nothing to patch today. If any are behind, finish that before touching 16.4.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js release feed</a> <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">GitHub releases</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Release</span>
+            <span class="ver">16.4 ◆ Oct. 6</span>
+            <h3>Next.js 16.4: Cache Components recommended everywhere, agent upgrades, React 19.3</h3>
+          </div>
+          <div class="story-body">
+            <p>The Next.js team now recommends Cache Components for every app. New projects from <code>create-next-app</code> have it on by default, and it becomes the default model in Next.js 17. The model is the <code>'use cache'</code> directive plus Partial Prefetching, enabled with <code>cacheComponents: true</code> and <code>partialPrefetching: true</code>. Two additions close earlier gaps. <code>export const ensureStatic</code> on a page or layout fails the build if dynamic content sneaks into a route you meant to keep static, with <code>'shell'</code>, <code>'prefetch'</code> and <code>'navigation'</code> levels. New <code>navigation()</code> and <code>prefetch()</code> functions from <code>next/cache</code> let you leave expensive content out of a prefetch until the user actually navigates.</p>
+            <p>For upgrades, <code>npx next@canary upgrade --agent=latest</code> checks the installed version, picks a target, and hands a coding agent the migration guides, codemods and verification steps. <code>experimental.agentUpgrade</code> defaults to <code>'security'</code> and nudges you during <code>next dev</code> and <code>next build</code> when a release fixes a known vulnerability in your version. An experimental agent-feedback flow drafts bug reports for you to review; nothing is sent until you click send, and it needs telemetry on. Across all apps: Turbopack's disk cache is 20–25% smaller, server HMR compiles only what a request needs, production bundles shrink through shorter CSS Module class names and export mangling, and React 19.3 brings stable View Transitions and Fragment Refs. The experimental Rust React Compiler uses 30% less memory and compiles 15% faster.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run the agent upgrade on one demo site first and time it. For marketing sites, add <code>ensureStatic = 'navigation'</code> to the root layout so a stray dynamic component can never add compute cost on Vercel. Leave <code>proxy.ts</code> as it is. Hold existing client apps off Cache Components until you have migrated one end to end.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/next-16-4" target="_blank" rel="noopener">Next.js 16.4 post</a> <a href="https://react.dev/blog/2026/09/09/react-19-3" target="_blank" rel="noopener">React 19.3</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">Oct. 6–7</span>
+            <h3>Vercel: four new models on AI Gateway, a billing break on blocked traffic, time-based flags</h3>
+          </div>
+          <div class="story-body">
+            <p>AI Gateway added Claude Haiku 5.5, OpenAI's GPT-6 Luna Decisions, Mistral Large 4 and Google's Nano Banana 2.1 image model on Oct. 6 and 7, plus confidence-based fallbacks that escalate a decision to a second model when the first is unsure. A stealth model called Glyph Cluster is free through the gateway for now. Microfrontends Routing no longer bills for requests the Vercel Firewall denies, challenges or rate limits. Vercel Flags now accept timestamp attributes, so a rule can switch on at a set date.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If Concierge already calls models through AI Gateway, trying Haiku 5.5 is a one-line model ID change (<code>anthropic/claude-haiku-5.5</code>). Timestamp flags are a clean way to schedule a client's seasonal banner or promo without a deploy.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://vercel.com/changelog/claude-haiku-5-5-now-available-on-ai-gateway" target="_blank" rel="noopener">Haiku 5.5 on AI Gateway</a> <a href="https://vercel.com/changelog/timestamp-attributes-are-now-supported-in-vercel-flags" target="_blank" rel="noopener">Timestamp flags</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Reminder</span>
+            <span class="ver">Oct. 5–8</span>
+            <h3>Supabase: quiet week of CLI and client releases; the Oct. 30 change is 22 days out</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase shipped CLI v2.120.0 on Oct. 6 and a run of v2.121.0 betas through Oct. 8, plus supabase-js v2.117.3 on Oct. 7. None is flagged as a security release. The item that still needs action is the one from the Oct. 7 edition: starting Oct. 30, new public tables are no longer auto-exposed to the Data API.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to install today. Put the grants audit for each client project on the calendar before Oct. 30.</div>
+          <div class="refs"><a href="https://releases.sh/supabase" target="_blank" rel="noopener">Supabase release index</a> <a href="../general-tech/2026-10-07.html">Oct. 7 edition</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech and deep tech</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Hardware</span>
+            <span class="ver">Oct. 7</span>
+            <h3>SpaceX reportedly seeks $40 billion in debt to buy Nvidia chips</h3>
+          </div>
+          <div class="story-body">
+            <p>Citing Bloomberg, the Motley Fool reports SpaceX is seeking $40 billion in financing to buy Nvidia AI hardware: $10 billion in bank loans and $30 billion in investment-grade debt, with Apollo Global Management said to be leading. The deal is not expected to close until 2027, and none of the three companies has confirmed it. The same piece notes Amazon, Alphabet, Meta and Oracle together issued about $194 billion in bonds through early July for AI infrastructure.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. It is one more sign that compute supply is being financed years ahead, which keeps pushing inference prices down for builders.</div>
+          <div class="refs"><a href="https://www.fool.com/investing/2026/10/07/spacex-reportedly-wants-40-billion-to-buy-artifici/" target="_blank" rel="noopener">Motley Fool, citing Bloomberg</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">Starship Flight 15 is targeted for no earlier than Oct. 19 from Starbase with the first attempted tower catch of the upper stage. Secondary source; dates slip. <a href="https://www.basenor.com/blogs/news/starship-flight-14-captured-on-film-flight-15-is-next" target="_blank" rel="noopener">Basenor</a></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">A roundup reports a Google AI agent called PageBreak found more than 500 cross-site scripting flaws. Secondhand; the primary write-up was not checked. <a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-october-7-2026" target="_blank" rel="noopener">AI Agents Directory brief</a></span></li>
+            <li><span class="tag improve qh-tag">Funding</span><span class="txt">Chip-design simulation startup Vinci raised a $250M Series B at a $1.5B valuation; Volantis Semiconductor raised an $88M Series A for photonic links between compute and memory. <a href="https://hervecuviliez.substack.com/p/market-news-wednesday-7-october-2026" target="_blank" rel="noopener">Market News, Oct. 7</a></span></li>
+            <li><span class="tag feature qh-tag">Web</span><span class="txt">Agents and websites: a Meta, Walmart and Stripe-backed standard for agent access is covered in today's <a href="../general-ai/2026-10-08.html">General AI brief</a>.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

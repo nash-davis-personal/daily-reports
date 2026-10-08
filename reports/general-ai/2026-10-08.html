@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  TSD DAILY REPORT TEMPLATE
+  ----------------------------------------------------------------------------
+  The scout agent copies this file to:  reports/<source>/<YYYY-MM-DD>.html
+  and replaces every {{TOKEN}} below. Repeat the marked blocks as needed.
+
+  RULES
+  - Keep ALL the <meta name="report:*"> tags and fill them accurately —
+    scripts/build-manifest.mjs reads them to build the hub index.
+  - Relative paths assume reports/<source>/<file>.html (two levels deep).
+    If you nest differently, fix the ../../ paths.
+  - 4–6 "Top signals" max. Group the rest into 2–4 story groups.
+  - Every story gets a "So what for TSD" line: blunt, concrete, no fluff.
+  - Link sources inline. Never invent a fact you can't point at.
+  - Tag classes: new | feature | improve | fix | breaking
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-ai" />            <!-- e.g. claude-changelog -->
+  <meta name="report:source-label" content="General AI" />     <!-- e.g. Claude Code Changelog -->
+  <meta name="report:source-color" content="#a78bfa" />     <!-- hex, e.g. #4cc4ff -->
+  <meta name="report:date" content="2026-10-08" />
+  <meta name="report:title" content="Claude Haiku 5.5 lands at $0.10/$0.50, Mistral previews a trillion-parameter model, and agents get a standard for being let into websites" />
+  <meta name="report:summary" content="Haiku 5.5 pricing and its 100K-token step, Mistral Large 4 preview, an agent-access standard backed by Meta, Walmart and Stripe, OpenAI&#x27;s Decisions API, and Lambda&#x27;s $4B raise." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Claude Haiku 5.5 lands at $0.10/$0.50, Mistral previews a trillion-parameter model, and agents get a standard for being let into websites — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://venturebeat.com/technology/anthropic-launches-claude-haiku-5-5-with-90-api-price-reduction-matching-gpt-6-luna" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Thursday, October 8, 2026</span>
+        <span>◆</span><span>Models, pricing, agents, funding</span>
+      </div>
+      <h1>Claude Haiku 5.5 lands at $0.10/$0.50, Mistral previews a trillion-parameter model, and agents get a standard for being let into websites</h1>
+      <p class="standfirst">Anthropic cut its small-model price by about 90% on the rate card and says real workloads run roughly 75% cheaper. Mistral, OpenAI and a Stripe-and-Walmart-backed group each shipped something a solo builder can use this month.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct. 6 – Oct. 8 ◆ since the Oct. 7 edition</span>
+        <span>◆</span><a href="https://venturebeat.com/technology/anthropic-launches-claude-haiku-5-5-with-90-api-price-reduction-matching-gpt-6-luna" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$0.10</div><div class="lbl">Haiku 5.5 input price per 1M tokens, prompts under 100K</div></div>
+      <div class="stat"><div class="num">~75%</div><div class="lbl">Anthropic's estimate of workload savings vs. Haiku 4.5</div></div>
+      <div class="stat"><div class="num">$50B</div><div class="lbl">Lambda backlog, $35B of it from Anthropic</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Haiku 5.5 is cheap and fast</h4><p>$0.10 in, $0.50 out per million tokens under 100K-token prompts. Released Oct. 7 on Anthropic, AWS, Google Cloud and Azure.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The price has a step in it</h4><p>Prompts over 100K tokens bill at $0.50/$2.50, and the new tokenizer uses more tokens for the same work.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Mistral Large 4 in preview</h4><p>One trillion parameters, 49 billion active per token, 1M context. Open weights are promised for Oct. 31.</p></div>
+        <div class="signal"><div class="n">04</div><h4>A standard for agent access</h4><p>Meta, Walmart, Stripe, Sierra and four others back an open standard for agents transacting with businesses. Many large sites block agents today.</p></div>
+        <div class="signal"><div class="n">05</div><h4>OpenAI Decisions API</h4><p>Returns yes/no answers, choices and scores with probabilities instead of text. Public beta, already on Vercel AI Gateway.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Compute money keeps flowing</h4><p>Lambda is raising up to $4B at a $14.5B pre-money valuation ahead of a planned 2027 IPO.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and pricing</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Release</span>
+            <span class="ver">Oct. 7</span>
+            <h3>Claude Haiku 5.5: $0.10/$0.50, adjustable effort, fastest Claude at standard speed</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic released Claude Haiku 5.5 on Oct. 7. Prompts under 100,000 tokens cost $0.10 per million input tokens and $0.50 per million output; above that threshold the whole request bills at $0.50 and $2.50. Cache reads are $0.01 per million in the lower tier. Anthropic says about 90% of Haiku 4.5 requests fall in the lower bracket and estimates workloads cost roughly 75% less than on Haiku 4.5 once the new tokenizer, which uses somewhat more tokens for the same work, is counted. Standard rates match OpenAI's GPT-6 Luna, whose surcharge starts later at 272,000 tokens.</p>
+            <p>It is the first Haiku with adaptive thinking and effort levels from low through max, with medium as the default. Vercel's listing describes it as built for summaries, context compaction, database queries and classification, as a subagent for larger Claude models, and as the fastest Claude at standard speed for live customer support and browser use. VentureBeat reports it beats Haiku 4.5 on knowledge-work and coding tests, trails Sonnet 5.5, and leads GPT-6 Luna on selected evaluations. Benchmarks here are vendor-reported.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Test Haiku 5.5 on TSD Concierge and the text side of TSD Front Desk this week using real transcripts. Keep RAG prompts under 100K tokens or the price jumps fivefold. Measure tokens per conversation before and after, since the tokenizer change means the rate card overstates the saving.</div>
+          <div class="refs"><a href="https://venturebeat.com/technology/anthropic-launches-claude-haiku-5-5-with-90-api-price-reduction-matching-gpt-6-luna" target="_blank" rel="noopener">VentureBeat</a> <a href="https://vercel.com/changelog/claude-haiku-5-5-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel AI Gateway listing</a> <a href="https://www.marktechpost.com/2026/10/07/anthropic-releases-claude-haiku-5-5-a-small-model-with-1m-context-priced-at-0-10-per-million-input-tokens/" target="_blank" rel="noopener">MarkTechPost</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Preview</span>
+            <span class="ver">Oct. 6</span>
+            <h3>Mistral Large 4: a trillion parameters, open weights due Oct. 31</h3>
+          </div>
+          <div class="story-body">
+            <p>Mistral put Large 4 into public preview on Oct. 6. It is a natively multimodal model with one trillion total parameters and 49 billion active per token, and a 1M-token context window. Mistral says the open weights follow on Oct. 31. One roundup reports it was trained on 3,800 NVIDIA Grace Blackwell GPUs in European data centers and is being red-teamed with security firms and state authorities before the weights ship. It is already callable through Vercel AI Gateway.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to change today. If a client ever needs EU data handling or a self-hosted option, an open-weight frontier-class model is now a real answer to that question. Revisit after Oct. 31 when the license terms are public.</div>
+          <div class="refs"><a href="https://mistral.ai/news/mistral-large-4/" target="_blank" rel="noopener">Mistral announcement</a> <a href="https://samonai.substack.com/p/ai-brief-october-7-2026" target="_blank" rel="noopener">Sam on AI brief</a> <a href="https://vercel.com/changelog/mistral-large-4-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel AI Gateway listing</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents and builder tooling</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Standard</span>
+            <span class="ver">Oct. 6</span>
+            <h3>Meta, Walmart and Stripe back an open standard for letting personal agents into websites</h3>
+          </div>
+          <div class="story-body">
+            <p>TechCrunch reports that Meta, Walmart, Stripe, Sierra, Genesys, Rocket, NiCE and Decagon are backing an open standard for how personal AI agents identify themselves and transact with businesses. The aim is to tell agents acting for a real customer apart from abusive bots. The backdrop is that many large sites turn agents away today, some on purpose and some by accident through CAPTCHAs: the article lists Amazon, Delta, United, Yelp, eBay, Zillow, Pizza Hut and Adidas among them. A separate roundup says OpenAI and Anthropic are not among the participants.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Client sites should be easy for an agent to read and act on: clean booking links, prices and hours in structured data, no CAPTCHA on the path to an appointment. That is a checklist you can run on every TSD site and sell to prospects. Booking Bridge is the natural place to add agent-friendly endpoints once the spec is public.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://usecarly.com/blog/ai-news-2026-10-07" target="_blank" rel="noopener">Carly roundup</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">API</span>
+            <span class="ver">Oct. 7</span>
+            <h3>OpenAI Decisions API: typed answers with probabilities</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI's Decisions API is in public beta and reachable through Vercel AI Gateway as of Oct. 7. You send one shared input plus typed questions, and the model (GPT-6 Luna Decisions) returns yes/no predicates, a choice from a list, or a score, each with a probability. It is aimed at routing, triage, guardrails and rubric scoring. Vercel also added confidence-based fallbacks, which escalate a decision to a stronger model when the first one is unsure. Pricing is unsettled: one roundup cites $0.10 per million input tokens, while another analysis says OpenAI has not published a rate for this endpoint.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the shape of every "is this lead urgent, and who gets it" step in Front Desk and Booking Bridge. You can get the same result with Haiku 5.5 and structured output, so pick on measured cost and accuracy. Hold off on building against the Decisions endpoint until OpenAI posts a price.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/openai-decisions-api-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://vercel.com/changelog/confidence-based-decision-fallbacks" target="_blank" rel="noopener">Confidence fallbacks</a> <a href="https://www.eesel.ai/blog/openai-decisions-api-pricing" target="_blank" rel="noopener">eesel pricing analysis</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money and business</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Funding</span>
+            <span class="ver">Oct. 6</span>
+            <h3>Lambda raising up to $4B; most of its backlog is one customer</h3>
+          </div>
+          <div class="story-body">
+            <p>AI cloud provider Lambda is raising up to $4 billion at a $14.5 billion pre-money valuation, co-led by Coatue and Blackstone, ahead of an IPO now planned for 2027. Its contracted backlog grew from $15 billion in June to $50 billion in September, and $35 billion of that is a single Anthropic commitment signed in late August.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> More Anthropic compute is the supply side of the Haiku price cut. Expect small-model prices to keep falling, so write client contracts around outcomes and a flat monthly fee, and keep the model line item out of the quote.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/" target="_blank" rel="noopener">TechCrunch</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Business</span>
+            <span class="ver">Oct. 6</span>
+            <h3>HubSpot cuts about 660 jobs and reorganizes around "delivering outcomes" with AI</h3>
+          </div>
+          <div class="story-body">
+            <p>HubSpot said on Oct. 6 it is laying off nearly 660 employees, about 7% of its workforce. CEO Yamini Rangan told staff the company has shifted from building software that helps customers grow to delivering outcomes for them with AI. She said the cuts are about a flatter organization and are not driven by AI efficiencies. HubSpot expects $65 million to $75 million in restructuring costs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The largest SMB CRM vendor is now selling the same promise TSD sells: results, done for the customer. That validates the Managed AI retainer pitch and raises the bar on it. Lead with what a HubSpot seat cannot do: custom work on the client's own site, with source code they own.</div>
+          <div class="refs"><a href="https://www.boston.com/news/business/2026/10/06/hubspot-to-lay-off-660-employees/" target="_blank" rel="noopener">Boston.com</a> <a href="https://www.bostonglobe.com/2026/10/06/business/hubspot-layoffs/" target="_blank" rel="noopener">Boston Globe</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Anthropic expanded the Claude Startups Program: a year of Claude Team with up to five Premium seats, $1,000 in API credit and partner offers, for companies founded within five years or funded within two. <a href="https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build" target="_blank" rel="noopener">Anthropic</a></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Google DeepMind released EmbeddingGemma 2, a 740M-parameter Apache 2.0 embedding model covering text, code, images, video and audio. <a href="https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/" target="_blank" rel="noopener">DeepMind</a></span></li>
+            <li><span class="tag improve qh-tag">Funding</span><span class="txt">ElevenLabs reached a reported $22 billion valuation in a $300 million employee tender offer; Stuut raised $52.5 million for order-to-cash agents. <a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-october-7-2026" target="_blank" rel="noopener">AI Agents Directory brief</a></span></li>
+            <li><span class="tag improve qh-tag">Research</span><span class="txt">OpenAI reports GPT-6 Astra scored 55.0% on 11 Ironclad computer-use workflows against 41.6% for GPT-5.6 Sol, with time per attempt down from 37.0 to 19.2 minutes. <a href="https://openai.com/index/advancing-computer-use-with-ironclad/" target="_blank" rel="noopener">OpenAI</a></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">OpenAI and Atlassian expanded their partnership around Rovo; Atlassian says more than 3,000 of its developers use Codex. <a href="https://openai.com/index/atlassian-partnership/" target="_blank" rel="noopener">OpenAI</a></span></li>
+            <li><span class="tag improve qh-tag">Data</span><span class="txt">A roundup cites a JetBrains report that 90% of surveyed developers use AI coding agents weekly. Secondhand figure; the primary report was not checked. <a href="https://aiagentsdirectory.com/news/ai-agents-news-brief-october-7-2026" target="_blank" rel="noopener">AI Agents Directory brief</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
