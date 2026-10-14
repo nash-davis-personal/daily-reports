@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="report:source" content="general-tech" />
+<meta name="report:source-label" content="Technology" />
+<meta name="report:source-color" content="#2dd4bf" />
+<meta name="report:date" content="2026-10-14" />
+<meta name="report:title" content="Patch Next.js today: out-of-band release fixes two Critical and one High upstream vulnerabilities" />
+<meta name="report:summary" content="Next.js publishes a security update on Oct 14 for two Critical and one High upstream bugs; Ledger confirms a hardware implant behind roughly $90M of wallet drains; several critical enterprise CVEs landed." />
+<meta name="report:highlights" content="5" />
+<title>Patch Next.js today: out-of-band release fixes two Critical and one High upstream vulnerabilities — TSD Daily Reports</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+<link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="../../"><span class="mark"><span>◆</span></span><span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span></a>
+<nav><a href="../../">All briefings</a></nav></div></header>
+<main class="wrap report">
+<div class="masthead"><div class="kicker"><span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span><span>◆</span><span>Wednesday, October 14, 2026</span><span>◆</span><span>Covering Oct 8–14 (last edition Oct 8)</span></div>
+<h1>Patch Next.js today: out-of-band release fixes two Critical and one High upstream vulnerabilities</h1>
+<p class="standfirst">Next.js said it would ship an out-of-band security update today, Oct 14, with two Critical and one High severity fixes. Two of the fixes slipped from the September release. Upgrade as soon as the advisories post.</p>
+<div class="byline"><span>Filed by the TSD scout agent</span><span>◆</span><span>Window: Oct 8–14, 2026.</span></div></div>
+<div class="stats"><div class="stat"><div class="num">3</div><div class="lbl">Next.js vulns in today&#x27;s update (2 Critical, 1 High)</div></div><div class="stat"><div class="num">~$93M</div><div class="lbl">est. drained from Ledger wallets sold by one reseller</div></div><div class="stat"><div class="num">8.8M</div><div class="lbl">people in Denmark&#x27;s central register breach</div></div></div>
+<section class="signals"><div class="signals-label">◆ Top signals — read these first</div><div class="signal-grid">
+<div class="signal"><div class="n">01</div><h4>Next.js security release lands today</h4><p>Two Critical, one High, all in upstream dependencies. Advisories, affected versions and upgrade steps publish with the release.</p></div>
+<div class="signal"><div class="n">02</div><h4>Ledger wallet implant</h4><p>Hardware wallets from a Malaysian reseller carried a hidden board with an LTE chip. Estimated drains are about $90M across 315 wallets.</p></div>
+<div class="signal"><div class="n">03</div><h4>Critical CVEs: Cisco NX-OS, Atlassian, Veeam</h4><p>Cisco NX-OS CVSS 9.8, Atlassian Data Center 9.3, Veeam Backup 9.4. Relevant if any client runs these.</p></div>
+<div class="signal"><div class="n">04</div><h4>Danfoss controllers and Ahold Delhaize</h4><p>Attackers defrosted refrigerators at French supermarkets via refrigeration controllers; Ahold Delhaize took systems offline after an incident.</p></div>
+<div class="signal"><div class="n">05</div><h4>Vercel Sandbox and agent skills</h4><p>Sandbox gains Secure Compute with static egress IPs; Vercel reports one million agent skills.</p></div>
+</div></section>
+<section class="stories">
+<div class="story-group"><h2><span class="diamond">◆</span> Patch first: your stack</h2>
+<article class="story"><div class="story-head"><span class="tag breaking">Patch</span><span class="ver">Oct 14</span><h3>Next.js out-of-band security update: two Critical, one High</h3></div>
+<div class="story-body"><p>The Next.js team announced on Oct 8 that it would publish an out-of-band security update on Oct 14 covering three vulnerabilities in upstream dependencies. Two of the fixes were postponed from the September security release because of upstream coordination. Full advisories, affected versions and upgrade instructions publish with the release. For context, May 2026 brought twelve fixes and August brought two critical flaws that Vercel shielded on its platform.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Patch instruction: check nextjs.org/blog and the GitHub security advisories today, then bump Next.js on every client and demo project and redeploy. Run npm audit across repos. Vercel has blocked earlier flaws at the platform layer, so hosted apps are likely partially covered, but upgrade anyway. I could not confirm the advisory IDs or versions before this ran, so read them before you act.</div>
+<div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-update-october-2026" target="_blank" rel="noopener">Next.js announcement</a> <a href="https://www.createwith.com/tool/vercel/updates/vercel-shields-hosted-apps-from-nextjs-august-2026-security-flaws" target="_blank" rel="noopener">August release context</a></div></article>
+<article class="story"><div class="story-head"><span class="tag feature">Platform</span><span class="ver">Oct 5</span><h3>Vercel: Sandbox Secure Compute, AI Gateway adds MAI models</h3></div>
+<div class="story-body"><p>Per the Oct 5 Vercel Weekly, Vercel Sandbox can now connect to a team&#x27;s dedicated network with static IP egress and private AWS VPC access. AI Gateway added Microsoft MAI models alongside GPT-6.1 Sol and Claude Sonnet 5.5, and the agent skills ecosystem reportedly reached one million skills.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Static egress IPs matter when a client&#x27;s database or API only allows allow-listed addresses. It also gives you one gateway to compare models per client.</div>
+<div class="refs"><a href="https://community.vercel.com/t/vercel-weekly-october-5-2026/50269" target="_blank" rel="noopener">Vercel Weekly</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Security and hardware</h2>
+<article class="story"><div class="story-head"><span class="tag breaking">Security</span><span class="ver">Oct 12</span><h3>Ledger confirms a hardware implant in wallets sold by a reseller</h3></div>
+<div class="story-body"><p>Ledger told customers who bought devices from Malaysian reseller CryptoBilis in the past three months not to set them up. A device examined by a former Mt. Gox CEO had a small circuit board with a microcontroller, antenna, LTE chip and e-SIM hidden under the screen padding. On-chain researchers estimate about $90M to $93M drained from 315 wallets starting around Oct 9. Ledger says its own systems and direct sales appear unaffected.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Supply-chain tampering at a reseller is a pitch for clients who buy hardware through third parties (POS terminals, routers). Tell any client holding crypto to buy hardware wallets direct.</div>
+<div class="refs"><a href="https://bleepingcomputer.com/news/security/ledger-confirms-hardware-wallet-spy-implant-behind-crypto-thefts" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://blog.gridinsoft.com/ledger-cryptobilis-hardware-implant/" target="_blank" rel="noopener">Gridinsoft</a></div></article>
+<article class="story"><div class="story-head"><span class="tag breaking">Vulns</span><span class="ver">Oct 12</span><h3>Critical CVEs in Cisco, Atlassian and Veeam</h3></div>
+<div class="story-body"><p>Check Point&#x27;s Oct 12 report lists Cisco NX-OS (CVSS 9.8, improper access control), Atlassian Data Center products (9.3, unauthenticated file access that can expose admin credentials) and Veeam Backup &amp; Replication (9.4, remote code execution before build 12.3.2.4934).</p></div>
+<div class="so-what"><b>So what for TSD:</b> Low direct exposure for a web studio. If a client runs self-hosted Jira, Confluence or Veeam, send them the patch notice. That is a free touch that builds trust.</div>
+<div class="refs"><a href="https://research.checkpoint.com/2026/12th-october-threat-intelligence-report/" target="_blank" rel="noopener">Check Point report</a></div></article>
+<article class="story"><div class="story-head"><span class="tag improve">Incident</span><span class="ver">Oct 12</span><h3>Retail and public-sector breaches keep coming</h3></div>
+<div class="story-body"><p>Denmark disclosed unauthorized access to its Central Register of Persons through a private supplier, affecting about 8.8 million people. ASOS was hit using stolen employee credentials. Ahold Delhaize took systems offline, and Danfoss refrigeration controllers were abused to defrost fridges at French supermarkets.</p></div>
+<div class="so-what"><b>So what for TSD:</b> Both the Denmark and ASOS cases came through a supplier or stolen credentials. Turn on MFA and review vendor access for every client site you manage.</div>
+<div class="refs"><a href="https://research.checkpoint.com/2026/12th-october-threat-intelligence-report/" target="_blank" rel="noopener">Check Point report</a> <a href="https://www.supermarketnews.com/company-news/ahold-delhaize-shuts-down-websites-after-cybersecurity-issue" target="_blank" rel="noopener">Supermarket News</a></div></article>
+</div>
+<div class="story-group"><h2><span class="diamond">◆</span> Quick hits</h2><div class="quickhits"><ul>
+<li><span class="tag new qh-tag">New</span><span class="txt">Supabase: nothing new on your stack turned up in my searches this window. Launch Week 15 items (JWT signing keys, Branching 2.0, Analytics Buckets) were earlier releases. <a href="https://supabase.com/launch-week" target="_blank" rel="noopener">Supabase launch week</a></span></li>
+<li><span class="tag fix qh-tag">Note</span><span class="txt">React, Tailwind: no new advisories found in this window. </span></li>
+<li><span class="tag fix qh-tag">Note</span><span class="txt">Progress published 31 newly disclosed flaws in MarkLogic Server on Oct 12, five rated critical. <a href="https://cyberrecaps.com/news/cybersecurity-news-october-12-2026" target="_blank" rel="noopener">Daily recap</a></span></li>
+</ul></div></div>
+</section>
+<div class="byline" style="margin-top:40px"><span>◆ End of briefing</span><span>◆</span><span>Sources are linked inline. Verify anything load-bearing before acting.</span></div>
+</main>
+<footer class="site-foot"><div class="wrap"><span><a href="../../">← All briefings</a></span><span>Scouted &amp; written by the TSD agent ◆ Built to own</span></div></footer>
+</body>
+</html>

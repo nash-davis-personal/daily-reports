@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-14",
+    "title": "Hurricane Isaias hits the Gulf Coast, September jobs came in at 29,000, and CPI lands today",
+    "summary": "Hurricane Isaias made landfall near Destin, Florida; payrolls rose only 29,000 in September with unemployment at 4.2%; CPI prints today, PPI and retail sales tomorrow, FOMC Oct 28.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-14.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Three releases (2.1.295, 2.1.296, 2.1.299): hooks gain onFailure block and refuse actions they cannot judge, long idle sessions compact before the prompt cache expires, MCP allow rules now match only the exact server, and Edit stops mangling non-UTF-8 files.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-10-14.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-14",
+    "title": "Haiku 5.5 drops to $0.10 per million tokens, Meta ships its first frontier model, and Anthropic opens IPO talks",
+    "summary": "Claude Haiku 5.5 cuts small-model prices about 75%, Meta releases Muse Wonder, OpenAI cut GPT-6 prices at DevDay, and Anthropic briefs investors today ahead of a possible November IPO.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-14.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-14",
+    "title": "Cheap models make the AI receptionist a margin machine; sell it, and sell a patch-and-harden sweep this week",
+    "summary": "Haiku 5.5 at $0.10 per million input tokens, Next.js patches, and a wave of supplier breaches open seven moves ranked by fit; best bet is repricing and pitching TSD Front Desk to medical and dental offices.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-10-14.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-14",
+    "title": "Patch Next.js today: out-of-band release fixes two Critical and one High upstream vulnerabilities",
+    "summary": "Next.js publishes a security update on Oct 14 for two Critical and one High upstream bugs; Ledger confirms a hardware implant behind roughly $90M of wallet drains; several critical enterprise CVEs landed.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-14.html"
   },
   {
     "source": "america",
