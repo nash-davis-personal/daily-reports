@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-14" />
+  <meta name="report:title" content="Hooks can now fail closed, idle compaction saves the cache bill, and MCP allow rules got stricter" />
+  <meta name="report:summary" content="Three releases (2.1.295, 2.1.296, 2.1.299): hooks gain onFailure block and refuse actions they cannot judge, long idle sessions compact before the prompt cache expires, MCP allow rules now match only the exact server, and Edit stops mangling non-UTF-8 files." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Hooks can now fail closed, idle compaction saves the cache bill, and MCP allow rules got stricter — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, October 14, 2026</span>
+        <span>◆</span><span>3 releases since the last briefing</span>
+      </div>
+      <h1>Hooks can now fail closed, idle compaction saves the cache bill, and MCP allow rules got stricter</h1>
+      <p class="standfirst">Three releases: 2.1.295 (October 8), 2.1.296 (October 9) and 2.1.299 (October 14). The changelog lists no 2.1.297 or 2.1.298. The theme is guardrails that stop failing open: hooks that crash or can't answer now block instead of waving actions through. One change can break your config today: MCP allow rules now match only the exact server they name.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: 2.1.295 to 2.1.299 (October 8 to 14, 2026)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">Releases</div></div>
+      <div class="stat"><div class="num">~410</div><div class="lbl">Changelog items</div></div>
+      <div class="stat"><div class="num">2.1.299</div><div class="lbl">Version to run</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hooks can fail closed</h4><p><code>onFailure: "block"</code> on command and HTTP hooks (2.1.295). Plugin hooks that can't answer now refuse the action (2.1.299).</p></div>
+        <div class="signal"><div class="n">02</div><h4>Idle compaction</h4><p>A 200K+ token session idle ~54 minutes is compacted before its one-hour prompt cache expires, so the next message doesn't reprocess it all.</p></div>
+        <div class="signal"><div class="n">03</div><h4>MCP allow rules are exact now</h4><p><code>mcp__a</code> no longer allows a server named <code>a__b</code>. Agent <code>tools:</code> lists changed the same way. Check your settings.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Edit stops mangling non-UTF-8 files</h4><p>Edit and NotebookEdit replaced every non-ASCII character in Windows-1252 / Shift-JIS / GBK files. Such edits are now refused; Write no longer silently converts them.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Subagent cost controls</h4><p><code>autoCompactWindow</code> per subagent, one model for all workflow agents via env var, and an <code>effort</code> knob in agent view.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Scheduled tasks survive DST</h4><p>Loops and scheduled tasks no longer re-fire after every turn during the repeated hour when daylight saving ends. That hour is November 1.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Guardrails that stop failing open</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.295 · 2.1.299</span>
+            <h3>Hooks that crash, time out or can't answer can now block the action</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.295 adds <code>onFailure: "block"</code> for command and HTTP hooks: a hook that can't start, times out, or exits with an unexpected code blocks the action instead of letting it through. 2.1.299 makes the same rule the default for plugin hooks: an action the hook can block is refused when the hook can't be handed it or can't answer, and a tool that already ran has its result withheld. 2.1.299 also fixes plan mode running a write that a <code>PreToolUse</code> hook or a mod's <code>tool.check</code> hook allowed, and on Windows, PreToolUse and PermissionRequest hooks with no shell set failed open when Git for Windows wasn't installed.</p>
+            <p>Related: <code>UserPromptSubmit</code> hooks now run before a skill or custom slash command expands, so a hook that blocks the prompt also stops the command's embedded shell lines.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Add <code>"onFailure": "block"</code> to every command hook that guards something destructive: production Vercel deploys, Supabase migrations, anything touching a client's live data. A guard that silently dies is worse than no guard because you stop watching. Five-minute job: grep <code>~/.claude/settings.json</code> and each client repo's <code>.claude/settings.json</code> for <code>"hooks"</code> and add the key.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.295, 2.1.299</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.299</span>
+            <h3>MCP allow rules and agent <code>tools:</code> lists match only the server they name</h3>
+          </div>
+          <div class="story-body">
+            <p><code>mcp__a</code> no longer allows a server named <code>a__b</code> or <code>a_</code>. To allow a server, write <code>mcp__&lt;server&gt;__*</code> with the server's whole normalized name. Agent <code>tools:</code> lists changed the same way: a server whose name contains <code>__</code> must be listed as <code>mcp__&lt;whole name&gt;__*</code>. 2.1.299 also fixes deny and ask rules not applying when a server's normalized name contains a double underscore.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If an unattended job or custom agent suddenly starts prompting for (or getting denied on) Supabase, Vercel or GitHub MCP tools after the update, this is why. Search your settings and <code>.claude/agents/*.md</code> for bare <code>mcp__</code> prefixes and rewrite them to the <code>mcp__server__*</code> form before the next hub run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.299</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.296 · 2.1.299</span>
+            <h3>Edit no longer corrupts files that aren't UTF-8</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.296: Edit and NotebookEdit replaced every non-ASCII character in files that are not valid UTF-8 (Windows-1252, Shift-JIS, GBK); such edits are now refused. 2.1.299: Read no longer garbles UTF-16LE files with a byte-order mark, and Write no longer drops byte-order marks or silently converts Windows-1252, Shift-JIS, GBK or UTF-16BE files to UTF-8 (now refused).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The danger zone is client-supplied data: old CSV exports from a salon POS, product spreadsheets, legacy site HTML. If Claude edited one of those and accents or curly quotes turned into junk, this was it. Now you'll see a refusal instead; convert the file to UTF-8 first, deliberately, and commit that as its own step.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.296, 2.1.299</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cost and long-running work</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.299</span>
+            <h3>Idle compaction: long sessions compact before the prompt cache expires</h3>
+          </div>
+          <div class="story-body">
+            <p>In the terminal, a conversation over 200K tokens left idle for about 54 minutes is now compacted before its one-hour prompt cache expires, so your next message doesn't reprocess the whole thing. <code>CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS</code> changes the 200K minimum; <code>"idleCompaction": false</code> in settings.json turns it off. 2.1.299 also adds <code>/usage</code> warnings for max effort, workflows, always-on context and large tool results.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your usual pattern of leaving a big client build session open over lunch or a call now costs less on return. The trade-off is that you come back to a compacted context. If a session holds detail you need verbatim (a long spec review, a tricky migration), turn it off for that repo in <code>.claude/settings.json</code>. Run <code>/usage</code> once this week to see which of the new warnings fire on your setup.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.299</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.296 · 2.1.299</span>
+            <h3>More control over what subagents and workflow agents cost</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.296 adds <code>autoCompactWindow</code> to subagent frontmatter and <code>--agents</code> definitions, so a subagent can compact earlier than the main conversation; <code>CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</code> runs every workflow agent on one model while other subagents keep theirs; and an <code>allow_large</code> option lets Read take a whole large text file in one call when context has room. 2.1.299 adds <code>/effort</code> and <code>/fast</code> in agent view to set what new sessions start with. Also in 2.1.296: <code>/cost</code>, the status line and <code>--max-budget-usd</code> now price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> For fan-out work (audits, multi-page content passes for Bisque or Sonderwerks) set <code>CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</code> to a cheaper model and keep the main loop on Opus. The Sonnet 5.5 cache-read figure is the one to use when you quote the running cost of a client chatbot with a long cached system prompt; verify it on Anthropic's pricing page before it goes in a proposal.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.296, 2.1.299</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.299</span>
+            <h3>Scheduled tasks and loops: DST and wrong-minute fixes</h3>
+          </div>
+          <div class="story-body">
+            <p>Scheduled tasks and loops fired again after every turn, or early, during the repeated hour when daylight saving time ends; fixed. The scheduling tools now report each job's actual next run time instead of announcing the wrong minute. ScheduleWakeup now fires while a background task runs in Agent SDK, IDE and <code>claude remote-control</code> sessions. Background sessions started with <code>--safe-mode</code> no longer silently leave safe mode when woken or restarted.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> US daylight saving ends Sunday, November 1. Get every machine that runs Claude <code>/loop</code> or scheduled tasks onto 2.1.299 before then, or expect a burst of duplicate runs between 1 and 2 a.m.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.299</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Regression in 2.1.296 where cloud and headless sessions could run an approved tool call twice after a restart. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Replies cut off at the output token limit no longer end the turn silently after a fallback to non-streaming. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sandboxed commands on macOS could read or write a denied path by its real location through a symlink. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">MCP over HTTP no longer hangs 30 seconds when a server never ends a notification reply. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">@-mentioned PDFs no longer keep their bytes in the session transcript, cutting memory and disk use. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_DISABLE_FILE_MENTIONS</code>: <code>@</code> mentions pass the path for Claude to read instead of inlining contents. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The resume command printed at exit names the session by ID, so nothing in a session name can run when pasted. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/ultrareview</code> upload errors stop suggesting <code>git add .</code>, which could stage files such as <code>.env</code>. <span class="ver">2.1.299</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash permission checks no longer auto-approve some commands that assign and then use <code>BASH_ARGV0</code>. <span class="ver">2.1.296</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/code-review</code> in the Agent SDK, cloud and IDE now prints findings as a numbered list instead of raw JSON. <span class="ver">2.1.296</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">MCP tool descriptions and server instructions sent up front now allowed 4,096 characters (was 2,048); via tool search, 16,384. <span class="ver">2.1.295 · 2.1.296</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Requests on a <code>[1m]</code> model now retry without the context-1m beta when a gateway, Bedrock, Vertex or Foundry refuses it. <span class="ver">2.1.295</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagents in their own worktree were shown the parent session's git branch, status and commits. <span class="ver">2.1.295</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Terminal no longer freezes, ignoring Ctrl+C, when a response runs to tens of thousands of lines. <span class="ver">2.1.295</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Terminal status via OSC 7501: supporting terminals show whether Claude is working, waiting or done. <span class="ver">2.1.295</span></span></li>
+            <li><span class="tag improve qh-tag">Other</span><span class="txt">Large blocks of Claude apps gateway, Claude Tag (Slack), mods API, self-hosted runner and Windows-only changes across all three releases. Not relevant to a solo setup. <span class="ver">2.1.295–2.1.299</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
