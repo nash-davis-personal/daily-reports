@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-15" />
+  <meta name="report:title" content="Finish the Next.js patch: check sharp in your lockfile, kill old previews, and plan off 15.x before Oct 21" />
+  <meta name="report:summary" content="Follow-up on the Oct 14 Next.js security release (15.5.28 / 16.4.1) with a sharp lockfile trap and a Next.js 15 support cutoff on Oct 21; Microsoft patched a record 1,413 bugs including an exploited zero-day; TSMC posted a record quarter while CoreWeave&#x27;s bonds hit 15%." />
+  <meta name="report:highlights" content="6" />
+  <title>Finish the Next.js patch: check sharp in your lockfile, kill old previews, and plan off 15.x before Oct 21 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, October 15, 2026</span>
+        <span>◆</span><span>Dev stack, chips, security, big tech</span>
+      </div>
+      <h1>Finish the Next.js patch: check sharp, kill old previews, and get off 15.x before Oct 21</h1>
+      <p class="standfirst">Bumping next isn't the whole fix this time. Fifteen-dot-x installs can keep a vulnerable sharp, and old preview deploys stay exposed until they're deleted. Beyond your stack, chips had a record quarter at TSMC and a credit scare at CoreWeave on the same day.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 13–15, 2026</span>
+        <span>◆</span><a href="https://www.netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">15.5.28 / 16.4.1</div><div class="lbl">Patched Next.js versions for the Oct 14 security release</div></div>
+      <div class="stat"><div class="num">Oct 21</div><div class="lbl">Next.js 15 LTS security support ends (endoflife.date)</div></div>
+      <div class="stat"><div class="num">1,413</div><div class="lbl">Vulnerabilities in Microsoft's October update, one exploited</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js patch has a sharp trap</h4><p>On 15.x, an old sharp 0.34 in the lockfile can keep the vulnerable SVG decoder after upgrading next. Check, then redeploy.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Delete stale preview deploys</h4><p>Netlify warns old previews and branch deploys stay vulnerable until removed. The same logic applies to Vercel preview URLs.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Microsoft: 1,413 fixes, one exploited zero-day</h4><p>A Mark-of-the-Web bypass is under active attack; CISA set Oct 16 for federal agencies.</p></div>
+        <div class="signal"><div class="n">04</div><h4>TSMC record Q3: $46.7B, +41%</h4><p>HPC is 68% of revenue. AI chip demand is still climbing.</p></div>
+        <div class="signal"><div class="n">05</div><h4>AI credit wobble</h4><p>CoreWeave's 2032 bonds touched 15%; stock fell ~15%, Oracle ~9%.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch this week (your stack)</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">next 15.5.28 / 16.4.1</span>
+            <h3>Next.js October security release: the follow-up checklist</h3>
+          </div>
+          <div class="story-body"><p>Yesterday's out-of-band release fixed two Critical RCEs and one High DoS. The first RCE hits 16.x apps with Cache Components where a use cache function returns typed arrays (GHSA-673q-mjm6-r5xr). The second is in Image Optimization when it processes SVGs through sharp/librsvg on glibc Linux (CVE-2026-96889), which also covers next/og ImageResponse. The DoS affects App Router Server Actions on 13.x–16.x (GHSA-p3m5-59mp-jv5r). The fixes ship in 15.5.28 and 16.4.1.</p><p>Two catches surfaced since. One security write-up says next@15.5.28 still accepts sharp ^0.34.3, so an existing lockfile can keep the vulnerable decoder; the fix needs sharp 0.35.5. Netlify also says old deploy previews and branch deploys stay vulnerable until they're deleted. Separately, endoflife.date lists security support for the Next.js 15 LTS line ending October 21.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> On every client repo: upgrade next, then run <code>npm ls sharp</code> (or check the lockfile) and confirm sharp 0.35.5 or later. Redeploy production, then delete or protect old preview deployments in Vercel. Put any site still on 15.x on a 16.4.1 upgrade list this week, because the security patches stop after Oct 21.</div>
+          <div class="refs"><a href="https://www.netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities/" target="_blank" rel="noopener">Netlify changelog</a> <a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js advisory</a> <a href="https://hol.org/guard/security/campaigns/cve-2026-96889-nextjs-october-2026-security-update-rce" target="_blank" rel="noopener">sharp detail (HOL)</a> <a href="https://endoflife.date/nextjs" target="_blank" rel="noopener">endoflife.date</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 13–14</span>
+            <h3>Microsoft's record Patch Tuesday and an exploited Ivanti zero-day</h3>
+          </div>
+          <div class="story-body"><p>Microsoft's October update fixes 1,413 vulnerabilities, 1,102 of them in Windows and 134 in Office. The urgent one is CVE-2026-96951, a Mark-of-the-Web bypass that lets malicious downloads skip security warnings, and it is already being exploited. CISA gave federal agencies until October 16.</p><p>Ivanti disclosed CVE-2026-104935 in Connect Secure VPN on October 13. It's an authentication bypass rated 8.6, under active attack, and now patched. A separate privilege-escalation flaw was still unpatched at publication.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> For SMB clients whose Windows machines nobody manages, a one-line text saying "run Windows Update today and restart" is cheap goodwill, and it opens the door to a paid IT-hygiene check.</div>
+          <div class="refs"><a href="https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/" target="_blank" rel="noopener">SecurityWeek</a> <a href="https://www.rapid7.com/blog/post/etr-ivanti-connect-secure-zero-day-exploited-in-the-wild-cve-2026-104935/" target="_blank" rel="noopener">Rapid7 on Ivanti</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Platform</span>
+            <span class="ver">Oct 13</span>
+            <h3>Vercel and Supabase: small upgrades, plus a deadline coming up</h3>
+          </div>
+          <div class="story-body"><p>Vercel's October 13 changelog adds Fish Audio's Drama 3 speech model and MAI-Image-2.6 (plus a Flash variant) to AI Gateway, and speeds up repository checkout and Git LFS downloads before builds automatically. Supabase announced Declarative Schemas 2.0 built on pg-delta for CLI 2.119+; we've only confirmed that through a third-party guide.</p><p>Still pending: from October 30, new public tables on existing Supabase projects stop being exposed to the Data API by default, so tables need explicit grants.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No action needed on Vercel. Before Oct 30, list every Supabase project where code creates tables at runtime or through migrations and expects the Data API to see them, and add explicit grants to those migrations now.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://dev.to/davekurian/supabase-data-api-exposure-changes-on-30-october-grant-tables-explicitly-2pe7" target="_blank" rel="noopener">Supabase Data API change</a> <a href="https://dev.to/davekurian/supabase-pg-delta-migration-guide-adopt-declarative-schemas-safely-49a7" target="_blank" rel="noopener">pg-delta guide</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and the AI buildout</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">Oct 15</span>
+            <h3>TSMC posts a record Q3; ASML raises its outlook</h3>
+          </div>
+          <div class="story-body"><p>TSMC reported Q3 revenue of US$46.72 billion, up 41.2% from a year earlier, with a 66.4% gross margin. High-performance computing made up 68% of revenue, 3nm accounted for 33% of wafer revenue and 2nm already 8%. The day before, ASML reported record Q3 sales of €11.7 billion and guided 2026 to €44–45 billion. It also says supply of its lithography machines will stay tight.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Real chip demand is still rising even while AI stocks sell off. Model prices keep falling because capacity keeps growing, so keep building offers that get cheaper to deliver every quarter.</div>
+          <div class="refs"><a href="https://cryptobriefing.com/tsmc-q3-2026-earnings-revenue-up-41/" target="_blank" rel="noopener">TSMC Q3 (Crypto Briefing)</a> <a href="https://www.investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026" target="_blank" rel="noopener">ASML IR</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Markets</span>
+            <span class="ver">Oct 14</span>
+            <h3>CoreWeave's bonds touch 15% as AI-debt worries spread</h3>
+          </div>
+          <div class="story-body"><p>CoreWeave's $1.25 billion of bonds due 2032 touched a 15% yield on October 13 before closing at 14.5%. On October 14 the stock fell about 15%, Nebius fell 11% and Oracle 9%. CoreWeave carried about $52 billion of debt at the end of June, and its Q2 interest expense was $640 million. The CEO told staff the market is acting "irrationally", and the company is looking at chip-backed loans from life insurers.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No direct effect on your hosting. If AI-cloud financing gets tighter, the smaller GPU clouds take the hit first, so stick with Vercel, Supabase and the major model APIs.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/technology/article/yikes-coreweave-stock-sinks-after-its-bond-yield-touched-15-143801702.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Hardware</span>
+            <span class="ver">Oct 14</span>
+            <h3>Apple closes above $5 trillion and launches a $299 home hub</h3>
+          </div>
+          <div class="story-body"><p>Apple became the second company, after Nvidia, to close above a $5 trillion market value, with shares at a record $342.96. It also announced HomeView, a $299 smart-home hub with a seven-inch display, an A18 chip and Siri running on Apple Intelligence. It ships November 13 in the US and four other markets, but not the EU at launch.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Voice assistants in the home make more people comfortable talking to a business by voice. That's another reason to keep the Front Desk demo sharp.</div>
+          <div class="refs"><a href="https://finance.yahoo.com/markets/stocks/articles/apple-joins-nvidia-5-trillion-001454175.html" target="_blank" rel="noopener">Yahoo Finance</a> <a href="https://images.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/" target="_blank" rel="noopener">Apple Newsroom</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">Microsoft unveiled its Maia 300 AI chip and plans multi-gigawatt deployments; Nvidia stays in its fleet. <span class="ver">Oct 12</span></span></li>
+            <li><span class="tag breaking qh-tag">Security</span><span class="txt">DOJ says North Korean IT workers infiltrated dozens of US companies via laptop farms. <span class="ver">Oct 13</span></span></li>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">Hesai launched Kosmo, a lidar-plus-camera rig for collecting robot training data. <span class="ver">Oct 14</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Labelbox raised $100M (per Fireround); Nscale's $3.4B convertible led the past 30 days. <span class="ver">Oct 14</span></span></li>
+            <li><span class="tag improve qh-tag">Next.js</span><span class="txt">16.5.0-canary.10 is out, so 16.5 stable is getting closer. <span class="ver">Oct 13</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

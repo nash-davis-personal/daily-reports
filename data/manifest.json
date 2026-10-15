@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-15",
+    "title": "Hot CPI knocks stocks down, Bank of America takes a $1.2B fine, and PPI plus retail sales land this morning",
+    "summary": "September CPI rose 0.6% for the month and 3.7% on the year, sending the S&P 500 down 1.1% and the Russell 2000 into a correction; Bank of America fell 4.8% on a $1.2B Treasury penalty; PPI, retail sales and jobless claims print at 8:30 ET today; Japan will fund two New York chip fabs.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-15.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-15",
+    "title": "Gemini 4 Argon goes wide at $2/$10, Grok Voice 3 tops the voice charts at 8 cents a minute, and AI agents built a Chrome zero-day in six days",
+    "summary": "Google made Gemini 4 Argon broadly available with intro pricing through Nov 30, xAI shipped Grok Voice 3.0 at $0.08 per minute, XBOW&#x27;s agents built a Chrome sandbox escape for a $250K bounty, and EU and US state regulators moved on OpenAI and Anthropic.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-15.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-15",
+    "title": "Sell the Next.js 15 exit before Oct 21, test Grok Voice inside Front Desk, and package an AI-era security checkup",
+    "summary": "Seven moves ranked by fit off today&#x27;s shifts: Next.js 15 support ending Oct 21 with a sharp patch trap, Grok Voice 3.0 at $0.08 a minute, AI-built exploits and a record Microsoft patch cycle, Gemini 4 Argon&#x27;s pricing window, and a rate shock hitting housing. Best bet is a fixed-fee Next.js 16 upgrade-and-patch sprint.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-10-15.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-15",
+    "title": "Finish the Next.js patch: check sharp in your lockfile, kill old previews, and plan off 15.x before Oct 21",
+    "summary": "Follow-up on the Oct 14 Next.js security release (15.5.28 / 16.4.1) with a sharp lockfile trap and a Next.js 15 support cutoff on Oct 21; Microsoft patched a record 1,413 bugs including an exploited zero-day; TSMC posted a record quarter while CoreWeave&#x27;s bonds hit 15%.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-15.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-14",
     "title": "Hurricane Isaias hits the Gulf Coast, September jobs came in at 29,000, and CPI lands today",
     "summary": "Hurricane Isaias made landfall near Destin, Florida; payrolls rose only 29,000 in September with unemployment at 4.2%; CPI prints today, PPI and retail sales tomorrow, FOMC Oct 28.",
