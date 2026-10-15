@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-15" />
+  <meta name="report:title" content="Hook rewrites now get validated, agent hooks stop failing open, and transcripts record full requests" />
+  <meta name="report:summary" content="One big release (2.1.300): hook updatedInput is validated like Claude's own input, agent hooks honor their model and no longer allow on an unavailable one, a bad MCP schema stops bricking a conversation, mods can rewrite workflow agents, and local transcripts now store system prompts and tools." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Hook rewrites now get validated, agent hooks stop failing open, and transcripts record full requests — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Thursday, October 15, 2026</span>
+        <span>◆</span><span>Release 2.1.300</span>
+      </div>
+      <h1>Hook rewrites now get validated, agent hooks stop failing open, and transcripts record full requests</h1>
+      <p class="standfirst">Only one release landed since yesterday's briefing, but 2.1.300 is large: 12 additions, 13 changes and 59 fixes. The parts that touch your setup are hook guardrails, mod hooks for workflow agents, and a batch of fixes for unattended and Remote Control sessions.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: after 2.1.299 (covered 2026-10-14) through 2.1.300, dated October 14, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release since last briefing</div></div>
+      <div class="stat"><div class="num">59</div><div class="lbl">Bug fixes in 2.1.300</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Removed flag (remote-control --sandbox)</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hook input rewrites are validated</h4><p>updatedInput from PreToolUse and PermissionRequest hooks drops unknown keys, and input the tool rejects denies the call.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Agent hooks no longer fail open</h4><p>An agent hook whose model is unavailable now falls back to the caller's model. Before, it allowed the action.</p></div>
+        <div class="signal"><div class="n">03</div><h4>One bad MCP schema stops killing the session</h4><p>A 400 on an MCP tool's input schema used to fail every turn. Now that tool is sent without parameters.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Mods can rewrite workflow agents</h4><p>agent.spawn can now change a workflow agent's prompt and model; new prompt.change hook and virtualText decorations.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Transcripts store full requests</h4><p>Local transcripts now record each request's system prompt, tools and parameters. Check before sharing one.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Unattended runs got sturdier</h4><p>Remote Control retries after sign-in errors, SessionEnd hooks run on exit, and Claude stops sleep-polling background commands.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hooks and guardrails</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.300</span>
+            <h3>Hooks that rewrite tool input are now held to the tool's own schema</h3>
+          </div>
+          <div class="story-body">
+            <p>When a PreToolUse or PermissionRequest hook returns <code>updatedInput</code>, Claude Code now validates it the same way it validates Claude's input. Unknown keys get dropped. If the tool rejects the rewritten input, the call is denied outright.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any hook of yours that injects extra fields or rewrites Bash commands will now be silently trimmed or turned into a denial. Grep your <code>~/.claude/settings.json</code> hooks for <code>updatedInput</code> and run one test call each before tonight's scheduled jobs fire.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Changed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.300</span>
+            <h3>Agent hooks honor their model and stop allowing on failure</h3>
+          </div>
+          <div class="story-body">
+            <p>Agent hooks were ignoring their <code>model</code> setting. Aliases like <code>haiku</code> now resolve, a subagent's model no longer overrides the hook's, and an unavailable model falls back to the caller's model where it used to let the action through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run a cheap Haiku agent hook as a reviewer gate, it was probably running on the bigger model and costing more, and a model hiccup meant a silent pass. Pair this with yesterday's <code>onFailure: block</code> and your gates finally fail closed end to end.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.300</span>
+            <h3>A rejected MCP tool schema no longer bricks the conversation</h3>
+          </div>
+          <div class="story-body">
+            <p>If the API rejected one MCP tool's input schema, every turn failed with a 400. Claude Code now sends that tool without parameters for the rest of the conversation. A related fix tells Claude about an MCP server's tools right away when the server finishes connecting after a compaction.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run 20-plus MCP servers (Higgsfield, Supabase, Vercel, Square, your own nash-os and tsd-portal). One sloppy schema in a custom server used to kill a long session. If you saw unexplained 400 loops, this was likely it; still worth validating schemas in your own servers since the degraded tool loses its parameters.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Mods and workflows</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.300</span>
+            <h3>agent.spawn can rewrite workflow agents; new prompt hooks and view control</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>agent.spawn</code> mod hook can now rewrite a workflow agent's <code>prompt</code> and <code>model</code>; before, it could only refuse them. Also new: a <code>prompt.change</code> hook for non-typed edits (history recall, clear, undo, plugin fill), <code>virtualText</code> prompt decorations that never enter the submitted prompt, and <code>$.ui.view({ agentId })</code> to put an agent's transcript in the main view.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You can now enforce house rules on workflow fan-outs centrally, such as forcing reviewer agents to a cheaper model or appending the voice rules to every writing agent's prompt, without editing each script. That is a concrete cost lever on the commercial and steward loops.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.300</span>
+            <h3>Local transcripts now record system prompts, tools and request parameters</h3>
+          </div>
+          <div class="story-body">
+            <p>Each API request's system prompt, tool list and parameters are now written to the local session transcript so a shared transcript can reproduce a request exactly. Separately, the built-in <code>plugin-authoring</code> skill now scans a mod's files for keys before opening them when sharing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your system prompt carries client context and your CLAUDE.md rules. Treat any transcript as containing that before you hand it to a client or post it for debugging. Useful the other way too: you can now replay an exact failing request when a skill misbehaves.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Changed and Improved</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and cost visibility</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.300</span>
+            <h3>Remote Control, background commands and exit hooks behave under load</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude remote-control</code> servers now retry after a brief sign-in error such as a locked keychain, and warn when you need <code>claude /login</code>. Remote Control sessions are no longer marked stopped while running on a machine serving several. SessionEnd hooks run when you exit with a background command still going, and exit now force-kills background commands still alive after 1.5 seconds. Claude also stops polling or sleeping on a background command's output file.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your phone-to-Mac flow and the scheduled scouts both depend on these. A locked keychain overnight used to drop Remote Control for good. Note the breaking bit: <code>--sandbox</code> and <code>--no-sandbox</code> on <code>claude remote-control</code> now exit with an error, so check any launchd plist that passes them.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Changed and Bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.300</span>
+            <h3>OpenTelemetry splits cache writes by lifetime and adds GenAI span attributes</h3>
+          </div>
+          <div class="story-body">
+            <p>The <code>api_request</code> event gains <code>cache_creation_5m_tokens</code> and <code>cache_creation_1h_tokens</code>. Trace spans now carry GenAI semantic-convention attributes like <code>gen_ai.provider.name</code>, <code>gen_ai.tool.name</code> and <code>error.type</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> 1-hour cache writes cost more than 5-minute ones, and your scheduled loops lean on the 1-hour TTL. If Nash OS ever ingests OTel, this is the field that tells you which runs are paying for long-lived cache they never reuse. Low priority until you wire telemetry.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.300 Added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Several <code>--worktree</code> fixes: wrong starting commit when a tag looked like a commit ID, reftable repos showing ".invalid", and bare-repo worktrees failing when origin's default branch can't be fetched. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Resuming headless or Agent SDK sessions no longer loses kept messages or the compaction summary after a cut-off or retried reply. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Automatic tool search no longer turns off mid-conversation while MCP servers reconnect after a resume. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagents you messaged no longer vanish from <code>/tasks</code> after finishing. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Artifact updates: small changes apply and republish in one call. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Large requests to api.anthropic.com are gzip-compressed even with telemetry off; <code>CLAUDE_CODE_GZIP_REQUEST_BODIES=0</code> disables it. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">The <code>claude-api</code> skill leaves Managed Agents sessions in place unless you ask to archive or delete them. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">VS Code: <code>claudeCode.attachSelection</code> setting stops editor selections from riding along with messages. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Claude in Slack: Slack Connect channels (off by default), private Allow once / Deny approval cards, and voice-clip transcripts. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Code Review now honors <code>@claude review</code> from writers whose GitHub org membership is private. <span class="ver">2.1.300</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cowork cloud Write/Edit no longer reports success for paths on your own computer that never arrived. <span class="ver">2.1.300</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-15.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-15",
+    "title": "Hook rewrites now get validated, agent hooks stop failing open, and transcripts record full requests",
+    "summary": "One big release (2.1.300): hook updatedInput is validated like Claude's own input, agent hooks honor their model and no longer allow on an unavailable one, a bad MCP schema stops bricking a conversation, mods can rewrite workflow agents, and local transcripts now store system prompts and tools.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-10-15.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
