@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-16" />
+  <meta name="report:title" content="Unattended runs can now quit at a far-off usage limit, and workflow agents stop skipping steps while reporting success" />
+  <meta name="report:summary" content="One release (2.1.301): a cap on how long the retry watchdog waits at a usage limit, a fix for workflow agents that skipped their step and still reported success, Grep and Glob now erroring when the search fails, safer model switches to smaller context windows, and a Fable alias fallback." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Unattended runs can now quit at a far-off usage limit, and workflow agents stop skipping steps while reporting success — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, October 16, 2026</span>
+        <span>◆</span><span>1 release: 2.1.301</span>
+      </div>
+      <h1>Unattended runs can now quit at a far-off usage limit, and workflow agents stop skipping steps while reporting success</h1>
+      <p class="standfirst">2.1.301 is mostly fixes, and the ones that matter hit your scheduled jobs. Set the new watchdog cap on your daily routines, and know that any workflow run before this version could have reported success on a step it never did.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.300 (filed 2026-10-15): 2.1.301, dated October 15, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release</div></div>
+      <div class="stat"><div class="num">14</div><div class="lbl">Added / changed / improved</div></div>
+      <div class="stat"><div class="num">37</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals: read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Watchdog gets a usage-limit cap</h4><p><code>CLAUDE_CODE_RETRY_WATCHDOG_MAX_USAGE_LIMIT_WAIT_MS</code> ends an unattended request when the limit resets too far out, so a scheduled run fails fast instead of hanging.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Workflow agents stop faking a pass</h4><p>Agents sometimes skipped their step after reading the "no user authority" harness note, and the run still reported success. Fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Grep and Glob now admit failure</h4><p>A search program that crashed before returning anything used to read as "no matches." It now returns an error.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Smaller-context model switches summarize first</h4><p>Switching to a model that can't fit the conversation now has the previous model summarize it, and it asks before spending usage credits on that summary.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Quit no longer eats hook-made worktrees</h4><p>Quitting used to remove a <code>WorktreeCreate</code>-hook worktree without asking even if it held unpushed commits.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.301</span>
+            <h3>Retry watchdog can give up on a usage limit that resets too far away</h3>
+          </div>
+          <div class="story-body">
+            <p>Unattended retry mode (<code>CLAUDE_CODE_RETRY_WATCHDOG</code>) previously waited out a usage limit however long the reset took. The new <code>CLAUDE_CODE_RETRY_WATCHDOG_MAX_USAGE_LIMIT_WAIT_MS</code> sets a ceiling; past it, the request ends.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set this on the scheduled tasks (this scout, the daily reports, Fleet Steward loops) to something like an hour. A run that dies at a limit now logs <code>--fail</code> to Nash OS the same morning, where before it sat silently until the window reset and collided with the next day's run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.301</span>
+            <h3>Workflow agents skipping their step while the run reported success</h3>
+          </div>
+          <div class="story-body">
+            <p>After reading the harness note that their task text carries no user authority, workflow agents sometimes skipped the step, and the workflow still reported success. A second fix stops workflow scripts from asking for permission or being refused when read, edited or re-run after a Bash <code>cd</code> in the same session.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any multi-agent workflow you trusted on a "success" before 2.1.301 (review fan-outs, verification passes on client repos) may have had a silent no-op step. If one of those results fed a client deliverable for Bisque, Studio C or Sonderwerks this month, re-run it on 2.1.301 before relying on it.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.301</span>
+            <h3>Quitting removed hook-created worktrees that held unpushed commits</h3>
+          </div>
+          <div class="story-body">
+            <p>A worktree made by a <code>WorktreeCreate</code> hook was removed on quit without asking, even when it might hold unpushed commits. It now asks.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a loop or session ever "lost" work you remember committing in a worktree, this is a likely cause. Update, and keep pushing worktree branches before quitting anyway.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and context</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.301</span>
+            <h3>Switching to a smaller-context model now summarizes with the old model first</h3>
+          </div>
+          <div class="story-body">
+            <p>When a conversation is too long for the model you switch to, the previous model now summarizes it before the switch. A matching fix stops that summary from spending usage credits without asking first. Separately, conversations behind an LLM gateway that reports a different model name than requested no longer compact over and over on a model you didn't pick.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Dropping from a long Opus build session to a cheaper model for cleanup work is now safe to do mid-session. Expect a prompt about credits the first time it happens.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.301</span>
+            <h3>The <code>fable</code> and <code>best</code> aliases fall back instead of erroring</h3>
+          </div>
+          <div class="story-body">
+            <p>On the Anthropic API, when the newest Fable model isn't available to your organization, Claude Code now retries once on the previous Fable model.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Scripts and scheduled tasks that pin <code>fable</code> or <code>best</code> stop hard-failing on a rollout gap. Check the transcript's model name if output quality matters for a client run.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Tool correctness</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.301</span>
+            <h3>Grep and Glob no longer report "no matches" when the search itself broke</h3>
+          </div>
+          <div class="story-body">
+            <p>If the search program failed before returning results, both tools reported zero matches. They now return an error saying the search failed. The Read tool also stops reading binaries such as .xlsm, .parquet, .epub and .heic as text.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A false "nothing uses this" is how an agent deletes a live component or misses an env var reference in a Next.js app. This closes that hole. The .heic fix matters for client photo drops (salon and shop phones shoot HEIC).</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Mods and telemetry</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.301</span>
+            <h3>Mod hook <code>.catch</code> and <code>$.env.set</code> behave differently</h3>
+          </div>
+          <div class="story-body">
+            <p>A mod hook's <code>.catch</code> now runs only when the hook itself throws or times out; events raised beneath the hook's own calls skip that hook without consulting <code>.catch</code>. <code>$.env.set</code> now resolves with <code>{}</code> on success or <code>{ deny }</code> with a reason. Mods also gain multi-line <code>Input</code> fields via <code>rows</code>, and trees above the question dialog can hold Markdown and up to 48 rows outside the terminal.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any of your mods relied on <code>.catch</code> firing for nested events or ignored <code>$.env.set</code>'s return, check them today. Otherwise no action.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 changed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.301</span>
+            <h3>OpenTelemetry tool decisions now say who blocked what</h3>
+          </div>
+          <div class="story-body">
+            <p><code>tool_decision</code> events gain <code>classifier_verdict</code> and <code>permission_mode</code>, plus <code>classifier_category</code> (the built-in rule matched) when <code>OTEL_LOG_TOOL_DETAILS=1</code>. The <code>claude-api</code> skill also picked up OpenTelemetry tracing guidance.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only useful if you ship OTel from your loops. If a scheduled run keeps getting blocked, this tells you whether it was auto mode's classifier or your own permission rules.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.301 added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A misleading "Please run /login" error caused by a full disk now names the disk and says to delete files. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sign-in refresh timeouts and surprise sign-outs after short commands like <code>claude auth status</code> exited mid-refresh. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Skills no longer disappear from the model's list after <code>/rewind</code>. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Skills and commands with huge argument lists no longer stall or eat memory; only the first 64 names (64 chars each) are filled. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Artifact updates no longer refused when a PreToolUse hook covers Edit or Write. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A tool call interrupted by a mid-turn message during its permission check is no longer reported to the model as user-rejected. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hook <code>ask</code> permission prompts now name the plugin or skill they came from. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Long-running subagent progress trails render incrementally; fullscreen <code>/compact</code> no longer freezes the UI briefly. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">VS Code: LaTeX math rendering in responses, and a "Get more usage" link on the usage-limit banner (VS Code and JetBrains). <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag feature qh-tag">Feature</span><span class="txt">Vim mode gets the <code>%</code> bracket-match motion; Esc no longer discards a typed AskUserQuestion answer. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner: Slack-started sessions can attach repos under restricted MCP settings, plus retry/logging fixes. <span class="ver">2.1.301</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Terminal cosmetics: stray <code>GOK</code> in some iTerm2 versions, stray characters on old VTE terminals, dim text on 16-color themes. <span class="ver">2.1.301</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

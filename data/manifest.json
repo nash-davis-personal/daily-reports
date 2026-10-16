@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-16.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-16",
+    "title": "Unattended runs can now quit at a far-off usage limit, and workflow agents stop skipping steps while reporting success",
+    "summary": "One release (2.1.301): a cap on how long the retry watchdog waits at a usage limit, a fix for workflow agents that skipped their step and still reported success, Grep and Glob now erroring when the search fails, safer model switches to smaller context windows, and a Fable alias fallback.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-10-16.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
