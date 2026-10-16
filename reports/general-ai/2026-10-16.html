@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-16" />
+  <meta name="report:title" content="Opus 5.5 fast mode opens to everyone, Meta ships an 816B open-weight model, and the FTC sends OpenAI and Anthropic 50-page demands" />
+  <meta name="report:summary" content="Claude Opus 5.5 fast mode needs no waitlist now at $8/$40, Meta's Muse Spark Open and Nvidia's Nemotron 3.5 Super VL push open weights forward, the FTC opened a records demand on both big labs, and Bank of America hired 1,000 contractors to fix flaws AI models found." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Opus 5.5 fast mode opens to everyone, Meta ships an 816B open-weight model, and the FTC sends OpenAI and Anthropic 50-page demands — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://platform.claude.com/docs/en/build-with-claude/fast-mode" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Friday, October 16, 2026</span>
+        <span>◆</span><span>Models, open weights, oversight</span>
+      </div>
+      <h1>Opus 5.5 fast mode opens to everyone, Meta ships an 816B open-weight model, and the FTC sends OpenAI and Anthropic 50-page demands</h1>
+      <p class="standfirst">Fast Opus is now a single API flag for any paying tier, and two big open-weight releases landed the same day. The oversight story moved too: the FTC wants records from both leading labs, and a big bank is paying a small army to fix what AI scanners found.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 15–16, 2026</span>
+        <span>◆</span><a href="https://platform.claude.com/docs/en/build-with-claude/fast-mode" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$8 / $40</div><div class="lbl">Opus 5.5 fast mode per 1M input / output tokens, up to 2.5x output speed</div></div>
+      <div class="stat"><div class="num">816B</div><div class="lbl">Meta Muse Spark Open total parameters (42B active), runs on two Mac Studios</div></div>
+      <div class="stat"><div class="num">60,000</div><div class="lbl">OpenAI advertisers, up from ~20,000 in late August (The Information)</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Opus 5.5 fast mode, no waitlist</h4><p>Set <code>speed: "fast"</code> on Start, Build or Scale tiers. $8/$40 per million tokens, up to 2.5x output speed, no change to time-to-first-token.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Meta Muse Spark Open</h4><p>816B MoE, 1M context, multimodal, open weights under a limited-commercial license. Already on OpenRouter, Together, Groq and Vercel AI Gateway.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Nvidia Nemotron 3.5 Super VL</h4><p>120B (12B active) open multimodal agent model with tool calling under the OpenMDW license.</p></div>
+        <div class="signal"><div class="n">04</div><h4>FTC demands records from both labs</h4><p>Separate 50-page civil investigative demands to OpenAI and Anthropic on security incidents, safeguards, marketing and privacy.</p></div>
+        <div class="signal"><div class="n">05</div><h4>AI found the bugs, humans patch them</h4><p>Bank of America added 1,000 contractors to fix flaws surfaced by AI models; Cohere moves to buy vuln scanner AISLE.</p></div>
+        <div class="signal"><div class="n">06</div><h4>ChatGPT ads get cheap</h4><p>~60,000 advertisers; one agency cites ~$5 clicks for business software against $30–$50 on Google.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and pricing</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Claude</span>
+            <span class="ver">Oct 15–16</span>
+            <h3>Claude Opus 5.5 fast mode is open to every paid tier</h3>
+          </div>
+          <div class="story-body"><p>Anthropic's fast-mode docs now say Opus 5.5 needs no beta header or access request. Organizations on the Start, Build and Scale usage tiers get a default fast-mode rate limit; the Evaluation tier has to move up first. Pricing is $8 per million input tokens and $40 per million output, with prompt-caching and data-residency multipliers stacking on top. Opus 5 and 4.8 stay in research preview at $10/$50.</p><p>The fine print matters: the speedup is in output tokens per second, not time to first token. Switching between fast and standard speed misses the prompt cache, and fast mode isn't available on the Batch API or with a Priority Tier commitment.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Don't put it behind TSD Front Desk; voice calls live and die on time-to-first-token, which fast mode doesn't touch. It does fit the RAG concierge's long answers and any client-facing agent that streams a lot of text. Test it on one high-value flow, and keep cheap models on everything else.</div>
+          <div class="refs"><a href="https://platform.claude.com/docs/en/build-with-claude/fast-mode" target="_blank" rel="noopener">Claude docs: Fast mode</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Open weights</span>
+            <span class="ver">Oct 15</span>
+            <h3>Meta Muse Spark Open: 816B parameters you can download</h3>
+          </div>
+          <div class="story-body"><p>Meta released Muse Spark Open, an 816-billion-parameter mixture-of-experts model with 42 billion active per request, a 1-million-token context window and native text, image, video and audio input. Meta calls it the most capable US open-weight model so far but put no benchmark numbers on the launch page. Weights ship under the Muse Model License, which limits commercial use. It runs locally on two M5 Ultra Mac Studios with MLX, and hosted endpoints are live at Baseten, Fireworks, Groq, Modal, Nebius, OpenRouter, Together and Vercel's AI Gateway.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Read the license before anything client-facing touches it. The practical use for now is a fallback route in AI Gateway and a test of the privacy pitch ("your data never leaves a box you own") for a medical or legal client who asks.</div>
+          <div class="refs"><a href="https://research.meta.ai/blog/muse-spark-open" target="_blank" rel="noopener">Meta research blog</a> <a href="https://vercel.com/changelog/muse-spark-open-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Open weights</span>
+            <span class="ver">Oct 15</span>
+            <h3>Nvidia Nemotron 3.5 Super VL and Microsoft's MAI-Base-2</h3>
+          </div>
+          <div class="story-body"><p>Nvidia released Nemotron 3.5 Super VL, a 120B mixture-of-experts model with 12B active, a 1M-token context and tool calling across text, images, documents and video, plus 74B and edge variants, under the OpenMDW license. Nvidia claims up to five times the throughput of comparable open models on one GPU and wins over Claude Opus 5 and GPT-6.1 Sol on five specialized tasks; those are its own benchmarks.</p><p>Separately, Microsoft AI said it finished pre-training MAI-Base-2, a 2.8-trillion-parameter base model (80B active), and claims 4–12x better pre-training compute efficiency than DeepSeek-V4-Pro-Base on private tests. It's a base model, so no product yet.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Nemotron's document-reading strength is the interesting bit: invoices, intake forms and scanned PDFs are a common SMB pain. Worth a quick eval against Haiku 5.5 on a real client document set before you quote any doc-processing job.</div>
+          <div class="refs"><a href="https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/" target="_blank" rel="noopener">Nvidia blog</a> <a href="https://venturebeat.com/technology/nvidias-new-open-nemotron-3-5-super-vl-with-post-training-beats-claude-opus-5-gpt-6-1-sol-on-specialized-task-benchmarks" target="_blank" rel="noopener">VentureBeat</a> <a href="https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/" target="_blank" rel="noopener">Microsoft AI</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Oversight and security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">Oct 15</span>
+            <h3>The FTC sends OpenAI and Anthropic 50-page records demands</h3>
+          </div>
+          <div class="story-body"><p>Axios reported that the FTC issued separate civil investigative demands, about 50 pages each, to OpenAI and Anthropic covering security incidents, safeguards, marketing claims and privacy policies. The same day the White House's new Super Intelligence task force began a 120-day agenda that includes a report on cyber, critical-infrastructure and biosecurity risk and protocols for labs to report breaches; how it gets enforced is still open. This follows the eight state lawsuits against OpenAI covered yesterday.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Marketing claims are in scope, which flows downhill. Keep TSD's AI product pages to claims you can prove (what the receptionist does, what it doesn't, where data goes), and keep the AI use and safety page on every product current.</div>
+          <div class="refs"><a href="https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation" target="_blank" rel="noopener">Axios</a> <a href="https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work" target="_blank" rel="noopener">Semafor</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Security</span>
+            <span class="ver">Oct 14–15</span>
+            <h3>AI models find the holes; Bank of America hires 1,000 people to close them</h3>
+          </div>
+          <div class="story-body"><p>Bank of America brought on 1,000 outside contractors to patch weaknesses that AI models, including Anthropic's Mythos, exposed in its own systems and vendor software. They join about 3,000 existing remediation staff, and CEO Brian Moynihan put the cost in the same bucket as anti-money-laundering spend. On the vendor side, Cohere signed a letter of intent to acquire AISLE, an AI vulnerability scanner that found 18 of the 24 cURL flaws patched in October, to form a Cohere Cyber unit. And GitHub made Agentic Autofix and AI Scan for pull requests generally available.</p><p>Also on Oct 15, an open letter signed by about 420 researchers asked labs to keep models with advanced hacking ability off the internet during initial testing.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Finding bugs is now cheap and fixing them is the bottleneck, at banks and at a 10-person dental office alike. Turn on GitHub AI Scan on TSD client repos this week, and treat "we scan and patch your site every month" as a real line item in the retainer.</div>
+          <div class="refs"><a href="https://www.businessinsider.com/bank-of-america-hired-contractors-protect-software-rogue-ai-agents-2026-10" target="_blank" rel="noopener">Business Insider</a> <a href="https://aisle.com/blog/aisle-and-cohere-to-join-forces" target="_blank" rel="noopener">AISLE</a> <a href="https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/" target="_blank" rel="noopener">GitHub changelog</a> <a href="https://www.edtechinnovationhub.com/news/420-scientists-call-for-cyber-capable-ai-models-to-be-kept-offline-initially" target="_blank" rel="noopener">Open letter coverage</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Business</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Ads</span>
+            <span class="ver">Oct 15</span>
+            <h3>ChatGPT ads triple their advertiser count as prices fall</h3>
+          </div>
+          <div class="story-body"><p>The Information reports OpenAI now has about 60,000 advertisers, up from roughly 20,000 in late August, after cutting prices. Its ad team is about 140 people, nearly half hired in the third quarter. One agency said some business-software clicks cost about $5 on ChatGPT against $30–$50 on Google, while noting results vary.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> One agency's number, so treat it as a lead. If it holds for local services, a small ChatGPT ads test is something TSD can set up and report on for a client already paying Google $40 a click. Try it on TSD's own lead gen first.</div>
+          <div class="refs"><a href="https://www.theinformation.com/articles/openais-accelerates-ad-sprint-meta-hires-slashed-prices" target="_blank" rel="noopener">The Information</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Voice</span><span class="txt">OpenAI is rolling out GPT-Live-1.1 voices with better French, German, Hindi, Mexican Spanish, Korean and Japanese across ChatGPT, Codex and dots; API later. <a href="https://x.com/OpenAI/status/2110797830361436604" target="_blank" rel="noopener">OpenAI</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag new qh-tag">Image</span><span class="txt">Black Forest Labs released FLUX 3 Image Klein, a 5.6B open-weight image model. <a href="https://bfl.ai/blog/flux-3-image-klein" target="_blank" rel="noopener">BFL</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag breaking qh-tag">CVE</span><span class="txt">A CVSS 9.8 missing-auth remote-code-execution bug in the Archon AI coding agent has no vendor patch yet; don't expose it to a network. <a href="https://www.thehackerwire.com/cve-2026-111322-archon-ai-agent-missing-authentication-leads-to-unauthenticated-rce/" target="_blank" rel="noopener">HackerWire</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag feature qh-tag">Labor</span><span class="txt">The Fed's Beige Book had firms in 5 of 12 districts reporting cuts, delayed hiring or smaller hiring plans tied to AI. <a href="https://247wallst.com/investing/2026/10/15/the-fed-just-found-ai-is-starting-to-cost-jobs-in-5-of-its-12-districts/" target="_blank" rel="noopener">24/7 Wall St.</a> <span class="ver">Oct 14–15</span></span></li>
+            <li><span class="tag improve qh-tag">Spend</span><span class="txt">Accenture capped employee Claude spending at $29 a month, a sign big buyers are now metering AI seats. <a href="https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/" target="_blank" rel="noopener">404 Media</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag feature qh-tag">Builder</span><span class="txt">Bluesky's Attie app now lets anyone build sites, quizzes, games and polls with AI, distributed over Bluesky's network. <a href="https://techcrunch.com/2026/10/15/bluesky-expands-its-ai-powered-attie-app-to-let-anyone-build-websites-games-and-more/" target="_blank" rel="noopener">TechCrunch</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag fix qh-tag">Fraud</span><span class="txt">An AI voice clone of a bank-linked executive was used in a €95M wire fraud in Italy; a good story for any voice-AI client's verification policy. <a href="https://www.biometricupdate.com/202610/italian-bank-loses-108m-to-ai-messaging-fraud-as-identifai-warns-of-deepfake-threat" target="_blank" rel="noopener">Biometric Update</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag new qh-tag">Science</span><span class="txt">MIT's IRIS model infers which developmental signals a cell received from its gene activity, a step toward recipe-driven tissue growth. <a href="https://news.mit.edu/2026/ai-model-decodes-language-cells-use-communicate-1015" target="_blank" rel="noopener">MIT News</a> <span class="ver">Oct 15</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

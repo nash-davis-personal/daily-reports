@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-16" />
+  <meta name="report:title" content="Vercel ships Daemons, Drives and a $30 Token Pass; Cisco's mail gateway zero-day is being exploited; five days left on Next.js 15" />
+  <meta name="report:summary" content="No new Next.js advisory today (16.4.2 is a stability backport), but the Oct 21 cutoff for 15.x is close; Vercel shipped background workers, persistent sandbox storage and a discounted open-model credit plan; Cisco patched an exploited email-gateway zero-day and Meta disclosed a GitHub breach from one stolen credential." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Vercel ships Daemons, Drives and a $30 Token Pass; Cisco's mail gateway zero-day is being exploited; five days left on Next.js 15 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, October 16, 2026</span>
+        <span>◆</span><span>Stack, security, chips</span>
+      </div>
+      <h1>Vercel ships Daemons, Drives and a $30 Token Pass; Cisco's mail gateway zero-day is being exploited; five days left on Next.js 15</h1>
+      <p class="standfirst">Nothing new to patch on your own stack today: Next.js 16.4.2 is a Turbopack stability backport, not a security release. The urgent items are elsewhere, an exploited Cisco email-gateway bug and a reminder from Meta that one leaked credential is enough to lose a GitHub org.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 15–16, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Oct 21</div><div class="lbl">Next.js 15.x security support ends (5 days)</div></div>
+      <div class="stat"><div class="num">$30 → $80</div><div class="lbl">Vercel Token Pass: monthly credit on open models for Pro teams</div></div>
+      <div class="stat"><div class="num">~1,500</div><div class="lbl">People Meta is notifying after a GitHub breach via one stolen credential</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack: nothing new to patch</h4><p>Next.js 16.4.2 (Oct 15) is Turbopack fixes only. The Oct 14 critical fixes still apply, and 15.x support ends Oct 21.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Cisco Secure Email Gateway zero-day</h4><p>CVE-2026-76519, exploited in the wild, lets a crafted attachment write files and run commands as root. Patch now if any client runs one.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel Daemons + Drives</h4><p>Background workers (queue consumers, CI runners) in public beta; persistent, forkable sandbox storage GA.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel Token Pass</h4><p>$30 a month buys $80 of GLM 5.3 and Kimi K3 credit via AI Gateway, zero data retention on, no overage.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Meta's GitHub breach</h4><p>One employee's stolen credential exposed code and some personal data; notifications began Oct 13.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security first</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Oct 2026</span>
+            <h3>Cisco patches an exploited Secure Email Gateway zero-day</h3>
+          </div>
+          <div class="story-body"><p>Cisco fixed CVE-2026-76519, a path-traversal flaw in the Advanced Malware Protection feature of Secure Email Gateway. An attacker with no login sends an email with a crafted attachment through the gateway and can write files to the appliance and then run commands as root. It affects gateways with File Reputation enabled and assigned to a mail policy and Content Scanner Tools older than 25.3.0.5525. Cisco's PSIRT confirmed exploitation this month and hasn't shared attack details. A separate SEG SQL-injection bug, CVE-2026-76461, was exploited in September.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Most SMB clients don't run Cisco mail appliances, but a medical group or credit union might. If you manage IT-adjacent work for anyone with one, send them the advisory today. It's also a clean, real example for the security checkup pitch.</div>
+          <div class="refs"><a href="https://bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://betanews.com/article/cisco-email-gateway-vulnerability-root-access/" target="_blank" rel="noopener">BetaNews</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Notified Oct 13</span>
+            <h3>Meta: one stolen credential, internal GitHub repos copied</h3>
+          </div>
+          <div class="story-body"><p>Meta is notifying about 1,500 people, mostly US employees, after an outside group used one employee's stolen credentials to reach some internal GitHub repositories and copy product code plus a small amount of personal data. Meta says about 99% of what was taken was business data, much of the personal-looking data was synthetic test data, and no Meta product was vulnerable. It rotated exposed secrets and added scanning for personal data committed by mistake.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Same failure mode applies to a one-person studio: your GitHub account holds every client repo. Check that hardware-key 2FA is on, audit personal access tokens and deploy keys, and make sure no client <code>.env</code> or test data with real names ever landed in a repo.</div>
+          <div class="refs"><a href="https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/" target="_blank" rel="noopener">SecurityWeek</a> <a href="https://cybernews.com/security/meta-hack-github-personal-data/" target="_blank" rel="noopener">Cybernews</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Next.js</span>
+            <span class="ver">v16.4.2 · Oct 15</span>
+            <h3>Next.js 16.4.2 is a stability release; the Oct 21 deadline is what matters</h3>
+          </div>
+          <div class="story-body"><p>16.4.2 backports Turbopack fixes (snapshot consistency, dependency-graph garbage collection, lazy dynamic-import chunk collisions, realpath handling) and docs. No new advisory shipped with it. The two critical advisories from Oct 14 (RCE in the Image Optimization API with SVGs, and RCE in <code>use cache</code> functions returning typed arrays) are fixed in 16.4.1 and 15.5.28. Security support for 15.x ends October 21. On the React side, 19.0.9, 19.1.10 and 19.2.9 shipped Oct 14 alongside those fixes.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Bump anything on 16.4.1 to 16.4.2 at your next deploy; there's no rush. The real job is the 15.x client list: anything still there after Wednesday stops getting security fixes.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases/tag/v16.4.2" target="_blank" rel="noopener">Next.js v16.4.2</a> <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack: Vercel and Supabase</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Vercel</span>
+            <span class="ver">Oct 15</span>
+            <h3>Vercel Daemons (beta) and Vercel Drives (GA)</h3>
+          </div>
+          <div class="story-body"><p>Vercel Daemons runs long-lived processes with no HTTP server: queue consumers, workflow workers, Celery or BullMQ workers, self-hosted CI runners. Each one is a container on Fluid compute built from your Dockerfile, deployed with the app, with a set instance count per region and automatic restarts. Pricing wasn't in the announcement. Vercel Drives, now GA, is persistent storage you mount into a Vercel Sandbox; files outlive the sandbox and a Drive can be forked for parallel workers. Also on Oct 15: Bring Your Own Cloud on AWS went GA, and Vercel Connect can now reach IP-restricted providers through Secure Compute static IPs.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Daemons removes the main reason to run a side server next to a Vercel app. The booking-automation and call-processing jobs that now sit on cron hacks or a separate box could live in the same project. Check pricing in the docs before moving anything client-billed.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/vercel-daemons-is-now-in-public-beta" target="_blank" rel="noopener">Daemons</a> <a href="https://vercel.com/changelog/vercel-drives-is-now-generally-available" target="_blank" rel="noopener">Drives</a> <a href="https://vercel.com/changelog/bring-your-own-cloud-on-aws-is-now-generally-available" target="_blank" rel="noopener">BYOC on AWS</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Oct 15</span>
+            <h3>Token Pass: $80 of open-model credit for $30 a month</h3>
+          </div>
+          <div class="story-body"><p>Vercel's early-access Token Pass gives Pro teams $80 a month of AI Gateway credit for $30, starting with GLM 5.3 and Kimi K3. Zero data retention is on by default with US and EU inference. Unused credit expires monthly, and requests stop when the credit runs out, with no overage charges. The AI Gateway also added Meta's Muse Spark Open, Liquid AI's d1-ultra and a free stealth model called Cat Jam.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> A hard-capped, discounted bucket is a good fit for bulk background work (summaries, tagging, content drafts) where an open model is good enough. The no-overage rule also makes it safe to hand a client's experimental agent a fixed monthly budget.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/introducing-token-pass" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Supabase</span>
+            <span class="ver">Oct 12–15</span>
+            <h3>supabase-js 2.118 and a TLS cipher cutoff on Nov 10</h3>
+          </div>
+          <div class="story-body"><p>supabase-js 2.118.0 (Oct 15) leaves computed fields out of <code>select('*')</code>, resolves no-argument RPC overloads for typegen output, and adds content-encoding on Storage uploads. Supabase will disable an outdated set of TLS 1.2 CBC ciphers on project HTTP APIs on November 10; it says under 0.0001% of traffic uses them.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>select('*')</code> change can quietly drop a computed column a page relies on. Read the diff before bumping on any client app that uses computed fields. The cipher change only hits very old clients, like a legacy device or kiosk calling the API.</div>
+          <div class="refs"><a href="https://github.com/supabase/supabase-js/releases/tag/v2.118.0" target="_blank" rel="noopener">supabase-js 2.118.0</a> <a href="https://supabase.com/changelog/cbc-tls-ciphers-deprecated" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and deals</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Oct 16</span>
+            <h3>Nvidia RTX Spark laptops hit retail from $2,599</h3>
+          </div>
+          <div class="story-body"><p>Laptops built on Nvidia's RTX Spark platform go on sale today from eight manufacturers, starting at $2,599. Microsoft's Surface RTX Spark Dev Box is $5,999.99. Separately, Taiwan plans to fund an industrial park in Texas of up to $4 billion to anchor Nvidia's AI supply chain, with loan guarantees for smaller suppliers.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Local-model laptops are now a normal SKU. Nothing to buy today; it does make "runs on your own hardware" a credible option to mention to privacy-sensitive clients next year.</div>
+          <div class="refs"><a href="https://videocardz.com/newz/nvidia-rtx-spark-laptops-launch-october-16-prices-start-at-2599" target="_blank" rel="noopener">VideoCardz</a> <a href="https://www.bloomberg.com/news/articles/2026-10-16/taiwan-to-fund-4-billion-texas-complex-for-ai-nvidia-partners" target="_blank" rel="noopener">Bloomberg</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">M&amp;A</span><span class="txt">Proofpoint agreed to acquire data-security firm Varonis for $6.3B. <a href="https://cyberscoop.com/proofpoint-acquires-varonis-systems-data-security/" target="_blank" rel="noopener">CyberScoop</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag new qh-tag">M&amp;A</span><span class="txt">GTCR and Elliott are taking insurance-software firm CCC private for $6.1B ($7.75/share, a 44% premium), closing Q1 2027. <a href="https://www.insurancejournal.com/news/national/2026/10/16/889163.htm" target="_blank" rel="noopener">Insurance Journal</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag feature qh-tag">Dev tools</span><span class="txt">GitHub made Agentic Autofix and AI Scan for pull requests GA; AI Scan covers languages CodeQL doesn't, as advisory findings. <a href="https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/" target="_blank" rel="noopener">GitHub</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Samsung previewed 400+ layer V-NAND and a zNAND-O architecture aimed at on-device agents. <a href="https://www.manilatimes.net/2026/10/15/tmt-newswire/pr-newswire/samsung-semiconductor-highlights-400-layer-v-nand-and-znand-o-at-gmif2026-as-foundation-for-agentic-ai/2446205" target="_blank" rel="noopener">PR Newswire</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Citizen Lab and Confiant tied the Discover-Tech ad network to Candiru spyware delivered through targeted ads. <a href="https://www.wired.com/story/nightmare-scenario-zero-click-spyware-is-infecting-phones-via-targeted-ads/" target="_blank" rel="noopener">Wired</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag fix qh-tag">Infra</span><span class="txt">Nscale's planned $35B IPO is muddied by a Norway data center running about six months late, with penalties owed to Microsoft and ByteDance. <a href="https://www.bloomberg.com/news/features/2026-10-15/nscale-s-35-billion-ipo-plans-muddied-by-ai-data-center-delays" target="_blank" rel="noopener">Bloomberg</a> <span class="ver">Oct 15</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
