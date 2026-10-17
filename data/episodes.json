@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-17",
+    "title": "TSD Daily — Saturday, October 17, 2026",
+    "summary": "Meta's Oct 30 crawl terms, Google's Universal Cart, Anthropic's IPO repricing, Next.js 15's Wednesday cutoff, Friday's chip sell-off and  oil, plus a flat-fee AI crawler policy as today's best money move.",
+    "file": "audio/2026-10-17.mp3",
+    "durationSec": 394,
+    "bytes": 4726989
+  },
+  {
     "date": "2026-10-16",
     "title": "TSD Daily — Friday, October 16, 2026",
     "summary": "Opus 5.5 fast mode opens up, AI scanners outpace the people who patch, Vercel ships Daemons and a capped Token Pass, wholesale prices jump 1.3%, and a monthly scan-and-patch plan as today's best money move.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-18.mp3",
     "durationSec": 401,
     "bytes": 4807341
-  },
-  {
-    "date": "2026-07-17",
-    "title": "TSD Daily — Friday, July 17, 2026",
-    "summary": "Kimi K3 puts an open-weight model at the frontier, a Next.js security patch lands Monday, inflation cools as the Fed holds, and the money move is selling AI implementation to SMBs who can't use the tools they bought.",
-    "file": "audio/2026-07-17.mp3",
-    "durationSec": 387,
-    "bytes": 4646061
   }
 ]
