@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-17.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-17",
+    "title": "Fork subagents turn on by default in headless runs and the desktop app, and standalone Claude Design gets a December 14 shutdown date",
+    "summary": "One release (2.1.302): fork subagents on by default outside the terminal, desktop subagents always in the background, a fix for failed cloud routines re-running from the start, a December 14 close date for standalone Claude Design, an idle compaction toggle, and an MCP protocol fix.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-10-17.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

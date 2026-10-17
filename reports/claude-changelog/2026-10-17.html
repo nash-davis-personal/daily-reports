@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-17" />
+  <meta name="report:title" content="Fork subagents turn on by default in headless runs and the desktop app, and standalone Claude Design gets a December 14 shutdown date" />
+  <meta name="report:summary" content="One release (2.1.302): fork subagents on by default outside the terminal, desktop subagents always in the background, a fix for failed cloud routines re-running from the start, a December 14 close date for standalone Claude Design, an idle compaction toggle, and an MCP protocol fix." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Fork subagents turn on by default in headless runs and the desktop app, and standalone Claude Design gets a December 14 shutdown date — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, October 17, 2026</span>
+        <span>◆</span><span>1 release: 2.1.302</span>
+      </div>
+      <h1>Fork subagents turn on by default in headless runs and the desktop app, and standalone Claude Design gets a December 14 shutdown date</h1>
+      <p class="standfirst">2.1.302 changes how subagents behave in exactly the places you run unattended work: <code>claude -p</code>, the Agent SDK and the desktop app. It also puts a date on standalone Claude Design closing, so any client design flow that leans on claude.ai/design needs a plan before mid-December.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.301 (filed 2026-10-16): 2.1.302, dated October 16, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">Added / changed / improved</div></div>
+      <div class="stat"><div class="num">43</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Fork subagents are default everywhere</h4><p><code>claude -p</code>, the Agent SDK, the desktop app and VS Code now get fork subagents out of the box. <code>CLAUDE_CODE_FORK_SUBAGENT=0</code> turns them off.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Desktop subagents always run in the background</h4><p>The main conversation's subagents in the desktop app and VS Code no longer run in the foreground at Claude's discretion. A subagent's own Agent calls now default to foreground.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Failed routines stop re-running from scratch</h4><p>A cloud routine that failed partway could restart an hour later and post the same report twice. Fixed, and failed runs now show as failed.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Standalone Claude Design closes December 14</h4><p><code>/design-sync</code> and <code>/design-login</code> now warn that claude.ai/design shuts on December 14, 2026.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Idle compaction gets an off switch</h4><p>New <code>Idle compaction</code> row in <code>/config</code>, plus <code>CLAUDE_CODE_AUTO_MODE_MODEL</code> to pick the client-side auto mode classifier model.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Subagents and unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.302</span>
+            <h3>Fork subagents ship on by default in headless, SDK, desktop and VS Code sessions</h3>
+          </div>
+          <div class="story-body">
+            <p>Fork subagents (<code>subagent_type: "fork"</code>) were already on in the terminal. As of 2.1.302 they are also on by default in <code>claude -p</code>, the Agent SDK, the desktop app and VS Code. Set <code>CLAUDE_CODE_FORK_SUBAGENT=0</code> to turn them off. <code>claude mcp serve</code> never offers them.</p>
+            <p>In the same release, the desktop app and VS Code always run the main conversation's subagents in the background, matching the terminal. A subagent that itself calls Agent in <code>claude -p</code>, the SDK, the desktop app or VS Code now runs that call in the foreground by default.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled desktop tasks (this scout included) and any SDK-driven client automations just gained a new subagent type with no config change. A fork starts from the parent conversation, so expect each spawn to carry more context than a fresh agent. Watch token usage on the next few daily runs, and if a routine starts forking where a clean Explore agent would do, pin it off with the env var in that task's environment.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 changed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.302</span>
+            <h3>Cloud routines: no more duplicate reruns, honest status, and a reason when a run never starts</h3>
+          </div>
+          <div class="story-body">
+            <p>Four routine changes landed together. A scheduled routine run that failed partway could be run again from the start an hour or more later, which the changelog says "could repeat work such as posting the same report twice"; that is fixed. Runs whose cloud session stopped unexpectedly no longer show as Completed, and runs archived before they started no longer show as Cancelled; both now show as failed. A routine's page also gets a banner explaining why its last run didn't start, such as hitting the organization's concurrent cloud session limit.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These apply to cloud routines. Your daily-reports scouts run as local desktop scheduled tasks, so they were not exposed to the double-post bug. If you have moved or plan to move any client-facing job (a Bisque inventory digest, a Studio C reminder sender) to a cloud routine, this was the bug that would have sent a client the same message twice. It is now safe to rely on the run status shown on the routine page.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 added and bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.302</span>
+            <h3>Headless runs on third-party providers now start in default permission mode</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude -p</code> and Agent SDK sessions with no permission mode set now start in <code>default</code> mode on third-party providers when telemetry is off or on a fresh install. Passing <code>--permission-mode auto</code> keeps auto.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This only bites if a job runs through Bedrock or Vertex. If you ever wire a client's automation to their own cloud provider account, set <code>--permission-mode</code> explicitly in the invocation so a fresh install doesn't stall on a permission prompt nobody is there to answer.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 changed</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deadlines and settings</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Notice</span>
+            <span class="ver">2.1.302</span>
+            <h3>Standalone Claude Design closes December 14, 2026</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/design-sync</code> and <code>/design-login</code> now show a notice that standalone Claude Design at claude.ai/design closes by December 14, 2026. The changelog does not say what replaces it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client mockup, brand board or handoff lives only in claude.ai/design, export or sync it into the repo (or Vercel via the design import) before December 14. Don't promise a client a design workflow built on the standalone site past that date.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Added</span>
+            <span class="ver">2.1.302</span>
+            <h3>Idle compaction toggle, and more control over auto mode's classifier</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/config</code> gains an <code>Idle compaction</code> row to turn idle compaction off or back on, and the notice after an idle compaction now says how to disable it. <code>CLAUDE_CODE_AUTO_MODE_MODEL</code> picks the model for the client-side auto mode classifier; it does not affect server-side auto mode. Separately, with the server-side classifier, a conversation too long for the safety check is now compacted instead of every checked tool call being denied.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you leave a long client build session open over lunch and come back to a compacted context you didn't want, turn idle compaction off for that project. The auto mode compaction fix matters more: long autonomous sessions on big repos could previously hit a wall where every tool call got refused.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 added and improvements</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP, plugins and hooks</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.302</span>
+            <h3>MCP servers on protocol 2026-07-28 stop showing zero tools</h3>
+          </div>
+          <div class="story-body">
+            <p>Servers that negotiated protocol version 2026-07-28 but omitted <code>resultType</code>, <code>ttlMs</code> or <code>cacheScope</code> could show no tools, or fail every call. Fixed. Also in this release: plugin command and agent files load with far fewer file system calls at startup, and prompt and agent hooks now run at most 12 of one event at a time while the rest queue.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If one of your connectors (tsd-portal, nash-os, a client server) has recently shown up empty after a server update, upgrade before debugging the server. If you build an MCP server for a client on the newer protocol, still send those fields so older clients behave.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.302 bug fixes and changed</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Read tool no longer loads an image of any size into memory; image sources over 128 MB are refused. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">"Prompt is too long" error when stopping a turn mid-compaction. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt cache miss when a tool added mid-session was reloaded through ToolSearch or after compaction. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Worktree isolation refusing to create or resume worktrees under git 2.56+ when a stray <code>.git</code> file points at a missing directory. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude plugin</code> subcommands exiting before a queued settings write finished, which could lose the change. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompt suggestions no longer spend usage credits after a reply billed to credits. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Desktop app no longer points you to claude.ai settings or <code>/mcp</code> to authorize an MCP server where that option isn't available. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Artifact publishes failing on an empty edit list, and bad retries after a newer artifact version was rejected. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control subagent panes spinning forever after the computer goes offline; they now say Remote Control is disconnected. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions: "Rewind to here" works on older messages, cost no longer resets to zero on resume, and the diff view survives a repo rename. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugin marketplaces re-cloning on every refresh when git uses the reftable format. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Cloud session start errors now say "Connection lost" or "Server error". <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">Claude in Chrome instructions moved into the shared prompt cache for new conversations. <span class="ver">2.1.302</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Nine Claude Tag (Slack) fixes plus admin settings changes, including HEIC/SVG/TIFF/BMP attachments now reaching Claude. Not in the TSD stack today. <span class="ver">2.1.302</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
