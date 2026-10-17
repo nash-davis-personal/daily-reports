@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-17",
+    "title": "Chip stocks fall an eighth straight day, oil touches $110, and the Fed goes quiet ahead of its Oct 27–28 meeting",
+    "summary": "The Nasdaq fell 2.1% Friday to cap its worst week since June as chip and software stocks slid, Brent crude touched $110 and WTI settled above $100, the 10-year Treasury held near 5.09%, and Fed Chair Warsh gave his last remarks before the pre-meeting blackout with markets pricing a December hike.",
+    "highlights": 4,
+    "path": "reports/america/2026-10-17.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-17",
+    "title": "Anthropic's IPO talk cools to $1.5T, Meta's Oct 30 terms let it crawl any site tied to a business page, and Google's Universal Cart goes live",
+    "summary": "Investors reportedly pushed Anthropic's IPO valuation toward $1.5T as Q3 growth slowed to 45%, Meta's new commercial terms let it crawl sites linked to business accounts with no clear opt-out, Google launched a multi-store AI checkout cart in the US, and Perplexity open-sourced an agent sandbox.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-17.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-17",
+    "title": "Sell an AI-crawler and bot policy before Meta's Oct 30 terms hit, get retail clients into Google's Universal Cart, and pitch Next.js 15 rescues before Wednesday",
+    "summary": "Six moves ranked by fit off today's shifts: Meta's Oct 30 crawl terms and a 41% jump in AI-agent traffic, Google's multi-store Universal Cart, Next.js 15 losing support Oct 21, Wix giving agents wallets, a free open model on Vercel AI Gateway, and rates staying high. Best bet is a flat-fee AI-crawler and bot policy for every client before Oct 30.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-17.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-17",
+    "title": "Four days left on Next.js 15, GitLab's CVSS 10 bug needs patching, and AI agents are now paying bills and hitting client checkout pages",
+    "summary": "No new advisory on the TSD stack, but Next.js 15 support ends Oct 21; GitLab patched a CVSS 10 CI/CD code-execution flaw; Vercel's AI Gateway added a free open reasoning model; Wix, Webflow and PayPal wired small-business tools into AI agents; and DataDome says Meta's Muse agent is now a third of agentic browser traffic.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-17.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-16",
     "title": "Wholesale prices jump 1.3% in September, shoppers keep spending anyway, and mortgage rates stall at 7.40%",
     "summary": "September PPI rose 1.3% on the month and 6.3% on the year, retail sales beat at +0.8%, jobless claims stayed low at 199,000, stocks shook off an early tech sell-off to close higher, mortgage rates held at 7.40%, and the Florida Panhandle kept digging out from Isaias.",

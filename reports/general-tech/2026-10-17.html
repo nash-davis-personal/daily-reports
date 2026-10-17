@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-17" />
+  <meta name="report:title" content="Four days left on Next.js 15, GitLab's CVSS 10 bug needs patching, and AI agents are now paying bills and hitting client checkout pages" />
+  <meta name="report:summary" content="No new advisory on the TSD stack, but Next.js 15 support ends Oct 21; GitLab patched a CVSS 10 CI/CD code-execution flaw; Vercel's AI Gateway added a free open reasoning model; Wix, Webflow and PayPal wired small-business tools into AI agents; and DataDome says Meta's Muse agent is now a third of agentic browser traffic." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Four days left on Next.js 15, GitLab's CVSS 10 bug needs patching, and AI agents are now paying bills and hitting client checkout pages — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, October 17, 2026</span>
+        <span>◆</span><span>Patches, AI Gateway, agent commerce</span>
+      </div>
+      <h1>Four days left on Next.js 15, GitLab's CVSS 10 bug needs patching, and AI agents are now paying bills and hitting client checkout pages</h1>
+      <p class="standfirst">Nothing new to patch on Next.js, Vercel or Supabase since Wednesday's release, so the job this weekend is finishing upgrades before Wednesday's 15.x cutoff. The bigger trend is plumbing: small-business platforms are handing AI agents wallets, and those agents are already showing up on your clients' forms.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 16–17, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Oct 21</div><div class="lbl">Next.js 15.x leaves Maintenance LTS; 16.4.1+ is the patched line</div></div>
+      <div class="stat"><div class="num">10.0</div><div class="lbl">CVSS on GitLab CVE-2026-97229, unauthenticated code execution via CI/CD config</div></div>
+      <div class="stat"><div class="num">33%</div><div class="lbl">Share of agentic browser requests from Meta's Muse in September, per DataDome</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Finish Next.js 15 → 16 moves</h4><p>15.x support ends Wednesday. Any client still on 15.5.28 gets no fixes after that.</p></div>
+        <div class="signal"><div class="n">02</div><h4>GitLab CVSS 10, patched Oct 12</h4><p>Self-managed installs go to 19.4.2, 19.3.5 or 19.2.8. GitLab.com is already fixed.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Free open model on AI Gateway</h4><p>Reflection AI's Beam (501B, 23B active, Apache 2.0, 1M context) is free for a limited launch window.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agents get wallets</h4><p>Symphony by Wix can pay suppliers through Stripe's Link with owner approval; Webflow is now a Gemini connected app; PayPal checkout lands in Glance.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Agent traffic is on client forms</h4><p>DataDome counted ~25B agent requests in Q3, up 41.5%, with Meta's Muse at a third of agentic browser traffic in September.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch and upgrade</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Deadline</span>
+            <span class="ver">Oct 21</span>
+            <h3>Next.js 15 support ends Wednesday; nothing new to patch since Oct 14</h3>
+          </div>
+          <div class="story-body"><p>No new Next.js, React, Vercel or Supabase advisory surfaced since the October 14 security release, which fixed two critical bugs (a <code>use cache</code> remote-code-execution issue with Cache Components and an SVG image-optimization RCE through sharp) and a high-severity Server Actions denial of service. Fixed versions are 16.4.1 and 15.5.28. The 15.x line drops out of Maintenance LTS on October 21, so the next monthly security release will only patch 16.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: confirm every client repo is on 16.4.1 or later (16.4.2 is fine). Any repo still on 15.x needs its upgrade branch merged and deployed by Tuesday night. Leave the <code>proxy.ts</code> pattern alone during the move.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js security update</a> <a href="https://netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities" target="_blank" rel="noopener">Netlify changelog</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 12–14</span>
+            <h3>GitLab patches a CVSS 10 code-execution bug in its CI/CD regex engine</h3>
+          </div>
+          <div class="story-body"><p>CVE-2026-97229 is an integer overflow in GitLab's CI/CD regular-expression compiler. A crafted regex in a pipeline config lets an unauthenticated attacker run code on the GitLab server. Fixed in 19.4.2, 19.3.5 and 19.2.8, alongside 23 other fixes. GitLab.com and Dedicated are already patched; Singapore's CSA told self-managed users to patch immediately on Oct 14.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> TSD runs on GitHub, so no action for you. If a client or a client's previous agency hosts its own GitLab, tell them to patch this weekend. It's a quick credibility win in a discovery call too.</div>
+          <div class="refs"><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/" target="_blank" rel="noopener">GitLab patch release</a> <a href="https://bleepingcomputer.com/news/security/gitlab-warns-of-max-severity-rce-flaw-in-regex-compiler-engine" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-141/" target="_blank" rel="noopener">CSA Singapore</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Vercel</span>
+            <span class="ver">Oct 16–17</span>
+            <h3>AI Gateway adds Reflection AI's Beam, free during launch</h3>
+          </div>
+          <div class="story-body"><p>Vercel added Beam, Reflection AI's US-made open-weight reasoning model, to AI Gateway. It has 501B parameters with 23B active, a 1M-token context, tool calling, structured outputs and adjustable reasoning effort, under Apache 2.0. It's free "for a limited time"; no end date or limits were stated. Use <code>reflection/beam</code> to roll onto paid pricing automatically when the window closes, or <code>reflection/beam-free</code> to have it stop serving instead. Gateway also added DeepSeek V4.1 Flash (1017 build), Perplexity's Decider V1.2 and Elorian's Glimpse.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Run your internal evals and batch content jobs on <code>reflection/beam-free</code> while it's free. Keep it off client production: the free slug just stops, and Apache 2.0 makes it a clean license if it earns a paid slot later.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/reflection-ai-beam-now-available-on-ai-gateway-for-free" target="_blank" rel="noopener">Vercel changelog: Beam</a> <a href="https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog: DeepSeek V4.1 Flash</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents meet small business</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platforms</span>
+            <span class="ver">Oct 15–16</span>
+            <h3>Wix agents can pay suppliers, Webflow plugs into Gemini, PayPal checkout goes into Glance</h3>
+          </div>
+          <div class="story-body"><p>Symphony by Wix, its multi-agent platform for small businesses, now connects to Stripe's Link wallet so agents can reorder stock or pay invoices. The owner approves each purchase, and Stripe pays with a token or one-time virtual card so the agent never holds card details. Webflow became a connected app inside Google Gemini through its MCP server, free to install, with existing roles and activity logs applied. PayPal checkout now works inside Glance without a redirect, and Lightspeed opened an approval-gated agent beta for retailers.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Wix and Webflow are TSD's direct competition for small-business sites, and they now sell "an agent that runs errands for you." Your answer is the same pattern built custom: approval-by-text before any money moves, logged actions, scoped credentials. Stripe's Link-for-agents is the piece to look at for a client who wants reorders automated.</div>
+          <div class="refs"><a href="https://www.wix.com/blog/symphony-wix-link-stripe-ai-agent-payments" target="_blank" rel="noopener">Wix blog</a> <a href="https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-october-16-2026/" target="_blank" rel="noopener">Agile Brand Guide roundup</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Traffic</span>
+            <span class="ver">Oct 15–16</span>
+            <h3>Agent traffic jumps 41.5% in a quarter; Meta's Muse is a third of it</h3>
+          </div>
+          <div class="story-body"><p>DataDome's Q3 report counts nearly 25 billion AI-agent requests across its network from July through September, up 41.5% on Q2. Meta's Muse agent was 33% of agentic browser requests in September after only nine days in market, almost all from cloud servers. DataDome says 8.9% of sampled Muse requests touched form, login, payment, sign-up or cart endpoints, and stresses that measures exposure, not confirmed abuse. These are DataDome's own numbers. Separately, Proof is demoing x401, an open protocol for a site to ask an agent who it represents, at Money20/20 Oct 18–21.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Expect booking forms and contact forms to get agent submissions that look human. Check Vercel's bot protection and firewall settings on client sites with forms or carts, rate-limit form endpoints, and decide whether a legit agent booking (a customer's assistant) should get through. That decision is a client conversation.</div>
+          <div class="refs"><a href="https://ppc.land/metas-muse-gains-a-33-share-of-ai-browser-traffic-in-9-days-datadome-finds/" target="_blank" rel="noopener">PPC Land</a> <a href="https://letsdatascience.com/news/datadome-tells-lds-why-an-ai-agent-at-checkout-is-not-proof-e86888b9" target="_blank" rel="noopener">Let's Data Science</a> <a href="https://www.proof.com/x401" target="_blank" rel="noopener">Proof x401</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Windows</span><span class="txt">Microsoft pushed new Windows 11 Insider builds to Beta, Experimental and Release Preview. <a href="https://blogs.windows.com/windows-insider/2026/10/16/announcing-new-builds-for-16-october-2026/" target="_blank" rel="noopener">Windows Blog</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag new qh-tag">MCP</span><span class="txt">NinjaOne shipped an agentic IT technician and an MCP server; Scytale launched a read-only MCP server for compliance data; SolarWinds introduced Avior. <a href="https://www.helpnetsecurity.com/2026/10/16/new-infosec-products-of-the-week-october-16-2026/" target="_blank" rel="noopener">Help Net Security</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">South Korean authorities reported an AI-assisted campaign leaked about 100,000 records from 16 financial firms; details are thin so far. <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly</a> <span class="ver">Oct 16–17</span></span></li>
+            <li><span class="tag improve qh-tag">Markets</span><span class="txt">Schwab noted the S&amp;P 500 on pace for a weekly loss on weakness in large AI stocks. <a href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank" rel="noopener">Schwab</a> <span class="ver">Oct 16</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
