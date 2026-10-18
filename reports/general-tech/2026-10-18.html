@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-18" />
+  <meta name="report:title" content="No new Next.js advisory, three days left on 15.x; Postgres 19 slips to November after AI reviewers find too many bugs; cities and grids start saying no to data centers" />
+  <meta name="report:summary" content="Nothing new to patch on Next.js, React, Vercel or Supabase since the Oct 14 releases, but Next.js 15 leaves support Wednesday; PostgreSQL 19 GA moved to about Nov 19 with 8 to 10 features pulled; a Nextcloud Collabora flaw is being exploited; Vercel AI Gateway added per-session logs; San Francisco paused new data centers and Microsoft dropped a UK site waiting on grid power; Taiwan moves to criminalize AI chip smuggling to China." />
+  <meta name="report:highlights" content="6" />
+
+  <title>No new Next.js advisory, three days left on 15.x; Postgres 19 slips to November after AI reviewers find too many bugs; cities and grids start saying no to data centers — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, October 18, 2026</span>
+        <span>◆</span><span>Stack status, Postgres, data center pushback</span>
+      </div>
+      <h1>No new Next.js advisory, three days left on 15.x; Postgres 19 slips to November after AI reviewers find too many bugs; cities and grids start saying no to data centers</h1>
+      <p class="standfirst">A quiet weekend for TSD's stack, which is good news three days before Next.js 15 drops out of support. The broader story is physical: power, permits and export rules are now the limits on AI build-out.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 16–18, 2026</span>
+        <span>◆</span><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Oct 21</div><div class="lbl">Next.js 15.x leaves Maintenance LTS (Wednesday)</div></div>
+      <div class="stat"><div class="num">~Nov 19</div><div class="lbl">New PostgreSQL 19 GA date, up from late September</div></div>
+      <div class="stat"><div class="num">45 days</div><div class="lbl">San Francisco's pause on new data center projects</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack check: clear, but 15.x ends Wednesday</h4><p>No new advisories since the Oct 14 batch. 16.4.2 (Oct 15) is a Turbopack stability backport. Anything still on 15.x must ship its upgrade by Tuesday.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Postgres 19 delayed to ~Nov 19</h4><p>LLM-assisted review surfaced so many defects that 8 to 10 features, including SQL/PGQ, were pulled to v20.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Nextcloud Collabora flaw exploited</h4><p>CVSS 9.2 in the built-in CODE server app (26.4.302 and earlier). Update to 26.4.303 or remove it, then hunt for web shells.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AI Gateway shows per-session cost</h4><p>New Sessions view groups requests by conversation with cache hit rate, cost and the agent that ran it. DeepSeek V4.1-Flash-1017 also landed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Data centers hit permits and grids</h4><p>SF signed a 45-day moratorium; Microsoft pulled out of anchoring Nscale's Essex site because grid power won't arrive until the 2030s.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Taiwan to criminalize chip smuggling to China</h4><p>AI servers and advanced chips become controlled goods for all Chinese buyers under the Foreign Trade Act.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> TSD's stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch status</span>
+            <span class="ver">Oct 14–18</span>
+            <h3>Nothing new to patch; Next.js 15 support ends Wednesday</h3>
+          </div>
+          <div class="story-body"><p>The last Next.js and React security releases landed October 14 (React Server Components RCE, image optimizer RCE with SVGs, use cache RCE, Server Functions DoS). Nothing new has been published since. Next.js 16.4.2 shipped October 15 as a set of Turbopack and docs backports, and the canary line is at 16.5.0-canary.17 as of October 17. The 15.x line leaves Maintenance LTS on October 21, so future security fixes will skip it.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Run a final pass on every client repo: confirm production is on 16.4.1 or later (16.4.2 is fine). Any repo on 15.x gets its upgrade merged and deployed by Tuesday night. Don't chase canary.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a> <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Database</span>
+            <span class="ver">Oct 16</span>
+            <h3>PostgreSQL 19 slips to about November 19 after AI review floods the team with defects</h3>
+          </div>
+          <div class="story-body"><p>The PostgreSQL Global Development Group pushed v19 GA from late September to around November 19 and reverted 8 to 10 significant features, now slated for v20. Peter Eisentraut said LLM-assisted code review found serious architectural defects in some features plus a long tail of edge cases. SQL Property Graph Queries is the one named casualty. He noted the features weren't written with AI; the AI was used to review them.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No action for Supabase projects, which run managed Postgres versions and won't jump to 19 for a while. Worth knowing for planning: don't promise a client any v19-only feature this year. The story itself is a good proof point for AI code review on client repos.</div>
+          <div class="refs"><a href="https://www.theregister.com/databases/2026/10/16/postgres-19-delayed-after-ai-reviewers-find-more-bugs-than-humans-can-fix/5303471" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Platform</span>
+            <span class="ver">Oct 17</span>
+            <h3>Vercel AI Gateway adds a Sessions view with per-conversation cost and cache hits</h3>
+          </div>
+          <div class="story-body"><p>AI Gateway logs now group requests into sessions and show cost, models, providers, cache hit rate and which coding agent or app ran each one. Session affinity, on by default for text and chat, sends each turn to the provider that served the last one so more of the prompt stays cached. Apps can group requests themselves by sending a sessionId or x-session-id header. Vercel also added DeepSeek V4.1-Flash-1017 to the Gateway the same day.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If client chatbots or the RAG concierge route through AI Gateway, pass a session ID per visitor conversation. You get per-conversation cost, which is the number you need to price usage-based retainers honestly.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity" target="_blank" rel="noopener">Vercel changelog: sessions</a> <a href="https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog: DeepSeek</a></div>
+        </article>
+
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Reported Oct 14–17</span>
+            <h3>Nextcloud's built-in Collabora server is being used to plant web shells</h3>
+          </div>
+          <div class="story-body"><p>CVE-2026-110447 (CVSS 9.2) is an unauthenticated flaw in richdocumentscode, the built-in CODE Server app for Collabora Online in Nextcloud, versions 26.4.302 and earlier. The fix, 26.4.303, shipped September 11; public reports of active exploitation surfaced October 14 to 17. Standalone Collabora, Docker, package installs and Nextcloud AIO are reported unaffected. Disabling the app is not enough; it must be updated or removed, and patched servers should be checked for leftover PHP files, new admin accounts and scheduled tasks created after September 11.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If any client self-hosts Nextcloud for file sharing (common at small law, accounting and medical offices), check the app version this week. It's a small paid fix and a reason to ask what else they host.</div>
+          <div class="refs"><a href="https://tech-insider.org/nextcloud-collabora-vulnerability-cve-2026-110447/" target="_blank" rel="noopener">Tech Insider</a></div>
+        </article>
+
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips, power and permits</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Infrastructure</span>
+            <span class="ver">Oct 16–18</span>
+            <h3>San Francisco pauses data centers; Microsoft walks from a UK site with no grid power until the 2030s</h3>
+          </div>
+          <div class="story-body"><p>Mayor Daniel Lurie signed a 45-day citywide moratorium on new data center development on October 16 after a unanimous Board of Supervisors vote. The Planning Department must study impacts and draft controls; the pause could extend to about 22 months. On October 18 the Telegraph reported Microsoft withdrew from anchoring Nscale's Loughton, Essex site, planned for about 23,000 Nvidia chips, after UK Power Networks said grid capacity won't arrive until the early-to-mid 2030s. The FT counted 47 or more large US projects delayed, withdrawn or blocked this year.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Compute supply stays tight, which keeps frontier API prices from falling as fast as the hype suggests. Build client products so the model can be swapped, and price AI retainers with room for cost swings.</div>
+          <div class="refs"><a href="https://sfstandard.com/2026/10/16/mayor-lurie-data-center-moratorium/" target="_blank" rel="noopener">SF Standard</a> <a href="https://www.telegraph.co.uk/business/2026/10/18/microsoft-axes-ai-deal-setback-uk-data-centre-pioneer/" target="_blank" rel="noopener">Telegraph</a> <a href="https://www.ft.com/content/9ea5a37d-15c9-4d5b-94d6-719048c9cd3c" target="_blank" rel="noopener">FT</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Trade</span>
+            <span class="ver">Oct 16</span>
+            <h3>Taiwan moves to make AI chip smuggling to China a crime</h3>
+          </div>
+          <div class="story-body"><p>Economic Affairs Minister Kung Ming-hsin confirmed that AI servers and advanced chips will become controlled commodities, with unauthorized shipments to any Chinese buyer treated as a criminal offense under the Foreign Trade Act. Today's rules require permits only for named firms like Huawei and SMIC. A legislator has drafted the amendment. Taiwan made its first smuggling arrests in May.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No direct impact on TSD. It's one more reason Chinese open-weight models keep getting more efficient per chip, which is why cheap options like DeepSeek keep showing up on AI Gateway.</div>
+          <div class="refs"><a href="https://startupfortune.com/taiwan-will-make-it-a-crime-to-smuggle-ai-chips-into-china/" target="_blank" rel="noopener">Startup Fortune (citing Bloomberg)</a></div>
+        </article>
+
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">GitHub</span><span class="txt">Open source license compliance is generally available on GitHub. <a href="https://github.blog/changelog/2026-10-16-open-source-license-compliance-generally-available" target="_blank" rel="noopener">source</a> <span class="ver">Oct 16</span></span></li>
+            <li><span class="tag fix qh-tag">GitHub</span><span class="txt">Selected Copilot models are deprecated in mid-November; check any pinned model in workflows. <a href="https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november" target="_blank" rel="noopener">source</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag new qh-tag">CI</span><span class="txt">Xcode 27 runner image is GA on GitHub Actions. <a href="https://github.blog/changelog/2026-10-15-xcode-27-runner-image-generally-available" target="_blank" rel="noopener">source</a> <span class="ver">Oct 15</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Korean startup DeepX began mass production of its DX-M1 edge NPU on Samsung 5nm and reports 77 orders. <a href="https://www.kucoin.com/news/flash/south-korean-ai-chip-startup-deepx-expands-global-ai-market-strategy" target="_blank" rel="noopener">source</a> <span class="ver">~Oct 18</span></span></li>
+            <li><span class="tag feature qh-tag">Infra</span><span class="txt">Oracle proposed a fuel-cell redesign for its New Mexico Project Jupiter campus; the air-permit hearing moved to Dec 7. <a href="https://mgrid.org/2026/10/17/oracle-says-fuel-cell-redesign-cuts-project-jupiter-emissions-35-as-new-mexico-moves-permit-hearing-to-dec-7/" target="_blank" rel="noopener">source</a> <span class="ver">Oct 17</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

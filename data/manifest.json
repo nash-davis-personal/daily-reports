@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-18",
+    "title": "Gas slips to $4.30 but stays $1.26 above last year, Meta and Tesla headline a big earnings week, and the Norte Fire forces thousands from homes in Orange County",
+    "summary": "AAA&#x27;s national average fell to $4.30 a gallon, down 17 cents in a month and still far above a year ago; Meta, Tesla, IBM, Netflix and GM report this week with the Fed in blackout; CoreWeave fell 25% for the week as worries about AI debt spread to bonds; the Norte Fire near San Clemente reached 25% containment with FEMA aid approved.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-18.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-18",
+    "title": "Stolen AI keys now fund attackers, DeepSeek ships an MIT-licensed agent model, and Anthropic says its agents log six times its staff&#x27;s hours",
+    "summary": "OpenCode confirmed a key-theft breach and Bitsight found a criminal tool that bills its scans to stolen OpenAI, Anthropic and Google keys; DeepSeek posted V4.1-Flash-1017 under MIT; Anthropic published hiring data showing junior technical hires falling to 9%; Claude redesigned quantum circuits; Meta narrowed its Oct 30 crawling clause.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-18.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-18",
+    "title": "Lock down AI keys before thieves spend them: a flat-fee key and spend-cap audit, a voice-clone payment rule for local offices, and per-conversation AI billing",
+    "summary": "Six moves from a weekend where stolen AI keys became a paid attack tool, a voice-cloned call took a bank for €95M, and Vercel started showing cost per AI conversation; best bet is a flat-fee AI key and spend-cap lockdown TSD can sell to its own clients this week.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-18.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-18",
+    "title": "No new Next.js advisory, three days left on 15.x; Postgres 19 slips to November after AI reviewers find too many bugs; cities and grids start saying no to data centers",
+    "summary": "Nothing new to patch on Next.js, React, Vercel or Supabase since the Oct 14 releases, but Next.js 15 leaves support Wednesday; PostgreSQL 19 GA moved to about Nov 19 with 8 to 10 features pulled; a Nextcloud Collabora flaw is being exploited; Vercel AI Gateway added per-session logs; San Francisco paused new data centers and Microsoft dropped a UK site waiting on grid power; Taiwan moves to criminalize AI chip smuggling to China.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-18.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-17",
     "title": "Chip stocks fall an eighth straight day, oil touches $110, and the Fed goes quiet ahead of its Oct 27–28 meeting",
     "summary": "The Nasdaq fell 2.1% Friday to cap its worst week since June as chip and software stocks slid, Brent crude touched $110 and WTI settled above $100, the 10-year Treasury held near 5.09%, and Fed Chair Warsh gave his last remarks before the pre-meeting blackout with markets pricing a December hike.",
