@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-18",
+    "title": "TSD Daily — Sunday, October 18, 2026",
+    "summary": "Stolen AI keys now pay for attacks, DeepSeek ships MIT open weights, Postgres 19 slips after AI review, gas eases to $4.30 ahead of a big earnings week, and a flat-fee AI key lockdown TSD can sell this week.",
+    "file": "audio/2026-10-18.mp3",
+    "durationSec": 368,
+    "bytes": 4421133
+  },
+  {
     "date": "2026-10-17",
     "title": "TSD Daily — Saturday, October 17, 2026",
     "summary": "Meta's Oct 30 crawl terms, Google's Universal Cart, Anthropic's IPO repricing, Next.js 15's Wednesday cutoff, Friday's chip sell-off and  oil, plus a flat-fee AI crawler policy as today's best money move.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-20.mp3",
     "durationSec": 390,
     "bytes": 4677741
-  },
-  {
-    "date": "2026-07-18",
-    "title": "TSD Daily — Saturday, July 18, 2026",
-    "summary": "Anthropic and Blackstone bet $1.5B that AI implementation beats models, Next.js patches nine flaws Monday while Supabase starts pausing Postgres 14 projects, chip stocks fall into a bear market as gas hits $3.94, and Claude Code 2.1.214 makes Bash permissions fail closed.",
-    "file": "audio/2026-07-18.mp3",
-    "durationSec": 401,
-    "bytes": 4807341
   }
 ]
