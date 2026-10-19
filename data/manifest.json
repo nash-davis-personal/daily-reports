@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-19",
+    "title": "Quiet window: 2.1.303 is bug fixes only",
+    "summary": "Claude Code 2.1.303 (October 18) shipped with only a generic bug-fix and reliability note; nothing to act on.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-10-19.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
