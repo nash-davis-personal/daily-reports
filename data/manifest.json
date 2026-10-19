@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-19",
+    "title": "Stock futures rebound after a rough week, the Fed is an 85% bet to hold, and earnings season opens with Tesla, Meta, SpaceX and chipmakers",
+    "summary": "Futures point higher Monday after a down week, markets price an 85.1% chance the Fed holds this month, and about 15% of the S&P 500 reports earnings this week.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-19.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.303 (October 18) shipped with only a generic bug-fix and reliability note; nothing to act on.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-10-19.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-19",
+    "title": "Gemini 4 Argon&#x27;s launch price doubles Dec 1, open-weight models hit frontier size, and Anthropic&#x27;s first Canadian capacity lands",
+    "summary": "Gemini 4 Argon is generally available at $2/$10 per million tokens until Nov 30, Meta and Reflection shipped huge open-weight MoE models, and Reuters reports Anthropic leased 95 MW in Nova Scotia.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-19.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-19",
+    "title": "Sell a patch-and-verify sprint before Next.js 15 loses support Wednesday, and re-benchmark client AI costs before Gemini&#x27;s price doubles",
+    "summary": "Five ranked moves: a flat-fee Next.js patch sprint, a pre-Dec-1 AI cost re-benchmark, insurance-agency intake automation, agent-readiness audits, and a private local-AI box.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-10-19.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-19",
+    "title": "Patch check: Next.js 16.4.1 / 15.5.28 before 15.x loses support Wednesday; NVIDIA&#x27;s RTX Spark PCs ship and CoreWeave&#x27;s bonds trade like distressed debt",
+    "summary": "Nothing new on the Next.js advisory since Oct 14, so verify your deployed versions before 15.x support ends Wednesday; NVIDIA RTX Spark laptops start at $2,599 and CoreWeave debt yields near 15%.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-19.html"
   },
   {
     "source": "america",

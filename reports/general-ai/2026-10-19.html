@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-19" />
+  <meta name="report:title" content="Gemini 4 Argon&#x27;s launch price doubles Dec 1, open-weight models hit frontier size, and Anthropic&#x27;s first Canadian capacity lands" />
+  <meta name="report:summary" content="Gemini 4 Argon is generally available at $2/$10 per million tokens until Nov 30, Meta and Reflection shipped huge open-weight MoE models, and Reuters reports Anthropic leased 95 MW in Nova Scotia." />
+  <meta name="report:highlights" content="5" />
+  <title>Gemini 4 Argon&#x27;s launch price doubles Dec 1, open-weight models hit frontier size, and Anthropic&#x27;s first Canadian capacity lands — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav><a href="../../">All briefings</a></nav>
+    </div>
+  </header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Monday, October 19, 2026</span>
+        <span>◆</span><span>Since the Oct 18 edition</span>
+      </div>
+      <h1>Gemini 4 Argon's launch price doubles Dec 1, open-weight models hit frontier size, and Anthropic's first Canadian capacity lands</h1>
+      <p class="standfirst">Google's Gemini 4 Argon has a published price cliff on December 1. Two giant open-weight models (Meta, Reflection) arrived the same week, and Anthropic reportedly signed its first Canadian data-center lease. It is a pricing and infrastructure day, with no new closed frontier model.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 13 – Oct 19, 2026 ◆ items not in prior editions</span>
+      </div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">$2 / $10</div><div class="lbl">Argon intro price per M tokens, in/out</div></div><div class="stat"><div class="num">816B</div><div class="lbl">Meta Muse Spark Open total params</div></div><div class="stat"><div class="num">95 MW</div><div class="lbl">Reported Anthropic phase-one lease</div></div></div>
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Gemini 4 Argon pricing doubles Dec 1</h4><p>GA since Oct 13 at $2 in / $10 out per million tokens through Nov 30; $4 / $20 after.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Open weights reach frontier scale</h4><p>Meta Muse Spark Open (816B MoE) and Reflection's Beam (501B MoE, Apache 2.0), both 1M context.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Anthropic's first Canadian data center</h4><p>Reuters says Anthropic signed a 20-year lease in Nova Scotia; EverWind's own release names no tenant.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agents trip bot detection</h4><p>Meta says a Claude-linked scraper ran at about 4x human speed and got an Instagram account suspended for ~90 minutes.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Enterprise agent platforms keep shipping</h4><p>Microsoft Copilot Studio persistent agents, OpenAI's Chrome extension upgrade, NVIDIA Nemotron for local enterprise agents.</p></div>
+      </div>
+    </section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and pricing</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Pricing</span>
+            <span class="ver">Oct 13 GA</span>
+            <h3>Gemini 4 Argon is cheap until Nov 30, then costs double</h3>
+          </div>
+          <div class="story-body"><p>Google made Gemini 4 Argon generally available on October 13 with a 1M-token context. Introductory pricing is $2 per million input tokens and $10 per million output, with cached input 95% off, through November 30. After that it is $4 / $20. A secondary roundup (DEV Community) cites Simon Willison saying the post-promo price puts Argon at parity with Claude Opus 5.5; that comparison is his claim and I did not verify it.</p><p>No parameter count or benchmark table appeared in the sources I could reach, so treat capability claims as Google's.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If any client workload runs on a metered model, Argon is worth a benchmark run this month, and the price you measure is the promo price. Quote clients on the $4 / $20 figure so a December invoice does not surprise them.</div>
+          <div class="refs"><a href="https://dev.to/felipe0liveira/open-weights-go-frontier-class-a-501b-base-model-a-816b-meta-moe-and-gemini-4-argon-land-in-one-4b3b" target="_blank" rel="noopener">DEV Community roundup</a> <a href="https://www.thunai.ai/blog/gemini-argon-4-enterprise-ai-orchestration" target="_blank" rel="noopener">Argon enterprise write-up</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Open weights</span>
+            <span class="ver">Oct 15–16</span>
+            <h3>Meta and Reflection ship 500B-plus open-weight MoE models</h3>
+          </div>
+          <div class="story-body"><p>Meta released Muse Spark Open on October 15: roughly 816B total parameters with about 42B active, up to 1M tokens of context, multimodal input and text output, pitched at agentic coding. License terms were not stated in the roundup. Reflection released Beam on October 16: 501B total, 23B active, 1M context, Apache 2.0, with a ~280GB NVFP4 checkpoint that runs on four B200 GPUs and day-zero support in transformers, vLLM and SGLang.</p><p>Vercel AI Gateway already lists Beam, free during launch (covered in the Oct 17 Technology edition).</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Nobody runs these in-house. The value is price pressure on hosted inference and a credible Apache-licensed option for clients who insist their data never reaches a closed vendor. Try Beam through the Gateway while it is free.</div>
+          <div class="refs"><a href="https://dev.to/felipe0liveira/open-weights-go-frontier-class-a-501b-base-model-a-816b-meta-moe-and-gemini-4-argon-land-in-one-4b3b" target="_blank" rel="noopener">DEV Community roundup</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Infrastructure and agents</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Compute</span>
+            <span class="ver">Oct 16–17</span>
+            <h3>Anthropic reportedly signs its first Canadian data-center lease</h3>
+          </div>
+          <div class="story-body"><p>Reuters (syndicated) reports Anthropic signed a 20-year lease with EverWind Fuels at Point Tupper, Nova Scotia: phase one is 95 MW, targeted for late 2027, with the campus planned to reach 420 MW by 2028. EverWind's own announcement of a C$10B project (C$8B campus, C$2B onshore wind) described the tenant only as an unnamed frontier AI developer, so the Anthropic name rests on Reuters.</p><p>The wind farms will not be ready by the time the first phase opens.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No action. It is another data point that capacity is the constraint the labs are buying their way out of, which is the same story as the grid and permit fights in recent editions.</div>
+          <div class="refs"><a href="https://www.thestar.com.my/tech/tech-news/2026/10/17/anthropic-signs-lease-for-first-canadian-data-center" target="_blank" rel="noopener">Reuters via The Star</a> <a href="https://www.cp24.com/news/canada/2026/10/16/everwind-says-10b-ai-data-centre-proposal-largest-private-investment-in-ns-history/" target="_blank" rel="noopener">CP24 / Canadian Press</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Agents</span>
+            <span class="ver">Oct 18</span>
+            <h3>A Claude-linked scraper gets an Instagram account suspended by bot detection</h3>
+          </div>
+          <div class="story-body"><p>Meta spokesperson Andy Stone said a Claude-linked scraping tool acted on an advocacy group's Instagram account at about four times normal human speed, which triggered bot detection and a suspension of about 90 minutes. I saw this through The Next Web via an aggregator feed and did not confirm it with Meta directly.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Any agent you build that drives a logged-in third-party site needs human-paced rate limits and a way to hand off to a person. Put that in the spec for booking-automation work before a client's account is the one that gets flagged.</div>
+          <div class="refs"><a href="https://thenextweb.com/news/meta-claude-no-kings-instagram-suspension" target="_blank" rel="noopener">The Next Web</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Agents</span><span class="txt">Microsoft's Copilot Studio preview adds agent accounts, shared memory and triggers (Oct 16). <a href='https://www.neoteo.com/en/microsoft-announces-persistent-agents-for-copilot-studio' target='_blank' rel='noopener'>NeoTeo</a></span></li>
+            <li><span class="tag improve qh-tag">OpenAI</span><span class="txt">ChatGPT Chrome extension gets better tab control and browser automation, plus Chat and Work modes (Oct 16). <a href='https://piunikaweb.com/2026/10/16/chatgpt-chrome-extension-tab-control-automation' target='_blank' rel='noopener'>PiunikaWeb</a></span></li>
+            <li><span class="tag new qh-tag">NVIDIA</span><span class="txt">Three open Nemotron models for running enterprise agents locally (Oct 16). <a href='https://techstrong.ai/articles/nvidia-launches-three-open-ai-models-to-power-enterprise-agents' target='_blank' rel='noopener'>Techstrong.ai</a></span></li>
+            <li><span class="tag feature qh-tag">OpenAI</span><span class="txt">Sam Altman says OpenAI will show a humanoid robot in 2027; street-ready is "a few years longer" after that. <a href='https://www.engadget.com/2285040/openai-humanoid-robot-sam-altman-statement-real-challenge/' target='_blank' rel='noopener'>Engadget</a></span></li>
+            <li><span class="tag improve qh-tag">Banks</span><span class="txt">Schwab and JPMorgan say they block outside AI agents from touching client accounts; Schwab sees "tens and twenties" of attempts a week (Bloomberg, seen via aggregator, unverified). <a href='https://aiweekly.co/ai-news-today' target='_blank' rel='noopener'>AI Weekly</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

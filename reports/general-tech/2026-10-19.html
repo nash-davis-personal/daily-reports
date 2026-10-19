@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-19" />
+  <meta name="report:title" content="Patch check: Next.js 16.4.1 / 15.5.28 before 15.x loses support Wednesday; NVIDIA&#x27;s RTX Spark PCs ship and CoreWeave&#x27;s bonds trade like distressed debt" />
+  <meta name="report:summary" content="Nothing new on the Next.js advisory since Oct 14, so verify your deployed versions before 15.x support ends Wednesday; NVIDIA RTX Spark laptops start at $2,599 and CoreWeave debt yields near 15%." />
+  <meta name="report:highlights" content="5" />
+  <title>Patch check: Next.js 16.4.1 / 15.5.28 before 15.x loses support Wednesday; NVIDIA&#x27;s RTX Spark PCs ship and CoreWeave&#x27;s bonds trade like distressed debt — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav><a href="../../">All briefings</a></nav>
+    </div>
+  </header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, October 19, 2026</span>
+        <span>◆</span><span>Since the Oct 18 edition</span>
+      </div>
+      <h1>Patch check: Next.js 16.4.1 / 15.5.28 before 15.x loses support Wednesday; NVIDIA's RTX Spark PCs ship and CoreWeave's bonds trade like distressed debt</h1>
+      <p class="standfirst">Last week's Next.js and React security release is the only item that can hurt a client, and 15.x leaves maintenance on Wednesday. The rest of the day is hardware and AI-infrastructure finance.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 14 – Oct 19, 2026</span>
+      </div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">2 critical</div><div class="lbl">RCEs fixed in Next.js Oct 14</div></div><div class="stat"><div class="num">$2,599</div><div class="lbl">RTX Spark PCs, 128GB unified</div></div><div class="stat"><div class="num">~14.8%</div><div class="lbl">CoreWeave 2032 note yield</div></div></div>
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Verify Next.js 16.4.1 / 15.5.28 is live</h4><p>Two critical unauthenticated RCEs and one high DoS; no workaround for the use cache bug.</p></div>
+        <div class="signal"><div class="n">02</div><h4>sharp 0.35.5 or later</h4><p>The SVG image-optimizer RCE needs a fixed sharp; upgrading Next pulls it in.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase legacy keys sunset</h4><p>A secondary source says anon / service_role keys work only to end of 2026; move to publishable / secret keys.</p></div>
+        <div class="signal"><div class="n">04</div><h4>NVIDIA RTX Spark PCs on sale</h4><p>Blackwell GPU + Grace CPU, up to 128GB unified memory, from $2,599.</p></div>
+        <div class="signal"><div class="n">05</div><h4>CoreWeave credit stress</h4><p>Shares down about 25% on the week; 2032 notes yield about 14.8%.</p></div>
+      </div>
+    </section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch status</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 14 release</span>
+            <h3>Next.js out-of-band security update: two critical RCEs and one high DoS</h3>
+          </div>
+          <div class="story-body"><p>Next.js 16.4.1 (Active LTS) and 15.5.28 (Maintenance LTS) fix three issues. GHSA-673q-mjm6-r5xr (critical): unauthenticated RCE for App Router apps using Cache Components when a <code>use cache</code> function returns multiple typed arrays; no known workaround. CVE-2026-96889 / GHSA-2464-fhr4-w9xw (critical): RCE in the Image Optimization API with SVGs through <code>sharp</code> on glibc-based Linux; workaround is <code>sharp</code> 0.35.5 or later. GHSA-p3m5-59mp-jv5r (high): crafted requests to an App Router app with at least one Server Action can pin the CPU and cause denial of service; Pages Router and apps without Server Actions are not affected.</p><p>Netlify and Pantheon both tell customers to upgrade and redeploy. React also published matching advisories (patched lines include 19.0.9, 19.1.10, 19.2.9 and 19.3.1 per Pantheon). I found no newer advisory since Oct 14. Next.js 15.x leaves Maintenance LTS on Wednesday, Oct 21, per the Oct 18 edition.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: in every client repo run <code>npm ls next sharp react</code>. Move 16.x to <code>next@16.4.1</code> and 15.x to <code>next@15.5.28</code> (or plan the jump to 16 before Wednesday), then redeploy. A lockfile bump with no redeploy leaves the live site vulnerable.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js security update</a> <a href="https://netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities" target="_blank" rel="noopener">Netlify notice</a> <a href="https://docs.pantheon.io/release-notes/2026/10/nextjs-security-release" target="_blank" rel="noopener">Pantheon notice</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Supabase</span>
+            <span class="ver">Check dates</span>
+            <h3>Supabase: legacy API keys and a new Postgres pipelines alpha</h3>
+          </div>
+          <div class="story-body"><p>A Supabase-focused security guide quoting the docs says the legacy <code>anon</code> and <code>service_role</code> keys keep working until the end of 2026 and recommends switching to <code>sb_publishable_</code> and <code>sb_secret_</code> keys now. A third-party copy of the October Supabase update also lists pipelines that stream Postgres data to BigQuery, ClickHouse, DuckLake and Snowflake in public alpha, and agent-driven backend setup through an MCP server. Both come from secondary pages; confirm on Supabase's own docs.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Put "rotate to the new Supabase key format" on the client maintenance checklist for November; it is a small job to sell as part of a retainer. The pipelines alpha is irrelevant to current SMB projects.</div>
+          <div class="refs"><a href="https://www.iloveblogs.blog/post/nextjs-supabase-security-best-practices" target="_blank" rel="noopener">Next.js + Supabase guide</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and infrastructure</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Hardware</span>
+            <span class="ver">Oct 19</span>
+            <h3>NVIDIA RTX Spark PCs go on sale from six makers</h3>
+          </div>
+          <div class="story-body"><p>NVIDIA announced global availability of RTX Spark systems from ASUS, Dell, HP, Lenovo, Microsoft and MSI, starting at $2,599. The chip pairs a Blackwell RTX GPU with a Grace CPU, up to 128GB unified memory and up to one petaflop of FP4 AI performance. NVIDIA says agents and coding tools including GitHub Copilot can run on the device with data kept local. The source gives no token-speed or supported-model figures, so the real-world benefit is unproven.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> A $2,599 box with 128GB is the first sensible hardware quote for a client who wants private document search without a cloud vendor. Wait for independent benchmarks before pricing anything around it.</div>
+          <div class="refs"><a href="https://www.exhibit.tech/tech-launches/nvidia-rtx-spark-pcs-launch-with-up-to-128gb/" target="_blank" rel="noopener">Exhibit.tech</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Finance</span>
+            <span class="ver">Oct 14–15</span>
+            <h3>CoreWeave's bonds trade like distressed debt</h3>
+          </div>
+          <div class="story-body"><p>CoreWeave shares fell about 15.5% to $65.78 on Oct 14 and another 8.3% to about $60.36 on Oct 15, the lowest since May 2025. Its 9.625% notes due 2032 yielded about 14.8% and traded below 80 cents on the dollar, and credit-default-swap spreads went above 1,000 basis points. Reported debt is roughly $50–52B. CEO Mike Intrator called the selloff irrational and pointed to a contracted backlog above $104B. Figures come from aggregator reports; check filings before relying on exact numbers.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do today. If GPU-cloud capacity gets repriced or a neocloud struggles, hosted inference could get cheaper or less reliable. Keep model providers swappable behind the Vercel AI Gateway.</div>
+          <div class="refs"><a href="https://investinglive.com/stocks/coreweave-bonds-trade-like-distressed-debt-as-ai-spending-outpaces-balance-sheets/" target="_blank" rel="noopener">investinglive</a> <a href="https://www.roic.ai/news/coreweave-shares-plunge-to-lowest-since-may-2025-as-credit-fears-mount-10-15-2026" target="_blank" rel="noopener">roic.ai</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Apple</span><span class="txt">Bloomberg's Mark Gurman reportedly expects Apple to announce a MacBook Pro, iMac and iPad mini around Oct 27–28; unconfirmed by Apple. <a href='https://thehansindia.com/technology/tech-news/apple-may-announce-new-macbook-pro-imac-and-ipad-minimodels-this-month-1133873' target='_blank' rel='noopener'>Hans India</a></span></li>
+            <li><span class="tag feature qh-tag">Space</span><span class="txt">SpaceX Falcon 9 Bandwagon-5 rideshare targeted for 6:30 a.m. ET Monday from Cape Canaveral, weather-dependent. <a href='https://www.kucoin.com/news/flash/musk-teases-spacex-airdrop-as-florida-awaits-jellyfish-launch-on-oct-19' target='_blank' rel='noopener'>KuCoin News</a></span></li>
+            <li><span class="tag improve qh-tag">Tailwind / React / Vercel</span><span class="txt">No new announcements found for Tailwind or Vercel this week; React advisories are covered above.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
