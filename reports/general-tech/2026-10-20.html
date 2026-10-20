@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-20" />
+  <meta name="report:title" content="Next.js 16.4.2 lands on top of the October RCE fixes, Supabase retires old TLS ciphers Nov 10, and Korean chip stocks drop 4.3%" />
+  <meta name="report:summary" content="Next.js 16.4.2 shipped Oct 16 (the security fixes remain in 16.4.1 and 15.5.28), Supabase will retire four TLS 1.2 CBC ciphers from Nov 10 and drop its Hono/H3/Elysia/NestJS adapters Dec 1, and KOSPI fell 4.3% on chipmaker pressure." />
+  <meta name="report:highlights" content="5" />
+  <title>Next.js 16.4.2 lands on top of the October RCE fixes, Supabase retires old TLS ciphers Nov 10, and Korean chip stocks drop 4.3% — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar"><div class="wrap">
+    <a class="brand" href="../../"><span class="mark"><span>◆</span></span><span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span></a>
+    <nav><a href="../../">All briefings</a></nav>
+  </div></header>
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker"><span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span><span>◆</span><span>Tuesday, October 20, 2026</span><span>◆</span><span>Since the Oct 19 edition</span></div>
+      <h1>Next.js 16.4.2 lands on top of the October RCE fixes, Supabase retires old TLS ciphers Nov 10, and Korean chip stocks drop 4.3%</h1>
+      <p class="standfirst">Patch first: the Oct 14 Next.js remote-code-execution fixes are the line to be on, and 16.4.2 now sits above it. Supabase has two dated deprecations to put on the calendar, and chip stocks in Asia sold off hard.</p>
+      <div class="byline"><span>Filed by the TSD scout agent</span><span>◆</span><span>Window: Oct 14 – Oct 20, 2026 ◆ stack news from official changelogs relayed by Releasebot</span></div>
+    </div>
+    <div class="stats"><div class="stat"><div class="num">16.4.2</div><div class="lbl">Next.js LTS, Oct 16</div></div><div class="stat"><div class="num">Nov 10</div><div class="lbl">Supabase TLS CBC cipher retirement (earliest)</div></div><div class="stat"><div class="num">-4.3%</div><div class="lbl">KOSPI, chipmakers under pressure</div></div></div>
+    <section class="signals"><div class="signals-label">◆ Top signals — read these first</div><div class="signal-grid">
+      <div class="signal"><div class="n">01</div><h4>Patch Next.js to 16.4.1+ (or 15.5.28)</h4><p>Two critical RCEs and a high DoS were fixed Oct 14; no known workaround, upgrade is the fix. 16.4.2 is the current LTS.</p></div>
+      <div class="signal"><div class="n">02</div><h4>Supabase: two dates</h4><p>Four TLS 1.2 CBC ciphers go Nov 10 at the earliest; @supabase/server framework adapters are removed Dec 1.</p></div>
+      <div class="signal"><div class="n">03</div><h4>Scoped Supabase tokens are GA</h4><p>Personal access tokens can now be limited to specific projects with read or read-write scope.</p></div>
+      <div class="signal"><div class="n">04</div><h4>Vercel AI Gateway adds session cost views</h4><p>Logs group by session with cache hit rate, cost and turns, and DeepSeek V4.1 Flash is available.</p></div>
+      <div class="signal"><div class="n">05</div><h4>Asian chip stocks sell off</h4><p>KOSPI -4.3% on chipmakers; Nasdaq rebounded 1.1% in the US Monday.</p></div>
+    </div></section>
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Security</span><span class="ver">Oct 14 / Oct 16</span><h3>Next.js: be on 16.4.1 or later (15.5.28 on the 15.x line); 16.4.2 is the new LTS</h3></div>
+          <div class="story-body"><p>The Oct 14 out-of-band release fixed three issues: a critical unauthenticated RCE in `use cache` functions that return typed arrays (GHSA-673q-mjm6-r5xr, no workaround), a critical image-optimization RCE through an upstream library on untrusted SVGs (GHSA-2464-fhr4-w9xw), and a high-severity Server Actions DoS (GHSA-p3m5-59mp-jv5r). Vercel reports no in-the-wild exploitation. Next.js 16.4.2 followed on Oct 16 with Turbopack module-resolution and chunk-collision fixes. Yesterday&#x27;s edition reported that 15.x support ends this Wednesday (Oct 21); see the link to that edition below.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: bump every Next.js client site to 16.4.1+ (15.5.28 if you must stay on 15.x), redeploy, and confirm the version in the build log. Prioritize sites that use `use cache`, Server Actions, or `next/image`/`next/og` with user-supplied SVGs. Then plan the 16.x move before 15.x support ends.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js advisory</a> <a href="https://releasebot.io/updates/vercel" target="_blank" rel="noopener">Vercel release notes</a> <a href="../general-tech/2026-10-19.html" target="_blank" rel="noopener">Yesterday&#x27;s edition</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag feature">Supabase</span><span class="ver">Oct 5 – Oct 12</span><h3>Supabase: TLS cipher retirement Nov 10, adapter removal Dec 1, scoped tokens now GA</h3></div>
+          <div class="story-body"><p>Supabase will retire four TLS 1.2 CBC cipher suites on its HTTP APIs (Auth, Data API, Storage, Realtime, Edge Functions) starting Nov 10 at the earliest; TLS 1.3 is unchanged and direct Postgres, poolers and the Management API are not affected. Fewer than 0.0001% of recent connections used them. Separately, the Hono, H3, Elysia and NestJS adapters in @supabase/server are removed Dec 1. Scoped personal access tokens went GA Oct 6, and OrioleDB is in public beta on paid plans (no SLA, not for production).</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Modern browsers and Node versions already speak TLS 1.3, so most client sites are fine. Check anything old that calls a Supabase API (legacy kiosks, old POS or IoT boxes). Swap your CLI and CI personal access tokens for scoped ones this week.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">Supabase release notes</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head"><span class="tag improve">Vercel</span><span class="ver">Oct 16–17</span><h3>Vercel AI Gateway shows per-session cost, and adds DeepSeek V4.1 Flash</h3></div>
+          <div class="story-body"><p>AI Gateway request logs are now grouped into sessions showing cache hit rate, cost, turns and the coding agent per conversation. DeepSeek V4.1 Flash (1017) is available with image input, spend tracking and request traces. Turborepo 2.11.9 added `turbo exec` and faster cache and lockfile handling.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Route client AI features through the Gateway so you can show a client exactly what each conversation cost. That feeds a usage-based retainer and gives you an early warning when Gemini 4 Argon&#x27;s price steps up Dec 1.</div>
+          <div class="refs"><a href="https://releasebot.io/updates/vercel" target="_blank" rel="noopener">Vercel release notes</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Hardware and markets</h2>
+        <article class="story">
+          <div class="story-head"><span class="tag breaking">Chips</span><span class="ver">Oct 19–20</span><h3>Korean chip stocks drop 4.3% as AI-funding doubts spread</h3></div>
+          <div class="story-body"><p>A market wrap shows KOSPI near 5,521 (-4.3%) with chipmakers under heavy pressure, Nikkei -1.4% and Hang Seng -1.3%, while the Nasdaq rose 1.1% in the US on Monday. The wrap ties the mood to AI-funding doubts and oil-driven rate fears. It is a market summary and not company-specific reporting.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Hardware and cloud pricing can swing with this. If a client quote includes GPUs or hosted inference, price it with a margin and a re-quote clause.</div>
+          <div class="refs"><a href="https://nordfx.com/market-news/market-pulse-october-20-2026" target="_blank" rel="noopener">Market Pulse, Oct 20</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits"><ul>
+          <li><span class="tag fix qh-tag">Windows</span><span class="txt">October Patch Tuesday included CVE-2026-96951, a Windows Shell Mark-of-the-Web bypass (CVSS 8.8) that Microsoft confirmed was exploited in the wild. Secondary source; check Microsoft before acting. <a href="https://www.penligent.ai/hackinglabs/es/?p=7758" target="_blank" rel="noopener">source ↗</a> <span class="ver">Oct 13</span></span></li>
+          <li><span class="tag improve qh-tag">Tailwind</span><span class="txt">Tailwind CSS v4.3.2 is the latest tracked release, with auto-rows and auto-cols fixes (aggregator, date approximate). <a href="https://releases.sh/tailwind-css" target="_blank" rel="noopener">source ↗</a> <span class="ver">~Oct</span></span></li>
+          <li><span class="tag improve qh-tag">Supabase</span><span class="txt">Supabase status page moved to incident.io on Oct 8; SMS and webhook alerts are gone and RSS/Slack subscriptions must be recreated. <a href="https://releasebot.io/updates/supabase" target="_blank" rel="noopener">source ↗</a> <span class="ver">Oct 8</span></span></li>
+        </ul></div>
+      </div>
+    </section>
+    <div class="byline" style="margin-top:40px"><span>◆ End of briefing</span><span>◆</span><span>Sources are linked inline. Verify anything load-bearing before acting.</span></div>
+  </main>
+  <footer class="site-foot"><div class="wrap"><span><a href="../../">← All briefings</a></span><span>Scouted &amp; written by the TSD agent ◆ Built to own</span></div></footer>
+</body>
+</html>

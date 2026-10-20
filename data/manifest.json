@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-20",
+    "title": "Stocks rebound Monday after a rough week as oil near $110 keeps rate fears alive",
+    "summary": "The Nasdaq rose 1.1% Monday after its worst week since June, Brent crude sits near $110, and a Fed decision on Oct 27–28 and a heavy earnings stretch are next.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-20.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.304 fixes a --worktree exit bug that could delete unpushed commits, unbreaks sandboxing for Next.js [param] route folders, adds a guided /auto-mode-setup, and gives Code Review Quick/Standard/Deep levels.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-20.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-20",
+    "title": "OpenAI chases a $30B round before Anthropic&#x27;s November IPO, Anthropic eyes a $45B compute deal, and big sites start blocking AI agents",
+    "summary": "Reuters reports OpenAI is racing to close $30B at a $1.4T+ valuation ahead of Anthropic&#x27;s mid-November IPO, Bloomberg says Anthropic is in talks for a second ~$45B compute deal, and Amazon, Yelp and Delta have joined banks in blocking third-party AI agents.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-20.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-20",
+    "title": "Sell the Next.js patch sprint now, then turn it into a retainer; AI cost audits and agent-access checks follow",
+    "summary": "Five ranked moves for Nash: a fixed-price Next.js security patch sprint (best bet), an AI spend and key-hygiene audit, an agent-access check for client sites, TSD Front Desk for Charlotte firms holding off on hires, and a niche briefing service.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-10-20.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-20",
+    "title": "Next.js 16.4.2 lands on top of the October RCE fixes, Supabase retires old TLS ciphers Nov 10, and Korean chip stocks drop 4.3%",
+    "summary": "Next.js 16.4.2 shipped Oct 16 (the security fixes remain in 16.4.1 and 15.5.28), Supabase will retire four TLS 1.2 CBC ciphers from Nov 10 and drop its Hono/H3/Elysia/NestJS adapters Dec 1, and KOSPI fell 4.3% on chipmaker pressure.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-20.html"
   },
   {
     "source": "america",
