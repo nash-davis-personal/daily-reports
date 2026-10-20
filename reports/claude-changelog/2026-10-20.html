@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-20" />
+  <meta name="report:title" content="2.1.304 stops --worktree from silently deleting your commits" />
+  <meta name="report:summary" content="Claude Code 2.1.304 fixes a --worktree exit bug that could delete unpushed commits, unbreaks sandboxing for Next.js [param] route folders, adds a guided /auto-mode-setup, and gives Code Review Quick/Standard/Deep levels." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.304 stops --worktree from silently deleting your commits — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, October 20, 2026</span>
+        <span>◆</span><span>1 release: 2.1.304</span>
+      </div>
+      <h1>2.1.304 stops --worktree from silently deleting your commits</h1>
+      <p class="standfirst">Update today if you use worktrees or the sandbox. The biggest item is a fix: <code>claude --worktree</code> could remove its worktree and branch at exit without asking, losing commits, and sandboxed commands on Linux broke on bracketed folder names like Next.js <code>[user-id]</code> routes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.303 (filed 2026-10-19): 2.1.304, dated October 19, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10</div><div class="lbl">Added</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">Improvements</div></div>
+      <div class="stat"><div class="num">43</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>--worktree commit-loss bug fixed</h4><p>Exit no longer removes the worktree and branch without asking when HEAD was detached or on another branch.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Sandbox works with [param] folders</h4><p>Linux sandboxed commands no longer fail when a <code>denyRead</code> glob hits a bracketed route folder.</p></div>
+        <div class="signal"><div class="n">03</div><h4>/auto-mode-setup</h4><p>Guided setup reads your project and recent sessions to teach auto mode about your environment.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Code Review gets depth levels</h4><p>Quick, Standard or Deep per org, with per-repo overrides, plus an "every repo" option.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Headless runs respect --max-turns again</h4><p>A plugin can no longer keep a <code>-p</code> run going past its limit by spawning subagents.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes that protect your repo</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.304</span>
+            <h3><code>claude --worktree</code> could delete a worktree and its branch at exit</h3>
+          </div>
+          <div class="story-body">
+            <p>Per the changelog, <code>claude --worktree</code> removed the worktree and its branch without asking at exit when HEAD was detached or on another branch, "which could lose commits." That is now fixed. This follows a similar 2.1.301 fix for worktrees made by a <code>WorktreeCreate</code> hook.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update before your next parallel-worktree session. If you've used <code>--worktree</code> recently and switched branches or checked out a commit inside one, run <code>git reflog</code> in the main repo to confirm nothing went missing.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.304</span>
+            <h3>Sandbox no longer chokes on Next.js dynamic-route folders</h3>
+          </div>
+          <div class="story-body">
+            <p>On Linux, sandboxed commands failed to start when a <code>sandbox.filesystem.denyRead</code> glob contained brackets that aren't a character class. The changelog's own example is a <code>[user-id]</code> route folder. Separately, <code>rm -r</code> of a mounted drive or top-level mount folder (<code>/Volumes</code>, <code>/media</code>, WSL's <code>/mnt/c</code>) now gets the same safety prompt as <code>rm -rf /Applications</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every Next.js App Router client build has bracketed folders. If you turned the sandbox off for a client repo because it broke, especially in Linux cloud or CI sessions, turn it back on and retest.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Automation and agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.304</span>
+            <h3><code>/auto-mode-setup</code> teaches auto mode about your environment</h3>
+          </div>
+          <div class="story-body">
+            <p>A guided setup that reads your project and recent sessions so auto mode knows your environment. It's also available on Bedrock, Vertex, Foundry, the Claude apps gateway and telemetry-disabled sessions. Auto mode session files also get smaller because the safety classifier's context is no longer stored with every request.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run it once in each active client repo (Bisque, Studio C, Sonderwerks). Fewer needless classifier blocks means fewer stalled unattended runs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 added and improvements</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.304</span>
+            <h3>Headless and scheduled runs are better behaved</h3>
+          </div>
+          <div class="story-body">
+            <p>A plugin could keep a headless run going past <code>--max-turns</code>, Stop, or ended input by spawning subagents or re-running a finished one. That's fixed. Self-paced <code>/loop</code> wakeups set at the 1-hour maximum fired just after the 1-hour prompt cache expired, which meant an uncached re-read each time. That's fixed too. Other changes: responsiveness and throughput are better with many subagents running at once, subagents no longer forget their latest work when messaged right after finishing, and resuming large compacted sessions in SDK and headless mode is faster.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Nash OS hub jobs run headless. The <code>--max-turns</code> fix caps runaway cost on any job with plugins loaded. Hourly <code>/loop</code> jobs should cost less per tick with no changes from you.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 bug fixes and improvements</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Code Review and usage</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.304</span>
+            <h3>Code Review: Quick / Standard / Deep, and org-wide coverage</h3>
+          </div>
+          <div class="story-body">
+            <p>Owners pick a review level for the organization (Standard is the default), and individual repositories can have their own. A new admin option reviews every repository in a GitHub organization, including ones added later. PRs opened within a minute or two of enabling Code Review were silently skipped. They are now retried.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set Deep on the client repos where a bug costs you money (booking and payment flows) and Quick on internal tooling. Turn on "every repo" so new client repos are covered without you remembering to opt them in.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.304</span>
+            <h3>Warning before an expensive resume on Pro and Max</h3>
+          </div>
+          <div class="story-body">
+            <p>Resuming an inactive conversation now warns you when it would use a noticeable share of your 5-hour usage limit. You can resume anyway, or start a new conversation where Claude can look up the old one if you refer to it. Related: <code>CLAUDE_CODE_AUTO_COMPACT_WINDOW=200k</code> silently set a 100K window. It now accepts <code>k</code> and <code>M</code> suffixes and warns on bad values.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When the warning shows, take the new-conversation option. Resuming a cold client session re-reads the whole context at full price. If you set the auto-compact window with a <code>k</code> suffix, check that you've been getting the window you asked for.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.304 added and bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>/claude-api managed-agents-secure</code> compares a Managed Agents agent's settings against Anthropic's published security guide without changing anything <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Mods: <code>decider: "person"</code> on <code>tool.check</code> forces a human approval, and <code>e.isReadOnly</code> flags read-only tool calls <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Compaction now resends the skill list afterwards; <code>/reload-skills</code> sends only new or changed skills <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Tool search is on by default behind a custom <code>ANTHROPIC_BASE_URL</code>, with a retry without it on a 400/422 <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">"(research preview)" label removed from the <code>/fast</code> dialog on Opus 5.5 <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">VS Code: background subagents show as one status line under their Agent card; full transcript stays in /tasks <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Unsandboxed Bash in Claude Desktop's Code tab now sees variables exported in <code>~/.zshrc</code> and other startup files <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A PreToolUse hook's deny reason is no longer replaced by a timeout error from an SDK callback hook on the same call <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Agent teams: approving a shutdown request from the main session no longer exits the whole CLI <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">VS Code: SessionStart hook time no longer counts toward the 60-second startup limit (up to 10 minutes total) <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>context_management: Extra inputs are not permitted</code> errors behind LLM gateways are now retried without that field <span class="ver">2.1.304</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plus ~30 more fixes across Remote Control, Cowork cloud sessions, Claude Tag, the transcript view and <code>--help</code> text; see the source <span class="ver">2.1.304</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
