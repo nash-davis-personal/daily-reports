@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-21" />
+  <meta name="report:title" content="2.1.305 stops Workflow resume from re-running finished agents" />
+  <meta name="report:summary" content="Claude Code 2.1.305 and 2.1.306 fix Workflow resume re-running completed agents, a 2.1.304 regression that broke every request behind gateways, and a fake prompt-is-too-long error in MCP-heavy sessions, and add a sandbox option that lets Chromium run." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.305 stops Workflow resume from re-running finished agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, October 21, 2026</span>
+        <span>◆</span><span>2 releases: 2.1.305, 2.1.306</span>
+      </div>
+      <h1>2.1.305 stops Workflow resume from re-running finished agents</h1>
+      <p class="standfirst">Update if you run multi-agent workflows, MCP-heavy sessions, or anything behind Bedrock, Vertex or a gateway. 2.1.305 stops Workflow resume from re-running agents that already finished and repairs a 2.1.304 regression that failed every request behind some gateways; 2.1.306 unmasks a bogus &ldquo;prompt is too long&rdquo; error.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.304 (filed 2026-10-20). The changelog page shows no release dates</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Releases</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Added</div></div>
+      <div class="stat"><div class="num">24</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Workflow resume uses its journal</h4><p>Resuming a run no longer re-runs <code>pipeline()</code> and <code>parallel()</code> agents that already finished.</p></div>
+        <div class="signal"><div class="n">02</div><h4>2.1.304 gateway regression fixed</h4><p>Requests stopped failing on Vertex, Bedrock and gateways that reject or exclude tool search.</p></div>
+        <div class="signal"><div class="n">03</div><h4>No more fake &ldquo;prompt is too long&rdquo;</h4><p>Sessions with many MCP tools were showing that error in place of the real API error and compacting for no reason.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Sandbox can run Chromium on Linux</h4><p>New <code>sandbox.allowNestedUserNamespaces</code>, with a stated cost to the sandbox's file protections.</p></div>
+        <div class="signal"><div class="n">05</div><h4>/usage tells you the fix</h4><p>Each warning is now a one-line fix naming its source; press <code>f</code> to apply.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents and unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.305</span>
+            <h3>Workflow resume no longer pays twice for finished agents</h3>
+          </div>
+          <div class="story-body">
+            <p>Resuming a Workflow run re-ran <code>pipeline()</code> and <code>parallel()</code> agents that had already completed, instead of serving their results from the run's journal. That's fixed. Separately, scheduled Cowork cloud sessions had more cases fixed where each subagent waited five minutes on a WebFetch URL approval nobody was there to give.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you resumed a killed or edited multi-agent workflow recently and the token bill looked high, this is why. Update before the next resume; the journal-based resume now works the way it's documented.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 bug fixes</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.306</span>
+            <h3>MCP-heavy sessions stop reporting the wrong error</h3>
+          </div>
+          <div class="story-body">
+            <p>In sessions with many MCP tools, a real API error was replaced by &ldquo;prompt is too long&rdquo; and triggered a compaction that wasn't needed. 2.1.306 also fixes <code>claude -p</code> inside cloud sessions reporting &ldquo;Not logged in&rdquo; when started without the session's environment variables.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a client repo with several MCP servers (Supabase, Vercel, browser tools) kept compacting early or died with &ldquo;prompt is too long&rdquo;, that was likely a masked error. Re-run it on 2.1.306 and read the actual error before trimming MCP servers.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.306</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.305</span>
+            <h3>Unattended retry mode notices lifted usage limits</h3>
+          </div>
+          <div class="story-body">
+            <p>New <code>CLAUDE_CODE_RETRY_WATCHDOG_USAGE_LIMIT_RECHECK_MS</code> lets unattended retry mode (<code>CLAUDE_CODE_RETRY_WATCHDOG</code>) re-check and notice a usage limit that was lifted before its reset time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Nash OS hub jobs run unattended. If any use the retry watchdog, set this so a job resumes when limits lift early instead of sleeping until the scheduled reset.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Providers, sandbox and MCP config</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.305</span>
+            <h3>2.1.304 broke every request behind some gateways; 2.1.305 fixes it</h3>
+          </div>
+          <div class="story-body">
+            <p>A 2.1.304 regression made every request fail on Vertex, Bedrock and other providers when the endpoint or a gateway rejected tool search, and behind gateways where ToolSearch was disallowed or left out of <code>--tools</code>. Claude Code now retries without it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you run anything through Bedrock, Vertex or a custom <code>ANTHROPIC_BASE_URL</code> (including any client setup you've wired that way), skip 2.1.304 and go straight to 2.1.305 or later.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 bug fixes</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.305</span>
+            <h3><code>sandbox.allowNestedUserNamespaces</code> lets Chromium run sandboxed on Linux</h3>
+          </div>
+          <div class="story-body">
+            <p>Sandboxed commands on Linux can now create user namespaces, which Chromium and rootless podman need. The changelog says plainly that this lets them get around the sandbox's file protections.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful for Playwright or headless-Chrome checks on client sites in Linux cloud or CI sessions. Turn it on only in repos where you'd accept a weaker sandbox, and leave it off everywhere else.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 added</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.305</span>
+            <h3><code>allowedMcpServers</code> can now let a previously blocked server load</h3>
+          </div>
+          <div class="story-body">
+            <p><code>allowedMcpServers</code> stops filtering <code>managed-mcp.json</code> stdio servers that use <code>${VAR}</code> only in <code>env</code>. A server your allowlist left out now loads on upgrade; use <code>deniedMcpServers</code> to keep it off.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Only matters if you use managed MCP config. If you do, check what loads after upgrading and add explicit denies for anything that shouldn't.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Usage and Code Review</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.305</span>
+            <h3><code>/usage</code> warnings become one-key fixes</h3>
+          </div>
+          <div class="story-body">
+            <p>Each <code>/usage</code> warning is now a one-line fix that names its source, and pressing <code>f</code> applies the fixes. The same fixes show up in VS Code and <code>/doctor</code>. Rows also no longer get cut off in narrow terminals.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>/usage</code> once on your main machine and apply what it suggests. Cheap way to find config that's burning tokens across every client project.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 improvements</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.305</span>
+            <h3>Code Review re-reviews stop saying LGTM with blockers open</h3>
+          </div>
+          <div class="story-body">
+            <p>Re-reviews no longer open with LGTM while earlier blocking findings are still open. Code Review also now reviews the newest commit when several pushes land on a PR during a review.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you use Code Review on client PRs, a re-review LGTM now means more. Still read the findings list before merging, since earlier re-reviews could have been misleading.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.305 changed and bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">New worktrees in a bare repository no longer sometimes start from local HEAD instead of the default branch; unchanged subagent worktrees get cleaned up <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/effort</code> and <code>/autocompact</code> now apply when the model name differs from a <code>modelOverrides</code> value by case or a <code>[1m]</code> tag <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An MCP server passed by a cloud session or the SDK's <code>setMcpServers</code> is no longer replaced by a same-named server from your own settings <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bash on a full disk now says the disk is full and that nothing ran, instead of a raw <code>ENOSPC</code> path <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude now names the right model for a subagent's work after the subagent switched to a fallback model <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud sessions and teammates now tell Claude when compaction had to drop the oldest messages from its summary <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner: three fixes, including repository access broken since 2.1.296 when a git credential helper reads settings through <code>GIT_CONFIG</code> <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Tag: Slack-thread routines no longer report success without posting, and DM-thread routines keep posting after another routine restarts the conversation <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>/artifacts</code> delete confirmation now takes 1/Enter to keep, 2 to delete, Esc to cancel; <code>y</code>/<code>n</code> no longer work <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">MCP consent dialogs are less likely to take an Enter meant for the prompt as Accept <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Startup warnings go to the debug log instead of printing raw above the logo <span class="ver">2.1.305</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">VS Code shows a &ldquo;Running start-up hooks&rdquo; spinner while SessionStart or Setup hooks run <span class="ver">2.1.305</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
