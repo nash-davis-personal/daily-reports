@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-21" />
+  <meta name="report:title" content="Gemini 4 Argon undercuts Claude on price until Dec 1, Meta ships a big open-weight model, and DeepSeek makes search free inside Claude Code" />
+  <meta name="report:summary" content="Gemini 4 Argon is generally available at introductory API prices, Meta released Muse Spark Open weights, and DeepSeek updated V4.1 Flash with free search calls through Oct 31." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Gemini 4 Argon undercuts Claude on price until Dec 1, Meta ships a big open-weight model, and DeepSeek makes search free inside Claude Code — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, October 21, 2026</span>
+        <span>◆</span><span>Models, agents, pricing</span>
+      </div>
+      <h1>Gemini 4 Argon undercuts Claude on price until Dec 1, Meta ships a big open-weight model, and DeepSeek makes search free inside Claude Code</h1>
+      <p class="standfirst">Three model launches from the last week change the cost math for AI features: Google priced Gemini 4 Argon low through November, Meta put a large open-weight model on every major cloud, and DeepSeek refreshed a very cheap one. Most of this was not in earlier editions, so it is rolled up here.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 13–21; items before Oct 20 were not in prior editions</span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">Model launches</div></div>
+      <div class="stat"><div class="num">$2 / $10</div><div class="lbl">Gemini 4 Argon per M tokens, to Nov 30</div></div>
+      <div class="stat"><div class="num">Oct 31</div><div class="lbl">DeepSeek free search window ends</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Gemini 4 Argon is GA</h4><p>Paid-tier API since Oct 13 at $2 in / $10 out per million tokens through Nov 30, then $4 / $20.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Meta Muse Spark Open</h4><p>About 816B parameters (42B active), 1M context, weights on Hugging Face and the big clouds, under a limited commercial license.</p></div>
+        <div class="signal"><div class="n">03</div><h4>DeepSeek V4.1 Flash-1017</h4><p>Same API price, MIT weights, shorter outputs. Search and Fetch APIs are free via Claude Code and Codex until Oct 31.</p></div>
+        <div class="signal"><div class="n">04</div><h4>OpenAI round still open</h4><p>Reports say OpenAI wants $30B before Anthropic lists in mid-November. Neither company has confirmed terms.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and pricing</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Model</span>
+            <span class="ver">Oct 13</span>
+            <h3>Gemini 4 Argon reaches general availability with a discount that expires Dec 1</h3>
+          </div>
+          <div class="story-body">
+            <p>Google made <code>gemini-4-argon</code> generally available on the paid Gemini API tier and in AI Studio. Secondary coverage reports introductory pricing of $2 per million input tokens and $10 per million output tokens through Nov 30, rising to $4 and $20 on Dec 1. It is not on the free tier. I could not reach Google's own pricing page, so confirm the numbers there before quoting a client.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a client feature is cost-sensitive, run your eval set against Argon before Dec 1 and price the project on the post-discount rate, not the promo one.</div>
+          <div class="refs"><a href="https://letsdatascience.com/news/gemini-4-argon-undercuts-claude-on-price-73027210" target="_blank" rel="noopener">Pricing coverage ↗</a> <a href="https://dev.to/hassann/gemini-4-argon-is-out-5cpp" target="_blank" rel="noopener">DEV writeup ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Open weights</span>
+            <span class="ver">Oct 15</span>
+            <h3>Meta releases Muse Spark Open, its strongest open-weight model</h3>
+          </div>
+          <div class="story-body">
+            <p>The model has roughly 816B total parameters with about 42B active per token and a context window up to 1M tokens. Weights are on Hugging Face, Amazon SageMaker AI, Google Cloud Model Garden and Microsoft Foundry. Meta's model-card numbers show it leading on MCP-Atlas (89.2) and trailing Kimi K3 on Terminal-Bench 2.1 (76.4 vs 85.0). The license is the Muse Model License, which has limited commercial terms, and Meta says a full evaluation report is still coming.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Read the license before you pitch "self-hosted, you own it" to a client. It is useful as a price check against hosted models, not yet as a default.</div>
+          <div class="refs"><a href="https://www.eesel.ai/blog/meta-muse-spark-open-review" target="_blank" rel="noopener">Review ↗</a> <a href="https://siliconangle.com/?p=850737" target="_blank" rel="noopener">SiliconANGLE ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Pricing</span>
+            <span class="ver">Oct 17</span>
+            <h3>DeepSeek V4.1 Flash-1017 keeps its price; Search and Fetch APIs go GA</h3>
+          </div>
+          <div class="story-body">
+            <p>The snapshot update keeps the <code>deepseek-flash</code> name and token prices ($0.15 in / $0.60 out off-peak, $0.30 / $1.20 at peak) and ships MIT-licensed weights. DeepSeek says outputs are shorter and tasks finish faster. Its Search and Fetch APIs cost $0.75 per 1,000 calls per endpoint, and calls made through server-side tools in DeepSeek Harness, Claude Code and Codex are free until Oct 31, 16:00 UTC.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Cheap model plus free search through Oct 31 makes a good test bed for the research-style features in TSD Concierge. Vercel AI Gateway already lists the model (see Technology).</div>
+          <div class="refs"><a href="https://api-docs.deepseek.com/news/news261017" target="_blank" rel="noopener">DeepSeek announcement ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money and markets</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Funding</span>
+            <span class="ver">Oct 19–21</span>
+            <h3>OpenAI is reported to be chasing $30B at above $1.4T before Anthropic's IPO</h3>
+          </div>
+          <div class="story-body">
+            <p>Reuters-sourced reports say SoftBank and MGX are in talks, and that OpenAI told investors annualized revenue is about $50 billion. The same coverage puts Anthropic's Q3 revenue at $16.8 billion versus $11.6 billion in Q2 and says some investors want a listing valuation near $1.5T. All of it is unnamed-source reporting; neither company has confirmed terms.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Capital is flowing into frontier labs while AI stocks wobble. Client AI budgets are not affected today, but vendor pricing power is worth watching into November.</div>
+          <div class="refs"><a href="https://qz.com/openai-30-billion-funding-round-anthropic-ipo-102026" target="_blank" rel="noopener">Quartz ↗</a> <a href="https://thenextweb.com/news/openai-30bn-round-before-anthropic-ipo" target="_blank" rel="noopener">TNW ↗</a></div>
+        </article>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Open</span><span class="txt">Tencent released Hy Memory 2.0 on Oct 16: an open-source memory-writer model (30B total, about 3B active) plus a framework for chat, work and code memories. Weights on Hugging Face. Worth a look for RAG assistants that need long-term memory.</span></li>
+            <li><span class="tag new qh-tag">Open</span><span class="txt">InclusionAI published full materials for Ling 3.1 Flash on Oct 16: 560B MoE, 25B active, MIT-licensed fp8 weights, with vLLM and SGLang recipes.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

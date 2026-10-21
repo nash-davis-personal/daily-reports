@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-21",
+    "title": "Dow gains about 1% as oil and yields ease; Fed meets next week, and new SBA acquisition-loan rules are live",
+    "summary": "Stocks rose Tuesday with Brent near $109 and the 10-year near 5.1%, the Fed meets Oct 27–28, and SBA 7(a) acquisition loans now need stricter underwriting.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-21.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.305 and 2.1.306 fix Workflow resume re-running completed agents, a 2.1.304 regression that broke every request behind gateways, and a fake prompt-is-too-long error in MCP-heavy sessions, and add a sandbox option that lets Chromium run.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-21.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-21",
+    "title": "Gemini 4 Argon undercuts Claude on price until Dec 1, Meta ships a big open-weight model, and DeepSeek makes search free inside Claude Code",
+    "summary": "Gemini 4 Argon is generally available at introductory API prices, Meta released Muse Spark Open weights, and DeepSeek updated V4.1 Flash with free search calls through Oct 31.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-10-21.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-21",
+    "title": "Patch Next.js sites now and sell the care plan; audit AI costs while Gemini Argon is on promo",
+    "summary": "Six ranked moves led by a Next.js patch sprint that converts to a retainer, plus AI cost audits, a Supabase deadline check and local Front Desk outreach.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-21.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-21",
+    "title": "Still patching Next.js? Get to 16.4.1 or 15.5.28 today; Micron and TSMC point to tight chip supply through 2028",
+    "summary": "The Oct 14 Next.js RCE fixes remain the action item, Supabase has Nov 10 and Dec 1 deadlines, and chip-capacity news says memory and advanced nodes stay tight.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-21.html"
   },
   {
     "source": "america",

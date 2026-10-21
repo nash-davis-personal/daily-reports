@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-21" />
+  <meta name="report:title" content="Still patching Next.js? Get to 16.4.1 or 15.5.28 today; Micron and TSMC point to tight chip supply through 2028" />
+  <meta name="report:summary" content="The Oct 14 Next.js RCE fixes remain the action item, Supabase has Nov 10 and Dec 1 deadlines, and chip-capacity news says memory and advanced nodes stay tight." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Still patching Next.js? Get to 16.4.1 or 15.5.28 today; Micron and TSMC point to tight chip supply through 2028 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232dd4bf'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, October 21, 2026</span>
+        <span>◆</span><span>Dev tools, security, chips</span>
+      </div>
+      <h1>Still patching Next.js? Get to 16.4.1 or 15.5.28 today; Micron and TSMC point to tight chip supply through 2028</h1>
+      <p class="standfirst">There is no new advisory since yesterday, but the October Next.js and React fixes carry two critical remote code execution bugs, so any unpatched client site is still exposed. The hardware news is about capacity: Micron expects tight memory supply in fiscal 2027 and 2028.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 14–21; stack items repeated from Oct 20 where a deadline is open</span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Critical RCEs in the Oct 14 Next.js release</div></div>
+      <div class="stat"><div class="num">Nov 10</div><div class="lbl">Supabase old TLS ciphers removed</div></div>
+      <div class="stat"><div class="num">Dec 1</div><div class="lbl">Supabase adapter removal</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Next.js</h4><p>Oct 14 release fixes two critical RCEs and one high DoS. Fixed in 16.4.1 and 15.5.28; 16.4.2 followed.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase deadlines</h4><p>CBC TLS 1.2 ciphers go no earlier than Nov 10; Hono, H3, Elysia and NestJS adapters in @supabase/server go Dec 1.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase agent guide</h4><p>Oct 20 post on checking production with a coding agent.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Memory stays tight</h4><p>Micron opened a second Taichung packaging plant Oct 15 and expects tight supply in fiscal 2027–28.</p></div>
+        <div class="signal"><div class="n">05</div><h4>TSMC capacity fight</h4><p>CNBC reports Nvidia, Apple and Broadcom competing hard for TSMC chip capacity.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 14</span>
+            <h3>Next.js and React: critical RCEs in <code>use cache</code> and SVG image optimization</h3>
+          </div>
+          <div class="story-body">
+            <p>Netlify's writeup lists a critical RCE in <code>use cache</code> functions returning typed arrays (GHSA-673q-mjm6-r5xr, Next.js 16.x with Cache Components), a critical RCE in Image Optimization with SVG files (GHSA-2464-fhr4-w9xw, CVE-2026-96889) and a high-severity Server Actions DoS (GHSA-p3m5-59mp-jv5r, App Router 13.x–16.x with at least one Server Action). Fixed versions are 15.5.28 and 16.4.1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch now. Run <code>npm ls next</code> on every client repo, bump to 16.4.1 or later (15.5.28 on the 15.x line), redeploy, and log it. See the Money Moves brief for how to turn this into a retainer.</div>
+          <div class="refs"><a href="https://netlify.com/changelog/2026-10-14-nextjs-react-security-vulnerabilities" target="_blank" rel="noopener">Netlify advisory writeup ↗</a> <a href="https://nextjs.org/blog/upcoming-nextjs-security-update-october-2026" target="_blank" rel="noopener">Next.js heads-up ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Supabase</span>
+            <span class="ver">Oct 12–20</span>
+            <h3>Supabase: cipher retirement, adapter removal, and a production-check guide</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase will disable an older subset of TLS 1.2 (CBC-mode) ciphers on project HTTP APIs no earlier than Nov 10, and is contacting affected project owners directly. The Hono, H3, Elysia and NestJS adapters in <code>@supabase/server</code> are deprecated and will be removed on Dec 1. A blog post dated Oct 20 covers checking production systems with a coding agent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Grep client code for the deprecated adapters this week. Old HTTP clients or legacy devices on a client project could break on Nov 10.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a> <a href="https://supabase.com/blog" target="_blank" rel="noopener">Supabase blog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and hardware</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Memory</span>
+            <span class="ver">Oct 15</span>
+            <h3>Micron opens a second advanced packaging plant in Taichung</h3>
+          </div>
+          <div class="story-body">
+            <p>Digitimes reports Micron opened AATT2 to expand HBM packaging and testing. Micron expects memory and storage supply to tighten substantially in fiscal 2027 and 2028 and has agreements covering most of its 2027 HBM bit supply. A Singapore HBM packaging site should begin initial output in early 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect hardware, GPU-hosting and RAM-heavy dev machine prices to stay high. Favor hosted inference over buying hardware.</div>
+          <div class="refs"><a href="https://www.digitimes.com/news/a20261019VL200/2026-capacity-fab-production-intel.html" target="_blank" rel="noopener">Digitimes roundup ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Foundry</span>
+            <span class="ver">Oct 15–19</span>
+            <h3>TSMC capacity is contested and Intel 18A is in mass production</h3>
+          </div>
+          <div class="story-body">
+            <p>CNBC reports Nvidia, Apple and Broadcom are in a "fierce" battle for TSMC capacity. Japan approved revised Kumamoto plans with subsidies up to JPY645.15 billion, switching the second fab to 3nm with first shipments in Q4 2028. Digitimes says Intel's 18A process has entered mass production. A report of roughly 10% Intel and AMD price hikes comes from a single source and is unconfirmed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Background for client conversations about AI cost: compute supply is the constraint, so per-token discounts like Gemini Argon's promo may not last.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/10/15/nvidia-apple-broadcom-in-fierce-battle-to-make-chips-at-tsmc.html" target="_blank" rel="noopener">CNBC ↗</a></div>
+        </article>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Vercel</span><span class="txt">Vercel AI Gateway added DeepSeek V4.1 Flash and per-session cost (covered Oct 20).</span></li>
+            <li><span class="tag new qh-tag">Tailwind / React</span><span class="txt">No Tailwind or standalone React release news turned up this cycle.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
