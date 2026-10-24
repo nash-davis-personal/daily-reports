@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-24" />
+  <meta name="report:title" content="2.1.307 stops HTTP MCP tool calls from firing twice" />
+  <meta name="report:summary" content="Claude Code 2.1.307 through 2.1.310 stop HTTP MCP calls from being sent twice on a dropped connection, close a sandbox hole where shell startup files ran unsandboxed, keep bypass-mode Desktop sessions moving past dangerous rm prompts, and move the /claude-api skill to API version 2026-10-21." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.307 stops HTTP MCP tool calls from firing twice — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, October 24, 2026</span>
+        <span>◆</span><span>2.1.307 → 2.1.310</span>
+      </div>
+      <h1>2.1.307 stops HTTP MCP tool calls from firing twice</h1>
+      <p class="standfirst">If an HTTP MCP connection dropped mid-call, Claude Code used to resend the call, which for a write tool meant doing it twice. That is fixed, and 2.1.309 also closes a sandbox gap and changes how bypass mode handles dangerous <code>rm</code> in the Desktop app, which is where your scheduled runs live.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases dated Oct 21 to Oct 23, 2026, after the 2.1.306 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">Releases</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Added</div></div>
+      <div class="stat"><div class="num">102</div><div class="lbl">Listed bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>HTTP MCP calls no longer double-send</h4><p>Only read-only or idempotent tools are retried after a dropped connection now (2.1.307). Update before running any MCP write against a client system.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Sandbox gap closed</h4><p>Sandboxed Bash on macOS and Linux was running shell startup files outside the sandbox before each command (fixed in 2.1.309), plus a batch of permission-check holes.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Bypass mode stops stalling on rm</h4><p>In the Desktop app and VS Code, the dangerous <code>rm</code>/<code>rmdir</code> prompt now denies at once with a rewrite hint so unattended sessions keep going (2.1.309).</p></div>
+        <div class="signal"><div class="n">04</div><h4>/claude-api moves to API 2026-10-21</h4><p>New <code>/claude-api api-version</code> migrates code (2.1.307), and Managed Agents teams now build on <code>multiagent_20261001</code> (2.1.309).</p></div>
+        <div class="signal"><div class="n">05</div><h4>Fewer dead turns in long runs</h4><p>Unparseable tool calls get two retries, parallel forks know which launch is theirs, and dense-text compaction no longer re-fails.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> MCP and client-system safety</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.307</span>
+            <h3>HTTP MCP tool calls were sent twice when the connection closed mid-call</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog says HTTP MCP tool calls could go out twice when the connection closed partway through. The fix limits automatic retries to read-only or idempotent tools. The same release fixes MCP servers reported as timed out (and left failed in headless runs) when a Mac slept while they were connecting, and servers showing "needs authentication" in <code>claude -p</code> while the macOS login keychain was locked.</p>
+            <p>2.1.310 adds a related change: when an MCP call times out in a non-interactive session because the server's elicitation went unanswered, Claude is now told no answer came and not to repeat the call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run Square, Supabase, Vapi and Vercel through MCP. A doubled write there is a duplicate catalog item, a second outbound call or a repeated migration. Make sure both Macs are on 2.1.307 or later, and if anything odd showed up in a client system after a flaky-network session this month, check for duplicates.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.307, 2.1.310</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.309</span>
+            <h3>Sandboxed Bash ran shell startup files outside the sandbox</h3>
+          </div>
+          <div class="story-body">
+            <p>On macOS and Linux, sandboxed Bash commands ran the shell's startup files outside the sandbox before each command. 2.1.309 fixes that along with a cluster of related holes: sandboxed commands and auto-accepted edits could modify the file passed with <code>--mcp-config</code>; macOS <code>denyWrite</code> globs missed paths reached through a symlink; an <code>Edit(path)</code> deny rule could be bypassed with a Bash redirect inside a subshell; some compound <code>cd</code>-then-git commands skipped the prompt; and worktree isolation accepted some locale-prefixed and zsh arithmetic commands it should refuse.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your zsh startup files load real tokens and PATH tweaks, so this one matters on your machines specifically. Nothing to change in config; just update. If you rely on deny rules to keep agents away from client <code>.env</code> files, this release is what makes those rules hold.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.309 bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and agents</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Changed</span>
+            <span class="ver">2.1.309</span>
+            <h3>Bypass mode now denies dangerous rm at once, and <code>sed -i</code> is a plain Bash edit</h3>
+          </div>
+          <div class="story-body">
+            <p>In bypass permissions mode in the Desktop app and VS Code, the dangerous <code>rm</code>/<code>rmdir</code> prompt now denies the command immediately with a rewrite hint, "so unattended sessions keep going." Separately, <code>sed -i</code> now gets the standard Bash prompt and runs as written instead of a simulated file-edit preview, and like other Bash edits it is no longer restored by <code>/rewind</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Scheduled tasks like this one run in bypass mode in the Desktop app, so a stray <code>rm -rf</code> now gets refused and rephrased instead of hanging the run until you see it. The <code>sed -i</code> change cuts the other way: if you lean on <code>/rewind</code> to undo agent edits on a client repo, edits made with <code>sed -i</code> won't come back. Commit before letting an agent loose.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.309 changed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.307 · 2.1.310</span>
+            <h3>Fewer turns lost to bad tool calls, fork mix-ups and compaction loops</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.307 retries an unparseable tool call up to twice before ending the turn, and tells each fork subagent launched together which launch is its own, so forks are "much less likely" to start each other's work. It also fixes some "Autocompact is thrashing" errors in turns that read many PDFs or images. 2.1.310 fixes compaction after a "Prompt is too long" error keeping too much dense text such as base64 or SVG, so the next request failed again.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> SVG-heavy site work and PDF-heavy client intake were the cases most likely to wedge a long session. Fan-out forks across Bisque, Studio C and Sonderwerks tasks should now stay in their lanes. No action beyond updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.307 improvements, 2.1.310 fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Building AI for clients</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.307 · 2.1.309</span>
+            <h3>/claude-api can migrate code to API version 2026-10-21 and builds agent teams on multiagent_20261001</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.307 adds <code>/claude-api api-version</code> to move Claude API code to API version <code>2026-10-21</code>. 2.1.309 changes the skill to build Managed Agents subagent teams on <code>multiagent_20261001</code> with dynamic workflows on by default, replacing <code>coordinator</code>. It also now checks the live docs before calling a feature unsupported, and offers API tracing alongside SDK tracing for OpenTelemetry.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client build that calls the Claude API (chat widgets, intake bots, the AI pieces of a modernization job) can be moved forward with one command; run it on a branch and read the diff. If you pitch a multi-agent back-office build, the scaffold the skill generates has changed, so old snippets in your notes may not match.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.307 added, 2.1.309 changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Changed</span><span class="txt"><code>claude ultrareview</code> now requires workspace trust; scripts must pass <code>--trust-workspace</code> or set <code>CLAUDE_CODE_DISABLE_ULTRAREVIEW_TRUST_CHECK=1</code>. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude no longer writes role names and placeholders as @-mentions in PRs and issues, which had been notifying unrelated GitHub users. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background cleanup no longer deletes recent files such as pasted images when <code>cleanupPeriodDays</code> is set very high. <span class="ver">2.1.310</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>claude_code.safety_event</code> OpenTelemetry event for every tool call stopped, prompted or sent back by a rule, auto mode, hook or sandbox. <span class="ver">2.1.307</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Code Review: <code>@claude review stop</code> (or <code>off</code>/<code>pause</code>) ends an <code>always</code> subscription on a PR. <span class="ver">2.1.307</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Sessions no longer compact repeatedly under a very large nested CLAUDE.md; an oversized one now loads only its start. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Plugins and skills synced from claude.ai no longer vanish mid-session after a disk read error. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Artifact publishes no longer refused for some ordinary pages, and no repeated permission asks after mid-turn compaction. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Desktop-hosted session messages no longer lost on a connection refresh. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Requests behind gateways that reject the <code>effort-2025-11-24</code> beta or mid-conversation system messages now retry without them. <span class="ver">2.1.310</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Monitor tool and plugin monitors now work on Bedrock, Vertex and Foundry and with telemetry off. <span class="ver">2.1.310</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">VS Code Edit/Write wait after each edit cut to 0.75s from 1 to 1.5s. <span class="ver">2.1.309</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">2.1.308 shipped as "Bug fixes and reliability improvements" with no detail. <span class="ver">2.1.308</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-24",
+    "title": "2.1.307 stops HTTP MCP tool calls from firing twice",
+    "summary": "Claude Code 2.1.307 through 2.1.310 stop HTTP MCP calls from being sent twice on a dropped connection, close a sandbox hole where shell startup files ran unsandboxed, keep bypass-mode Desktop sessions moving past dangerous rm prompts, and move the /claude-api skill to API version 2026-10-21.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-10-24.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
