@@ -91,7 +91,7 @@
           <div class="story-body">
             <p>On macOS and Linux, sandboxed Bash commands ran the shell's startup files outside the sandbox before each command. 2.1.309 fixes that along with a cluster of related holes: sandboxed commands and auto-accepted edits could modify the file passed with <code>--mcp-config</code>; macOS <code>denyWrite</code> globs missed paths reached through a symlink; an <code>Edit(path)</code> deny rule could be bypassed with a Bash redirect inside a subshell; some compound <code>cd</code>-then-git commands skipped the prompt; and worktree isolation accepted some locale-prefixed and zsh arithmetic commands it should refuse.</p>
           </div>
-          <div class="so-what"><b>So what for TSD:</b> Your zsh startup files load real tokens and PATH tweaks, so this one matters on your machines specifically. Nothing to change in config; just update. If you rely on deny rules to keep agents away from client <code>.env</code> files, this release is what makes those rules hold.</div>
+          <div class="so-what"><b>So what for TSD:</b> Anything your zsh startup files export (PATH tweaks, any keys you keep there) was in reach of commands you believed were sandboxed. Nothing to change in config; just update. If you rely on deny rules to keep agents away from client <code>.env</code> files, this release is what makes those rules hold.</div>
           <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.309 bug fixes</a></div>
         </article>
       </div>
