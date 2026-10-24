@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-24",
+    "title": "Stocks fall two days running as Brent tops $113; consumer sentiment stays near a record low going into Fed week",
+    "summary": "A tech-led drop Thursday and a 652-point Dow decline Friday came as oil hit its highest since May; final October consumer sentiment was 48.0, jobless claims stayed near multi-decade lows, and the Fed decides Oct 28.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-24.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.307 through 2.1.310 stop HTTP MCP calls from being sent twice on a dropped connection, close a sandbox hole where shell startup files ran unsandboxed, keep bypass-mode Desktop sessions moving past dangerous rm prompts, and move the /claude-api skill to API version 2026-10-21.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-10-24.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-24",
+    "title": "Claude Duet opens a waitlist, Agent Skills moves to a neutral foundation, and AI is finding bugs faster than anyone can patch them",
+    "summary": "Anthropic previewed Duet, a proactive agent for Pro and Max, and donated Agent Skills to the Agentic AI Foundation; AI-found flaws in PHP and Fortinet and an agent-driven supply-chain attack defined the week&#x27;s security story; OpenAI reportedly seeks $30B at $1.25T.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-24.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-24",
+    "title": "PHP2Shell left millions of small-business sites on unpatchable PHP. Check them, then offer the rebuild",
+    "summary": "Six moves ranked by fit: a PHP2Shell site check that opens rebuild deals, an agent-ready add-on built on Supabase's per-app MCP pattern, an approve-before-send Front Desk pitch, Claude Team setup with packaged Skills, a fuel-surcharge quote tool for trades, and short posts on AI-found bugs.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-24.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-24",
+    "title": "Patch Node.js and any PHP sites now; Supabase gives every app its own MCP server; chip stocks slide on AI spending fears",
+    "summary": "Node.js fixed ten CVEs including a Brotli RCE on Oct 21, PHP shipped emergency fixes for the PHP2Shell RCEs, Supabase published a pattern for per-app MCP servers scoped by RLS, and chipmakers led a Thursday Nasdaq drop of 2.6%.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-24.html"
   },
   {
     "source": "america",

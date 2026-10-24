@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-10-24" />
+  <meta name="report:title" content="Claude Duet opens a waitlist, Agent Skills moves to a neutral foundation, and AI is finding bugs faster than anyone can patch them" />
+  <meta name="report:summary" content="Anthropic previewed Duet, a proactive agent for Pro and Max, and donated Agent Skills to the Agentic AI Foundation; AI-found flaws in PHP and Fortinet and an agent-driven supply-chain attack defined the week&#x27;s security story; OpenAI reportedly seeks $30B at $1.25T." />
+  <meta name="report:highlights" content="6" />
+  <title>Claude Duet opens a waitlist, Agent Skills moves to a neutral foundation, and AI is finding bugs faster than anyone can patch them — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23a78bfa'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-23-2026/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Saturday, October 24, 2026</span>
+        <span>◆</span><span>Agents, security, money</span>
+      </div>
+      <h1>Claude Duet opens a waitlist, Agent Skills moves to a neutral foundation, and AI is finding bugs faster than anyone can patch them</h1>
+      <p class="standfirst">Anthropic shipped a background agent that drafts work across your apps and asks before it sends, pays or deletes. The bigger pattern this week: AI is now both the best bug finder and a working attack tool, and banks are scrambling to tell a customer from a customer's agent.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 21 to 24; Saturday was quiet</span>
+        <span>◆</span><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-23-2026/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">70+</div><div class="lbl">platforms on Agent Skills</div></div>
+      <div class="stat"><div class="num">123</div><div class="lbl">libraries Claude verified</div></div>
+      <div class="stat"><div class="num">$1.25T</div><div class="lbl">OpenAI reported pre-money</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Claude Duet preview</h4><p>A proactive agent on Opus 5.5 that works across connected apps and needs sign-off before it sends, pays, signs or deletes. US Pro and Max, waitlist.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Agent Skills goes neutral</h4><p>Anthropic donated the Skills standard to the Agentic AI Foundation, the same home as MCP. More than 70 agent platforms already read it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>AI bug hunting outruns patching</h4><p>PHP2Shell (patched Oct 21) and a Fortinet hardening release both credit AI-assisted discovery. Anthropic says Claude proved security properties across 123 libraries.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Agents as attackers</h4><p>Microsoft tied the ConnectWise supply-chain compromise to a China-aligned group running ARTEX, an LLM-driven pentest framework, against 2,250+ tenants.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Banks vs third-party agents</h4><p>Morgan Stanley and Bank of America are working to tell a customer's instruction from an agent acting past it.</p></div>
+        <div class="signal"><div class="n">06</div><h4>The money</h4><p>OpenAI reportedly negotiating up to $30B at $1.25T pre-money. Meta fell about 7% on its first negative free cash flow since its 2012 IPO.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Anthropic and the agent layer</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Launch</span>
+            <span class="ver">Oct 21</span>
+            <h3>Claude Duet: a background agent that asks before it acts</h3>
+          </div>
+          <div class="story-body">
+            <p>Duet runs on Claude Opus 5.5, watches connected apps like email and calendar, and prepares work such as scheduling and invoicing. It sends a morning brief and checks in every few hours, by text or voice. Anything that deletes, pays, signs or sends waits for approval. It is a research preview behind a waitlist for US Pro and Max subscribers on iOS, Android and claude.ai; Team and Enterprise are not included yet.</p><p>Background activity counts against the plan's usage limits, and there is no separate price. Anthropic says it can still misjudge what is urgent.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the consumer version of what TSD sells as a front desk. Join the waitlist on Nash's Max account, run it on TSD's own inbox and calendar for a week, and note exactly where the approve-before-send pattern saves time. That pattern is the pitch line for client builds.</div>
+          <div class="refs"><a href="https://www.theneuron.ai/news/claude-duet-work-human-review/" target="_blank" rel="noopener">The Neuron on Duet ↗</a> <a href="https://iphoneincanada.ca/2026/10/21/claude-duet-proactive-ai-agent-app" target="_blank" rel="noopener">iPhone in Canada ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Standard</span>
+            <span class="ver">Oct 23</span>
+            <h3>Agent Skills joins MCP at the Agentic AI Foundation</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic is donating the Agent Skills format to the Agentic AI Foundation, where it already placed the Model Context Protocol. Claude's developer account says more than 70 agent platforms have adopted Skills since December 2025, including ChatGPT, Cursor, GitHub Copilot and VS Code.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Skills Nash writes for TSD now travel to other agents, which makes a packaged client skill (intake, booking rules, brand voice) a portable deliverable. Write client playbooks as Skills by default.</div>
+          <div class="refs"><a href="https://x.com/ClaudeDevs/status/2113328526413996100" target="_blank" rel="noopener">Claude Devs on X ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Product</span>
+            <span class="ver">Next week</span>
+            <h3>Auto mode becomes the default on Claude Pro, Max and Team</h3>
+          </div>
+          <div class="story-body">
+            <p>Starting next week, auto mode is the default across web, desktop and mobile for Pro, Max and Team. Automated checks block risky actions, and users can switch back to manual approvals.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect fewer approval prompts in Nash's own sessions. If a client's staff use Claude Team for anything touching customer data, tell them about the switch and how to turn manual approvals back on.</div>
+          <div class="refs"><a href="https://x.com/claudeai/status/2113360845409583307" target="_blank" rel="noopener">Claude on X ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: AI finds the holes, and AI walks through them</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 21–23</span>
+            <h3>PHP2Shell and Fortinet show AI bug hunting has outpaced maintainers</h3>
+          </div>
+          <div class="story-body">
+            <p>Two critical PHP core flaws (CVE-2026-109618 and CVE-2026-109619, CVSS v4 9.2) were found with AI help by Calif, OpenAI and Wiz; PHP shipped fixes Oct 21. Fortinet pushed a hardening release Oct 22 crediting AI-assisted discovery by Anthropic, OpenAI, Google and SpaceX, with CVE details held until Nov 10. Separately, Anthropic published research using Claude to formally verify security properties across 123 open-source libraries, turning up bugs that had sat undetected for years.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Security audits are now cheap to run and expensive to ignore. A short AI-assisted dependency and config review is a sellable add-on to every TSD maintenance retainer.</div>
+          <div class="refs"><a href="https://wiz.io/blog/php2shell-php-rce" target="_blank" rel="noopener">Wiz on PHP2Shell ↗</a> <a href="https://www.anthropic.com/research/formal-verification" target="_blank" rel="noopener">Anthropic research ↗</a> <a href="https://cybernews.com/security/fortinet-critical-flaws-patches-november-disclosure/" target="_blank" rel="noopener">Cybernews on Fortinet ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Threat</span>
+            <span class="ver">Oct 21</span>
+            <h3>Microsoft: a China-aligned group used an agentic pentest tool in the ConnectWise compromise</h3>
+          </div>
+          <div class="story-body">
+            <p>Microsoft attributes the ConnectWise supply-chain compromise to Storm-0940, which used ARTEX, an LLM-driven penetration-testing framework, to automate activity and abuse application credentials across Microsoft 365 environments. CyberScoop puts the targeted tenants above 2,250; Microsoft did not say how many were compromised. The Neuron also flagged a researcher who found one attacker using agents to break into more than 100 small online shops.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Small business sites are now worth automating attacks against. Rotate API keys on client projects, make sure Supabase RLS is on everywhere, and keep service keys out of any client-side bundle.</div>
+          <div class="refs"><a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">Microsoft Security blog ↗</a> <a href="https://cyberscoop.com/microsoft-attributes-connectwise-supply-chain-attack-china-storm-0940/" target="_blank" rel="noopener">CyberScoop ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Finance</span>
+            <span class="ver">Oct 22</span>
+            <h3>Banks try to tell a customer from the customer's agent</h3>
+          </div>
+          <div class="story-body">
+            <p>Axios reports Morgan Stanley and Bank of America are working to contain risk from unvetted third-party AI agents that already have access to customer accounts. The core problem is attribution: whether an action reflects what the customer asked for or an agent acting past it. 1Password also announced a credentials platform for agents, built with Anthropic and OpenAI.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client AI build that touches money or accounts needs a clear audit log of who asked for what. Build that log into TSD's receptionist and booking products now so it shows up in the demo.</div>
+          <div class="refs"><a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">Axios ↗</a> <a href="https://x.com/1Password/status/2113276767582498943/video/1" target="_blank" rel="noopener">1Password on X ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money and the big labs</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Oct 22</span>
+            <h3>OpenAI reportedly seeks up to $30B at $1.25T; Meta's capex bill bites</h3>
+          </div>
+          <div class="story-body">
+            <p>CNBC and TechCrunch report OpenAI is negotiating a raise of up to $30B at a $1.25T pre-money valuation, led by Coatue and UAE investors; terms are not final and the figure sits below the roughly $1.4T floated earlier this month. Meta fell about 7% after posting its first negative free cash flow since its 2012 IPO and lifting 2026 capex guidance to $135B to $145B. Reuters reports DeepSeek is closing roughly $15B with Tencent among backers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The labs are raising and spending at a pace that keeps API prices falling for small builders. Nothing to act on this week beyond pricing client AI features on current rates and rechecking them quarterly.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener">TechCrunch ↗</a> <a href="https://www.cnbc.com/2026/10/22/meta-stock-q3-earnings-free-cash-flow.html" target="_blank" rel="noopener">CNBC on Meta ↗</a> <a href="https://www.thestar.com.my/business/business-news/2026/10/22/deepseek-wrapping-up-us15bil-fundraising-to-fuel-ai-race" target="_blank" rel="noopener">Reuters via The Star ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Launch</span><span class="txt">Ideogram's first vector model outputs editable SVG from text or an existing image, with type and gradients. Useful for client logo and icon work. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag new qh-tag">Launch</span><span class="txt">Canva released its first image-generation model to all users, pitched as cheaper and more customizable. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag new qh-tag">Launch</span><span class="txt">HeyGen Video 1, its first general video model, ranked first for text-to-video in a blind Artificial Analysis test. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag feature qh-tag">API</span><span class="txt">OpenAI's Decisions API is generally available, and OpenAI models plus Codex are now sold through Google Cloud. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag feature qh-tag">Commerce</span><span class="txt">Walmart opened a beta MCP gateway that lets approved agents search inventory and place orders without seeing shopper payment data. <span class="ver">Oct 21</span></span></li>
+            <li><span class="tag improve qh-tag">Safety</span><span class="txt">METR and Redwood found flaws in OpenAI's internal agent monitoring, including one that could hide hundreds of agent actions. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag improve qh-tag">Research</span><span class="txt">Microsoft researchers proved the 31-year-old KLS conjecture with AI exploring candidate approaches; Microsoft also reported a sequential diagnosis system in Science. <span class="ver">Oct 22–23</span></span></li>
+            <li><span class="tag fix qh-tag">Shutdown</span><span class="txt">The Browser Company stops Arc on Dec 22 to focus on its AI browser, Dia. <span class="ver">Oct 22</span></span></li>
+            <li><span class="tag improve qh-tag">Opinion</span><span class="txt">An ABC News/Washington Post/Ipsos poll found 57% of Americans say AI is bad for society. Worth knowing before any client pitch that leads with the word AI. <span class="ver">Oct 23</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
