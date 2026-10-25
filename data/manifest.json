@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-25.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-25",
+    "title": "Quiet window: no Claude Code release since 2.1.310",
+    "summary": "Nothing new shipped since yesterday's briefing; 2.1.310 from October 23 is still the newest Claude Code release on the changelog.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-10-25.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
