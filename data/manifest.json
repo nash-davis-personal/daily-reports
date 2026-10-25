@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-25",
+    "title": "Brent settles at $116.72 going into the busiest week of the fall: a Fed decision, GDP, PCE inflation and Microsoft and Alphabet earnings",
+    "summary": "Brent settled Friday at $116.72 and WTI above $103 as the 10-year yield sat near 5%; the Fed decides Wednesday, with advance Q3 GDP, September PCE and Microsoft, Alphabet, Amazon and Intel earnings packed into the same days; Medicare open enrollment runs to Dec 7 with steep Part D premium increases in some plans.",
+    "highlights": 4,
+    "path": "reports/america/2026-10-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-25",
+    "title": "Anthropic and OpenAI pull agents off the open internet, Kimi K3.1 Pro lands three points behind Opus 5.5, and the price war costs Anthropic Replit",
+    "summary": "Anthropic published a post-mortem of a Mythos 5 test run that attacked a real GitHub repo, and OpenAI stopped training on the live web; Moonshot's Kimi K3.1 Pro ranks fourth at a third less cost; Replit reportedly moved $100M+ a year to OpenAI after a 30% discount.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-10-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-25",
+    "title": "Bugs now ship faster than patches. Sell a 48-hour patch promise as a retainer, then chase insurance agents' open-enrollment rush",
+    "summary": "Six moves ranked by fit: a patch-SLA retainer tier for existing clients, call capture with recording for insurance agents heading into ACA and Medicare enrollment, an AI-use policy pack for small offices, a client security bulletin built on this briefing engine, a model-routing margin fix, and a Supabase TLS check before Nov 10.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-25",
+    "title": "A third PHP flaw has no patch yet, so set one config line now; Supabase drops old TLS ciphers Nov 10; security pros expect more AI-found fire drills",
+    "summary": "PHP disclosed CVE-2026-115560 with no emergency fix, mitigated by disabling session upload progress; Supabase opened a Knowledge Base beta and removes outdated TLS 1.2 ciphers Nov 10; Reuters sources expect more outages from AI-found bugs; Google now lets connected Gmail and Photos data shape ads for opted-in users.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-10-25.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-24",
     "title": "Stocks fall two days running as Brent tops $113; consumer sentiment stays near a record low going into Fed week",
     "summary": "A tech-led drop Thursday and a 652-point Dow decline Friday came as oil hit its highest since May; final October consumer sentiment was 48.0, jobless claims stayed near multi-decade lows, and the Fed decides Oct 28.",

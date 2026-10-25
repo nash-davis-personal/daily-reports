@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-25" />
+  <meta name="report:title" content="A third PHP flaw has no patch yet, so set one config line now; Supabase drops old TLS ciphers Nov 10; security pros expect more AI-found fire drills" />
+  <meta name="report:summary" content="PHP disclosed CVE-2026-115560 with no emergency fix, mitigated by disabling session upload progress; Supabase opened a Knowledge Base beta and removes outdated TLS 1.2 ciphers Nov 10; Reuters sources expect more outages from AI-found bugs; Google now lets connected Gmail and Photos data shape ads for opted-in users." />
+  <meta name="report:highlights" content="5" />
+
+  <title>A third PHP flaw has no patch yet, so set one config line now; Supabase drops old TLS ciphers Nov 10; security pros expect more AI-found fire drills — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, October 25, 2026</span>
+        <span>◆</span><span>Weekend edition</span>
+      </div>
+      <h1>A third PHP flaw has no patch yet, so set one config line now. Supabase drops old TLS ciphers Nov 10</h1>
+      <p class="standfirst">PHP disclosed another session bug with no emergency fix, and the mitigation is a single setting. Supabase opened a Knowledge Base for developers and their agents and confirmed that outdated TLS 1.2 ciphers go away Nov 10. Security people quoted by Reuters expect AI-found bugs to keep forcing outages for a couple of years.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 23–25, since the Oct 24 edition</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">config line to mitigate the new PHP bug</div></div>
+      <div class="stat"><div class="num">Nov 10</div><div class="lbl">Supabase TLS cipher cutoff</div></div>
+      <div class="stat"><div class="num">1 + 14</div><div class="lbl">PHP Foundation staff + contractors</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>PHP CVE-2026-115560</h4><p>No emergency patch. Set session.upload_progress.enabled=0 on any PHP host you touch.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Node2Shell, named</h4><p>The Oct 21 Node.js Brotli RCE now has a CVE and a name. Patched in 26.12.1, 24.22.1 and 22.23.4.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Supabase housekeeping</h4><p>Knowledge Base beta for devs and agents; old TLS 1.2 ciphers disabled Nov 10.</p></div>
+        <div class="signal"><div class="n">04</div><h4>More fire drills coming</h4><p>Cloudflare's CEO says he knows of more severe bugs in critical software.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Google ads and your Gmail</h4><p>Opted-in connected content from Gmail and Photos can now shape ads. Here's the switch.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch list</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 23</span>
+            <h3>PHP warns of another session flaw, CVE-2026-115560, with no emergency fix</h3>
+          </div>
+          <div class="story-body">
+            <p>This is separate from the two PHP2Shell bugs. It only hits apps that set <code>session.serialize_handler</code> to <code>php_binary</code> or <code>php_serialize</code>, switch it to <code>php</code> at runtime before <code>session_start()</code>, and leave session upload progress on. PHP will fix it in its next routine release, with no severity score yet and no reported exploitation. Mitigation: set <code>session.upload_progress.enabled=0</code>. Hosts that already did this for PHP2Shell need nothing more.</p>
+            <p>Context: Reuters reports the PHP Foundation runs on one full-time staff member and 14 contractors, which helps explain the patch pace.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Prospects running WordPress are on PHP. Anyone you do the PHP2Shell check for should get this line in php.ini (or their host's panel) at the same time. It costs five minutes and gives you a second reason to follow up.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank" rel="noopener">The Hacker News ↗</a> <a href="https://www.reuters.com/technology/php-foundation-under-funded-with-one-full-time-staff-member-director-says-2026-10-23/" target="_blank" rel="noopener">Reuters ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Oct 23</span>
+            <h3>Node2Shell: the Node.js Brotli RCE gets a CVE and a warning about the wrong fix</h3>
+          </div>
+          <div class="story-body">
+            <p>The Brotli decompression bug Node fixed on Oct 21 is now tracked as CVE-2026-111497 ("Node2Shell"), rated 9.2 under CVSS 4.0. Fixed versions are 26.12.1, 24.22.1 and 22.23.4. Updating the npm package called <code>brotli</code> does nothing for it; the bug is in Node's built-in decoder.</p>
+            <p>Next.js reminder: 16.4.1 (Oct 15) carried the critical RCE fixes, and 16.4.2 (Oct 16) is an LTS update with Turbopack fixes. Anything older than 16.4.1 is still exposed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Vercel manages the Node runtime for hosted functions. Anything you run yourself (the Mac mini, local scripts, any Docker or VPS deploy) needs Node bumped by hand. Run <code>node -v</code> on each box this week and confirm every client repo is on Next.js 16.4.1 or later.</div>
+          <div class="refs"><a href="https://www.herodevs.com/blog-posts/cve-2026-111497-node2shell-node-js-brotli-rce" target="_blank" rel="noopener">HeroDevs ↗</a> <a href="https://securityboulevard.com/2026/10/node2shell-cve-2026-111497-what-to-patch-and-how-to-find-exposed-services/" target="_blank" rel="noopener">Security Boulevard ↗</a> <a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js advisory ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Platform</span>
+            <span class="ver">Oct 23 · Oct 12</span>
+            <h3>Supabase opens a Knowledge Base beta and confirms the Nov 10 TLS cipher cutoff</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase launched a Knowledge Base in public beta with troubleshooting and migration guides written for developers and the coding agents they use. Separately, its Oct 12 breaking-change notice stands: an outdated subset of TLS 1.2 ciphers will be disabled on project HTTP APIs (Auth, Data APIs, Storage, Realtime, Edge Functions) on Nov 10. Supabase puts affected traffic at under 0.0001%, and it hasn't listed the exact ciphers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Modern browsers and Node are fine. The risk is an old device or integration hitting a client's Supabase API, such as a legacy POS, a kiosk, or an old Zapier-style webhook relay. If any client has one, test it before Nov 10. Point Claude Code at the Knowledge Base when debugging Supabase.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Bigger picture</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 24</span>
+            <h3>Reuters: experts expect AI-found bugs to keep causing outages</h3>
+          </div>
+          <div class="story-body">
+            <p>Seven security professionals told Reuters to expect more outages like this week's government-site shutdowns. Cloudflare CEO Matthew Prince said he knows of "a bunch of additional severe vulnerabilities" in other critical software and expects a couple of years of constant alarm. VulnCheck says AI helped double year-over-year vulnerability discoveries. Others pushed back: curl's Daniel Stenberg says AI-found bugs tend to be exotic and hard to exploit, and more disclosures don't automatically mean more successful attacks.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch speed is becoming something clients will pay for. A "we patch within 48 hours of a critical advisory" line belongs in every Managed AI and hosting retainer, and these reports give you the evidence to back it up.</div>
+          <div class="refs"><a href="https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/" target="_blank" rel="noopener">Reuters via Star-Advertiser ↗</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Privacy</span>
+            <span class="ver">Oct 23</span>
+            <h3>Google: connected Gmail and Photos content can now shape ads</h3>
+          </div>
+          <div class="story-body">
+            <p>Google's updated privacy policy still says it doesn't use Gmail, Drive or Photos content for ad personalization by default, but there's now an exception for users who explicitly connect that content to Google services that offer personalized ads. To turn it off: Google Account → Data &amp; privacy → Personalization settings → Manage Personalized Recommendations in Search Services, then disconnect Workspace and Photos under Connected Content apps. Disconnecting doesn't erase data already in Search history.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Check that setting on the TSD Google accounts. It's also a two-minute tip worth sending to clients who run their business out of Gmail.</div>
+          <div class="refs"><a href="https://www.androidauthority.com/google-personal-intelligence-privacy-3727111/" target="_blank" rel="noopener">Android Authority ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Transport</span><span class="txt">Rivian acquired Third Dimension AI, a roughly 15-person startup that turns camera footage into controllable 3D driving simulations. Terms were not disclosed. <span class="ver">Oct 23 · <a href="https://finance.yahoo.com/technology/ai/articles/rivian-acquires-third-dimension-ai-210400311.html" target="_blank" rel="noopener">Business Wire via Yahoo</a></span></span></li>
+            <li><span class="tag new qh-tag">Transport</span><span class="txt">Wayve, Stellantis, NVIDIA and the French government agreed to deploy autonomous vehicles in France. No launch date or fleet size was given. <span class="ver">Oct 23 · <a href="https://wayve.ai/press/wayve-stellantis-nvidia-collaborate-on-deployment-across-france/" target="_blank" rel="noopener">Wayve</a></span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">TSMC is reportedly seeking chipmaking equipment without Chinese rare-earth magnets. <span class="ver">Oct 22 · <a href="https://www.tomshardware.com/tech-industry" target="_blank" rel="noopener">Tom's Hardware</a></span></span></li>
+            <li><span class="tag fix qh-tag">Infra</span><span class="txt">Reuters lists Node.js, Plex, LiteLLM, Railway and the Indian CA eMudhra among the week's other security incidents. If a client runs anything on Railway or LiteLLM, check their status pages. <span class="ver">Oct 24 · <a href="https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/" target="_blank" rel="noopener">Reuters</a></span></span></li>
+            <li><span class="tag improve qh-tag">Connectivity</span><span class="txt">Ukraine's military Starlink service is working normally again after a week of speed restrictions, per the WSJ. <span class="ver">Oct 24 · <a href="https://www.wsj.com/world/europe/ukraines-military-starlink-is-working-again-kyiv-says-7ad2617d" target="_blank" rel="noopener">WSJ</a></span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
