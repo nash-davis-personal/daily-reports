@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-26" />
+  <meta name="report:title" content="Lock down GitHub tokens and Tailscale SSH today: a campaign is dumping repo secrets through Actions logs, and Tailscale SSH has an unpatched root-escalation flaw" />
+  <meta name="report:summary" content="Wiz's Gheist campaign has planted 13,500+ branches that print repo secrets into Actions logs; a Tailscale SSH port-forwarding flaw has no fix yet; Railway, OpenCode and LiteLLM breaches all hit stored platform secrets; a planted CLAUDE.md tried to make a coding agent install malware; Vercel ships CLI spend budgets." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Lock down GitHub tokens and Tailscale SSH today: a campaign is dumping repo secrets through Actions logs, and Tailscale SSH has an unpatched root-escalation flaw — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, October 26, 2026</span>
+        <span>◆</span><span>Security first, then the stack</span>
+      </div>
+      <h1>Lock down GitHub tokens and Tailscale SSH today: a campaign is dumping repo secrets through Actions logs, and Tailscale SSH has an unpatched root-escalation flaw</h1>
+      <p class="standfirst">The weekend's theme was stored secrets: in GitHub repos, on hosting platforms and in AI tool consoles. Nothing new to patch in Next.js since the October 14 release (16.4.1 / 15.5.28 still apply), but there are two fixes to make today on tools TSD uses every day.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Oct 24 – Oct 26 morning</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">13,500+</div><div class="lbl">Gheist branches planted, 850+ accounts</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Tailscale fixes or CVEs issued so far</div></div>
+      <div class="stat"><div class="num">1.4%</div><div class="lbl">OpenCode Console users with possibly exposed AI keys</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Gheist dumps repo secrets via Actions logs</h4><p>Any stolen token with write access will do. GitHub's hold on suspicious runs covers public repos only.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Tailscale SSH: root escalation, no patch</h4><p>Needs port forwarding on and one compromised device. Tighten ACLs and turn forwarding off.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Platform secret stores are the target</h4><p>Railway, OpenCode Console and LiteLLM all disclosed incidents involving stored keys.</p></div>
+        <div class="signal"><div class="n">04</div><h4>A planted CLAUDE.md tried to install malware</h4><p>Don't start coding agents in ~/Downloads, and read instruction files you didn't write.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel CLI gets spend budgets</h4><p><code>vercel budgets</code> sets an On-Demand cap and can pause at 100%. Connect adds per-agent Stripe keys.</p></div>
+        <div class="signal"><div class="n">06</div><h4>The Brotli bug reaches Bun and Python</h4><p>Each program bundles its own copy, so the Node.js patch alone doesn't cover you.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch and rotate today</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 26</span>
+            <h3>Gheist: stolen GitHub tokens push a workflow that prints every repo secret into Actions logs</h3>
+          </div>
+          <div class="story-body">
+            <p>Wiz has tracked the campaign since September 15. With any token that has write access, the tool pushes a <code>ci-sync-xxxxxx</code> branch adding <code>.github/workflows/sync-check.yml</code> (commit message "ci: sync config"). The workflow prints the job's environment and every readable secret in base32, which slips past GitHub's log masking, then downloads the log and deletes the run seconds later. One variant runs a job per deployment environment to grab production-scoped secrets. Wiz found 13,500+ planted branches across 850+ compromised accounts, including private enterprise repos, and the campaign was still running as of October 24.</p>
+            <p>GitHub has held suspicious runs for approval since July 28, but only on public github.com repositories. Private repos are not covered. Tokens come from infostealer logs and earlier supply-chain hits such as the March Trivy compromise.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today. Search every TSD and client repo for <code>ci-sync-</code> branches or a <code>sync-check.yml</code> workflow. Replace classic personal access tokens with fine-grained, short-lived ones or GitHub Apps. Add required reviewers on any environment that holds production secrets. If you find a planted branch, rotate every secret that repo could read (Supabase service keys, Stripe, Anthropic) and never approve a held sync-check run.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html" target="_blank" rel="noopener">The Hacker News, Oct 26</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 25</span>
+            <h3>"Tailworm": unpatched Tailscale SSH flaws let one compromised device reach root on other servers</h3>
+          </div>
+          <div class="story-body">
+            <p>Erica Windisch of Cyberdione Labs published lab results (Tailscale 1.104.2, headscale 0.29.5) showing that when Tailscale SSH allows port forwarding, an attacker who already controls one permitted device can escalate to root on the target. Tailscale's VP of engineering confirmed on Reddit that the company found issues and is working on fixes, but there is no bulletin, CVE or fixed version yet, and Tailscale is not telling everyone to disable Tailscale SSH. Tailnet Lock blocked the final key-theft step. Other researchers dispute the "wormable" label, and nobody has independently reproduced the findings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The daily-reports hub and Nash OS sit on a tailnet. Rewrite SSH grants as single source-to-destination pairs, turn off SSH port forwarding where you don't use it, remove any <code>tailscale serve</code> forward to a Unix socket, enable node-key expiry, and turn on Tailnet Lock. Watch for the fixed release and update every node when it ships.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/unpatched-tailscale-ssh-flaws-could-let.html" target="_blank" rel="noopener">The Hacker News, Oct 25</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 21–24</span>
+            <h3>Railway, OpenCode Console and LiteLLM: three incidents where stored platform secrets leaked</h3>
+          </div>
+          <div class="story-body">
+            <p><b>Railway</b> (disclosed Oct 21) said an unauthorized party may have accessed encrypted environment variables and decrypted some of them. It paused all deployments, told every customer to roll all env vars and registry credentials, and believes this is part of a series of attacks on platform companies aimed at AI inference providers. <b>OpenCode</b> said keys that about 1.4% of Console users had saved for OpenAI, Anthropic or Google may have been exposed after an intrusion on October 16. Keys stored locally by its CLI were not affected, and some users report unauthorized charges. <b>LiteLLM</b> disclosed Friday that an unrevoked master key, exposed in a public repo in late May, let an attacker steal GitHub tokens and push a malicious release.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Give every product and every client its own Anthropic and OpenAI key, with a spend limit on each, so one leak stays small and traceable. Never paste provider keys into third-party consoles when an env var on Vercel will do. If any client project ever touched Railway, rotate its secrets now.</div>
+          <div class="refs"><a href="https://blog.railway.com/p/security-disclosure-wednesday-october-21st" target="_blank" rel="noopener">Railway disclosure</a> ◆ <a href="https://thehackernews.com/2026/10/opencode-console-breach-may-have.html" target="_blank" rel="noopener">OpenCode (The Hacker News)</a> ◆ <a href="https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html" target="_blank" rel="noopener">LiteLLM (The Hacker News, Oct 24)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Oct 26</span>
+            <h3>A file planted in Downloads told a coding agent to install malware, and the trick also worked on Claude Code</h3>
+          </div>
+          <div class="story-body">
+            <p>Forever Security caught an AGENTS.md disguised as engineering notes on a customer's machine. It told OpenAI's Codex to register a server in its config and install the npm package <code>function-color</code>, part of the MALFEX campaign. The agent was stopped before anything ran. In isolated tests Codex ran the malware more than 90% of the time. Claude Code, given a CLAUDE.md version, did so about half the time with a long engineering-doc framing, because it usually asks for approval on those writes. A web page can drop a file into Downloads silently.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Never start Claude Code in ~/Downloads (it's an inbox, keep it empty). Read any CLAUDE.md in a freshly cloned client repo before running an agent there, and check <code>.claude/settings.json</code> for MCP servers or base URLs you didn't add.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html" target="_blank" rel="noopener">The Hacker News, Oct 26</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The stack: Vercel, Supabase, Next.js</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Oct 23–26</span>
+            <h3>Vercel CLI adds spend budgets; Connect issues restricted Stripe keys per agent; pnpm installs about 14% faster</h3>
+          </div>
+          <div class="story-body">
+            <p><code>vercel budgets</code> shows spend, sets an On-Demand Budget, can pause projects at 100% and lists alert history. Vercel Connect can now create a separate restricted Stripe API key for each agent or task. Deployments show build-cache size, and pnpm installs on Pro with a restored cache are about 14% faster on average (Oct 26). Kimi K3.1 Pro is also on AI Gateway.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set a budget with pause-at-100% on every client project this week. It's the cheapest insurance against a runaway bot or a leaked key. Per-agent restricted Stripe keys are the right pattern for any booking or payments agent you build.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">Oct 14–24</span>
+            <h3>No new Next.js or Supabase advisories; the Brotli decoder bug spreads to Bun and Python</h3>
+          </div>
+          <div class="story-body">
+            <p>The newest Next.js security release is still October 14 (16.4.1 and 15.5.28): a critical <code>use cache</code> RCE, a critical image-optimization SVG RCE via sharp and a Server Actions DoS. On 15.x, confirm sharp resolves to 0.35.5 or later, because an old lockfile can keep the vulnerable decoder. Separately, the Brotli memory-corruption bug behind the Node.js RCE also affects Bun, Python and other software that bundles its own decoder. Supabase's only recent changes are the knowledge-base beta and the November 10 TLS cipher cutoff.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm ls next sharp</code> on every client app and update anything below 16.4.1, or below 15.5.28 with sharp 0.35.5 or later. Update Node and any Bun or Python services as their Brotli fixes ship.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-update-october-2026" target="_blank" rel="noopener">Next.js blog</a> ◆ <a href="https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html" target="_blank" rel="noopener">Brotli (The Hacker News, Oct 24)</a> ◆ <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Microsoft 365 token-replay attacks via an attacker-in-the-middle relay compromised 97 accounts at 79 organizations. Phishing-resistant MFA is the fix for client offices. <a href="https://thehackernews.com/2026/10/microsoft-365-token-replay-attacks.html" target="_blank" rel="noopener">THN</a> <span class="ver">Oct 26</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">CISA added actively exploited critical flaws in Collabora Online and Arista VeloCloud to its KEV catalog. <a href="https://thehackernews.com/2026/10/cisa-flags-two-actively-exploited.html" target="_blank" rel="noopener">THN</a> <span class="ver">Oct 24</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Unit 42 retracted its claim that PHP2Shell caused a European agency breach. Scanning, suspected North Korean, continues. <a href="https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html" target="_blank" rel="noopener">THN</a> <span class="ver">Oct 25</span></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">SK Hynix plans to return about $12.1B to shareholders from its Kioxia stake sale, expected with Q3 results on Oct 28. <a href="https://www.bloomberg.com/news/articles/2026-10-25/sk-hynix-plans-12-billion-dividend-from-kioxia-gains-report" target="_blank" rel="noopener">Bloomberg</a> <span class="ver">Oct 25</span></span></li>
+            <li><span class="tag improve qh-tag">Privacy</span><span class="txt">Google's policy update: Gmail and Photos data shared with AI Search or Gemini features can shape ad targeting. <a href="https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html" target="_blank" rel="noopener">THN</a> <span class="ver">Oct 24</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

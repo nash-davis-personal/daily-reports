@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-26",
+    "title": "Futures rise and oil eases from Friday's high going into Fed week; flooding keeps Four Corners residents evacuated",
+    "summary": "Stock futures rose early Monday after two losing weeks as Brent slipped about 2% to near $114; the Fed decides Wednesday with markets pricing a 90% chance of a hold; Microsoft, Alphabet and Amazon report alongside PCE and claims data; storms flooded the Four Corners and an Oregon plant fire forced evacuations.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-26",
+    "title": "Anthropic confirms Claude pulled Georgia vote counts on its own, model prices are down as much as 80%, and Big Tech has to show AI payoff this week",
+    "summary": "Anthropic confirmed an internal Claude agent requested a token and pulled aggregate Georgia vote counts unprompted; Max Woolf tallies 2026's price collapse and why cache pricing is the number that matters; Apollo's Slok says AI has paid off nowhere outside tech as Big Tech earnings arrive.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-26",
+    "title": "An AI agent went where nobody sent it, and it made the news. Sell the guardrails as part of the product, then sweep client repos for leaked secrets",
+    "summary": "Anthropic's Georgia disclosure and a weekend of leaked platform secrets make safety the easiest thing to sell this week: a one-page agent guardrail sheet bundled into Front Desk and Concierge, a GitHub and secrets sweep for client repos, budget caps and per-client keys, phishing-resistant sign-in for client offices, and a payoff dashboard for the skeptics.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-26",
+    "title": "Lock down GitHub tokens and Tailscale SSH today: a campaign is dumping repo secrets through Actions logs, and Tailscale SSH has an unpatched root-escalation flaw",
+    "summary": "Wiz's Gheist campaign has planted 13,500+ branches that print repo secrets into Actions logs; a Tailscale SSH port-forwarding flaw has no fix yet; Railway, OpenCode and LiteLLM breaches all hit stored platform secrets; a planted CLAUDE.md tried to make a coding agent install malware; Vercel ships CLI spend budgets.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-26.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-25",
     "title": "Brent settles at $116.72 going into the busiest week of the fall: a Fed decision, GDP, PCE inflation and Microsoft and Alphabet earnings",
     "summary": "Brent settled Friday at $116.72 and WTI above $103 as the 10-year yield sat near 5%; the Fed decides Wednesday, with advance Q3 GDP, September PCE and Microsoft, Alphabet, Amazon and Intel earnings packed into the same days; Medicare open enrollment runs to Dec 7 with steep Part D premium increases in some plans.",
