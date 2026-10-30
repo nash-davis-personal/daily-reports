@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-30",
+    "title": "Claude Code can now be fenced into the working directory, and long Desktop sessions compact while idle",
+    "summary": "Three releases (2.1.311, 2.1.312, 2.1.314) add a hard write fence for unattended runs, idle compaction in the Desktop Code tab, xhigh-effort ultrathink on Opus 5.5 and safer handling of big CLAUDE.md files.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-10-30.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-30" />
+  <meta name="report:title" content="Claude Code can now be fenced into the working directory, and long Desktop sessions compact while idle" />
+  <meta name="report:summary" content="Three releases (2.1.311, 2.1.312, 2.1.314) add a hard write fence for unattended runs, idle compaction in the Desktop Code tab, xhigh-effort ultrathink on Opus 5.5 and safer handling of big CLAUDE.md files." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Claude Code can now be fenced into the working directory, and long Desktop sessions compact while idle — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, October 30, 2026</span>
+        <span>◆</span><span>Releases 2.1.311 to 2.1.314</span>
+      </div>
+      <h1>Claude Code can now be fenced into the working directory, and long Desktop sessions compact while idle</h1>
+      <p class="standfirst">Three releases shipped since the last briefing. The one setting worth adding today is <code>permissions.blockWritesOutsideWorkingDirectories</code>, which keeps unattended runs from writing outside the repo they were pointed at; the rest is effort control, compaction and a long tail of fixes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 26 to Oct 30. 2.1.311 is dated Oct 26 but landed after that morning's quiet-window briefing. No 2.1.313 appears in the changelog.</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">Releases (2.1.311, .312, .314)</div></div>
+      <div class="stat"><div class="num">159</div><div class="lbl">Bug fixes (56 + 22 + 81)</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Top signals for TSD</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Hard write fence</h4><p><code>permissions.blockWritesOutsideWorkingDirectories</code> makes Write, Edit and NotebookEdit refuse any path outside the working directories, in every permission mode including bypass. (2.1.314)</p></div>
+        <div class="signal"><div class="n">02</div><h4>Idle compaction in Desktop</h4><p>A 200K+ token conversation left idle in the Desktop Code tab or VS Code is summarized in the background and the summary is used if the cache has expired. (2.1.314)</p></div>
+        <div class="signal"><div class="n">03</div><h4>ultrathink means xhigh</h4><p>Typing <code>ultrathink</code> in the terminal runs that turn at xhigh effort on Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1; typed mid-turn it raises the rest of the turn. (2.1.311)</p></div>
+        <div class="signal"><div class="n">04</div><h4>Memory files are safer</h4><p>Write now refuses to overwrite a very large CLAUDE.md or rules file it only partly read, and stale MEMORY.md/CLAUDE.md after auto-compaction is fixed. (2.1.311, 2.1.312)</p></div>
+        <div class="signal"><div class="n">05</div><h4>Headless runs fail loudly</h4><p><code>claude -p</code> now prints the startup error and exits 1 where it used to exit 0 with no output. (2.1.314)</p></div>
+        <div class="signal"><div class="n">06</div><h4>Cloud routines get effort + plugins</h4><p>Cloud routines can set an effort level, cloud scheduled runs load your claude.ai plugins, and a failing setup script no longer blocks the session. (2.1.312, 2.1.314)</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Guardrails for unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.314</span>
+            <h3>A write fence that holds even in bypass mode</h3>
+          </div>
+          <div class="story-body">
+            <p>The new <code>permissions.blockWritesOutsideWorkingDirectories</code> setting makes the Write, Edit and NotebookEdit tools refuse paths outside the session's working directories "in every permission mode." It pairs with the existing <code>blockReadsOutsideWorkingDirectories</code>. Note the scope: it covers Claude's file tools. Shell commands are a separate surface, so a <code>sed -i</code> or redirect through Bash falls under the sandbox and permission rules.</p>
+            <p>Same release: Claude's file tools now ask before editing the local copy of an organization's server-managed settings, and <code>/permissions</code> Recently blocked refuses to approve a call it can't show you in full.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scheduled tasks run in bypass mode across several repos (daily-reports, client sites, the vaults). Turn this on in the project settings of each client repo, Bisque first, so a confused run in one checkout can't edit another client's files with the file tools. Run it on one scheduled task for a week before rolling it out, since tasks that write to the command vault from another repo's session will start getting refused.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.314</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.314</span>
+            <h3><code>claude -p</code> stops failing silently</h3>
+          </div>
+          <div class="story-body">
+            <p>When startup failed, <code>claude -p</code> used to exit 0 with no output. It now prints the error and exits 1. Related: 2.1.312 fixed one command with an invalid name stopping every command from loading, which "could leave <code>claude -p</code> with no output," and 2.1.314 fixed "Continue automatically at usage limit" continuing more than three times when a task restarted itself between waits.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any shell or launchd wrapper you have around <code>claude -p</code> that treats exit 0 as success was previously logging green on empty runs. Check those wrappers check the exit code now, and look back at any Nash OS run log entries that reported OK with empty output.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.312 and 2.1.314</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.311 / 2.1.312</span>
+            <h3>Big CLAUDE.md and memory files no longer get clobbered or go stale</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.312 fixed Claude "overwriting a very large CLAUDE.md, rules file or @-included file in a subdirectory after seeing only its start." Write now tells Claude to read the whole file or edit in place. 2.1.311 fixed Claude seeing stale MEMORY.md and CLAUDE.md content right after automatic compaction, and long freezes when a CLAUDE.md holds a very long list item.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your vault notes and INDEX.md grow past the point where a partial read is likely, and your rule is to update a note's Current state block once it passes about 30 KB. These fixes cut the main way an agent could truncate one. Update before the next vault-heavy session; no config change needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.311 and 2.1.312</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long sessions and effort</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.314</span>
+            <h3>Idle compaction comes to the Desktop Code tab</h3>
+          </div>
+          <div class="story-body">
+            <p>In VS Code and Claude Desktop's Code tab, a conversation over 200K tokens that sits idle is summarized in the background, and that summary is used on your next message if the prompt cache has expired. It now also runs with telemetry off and, once the one-hour prompt cache is on, on Bedrock, Vertex, Foundry and LLM gateways.</p>
+            <p>Related: 2.1.311 fixed standard-context sessions stopping with "Usage credits required for 1M context" past 200K tokens (they now compact and continue), and 2.1.314 cut memory use in long headless turns that run many subagents.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Most of your build sessions live in Desktop and get left open across client calls. Coming back to a big Bisque or Sonderwerks session after an hour should now pick up from a ready summary, which is cheaper than re-reading the whole history on a cold cache. If a resumed session seems to have forgotten detail, this is why; keep decisions in the repo or vault where they survive a summary.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.314</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.311</span>
+            <h3><code>ultrathink</code> now maps to xhigh effort</h3>
+          </div>
+          <div class="story-body">
+            <p>In the interactive terminal, <code>ultrathink</code> runs its turn at xhigh effort on Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 through Anthropic's API. Typed while Claude is working, it raises the rest of that turn. The rainbow highlight now only shows where the keyword can actually raise effort. 2.1.312 also made the effort indicator say when a mid-task change will wait for your next message.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You get a per-turn effort bump without touching <code>/effort</code> or breaking the cache for the whole session. Use it on the one hard turn in a build (a Supabase schema change, an auth flow) and leave the session at its normal level. The changelog says interactive terminal; don't assume it applies in the Desktop app until you see the rainbow there.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.311 and 2.1.312</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cloud routines and scheduled tasks</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.312 / 2.1.314</span>
+            <h3>Cloud routines pick an effort level and load your plugins</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.312 added an effort level to the model picker when you create or edit a cloud routine, plus a proper Bash editor for cloud environment setup scripts. 2.1.314 made scheduled runs in Anthropic's cloud load the plugins enabled on your claude.ai account, and cloud sessions now start even when the setup script exits with an error. 2.1.312 also fixed resending an unchanged message after a failed send sometimes running it twice.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your daily scouts run as local Desktop scheduled tasks on this Mac, so they stop when the laptop sleeps. Cloud routines now carry plugins and effort settings, which removes two reasons not to move a scout like this one to the cloud. Worth a test move for one low-stakes routine; the catch is it needs git push access from the cloud environment and can't reach local-only tools like Nash OS's report script.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.312 and 2.1.314</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Write and Edit no longer stall up to 5 seconds and report 0 lines changed when changing thousands of lines. <span class="ver">2.1.311</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Subagents can now use MCP tools from servers that finish connecting after the subagent starts. <span class="ver">2.1.311</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Shell commands that hit their timeout now return the output so far and say the command keeps running in the background. <span class="ver">2.1.311</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Background diff refreshes no longer grab <code>.git/index.lock</code> and make a concurrent git command fail. <span class="ver">2.1.314</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Per-directory and <code>paths:</code> skills are found again after a Bash <code>cd</code> deeper into a repo. <span class="ver">2.1.312</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A subagent's isolated worktree is no longer removed while a background subagent it started is still working in it. <span class="ver">2.1.311</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Hooks matching Bash now run on shell commands started by the Monitor tool; hook <code>if</code> conditions like <code>Monitor(tail *)</code> match too. <span class="ver">2.1.314</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Bundled dataviz skill now answers pie and donut requests with ranked or segmented bars that print their values. <span class="ver">2.1.314</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Sessions that start with a skill or prompt command such as <code>/security-review</code> now get an auto-title from it. <span class="ver">2.1.314</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">macOS: <code>git grep</code> in most commands Claude runs uses the C locale to avoid a reported memory leak on non-UTF-8 files. <span class="ver">2.1.314</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude Code no longer retries requests the API marked do-not-retry, which could hold a turn for minutes. <span class="ver">2.1.311</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Usage messages now call the rolling window the "5-hour limit." <span class="ver">2.1.312</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
