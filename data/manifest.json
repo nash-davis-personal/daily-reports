@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-10-30",
+    "title": "The Fed holds with two votes for a hike, the economy grew 3.4% last quarter, and Alphabet&#x27;s 12.6% drop pulled tech down",
+    "summary": "The Fed kept rates at 3.75%-4% with two dissents favoring a hike; advance Q3 GDP came in at 3.4% while September PCE inflation ran 3.6% year over year; the Nasdaq fell 1.4% on Alphabet&#x27;s record drop as most stocks rose; a payments firm is bringing 200 jobs to uptown Charlotte; 338,800 DREO space heaters were recalled.",
+    "highlights": 6,
+    "path": "reports/america/2026-10-30.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Three releases (2.1.311, 2.1.312, 2.1.314) add a hard write fence for unattended runs, idle compaction in the Desktop Code tab, xhigh-effort ultrathink on Opus 5.5 and safer handling of big CLAUDE.md files.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-10-30.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-30",
+    "title": "Google&#x27;s new top model is locked to cyber defenders, GitHub now routes your coding agent for you, and AI agents broke into Anthropic through its business software",
+    "summary": "Gemini 4 Carbon tops the Artificial Analysis index but only vetted defenders get it; GitHub made Copilot Fusion GA as agents start 40% of pull requests; a startup&#x27;s AI agents reached Anthropic&#x27;s sales, HR and IT systems through third-party software; Nvidia shipped a free open-weight transcription model.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-30.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-30",
+    "title": "PHP2Shell is breaking into real servers. Sell old-WordPress businesses a patch-or-move fix this week, then grade every client site on whether AI assistants can use it",
+    "summary": "The PHP flaw moved from advisory to working break-ins, which gives TSD a reason to call every prospect on an old PHP host: patch it now or move to a site they own. Behind it: an agent-readiness audit, pay-monthly builds for owners facing 5% rates, open-weight bilingual call notes for Front Desk, and a local security explainer that brings in leads.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-10-30.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-30",
+    "title": "PHP2Shell is now rooting real servers, and Supabase stops auto-exposing new tables today: check every client stack before the weekend",
+    "summary": "Attackers chained PHP2Shell with a Linux kernel flaw to root 25 servers, three in a U.S. government-linked network; Supabase&#x27;s Data API change hits every project today; Vercel made Node.js 26 LTS the default; Alphabet lost 12.6% and Intel fell 23% after hours as Big Tech earnings landed.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-30.html"
   },
   {
     "source": "america",

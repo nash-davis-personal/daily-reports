@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-10-30" />
+  <meta name="report:title" content="PHP2Shell is now rooting real servers, and Supabase stops auto-exposing new tables today: check every client stack before the weekend" />
+  <meta name="report:summary" content="Attackers chained PHP2Shell with a Linux kernel flaw to root 25 servers, three in a U.S. government-linked network; Supabase&#x27;s Data API change hits every project today; Vercel made Node.js 26 LTS the default; Alphabet lost 12.6% and Intel fell 23% after hours as Big Tech earnings landed." />
+  <meta name="report:highlights" content="6" />
+
+  <title>PHP2Shell is now rooting real servers, and Supabase stops auto-exposing new tables today: check every client stack before the weekend — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Friday, October 30, 2026</span>
+        <span>◆</span><span>Security ◆ your stack ◆ big tech</span>
+      </div>
+      <h1>PHP2Shell is now rooting real servers, and Supabase stops auto-exposing new tables today: check every client stack before the weekend</h1>
+      <p class="standfirst">The PHP flaw from last week has moved from advisory to working break-ins, so any client still on self-hosted WordPress or an old PHP host needs an answer this week. On your own stack, the only must-act item is Supabase's grant change, which takes effect today; no new Next.js advisory landed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 27–30, 2026 (since the Oct 26 edition)</span>
+        <span>◆</span><a href="https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">25</div><div class="lbl">Servers rooted in the PHP2Shell chain (3 U.S. gov-affiliated)</div></div>
+      <div class="stat"><div class="num">Oct 30</div><div class="lbl">Supabase stops auto-exposing new tables on all projects</div></div>
+      <div class="stat"><div class="num">-12.6%</div><div class="lbl">Alphabet's Oct 29 close after negative free cash flow</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>PATCH: PHP2Shell is live in the wild</h4><p>A suspected China-linked actor chained PHP2Shell with Linux kernel flaw CVE-2026-46300 to root 25 servers. Patch PHP to 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase: new tables need GRANTs from today</h4><p>New public-schema tables no longer reach the Data API without explicit grants. Existing tables keep working.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Next.js: no new advisory</h4><p>Only canaries this week (16.5.0-canary.25–34). Stay on 16.4.1+ / 15.5.28+ from the Oct 14 fix.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel: Node 26 LTS default, AI-bot controls</h4><p>New projects build on Node.js 26 LTS; Firewall can now block AI crawlers and AI assistants separately.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Big Tech's AI bill hits the stock price</h4><p>Alphabet -12.6% on negative free cash flow; Amazon -7% after hours despite AWS +39%; Intel -23% after hours.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Malaysia seizes smuggled AI chips</h4><p>Over $12M of advanced chips hidden in 30 servers at Kuala Lumpur airport.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch and check first</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Oct 25–28</span>
+            <h3>PHP2Shell gets chained into real break-ins: 25 servers rooted, including three in a U.S. government-affiliated network</h3>
+          </div>
+          <div class="story-body">
+            <p>Israeli firm Dream says a suspected China-nexus actor combined PHP2Shell (CVE-2026-109618 and -109619, CVSS 9.2, unauthenticated RCE) with Fragnesia (CVE-2026-46300, a Linux kernel privilege escalation). The targets were firewall management servers running PHP 8.0.30. The attacker fingerprinted about 19,000 exposed devices, narrowed to 240, and rooted 25 across the U.S., Japan, Taiwan and South Korea. Claude Code, DeepSeek and Kimi tooling were found on the attack infrastructure; there's no direct evidence AI wrote the exploit.</p><p>Fixed PHP releases are 8.5.12, 8.4.27, 8.3.36 and 8.2.35 (Oct 21). Older branches like 8.0 and 8.1 get no official release. WordPress.com, VIP and Pressable say they're covered; self-hosted sites must update PHP itself, since a WordPress update doesn't fix it. EU CERT and the UK NCSC told anyone who can't patch to isolate or take sites offline.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: today, list every client or prospect site on self-hosted WordPress or any PHP host, check the PHP version, and get it to a fixed release or behind a WAF rule. Anything on PHP 8.0/8.1 has no official fix and should move. Your Next.js/Vercel builds don't run PHP, so they're clear.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html" target="_blank" rel="noopener">The Hacker News</a> <a href="https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers" target="_blank" rel="noopener">Dream</a> <a href="https://cybernews.com/security/php2shell-wordpress-amazon-cloudflare-ai-cyberattacks/" target="_blank" rel="noopener">Cybernews: hosts and patching</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supabase</span>
+            <span class="ver">Oct 30</span>
+            <h3>Supabase's Data API change reaches every project today: new tables need explicit grants</h3>
+          </div>
+          <div class="story-body">
+            <p>Announced in April, the change now applies to all existing projects. New tables in the <code>public</code> schema are no longer granted to <code>anon</code>, <code>authenticated</code> and <code>service_role</code> automatically, so the REST and GraphQL APIs can't see them until you grant access. Existing tables keep their grants. A missing grant shows up as PostgREST error 42501 with a hint naming the GRANT you need.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Update your migration template now: every <code>create table</code> gets its <code>grant</code> lines, <code>enable row level security</code> and policies in the same file. Otherwise the next table you add to a client app will throw 42501 in production.</div>
+          <div class="refs"><a href="https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Oct 29</span>
+            <h3>Vercel makes Node.js 26 LTS the default and splits AI crawlers from AI assistants in the Firewall</h3>
+          </div>
+          <div class="story-body">
+            <p>Node.js 26 LTS is GA for builds and Functions and is the default for new projects. Firewall managed rulesets can now block AI training crawlers and AI assistant bots independently. Also shipped: more accurate IP geolocation with city and postal code for more visitors, Vercel Flags starting 7x faster on cold starts, and auto-configured webhooks for X, Twilio and Telegram in Vercel Connect.</p><p>Next.js shipped only canaries this week (16.5.0-canary.25 through .34). Canary.30 swapped jsonwebtoken for fast-jwt with no security note attached. The Oct 14 fixes (16.4.1 / 15.5.28) are still the floor.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Pin existing client projects to their current Node version and test 26 on one before moving the rest. Set the crawler and assistant rules on each client site on purpose: most SMBs want assistants able to book, and some won't want training crawlers.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/node-js-26-lts-is-now-generally-available-on-vercel" target="_blank" rel="noopener">Node.js 26 on Vercel</a> <a href="https://vercel.com/changelog/block-ai-crawlers-and-assistants-independently-with-managed-rules" target="_blank" rel="noopener">AI bot rules</a> <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech and hardware</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Earnings</span>
+            <span class="ver">Oct 28–29</span>
+            <h3>AI spending meets the scoreboard: Alphabet has its worst day on record, Amazon and Intel slide after hours</h3>
+          </div>
+          <div class="story-body">
+            <p>Alphabet closed down 12.64% on Oct 29 after Q3 revenue of $127.6B came in slightly light and free cash flow went negative on AI spending. Google Cloud more than doubled to $30.7B and search ad growth slowed to 12%. Microsoft finished about flat after Azure grew 48%; its operating cash covered its capital spending. Amazon fell about 7% after hours: AWS grew 39.3% to a $184B run rate, but EPS of $1.89 missed and twelve-month free cash flow turned negative. Intel dropped about 23% after hours despite $16.5B in revenue, up 21%, guiding Q4 to $15–16B and warning the PC slowdown lasts into next year.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Investors are paying for AI revenue and punishing AI spend that isn't covered by cash. Your clients will apply the same test to you, so show the payoff in their numbers every month.</div>
+          <div class="refs"><a href="https://www.stocktitan.net/articles/stock-market-today-live-october-29-2026" target="_blank" rel="noopener">StockTitan market wrap</a> <a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/" target="_blank" rel="noopener">Amazon Q3 release</a> <a href="https://www.sec.gov/Archives/edgar/data/0000050863/000005086326000188/q326earningsrelease.htm" target="_blank" rel="noopener">Intel 8-K</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Chips</span><span class="txt">Malaysia intercepted more than $12M of advanced AI chips hidden inside 30 servers at Kuala Lumpur International Airport. <span class="ver">Oct 29</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">XREAL opened orders for AURA Android XR glasses: 70° field of view, Gemini built in, under 95 g, from $1,099, shipping mid-November. <span class="ver">Oct 29</span></span></li>
+            <li><span class="tag new qh-tag">Hardware</span><span class="txt">Amazon unveiled new Alexa+ Echo devices, including speakers that recognize household members and an alarm clock that tracks breathing by ultrasound. <span class="ver">Oct 28</span></span></li>
+            <li><span class="tag new qh-tag">Deep tech</span><span class="txt">PsiQuantum showed an 8x8 optical switch for routing light between AI processors and is sampling it to customers. <span class="ver">Oct 28</span></span></li>
+            <li><span class="tag breaking qh-tag">Security</span><span class="txt">South Korea's Daishin Securities reported a breach of 38,490 customers' data; Mirae Asset and Bithumb also reported incidents. <span class="ver">Oct 28</span></span></li>
+            <li><span class="tag improve qh-tag">Supabase</span><span class="txt">Supabase's October update recaps its Turso acquisition and moves Logs to usage-based pricing, with no charges until early 2027. <span class="ver">Oct</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
