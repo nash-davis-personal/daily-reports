@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-10-31",
+    "title": "Stocks close October with a tech rout, oil sits above $100, and markets still lean toward a December rate hike",
+    "summary": "The Nasdaq fell 2.86% on Oct 30 as Intel dropped 28.6%, ending its worst month since March 2025; core PCE ran 3.1% and December hike odds ended Friday near 69%; WTI held near $104 while gold fell 3.3%; Binance&#x27;s $6.3B theft hit crypto holders; AT&T and Verizon cut about 8,000 jobs.",
+    "highlights": 5,
+    "path": "reports/america/2026-10-31.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-10-31",
+    "title": "One robots.txt line now opts a site out of AI training at four labs, the official Claude Code extension shipped a backdoor on Cursor, and Mistral opened a trillion-parameter model",
+    "summary": "OpenAI, Google, Microsoft and Anthropic agreed to honor one robots.txt token for AI-training opt-outs; a trojanized Claude Code extension reached up to 5,000 Cursor users on Oct 29; Mistral released Large 4&#x27;s weights; OpenAI cut its raise to about $20B as AI stocks sold off.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-10-31.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-10-31",
+    "title": "Four AI labs just agreed on one robots.txt line. Put an \"AI settings\" check on every client and prospect site this week, then sell a laptop-and-accounts lockdown while the Binance story is fresh",
+    "summary": "Six moves ranked by fit: an AI-crawler settings check riding the new four-lab training opt-out token, an owner account lockdown after two laptop-born breaches, whole-binder uploads for Concierge at the new 128 MB Claude limit, drive-time scheduling for trades with oil above $100, a private open-model tier on Mistral Large 4, and a short explainer for inbound.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-10-31.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-10-31",
+    "title": "A developer&#x27;s laptop led to the biggest crypto theft on record, a poisoned coding extension hit Cursor, and Intel had its worst day in decades",
+    "summary": "Binance says a compromised DevOps laptop led to a $6.3B theft, with about $3B frozen; a trojanized Claude Code extension reached up to 5,000 Cursor users; CISA flagged two exploited Ivanti flaws; Intel fell 28.6% and chip stocks are in a bear market; no new stable Next.js release since 16.4.3.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-10-31.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-30",
     "title": "The Fed holds with two votes for a hike, the economy grew 3.4% last quarter, and Alphabet&#x27;s 12.6% drop pulled tech down",
     "summary": "The Fed kept rates at 3.75%-4% with two dissents favoring a hike; advance Q3 GDP came in at 3.4% while September PCE inflation ran 3.6% year over year; the Nasdaq fell 1.4% on Alphabet&#x27;s record drop as most stocks rose; a payments firm is bringing 200 jobs to uptown Charlotte; 338,800 DREO space heaters were recalled.",
