@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-10-31" />
+  <meta name="report:title" content="Subagents get their own effort dial, and Opus 4.8 fast mode dies November 30" />
+  <meta name="report:summary" content="Release 2.1.316 adds CLAUDE_CODE_SUBAGENT_EFFORT, deprecates fast mode on Opus 4.8, stops orphaned shell commands after unattended runs exit, and fixes subagents jumping to the main model when woken." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Subagents get their own effort dial, and Opus 4.8 fast mode dies November 30 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, October 31, 2026</span>
+        <span>◆</span><span>Release 2.1.316</span>
+      </div>
+      <h1>Subagents get their own effort dial, and Opus 4.8 fast mode dies November 30</h1>
+      <p class="standfirst">One release landed since yesterday's briefing. The useful parts for TSD are a setting that stops subagent fan-outs from burning top-effort tokens by default, plus a batch of fixes that make unattended scheduled runs exit cleaner and fail honestly.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: after 2.1.314 (Oct 30) through 2.1.316 (Oct 31)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Features added</div></div>
+      <div class="stat"><div class="num">34</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Subagent effort is now its own setting</h4><p><code>CLAUDE_CODE_SUBAGENT_EFFORT</code> sets the effort subagents run at when nothing else names one. Before this they inherited the session's.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Opus 4.8 fast mode: removal on Nov 30</h4><p>Deprecated as of Oct 30. After Nov 30, fast requests on Opus 4.8 error out with no fallback. Opus 5.5 keeps the speedup.</p></div>
+        <div class="signal"><div class="n">03</div><h4>No more orphaned shell commands</h4><p>On macOS and Linux, commands no longer keep running after Claude Code exits on its own, such as a refused credential or an archived cloud session.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Subagents stay on their model</h4><p>A sub-agent that inherited its parent sub-agent's model no longer drifts to the main model when a background job or message wakes it.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Scheduled runs fail honestly</h4><p>Cloud scheduled tasks now get marked failed when auto mode stops a turn for lack of a safety verdict, and <code>claude -p</code> says why it stopped.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agent cost and control</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.316</span>
+            <h3>CLAUDE_CODE_SUBAGENT_EFFORT decouples subagents from the session's effort</h3>
+          </div>
+          <div class="story-body">
+            <p>Subagents used to run at whatever effort the parent session ran at. The new environment variable sets a default effort for subagents whenever no agent definition or call names one. A main session at <code>xhigh</code> can now send its Explore and search helpers out at a lower level.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Set it to <code>medium</code> in the env for the scout, fleet-steward and vault-refresh scheduled tasks, where subagents mostly grep and read. Leave client build sessions alone until you see a quality difference. It cuts token spend on every fan-out without touching how the lead agent thinks.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.316</span>
+            <h3>Woken subagents no longer jump to the main model</h3>
+          </div>
+          <div class="story-body">
+            <p>A nested sub-agent that inherited its parent sub-agent's model was switching to the session's main model when a background job or message woke it. That is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any long-running workflow showed a cheap Haiku or Sonnet helper suddenly billing like Opus partway through, this was the likely cause. No action needed beyond updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.316</span>
+            <h3>Ultrathink gets an off switch, and VS Code matches the terminal</h3>
+          </div>
+          <div class="story-body">
+            <p><code>CLAUDE_CODE_DISABLE_ULTRATHINK</code> turns the <code>ultrathink</code> keyword off. In VS Code, <code>ultrathink</code> now runs its turn at <code>xhigh</code> effort, as the terminal already did. A VS Code bug that hid the Effort slider and model name when the model carried the <code>[1m]</code> tag is also fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Worth setting the disable flag in unattended runs whose prompts are pasted from client text or scraped pages, so a stray word can't push a cheap job to top effort.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Added / Changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Deprecation</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.316</span>
+            <h3>Fast mode on Opus 4.8 ends November 30, 2026</h3>
+          </div>
+          <div class="story-body">
+            <p>Fast mode for Opus 4.8 was deprecated on October 30 and will be removed on November 30. After that, fast mode requests on Opus 4.8 return an error. They do not fall back to standard Opus 4.8. The changelog says to move to Opus 5.5 to keep the speedup.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your global Claude Code settings don't pin a model, so interactive sessions are fine. Before Nov 30, grep client repos and any API code (Bisque, Studio C, Sonderwerks, Nash OS scripts) for <code>claude-opus-4-8</code> or <code>opus-4.8</code> paired with fast mode and switch them to <code>claude-opus-5-5</code>. A silent error in a client-facing feature is the failure to avoid.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.316</span>
+            <h3>Shell commands stop with Claude Code, and Bash scripts run past line one</h3>
+          </div>
+          <div class="story-body">
+            <p>When Claude Code exits by itself on macOS or Linux, for example after refused credentials, its shell commands no longer keep running. Separately, bash scripts started from the Bash tool no longer stop after their first command when <code>SHELLOPTS</code> is exported, and multi-line alias values no longer get garbled.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The two Macs run a lot of launchd and scheduled-task jobs. Orphaned dev servers or <code>tail</code> processes from a crashed run are one fewer thing to clean up. If any scheduled job ever ran "half" a script, re-check it after updating.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.316</span>
+            <h3>Auto mode keeps its scheduled-task rule, and stopped runs are marked failed</h3>
+          </div>
+          <div class="story-body">
+            <p>An <code>autoMode.allow</code> list written without <code>"$defaults"</code> no longer removes the built-in rule on scheduled-task prompts. Cloud sessions and cloud scheduled tasks are now marked failed when auto mode stops a turn because the server returned no safety verdict, and <code>claude -p</code> text output says why auto mode stopped a turn even with a background agent running.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Nash OS Machine page relies on runs reporting their own outcome. A run that auto mode halted used to look finished; now it shows as failed, so expect a few honest reds where there used to be false greens.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Changed / Bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Review and cloud sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.316</span>
+            <h3>/code-review from the Desktop Code tab shows the findings card</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/code-review</code> started from the Desktop Code tab or the web now shows the findings card in cloud and <code>claude remote-control</code> sessions, where it used to print a plain-text list. Cloud sessions also gain a form card for MCP servers that ask for input, which used to be canceled without you seeing it, and a "Catching up…" line when you switch back to a session that is still syncing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Reviewing a client PR from your phone over Remote Control gets readable. Run a review before each client deploy from wherever you are.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog 2.1.316 · Improvements / Added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>--restricted</code> sessions no longer upload files from outside the working directories when a Read allow rule covered them. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Prompts with invisible characters no longer need a second Enter to send. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Network requests no longer hang when a compressed response is cut off or corrupted. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The Artifact tool now shows <code>self</code>-level database access rules and quotes them back when refusing a republish that would drop them. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/model &lt;id&gt;</code> now warns when it doesn't recognize a model and will assume a 200K context window. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>/diff</code> runs one fewer full-repo git command per refresh on large repositories. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt">SSL certificate errors now name likely causes, such as a missing intermediate certificate, and the fix. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Claude apps gateway: pooled group budgets, layered policy mode, Bedrock guardrail input tagging, VS Code sign-in. Enterprise plumbing; skip. <span class="ver">2.1.316</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Bedrock and Vertex <code>sonnet</code>/<code>opus</code>/<code>haiku</code> aliases now fall back to an older model when the newest isn't available in the region. <span class="ver">2.1.316</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

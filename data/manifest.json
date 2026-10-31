@@ -10,6 +10,16 @@
     "path": "reports/america/2026-10-31.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-10-31",
+    "title": "Subagents get their own effort dial, and Opus 4.8 fast mode dies November 30",
+    "summary": "Release 2.1.316 adds CLAUDE_CODE_SUBAGENT_EFFORT, deprecates fast mode on Opus 4.8, stops orphaned shell commands after unattended runs exit, and fixes subagents jumping to the main model when woken.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-10-31.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
