@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-11-01" />
+  <meta name="report:title" content="Anthropic confirms Claude Code now steers away from recreating existing games, and OpenAI&#x27;s SDK adds keypad tones for phone agents" />
+  <meta name="report:summary" content="Anthropic confirmed two sentences added to Claude Code&#x27;s prompt on Opus 5.5 to stop it recreating someone else&#x27;s specific game, while developers report wider refusals Anthropic has not confirmed; OpenAI&#x27;s Python SDK 3.42.0 shipped agent compaction settings and SIP DTMF commands; a ChatGPT share-link flaw was fixed. A quiet weekend otherwise." />
+  <meta name="report:highlights" content="3" />
+
+  <title>Anthropic confirms Claude Code now steers away from recreating existing games, and OpenAI&#x27;s SDK adds keypad tones for phone agents — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://windowsforum.com/news/anthropic-confirms-claude-code-game-recreation-restriction-developers-report-false-positives.450360/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Sunday, November 1, 2026</span>
+        <span>◆</span><span>Models ◆ agents ◆ builder tools</span>
+      </div>
+      <h1>Anthropic confirms Claude Code now steers away from recreating existing games, and OpenAI's SDK adds keypad tones for phone agents</h1>
+      <p class="standfirst">A quiet weekend with no new frontier models. The one change that touches how you work is a narrow Claude Code rule against recreating someone else's game, plus developer reports of refusals that go wider than what Anthropic has confirmed.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Oct 31 – Nov 1, 2026 (since the Oct 31 edition)</span>
+        <span>◆</span><a href="https://windowsforum.com/news/anthropic-confirms-claude-code-game-recreation-restriction-developers-report-false-positives.450360/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">Sentences Anthropic says it added to Claude Code's prompt on Opus 5.5</div></div>
+      <div class="stat"><div class="num">3.42.0</div><div class="lbl">OpenAI Python SDK, released Oct 31</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Frontier model releases this weekend</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Claude Code won't clone a specific existing game</h4><p>Anthropic confirmed a narrow prompt rule. Original games, genre games and your own designs are meant to keep working.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Wider refusals are reported but unconfirmed</h4><p>Developers say crash-dump and reverse-engineering work also gets refused. Anthropic hasn't tied those to the rule.</p></div>
+        <div class="signal"><div class="n">03</div><h4>OpenAI SDK 3.42.0: compaction and DTMF</h4><p>Agent context-compaction settings, session review, experimental time awareness, and SIP keypad-tone commands for voice calls.</p></div>
+        <div class="signal"><div class="n">04</div><h4>ChatGPT share-link flaw fixed</h4><p>A malicious shared link could run code in a logged-in session. OpenAI fixed it by Oct 26; users don't need to do anything.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Claude and your daily tools</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">Reported Oct 31</span>
+            <h3>Anthropic confirms a Claude Code rule against recreating someone else's specific game</h3>
+          </div>
+          <div class="story-body">
+            <p>After developers reported refusals, an Anthropic spokesperson pointed reporters to a statement from Anthropic's Addy Osmani: two sentences were added to Claude Code's prompt on Opus 5.5 "to steer it away from recreating someone else's specific game." Original games, genre games and games built from a user's own designs are meant to keep working. Renaming a copy reportedly doesn't get around it, and the rule runs on Anthropic's side, so there is nothing local to change.</p>
+            <p>Developers also report refusals on crash-dump analysis, anti-cheat and other reverse-engineering work. Anthropic has not confirmed that those come from this rule. Osmani reportedly asked people to report cases where Claude refuses work on projects they own. Tom's Hardware first wrote up the reports before Anthropic responded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Client sites and AI products are original work, so day-to-day delivery shouldn't change. Where you'll feel it is a brief like "make it work like competitor X." Write prompts around the client's own brand, content and requirements, and if Claude refuses legitimate work on a client's own codebase, send that refusal to Anthropic. They asked for those reports.</div>
+          <div class="refs"><a href="https://windowsforum.com/news/anthropic-confirms-claude-code-game-recreation-restriction-developers-report-false-positives.450360/" target="_blank" rel="noopener">WindowsForum (Oct 31)</a> · <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked" target="_blank" rel="noopener">Tom's Hardware</a> · <a href="https://tech-insider.org/claude-game-rule-reverse-engineering-false-positives-5-claims-2026/" target="_blank" rel="noopener">Tech Insider (unconfirmed claims)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">SDK</span>
+            <span class="ver">v3.42.0 · Oct 31</span>
+            <h3>OpenAI's Python SDK adds agent compaction settings and keypad-tone commands for phone calls</h3>
+          </div>
+          <div class="story-body">
+            <p>Release 3.42.0 adds settings for agent context compaction, agent session review and tool settings, experimental agent "time awareness," SIP DTMF commands and delivery events (the keypad tones behind "press 1 for…"), better WebSocket recovery, and markup overlays for image edits.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> DTMF support in a major SDK means phone agents that can send and hear keypad presses are now standard plumbing. That matters for Front Desk: it can navigate a client's existing phone tree or hand callers a "press 1 to book" fallback. Compare it with what Vapi already exposes before switching anything.</div>
+          <div class="refs"><a href="https://github.com/openai/openai-python/releases/tag/v3.42.0" target="_blank" rel="noopener">openai-python v3.42.0 release notes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fixed</span>
+            <span class="ver">Oct 31</span>
+            <h3>A shared ChatGPT link could run attacker code in a logged-in session</h3>
+          </div>
+          <div class="story-body">
+            <p>Researchers at Parameter chained three pieces: a MathLive message listener that accepted messages from any sender, a YouTube-hosted script the content security policy allowed, and a Preview feature. The result could read private conversations. It was reported Oct 18 and fixed by Oct 26, with a $5,000 bounty. Parameter reported no exploitation in the wild, and users don't need to do anything.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Concierge is an embedded widget too. Make sure every <code>message</code> listener in it checks <code>event.origin</code>, and keep your CSP script allowlist short. A trusted big-name host on that list was one link in this chain.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html" target="_blank" rel="noopener">The Hacker News (Oct 31)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quiet-day notes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Note</span><span class="txt">No frontier model launches this weekend. The latest tracked releases are still Gemini 4 Carbon (Oct 28) and GPT-6.1 Terra, both covered Oct 30. <span class="ver">Oct 28–30</span></span></li>
+            <li><span class="tag improve qh-tag">Unverified</span><span class="txt">Aggregators reported an Oct 31 Apple–Alibaba announcement on Qwen powering Siri in China. I couldn't confirm it from a primary source, so it isn't counted here. <span class="ver">unconfirmed</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

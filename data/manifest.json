@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-01",
+    "title": "OPEC+ meets today with oil at a six-month high, ACA enrollment opens with steeper premiums, and a packed week runs from Election Day to the jobs report",
+    "summary": "OPEC+ is expected to hold December output steady at today&#x27;s meeting after WTI settled at $104.12 and Brent at $113.43; ACA open enrollment for 2027 opens Nov 1 with a median proposed premium increase near 15% and insurers leaving 24 states; the week brings Election Day Nov 3, the Treasury refunding Nov 4 and the October jobs report Nov 6; clocks fell back overnight.",
+    "highlights": 4,
+    "path": "reports/america/2026-11-01.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-01",
+    "title": "Anthropic confirms Claude Code now steers away from recreating existing games, and OpenAI&#x27;s SDK adds keypad tones for phone agents",
+    "summary": "Anthropic confirmed two sentences added to Claude Code&#x27;s prompt on Opus 5.5 to stop it recreating someone else&#x27;s specific game, while developers report wider refusals Anthropic has not confirmed; OpenAI&#x27;s Python SDK 3.42.0 shipped agent compaction settings and SIP DTMF commands; a ChatGPT share-link flaw was fixed. A quiet weekend otherwise.",
+    "highlights": 3,
+    "path": "reports/general-ai/2026-11-01.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-01",
+    "title": "ACA enrollment opened today and runs six weeks. Offer local health-insurance agents an enrollment-season Front Desk, then send every booking client a time-change check",
+    "summary": "Five moves ranked by fit: a six-week Front Desk package for independent health-insurance agents during ACA open enrollment, a free time-change check that opens retainer talks, an embed and CSP hardening add-on after the ChatGPT share-link chain, a keypad fallback for Front Desk now that DTMF is standard in OpenAI&#x27;s SDK, and repair-first landing pages for contractors while housing stays frozen.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-11-01.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-01",
+    "title": "No new advisories on your stack, clocks fell back overnight so check booking times, and chip earnings test the AI selloff this week",
+    "summary": "No new Next.js, React or Supabase security advisories since the Oct 14 batch, and Next.js 16.5 is still in canary; US daylight saving time ended at 2 a.m. Nov 1, so scheduling code gets its yearly test; AMD and Qualcomm report the week of Nov 2 after chips fell into a bear market; a ChatGPT share-link chain is a CSP lesson.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-11-01.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-10-31",
     "title": "Stocks close October with a tech rout, oil sits above $100, and markets still lean toward a December rate hike",
     "summary": "The Nasdaq fell 2.86% on Oct 30 as Intel dropped 28.6%, ending its worst month since March 2025; core PCE ran 3.1% and December hike odds ended Friday near 69%; WTI held near $104 while gold fell 3.3%; Binance&#x27;s $6.3B theft hit crypto holders; AT&T and Verizon cut about 8,000 jobs.",
