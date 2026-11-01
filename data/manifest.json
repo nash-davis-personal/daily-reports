@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-01.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-01",
+    "title": "Quiet window: nothing shipped since 2.1.316",
+    "summary": "No Claude Code release landed after 2.1.316, which yesterday's briefing covered; the one open item is the Opus 4.8 fast mode removal on November 30.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-11-01.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
