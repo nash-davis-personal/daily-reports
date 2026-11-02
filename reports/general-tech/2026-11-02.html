@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-02" />
+  <meta name="report:title" content="Next.js ships seven security fixes tomorrow, Apple and Palantir report tonight, and Korea's chip exports more than triple" />
+  <meta name="report:summary" content="Next.js has a scheduled security release on Tuesday, Nov 3 covering seven medium vulnerabilities, so block time to patch client apps; Apple and Palantir report after today's close with AMD, Arm, Qualcomm and Cloudflare later in the week; South Korea's October chip exports rose 259% to $56.4B while Kioxia warned NAND price growth is slowing." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Next.js ships seven security fixes tomorrow, Apple and Palantir report tonight, and Korea's chip exports more than triple — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, November 2, 2026</span>
+        <span>◆</span><span>Your stack ◆ chips ◆ earnings</span>
+      </div>
+      <h1>Next.js ships seven security fixes tomorrow, Apple and Palantir report tonight, and Korea's chip exports more than triple</h1>
+      <p class="standfirst">Correction to yesterday's "nothing to patch": Next.js posted advance notice on Oct 27 of a scheduled security release for Tuesday, Nov 3. Plan an upgrade pass across client apps for tomorrow afternoon, then watch a week of chip and software earnings.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 1 – Nov 2, 2026 (since the Nov 1 edition)</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">7</div><div class="lbl">Medium Next.js vulnerabilities fixed Tue, Nov 3</div></div>
+      <div class="stat"><div class="num">+259%</div><div class="lbl">South Korea's October chip exports, to $56.4B</div></div>
+      <div class="stat"><div class="num">~20k</div><div class="lbl">Commits in the Linux 7.4 merge window (about 15k is normal)</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch day is tomorrow</h4><p>Next.js releases fixes for seven medium vulnerabilities on Nov 3. Advisories and affected versions come out with the patch.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Earnings week for chips and SMB software</h4><p>Apple and Palantir tonight; AMD, Shopify and Toast Tuesday; Arm, Qualcomm, HubSpot and Figma Wednesday; Cloudflare Thursday.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Memory boom, with a crack</h4><p>Korea's chip exports hit $56.4B in October. Kioxia fell about 14% after saying NAND price growth is slowing.</p></div>
+        <div class="signal"><div class="n">04</div><h4>AI patches flood the Linux kernel</h4><p>Torvalds says AI-triggered work drove a merge window about a third bigger than usual, and he's happier with it there.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chip startups keep raising</h4><p>Fractile raised about $700M at $6.5B; photonics firm Salience Labs raised $125M with AMD and Intel's venture arms.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Release Tue, Nov 3</span>
+            <h3>Next.js has a scheduled security release tomorrow covering seven medium vulnerabilities</h3>
+          </div>
+          <div class="story-body">
+            <p>In an Oct 27 post, the Next.js team (Jamiboy Mohammad and Sebastian Silbermann) said a scheduled release on Tuesday, Nov 3 "will address seven medium vulnerabilities in Next.js." Full advisories, including impact, affected versions and upgrade instructions, will be published with the release. This is the monthly program Next.js started in July; critical bugs still get emergency patches, like the two Oct 14 RCEs.</p>
+            <p>Nothing else changed on the stack over the weekend. The GitHub advisory list still ends with the Oct 14 critical pair, Next.js 16.5 is in canary (canary.36 on Oct 31), React's last releases are still the Oct 14 security patches, and the Supabase CLI 3.0 beta reached beta.17 on Oct 30.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Block an hour Tuesday afternoon. When the advisories post, read the affected-versions table first, then bump <code>next</code> on every client repo to the patched release for its line (16.x or 15.x), run the build, and let Vercel ship a preview before you promote. Do the client apps that use middleware/proxy, <code>use cache</code> and image optimization first, since those areas have produced most of this year's advisories. Medium severity buys you a day or two, so finish the pass by Thursday.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Next.js blog: Upcoming November security release (Oct 27)</a> · <a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js security advisories</a> · <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Dev tools</span>
+            <span class="ver">Nov 1</span>
+            <h3>Linux 7.4-rc1: a merge window about a third bigger than usual, much of it AI-triggered</h3>
+          </div>
+          <div class="story-body">
+            <p>Linus Torvalds released the first 7.4 release candidate with almost 20,000 commits, against the roughly 15,000 a cycle usually brings. He credits much of the increase to AI: fixes for issues AI tools found, and more patches that AI suggests outright, though machine-written patches are often rewritten before they're accepted. He called it a "much healthier model" because the flood arrived during the merge window, where big changes belong. About a third of the changes are AMD GPU register definitions.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The biggest open-source project now treats AI-found bugs and AI-drafted patches as normal, with human review as the gate. That's the workflow to describe to clients who ask whether AI-written code is safe: AI drafts, a person reviews and merges, tests decide.</div>
+          <div class="refs"><a href="https://www.theregister.com/os-platforms/2026/11/01/linus-torvalds-says-linux-kernel-is-out-of-stabilization-phase-and-using-much-healthier-model-for-ai-contributions/5306852" target="_blank" rel="noopener">The Register (Nov 1)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and the earnings week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Week ahead</span>
+            <span class="ver">Nov 2 – Nov 5</span>
+            <h3>Apple and Palantir report tonight, then AMD, Arm, Qualcomm and the SMB software names</h3>
+          </div>
+          <div class="story-body">
+            <p>Confirmed after-close reports: Apple and Palantir on Monday; AMD, Arista, Astera Labs, Block and Toast on Tuesday (Shopify reports before the open); Qualcomm, Arm, AppLovin, HubSpot and Figma on Wednesday (Datadog before the open); Cloudflare, Atlassian and Dropbox on Thursday. Previews focus on AMD's data-center demand and Helios rack shipments, and on whether Palantir can steady AI-software sentiment after last week's selloff. Premarket Monday, AMD was up 2.2%, Nvidia 1.5% and Micron 2.7% as futures rose.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Shopify, Toast, HubSpot and Block are the tools your SMB clients pay for. Listen for what they say about small-business spending and AI add-on pricing; if they're raising prices for AI features, your flat-fee AI products look cheaper by comparison. Cloudflare's call is worth a skim for edge and bot-traffic trends.</div>
+          <div class="refs"><a href="https://www.stocktitan.net/articles/earnings-calendar-week-of-november-2-2026" target="_blank" rel="noopener">StockTitan earnings calendar (updated Nov 2)</a> · <a href="https://www.fxempire.com/forecasts/article/the-week-ahead-ai-earnings-u-s-midterms-and-jobs-data-test-u-s-stocks-1641771" target="_blank" rel="noopener">FXEmpire week ahead</a> · <a href="https://www.cnbc.com/2026/11/01/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC live (Nov 2)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Chips</span>
+            <span class="ver">Nov 1 – Nov 2</span>
+            <h3>South Korea's chip exports rose 259% to a record, while Kioxia says NAND price gains are slowing</h3>
+          </div>
+          <div class="story-body">
+            <p>South Korea's October exports hit a record $115.3B, up 93.7% from a year earlier. Semiconductors made up $56.4B of that, up 259%, on AI memory demand. The Kospi rose 2.4% Monday. In Japan, Kioxia shares fell about 14% after the flash-memory maker said average selling prices grew in the mid-20% range last quarter, against 70% the quarter before, and guided operating profit of 2 trillion yen versus the 2.35 trillion analysts expected.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Memory is the cost line behind cloud GPUs and laptops alike. Slowing NAND price growth is an early hint that storage and hardware prices may ease next year. Hold off on any hardware upgrade you don't need right now, and don't promise clients lower AI hosting costs on the strength of one quarter.</div>
+          <div class="refs"><a href="https://www.koreatimes.co.kr/amp/economy/20261101/koreas-monthly-exports-hit-1153-bil-in-oct-on-record-chip-sales" target="_blank" rel="noopener">Korea Times (Nov 1)</a> · <a href="https://www.cnbc.com/2026/11/01/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC live (Kioxia, Nov 2)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Nov 2</span>
+            <h3>Fractile raises about $700M at $6.5B, and Salience Labs raises $125M for optical data-center chips</h3>
+          </div>
+          <div class="story-body">
+            <p>UK chip startup Fractile raised about $700M (Companies House filings show roughly $774M) at a $6.5B valuation, with the UK's £500M Sovereign AI Fund joining; Dealroom reports a $250M supply agreement with Anthropic. Separately, Salience Labs raised a $125M Series B led by Bullhound Capital, with AMD Ventures and Intel Capital participating, to scale its photonic switching for AI data centers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to act on. More inference-chip suppliers competing for Anthropic's business is one more reason per-token prices keep falling, which widens margins on retainers priced per month.</div>
+          <div class="refs"><a href="https://dealroom.co/news/168114-uk-taxpayers-buy-into-the-ai-chip-boom-as-the-sovereign-ai-fund-joins-fractile-s-6-5bn-round" target="_blank" rel="noopener">Dealroom (Nov 2)</a> · <a href="https://evertiq.com/news/2026-11-02-salience-labs-raises-125m-to-scale-performance-in-ai-data-centers" target="_blank" rel="noopener">Evertiq (Nov 2)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Space</span><span class="txt">Google ran an AI model on a data-center-class chip aboard a Planet Labs satellite, an early Project Suncatcher milestone; Google's own energy chief has said orbital data centers could cost up to 100 times more than ground ones. <span class="ver">Nov 1 · <a href="https://spacenews.com/google-runs-ai-model-on-satellite-chip-advancing-orbital-data-center-ambitions/" target="_blank" rel="noopener">SpaceNews</a></span></span></li>
+            <li><span class="tag improve qh-tag">Hardware</span><span class="txt">Apple's first touchscreen MacBook Pro (M5 Pro/Max, 14- and 16-inch) goes on sale Friday, Nov 6. <span class="ver">Nov 6 · <a href="https://cnn.com/2026/10/28/tech/apple-macbook-pro-touchscreen" target="_blank" rel="noopener">CNN</a></span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">Cisco Talos documented an infostealer ("VOLTA") that uses commercial LLM APIs to rank stolen victims by how much money they're worth. <span class="ver">Oct 31 · <a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/" target="_blank" rel="noopener">Talos</a></span></span></li>
+            <li><span class="tag improve qh-tag">Status</span><span class="txt">No new Supabase, Tailwind or Vercel CLI releases over the weekend; Supabase CLI 3.0 is still in beta (beta.17), so keep it out of client deploy scripts. <span class="ver">Oct 30 · <a href="https://github.com/supabase/cli/releases" target="_blank" rel="noopener">Supabase CLI releases</a></span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

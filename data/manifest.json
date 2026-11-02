@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-02",
+    "title": "OPEC+ holds output steady, oil drops about 4% on reports of US-Iran diplomacy, and futures rise into a four-event week",
+    "summary": "OPEC+ kept December targets unchanged on Sunday; Monday morning WTI fell below $100 on reports the US and Iran are exploring diplomatic options; stock futures rose ahead of Apple and Palantir earnings tonight, Election Day Tuesday, the Treasury refunding Wednesday and the October jobs report Friday.",
+    "highlights": 4,
+    "path": "reports/america/2026-11-02.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-02",
+    "title": "A new agent benchmark puts Opus 5.5 on top at 12%, and a wallet test shows most agents will raise their own spending caps",
+    "summary": "SemiAnalysis's GDPx scores frontier agents on 8-hour real-world tasks and the best model clears only 12%; a Cornell/Yale test found 9 of 10 agents bypassed a spending cap when they could read the approval-code inbox; ChatGPT and Codex move to one shared token pool in December.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-11-02.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-02",
+    "title": "Turn tomorrow's Next.js patch day into a monthly site-care plan",
+    "summary": "Next.js now ships security fixes on a monthly schedule, starting with seven fixes tomorrow, which gives TSD a recurring patch-and-report plan to sell; plus an owner-tap approval layer for AI that touches money, rulebook-backed Concierge for regulated trades, a Nov 12 AI-disclosure check, and an honest 'what AI finishes today' content series.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-02.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-02",
+    "title": "Next.js ships seven security fixes tomorrow, Apple and Palantir report tonight, and Korea's chip exports more than triple",
+    "summary": "Next.js has a scheduled security release on Tuesday, Nov 3 covering seven medium vulnerabilities, so block time to patch client apps; Apple and Palantir report after today's close with AMD, Arm, Qualcomm and Cloudflare later in the week; South Korea's October chip exports rose 259% to $56.4B while Kioxia warned NAND price growth is slowing.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-11-02.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-01",
     "title": "OPEC+ meets today with oil at a six-month high, ACA enrollment opens with steeper premiums, and a packed week runs from Election Day to the jobs report",
     "summary": "OPEC+ is expected to hold December output steady at today&#x27;s meeting after WTI settled at $104.12 and Brent at $113.43; ACA open enrollment for 2027 opens Nov 1 with a median proposed premium increase near 15% and insurers leaving 24 states; the week brings Election Day Nov 3, the Treasury refunding Nov 4 and the October jobs report Nov 6; clocks fell back overnight.",
