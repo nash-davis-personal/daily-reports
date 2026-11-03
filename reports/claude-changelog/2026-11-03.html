@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-03" />
+  <meta name="report:title" content="2.1.317 fixes desktop MCP drops and lets SDK hooks fail closed" />
+  <meta name="report:summary" content="Claude Code 2.1.317 stops project MCP servers dropping after the first turn in desktop sessions, removes the Read tool's unchanged-file stub, adds fail-closed Agent SDK hooks, and tightens scheduled tasks and subagents, with 62 bug fixes." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.317 fixes desktop MCP drops and lets SDK hooks fail closed — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, November 3, 2026</span>
+        <span>◆</span><span>Release 2.1.317</span>
+      </div>
+      <h1>2.1.317 fixes desktop MCP drops and lets SDK hooks fail closed</h1>
+      <p class="standfirst">The quiet stretch ended today with one big release. The fixes that hit your day directly: project MCP servers stay connected in desktop sessions, a project's effort setting now sticks in the Code tab, and re-reading a file returns the file.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.316 (Oct 31): 2.1.317, Nov 3</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release (2.1.317)</div></div>
+      <div class="stat"><div class="num">17</div><div class="lbl">Added or changed items</div></div>
+      <div class="stat"><div class="num">62</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Desktop MCP servers stay up</h4><p>Project and local MCP servers no longer disconnect after the first turn in some desktop sessions.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Re-reads return the file</h4><p>The Read tool's "file unchanged" stub is gone. Reading a file again gives its contents.</p></div>
+        <div class="signal"><div class="n">03</div><h4>SDK hooks can fail closed</h4><p><code>onFailure: "block"</code> makes a failing Agent SDK hook callback block the action.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Scheduled tasks get safer</h4><p><code>/schedule</code> warns about connectors you didn't ask for; <code>/loop</code> wakeups and task listing fixed.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Subagents behave better</h4><p>Messages reach busy background agents sooner, and each subagent uses its own model's effort level.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Desktop and daily driving</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.317</span>
+            <h3>Project MCP servers stop dropping, and project effort settings stick</h3>
+          </div>
+          <div class="story-body">
+            <p>Two desktop fixes land together. Project and local MCP servers were disconnecting after the first turn in some Claude desktop sessions; that's fixed. A project's <code>effortLevel</code> setting was also being ignored by sessions an app pre-starts and then opens in the project, which the changelog names as new sessions in the desktop app's Code tab.</p>
+            <p>Related: Claude Desktop's Code tab now shows a notice when an organization's remote managed settings haven't loaded for the session, and another once they do.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run nearly everything from the Code tab with a long MCP list. If Supabase, Vercel or tsd-portal tools have gone missing mid-session in a client repo, update and retest before blaming the server config. Any project you set to a fixed effort level now gets it from the first turn.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.317</span>
+            <h3>The Read tool returns content on every read</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code removed the Read tool's "file unchanged since your last Read" stub. Reading an unchanged file again now returns its content. A separate fix stops resumed sessions telling Claude again about a file change it already knew about.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Long sessions on Bisque or Sonderwerks code where context got compacted could leave Claude holding a stub with nothing behind it. Re-reads now give it the real file, so fewer edits built on a stale picture. Expect slightly higher token use on repeat reads.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents and automation</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.317</span>
+            <h3>Agent SDK hooks get <code>onFailure: "block"</code></h3>
+          </div>
+          <div class="story-body">
+            <p>Agent SDK hook callbacks accept <code>onFailure: "block"</code>. With it set, a callback that fails blocks the action. Without it, a crashed or erroring guard lets the action through.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client agent you build on the SDK with a guard hook (no refunds over a limit, no writes to the live Supabase table, no outbound SMS without approval) should set this. A guard that fails open is a liability you'd be selling. Add it to the agent starter template.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.317</span>
+            <h3>Scheduled tasks: connector warning, plus loop and listing fixes</h3>
+          </div>
+          <div class="story-body">
+            <p><code>/schedule</code> now warns when a new cloud scheduled task gets connectors you did not ask for, and says how to remove them. It also now includes the next run time and link in its results after creating or updating a task. Self-paced <code>/loop</code> wakeups were sometimes not scheduled when Claude left a field out of its request; fixed. Stored scheduled tasks could not be listed or deleted after scheduled tasks were turned off; fixed. New cloud scheduled tasks now start on the organization's default environment.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your scout runs, Fleet Steward and Nash OS jobs are all unattended. Next time you create a cloud task, read the connector warning and strip Gmail, Square and Stripe from anything that only needs to read and push a repo. Fewer connectors on a robot means less it can break.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.317</span>
+            <h3>Subagents: faster messages, their own effort level, safer Ctrl+C</h3>
+          </div>
+          <div class="story-body">
+            <p>A SendMessage to a running background agent arrives earlier: its running command moves to the background and keeps going. Subagents and teammates on a different model from the main conversation now use that model's saved effort level or its default. Ctrl+C used to clear typed text at the prompt and also stop every running background agent; that's fixed. Auto mode now shows a notice when its check has no answer for a subagent's tool call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you fan out Haiku or Sonnet subagents from an Opus session, they no longer inherit your high effort setting, which should make them cheaper and quicker. If a cheap subagent's work looks thin, set that model's effort explicitly. And you can clear the prompt without killing a long build agent.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Privacy and carry-over</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.317</span>
+            <h3>Claude asks before sending your account email out</h3>
+          </div>
+          <div class="story-body">
+            <p>Claude Code now asks before a web or shell tool call sends your account email address to the network.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Expect an occasional new prompt in scripts that pass your tsd-ventures address to an API. Approve it when it's yours on purpose. In unattended runs this could stall a step, so check the next scout logs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.317</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Reminder</span>
+            <span class="ver">Nov 30, 2026</span>
+            <h3>Opus 4.8 fast mode removal is 27 days out</h3>
+          </div>
+          <div class="story-body">
+            <p>Carried from the previous briefings: fast mode on Opus 4.8 is removed on November 30, 2026, after which those requests error. Nothing in 2.1.317 changes that.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Still open. Grep scheduled tasks, launchd jobs and client SDK code for pinned Opus 4.8 with fast mode and move them to Opus 5.5.</div>
+          <div class="refs"><a href="2026-11-02.html">Nov 2 briefing</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Claude no longer treats partial Grep and Glob results as complete when a search hits its time limit. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude -p</code> now exits 1 with an error when a full disk or quota loses its transcript writes; it used to exit 0. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">"Prompt is too long" after auto-compaction in sessions with a very large, changed CLAUDE.md. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Very long conversations losing their earlier summary when compaction had to shorten its own request. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>claude auth status</code> exiting before a slow token refresh was saved, which could sign you out next run. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Edits to settings files in the first second after launch not taking effect. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Auto mode in cloud sessions stopping for approval on Artifact uploads, database writes and output-folder saves. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/artifacts</code> and the Artifact tool's shared list empty once you own 200 or more artifacts. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A region or network block (HTTP 403) shown as a sign-in failure; the error now explains the block. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Remote Control: the next message to an idle session went unanswered after restarting <code>claude remote-control</code>. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">The exit "Resume this session with" hint repeats your launch flags, such as <code>--chrome --debug</code>. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Cloud sessions show a link card when an MCP server asks you to visit a link. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Claude apps gateway cost report API (<code>GET /v1/organizations/analytics/cost</code>) and new OTel plan and seat attributes. Enterprise admin tooling, nothing to do here. <span class="ver">2.1.317</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Self-hosted runner recovery after 5xx errors and missed heartbeats, plus a batch of VS Code, Windows and OTel proxy fixes. <span class="ver">2.1.317</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
