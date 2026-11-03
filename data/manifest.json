@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-03",
+    "title": "Election Day, oil's biggest drop in months, and a factory survey that came in hot",
+    "summary": "Voters elect all 435 House members and 36 governors today; Brent fell 7.6% to $104.77 on reports of US-Iran talks; October ISM manufacturing rose to 55.5; stocks split with tech lower; job openings today, the Treasury refunding Wednesday and the jobs report Friday.",
+    "highlights": 5,
+    "path": "reports/america/2026-11-03.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-03",
+    "title": "Anthropic tells the SEC self-building AI may be close, and ElevenLabs data says voice beats chat on long conversations",
+    "summary": "Anthropic's amended S-1 says it may soon cross its own recursive self-improvement threshold, ElevenLabs finds voice agents win 31.7% more often than chat past two minutes, Goldman pulls Claude Code from non-engineers, and Garry Tan says he spends up to $200K a year on tokens.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-11-03.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-03",
+    "title": "Sell Front Desk on the calls that run long, with new data that voice wins past two minutes",
+    "summary": "Six moves ranked by fit: pitch TSD Front Desk to businesses with long, complex calls using ElevenLabs' voice-vs-chat data; sell a staff AI-tool policy; run today's Next.js patch and send the report; build a 'company brain' Concierge; and pitch Gaston County manufacturers while factories expand.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-03.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-03",
+    "title": "Next.js patch day is today, Apple posts a record fiscal year under its new CEO, and Marvell buys Lumentum for $115B",
+    "summary": "Next.js ships seven medium security fixes today, Apple's first quarter under John Ternus brings $114.5B in revenue, Palantir nearly doubles revenue, Marvell agrees to buy Lumentum, Oracle raises $20B, Nvidia's Brev may have exposed SSH keys, and Supabase drops old TLS ciphers Nov 10.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-03.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-02",
     "title": "OPEC+ holds output steady, oil drops about 4% on reports of US-Iran diplomacy, and futures rise into a four-event week",
     "summary": "OPEC+ kept December targets unchanged on Sunday; Monday morning WTI fell below $100 on reports the US and Iran are exploring diplomatic options; stock futures rose ahead of Apple and Palantir earnings tonight, Election Day Tuesday, the Treasury refunding Wednesday and the October jobs report Friday.",

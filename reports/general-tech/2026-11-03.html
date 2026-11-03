@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-03" />
+  <meta name="report:title" content="Next.js patch day is today, Apple posts a record fiscal year under its new CEO, and Marvell buys Lumentum for $115B" />
+  <meta name="report:summary" content="Next.js ships seven medium security fixes today, Apple's first quarter under John Ternus brings $114.5B in revenue, Palantir nearly doubles revenue, Marvell agrees to buy Lumentum, Oracle raises $20B, Nvidia's Brev may have exposed SSH keys, and Supabase drops old TLS ciphers Nov 10." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Next.js patch day is today, Apple posts a record fiscal year under its new CEO, and Marvell buys Lumentum for $115B — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Tuesday, November 3, 2026</span>
+        <span>◆</span><span>Patches, earnings and chip deals</span>
+      </div>
+      <h1>Next.js patch day is today, Apple posts a record fiscal year under its new CEO, and Marvell buys Lumentum for $115B</h1>
+      <p class="standfirst">The one item that needs action: Next.js publishes seven medium-severity fixes today, and every client site on Next should be bumped once the advisories land. Around it, last night's earnings and a giant optics deal say the AI hardware buildout is still being paid for, increasingly with debt and stock.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Nov 2 to early Nov 3, 2026</span>
+        <span>◆</span><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">7</div><div class="lbl">Medium Next.js vulnerabilities fixed today</div></div>
+      <div class="stat"><div class="num">$114.5B</div><div class="lbl">Apple fiscal Q4 revenue, up 12%</div></div>
+      <div class="stat"><div class="num">$115B</div><div class="lbl">Implied value of Marvell's Lumentum deal</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Patch Next.js today</h4><p>The scheduled November security release covers seven medium issues. Advisories and patched versions publish with it; no CVE numbers were out at 6:40 a.m.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Apple: best fiscal year ever</h4><p>$114.5B revenue (+12%), iPhone $57.6B (+17%) despite supply limits, in the first report under CEO John Ternus.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Palantir nearly doubles</h4><p>Q3 revenue $2.31B, up 96%. US commercial revenue passed US government revenue for the first time.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Marvell buys Lumentum</h4><p>All-stock deal at about $115B enterprise value for AI data-center optics. Oracle separately raised $10B in stock and $10B in notes.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Supabase cuts old TLS ciphers Nov 10</h4><p>Clients that cannot speak modern TLS will fail to connect to Auth, Data APIs, Storage, Realtime and Edge Functions.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Nvidia Brev breach</h4><p>Unauthorized activity on the Brev cloud-dev platform may have exposed SSH keys to customer VMs.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack: patch and check</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>Next.js's November security release ships today with seven medium-severity fixes</h3>
+          </div>
+          <div class="story-body">
+            <p>Announced Oct 27, the scheduled release lands today and covers seven medium vulnerabilities; full advisories with affected versions and upgrade steps are published alongside it. As of this filing the Next.js blog had not posted them. This follows the Oct 14 out-of-band update, which fixed a critical remote-code-execution bug in image optimization (patched in 16.4.1 and 15.5.28).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: tonight, check every client repo is at least on 16.4.1 (or 15.5.28), then bump to today's patched version once the advisory posts, run the build, and push. Log each site and version in the client's care notes; that log is the proof a site-care plan sells.</p>
+          <div class="refs"><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026" target="_blank" rel="noopener">Next.js blog: upcoming release</a> ◆ <a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Oct 14 update</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking change</span>
+            <span class="ver">Effective Nov 10, 2026</span>
+            <h3>Supabase disables a subset of TLS 1.2 ciphers on project HTTP APIs next Tuesday</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase's changelog says clients that don't support modern standards "will fail to connect" to Auth, Data APIs, Storage, Realtime and Edge Functions after Nov 10. It puts affected traffic below 0.0001%, so browsers and current Node runtimes are fine. Risk sits with old embedded devices, legacy kiosks or very old server runtimes calling Supabase directly.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A five-minute check: confirm no client integration (an old POS, a kiosk, a legacy PHP webhook) calls a Supabase project directly. If one does, test it against a modern TLS endpoint before Nov 10.</p>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Nov 2, 2026</span>
+            <h3>Nvidia's Brev platform may have exposed SSH keys for customer cloud machines</h3>
+          </div>
+          <div class="story-body">
+            <p>Tom's Hardware reports Nvidia told Brev customers about unauthorized activity spanning 16 days in October that may have exposed SSH keys used to reach customer VMs. Nvidia says it found no evidence of misuse so far.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any GPU or dev box was ever spun up on Brev, rotate those keys today. Generally, keep deploy keys per project so one leaked platform never opens every client.</p>
+          <div class="refs"><a href="https://www.tomshardware.com/tech-industry/cyber-security/nvidia-brev-security-breach-may-have-exposed-ssh-keys-used-to-access-customer-vms-investigation-finds-unauthorized-activity-spanning-16-days-but-no-evidence-of-misuse" target="_blank" rel="noopener">Tom's Hardware</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech earnings</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">Nov 2, 2026</span>
+            <h3>Apple's first quarter under John Ternus: $114.5B revenue and a record fiscal year</h3>
+          </div>
+          <div class="story-body">
+            <p>For the quarter ended Sept 26, Apple reported revenue of $114.5B (+12%), net income of $30.7B, or $2.10 a share, and iPhone revenue of $57.6B (+17%), a September-quarter record despite supply constraints, with the iPhone Duo and iPhone 18 Pro in the lineup. MacRumors tallies Mac +23.7%, Services +9.8%, Wearables −7.9% and iPad −10.4%. Shares slipped after hours, per StockTitan's wrap.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Mac growth plus a strong iPhone cycle means client customers are browsing on new, fast devices. Design and test for the newest iPhone screen sizes first; most SMB site traffic is mobile.</p>
+          <div class="refs"><a href="https://www.macrumors.com/2026/11/02/apple-4q-2026-earnings/" target="_blank" rel="noopener">MacRumors</a> ◆ <a href="https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm" target="_blank" rel="noopener">Apple 8-K</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Earnings</span>
+            <span class="ver">Nov 2, 2026</span>
+            <h3>Palantir's revenue jumps 96% and commercial customers now outspend the US government</h3>
+          </div>
+          <div class="story-body">
+            <p>Palantir's Q3 release shows revenue of $2.313B, up 96% and above $2B for the first time, GAAP net income of $1.128B, a 62% adjusted operating margin and $1.216B of adjusted free cash flow. US commercial revenue passed US government revenue for the first time. Consensus had been about $2.0B. The stock still fell after hours.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The fastest-growing enterprise AI vendor's growth is now ordinary businesses paying to wire AI into operations. That demand exists at SMB scale too, at prices TSD can serve.</p>
+          <div class="refs"><a href="https://www.sec.gov/Archives/edgar/data/0001321655/000132165526000045/a2026q3ex991pressrelease.htm" target="_blank" rel="noopener">Palantir 8-K</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and the money behind the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">M&amp;A</span>
+            <span class="ver">Nov 2, 2026</span>
+            <h3>Marvell agrees to buy Lumentum in an all-stock deal valued at about $115B</h3>
+          </div>
+          <div class="story-body">
+            <p>Lumentum holders get 4.5 Marvell shares each, about $1,132 a share and a 23.9% premium; Marvell holders end up with about 67% of the combined company. Marvell targets more than $1B in yearly cost savings from a "full-stack connectivity" portfolio of chips and optics for AI data centers. Both stocks fell sharply on the day (Lumentum −18.6%, Marvell −12.7%).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct action. The signal is that moving data between AI chips is now worth a $115B bet, so compute supply for the APIs TSD rents keeps growing.</p>
+          <div class="refs"><a href="https://www.sec.gov/Archives/edgar/data/0001633978/000119312526442758/d163169dex991.htm" target="_blank" rel="noopener">Lumentum 8-K press release</a> ◆ <a href="https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026" target="_blank" rel="noopener">StockTitan market wrap</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Financing</span>
+            <span class="ver">Nov 2, 2026</span>
+            <h3>Oracle sells $10B of stock and $10B of notes to fund its AI cloud</h3>
+          </div>
+          <div class="story-body">
+            <p>Oracle filed concurrent $10B common-stock and $10B senior-note offerings (floating and fixed notes maturing 2029 to 2046). It already carried $125.3B of debt as of Aug 31. The shares fell 8.8% on the day.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Hyperscalers are now paying up to borrow for AI capacity. If that money gets tighter, API prices stop falling as fast; keep client AI pricing with margin for that.</p>
+          <div class="refs"><a href="https://www.sec.gov/Archives/edgar/data/0001341439/000119312526442729/d181425d424b5.htm" target="_blank" rel="noopener">Oracle 424B5</a> ◆ <a href="https://www.sec.gov/Archives/edgar/data/0001341439/000119312526442722/d181336d424b2.htm" target="_blank" rel="noopener">Oracle 424B2</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Earnings</span><span class="txt">AMD reports Q3 after the close today (call 5 p.m. ET); Arista, Booking and Amgen also report tonight, Shopify this morning. <a href="https://finviz.com/news/399552/amd-to-report-fiscal-third-quarter-2026-financial-results" target="_blank" rel="noopener">AMD notice</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag feature qh-tag">Next.js</span><span class="txt">Next.js shipped a next-bundle-optimizer agent skill plus new Bundle Analyzer tools to cut client JavaScript. <a href="https://nextjs.org/blog/ship-less-javascript-with-ai" target="_blank" rel="noopener">Next.js blog</a> <span class="ver">Oct 28</span></span></li>
+            <li><span class="tag fix qh-tag">Supabase</span><span class="txt">Supabase's Postgres upgrade fixes incorrect local times for Vancouver, Edmonton and Casablanca. <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Changelog</a> <span class="ver">Oct 30</span></span></li>
+            <li><span class="tag improve qh-tag">Deal</span><span class="txt">EV-charging firm EVgo rose 46.8% after LS Power proposed a $2.00-a-share cash buyout. <a href="https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026" target="_blank" rel="noopener">StockTitan</a> <span class="ver">Nov 2</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
