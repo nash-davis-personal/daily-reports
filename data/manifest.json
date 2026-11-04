@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-04",
+    "title": "Control of Congress changes hands, NC caps its income tax at 3.5%, and the 10-year sits near 5% into the refunding",
+    "summary": "Projections give Democrats both chambers, North Carolina voters approve three constitutional amendments including a 3.5% income tax cap, job openings rise to 7.5 million, oil settles lower despite the Qeshm strike, and the Treasury refunding, ADP and ISM services all land today.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-04.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-04",
+    "title": "Apple opens Siri AI to every developer, OpenAI says ChatGPT search is a fifth of Google's, and an EU court adviser puts RAG on notice",
+    "summary": "Apple's iOS 27.3 betas let any app plug into Siri AI, OpenAI claims ChatGPT handles about 20% of Google's search volume, CrowdStrike spends roughly $495M on agent security and ships a kill switch, an EU advocate general says retrieval-time reproduction can infringe, Anthropic's watermark lands on older Claude models, and fal raises $1.3B.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-04.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-04",
+    "title": "A WordPress exit package while the core updater sits on the exploited list",
+    "summary": "Six moves ranked by fit: a fixed-price WordPress-to-Next.js migration pitched off CISA's KEV listing, an AI search visibility add-on, a trust package with an agent kill switch and audit log, Vercel's free security review window, a Front Desk pitch to restaurants churning staff, and a Nov 11 Node patch added to site care.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-04.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-04",
+    "title": "Node.js security releases land Nov 11, an exploited WordPress core flaw hits CISA's list, and Vercel ships code security review on every push",
+    "summary": "Node.js pre-announces HIGH-severity fixes for 22, 24 and 26 on Nov 11, CISA adds an actively exploited WordPress core RCE to its KEV catalog, Vercel launches Security Review (free until Nov 10) plus standalone CI and vercel doctor, the seven Next.js advisories get IDs, and AMD, Super Micro and Arista all beat.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-04.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-03",
     "title": "Election Day, oil's biggest drop in months, and a factory survey that came in hot",
     "summary": "Voters elect all 435 House members and 36 governors today; Brent fell 7.6% to $104.77 on reports of US-Iran talks; October ISM manufacturing rose to 55.5; stocks split with tech lower; job openings today, the Treasury refunding Wednesday and the jobs report Friday.",

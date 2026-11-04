@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-11-04" />
+  <meta name="report:title" content="Apple opens Siri AI to every developer, OpenAI says ChatGPT search is a fifth of Google's, and an EU court adviser puts RAG on notice" />
+  <meta name="report:summary" content="Apple's iOS 27.3 betas let any app plug into Siri AI, OpenAI claims ChatGPT handles about 20% of Google's search volume, CrowdStrike spends roughly $495M on agent security and ships a kill switch, an EU advocate general says retrieval-time reproduction can infringe, Anthropic's watermark lands on older Claude models, and fal raises $1.3B." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Apple opens Siri AI to every developer, OpenAI says ChatGPT search is a fifth of Google's, and an EU court adviser puts RAG on notice — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Wednesday, November 4, 2026</span>
+        <span>◆</span><span>Platforms, agent security, law, compute</span>
+      </div>
+      <h1>Apple opens Siri AI to every developer, OpenAI says ChatGPT search is a fifth of Google's, and an EU court adviser puts RAG on notice</h1>
+      <p class="standfirst">No frontier model shipped overnight, but the platforms around the models moved. Apple let any app hook into Siri AI, OpenAI put a number on how much search it now handles, and the two most useful items for TSD are legal and security: an EU opinion that retrieval-time reproduction can infringe, and a security vendor turning "agent kill switch" into a product.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Nov 3 to early Nov 4, 2026</span>
+        <span>◆</span><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">~20%</div><div class="lbl">ChatGPT search volume relative to Google, per OpenAI</div></div>
+      <div class="stat"><div class="num">$16B</div><div class="lbl">fal's valuation after a $1.3B Series F</div></div>
+      <div class="stat"><div class="num">44%</div><div class="lbl">Widely cited LLM research claims that no longer hold (Stanford)</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Siri AI is open to all developers</h4><p>The iOS 27.3 betas let any app expose content and actions to Siri AI through App Intents, with chained "skills." Customer rollout is months out.</p></div>
+        <div class="signal"><div class="n">02</div><h4>ChatGPT claims a fifth of Google's search volume</h4><p>OpenAI's consumer lead said ChatGPT search queries run about 20% of Google's. The definition is loose, but the direction is the sales point.</p></div>
+        <div class="signal"><div class="n">03</div><h4>An EU court adviser says RAG output can infringe</h4><p>Training is covered by the text-and-data-mining exception, in his view. Fetching paywalled articles or reproducing recognizable text at answer time may be a different matter.</p></div>
+        <div class="signal"><div class="n">04</div><h4>CrowdStrike buys two AI security firms and ships a kill switch</h4><p>Fiddler AI and Dreadnode for a reported $495M combined, plus a Falcon feature that can terminate a rogue agent and block its restart.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Anthropic's watermark reaches older Claude models</h4><p>Reported effective Nov 3 on Mythos 5, Opus 4.7, Opus 4.6 and Sonnet 4.6, with no opt-out and a sampling-parameter loophole on two of them.</p></div>
+        <div class="signal"><div class="n">06</div><h4>fal doubles to $16B</h4><p>The image, video and audio inference host raised $1.3B seven months after its last round, and admits it rate-limited customers this summer.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platforms open up</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Platform</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>Apple opens Siri AI to every developer in the iOS, iPadOS, macOS and visionOS 27.3 betas</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple's developer post says a new Developer Preview lets any developer integrate their app with Siri AI starting with the 27.3 betas. Apps expose content and actions through App Intents, a new "skills" mechanism lets Siri chain several actions into one task, and any entity in the Spotlight semantic index becomes reachable. Fifteen Apple apps already use it. App Store submission opens in the spring and the customer rollout is "in a few months." It requires an Apple Intelligence device in one of six supported languages, is unavailable in the EU on iOS, iPadOS and watchOS, and server-side features have daily usage limits with expanded access "a paid option in the future."</p>
+            <p>The same day, Apple's annual 10-K added risk language saying AI agents "may behave in unintended or unpredictable ways," can take actions not authorized by the user, and that Apple's ability to oversee third-party agents may be limited.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client app or wrapped PWA can become a Siri action with a handful of App Intents ("book my next detail," "what's my order status"). The skills model mirrors how Claude skills work, so intent design transfers. Nothing ships to customers until next year, so this is a line in mobile upsell proposals for now.</div>
+          <div class="refs"><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener">Apple Developer News</a> ◆ <a href="https://www.macworld.com/article/3276244/with-ios-27-3-the-siri-ai-floodgates-are-about-to-open.html" target="_blank" rel="noopener">Macworld</a> ◆ <a href="https://www.cnbc.com/2026/11/03/apple-warns-of-ai-agents-behave-in-unintended-or-unpredictable-ways.html" target="_blank" rel="noopener">CNBC on the 10-K</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Data</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>OpenAI says ChatGPT's search volume is about 20% of Google's</h3>
+          </div>
+          <div class="story-body">
+            <p>At a New York press event, ChatGPT consumer product lead Adam Fry said ChatGPT's search queries are "roughly one-fifth" of Google's. OpenAI counts a search whenever a prompt makes ChatGPT hit the web, and did not say which Google figure it used. Ahrefs estimated 12% in February under a narrower definition. Fry also said most users do not seem to mind ads in ChatGPT and suggested OpenAI could show more.</p>
+            <p>Related: Google announced Gemini will be off by default in Google Classroom, and that districts which turn off AI on school devices also lose Google Search, because "Search and AI are deeply integrated." Testing starts this month with a small group of US schools; broad rollout is early 2027.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two vendors said the same thing in different words: search and AI answers are one product now. Add an "AI search visibility" line to every local SEO engagement: structured data, a clean FAQ page, and a check of what ChatGPT and Gemini say when someone asks for a plumber in Gastonia. It is cheap to deliver and easy for Grant and Bishop to explain.</div>
+          <div class="refs"><a href="https://9to5google.com/2026/11/03/chatgpt-has-hit-roughly-20-of-google-search-volume-openai-says/" target="_blank" rel="noopener">9to5Google</a> ◆ <a href="https://www.cnbc.com/2026/11/03/google-responds-to-outrage-over-removing-search-in-schools-that-ban-ai.html" target="_blank" rel="noopener">CNBC on Google Classroom</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents: law, security and provenance</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Law</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>EU advocate general: training is covered by the TDM exception, but a chatbot's retrieval-time output can infringe</h3>
+          </div>
+          <div class="story-body">
+            <p>In Like Company v Google, Advocate General Maciej Szpunar told the Court of Justice of the EU that training large language models on protected works is generally allowed under the text-and-data-mining exception, and recommended the court not rule on training because the evidence did not show the publisher's articles were used. He said infringement may arise when a chatbot circumvents paywalls to fetch articles, or when outputs reproduce recognizable protected expression. Gemini uses retrieval-augmented generation. The opinion is advisory, and the court usually follows its advocates general.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the first high-court signal that the retrieval step, which is exactly what TSD Concierge does, carries more exposure than training. The fix is already TSD's default: index only content the client owns or licenses (their site, their docs, their menus), never third-party articles. Write that into the Concierge spec as a stated rule so it reads as a feature.</div>
+          <div class="refs"><a href="https://www.pymnts.com/cpi-posts/googles-gemini-faces-eu-copyright-scrutiny-over-use-of-news-content/" target="_blank" rel="noopener">PYMNTS / CPI</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Security</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>CrowdStrike buys Fiddler AI and Dreadnode and ships an "AI Kill Switch" for rogue agents</h3>
+          </div>
+          <div class="story-body">
+            <p>At Fal.Con Europe, CrowdStrike announced agreements to acquire Fiddler AI (agent observability and explainability) and Dreadnode (automated AI attack testing with more than 100 methods mapped to the OWASP LLM Top 10 and NIST AI RMF). Prices were undisclosed; the Wall Street Journal reported about $400M and $95M. Fiddler becomes "Falcon Observe," with general availability planned for CrowdStrike's fiscal Q4 2027. CEO George Kurtz also unveiled an AI Kill Switch inside Falcon Guardian that can terminate a misbehaving agent, block restarts and cut its network access, available now, and said CrowdStrike is working with Anthropic to protect Claude Cowork. Kurtz: "Everyone is building AI agents, but they never had the off button, and now they do."</p>
+            <p>Also Nov 3: OpenAI said it is partnering with Cathedral, the firm founded by former DOGE staff that got into Anthropic's internal systems through a bug-bounty engagement last week, and is "more than quadrupling" rewards for critical findings. Anthropic said model weights and Claude conversations were untouched.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> "Can you turn it off?" is now a question SMB owners will have heard. Build the answer into TSD Front Desk and Concierge: an audit log of every action the agent took, a per-client kill switch in the dashboard, and a one-page "what the agent can and cannot do" sheet. It costs a day and closes deals.</div>
+          <div class="refs"><a href="https://cyberscoop.com/crowdstrike-acquires-fiddler-dreadnode-ai-security/" target="_blank" rel="noopener">CyberScoop</a> ◆ <a href="https://www.cnbc.com/2026/11/03/crowdstrikes-new-kill-switch-can-stop-rogue-ai-agents-in-their-tracks-ceo-says.html" target="_blank" rel="noopener">CNBC</a> ◆ <a href="https://gizmodo.com/openai-hires-doge-alumni-who-hacked-into-anthropic-to-strengthen-security-2000834432" target="_blank" rel="noopener">Gizmodo on Cathedral</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Policy</span>
+            <span class="ver">Effective Nov 3, 2026 (reported)</span>
+            <h3>Anthropic's invisible text watermark lands on four older Claude models, with no opt-out</h3>
+          </div>
+          <div class="story-body">
+            <p>Per an email to API customers reported by The Decoder on Oct 31 and echoed in developer posts dated Nov 3, Anthropic is retrofitting its model-level text watermark to Mythos 5, Opus 4.7, Opus 4.6 and Sonnet 4.6 to meet the EU AI Act's December deadline; models released after Aug 2, 2026 already carry it. It cannot be switched off. On Opus 4.6 and Sonnet 4.6 only, the mark applies when temperature, top_p and top_k stay at defaults; changing any one produces unmarked output, and Anthropic's email tells anyone relying on the watermark for compliance to leave those settings alone. Detection runs through a private-preview API for regulators, law enforcement, media and researchers. The Nov 3 effective date comes from secondary posts; we could not fetch an Anthropic page confirming it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any client email, SMS or web copy that comes straight out of these models is now marked. That is fine for an AI receptionist, and worth disclosing in writing for marketing copy. Check which model IDs each client pipeline pins and whether anything touches sampling parameters, then note it in the client's config.</div>
+          <div class="refs"><a href="https://the-decoder.com/anthropics-watermark-rollout-leaves-a-loophole-on-two-older-claude-models/" target="_blank" rel="noopener">The Decoder</a> ◆ <a href="https://dev.to/delimitter/anthropic-switches-on-invisible-watermarks-in-four-older-claude-models-from-november-3-385p" target="_blank" rel="noopener">dev.to writeup (secondary)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Money and compute</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Funding</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>fal raises $1.3B at a $16B valuation, and says it had to rate-limit customers this summer</h3>
+          </div>
+          <div class="story-body">
+            <p>fal, the inference host for image, video and audio generation models, raised a $1.3B Series F led by Bessemer with Nvidia, Sound Ventures, HOF Capital and T. Rowe Price, doubling its $8B April valuation. Combined 2026 fundraising is $1.65B. Annualized revenue passed $800M earlier this year with 185 employees. CEO Burkay Gur: "We hit a point in summer where we were not able to serve our customers and had to rate-limit them." Fireworks AI closed at $17.5B in July for comparison.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> TSD Marketing's ad videos run on this layer of the stack. Capacity has been the constraint at the market leader, so keep a second provider wired for image and video generation and quote turnaround times with a buffer.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">TechCrunch</a> ◆ <a href="https://siliconangle.com/2026/11/03/generative-media-inference-startup-fal-raises-1-3b-at-a-16b-valuation/" target="_blank" rel="noopener">SiliconANGLE</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Cost</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>Revolut cut AI coding inference costs about 90% by self-hosting open GLM models</h3>
+          </div>
+          <div class="story-body">
+            <p>Per The Register's report on an AI Engineer NYC talk, Revolut's David Abitbol said self-hosting GLM 5.1 at about $0.30 per million tokens cost roughly a tenth of Codex or Claude Code for its 2,000 engineers. The company moved from Gemini in early 2025 to Claude Code in early 2026, then to GLM-5.1 and GLM-5.3, which runs on 56 Nvidia B200 GPUs. It reports about 200 tokens per second, sub-3-second time to first token at 256K context, 60% faster coding time, and routes vision queries to Gemini or GPT because GLM is text-only. Abitbol's line: "Long context is a scam."</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> $0.30 per million tokens is the price floor to keep in mind when quoting AI features to clients. For a receptionist or concierge handling a few thousand conversations a month, the model bill is a rounding error, so price on outcomes (calls answered, bookings made) and keep the hosted Claude quality for the customer-facing voice.</div>
+          <div class="refs"><a href="https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">People</span><span class="txt">Cat Wu, head of product for Claude Code (and later Cowork and Tag), said Friday was her last day at Anthropic after about two years. No successor was named. <a href="https://www.unite.ai/cat-wu-steps-down-as-claude-code-product-chief-after-two-years/" target="_blank" rel="noopener">Unite.AI</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag improve qh-tag">Research</span><span class="txt">Stanford's Owen Queen and James Zou tested 50 widely cited LLM claims against 20 models released since July 2024: 44% have expired, 34% weakened, 16% held. Claims about what models cannot do decayed fastest; hallucinated citations fell from 55% (GPT-3.5) to 0–1% for the latest OpenAI and Claude models. <a href="https://the-decoder.com/rapid-llm-development-is-outrunning-the-research-meant-to-explain-it-study-finds/" target="_blank" rel="noopener">The Decoder</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag feature qh-tag">Hardware</span><span class="txt">OpenAI says its hardware team used GPT-6 Astra to design a working device (enclosure, PCB, firmware, UI) in under a week with no direct human edits, and that an unnamed internal model scores 0.875 on BenchCAD 2.0 against Astra's 0.594. <a href="https://the-decoder.com/openai-says-gpt-6-astra-designed-a-hardware-device-from-scratch-in-under-a-week/" target="_blank" rel="noopener">The Decoder</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag fix qh-tag">Security</span><span class="txt">A Carlini, Jagielski and Rando paper shows 0.1% poisoned pretraining data can plant a remote-code-execution backdoor in CLI agents that survives post-training, with about 92% success on a 4B Qwen3 model. Submitted Oct 27, circulating this week. <a href="https://arxiv.org/abs/2610.37741" target="_blank" rel="noopener">arXiv</a> <span class="ver">Oct 27</span></span></li>
+            <li><span class="tag improve qh-tag">Tooling</span><span class="txt">Claude Code 2.1.314 through 2.1.317 shipped a write-outside-working-directory block, an email-exfiltration check and MCP reconnect fixes; see yesterday's <a href="../claude-changelog/2026-11-03.html">changelog brief</a>. Anthropic also open-sourced FlashProve, code for cryptographically proving which model produced an output. <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">TechCrunch</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag feature qh-tag">Capex</span><span class="txt">Meta marketed a $20B to $25B bond sale including its first euro bonds, days after S&amp;P cut its outlook to negative on capex and negative free cash flow; Brookfield, Radiant and Drax plan a 1GW, £20B AI data center at Drax Power Station in Yorkshire. <a href="https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html" target="_blank" rel="noopener">CNBC</a> <span class="ver">Nov 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

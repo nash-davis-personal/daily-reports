@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-04" />
+  <meta name="report:title" content="Node.js security releases land Nov 11, an exploited WordPress core flaw hits CISA's list, and Vercel ships code security review on every push" />
+  <meta name="report:summary" content="Node.js pre-announces HIGH-severity fixes for 22, 24 and 26 on Nov 11, CISA adds an actively exploited WordPress core RCE to its KEV catalog, Vercel launches Security Review (free until Nov 10) plus standalone CI and vercel doctor, the seven Next.js advisories get IDs, and AMD, Super Micro and Arista all beat." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Node.js security releases land Nov 11, an exploited WordPress core flaw hits CISA's list, and Vercel ships code security review on every push — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, November 4, 2026</span>
+        <span>◆</span><span>Security, platform, chips, funding</span>
+      </div>
+      <h1>Node.js security releases land Nov 11, an exploited WordPress core flaw hits CISA's list, and Vercel ships code security review on every push</h1>
+      <p class="standfirst">Two dates to put on the calendar: Node.js ships HIGH-severity fixes for every supported line on Nov 11, and Vercel's new Security Review is free until Nov 10. The WordPress core bug now confirmed under active exploitation is both a reason to check any client site still on WordPress and a reason to pitch moving them off it. After the bell, the AI hardware names all beat.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Nov 3 to early Nov 4, 2026</span>
+        <span>◆</span><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">Nov 11</div><div class="lbl">Node.js 22 / 24 / 26 security releases (highest severity HIGH)</div></div>
+      <div class="stat"><div class="num">Nov 10</div><div class="lbl">Last free day for Vercel Security Review</div></div>
+      <div class="stat"><div class="num">+97%</div><div class="lbl">AMD data center revenue growth, year over year</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Node.js: HIGH-severity fixes coming Nov 11</h4><p>The pre-alert covers 26.x, 24.x and 22.x. No CVEs yet. Plan the bump for the week of the 11th.</p></div>
+        <div class="signal"><div class="n">02</div><h4>WordPress core RCE is in CISA's KEV catalog</h4><p>CVE-2026-119977, an unauthenticated update-process race condition fixed in 7.1.4, is now confirmed under active exploitation.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel Security Review, free until Nov 10</h4><p>Source-code vulnerability review on every GitHub push for Pro and Enterprise teams, plus standalone Vercel CI and a new <code>vercel doctor</code>.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Next.js: seven advisories now have IDs</h4><p>Four of the seven are <code>use cache</code> and <code>unstable_cache</code> leaks. Confirm every project is on 16.4.5 or 15.5.29.</p></div>
+        <div class="signal"><div class="n">05</div><h4>AMD, Super Micro and Arista all beat</h4><p>AMD guided Q4 to about $17B, Super Micro posted $19.9B of sales on a 12.7% margin, Arista grew 58%.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Cloudflare locks down new AI Gateways</h4><p>New gateways require authentication and the setting cannot be turned off once on. Node-RED and Barracuda flaws are being exploited.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch and plan</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>Node.js will ship security releases for 22.x, 24.x and 26.x on or about Nov 11; highest severity is HIGH</h3>
+          </div>
+          <div class="story-body">
+            <p>The Node.js project posted its standard advance notice: security releases for the 26.x, 24.x and 22.x lines on or shortly after Wednesday, Nov 11, with the highest-severity issue in each line rated HIGH. No vulnerability count and no CVE IDs are published yet, which is normal for a pre-alert. End-of-life lines are also affected and will not be patched. Current releases are v26.13.0 (Latest LTS, Oct 28), v24.22.2 (LTS, Oct 28) and the v27.0.0 alpha.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: on Nov 11, bump the Node version in every project's <code>engines</code> field and <code>.nvmrc</code>, redeploy on Vercel so builds pick up the patched runtime, and update local Node with <code>nvm</code> or Homebrew. Vercel's build image follows the LTS lines, so a redeploy is the client-site fix. Add it to the site-care checklist alongside the Next.js patch from yesterday.</div>
+          <div class="refs"><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Node.js security pre-alert</a> ◆ <a href="https://nodejs.org/en/blog" target="_blank" rel="noopener">Node.js blog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>CISA adds the WordPress core update-process RCE (CVE-2026-119977) to its Known Exploited Vulnerabilities catalog</h3>
+          </div>
+          <div class="story-body">
+            <p>CISA's Nov 3 alert adds one CVE: CVE-2026-119977, a time-of-check to time-of-use race condition in WordPress core's update process, exploitable without authentication with high attack complexity. It was fixed in WordPress 7.1.4 on Oct 28; Wordfence scored it CVSS 8.1 and The Hacker News reported nearly 63,000 attack attempts in 24 hours shortly after disclosure. A KEV listing means exploitation in the wild is confirmed and federal agencies must patch on a deadline. Reporting on the affected range varies (one source says 4.7 through 7.1.3), so treat anything below 7.1.4 as exposed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two moves. First, any client or prospect site still on WordPress needs to be on 7.1.4 today; check with a single request to <code>/readme.html</code> or the admin dashboard. Second, this is the cleanest migration hook of the quarter: "your site's core updater is on the government's actively-exploited list" is a true sentence Grant and Bishop can say to every WordPress shop in Gastonia.</div>
+          <div class="refs"><a href="https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener">CISA alert</a> ◆ <a href="https://www.securityweek.com/fresh-wordpress-vulnerability-in-attackers-crosshairs" target="_blank" rel="noopener">SecurityWeek</a> ◆ <a href="https://thehackernews.com/2026/10/wordpress-rce-flaw-draws-nearly-63000.html" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Follow-up</span>
+            <span class="ver">Nov 2–3, 2026</span>
+            <h3>Next.js: the seven Nov 3 advisories now carry GHSA IDs; 16.4.5 and 15.5.29 are the fixed versions</h3>
+          </div>
+          <div class="story-body">
+            <p>The releases page lists v16.4.5 and v15.5.29, both published Nov 3, with seven Moderate advisories: cross-tenant disclosure in <code>'use cache'</code> via <code>unstable_cache</code> (GHSA-mfr8-8qww-v76h), cache leak across root param values (GHSA-vc7v-qv4w-wrv8), cache poisoning of shared fallback shells (GHSA-vvgp-ww4w-46vf), cross-user cache disclosure with binary args (GHSA-rhh4-g77r-r9qj), cross-client response injection in self-hosted apps that forward fetched responses (GHSA-pc58-hwjq-p385), an SVG rejection bypass in image optimization (GHSA-7qx7-33qx-rqx2), and HttpOnly cookie exposure via an internal header on Edge runtime routes (GHSA-f3mh-rxg3-f5g2). 15.5.29 backports only the last three. v16.4.4 on Nov 2 swapped <code>jsonwebtoken</code> for <code>fast-jwt</code> and fixed a Turbopack CSS hot-update bug. The 16.5 canaries pin Tailwind 4.3.3 in create-next-app. Nothing shipped for React, Tailwind or Vite in the window.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Four of the seven are cache leaks across tenants or users, which matters for any app that caches per-client data (a multi-tenant Concierge, a client portal). Run <code>npm ls next</code> across every repo and confirm 16.4.5; any app still on 15 needs 15.5.29 and a note that it only gets three of the seven fixes.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platform moves on Nash's stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Vercel</span>
+            <span class="ver">Nov 2–3, 2026</span>
+            <h3>Vercel ships Security Review (public beta, free until Nov 10), standalone Vercel CI, <code>vercel doctor</code> and <code>vercel.toml</code></h3>
+          </div>
+          <div class="story-body">
+            <p>Security Review reviews source code for vulnerabilities on every GitHub push, including force pushes to production branches, and posts findings to a Vulnerabilities dashboard with project, branch, commit, suggested fix and an AI-generated severity. It adds a GitHub check per commit and PR review comments, and "Fix with Vercel Agent" opens a pull request that does not merge without approval. It is Pro and Enterprise only, billed at the Vercel Agent rate (provider inference at cost plus $0.25 per million tokens), free until Nov 10. Findings are also available via <code>vercel security vulnerabilities</code> in CLI 65.10.0 or later.</p>
+            <p>Also new: Vercel CI no longer needs a linked Vercel project (<code>vercel ci enable</code> from a clone; private GitHub repos only for now), <code>vercel doctor</code> diagnoses CLI version, login, team, project link and <code>vercel.json</code>, <code>vercel.toml</code> is now an accepted config format, Vercel MCP accepts OAuth Client ID Metadata Documents, and Tencent Hy4 is on AI Gateway at half price.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If the TSD team is on Pro, turn Security Review on in the team's Agent settings this week and let it run on every client repo for free through Nov 10; the findings become the first "security review" line item in a Managed AI retainer. Run <code>vercel doctor</code> once on the laptop; the Bisque deploy-identity saga would have been a two-minute fix with it.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/vercel-security-review-public-beta" target="_blank" rel="noopener">Vercel: Security Review</a> ◆ <a href="https://vercel.com/changelog/vercel-ci-no-longer-requires-a-linked-vercel-project" target="_blank" rel="noopener">Vercel: standalone CI</a> ◆ <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Cloudflare</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>Cloudflare: new AI Gateways require authentication, Agents SDK 0.33 is a one-way upgrade, and a new Zero Wire vulnerability hub</h3>
+          </div>
+          <div class="story-body">
+            <p>New AI Gateways created through the API now have authentication on by default; passing <code>authentication: false</code> returns HTTP 400, and once enabled the setting cannot be turned off from the dashboard or API. Existing unauthenticated gateways keep working, but requests need a valid Cloudflare API token once authentication is on (Workers bindings stay pre-authenticated). Agents SDK v0.33.0 upgrades to Pi 1.5, with <code>session.watch()</code> replacing <code>session.events()</code>; Pi 1.4 cannot read Pi 1.5 conversations, so there is no rollback. Radar launched Zero Wire, a hub of plain-language briefings on critical Internet vulnerabilities with "Needs attention" grouping, remediation steps and RSS feeds. WAF rules were updated for three PHP out-of-memory CVEs.</p>
+            <p>Elsewhere in active exploitation: a CVSS 10 Node-RED flaw (CVE-2026-58115, missing authentication on the HTTP interface) is being used to drop Linux bots and webshells on instances without <code>adminAuth</code>, and Barracuda warned of two critical flaws that chain to root across its ESG, load balancer, WAF and archiver appliances.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any TSD project proxies LLM calls through a Cloudflare AI Gateway, new gateways need a token in the client. Subscribe to Zero Wire's RSS feed; it is a free version of the CVE check this brief does every morning. Any client or home box running Node-RED without <code>adminAuth</code> is a one-request takeover.</div>
+          <div class="refs"><a href="https://developers.cloudflare.com/changelog/" target="_blank" rel="noopener">Cloudflare changelog</a> ◆ <a href="https://www.securityweek.com/critical-node-red-flaw-exploited-in-attacks/" target="_blank" rel="noopener">SecurityWeek on Node-RED</a> ◆ <a href="https://www.bleepingcomputer.com/news/security/barracuda-warns-of-critical-flaws-allowing-root-access-to-devices/" target="_blank" rel="noopener">BleepingComputer on Barracuda</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and the buildout</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Earnings</span>
+            <span class="ver">Nov 3, 2026</span>
+            <h3>AMD, Super Micro and Arista all beat and raise, and Super Micro's 12.7% margin is the number to remember</h3>
+          </div>
+          <div class="story-body">
+            <p><b>AMD:</b> record revenue of $13.4B, up 45% year over year; data center $8.5B, up 97% on EPYC and the MI450 launch; non-GAAP EPS $2.09 against about $1.95 expected; Q4 guidance about $17B, plus or minus 3%, against a $16.2B consensus. AMD says Anthropic, Meta, Microsoft, OpenAI and Oracle Cloud are running workloads on the first Helios rack systems. Shares rose about 7% to 8% after hours. <b>Super Micro:</b> fiscal Q1 net sales $19.9B, about four times a year ago, with a GAAP gross margin of 12.7%, down from 17.5% last quarter; operating cash flow was negative $434M against $8.6B of debt and convertibles; the full-year guide is $72B to $82B. <b>Arista:</b> revenue $3.66B, up 58.5%, the fastest growth since its IPO; non-GAAP EPS $1.20 against a $1.06 to $1.08 guide; Q4 guide $3.9B to $4.0B.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Supply keeps expanding on every layer (GPUs, servers, switches), which is the long-run pressure that keeps token prices falling for the products TSD sells. Super Micro's thin margin and cash burn are the honest counterpoint when a client asks whether the AI buildout is a bubble: demand is real, and the middlemen are not all making money on it.</div>
+          <div class="refs"><a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000188/q32026991.htm" target="_blank" rel="noopener">AMD 8-K</a> ◆ <a href="https://www.sec.gov/Archives/edgar/data/0001375365/000137536526000026/exhibit991_20260930.htm" target="_blank" rel="noopener">Super Micro 8-K</a> ◆ <a href="https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000252/ex991q326-earningsrelease.htm" target="_blank" rel="noopener">Arista 8-K</a> ◆ <a href="https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html" target="_blank" rel="noopener">CNBC on AMD</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Apple</span><span class="txt">Apple opened Siri AI to all developers in the 27.3 betas through App Intents and chained "skills"; customer rollout is months away. Covered in today's <a href="../general-ai/2026-11-04.html">General AI brief</a>. <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag fix qh-tag">Check this</span><span class="txt">A GitHub issue (postmanlabs/postman-app-support #14370, open since Oct 25 and active this week) reports that Postman 12.33.4 wrote to <code>~/.codex/config.toml</code> and <code>~/.claude/settings.json</code>, added a SessionStart hook and self-approved its hook trust record, with no staff response yet. Worth a look at your own settings file if Postman is installed. <a href="https://github.com/postmanlabs/postman-app-support/issues/14370" target="_blank" rel="noopener">GitHub issue</a> <span class="ver">Oct 25 – Nov 4</span></span></li>
+            <li><span class="tag improve qh-tag">Supabase</span><span class="txt">Supabase says Claude can now issue the identity assertion for enterprise-managed auth on the Supabase MCP server when a customer's identity provider cannot. No changelog entries Nov 2 to 4; the TLS 1.2 cipher cutoff on Nov 10 stands. <a href="https://supabase.com/blog/claude-issued-enterprise-managed-auth-for-mcp" target="_blank" rel="noopener">Supabase blog</a> <span class="ver">Nov 3</span></span></li>
+            <li><span class="tag fix qh-tag">npm</span><span class="txt">Quiet week on supply chain. New advisories: two Critical (sandbox escape, RCE) in <code>@enspirit/elo</code> and a High integrity flaw in <code>@sd-jwt/core</code> 0.19.0 and below (patched in 0.20.0). Act only if <code>npm ls</code> shows either. <a href="https://github.com/advisories/GHSA-f9j6-8p6x-r9j6" target="_blank" rel="noopener">GitHub advisory</a> <span class="ver">Nov 2–3</span></span></li>
+            <li><span class="tag feature qh-tag">Funding</span><span class="txt">Tutor Intelligence raised a $75M Series B led by a16z for industrial robots billed hourly or per item; Larridin raised $30M to measure AI's effect on productivity; Creandum closed a $750M eighth fund; Fourthline and Veridas completed their identity-verification merger. <a href="https://techstartups.com/2026/11/03/startup-funding-news-today-november-3-2026-moffett-ai-tutor-intelligence-larridin-nphase-more/" target="_blank" rel="noopener">Tech Startups roundup</a> <span class="ver">Nov 2–3</span></span></li>
+            <li><span class="tag feature qh-tag">Capex</span><span class="txt">Meta marketed a $20B to $25B bond sale, a third of it in euros, after S&amp;P moved its outlook to negative on a $135B to $145B capex plan; Brookfield, Radiant and Drax plan a 1GW, £20B AI data center at Drax Power Station with 100MW in Q1 2028. <a href="https://www.cnbc.com/2026/11/03/brookfield-ai-data-center-yorkshire-drax.html" target="_blank" rel="noopener">CNBC</a> <span class="ver">Nov 3</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
