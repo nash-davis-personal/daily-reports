@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-04" />
+  <meta name="report:title" content="2.1.318 warns headless runs before sign-in expires and hardens Mac sessions" />
+  <meta name="report:summary" content="Claude Code 2.1.318 adds a 10-day sign-in expiry warning to claude -p, keeps long subagent shell commands from expiring the prompt cache, fixes Mac sessions stalling under many Bash commands, and stops version cleanup breaking Remote Control, with 47 bug fixes." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.318 warns headless runs before sign-in expires and hardens Mac sessions — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, November 4, 2026</span>
+        <span>◆</span><span>Release 2.1.318</span>
+      </div>
+      <h1>2.1.318 warns headless runs before sign-in expires and hardens Mac sessions</h1>
+      <p class="standfirst">Second big release in two days. Most of it is plumbing for unattended runs: a sign-in expiry warning in <code>claude -p</code>, a config file that stops getting rewritten on every headless run, and subagents that keep their prompt cache alive through long shell commands. Mac users also get a fix for sessions stalling under many Bash commands.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases after 2.1.317 (Nov 3): 2.1.318, Nov 4</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release (2.1.318)</div></div>
+      <div class="stat"><div class="num">37</div><div class="lbl">Added, changed or improved</div></div>
+      <div class="stat"><div class="num">47</div><div class="lbl">Bug fixes</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Headless runs warn before sign-in dies</h4><p><code>claude -p</code> prints a stderr warning starting 10 days before a stored claude.ai sign-in ends, and the expiry date is now in <code>claude auth status</code>.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Subagents keep their cache warm</h4><p>Background subagents move a shell command to the background after 3 minutes so the prompt cache doesn't expire while it runs.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Mac sessions stop stalling</h4><p>macOS sessions with many running Bash commands were stalling while memory grew. Fixed. Git commits and PRs are also more reliable under the built-in <code>/bin/bash</code>.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Config file gets left alone</h4><p>Unattended runs no longer rewrite <code>~/.claude.json</code> when nothing changed, and a damaged one is no longer silently replaced with defaults.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Remote Control survives updates</h4><p>Version cleanup could delete the binary of a still-running Remote Control host or daemon, so new sessions failed with <code>spawn ENOENT</code>. Fixed.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended runs and sign-in</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.318</span>
+            <h3>A sign-in expiry date you can see, and a 10-day warning in <code>claude -p</code></h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude auth status</code> now reports the date a stored claude.ai sign-in ends (<code>loginExpiresAt</code>), and <code>claude -p</code> JSON results carry it as <code>credential_expires_at</code>. Text-mode <code>claude -p</code> output gets a one-line stderr warning starting 10 days before that date. When a sign-in does hit its limit, the failure now says so, and in <code>claude -p</code> it names <code>claude auth login</code> and <code>claude setup-token</code> as the fix.</p>
+            <p>Related fixes: jobs no longer exit with "Not logged in" when another terminal or host signs in again to the same account on the same home, and <code>claude plugin</code> commands no longer exit before a slow token refresh is saved.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every scout, Fleet Steward and Nash OS job dies quietly the day the sign-in lapses. Add a <code>claude auth status</code> check to the Nash OS Machine page or the morning routine and surface the expiry date. Any launchd job that runs <code>claude -p</code> should log stderr so the 10-day warning lands somewhere you read.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.318</span>
+            <h3><code>~/.claude.json</code> stops churning, and a damaged one is no longer overwritten</h3>
+          </div>
+          <div class="story-body">
+            <p>Unattended runs (<code>claude -p</code>, SDK apps) no longer rewrite <code>~/.claude.json</code> on every run when nothing in it changed. A non-interactive launch that finds the file is invalid JSON now fails, says how to restore it, and leaves it alone instead of replacing it with defaults (<a href="https://github.com/anthropics/claude-code/issues/87551" target="_blank" rel="noopener">anthropics/claude-code#87551</a>). Retention cleanup also takes a fresh backup before deleting the last good one on a home that only runs <code>claude -p</code>.</p>
+            <p>A batch of related fixes targets shared network home directories: settings and the stored login are less often deleted or emptied on save, <code>/logout</code> and <code>claude mcp remove</code> no longer report success when the config could not be written, and <code>claude mcp add</code> now waits for the config lock or exits 1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two Macs, one config each, a dozen scheduled jobs writing to it. Fewer rewrites means fewer chances two jobs stomp each other and drop an MCP server. If a headless run ever fails at start with a restore message, follow it instead of deleting the file; your MCP list and trusted folders live in there.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.318</span>
+            <h3>Headless sessions stop reporting success on cut-off replies and silent slash commands</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude -p</code> and Agent SDK sessions were reporting success when an API error cut off a reply while a mod hooked <code>turn.step</code>; fixed. Custom slash commands that fail, or that only Claude can invoke, now print something in <code>claude -p</code> and SDK sessions instead of nothing. Workflows no longer re-run finished agents when resumed after a usage limit, and a duplicate notification no longer fires when Claude leaves the status field out of a PushNotification call.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your run log depends on exit codes telling the truth. The duplicate push fix matters on your phone: one Remote Control notification per event from now on.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Subagents and throughput</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.318</span>
+            <h3>Long shell commands in background subagents go to the background at 3 minutes</h3>
+          </div>
+          <div class="story-body">
+            <p>Background subagents now move a shell command to the background after 3 minutes on all providers, so the prompt cache does not expire while it runs. On Bedrock, Vertex, Foundry, or with telemetry off, a subagent's progress summary on a cold cache can now wait up to 5 minutes for the pending response.</p>
+            <p>Also changed: when "Switch models when a message is flagged" is set to "Ask each time", subagents now stop instead of switching models.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A fanned-out subagent running a Next.js build or a long test suite used to burn its cache and re-pay the full context on the next turn. Now it keeps the cache. If you have subagents that wait on builds or Vercel deploys, expect lower cost per run and no code change needed.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.318</span>
+            <h3>Mods: <code>$.model.fork</code> takes an <code>effort</code> option</h3>
+          </div>
+          <div class="story-body">
+            <p>A mod's <code>$.model.fork</code> accepts an <code>effort</code> option, so a quick side job can run at <code>low</code> whatever effort the session uses; the result reports the effort sent. Claude Code also now records your answer when it asks to turn on the mods it writes in a session, and what a mod attaches at <code>prompt.submit</code> stays in the user's turn instead of going out as a system message.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you build a status-line or toast mod that asks the model a small question (summarize the diff, name the branch), fork it at <code>low</code> and stop paying session effort for a one-liner.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Mac, desktop and Remote Control stability</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.318</span>
+            <h3>Mac sessions stalling under many Bash commands, and git on <code>/bin/bash</code></h3>
+          </div>
+          <div class="story-body">
+            <p>macOS sessions with many running Bash commands were stalling while memory grew; fixed. Git commits and pull request creation are more reliable when the Bash tool runs macOS's built-in <code>/bin/bash</code>. Permission prompts also no longer get answered by keys typed just after sending a message or before a slow prompt appeared.</p>
+            <p>Two session-continuity fixes: <code>--continue</code> sometimes lost the earlier conversation after a malformed tool call's retries ran out (a regression from 2.1.314), and idle compaction could replace a conversation with a reply that was not a summary. Both fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a long Bisque or Sonderwerks session on the MacBook Air has been going sluggish after an hour of builds and dev servers, this is likely it. Update before the next heavy session. The accidental-approval fix means a stray Enter after a message no longer greenlights a prompt you did not read.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.318</span>
+            <h3>Version cleanup no longer breaks a running Remote Control host or daemon</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude remote-control</code> hosts, the background daemon and self-hosted runners could fail to start new sessions with <code>spawn ENOENT</code> after an update or version cleanup removed the binary of a still-running process. A running process owned by another user (one left by <code>sudo claude</code>, for example) was also being treated as dead and could lose its binary. Both fixed. Remote sessions also reconnect faster after a pause or sleep, and a missing working folder now produces an error that names the folder.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the failure where your phone says a session is available and nothing starts. If Remote Control has gone dead on the desk Mac after an auto-update, update both machines and restart the host once.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Managed agents and carry-over</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.318</span>
+            <h3><code>/claude-api managed-agents-onboard</code> defaults new agents to the <code>auto</code> permission policy</h3>
+          </div>
+          <div class="story-body">
+            <p>Onboarding a new managed agent now gives its built-in tools, and a quickstart template's MCP tools, the <code>auto</code> permission policy ("Judge risky actions") by default, matching the Claude Console. Say "run without asking" to opt out.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you spin up a managed agent for a client (a Studio C booking helper, say), the default now judges risky calls instead of running everything. Keep the default for anything that touches a client's money or messages. Pair it with yesterday's <code>onFailure: "block"</code> on SDK hooks.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog, 2.1.318</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Reminder</span>
+            <span class="ver">Nov 30, 2026</span>
+            <h3>Opus 4.8 fast mode removal is 26 days out</h3>
+          </div>
+          <div class="story-body">
+            <p>Carried from earlier briefings: fast mode on Opus 4.8 is removed on November 30, 2026, after which those requests error. Nothing in 2.1.318 changes that.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Still open. Grep scheduled tasks, launchd jobs and client SDK code for pinned Opus 4.8 with fast mode and move them to Opus 5.5.</div>
+          <div class="refs"><a href="2026-11-02.html">Nov 2 briefing</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Claude Code no longer installs or updates the IDE extension when started in an IDE terminal; use <code>/ide</code> from an outside terminal or the editor's extensions view. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>deniedMcpServers</code> URL entries now also block Anthropic-provided servers and cloud-session connectors whose upstream URL matches; otherwise deny a connector by name. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">An MCP tool call made before the tool is loaded now returns its input schema instead of a bare error. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Auto-update retries right away after a brief network failure while verifying a release. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>/permissions</code> rule details and delete confirmation use the standard dialog; Ctrl+C twice there goes back instead of quitting. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">The 2.1.288 fix that kept earlier thinking when resuming a conversation started on 2.1.286 or earlier is removed; that thinking can now be dropped. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Cloud sessions can start with no repository on an Anthropic-hosted environment, and expose the built-in Chromium under the usual Chrome names and <code>CHROME_PATH</code>. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Reading GitHub Actions logs in cloud sessions: <code>gh run view --log</code> and <code>gh api</code> log requests now get the log instead of an unreachable redirect. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Stdio MCP servers that exit on the version probe were re-probed on every start; a server that dies in under 3s is now pinned to the legacy handshake for 7 days. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">An empty or damaged <code>NODE_EXTRA_CA_CERTS</code> file failed every connection; readable certificates are now used with a stderr warning. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The "Now using usage credits" notice reappearing every 30 seconds while a background subagent runs. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The too-large-image error in requests with more than 20 images always claimed a 2000px limit; it now shows the API's limit. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/mcp</code> in cloud sessions counted tools the model can't use; a server's row now shows how many are available. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud session restarts: approved shell commands ran in the start folder instead of the folder they were asked in; Claude was not told when an approved connector tool became unavailable. Both fixed. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Gateway and self-hosted runner additions: <code>assume_role</code> on <code>mantle</code> upstreams, <code>CLAUDE_RUNNER_SPAWN_REASON</code> in the spawn hook, changed orchestrator log fields. Enterprise plumbing, nothing to do here. <span class="ver">2.1.318</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A batch of VS Code, iPhone app, Code Review page and Claude Tag admin fixes. <span class="ver">2.1.318</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

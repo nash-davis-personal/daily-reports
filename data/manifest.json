@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-04.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-04",
+    "title": "2.1.318 warns headless runs before sign-in expires and hardens Mac sessions",
+    "summary": "Claude Code 2.1.318 adds a 10-day sign-in expiry warning to claude -p, keeps long subagent shell commands from expiring the prompt cache, fixes Mac sessions stalling under many Bash commands, and stops version cleanup breaking Remote Control, with 47 bug fixes.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-11-04.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
