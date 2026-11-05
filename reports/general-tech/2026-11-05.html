@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-05" />
+  <meta name="report:title" content="Supabase CLI v3 is a breaking change for every deploy pipeline, and Supabase drops old TLS ciphers Nov 10; Binance says its $6.3B hack started with a fake job interview" />
+  <meta name="report:summary" content="Supabase CLI v3 flips database commands to local-by-default and makes CI fail without --yes, with a TLS cipher cut on Nov 10; no new Next.js advisory, 16.4.5 and 15.5.29 remain the fixed versions; Vercel adds idempotent Workflow starts; Cloudflare ships AI Gateway model aliases and per-agent access policies; Binance details a months-long North Korean intrusion that began with a fake job interview." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Supabase CLI v3 is a breaking change for every deploy pipeline — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, November 5, 2026</span>
+        <span>◆</span><span>What moved since the Nov 4 edition</span>
+      </div>
+      <h1>Supabase CLI v3 is a breaking change for every deploy pipeline, and Supabase drops old TLS ciphers Nov 10; Binance says its $6.3B hack started with a fake job interview</h1>
+      <p class="standfirst">No new Next.js advisory today; 16.4.5 and 15.5.29 stay the fixed versions. The action item is Supabase: the CLI's new major version now installs by default from npm and Homebrew, targets the local stack unless you say <code>--remote</code>, and fails in CI unless you pass <code>--yes</code>. Separately, Binance's own incident report describes how North Korean operators got into three engineers' machines through a fake job interview and sat there for months.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Nov 4 through the morning of Nov 5, 2026</span>
+        <span>◆</span><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">v3.0.0</div><div class="lbl">Supabase CLI major now the default install (rollout began Nov 2)</div></div>
+      <div class="stat"><div class="num">Nov 10</div><div class="lbl">Supabase disables a subset of TLS 1.2 ciphers on project HTTP APIs</div></div>
+      <div class="stat"><div class="num">16.4.5</div><div class="lbl">Next.js fixed version (15.5.29 on the 15 line); nothing new today</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Supabase CLI v3: local by default, confirmations default to No, CI needs --yes</h4><p>Breaking change filed Nov 4. db push, db pull, migration list, gen types and storage commands hit the local stack unless you pass --remote. Piping "y" no longer confirms. Deprecated flags are removed and exit 1.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Supabase cuts a subset of TLS 1.2 ciphers on project HTTP APIs on Nov 10</h4><p>Supabase says fewer than 0.0001% of its traffic uses them. Old embedded clients and some legacy PHP or Java integrations are the risk.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Binance: the $6.3B theft began with a fake job approach in September and compromised three engineers' computers</h4><p>FBI attributes it to North Korea's TraderTraitor, the Bybit crew. Binance says it has replaced 90% of the stolen amount from company funds. North Korea denies it.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Vercel Workflow SDK gains idempotent starts; Cloudflare AI Gateway gains model aliases</h4><p>Vercel's start() can claim a hook token atomically, so duplicate starts throw HookConflictError instead of becoming a second run. Cloudflare lets you call a pool of models by one name and swap them without redeploying.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Cloudflare renamed bot policies to "AI Crawler and Agent access policies" with per-agent controls</h4><p>You can now allow or block the top personal agents (the ones that browse on a person's behalf) individually, per site. This is the knob that decides whether ChatGPT-style shoppers can read a client's catalog.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch and migrate: the Supabase items</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">Nov 4</span>
+            <h3>Supabase CLI v3.0.0 changes which project a command runs against and when it asks</h3>
+          </div>
+          <div class="story-body">
+            <p>Supabase filed v3 as a breaking change. The rollout started Nov 2; npm, Homebrew, Scoop, the Linux packages and supabase/setup-cli now install v3 by default. Database commands target the local stack unless you pass <code>--remote</code>, which replaces <code>--linked</code>, <code>--project-ref</code> and <code>--db-url</code> (still accepted, now deprecated). Every command that changes a hosted project asks first, and the default answer is No; in CI the command fails unless you pass <code>--yes</code>. Flags and environment variables now override config.toml everywhere, with one resolution order: flag, shell env, project env files, config file, default. pg-delta is the default diff engine, so generated SQL from <code>db diff</code> and <code>db pull</code> can change. The <code>[inbucket]</code> config section is now <code>[local_smtp]</code>, the separate supabase-go binary is gone, <code>secrets unset</code> needs <code>--all</code> to clear everything, and <code>config push</code> now applies <code>[auth.sms] enable_confirmations</code> as written.</p>
+            <p>Supabase's stated reason: in v2 some commands defaulted to the linked project and others to local, four flags chose a target, and a flag-less command could reach a production database.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any GitHub Action or Vercel build step that runs <code>supabase db push</code> or <code>gen types</code> will either hit the wrong target or fail the next time it installs the CLI. Pin the CLI version in CI today, then migrate each client pipeline deliberately: add <code>--remote --yes</code> to hosted commands, rename <code>[inbucket]</code> to <code>[local_smtp]</code>, and re-run <code>db diff</code> once to see what pg-delta changes. The upside is real: the new defaults make it much harder for an agent or a tired human to push a migration at production by accident.</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog: CLI v3 is local by default (Nov 4)</a> <a href="https://github.com/supabase/supabase/releases" target="_blank" rel="noopener">Supabase releases</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Deprecation</span>
+            <span class="ver">Nov 10</span>
+            <h3>Supabase drops a subset of TLS 1.2 ciphers on project HTTP APIs next Tuesday</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog says clients that do not support modern cipher suites will fail to connect from Nov 10. Supabase puts the affected share at under 0.0001% of its traffic. Browsers and current Node, Deno and Bun runtimes are fine. The exposure is older embedded devices, legacy PHP or Java hosts calling PostgREST directly, and anything pinned to an old OpenSSL.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your Next.js on Vercel sites are unaffected. The one thing to check is any client integration that calls Supabase from outside your stack: a POS, a booking widget on a legacy host, a Zapier-style connector. Ask each client with such a connection to confirm it still works on Nov 10, and have the fix ready (route it through a Vercel function).</div>
+          <div class="refs"><a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">Nov 4</span>
+            <h3>Next.js: no new advisory; canary 16.5.0-canary.41 shipped, fixed versions unchanged</h3>
+          </div>
+          <div class="story-body">
+            <p>The seven Nov 3 advisories still resolve to 16.4.5 on the active line and 15.5.29 on maintenance. The only Nov 4 release on the repo was 16.5.0-canary.41. Node.js security releases for 22.x, 24.x and 26.x are still expected on or about Nov 11 with a HIGH ceiling, per yesterday's brief.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If any client site is still below 16.4.5 or 15.5.29, finish the patch today; nothing new changed the target. Put Nov 11 on the calendar for the Node bump.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a> <a href="https://nextjs.org/blog/november-2026-security-release" target="_blank" rel="noopener">Next.js November 2026 security release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: the hiring lure</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Incident</span>
+            <span class="ver">Oct 31 – Nov 3</span>
+            <h3>Binance's $6.3B heist: months inside, three engineers' machines, a fake job interview</h3>
+          </div>
+          <div class="story-body">
+            <p>Binance's incident report, covered by CoinDesk on Nov 3, says a software engineer was approached in September through a legitimate job platform by someone posing as a project director; the campaign compromised three engineers' computers and the attackers stayed for months before the theft. The FBI attributed the hack to North Korea's TraderTraitor group, the same actors behind last year's $1.5B Bybit theft, said most of the proceeds were converted to Ethereum, and asked exchanges to block the addresses. North Korea called the probe "a trite provocation." Binance says it has replaced 90% of the stolen amount with company money. TechCrunch notes researchers had warned about these exact hiring tactics for years; Binance itself blocked a similar "Contagious Interview" wave on Oct 27.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You are a one-person shop that holds client keys, so you are the whole attack surface. The lure was a job offer with a "coding test" that runs code on the target's machine. Rule for yourself and for Grant and Bishop: never run a recruiter's repo or installer on a machine that holds credentials. Put that line in the client security one-pager; owners of salons and shops get the same fake-vendor approach by email.</div>
+          <div class="refs"><a href="https://www.coindesk.com/business/2026/11/03/binance-s-usd6-3-billion-hack-began-with-a-fake-job-interview-exchange-says" target="_blank" rel="noopener">CoinDesk (Nov 3)</a> <a href="https://www.pbs.org/newshour/world/fbi-says-north-korea-was-behind-6-3-billion-binance-heist-the-biggest-crypto-hack-in-history" target="_blank" rel="noopener">PBS NewsHour</a> <a href="https://techcrunch.com/2026/11/03/researchers-warned-of-north-korean-hacking-tactics-years-before-record-6-3b-binance-heist/" target="_blank" rel="noopener">TechCrunch</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Platform changes on the stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Nov 3–4</span>
+            <h3>Workflow SDK gets idempotent starts; Vercel CI no longer needs a linked project; vercel doctor</h3>
+          </div>
+          <div class="story-body">
+            <p>Nov 4: Workflow SDK <code>start()</code> can claim a hook token atomically; duplicate starts with the same token throw <code>HookConflictError</code> and never become a run. Nov 3: Vercel CI works standalone without a Vercel project, and a new <code>vercel doctor</code> command checks CLI version, login, team, project link and vercel.json and suggests fixes. (Vercel Security Review's public beta was covered yesterday.)</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Idempotent starts are the fix for the double-fire you get when a Stripe or Twilio webhook retries: pass the event ID as the hook token and the second delivery is a no-op. Worth adopting in Booking Bridge. Run <code>vercel doctor</code> before the next scope mix-up; it prints the team and project link you are about to deploy to.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Cloudflare</span>
+            <span class="ver">Nov 4</span>
+            <h3>AI Gateway model aliases, and per-agent access policies for personal AI agents</h3>
+          </div>
+          <div class="story-body">
+            <p>Model aliases let an app call a pool of models by one name such as <code>custom/support-fast</code>; the gateway tries them in order, falls back on failure or uses smart routing, and you can swap models without redeploying. Separately, "Configure AI bot policies" is now "AI Crawler and Agent access policies," and the top personal agents (ones that browse or fetch on a person's behalf) can be allowed or blocked individually under Security &gt; Settings. The same day's changelog also lists a Browser Isolation beta that blocks data entry while keeping search, copy and zoom.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Two client conversations in one changelog. First, for any client whose site sits behind Cloudflare, decide on purpose whether shopping and research agents may read their catalog; the default now has a switch, and "let agents in" is a lead-gen setting for a retailer like Bisque. Second, model aliases are a cheap way to give Concierge a fallback model without a code change.</div>
+          <div class="refs"><a href="https://developers.cloudflare.com/changelog/" target="_blank" rel="noopener">Cloudflare changelog (Nov 4)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Markets</span><span class="txt">Big software led Wednesday's rally and chips lagged: Microsoft +6.7%, Amazon +6.1%, Apple +5.3%, Alphabet +3.2%, while Nvidia fell 3.2% and Tesla 3.3%. <span class="ver">Nov 4 · <a href="https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-dow-surges-3-in-biggest-post-midterm-rally-in-44-years/" target="_blank" rel="noopener">Motley Fool</a></span></span></li>
+            <li><span class="tag breaking qh-tag">Cloudflare</span><span class="txt">D1 enforces a 50 MB cap on query results from Nov 4; larger results fail. Paginate anything that could grow. <span class="ver">Nov 4 · <a href="https://developers.cloudflare.com/changelog/" target="_blank" rel="noopener">changelog</a></span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Titan OS raised $46M to take its smart-TV operating system international. <span class="ver">Nov 4 · <a href="https://techcrunch.com/2026/11/04/titan-os-raises-46-million-to-expand-its-smart-tv-os-internationally/" target="_blank" rel="noopener">TechCrunch</a></span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">Taiwan's legislature held a hearing on making unauthorized exports of advanced AI chips and servers to China a crime; penalties and start date undecided. <span class="ver">Nov · <a href="https://asiatimes.com/2026/11/taiwan-to-criminalize-nvidia-ai-chip-smuggling-to-china/" target="_blank" rel="noopener">Asia Times</a></span></span></li>
+            <li><span class="tag fix qh-tag">Unverified</span><span class="txt">A digest claimed OpsShield's cPGuard update servers were compromised across about 2,946 hosts; no vendor advisory or primary report could be found this morning, so it is listed here only as a rumor to watch. <span class="ver">Nov 4</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

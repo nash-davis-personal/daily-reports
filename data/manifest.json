@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-11-05",
+    "title": "Dow's best post-midterm day in 44 years as oil drops more than 8%; ADP shows 86,000 October jobs; Treasury holds auction sizes but softens its guidance",
+    "summary": "The Dow rose 3.03% to 53,356 and the S&P 1.58% to 7,688.62 as oil fell more than 8% and the 10-year eased to 4.90%; ADP counted 86,000 private jobs in October with pay growth at its fastest since March 2024; Treasury kept the $125B refunding unchanged and dropped 'at least' from its guidance; NASA's Swift telescope re-entered after a failed private rescue; rain returned to Charlotte after a 23-day dry spell.",
+    "highlights": 5,
+    "path": "reports/america/2026-11-05.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Nothing new shipped since yesterday's briefing; 2.1.318 from November 4 is still the newest Claude Code release, and the Opus 4.8 fast mode removal is 25 days out.",
     "highlights": 0,
     "path": "reports/claude-changelog/2026-11-05.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-05",
+    "title": "OpenAI's agents built 948 Linux root exploits for $1.2M, and the labs are buying the dev stack: Pierre to OpenAI, Conductor to Meta",
+    "summary": "An OpenAI agent pipeline found and exploited 948 Linux kernel privilege-escalation bugs in one run; OpenAI is acquiring Pierre Computer for Codex; Meta bought the multi-agent orchestrator Conductor; DeepSeek open-sourced an always-on coding agent; Nvidia put agents in charge of a SETI telescope array.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-11-05.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-05",
+    "title": "Sell the patch: agents find bugs for $1,279 each now, so monthly security on the retainer is the easiest line item you'll ever add",
+    "summary": "Seven moves ranked by fit: a monthly agentic security line on the Managed AI retainer (best bet), a fixed-fee Supabase CLI v3 migration offer for other dev shops, an agent-ready catalog setup for retailers, an always-on fix agent tier, a no-double-booking upgrade for Booking Bridge, a fake-recruiter security talk that feeds leads, and a Front Desk pitch aimed at owners who can't hire.",
+    "highlights": 7,
+    "path": "reports/money-moves/2026-11-05.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-05",
+    "title": "Supabase CLI v3 is a breaking change for every deploy pipeline, and Supabase drops old TLS ciphers Nov 10; Binance says its $6.3B hack started with a fake job interview",
+    "summary": "Supabase CLI v3 flips database commands to local-by-default and makes CI fail without --yes, with a TLS cipher cut on Nov 10; no new Next.js advisory, 16.4.5 and 15.5.29 remain the fixed versions; Vercel adds idempotent Workflow starts; Cloudflare ships AI Gateway model aliases and per-agent access policies; Binance details a months-long North Korean intrusion that began with a fake job interview.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-11-05.html"
   },
   {
     "source": "america",

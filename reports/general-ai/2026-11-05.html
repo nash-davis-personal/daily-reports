@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-11-05" />
+  <meta name="report:title" content="OpenAI's agents built 948 Linux root exploits for $1.2M, and the labs are buying the dev stack: Pierre to OpenAI, Conductor to Meta" />
+  <meta name="report:summary" content="An OpenAI agent pipeline found and exploited 948 Linux kernel privilege-escalation bugs in one run; OpenAI is acquiring Pierre Computer for Codex; Meta bought the multi-agent orchestrator Conductor; DeepSeek open-sourced an always-on coding agent; Nvidia put agents in charge of a SETI telescope array." />
+  <meta name="report:highlights" content="5" />
+
+  <title>OpenAI's agents built 948 Linux root exploits, and the labs are buying the dev stack — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Thursday, November 5, 2026</span>
+        <span>◆</span><span>What moved since the Nov 4 edition</span>
+      </div>
+      <h1>OpenAI's agents built 948 Linux root exploits for $1.2M, and the labs are buying the dev stack: Pierre to OpenAI, Conductor to Meta</h1>
+      <p class="standfirst">The two big stories point the same way. Agents now do security research at a scale that costs about $1,279 per working exploit, and the frontier labs are buying the tooling that sits between a developer and a running agent. DeepSeek open-sourced an agent that watches team chat and starts work on its own, and Nvidia handed a radio telescope array to agents.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: Nov 4 through the morning of Nov 5, 2026</span>
+        <span>◆</span><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">948</div><div class="lbl">Distinct Linux kernel bugs OpenAI's agents exploited in one run</div></div>
+      <div class="stat"><div class="num">$1.2M</div><div class="lbl">API spend for that run, about $1,279 per working exploit</div></div>
+      <div class="stat"><div class="num">100K+</div><div class="lbl">Conductor users at the time Meta bought it</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>OpenAI's agent pipeline found, reproduced and exploited 948 Linux kernel privilege-escalation bugs</h4><p>2,308 candidates, 1,724 reproduced, 948 distinct working root exploits, candidate patches generated. One run, about $1.2M in API credits, on an unreleased cyber model.</p></div>
+        <div class="signal"><div class="n">02</div><h4>OpenAI is acquiring Pierre Computer to fold Code Storage into Codex</h4><p>Pierre's Trees and Diffs libraries already power file browsing and change review in Codex. The deal is announced, unsigned on price, and pending regulatory approval. It puts Codex in GitHub's lane.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Meta bought Conductor, the Mac app that runs Claude Code, Codex and Cursor side by side</h4><p>Terms undisclosed. Conductor Cloud shuts down Nov 20 and starts deleting customer data after that. Meta engineers were already heavy users.</p></div>
+        <div class="signal"><div class="n">04</div><h4>DeepSeek open-sourced Super-Agent, an always-on coding agent that reads team chat and starts work unprompted</h4><p>MIT-licensed research prototype from DeepSeek's Harness team, aimed at Claude Code. Published Oct 31, covered Nov 1. Some designs in the paper are unimplemented in the code.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Nvidia put AI agents in charge of the Allen Telescope Array's daily operations</h4><p>Researchers describe what they want in plain sentences; agents steer antennas, calibrate, fix bad data and run models on a 2.4 Tb/s feed. First result was a real-time pulsar detection in the Crab Nebula.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents as security researchers</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Research</span>
+            <span class="ver">Nov 4</span>
+            <h3>OpenAI: one agent run produced 948 working Linux root exploits and candidate patches, for about $1.2M</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI published "A thousand fewer paths to root." Scout agents narrowed the Linux kernel to 5,034 targets covering about 2.8 million lines (roughly 7% of the codebase). The pipeline produced 2,308 candidate findings, reproduced 1,724, and ended with working exploits for 948 distinct local privilege-escalation vulnerabilities, plus 291 information-leak proofs of concept. The run used an unreleased cyber model and cost about $1.21M in API credits, around $1,279 per exploited bug. OpenAI's July experiment with GPT-5.6 Sol found 166. By the time the write-up went out, maintainers had patched 61 upstream, 43 had patches in preparation and 299 were in public discussion.</p>
+            <p>Two caveats the coverage flags: every exploit needs an existing foothold on the machine, and the agents' self-reported results did not always hold up, which is why the reproduced count is lower than the candidate count. The patches are candidates that still need maintainer review.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Bug-finding just got cheap and bug-fixing is now the bottleneck. Expect a wave of kernel and dependency patches over the next few months, and expect client hosting providers to reboot more often. The sellable angle is the same one Vercel shipped this week with Security Review: an agent that reads every push to a client's repo and files a fix. Run Claude Code against each client codebase on a monthly cadence and bill it as a security line item on the Managed AI retainer.</div>
+          <div class="refs"><a href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">OpenAI: A thousand fewer paths to root</a> <a href="https://www.helpnetsecurity.com/2026/11/05/openai-linux-kernel-root-exploits/" target="_blank" rel="noopener">Help Net Security (Nov 5)</a> <a href="https://cybernews.com/security/openais-linux-kernel-vulnerabilities-android/" target="_blank" rel="noopener">Cybernews</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The labs are buying the layer between you and the agent</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Acquisition</span>
+            <span class="ver">Nov 4</span>
+            <h3>OpenAI will acquire Pierre Computer and bring Code Storage into Codex</h3>
+          </div>
+          <div class="story-body">
+            <p>OpenAI announced an agreement to buy Pierre Computer Company, the firm behind Code Storage and a set of open-source developer tools. Pierre's Trees and Diffs libraries already run file browsing and change review inside the Codex app. OpenAI says the open-source projects stay open and Code Storage customers keep access while its features move into Codex. Price and closing date were not disclosed, and closing depends on regulatory approval. Axios and SiliconANGLE both frame the move as OpenAI taking on GitHub as agents do more of the committing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Watch where your code lives. If Codex grows its own hosted repo layer, the "GitHub plus Vercel" default you ship clients on will have a competitor from OpenAI within a year. No action today. Keep clients on plain git repos they own, which is already your closing differentiator, so any future agent platform can plug in without a migration.</div>
+          <div class="refs"><a href="https://openai.com/index/openai-to-acquire-pierre/" target="_blank" rel="noopener">OpenAI announcement</a> <a href="https://siliconangle.com/2026/11/04/openai-to-acquire-developer-tooling-startup-pierre-computer/" target="_blank" rel="noopener">SiliconANGLE</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Acquisition</span>
+            <span class="ver">Nov 4</span>
+            <h3>Meta acquires Conductor; Conductor Cloud shuts down Nov 20</h3>
+          </div>
+          <div class="story-body">
+            <p>Conductor's desktop app runs several coding agents at once, each in an isolated copy of the codebase, then lets you review and merge. It supports Claude Code, Codex and Cursor on the user's own subscriptions and keys, and claims more than 100,000 users. Axios first reported the deal; Conductor confirmed on its site. Terms were not disclosed. Conductor raised a $22M Series A in March and named Meta, Google and Spotify as customers with dozens of engineers on the product. TechCrunch confirmed the hosted Conductor Cloud shuts down Nov 20, after which customer cloud data starts being deleted. Meta released Muse Spark Open, an open-weights coding model, on Oct 15.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If you use Conductor Cloud for anything, export before Nov 20. The bigger lesson is that multi-agent orchestration on one repo is now a commodity feature Meta wants in-house. Your own setup (Claude Code worktrees plus the daily-reports pipeline) already does this; write it up once as a case study, since it is the exact capability SMB owners read about and cannot picture.</div>
+          <div class="refs"><a href="https://siliconangle.com/2026/11/04/meta-acquires-ai-coding-startup-conductor-whose-app-runs-several-coding-agents-at-once/" target="_blank" rel="noopener">SiliconANGLE</a> <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor" target="_blank" rel="noopener">TechCrunch</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Open source</span>
+            <span class="ver">Oct 31 / Nov 1</span>
+            <h3>DeepSeek's Super-Agent prototype watches your team chat and starts coding without being asked</h3>
+          </div>
+          <div class="story-body">
+            <p>DeepSeek's Harness team published dsh-superagent-prototype under the MIT license. Instead of waiting for a prompt, it monitors developer group chats (GitHub, and Feishu in China), spots coding problems being discussed, and proposes or starts fixes. DeepSeek calls it a research prototype and says it is "not an official DeepSeek product"; one analysis notes parts of the paper's design are unimplemented in the released code. Bloomberg reports DeepSeek is aiming it at Claude Code, and that the company raised roughly $15B ahead of a planned IPO.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The always-on pattern is the interesting part, and you can copy it with Claude Code today: a scheduled agent that reads a client's support inbox or Slack, drafts the fix, and opens a PR for you to approve. That is a "we noticed and fixed it before you called" retainer story, which sells better than "we answer tickets."</div>
+          <div class="refs"><a href="https://thenextweb.com/news/deepseek-super-agent-open-source-coding-agent" target="_blank" rel="noopener">The Next Web</a> <a href="https://www.investing.com/news/company-news/deepseek-launches-autonomous-coding-agent-to-challenge-anthropics-claude-code-4989391" target="_blank" rel="noopener">Investing.com (Bloomberg)</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cool and groundbreaking</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Science</span>
+            <span class="ver">Oct 30</span>
+            <h3>Nvidia's agents now run the Allen Telescope Array for the SETI search</h3>
+          </div>
+          <div class="story-body">
+            <p>Nvidia announced that AI agents help operate the Allen Telescope Array in Northern California for Breakthrough Listen and the SETI Institute. Researchers state a goal in ordinary sentences; agents steer the antennas, calibrate and focus the instrument, catch and fix data errors, and run models on the live feed. The stack is Nvidia Holoscan on RTX PRO 6000 Blackwell GPUs handling up to 2.4 terabits per second, with inference on site. A web tool called Nexus lets researchers watch packet loss and live spectrograms and rewrite signal-processing blocks by prompting. The first result was real-time detection of a pulsar in the Crab Nebula. Nobody is claiming an alien signal; the principal investigator called it a breakthrough in translation between scientist and instrument.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the same shape as TSD Front Desk and Concierge: natural language in, a complicated system operated correctly out. It is a good one-paragraph analogy for a pitch deck slide. No other action.</div>
+          <div class="refs"><a href="https://blogs.nvidia.com/?p=99597" target="_blank" rel="noopener">Nvidia blog</a> <a href="https://cryptobriefing.com/nvidia-ai-agents-allen-telescope-array-seti/" target="_blank" rel="noopener">Crypto Briefing summary</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Models</span><span class="txt">Vercel AI Gateway added Moonshot's Kimi K3.1 Pro and K3.1 Pro Highspeed on Zero Data Retention providers with automatic failover, and Tencent's Hy4 at 50% off the day before. Both are one API key, no provider account. <span class="ver">Nov 3–4 · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></span></span></li>
+            <li><span class="tag improve qh-tag">Policy</span><span class="txt">Taiwan's legislature held a hearing on a Foreign Trade Act amendment that would make unauthorized exports of advanced AI chips and servers to China a criminal offense, aligning with U.S. rules under the 2026 trade agreement. Penalties and start date are undecided. <span class="ver">Nov · <a href="https://asiatimes.com/2026/11/taiwan-to-criminalize-nvidia-ai-chip-smuggling-to-china/" target="_blank" rel="noopener">Asia Times</a></span></span></li>
+            <li><span class="tag fix qh-tag">Caution</span><span class="txt">Several digests this morning carried items we could not source to a primary page (an Anthropic AP licensing deal, Apple cutting engineers' AI budgets from $300 to $200 a day, a ChatGPT Images 2.6 GIF feature). They are left out until a dated original appears. <span class="ver">Nov 5</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
