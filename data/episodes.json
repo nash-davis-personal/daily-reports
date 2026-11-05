@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-05",
+    "title": "TSD Daily — Thursday, November 5, 2026",
+    "summary": "OpenAI's agents built 948 Linux root exploits for $1.2M, OpenAI buys Pierre and Meta buys Conductor, Supabase CLI v3 breaks deploy pipelines, the Dow's best post-midterm day in 44 years, and a monthly security line as the best bet.",
+    "file": "audio/2026-11-05.mp3",
+    "durationSec": 428,
+    "bytes": 5131341
+  },
+  {
     "date": "2026-10-21",
     "title": "TSD Daily — Wednesday, October 21, 2026",
     "summary": "Gemini 4 Argon's promo pricing, Meta's open-weight Muse Spark, the Next.js patch deadline, and a Fed week with oil near $109.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-25.mp3",
     "durationSec": 364,
     "bytes": 4369869
-  },
-  {
-    "date": "2026-07-23",
-    "title": "TSD Daily — Thursday, July 23, 2026",
-    "summary": "OpenAI's Presence validates the AI receptionist, eight new Next.js CVEs to patch, hot inflation ahead of Big Tech earnings, and turning today's shifts into recurring TSD revenue.",
-    "file": "audio/2026-07-23.mp3",
-    "durationSec": 365,
-    "bytes": 4382253
   }
 ]
