@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-06",
+    "title": "TSD Daily — Friday, November 6, 2026",
+    "summary": "October payrolls beat at 165,000 after Wall Street's worst day since April 2025; METR says Anthropic's model progress has doubled; OpenAI gates GPT-6 Cyber; Claude reads your bank; video drafts for a dollar; and the Front Desk proof month.",
+    "file": "audio/2026-11-06.mp3",
+    "durationSec": 424,
+    "bytes": 5083245
+  },
+  {
     "date": "2026-11-05",
     "title": "TSD Daily — Thursday, November 5, 2026",
     "summary": "OpenAI's agents built 948 Linux root exploits for $1.2M, OpenAI buys Pierre and Meta buys Conductor, Supabase CLI v3 breaks deploy pipelines, the Dow's best post-midterm day in 44 years, and a monthly security line as the best bet.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-26.mp3",
     "durationSec": 487,
     "bytes": 5841261
-  },
-  {
-    "date": "2026-07-25",
-    "title": "TSD Daily — Saturday, July 25, 2026",
-    "summary": "Claude Opus 5 delivers frontier AI at the old Opus price with injection-resistant agents, the chip rally cracks as Intel beats yet sells off, markets brace for a loaded Fed week, and Bertha floods North Carolina.",
-    "file": "audio/2026-07-25.mp3",
-    "durationSec": 364,
-    "bytes": 4369869
   }
 ]
