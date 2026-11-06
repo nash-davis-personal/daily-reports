@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-06.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-06",
+    "title": "Second quiet day: 2.1.318 is still the newest Claude Code release",
+    "summary": "No Claude Code release has shipped since 2.1.318 on November 4; the only open item is still the Opus 4.8 fast mode removal on November 30, now 24 days out.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-11-06.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
