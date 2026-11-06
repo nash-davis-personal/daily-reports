@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-06",
+    "title": "Stocks had their worst day since April 2025 as chips fell 12.8% and the Nasdaq entered a correction; the October jobs report prints at 8:30; Florida's Space Coast digs out from 28 inches of rain",
+    "summary": "The S&P 500 fell 4.36% and the Nasdaq 5.52% on Thursday as semiconductor stocks had their worst day since 2020; rate-hike odds for December fell and crude rose toward $100; the October jobs report is due at 8:30 a.m. with roughly 60,000 expected; OpenAI and Google answered data-center pushback with new commitments; a 1,000-year rain event left Florida's Treasure Coast schools closed through the weekend.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-06.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-06",
+    "title": "METR says Anthropic is improving models about twice as fast, mostly because of AI; OpenAI gates GPT-6 Cyber; Claude reads your bank; Google cuts video to 7 cents a second",
+    "summary": "METR's independent assessment puts Anthropic's capability progress at roughly 1.9x its old pace with most evidence redacted; OpenAI released GPT-6 Cyber to vetted Daybreak Red customers; Claude Personal Finance connects bank accounts via Plaid; Gemini Omni 1.2 Flash makes 15-second video at $0.07 per second; Cursor's cloud agent now builds, hosts and deploys apps; OpenAI and Google answered the data-center backlash.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-06.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-06",
+    "title": "Airbnb just published the number you sell Front Desk on: 40% of support handled with no human. Pitch a measured proof month, and sell $1 video drafts while clips cost 7 cents a second",
+    "summary": "Six moves ranked by fit: a measured Front Desk proof month built on Airbnb's 40% deflection figure and Five9's $325M Level AI buy; flat-fee :15 spot drafts now that Gemini Omni 1.2 Flash costs $0.07 a second; a missed-call text-back and 24-hour follow-up add-on on Vercel Schedules; an owner's plain-English weekly P&L that Claude's consumer finance hub cannot do per-business; a paid two-hour AI front-office setup for chamber members; and key-leak insurance via Anthropic's new IP allowlist. Plus a watch list timed to a nervous market.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-06.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-06",
+    "title": "Vercel Schedules goes public beta, the chip index has its worst day since 2020, and a backdoored Claude Code extension sat on Cursor's marketplace for 11 hours",
+    "summary": "Vercel shipped Schedules (cron and one-time jobs) in public beta and auto-applied Token Pass credit on AI Gateway; no new Next.js advisory since Nov 3 and Supabase's TLS cipher cut lands Tuesday; the semiconductor index fell 12.77% on Thursday with Qualcomm's handset revenue down 26%; AMD's 10-Q prices Taalas at $2.9B; Cloudflare grew 39%; a tampered Claude Code extension on Cursor's marketplace tried to install an SSH backdoor.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-06.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-05",
     "title": "Dow's best post-midterm day in 44 years as oil drops more than 8%; ADP shows 86,000 October jobs; Treasury holds auction sizes but softens its guidance",
     "summary": "The Dow rose 3.03% to 53,356 and the S&P 1.58% to 7,688.62 as oil fell more than 8% and the 10-year eased to 4.90%; ADP counted 86,000 private jobs in October with pay growth at its fastest since March 2024; Treasury kept the $125B refunding unchanged and dropped 'at least' from its guidance; NASA's Swift telescope re-entered after a failed private rescue; rain returned to Charlotte after a 23-day dry spell.",
