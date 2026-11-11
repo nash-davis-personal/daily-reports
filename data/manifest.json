@@ -1,5 +1,15 @@
 [
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-11",
+    "title": "Fable 5.2 becomes the default model and headless runs can deny a permission prompt and keep going",
+    "summary": "Three releases since the last briefing: 2.1.321 makes Fable 5.2 the default Fable model at 1M context, 2.1.319 adds a deny-instead-of-prompt setting and background MCP tasks, and both ship security fixes worth updating for today.",
+    "highlights": 6,
+    "path": "reports/claude-changelog/2026-11-11.html"
+  },
+  {
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",

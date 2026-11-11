@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-11" />
+  <meta name="report:title" content="Fable 5.2 becomes the default model and headless runs can deny a permission prompt and keep going" />
+  <meta name="report:summary" content="Three releases since the last briefing: 2.1.321 makes Fable 5.2 the default Fable model at 1M context, 2.1.319 adds a deny-instead-of-prompt setting and background MCP tasks, and both ship security fixes worth updating for today." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Fable 5.2 becomes the default model and headless runs can deny a permission prompt and keep going — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, November 11, 2026</span>
+        <span>◆</span><span>2.1.319, 2.1.321 and 2.1.322</span>
+      </div>
+      <h1>Fable 5.2 becomes the default model and headless runs can deny a permission prompt and keep going</h1>
+      <p class="standfirst">The quiet window ended the same day the last briefing filed: 2.1.319 landed on November 6, then 2.1.321 on November 9 and 2.1.322 on November 10. Together they change which model your builds run on, give scheduled and headless sessions a way past permission prompts, move long MCP tool calls to the background, and close four security holes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers releases dated Nov 6 to Nov 10, 2026</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">releases since Nov 6</div></div>
+      <div class="stat"><div class="num">164</div><div class="lbl">bug fixes (90 + 74)</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">security fixes worth the update</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Fable 5.2 is now the default Fable model</h4><p>1M context, $8 in / $40 out per Mtok, $0.20 cache reads. Saved Fable 5.1 picks moved to the new default on Pro and Max on Nov 9.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Deny instead of prompt</h4><p>New <code>permissions.denyInsteadOfPrompting</code> setting: a call that would wait on a prompt is denied and the turn keeps going.</p></div>
+        <div class="signal"><div class="n">03</div><h4>MCP tasks run in the background</h4><p>When an MCP server runs a tool call as a task, Claude Code backgrounds it at once and reports the result when it finishes.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Four security fixes</h4><p>MCP OAuth secrets sent to a redirect host, a worktree sandbox escape, a Bash permission bypass, and a read-only command running outside the sandbox.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Remote Control takes a settings file</h4><p><code>claude remote-control --settings &lt;file&gt;</code> applies one settings file to every session it starts, and sessions now stay in their starting folder.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Self-paced /loop ends on its own</h4><p>A loop that finishes a turn without rescheduling now ends. Set <code>CLAUDE_CODE_LOOP_KEEPALIVE=1</code> to keep the fallback wakeup.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Models and cost</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.321</span>
+            <h3>Claude Fable 5.2 ships as the default Fable model with 1M context</h3>
+          </div>
+          <div class="story-body">
+            <p>The changelog lists Claude Fable 5.2 (<code>claude-fable-5-2</code>) at 1M context and $8/$40 per Mtok with $0.20/Mtok cache reads. Saved Fable 5.1 model picks move to the <code>fable</code> alias at once on Pro and Max plans, and on Team and Enterprise once the organization allows it. <code>/model claude-fable-5-1</code> switches back.</p>
+            <p>Two related changes: the fast mode labels in <code>/fast</code>, <code>/config</code> and <code>/model</code> now name your current model when it supports fast mode, and a fix stops fast mode from losing replies or switching models when fast serving is rate-limited; it now tries standard speed on the same model first.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every session since Nov 9 has been on a different model than the one that built the Bisque, Studio C and Sonderwerks sites. Run one real task on each active project this week and read the output with that in mind. If a workflow regresses, pin 5.1 with the slash command above and note it in the command vault rather than guessing which model did what.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.321</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.322</span>
+            <h3>Fast mode arrives on Vertex</h3>
+          </div>
+          <div class="story-body">
+            <p>The whole 2.1.322 release is one line: fast mode on Vertex in the global, us and eu regions, falling back to standard speed if Vertex refuses it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing to do today. You run on Anthropic's own endpoint. It matters only if a client ever requires Google Cloud billing for an agent build; then fast mode is no longer a reason to say no.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.322</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Unattended and scheduled runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.319</span>
+            <h3>A tool call that would prompt can now be denied so the turn continues</h3>
+          </div>
+          <div class="story-body">
+            <p>The new <code>permissions.denyInsteadOfPrompting</code> setting denies any tool call that would otherwise wait on a permission prompt, in terminal sessions, subagents and teammates. In the same release, <code>claude -p</code> in auto mode now exits 1 in text and JSON output when its actions were refused because no safety check was available, where it used to exit 0.</p>
+            <p>2.1.321 adds a related relief: the account email check now refuses only a shell command that holds your email and names a User-Agent, and does so without asking, so other commands and scheduled runs no longer stop at that prompt.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the fix for scouts and overnight jobs that die waiting on a prompt nobody will answer. Turn the setting on for every scheduled task that runs headless, and treat a non-zero exit from <code>claude -p</code> as the signal that a run was refused rather than silently successful. Check the Nash OS run log for any job that has been reporting success with no output.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.319 and 2.1.321</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Change</span>
+            <span class="ver">2.1.319</span>
+            <h3>Self-paced /loop stops when a turn ends without rescheduling</h3>
+          </div>
+          <div class="story-body">
+            <p>A self-paced <code>/loop</code> used to schedule a fallback wakeup when a turn finished without rescheduling itself. It now ends. <code>CLAUDE_CODE_LOOP_KEEPALIVE=1</code> restores the old behavior. Cloud sessions also get a note on <code>/loop</code> confirmations that a timer stops with its container, with an offer of a loop that survives.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any watcher loop you lean on (a deploy poll, a TSDPL review wait) will now quietly end if one turn forgets to reschedule. Either set the keepalive variable in the environment that runs them or make the loop prompt explicit about rescheduling every turn.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.319</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.321</span>
+            <h3>Remote Control applies one settings file to every session and stays put</h3>
+          </div>
+          <div class="story-body">
+            <p><code>claude remote-control --settings &lt;file&gt;</code> applies a settings file to every session it starts; if the file changes, no new session starts until you restart <code>claude remote-control</code>. Remote Control sessions now keep the folder they were started in, so a connected client can no longer move a session to another folder. 2.1.319 also makes <code>claude remote-control</code> exit 1 with a reason when a first-run question gets no answer, instead of exiting silently with 0.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your phone-driven sessions can carry one permissions file for the whole day. Keep that file under version control next to the launchd plist, and expect any script that starts remote-control to need its first-run answer piped in, since the silent exit is gone.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.321 and 2.1.319</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents, MCP and tools</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.319</span>
+            <h3>MCP tasks move to the background right away in the terminal</h3>
+          </div>
+          <div class="story-body">
+            <p>When an MCP server runs a tool call as a task, Claude Code now backgrounds it immediately and tells Claude the result when it finishes. <code>CLAUDE_CODE_DISABLE_MCP_TASK_BACKGROUND</code> makes Claude Code wait inside the tool call instead, and <code>CLAUDE_CODE_DISABLE_MCP_TASKS=1</code> turns tasks off entirely. The feature works without feature-flag fetching, so it also runs on Bedrock, Vertex, Foundry and LLM gateways.</p>
+            <p>Also in this area: a <code>/tasks</code> row called "Earlier in this session" lists finished subagents so you can reopen and message one after it leaves the list or you restart, and 2.1.321 answers reports from background subagents that wait together in one model call in headless, desktop and VS Code sessions, as the terminal already did.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Video generation and review calls on the commercial pipeline (Higgsfield takes, Gemini reviews) are the obvious beneficiaries, but only if those servers run the call as a task. Check whether the MCP servers you depend on advertise task support before assuming the session will keep moving; if a long call still blocks, the server is the reason.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.319 and 2.1.321</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.321</span>
+            <h3>Parallel Bash calls no longer run in the wrong folder</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.321 fixes Bash commands sometimes running in the wrong folder when Claude sent several at once and an earlier one changed folders. 2.1.319 fixes background Bash commands that finished almost instantly losing their output while being reported as completed, and the Bash tool's diff of changed files missing a file the command wrote just before it ended.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a build step ever ran against the wrong repo during a multi-project session, this was a plausible cause. No action beyond updating, but it removes one reason to keep each client in its own session.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.321 and 2.1.319</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security fixes</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">2.1.319 and 2.1.321</span>
+            <h3>MCP OAuth secrets, a worktree sandbox escape and two Bash permission holes</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.321 fixes MCP OAuth requests sending secrets such as refresh tokens to another host when a server redirected them, a case where a read-only Bash command ran outside the sandbox without a permission prompt, and Bash permission checks judging a file write from the wrong folder. 2.1.319 fixes a sandbox escape when creating a worktree, a Bash permission bypass where a crafted environment prefix could hide part of a command from permission checks, and a case where a <code>sed</code> command could skip the permission check in accept-edits and auto mode.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You run a long list of third-party MCP servers (Notion, Vercel, Supabase, Higgsfield, Calendly, Gmail) with OAuth tokens behind them. Update every machine today, and rotate the refresh tokens on any server that has ever redirected you during sign-in. Not a maybe.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog · 2.1.319 and 2.1.321</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>/claude-api latency-optimize</code> finds where your Claude API code makes people wait and tries faster settings against your eval. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Background command notifications and TaskStop results show Claude only the start and end of a command over 1,000 characters, to save context. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Sessions with more images than fit in one request now tell Claude whether it already saw a dropped image, and repeat reads of an unchanged image are limited. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">A Claude Desktop Code tab session can send 20 messages to your other sessions before it waits for you to type, up from 10. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Mods Claude writes turn on without asking in auto and bypass modes, and mods' own tool calls raise no permission prompt; deny rules and org policy still apply. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Nested skill loading tightened: with the Bash sandbox on, skills below the starting folder load only if you start or <code>/cd</code> there, and <code>.claude/skills</code> inside <code>~/.claude/plugins</code> no longer load. <span class="ver">2.1.319, 2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The Bash tool asks before running <code>which</code> with flags outside a lookup/display set, and <code>/bin/cp</code> and <code>/bin/mv</code> get the same path checks as the bare commands. <span class="ver">2.1.319, 2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Claude in Chrome: <code>javascript_tool</code> results up to 60,000 characters stay in the conversation; the <code>shortcuts_list</code> and <code>shortcuts_execute</code> tools were removed. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The <code>/model</code> picker groups older models under an unnumbered "More models" row. <span class="ver">2.1.319, 2.1.321</span></span></li>
+            <li><span class="tag improve qh-tag">Improve</span><span class="txt"><code>claude install</code> finishes 2 to 4 seconds sooner, and start-up loads trusted TLS certificates faster. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Edit and NotebookEdit misbehaving on network paths (UNC shares, WSL folders, <code>/net</code> mounts): wrong match, whole-file replace on an empty old string, or first cell overwritten. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Edits to a settings file were ignored when made within a few seconds of Claude Code writing that file. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Slash commands typed after a leading space, tab or newline were sent to Claude as plain text. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/diff</code> showed "Diff unavailable" in a repo with a file or folder named <code>HEAD</code>, and opened blank after 64 or more editing turns. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Read-only commands wrapped in a plain <code>timeout DURATION</code>, and reads like <code>grep -r foo "$PWD/src"</code>, no longer prompt needlessly. <span class="ver">2.1.319, 2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A mistyped model name such as <code>opus-5-5</code> now suggests the model you meant; it used to tell you to update. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">High memory use in long sessions that repeatedly read single lines from large files. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">WebFetch passed "No response from model" to Claude as page content; the call now fails with a clear error. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A turn ending with "API Error: EPROTO: The TLS handshake failed" mid-reply now keeps the partial reply or retries, as before 2.1.302. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A project's MCP server was disconnected after the first message in a Claude Desktop Code tab session when the desktop app had a server or extension of the same name. <span class="ver">2.1.321</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Cloud scheduled tasks silently dropped a connector named memory; runs now keep it under that name plus a short suffix. <span class="ver">2.1.319</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/rewind</code> could restore or delete a file through a directory symlink, and failed with "No files were restored" for checkpoints from before <code>/branch</code>. <span class="ver">2.1.319</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
