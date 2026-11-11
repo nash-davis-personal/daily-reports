@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-11" />
+  <meta name="report:title" content="Node.js HIGH-severity patches land today, Railway's breach shows how AI keys get stolen, Nvidia's board investigates its CEO, and Starship tries a double catch Friday" />
+  <meta name="report:summary" content="Node.js security releases for 22/24/26 are due today and had not shipped at filing; Next.js 16.4.6 backported fixes Nov 10 and Supabase's TLS cipher change took effect; Railway detailed a 26-hour intrusion that stole AI keys worth $740k of usage; Nvidia fell 4% after its board opened a probe into Jensen Huang ahead of Nov 17 earnings; Google added two TPU systems; Vercel made Sandbox snapshots 10x faster; SpaceX targets a booster-and-ship catch Nov 13; Tesla will refund Cybertruck deposits it cannot fill." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Node.js HIGH-severity patches land today, Railway's breach shows how AI keys get stolen, Nvidia's board investigates its CEO, and Starship tries a double catch Friday — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, November 11, 2026</span>
+        <span>◆</span><span>Covers Nov 7 – Nov 11 (five days, since the last edition)</span>
+      </div>
+      <h1>Node.js HIGH-severity patches land today, Railway's breach shows how AI keys get stolen, Nvidia's board investigates its CEO, and Starship tries a double catch Friday.</h1>
+      <p class="standfirst">Patch day first. Node.js said it would ship HIGH-severity fixes for the 22, 24 and 26 lines on or shortly after today; as of this filing the GitHub releases page still shows Oct 28 as the newest tags, so watch for them. Next.js 16.4.6 backported fixes on Nov 10, Supabase's TLS 1.2 cipher cut took effect the same day, and Vercel's bulletin board still carries the Nov 3 Better Auth advisory covering 12 issues. The week's real lesson came from Railway: attackers using AI agents spent 26 hours in its build infrastructure and walked out with decrypted env vars that they turned into $740,000 of AI usage. Elsewhere, Nvidia's board opened an independent investigation into Jensen Huang six days before earnings, Google added two TPU systems, and SpaceX is going for a booster-and-ship catch on Friday.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Web survey across nodejs.org, Vercel, Supabase, BleepingComputer, CNBC, Space.com and The Register</span>
+        <span>◆</span><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">HIGH</div><div class="lbl">Top severity in today's Node.js 22 / 24 / 26 security releases</div></div>
+      <div class="stat"><div class="num">26 hrs</div><div class="lbl">How long Railway's attackers were inside, Oct 20–21</div></div>
+      <div class="stat"><div class="num">Nov 17</div><div class="lbl">Nvidia Q3 earnings, guided to about $108B revenue</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Node.js security release due today</h4><p>22.x, 24.x and 26.x, highest severity HIGH, no CVE details until the builds are out. At filing the newest tags were still 26.13.0 / 24.22.2 (Oct 28). Node 20 and older get nothing.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Your stack this week</h4><p>Next.js 16.4.6 (Nov 10) backports LTS fixes and pins Tailwind 4.3.3 in create-next-app. Supabase disabled a subset of TLS 1.2 ciphers on project APIs Nov 10. Tailwind 4.3.5 shipped Nov 6. Better Auth needs 1.7.16.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Railway's post-mortem is a how-to for attackers</h4><p>Build-sandbox escape, internal source copied, trust relationship abused, env vars decrypted for up to 100,000 workspaces, 1,852 users' GitHub and AI tokens exposed. $740k of AI usage. Part of Wiz's "Black October."</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nvidia: board probe, stock down 4%, earnings in six days</h4><p>Independent directors are investigating Huang after reports he was targeted by a foreign intelligence effort; he told staff he "fell short." Shares closed −4.27% Monday. Q3 results Nov 17 after the close.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Vercel: Sandbox snapshots 10x faster, 64 GB build disks</h4><p>Median snapshot creation fell from 4.4s to under 0.4s. Build disk space rose to 64 GB at no charge. Gemini 4 Carbon and MiniMax H3 Image joined AI Gateway; Workflow SDK writes over WebSockets.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Starship Flight 15 targets Nov 13</h4><p>SpaceX will try to catch both the Super Heavy booster and the Ship with the tower arms, pending approval; window opens 5:45 p.m. ET. NASA also named eight CLPS 2 lunar-delivery firms under a $10B ceiling.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security: patch today, rotate this week</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Advisory</span>
+            <span class="ver">Nov 11</span>
+            <h3>Node.js HIGH-severity security releases for 22.x, 24.x and 26.x are scheduled for today; Next.js 16.4.6 and the Better Auth update round out the patch list</h3>
+          </div>
+          <div class="story-body">
+            <p>The Node.js project's pre-announcement (posted Nov 3) says new 26.x, 24.x and 22.x versions will ship "on or shortly after" Wednesday, Nov 11, with the highest severity fixed in each line rated HIGH. Details are withheld until the builds are out; end-of-life lines (20 and older) are always affected and get no fix. As of this filing, the newest releases on GitHub are 26.13.0 and 24.22.2 from Oct 28 and the 27.0.0 alpha from Oct 29, so the patched versions were not yet published. Separately, Next.js 16.4.6 (Nov 10) is an LTS backport that pins Tailwind to 4.3.3 in create-next-app, auto-compresses route handler responses when not already compressed, and fixes Turbopack dev-server garbage collection; it carries no new advisory. Vercel's security bulletins still list the Nov 3 Better Auth release that resolves 12 advisories (upgrade to 1.7.16 or 1.8.0-beta.5; WAF rules reduce exposure but do not replace patching) and a Linux kernel advisory (CVE-2026-98432) Vercel has finished applying on its side.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: when the Node builds land, bump the Node version in every Vercel project to the patched 24.x or 26.x line and redeploy; Vercel's build image picks up the minor automatically but pinned <code>engines</code> and local <code>.nvmrc</code> files do not. Run <code>npx next@16.4.6</code> upgrades across client repos in one pass. If any client app uses Better Auth, 1.7.16 is non-negotiable.</div>
+          <div class="refs"><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Node.js: November 2026 security releases</a> · <a href="https://github.com/nodejs/node/releases" target="_blank" rel="noopener">nodejs/node releases</a> · <a href="https://releasebot.io/updates/vercel/next-js" target="_blank" rel="noopener">Next.js 16.4.6 notes</a> · <a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breach</span>
+            <span class="ver">Nov 10</span>
+            <h3>Railway's incident report: AI-driven attackers escaped the build sandbox, decrypted customer env vars, and ran $740,000 of AI usage on stolen keys</h3>
+          </div>
+          <div class="story-body">
+            <p>Railway, a cloud host popular with indie developers, published a full report on the Oct 20–21 intrusion it first disclosed Oct 22. Attackers exploited a previously unknown vulnerability in build infrastructure to escape filesystem isolation and get an internal credential, used it to read build histories and copy Railway's source code, studied that code for weaknesses, then abused a misconfigured trust relationship to reach credentials that decrypt customer environment variables. Railway calls it a roughly 26-hour contest in which attackers using AI agents probed many routes in parallel while the team hardened them. Maximum exposure is 1.85% of workspaces (about 100,000); 1,852 users' linked-account tokens, including GitHub OAuth tokens and AI agent keys, were exposed and reset. No evidence that customer repos or databases were accessed. The stolen secrets generated about $740,000 of unauthorized AI usage; Railway is working with providers on refunds and will cover what they decline. Wiz ties it to a "Black October" campaign that also hit Northflank, OpenCode, Warp and Lightning AI. Related this week: Fireworks AI's second breach (datasets, partial weights, billing data), Vanderbilt University told staff and students to leave campus Wi-Fi during an active ransomware incident, and Wiz reported an attacker looting AWS secrets from multiple Qubole customers Oct 14–26.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Every client secret you hold lives in Vercel or Supabase env stores, which is the same shape as Railway's. This week: rotate the Anthropic, ElevenLabs, Gemini, Supabase service-role and Stripe keys across all client projects, cap monthly spend on each AI provider, enable Anthropic's IP allowlist on server keys, and keep agent keys off any machine that also holds a GitHub token. Then write it up as the "November key rotation" line item on the Monthly Security retainer.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/" target="_blank" rel="noopener">BleepingComputer: Railway breach</a> · <a href="https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722" target="_blank" rel="noopener">The Register: Fireworks AI</a> · <a href="https://nashvillebanner.com/2026/11/09/vanderbilt-university-cyberattack-byod" target="_blank" rel="noopener">Nashville Banner: Vanderbilt</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The stack: Vercel, Supabase, Next.js</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Platform</span>
+            <span class="ver">Nov 9–10</span>
+            <h3>Vercel: Sandbox snapshots in under 0.4s, 64 GB build disks, 2 GB container layers, WebSocket writes for Workflow SDK, and two new models on AI Gateway</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel's changelog for Nov 9: Sandbox snapshot creation is up to 10x faster, median down from 4.4 seconds to under 0.4 using a new indexing format; build disk space rose to 64 GB with no config change or extra charge; the Container Registry now accepts 2 GB compressed image layers; Workflow SDK event and stream writes now use WebSockets by default; and GLM 5.3 Flash joined Token Pass. Nov 10: Gemini 4 Carbon and MiniMax H3 Image and Highspeed are available on AI Gateway under one API key with fallbacks, spend tracking and request traces, and Speed Insights and Web Analytics now fully support custom environments. On the Supabase side, the Nov 10 changelog adds Correlated Logs (logs connected by request, trace or user in Studio, with a terminal log explorer, JSON export and SQL queries in CLI v3), supabase-flutter v3 (Nov 6) is a breaking release that adds type safety, the TLS 1.2 cipher cut on project HTTP APIs started Nov 10, and framework adapters for Hono, H3, Elysia and NestJS in <code>@supabase/server</code> are removed Dec 1.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Sub-second sandbox snapshots make "an agent spins up a preview of your site change in a few seconds" a feature you can actually ship inside TSD Concierge. Check any client integration that calls Supabase from an old runtime (legacy PHP, an embedded device, an old Zapier step) against the TLS change, and drop Hono/H3 adapters before Dec 1.</div>
+          <div class="refs"><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a> · <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and big tech</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Governance</span>
+            <span class="ver">Nov 8–10</span>
+            <h3>Nvidia's board opened an independent investigation into Jensen Huang; the stock fell 4.27% Monday and more Tuesday, with Q3 earnings due Nov 17</h3>
+          </div>
+          <div class="story-body">
+            <p>On Sunday, Nov 8, Nvidia's board announced an investigation by a committee of independent directors with outside counsel after reports that Huang had been targeted by a foreign intelligence effort; reports say he acknowledged an affair with a woman US officials believe is a Chinese spy. The board said it has no reason to believe national security or trade secrets were compromised. Huang told employees he had "fallen short" of his responsibility and would cooperate. CNBC had the stock closing down 4.27% on Monday; 24/7 Wall St. reported a further 3% drop Tuesday to about $173 while AMD and Broadcom rose about 3%. Nvidia reports fiscal Q3 on Tuesday, Nov 17 after the close, with guidance of about $108 billion in revenue plus or minus 2%. The same week Google added TPU 8tx (confidential computing on AMD EPYC hosts) and TPU 8i Max (two 8i chips per unit, doubling compute, SRAM and HBM bandwidth), the third and fourth systems in its eighth-generation line, with availability pointing to 2027 and no pricing, and Tom's Hardware reported Nvidia now requires overseas cloud partners to reserve 51% of capacity for non-Chinese customers.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Not a trade signal and not advice. The practical angle is that SMB owners read these headlines as "AI is shaky," and your pitch should stay about their missed calls and their website, with the vendor names in the appendix.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html" target="_blank" rel="noopener">CNBC: Nvidia falls 4%</a> · <a href="https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873" target="_blank" rel="noopener">Nvidia: Q3 call Nov 17</a> · <a href="https://www.datacenterknowledge.com/data-center-chips/google-adds-tpu-8tx-8i-max-for-enterprise-ai" target="_blank" rel="noopener">Data Center Knowledge: TPU 8tx and 8i Max</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Consumer</span>
+            <span class="ver">Nov 9–10</span>
+            <h3>Apple sells $49.99 Intelligence Usage Packs and surfaces Claris Harbor, a Mac app for running local models across Thunderbolt 5-linked Macs</h3>
+          </div>
+          <div class="story-body">
+            <p>Apple launched one-time $49.99 Usage Packs that add Apple Intelligence capacity after a monthly limit is hit, starting with Logic Pro; unused usage expires after 12 months. MacRumors reported Claris Harbor, an early-access Mac app that runs downloadable models on Apple silicon and can pool memory across Macs over Thunderbolt 5. Reports also say Apple's new CEO is pushing for faster AI work beyond Siri, with a more agent-like Siri rumored for 2027. Meanwhile Meta expanded AI age detection globally to move 13-to-17-year-olds on Instagram into teen accounts even when they registered as adults, and Oura agreed to buy on-demand doctor service Counsel Health for $625 million as Bloomberg reported Oura's Q4 sales up 153%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Apple charging per usage pack is the clearest sign yet that consumers will pay metered AI fees, which makes a per-call price on TSD Front Desk easier to explain. Claris Harbor is worth a weekend: a local model pooled across two Macs is a free dev box for Concierge evals.</div>
+          <div class="refs"><a href="https://9to5mac.com/2026/11/09/apple-launches-50-intelligence-usage-packs-for-select-ai-features/" target="_blank" rel="noopener">9to5Mac: Usage Packs</a> · <a href="https://www.macrumors.com/2026/11/10/apple-claris-harbor-app/" target="_blank" rel="noopener">MacRumors: Claris Harbor</a> · <a href="https://www.bloomberg.com/news/articles/2026-11-10/oura-to-buy-on-demand-doctor-ai-service-counsel-health-revenue-jumps-153-in-q4" target="_blank" rel="noopener">Bloomberg: Oura and Counsel Health</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Space and transport</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Launch</span>
+            <span class="ver">Nov 13</span>
+            <h3>Starship Flight 15 targets Friday with the first attempt to catch both the booster and the Ship; NASA names eight CLPS 2 lunar-delivery companies and books Starship for 2028 Moon comms</h3>
+          </div>
+          <div class="story-body">
+            <p>SpaceX is targeting Friday, Nov 13 at 5:45 p.m. ET from Starbase, Texas, with a 75-minute window, pending regulatory approval, for Starship Flight 15. The plan is to catch the Super Heavy booster and then the upper-stage Ship with the launch tower's arms, which would be a first. A delay or a waved-off catch is possible. On Nov 7 NASA selected eight companies (Blue Origin, Firefly, Intuitive Machines, ispace-U.S., Lockheed Martin, Northrop Grumman, SpaceX and Voyager Technologies per GovConWire) as eligible to compete under CLPS 2, a 10-year lunar delivery contract with a combined $10 billion ceiling, and separately tasked SpaceX under an existing contract to use Starship to deploy communications satellites into cislunar space in 2028. On the ground, Elon Musk said Nov 9 that Tesla will refund deposits to many Cybertruck customers because orders exceed what the plant can build before the line closes in about eight months to make room for the Cybercab; he gave no counts and did not address the non-refundable order fee.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A Friday evening launch with a double catch is the kind of thing clients bring up on Monday; it costs you nothing to know the date. The Cybertruck line closing is the better business lesson: a product with demand can still be the wrong use of a factory.</div>
+          <div class="refs"><a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-starship-flight-15-1st-booster-ship-double-catch-full-recovery-what-time" target="_blank" rel="noopener">Space.com: Flight 15 timeline</a> · <a href="https://www.govconwire.com/?p=346593" target="_blank" rel="noopener">GovConWire: CLPS 2 awards</a> · <a href="https://www.cbtnews.com/tesla-to-refund-cybertruck-deposits" target="_blank" rel="noopener">CBT News: Cybertruck refunds</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Supabase</span><span class="txt">One-command Expo environment setup (blog, Nov 10); Supabase CLI v3 is now the default install and is "local by default." <a href="https://supabase.com/blog" target="_blank" rel="noopener">Supabase blog</a> <span class="ver">Nov 10</span></span></li>
+            <li><span class="tag fix qh-tag">Tailwind</span><span class="txt">Tailwind CSS 4.3.5 patch shipped Nov 6; Next.js create-next-app pins 4.3.3. No major release. <a href="https://endoflife.date/tailwind-css" target="_blank" rel="noopener">endoflife.date</a> <span class="ver">Nov 6</span></span></li>
+            <li><span class="tag new qh-tag">Power</span><span class="txt">EIA expects record US electricity use in 2026 and 2027, from 4,216 billion kWh in 2025 to 4,370 billion kWh in 2027, partly on AI data centers; Anthropic reportedly committed $3.4B for 1.7 GW of gas generators. <a href="https://www.reuters.com/business/energy/us-power-demand-beat-record-highs-2026-2027-ai-use-surges-eia-says-2026-11-10/" target="_blank" rel="noopener">Reuters</a> <span class="ver">Nov 10</span></span></li>
+            <li><span class="tag feature qh-tag">Dev tools</span><span class="txt">Android Studio now runs 40+ third-party coding agents including Claude Agent and Codex, with Android CLI plugins for Claude Code and Codex; OpenCode Browse lets coding agents work in browser tabs with humans handling logins and payments. <a href="https://opencode.ai/product/browse" target="_blank" rel="noopener">OpenCode</a> <span class="ver">Nov 9</span></span></li>
+            <li><span class="tag feature qh-tag">Enterprise</span><span class="txt">ChatGPT Enterprise is purchasable on AWS Marketplace against existing AWS commitments. <a href="https://openai.com/index/chatgpt-enterprise-aws-marketplace/" target="_blank" rel="noopener">OpenAI</a> <span class="ver">Nov 10</span></span></li>
+            <li><span class="tag breaking qh-tag">Breach</span><span class="txt">Hearing-aid maker Amplifon disclosed a breach affecting thousands; DigiCert exposed archived customer records per Health-ISAC's Nov 9 roundup. <a href="https://therecord.media/" target="_blank" rel="noopener">The Record</a> <span class="ver">Nov 9</span></span></li>
+            <li><span class="tag new qh-tag">Creative</span><span class="txt">Adobe's Photoshop 2027 adds Relight and Generative Restyle, with new agents in Premiere and Firefly and an MCP for editable project files. <a href="https://www.creativebloq.com/news/adobe-unveils-photoshop-2027-with-a-host-of-new-ai-features" target="_blank" rel="noopener">Creative Bloq</a> <span class="ver">Nov 10</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

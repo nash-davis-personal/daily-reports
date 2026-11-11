@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-11-11",
+    "title": "October prices rose 0.4% with no annual rate to show, a December hike is now priced at 88%, stocks gave back Monday's rally, and Charlotte approved a 10.5-year airport lease",
+    "summary": "The October CPI rose 0.4% (core 0.3%) and had no 12-month headline because of the 2025 data gap; futures priced an 88% chance of a December Fed hike and an 11% chance of a half point, with the 10-year near 4.95%; the S&P 500 jumped 2.4% Monday then slipped 0.38% Tuesday as Nvidia fell on a board probe; Hormuz attacks kept Brent near $92 after a two-month low; Charlotte's council passed the CLT airline lease 8-2 behind a $2.1B expansion; a Northeast storm and a cold snap arrive Thursday; Starship Flight 15 targets Friday.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-11.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Three releases since the last briefing: 2.1.321 makes Fable 5.2 the default Fable model at 1M context, 2.1.319 adds a deny-instead-of-prompt setting and background MCP tasks, and both ship security fixes worth updating for today.",
     "highlights": 6,
     "path": "reports/claude-changelog/2026-11-11.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-11",
+    "title": "Fable 5.2 ships cheaper and faster, Anthropic starts its IPO roadshow, OpenAI lets businesses claim a profile inside ChatGPT, and stolen AI keys cost Railway customers $740k",
+    "summary": "Claude Fable 5.2 and Mythos 5.2 arrived Nov 9 at $8/$40 per million tokens with a 2.5x Fast mode; Anthropic launched a Nasdaq roadshow (ANT, $70-78, up to about $64B) with $26B of private placements from seven chip and cloud firms; Gemini 4 Carbon went GA at $2/$10 until Nov 30; OpenAI opened Businesses in ChatGPT and closed $11B at $1.25T; Railway and Fireworks breaches turned stolen AI credentials into real bills; lenders started dumping data-center loans.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-11.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-11",
+    "title": "Claim your clients' ChatGPT profiles this week, sell the November key rotation, and put Scribe v3 under Front Desk before the cold snap",
+    "summary": "Six moves ranked by fit: a flat-fee ChatGPT Business Profile setup now that OpenAI lets any eligible business claim one for free; a $349 November patch-and-rotate sprint sold off the Railway breach and today's Node.js release; a Scribe v3 Live upgrade to Front Desk timed to the first cold snap; a Gemini 4 Carbon cost test before the Nov 30 price change; a $149 price-change kit for clients raising prices with CPI; and a CLT-expansion contractor list for Grant and Bishop.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-11.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-11",
+    "title": "Node.js HIGH-severity patches land today, Railway's breach shows how AI keys get stolen, Nvidia's board investigates its CEO, and Starship tries a double catch Friday",
+    "summary": "Node.js security releases for 22/24/26 are due today and had not shipped at filing; Next.js 16.4.6 backported fixes Nov 10 and Supabase's TLS cipher change took effect; Railway detailed a 26-hour intrusion that stole AI keys worth $740k of usage; Nvidia fell 4% after its board opened a probe into Jensen Huang ahead of Nov 17 earnings; Google added two TPU systems; Vercel made Sandbox snapshots 10x faster; SpaceX targets a booster-and-ship catch Nov 13; Tesla will refund Cybertruck deposits it cannot fill.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-11.html"
   },
   {
     "source": "america",
