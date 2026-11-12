@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-11-12" />
+  <meta name="report:title" content="Nvidia's board is reported to be preparing to remove Jensen Huang, Google ships a 10-cent Decisions API, and Anthropic's filing shows $900B of compute commitments" />
+  <meta name="report:summary" content="The WSJ and CBS report Nvidia's board is preparing to remove its CEO, with shares down about 8% after hours; Google launched the Gemini Decisions API at $0.10 per million input tokens for yes/no, pick-one and rubric calls; Anthropic's S-1 shows nearly $900B in future compute commitments; CoreWeave's Q3 revenue rose 168%; United Airlines moved to ban third-party AI agents from booking; AWS released a free local AWS emulator built by agents." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Nvidia's board is reported to be preparing to remove Jensen Huang, Google ships a 10-cent Decisions API, and Anthropic's filing shows $900B of compute commitments — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Thursday, November 12, 2026</span>
+        <span>◆</span><span>Covers Nov 11 – early Nov 12 (since yesterday's edition)</span>
+      </div>
+      <h1>Nvidia's board is reported to be preparing to remove Jensen Huang, Google ships a 10-cent Decisions API, and Anthropic's filing shows $900B of compute commitments.</h1>
+      <p class="standfirst">The loudest story is a personnel one: the Wall Street Journal and CBS report that Nvidia's board is preparing to remove its founder and CEO, and the stock fell about 8% after hours on Wednesday with earnings five days out. Nothing has been announced. The most useful story for a builder is quieter. Google launched a Decisions API that answers yes/no, pick-one and rubric questions with a confidence score for $0.10 per million input tokens, which is the exact shape of the routing and grading calls inside a phone receptionist or a RAG assistant. Behind both, the money numbers kept coming: Anthropic's S-1 lists nearly $900 billion of future compute commitments, and CoreWeave posted 168% revenue growth while paying $846 million of interest in one quarter.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Web survey across Google, AWS, DeepMind, CNBC, CBS, TechCrunch, Fortune, Simon Willison and Techmeme</span>
+        <span>◆</span><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">$0.10</div><div class="lbl">Gemini Decisions API, per million input tokens; output is free</div></div>
+      <div class="stat"><div class="num">~$900B</div><div class="lbl">Anthropic's future compute commitments as of September, per its S-1</div></div>
+      <div class="stat"><div class="num">−8%</div><div class="lbl">Nvidia after hours Nov 11 on the board report; −6.9% premarket Nov 12</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nvidia's board is reported to be preparing to remove its CEO</h4><p>WSJ broke it Nov 11; CBS confirmed with two sources. The board met Wednesday evening and has hired a search firm, per Bloomberg. No announcement as of early Nov 12. Earnings are Nov 17.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Gemini Decisions API: classification for a dime</h4><p><code>gemini-decision-1</code> returns yes/no, one of 2–255 options, or a rubric score, each with a 0–1 confidence. $0.10 per million input tokens, output free, 150–250 ms stated latency. Already on Vercel AI Gateway.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Anthropic's S-1: $900B of commitments, $4.08B adjusted operating income</h4><p>About half of the commitments fall due by the end of 2030 and about $70B in the next year. Nine-month GAAP net loss tops $104B, mostly a $94B noncash charge. Pricing is still expected Nov 18.</p></div>
+        <div class="signal"><div class="n">04</div><h4>CoreWeave: revenue +168%, interest bill $846M</h4><p>Q3 revenue $3.66B, net loss $709M, backlog $132.5B, 2026 guidance raised. It raised prices about 25% in July and 10% more later in the quarter. Shares rose 24.7% Wednesday.</p></div>
+        <div class="signal"><div class="n">05</div><h4>United bans third-party AI agents from booking</h4><p>United is rewriting its booking and ticketing rules to bar "unauthorized, third-party personal AI agents or assistants" on its own platforms and through agencies. No effective date yet.</p></div>
+        <div class="signal"><div class="n">06</div><h4>AWS shipped a free local AWS, built by agents</h4><p>AWS Emulator is a Rust stand-in for AWS APIs at <code>127.0.0.1:9297</code>. AWS says agents on Bedrock AgentCore build and maintain it. No real IAM evaluation; unimplemented calls return 501.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Tools you can build with</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New API</span>
+            <span class="ver">Nov 11</span>
+            <h3>Google's Gemini Decisions API prices a routing call at $0.10 per million tokens</h3>
+          </div>
+          <div class="story-body">
+            <p>Google released a new endpoint and model, <code>gemini-decision-1</code>, built for closed-set questions. You hand it context and a question, and it returns a yes/no, a choice among 2 to 255 options, or a rubric score, each with a confidence from 0 to 1. It scores the candidate answers in a single forward pass instead of generating text, which is why output is free and input costs $0.10 per million tokens. There is a free tier in AI Studio.</p>
+            <p>It accepts text, images, audio, video and PDFs up to 256K tokens and up to 1,000 questions in one request. Google states 150 to 250 ms end to end for contexts up to 16K tokens. Vercel added it to AI Gateway the same day; Google Cloud support is listed as coming soon. Simon Willison notes the design is close to Jev's decision model ($0.042 per million input) and says the price matches OpenAI's GPT-6 Luna decision model. Google's benchmark charts were not readable in this pass, so no accuracy claim here.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Front Desk and Concierge both make a pile of small decisions per turn: is this an emergency, which department, did the retrieved chunk answer the question, should this hand off to a human. Those calls currently ride on a full chat model. Run a one-hour bake-off this week: pull 100 real intent and grading calls from your logs, send them through <code>gemini-decision-1</code> on AI Gateway, and compare agreement, latency and cost against what you pay now. The confidence score is the part to keep even if you stay on Claude for the talking, because it gives you a clean threshold for "transfer to the owner."</div>
+          <div class="refs"><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Google: Gemini Decisions API</a> · <a href="https://simonwillison.net/2026/Nov/11/gemini-decisions-api/" target="_blank" rel="noopener">Simon Willison's notes</a> · <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New tool</span>
+            <span class="ver">Nov 11</span>
+            <h3>AWS Emulator: a free local AWS that agents wrote and maintain</h3>
+          </div>
+          <div class="story-body">
+            <p>AWS published an official emulator, written in Rust, that the AWS CLI, the SDKs and coding agents can hit at <code>127.0.0.1:9297</code> at no charge. Linux gets RPM and Deb packages; on macOS and Windows you build a Docker image yourself, since AWS has not published one. AWS says agents running on Bedrock AgentCore generate and maintain the emulator from the AWS API models, with a separate adversarial security agent reviewing changes.</p>
+            <p>The limits are stated plainly: no real IAM policy evaluation, a single account, and any operation that is not implemented returns HTTP 501. A GeekWire headline puts coverage at more than 200 services with no human-written code; the AWS post gives no service count, so treat that number as unconfirmed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your stack is Vercel and Supabase, so this is not a daily tool. It matters as a marker: a hyperscaler just shipped a production developer product and said out loud that agents built it and agents keep it current. If a client project ever needs S3 or SES, test against this locally and stop paying for a sandbox account.</div>
+          <div class="refs"><a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">AWS blog</a> · <a href="https://github.com/aws/aws-emulator" target="_blank" rel="noopener">GitHub repo</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Policy</span>
+            <span class="ver">Nov 11</span>
+            <h3>United Airlines moves to block third-party AI agents from booking flights</h3>
+          </div>
+          <div class="story-body">
+            <p>United is updating its booking and ticketing policies to bar "unauthorized, third-party personal AI agents or assistants," and says it will block them on its own site and app and through travel agencies and aggregators. The reasons it gave: exposure of customer credentials and payment details, unintended purchases or mileage redemptions, and conflict with federal check-in rules. No effective date was given. CBS notes Southwest has gone the other way and lets ChatGPT users see its inventory.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This is the first large consumer brand to write "no outside agents" into its terms, and others will copy the language. Keep your products on the safe side of that line: Front Desk and Booking Bridge act for the business that hired you, on systems the business owns or has an API key for. Say that sentence in sales calls. Do not build anything that logs into a third party's consumer site with a customer's password.</div>
+          <div class="refs"><a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/" target="_blank" rel="noopener">CBS News</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> The buildout and the money</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Developing</span>
+            <span class="ver">Nov 11–12</span>
+            <h3>Reports: Nvidia's board is preparing to remove Jensen Huang</h3>
+          </div>
+          <div class="story-body">
+            <p>The Wall Street Journal reported Wednesday that Nvidia's board is preparing to remove its founder and CEO, and CBS confirmed the report with two sources. The reporting ties the move to the independent investigation the board opened Nov 8, which concerns an alleged relationship with a woman U.S. intelligence believes was working for China; the New York Times reported a second alleged relationship with a direct report. Bloomberg, as relayed by Fortune, says the board met Wednesday evening and has hired an outside firm to identify CEO candidates, with an interim CEO under consideration and no one named.</p>
+            <p>The stock fell about 8% in extended trading Wednesday and was down 6.9% premarket at 6:23 a.m. ET Thursday, per CNBC. Bernstein cut its price target from $400 to $200. Two senators asked the administration to preserve documents on Nvidia's chip exports. As of this filing Nvidia has announced nothing, and Q3 results are still set for Nov 17. Everything above is sourced reporting about a decision that has not been made public.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing changes in what you build or what an API call costs this month; Anthropic's own roadshow says Claude now runs on four chip families. The exposure is second-order: Nvidia is one of the seven firms buying into Anthropic's IPO placement, and a leadership fight at the center of the supply chain is the kind of thing that moves the whole AI trade the week before that IPO prices. Watch it, do not act on it.</div>
+          <div class="refs"><a href="https://www.cbsnews.com/news/nvidia-board-ceo-jensen-huang-china/" target="_blank" rel="noopener">CBS News</a> · <a href="https://techcrunch.com/2026/11/11/nvidias-stock-drops-as-board-reportedly-preps-to-oust-ceo-jensen-huang/" target="_blank" rel="noopener">TechCrunch</a> · <a href="https://www.cnbc.com/2026/11/12/nvidia-nvda-jensen-huang-second-affair.html" target="_blank" rel="noopener">CNBC, Nov 12</a> · <a href="https://fortune.com/2026/11/12/nvidia-exit-jensen-huang-affair-trump-preserve-documents-spying-chip-smuggling/" target="_blank" rel="noopener">Fortune, Nov 12</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">IPO</span>
+            <span class="ver">Nov 11</span>
+            <h3>Anthropic's filing: nearly $900B in commitments, and a model that ported itself to AMD in three days</h3>
+          </div>
+          <div class="story-body">
+            <p>CNBC went through the S-1 on Wednesday. As of September, Anthropic had nearly $900 billion in future spending commitments, about half due by the end of 2030 and about $70 billion due within the next year, including up to $120.5 billion with SpaceX through 2029. For the first nine months of 2026 it reported adjusted operating income of $4.08 billion, a GAAP operating loss of $1.26 billion, and a GAAP net loss above $104 billion, most of it a $94 billion noncash charge tied to securities issued to partners such as Google and Amazon. Pricing is still expected Nov 18 with trading on Nasdaq under ANT on Nov 19.</p>
+            <p>Simon Willison transcribed the roadshow video. Two details stand out: Claude runs on four chip families (AWS Trainium, Google TPUs, Nvidia and AMD), and Anthropic says Mythos ported Claude to AMD GPUs in three days with almost no human help. Separately, TechCrunch relayed a Bloomberg report that OpenAI's Q3 revenue was about $10 billion, up from $6.7 billion in Q2, against Anthropic's $17 billion for the same quarter. The OpenAI figure is from anonymous sources and unconfirmed by the company.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your main supplier is profitable on an adjusted basis and carries commitments worth roughly eleven times its run rate. Read that as price pressure in both directions: scale lets it cut prices (Fable 5.2 just did), and the commitments mean it cannot give capacity away forever. Keep model IDs in config, keep AI Gateway in front, and keep your retainers priced on outcomes so a token price move in either direction is your margin and your client never notices.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/11/anthropic-ipo-profit-computing-commitments.html" target="_blank" rel="noopener">CNBC on the S-1</a> · <a href="https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/" target="_blank" rel="noopener">Simon Willison: roadshow transcript</a> · <a href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">TechCrunch on OpenAI's Q3</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Earnings</span>
+            <span class="ver">Nov 10–11</span>
+            <h3>CoreWeave grew 168%, raised prices twice, and is asking customers to prepay</h3>
+          </div>
+          <div class="story-body">
+            <p>CoreWeave reported Tuesday night and the stock rose 24.71% Wednesday, its best day since April 2025. Q3 revenue was $3.66 billion, up 168% from a year earlier, with a net loss of $709 million and $846 million of interest expense in the quarter. Backlog stands at $132.5 billion, it raised its 2026 revenue forecast, and it set capital spending at $37 to $39 billion. TechCrunch reports it expects about $9 billion in customer prepayments over the next three months and is signing shorter contracts. It raised prices about 25% in July and roughly another 10% later in the quarter.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> GPU rental prices went up this quarter while token prices at the model labs went down. The labs are absorbing that gap for now. If you ever quote a client a fixed multi-year AI cost, do not; quote a monthly retainer with a usage cap and a 12-month price review.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/11/coreweave-crwv-outlook-earnings-ai.html" target="_blank" rel="noopener">CNBC on the results</a> · <a href="https://www.cnbc.com/2026/11/11/coreweave-ceo-election-data-center-buildout.html" target="_blank" rel="noopener">CNBC interview</a> · <a href="https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/" target="_blank" rel="noopener">TechCrunch</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Patch</span><span class="txt">Simon Willison's <code>llm</code> CLI 0.37.2 fixes two bugs that could send a configured OpenAI API key to another provider's OpenAI-compatible endpoint. Upgrade if you use it with third-party endpoints. <a href="https://simonwillison.net/2026/Nov/11/llm/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag breaking qh-tag">Security</span><span class="txt">Arctic Wolf tied hosts running AntiFox, an open-source autonomous pentest agent, to real intrusions on IIS apps and AWS environments, including one successful read of a production secret. Single secondary source. <a href="https://thehackernews.com/2026/11/antifox-ai-pentesting-platform-linked.html" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">UK inference-chip maker Fractile raised a $720M Series C led by Thrive, Founders Fund, Lightspeed and Redpoint; first chips ship next year. <a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag new qh-tag">Funding</span><span class="txt">Rox, which sells AI sales agents that sit on CRM data, raised $100M at a $1.3B valuation. Proof that "agent on top of the system you already have" is a fundable pitch. <a href="https://fortune.com/2026/11/11/rox-series-b-100-million-funding-take-on-salesforce/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag feature qh-tag">Research</span><span class="txt">DeepMind released AlphaGenome 2, which predicts gene regulation per cell type and finds nearly twice as many expression-changing variants as the prior best model (30% vs 16% on one benchmark). Free for non-commercial research. <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag improve qh-tag">People</span><span class="txt">Meta's infrastructure chief Santosh Janardhan is stepping down after 17 years; former Amazon executive Dave Brown succeeds him. <a href="https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag improve qh-tag">Quiet</span><span class="txt">No new releases in the window from Claude Code (latest 2.1.322, Nov 10) or Cursor (latest entry Nov 6). A Grok 4.8 mention surfaced in one newsletter teaser and could not be confirmed, so it is not reported here.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

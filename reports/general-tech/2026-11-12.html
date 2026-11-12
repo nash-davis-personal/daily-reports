@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-12" />
+  <meta name="report:title" content="Patch Node today: 16 CVEs fixed in 22.23.5, 24.22.3 and 26.13.1, a critical Apache HTTP/2 bug, and Nvidia's board meets on its CEO" />
+  <meta name="report:summary" content="Node.js shipped its November security releases on Nov 11 (22.23.5, 24.22.3, 26.13.1) fixing 16 CVEs, seven of them High, including an HTTPS bug that can leak TLS keys; Apache httpd 2.4.71 fixes a critical mod_http2 flaw; Next.js, React, Tailwind and Supabase have nothing new; Nvidia's board met on removing its CEO; GitHub had a 33-minute Actions incident; Microsoft's November updates fail on some Windows 11 PCs." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch Node today: 16 CVEs fixed in 22.23.5, 24.22.3 and 26.13.1, a critical Apache HTTP/2 bug, and Nvidia's board meets on its CEO — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Thursday, November 12, 2026</span>
+        <span>◆</span><span>Covers Nov 11 – early Nov 12 (since yesterday's edition)</span>
+      </div>
+      <h1>Patch Node today: 16 CVEs fixed in 22.23.5, 24.22.3 and 26.13.1, a critical Apache HTTP/2 bug, and Nvidia's board meets on its CEO.</h1>
+      <p class="standfirst">The Node.js security releases that yesterday's edition was waiting on shipped Wednesday. Sixteen CVEs, seven rated High, and the worst one lets an HTTPS server leak TLS keys and other users' data into response bodies. That is the one action item on your stack; Next.js, React, Tailwind and Supabase have nothing new. Around it: Apache fixed a critical HTTP/2 flaw that matters to any client still on shared hosting, Microsoft's own November patches are failing to install on some Windows 11 machines, and Nvidia's board met Wednesday night on whether to remove its CEO.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Web survey across nodejs.org, GitHub, Vercel, Supabase, Wiz, BleepingComputer, The Register, CNBC and Techmeme</span>
+        <span>◆</span><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16</div><div class="lbl">CVEs fixed in the Nov 11 Node.js releases: 7 High, 6 Medium, 3 Low</div></div>
+      <div class="stat"><div class="num">2.4.71</div><div class="lbl">Apache httpd version that fixes the critical mod_http2 flaw</div></div>
+      <div class="stat"><div class="num">−6.9%</div><div class="lbl">Nvidia premarket Thursday after the board met on its CEO</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Node.js 22.23.5, 24.22.3 and 26.13.1 are out</h4><p>Seven High-severity fixes, mostly in HTTP/2 and TLS. The headline bug (CVE-2026-123864) can leak TLS keys and other users' data from any HTTPS server on Node. Node 20 and older get nothing.</p></div>
+        <div class="signal"><div class="n">02</div><h4>The rest of your stack is quiet</h4><p>Next.js still 16.4.6, React still 19.3.1, Tailwind still 4.3.5. Supabase's newest item is Correlated Logs (Nov 10). Vite 8.3.8 shipped Nov 11 with bug fixes. Vercel added Gemini Decision 1 to AI Gateway.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Apache HTTP/2 bug rated critical</h4><p>CVE-2026-119618 is a race in mod_http2 that an unauthenticated remote attacker can use to corrupt heap memory. Affects httpd 2.4.55 to 2.4.70 with HTTP/2 on. Wiz finds vulnerable resources in 64% of cloud environments.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Nvidia's board met on removing Jensen Huang</h4><p>CNBC confirmed the Wednesday meeting; no decision or company statement as of Thursday morning. Bloomberg says a search firm is engaged. Bernstein halved its target to $200. Earnings are Nov 17.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Microsoft's November patches fail on some Windows 11 PCs</h4><p>Microsoft confirmed the Nov 10 security updates will not install on machines that took the October preview update. Tuesday's batch fixed a record 1,235 flaws and one exploited Outlook zero-day.</p></div>
+        <div class="signal"><div class="n">06</div><h4>GitHub Actions went down for 33 minutes</h4><p>Actions, Pages, Webhooks and Copilot were degraded 20:48–21:21 UTC on Nov 11. Cloudflare has an open incident since Nov 10 on Workers event subscriptions. No major outage at either.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch now</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Nov 11 · 22.23.5 / 24.22.3 / 26.13.1</span>
+            <h3>Node.js fixes 16 CVEs; the worst leaks TLS keys from HTTPS servers</h3>
+          </div>
+          <div class="story-body">
+            <p>The Node.js project shipped v22.23.5, v24.22.3 and v26.13.1 on Wednesday. The advisory counts 16 CVEs: seven High, six Medium, three Low, plus dependency updates to llhttp on every line, undici on 24 and 26, and sqlite on 22 and 24.</p>
+            <p>The one to read twice is <b>CVE-2026-123864</b>. A zero-length TLS write can re-enter the HTTP parser, producing a use-after-free and out-of-bounds read that can put TLS keys and other users' data into response bodies. It affects all three lines; plain <code>node:http</code> is not affected. The other High fixes: an unauthenticated HTTP/2 remote abort (CVE-2026-123863, lines 24 and 26), an HTTP/2 memory and file-descriptor leak after a protocol error during shutdown (CVE-2026-123865), an HTTP/2 stream-teardown use-after-free that can send freed heap memory to the peer (CVE-2026-123866), a TLS server crash for servers using <code>SNICallback</code> or session callbacks (CVE-2026-126051, 24 and 26), a TLS 1.2 renegotiation trick that bypasses client-certificate auth (CVE-2026-123872), and a use-after-free in HTTP/2 <code>respondWithFile()</code> (CVE-2026-123874, 24 and 26). The Medium set includes proxy credentials leaking into <code>ERR_PROXY_INVALID_CONFIG</code> error messages (CVE-2026-123871).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Do this today, in this order. (1) Vercel-hosted sites: Vercel terminates TLS at its edge and patches its own Node runtime, so your exposure there is low; confirm each project's Node version is 22.x or 24.x in Project Settings and redeploy once so the build picks up the newest patch. Any project still pinned to Node 20 is out of support and gets no fix, so move it. (2) Anything you run yourself that serves HTTPS or HTTP/2 straight from Node (a Vapi webhook box, the Mac running this daily-reports server, any client VPS): upgrade Node now and restart. (3) Update your local machine with <code>nvm install 24</code> or your installer of choice. If a client asks, the plain answer is "a server bug that could expose encrypted traffic was fixed yesterday and your site was updated within a day."</div>
+          <div class="refs"><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" target="_blank" rel="noopener">Node.js: November 2026 security releases</a> · <a href="https://github.com/nodejs/node/releases" target="_blank" rel="noopener">GitHub releases</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Nov 11 · httpd 2.4.71</span>
+            <h3>Apache HTTP Server: critical remote bug in mod_http2</h3>
+          </div>
+          <div class="story-body">
+            <p>Wiz published details of CVE-2026-119618, a race condition in <code>assign_headers()</code> in Apache's HTTP/2 module. A remote attacker with no credentials can corrupt heap memory, and code execution is possible. Affected versions are httpd 2.4.55 through 2.4.70 with HTTP/2 enabled; 2.4.71 fixes it. The stopgap is to set <code>Protocols http/1.1</code>. Wiz reported no public exploit and no attacks in the wild at publication, and says 64% of cloud environments it sees contain a vulnerable resource. No CVSS score was published on the page.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing you host on Vercel runs Apache. This one is for prospects and for the old sites you replace: most cPanel and shared WordPress hosting is Apache with HTTP/2 on, and those hosts patch on their own schedule. When you audit a prospect's current site, check the <code>Server</code> response header; an unpatched Apache is a concrete, non-scary line for the "why move" slide.</div>
+          <div class="refs"><a href="https://www.wiz.io/blog/cve-2026-119618-rce-apache-http-server-vulnerability" target="_blank" rel="noopener">Wiz: CVE-2026-119618</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Windows</span>
+            <span class="ver">Nov 10–12</span>
+            <h3>Record Patch Tuesday, and the patches themselves fail on some Windows 11 machines</h3>
+          </div>
+          <div class="story-body">
+            <p>Tuesday's Microsoft release fixed 1,235 flaws, 66 of them Critical, the largest batch on record per BleepingComputer. One was already being exploited: CVE-2026-124194, an Outlook spoofing bug that leaks NTLMv2 password hashes when a user opens a crafted message file. On Thursday Microsoft confirmed the November security updates fail to install on Windows 11 systems that had taken the October preview update; The Register cites KB5132061 and error codes 0x800F0993 and 0x800F0989.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your own machines are Macs. Your clients' front desks are not. If a client mentions a Windows update that keeps failing this week, this is why, and the fix is Microsoft's to ship. The Outlook bug is a good reason to remind any office client not to open emailed <code>.msg</code> or <code>.eml</code> attachments from strangers.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/" target="_blank" rel="noopener">BleepingComputer: Patch Tuesday</a> · <a href="https://www.theregister.com/" target="_blank" rel="noopener">The Register</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack, line by line</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Status</span>
+            <span class="ver">as of Nov 12</span>
+            <h3>Next.js, React, Tailwind and Supabase: nothing new; Vite and Vercel moved a little</h3>
+          </div>
+          <div class="story-body">
+            <p><b>Next.js:</b> 16.4.6 is still the latest stable. The only newer build is 16.5.0-canary.48 (Nov 11). No new security advisory since the five Moderate ones on Nov 3. <b>React:</b> 19.3.1 from Oct 14 is current. <b>Tailwind:</b> 4.3.5 from Nov 6 is current. <b>Supabase:</b> the newest changelog item is Correlated Logs (Nov 10), which links logs in Studio by request, trace or user and adds a terminal log explorer to CLI v3 with filters, JSON export and SQL queries.</p>
+            <p><b>Vite:</b> 8.3.8 shipped Nov 11, a bug-fix release (inline workers now emit their referenced assets; Sass is imported once instead of per file). <b>Vercel:</b> one changelog entry on Nov 11, adding Google's Gemini Decision 1 to AI Gateway; Nov 10 added custom-environment support to Speed Insights and Web Analytics. <b>TypeScript, Bun, Deno:</b> nothing new. No new npm supply-chain incident turned up in this pass.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No framework upgrades to schedule. Two small wins: Supabase's Correlated Logs is worth ten minutes the next time a Front Desk call fails and you need the whole request chain, and the Gemini Decision 1 entry means you can test Google's new 10-cent classifier through the gateway you already use (details in today's <a href="../general-ai/2026-11-12.html">AI brief</a>).</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a> · <a href="https://github.com/facebook/react/releases" target="_blank" rel="noopener">React releases</a> · <a href="https://github.com/tailwindlabs/tailwindcss/releases" target="_blank" rel="noopener">Tailwind releases</a> · <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a> · <a href="https://github.com/vitejs/vite/releases" target="_blank" rel="noopener">Vite releases</a> · <a href="https://vercel.com/changelog/gemini-decision-1-now-available-on-ai-gateway" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Incidents</span>
+            <span class="ver">Nov 11–12</span>
+            <h3>GitHub Actions down 33 minutes; small Cloudflare incidents, one still open</h3>
+          </div>
+          <div class="story-body">
+            <p>GitHub logged a 33-minute incident on Nov 11 (20:48 to 21:21 UTC, about 3:48 to 4:21 p.m. ET) affecting Actions, Pages, Webhooks and Copilot, after a four-minute webhooks blip at 20:22. Cloudflare had short incidents on Worker Builds, SSL certificate provisioning and Workers deploys with D1 bindings on Nov 11, a DNSSEC configuration issue early Nov 12, and one still open since Nov 10: changes to Workers are not producing Event Subscription events. GitHub also made issue types and fields available to personal accounts.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If a push on Wednesday afternoon did not trigger a Vercel deploy, the webhook was dropped during that window; push an empty commit or redeploy from the dashboard. Nothing else to do.</div>
+          <div class="refs"><a href="https://www.githubstatus.com/history" target="_blank" rel="noopener">GitHub status history</a> · <a href="https://www.cloudflarestatus.com/history" target="_blank" rel="noopener">Cloudflare status history</a> · <a href="https://github.blog/changelog/" target="_blank" rel="noopener">GitHub changelog</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and companies</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Developing</span>
+            <span class="ver">Nov 11–12</span>
+            <h3>Nvidia's board met on whether to remove its CEO; no decision announced</h3>
+          </div>
+          <div class="story-body">
+            <p>The Wall Street Journal reported Wednesday that Nvidia's board is preparing to remove founder and CEO Jensen Huang. CNBC confirmed the board met Wednesday on the question, and as of its Thursday morning story there was no decision and no company statement. The New York Times reported a second relationship, with Nvidia's vice president of health care, who reports to Huang; the board's investigation, opened Nov 8, began with reporting that Huang had been the target of a foreign intelligence effort. Bloomberg says the board is working with an outside firm on candidates and may name a temporary chief, and Semafor says some directors favor CFO Colette Kress for that role. Both of those are single-outlet reports.</p>
+            <p>Shares were down 6.9% before the open Thursday and more than 20% over the past month; after-hours figures Wednesday ranged from about 5% to 8.6% depending on the outlet. Bernstein cut its price target from $400 to $200. AMD rose 3.9% and Broadcom 3% premarket. Two senators asked the administration to preserve documents on Nvidia's China exports. Q3 results are due Nov 17.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No effect on anything you ship. It is the largest company in the AI supply chain going into earnings with its leadership in question, so expect a noisy week in every AI headline your clients read. If one asks whether "the AI thing is falling apart," the honest answer is that this is a governance story at one supplier and the models you build on run on four different chip families.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/12/nvidia-nvda-jensen-huang-second-affair.html" target="_blank" rel="noopener">CNBC, Nov 12</a> · <a href="https://techcrunch.com/2026/11/11/nvidias-stock-drops-as-board-reportedly-preps-to-oust-ceo-jensen-huang/" target="_blank" rel="noopener">TechCrunch, Nov 11</a> · <a href="https://www.techmeme.com/" target="_blank" rel="noopener">Techmeme (Bloomberg, Semafor headlines)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Earnings</span>
+            <span class="ver">Nov 11</span>
+            <h3>CoreWeave has its best day since April 2025 on raised guidance</h3>
+          </div>
+          <div class="story-body">
+            <p>CoreWeave shares rose 24.71% Wednesday after Q3 revenue of $3.7 billion, up 168% from a year earlier, and a raised 2026 outlook of $13.0 to $13.3 billion in revenue against an LSEG consensus of $12.86 billion. The CEO said 2027 capacity is about ten times oversubscribed and cancelled a planned share sale. The company expects about $9 billion in customer prepayments, and Bloomberg reports a planned loan of more than $4 billion at roughly 7% to 7.5%. Nebius rose 15.44% the same day. Foxconn, which assembles much of the AI server supply, reported Q3 revenue of about $95.4 billion, up 47%.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Demand for compute is still running ahead of supply, and the suppliers are borrowing at 7% to meet it. That is the backdrop for every token price you pay. It does not change this month's work.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/11/coreweave-crwv-outlook-earnings-ai.html" target="_blank" rel="noopener">CNBC</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Tool</span><span class="txt">AWS released AWS Emulator, a free local stand-in for AWS APIs at <code>127.0.0.1:9297</code>, written in Rust and maintained by agents. Covered in today's <a href="../general-ai/2026-11-12.html">AI brief</a>. <a href="https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag breaking qh-tag">Security</span><span class="txt">BleepingComputer reports multiple threat actors planting the GSocket tool on Linux servers for persistence; The Register reports Maersk is investigating an incident on a legacy system and a Canonical outage hit login, repositories and patching tools. <a href="https://www.bleepingcomputer.com/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11–12</span></span></li>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">Agile Robots raised $500M at an $8.5B valuation led by SoftBank, and Ukrainian unmanned-vehicle maker Uforce raised $700M at $6B, per Techmeme headlines. <a href="https://www.techmeme.com/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 12</span></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">IBM unveiled Quantum Nighthawk r3 at 520 qubits; UK inference-chip startup Fractile raised $720M. Headline-level only. <a href="https://www.techmeme.com/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag feature qh-tag">Fintech</span><span class="txt">An OKX and ICE joint venture plans a 24/7 venue for tokenized US stocks launching Nov 23 with more than 70 assets, per Techmeme. Infrastructure news, no action implied. <a href="https://www.techmeme.com/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 11</span></span></li>
+            <li><span class="tag feature qh-tag">Open source</span><span class="txt">Cloudflare launched a Vite Ecosystem Fund and distributed a first $301,300 to maintainers. <a href="https://blog.cloudflare.com/" target="_blank" rel="noopener">source</a> <span class="ver">Nov 9</span></span></li>
+            <li><span class="tag improve qh-tag">Unconfirmed</span><span class="txt">Starship Flight 15 was targeted for Friday, Nov 13 in yesterday's edition. No schedule or FAA update could be confirmed in this pass, so check SpaceX before planning to watch.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

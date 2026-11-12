@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-12",
+    "title": "Stocks close at 7,619 before Nvidia drops after hours, the 10-year sits at 5%, gas falls to $3.91, and the first hard freeze reaches the Carolinas this weekend",
+    "summary": "The S&P 500 rose 1.31% to 7,619.38 on Veterans Day as CoreWeave gained 24.7%, then Nvidia fell about 8% after hours as its board met on its CEO; the 10-year Treasury yield reopened near 5%; regular gasoline averaged $3.908 and diesel $6.098; October retail spending grew 0.2%; a coastal storm soaks the Northeast and polar air follows, with Charlotte at 32 by Saturday night; measles cases passed 5,100 for the year.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-12.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-12",
+    "title": "Nvidia's board is reported to be preparing to remove Jensen Huang, Google ships a 10-cent Decisions API, and Anthropic's filing shows $900B of compute commitments",
+    "summary": "The WSJ and CBS report Nvidia's board is preparing to remove its CEO, with shares down about 8% after hours; Google launched the Gemini Decisions API at $0.10 per million input tokens for yes/no, pick-one and rubric calls; Anthropic's S-1 shows nearly $900B in future compute commitments; CoreWeave's Q3 revenue rose 168%; United Airlines moved to ban third-party AI agents from booking; AWS released a free local AWS emulator built by agents.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-12.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-12",
+    "title": "Sell a 15-day Black Friday sprint to your retail client, teach Front Desk to transfer when it isn't sure, and run a missed-call test on the first freeze",
+    "summary": "Six moves ranked by fit: a flat-fee Black Friday sprint for the ecommerce client while retail growth is at a one-year low, a confidence-gated Front Desk built on Google's new 10-cent Decisions API, a rebooking agent on Booking Bridge, an old-hosting audit off the Apache HTTP/2 flaw, an after-hours call test during Saturday's first freeze, and a first-party-agent positioning piece off United's ban.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-12.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-12",
+    "title": "Patch Node today: 16 CVEs fixed in 22.23.5, 24.22.3 and 26.13.1, a critical Apache HTTP/2 bug, and Nvidia's board meets on its CEO",
+    "summary": "Node.js shipped its November security releases on Nov 11 (22.23.5, 24.22.3, 26.13.1) fixing 16 CVEs, seven of them High, including an HTTPS bug that can leak TLS keys; Apache httpd 2.4.71 fixes a critical mod_http2 flaw; Next.js, React, Tailwind and Supabase have nothing new; Nvidia's board met on removing its CEO; GitHub had a 33-minute Actions incident; Microsoft's November updates fail on some Windows 11 PCs.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-12.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-11",
     "title": "October prices rose 0.4% with no annual rate to show, a December hike is now priced at 88%, stocks gave back Monday's rally, and Charlotte approved a 10.5-year airport lease",
     "summary": "The October CPI rose 0.4% (core 0.3%) and had no 12-month headline because of the 2025 data gap; futures priced an 88% chance of a December Fed hike and an 11% chance of a half point, with the 10-year near 4.95%; the S&P 500 jumped 2.4% Monday then slipped 0.38% Tuesday as Nvidia fell on a board probe; Hormuz attacks kept Brent near $92 after a two-month low; Charlotte's council passed the CLT airline lease 8-2 behind a $2.1B expansion; a Northeast storm and a cold snap arrive Thursday; Starship Flight 15 targets Friday.",
