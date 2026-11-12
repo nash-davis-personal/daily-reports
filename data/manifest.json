@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-12.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-12",
+    "title": "Quiet day: 2.1.322 is still the newest Claude Code release",
+    "summary": "No Claude Code release has shipped since 2.1.322 on November 10; the open items are the Fable 5.2 spot-check and security update from yesterday's briefing and the Opus 4.8 fast mode removal on November 30, now 18 days out.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-11-12.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
