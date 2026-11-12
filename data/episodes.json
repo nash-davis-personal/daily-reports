@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-12",
+    "title": "TSD Daily — Thursday, November 12, 2026",
+    "summary": "Nvidia's board meets on its CEO, Google's ten-cent Decisions API, Node.js ships 16 security fixes, stocks and the first Carolina freeze, and a Black Friday sprint as today's best money move.",
+    "file": "audio/2026-11-12.mp3",
+    "durationSec": 339,
+    "bytes": 4068909
+  },
+  {
     "date": "2026-11-06",
     "title": "TSD Daily — Friday, November 6, 2026",
     "summary": "October payrolls beat at 165,000 after Wall Street's worst day since April 2025; METR says Anthropic's model progress has doubled; OpenAI gates GPT-6 Cyber; Claude reads your bank; video drafts for a dollar; and the Front Desk proof month.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-27.mp3",
     "durationSec": 366,
     "bytes": 4393485
-  },
-  {
-    "date": "2026-07-26",
-    "title": "TSD Daily — Sunday, July 26, 2026",
-    "summary": "Kimi K3's 2.8-trillion-parameter open weights drop tonight, DRAM prices are up 700% and will hit every hardware quote, Starship delivered its first real payloads, and shadow AI is the paid diagnostic TSD can sell this week.",
-    "file": "audio/2026-07-26.mp3",
-    "durationSec": 487,
-    "bytes": 5841261
   }
 ]
