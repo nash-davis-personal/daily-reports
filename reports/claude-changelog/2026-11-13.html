@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Manifest metadata — required, keep accurate ===== -->
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-13" />
+  <meta name="report:title" content="2.1.323 lands: Code Mode, a 100,000-message cap between sessions, and tighter permission rules" />
+  <meta name="report:summary" content="Claude Code 2.1.323 (November 12) adds experimental Code Mode, raises the session-to-session message cap from about 20 to 100,000, tightens Bash allow rules and the sandbox, and fixes scheduled tasks and Remote Control across 195 bug fixes." />
+  <meta name="report:highlights" content="6" />
+
+  <title>2.1.323 lands: Code Mode, a 100,000-message cap between sessions, and tighter permission rules — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Friday, November 13, 2026</span>
+        <span>◆</span><span>One release: 2.1.323</span>
+      </div>
+      <h1>2.1.323 lands: Code Mode, a 100,000-message cap between sessions, and tighter permission rules</h1>
+      <p class="standfirst">One release since yesterday's briefing, and it is a large one: 2.1.323, dated November 12, with 27 additions, 51 changes, 21 improvements and 195 bug fixes. The parts that touch your setup are the automation ones: sessions can message each other far more freely, permission rules got stricter in ways that can stall an unattended run, and scheduled tasks and Remote Control each got real fixes.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Window: releases after the November 12 briefing (2.1.323 only)</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release (2.1.323, Nov 12)</div></div>
+      <div class="stat"><div class="num">195</div><div class="lbl">Bug fixes listed</div></div>
+      <div class="stat"><div class="num">78</div><div class="lbl">Additions and changes</div></div>
+    </div>
+
+    <!-- ===== TOP SIGNALS ===== -->
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Code Mode ships as an opt-in experiment</h4><p>Claude writes JavaScript to call its tools. The changelog gives one line and a docs link that returned 404 on this run.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Session-to-session cap goes from about 20 to 100,000</h4><p>Your sessions on one machine can now message each other almost without limit before waiting on you.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Bash allow rules and the sandbox got stricter</h4><p>Wildcard rules that used to skip the prompt now ask, and several sandbox paths fail read-only. Unattended runs can stall on these.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Scheduled tasks: a skipped-run bug is fixed</h4><p>Tasks from an ended session sometimes did not run after another session in the same folder used /clear, /resume or /branch.</p></div>
+        <div class="signal"><div class="n">05</div><h4>MCP sign-in now always asks, and the v1 client is gone</h4><p>Finishing an MCP server sign-in needs your confirmation even in auto and bypass modes.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Remote Control holds its connection and shows more on the phone</h4><p>Nine fixes, including Wi-Fi changes, a 30-day machine identity, and prompts that were invisible on other devices.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STORIES ===== -->
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Agents and automation</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.323</span>
+            <h3>Code Mode: Claude writes JavaScript to call its tools</h3>
+          </div>
+          <div class="story-body">
+            <p>The entry reads: an experimental opt-in in which Claude writes JavaScript to call its tools, with a pointer to <a href="https://code.claude.com/docs/en/code-mode" target="_blank" rel="noopener">code.claude.com/docs/en/code-mode</a> for turning it on, or turning it off for an organization. That is the whole description in the changelog.</p>
+            <p>The docs page returned 404 when this briefing was filed, so the switch that enables it and any limits are unconfirmed here. Nothing in the source says what it costs or saves in tokens or time.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Leave it off on client repos (Bisque, Studio C, Sonderwerks) while it is labeled experimental. Once the docs page loads, try it in one tool-heavy personal session, the kind with a dozen MCP servers connected, and compare a real task with it on and off before deciding anything.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, Added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Change</span>
+            <span class="ver">2.1.323</span>
+            <h3>Sessions can send each other up to 100,000 messages without you</h3>
+          </div>
+          <div class="story-body">
+            <p>Two matching lines. Each of your sessions on the same machine could send the others about 20 messages without a prompt from you; that is now 100,000. A Claude Desktop Code tab session had the same limit of 20 before it waited for you to type again; that is also 100,000 now.</p>
+            <p>Related in the same release: workflows in the desktop app's Code tab now pause at a usage limit and continue after it resets, a finished subagent's transcript is freed from memory sooner, and hooks that run long in <code>claude -p</code> and SDK sessions send a progress heartbeat every 30 seconds so a host does not end the turn as hung (the changelog says that takes effect once Claude Desktop includes this version).</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Any setup where one session hands work to another (a producer session and a review session on the Production Line, Nash OS dispatching jobs) will no longer stop at message 20 waiting on you. The old cap also worked as a brake. Two sessions that loop on each other can now burn through a usage limit unattended, so give long hand-off chains an explicit stop condition.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, Changed</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.323</span>
+            <h3>Scheduled tasks that silently skipped a run</h3>
+          </div>
+          <div class="story-body">
+            <p>Fixed: scheduled tasks from an ended session sometimes not running after another session in the same folder used <code>/clear</code>, <code>/resume</code> or <code>/branch</code>. Also fixed for unattended runs: <code>claude -p</code> silently using another model when settings block the requested one (it now warns on stderr), and <code>claude -p</code> and the Agent SDK running Bash unsandboxed when sandbox settings failed validation (start-up now stops and names the bad setting).</p>
+            <p>On the web side, a scheduled task whose run cannot start because its settings need an unavailable sandbox now sends a failure notification, and removing a repository from a scheduled task no longer moves its GitHub trigger to a different repository.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> This briefing series has no files for November 7 through 10. The changelog cannot say whether this bug caused that, but it fits the symptom: a task that just does not fire. After updating, check the run log on the Nash OS Machine page for a week and see whether the daily tasks stop missing days.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, bug fixes</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Permissions, sandbox and MCP</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.323</span>
+            <h3>Wildcard Bash rules now ask more often, and the sandbox blocks more</h3>
+          </div>
+          <div class="story-body">
+            <p>Allow rules with an attached wildcard such as <code>Bash(ls*)</code> skipped the prompt in some cases; that is fixed, and a rule that names a variable such as <code>Bash(NODE_ENV*)</code> now asks. Start-up warns about allow rules with a <code>*</code> in a variable's value, like <code>Bash(PORT=* npm run dev)</code>. Deny and ask rules now catch commands run through <code>sudo</code>, <code>env</code> and similar wrappers. A "don't ask again" rule that looks like it holds a secret, or would land in a <code>settings.local.json</code> that git tracks, lasts for the session only.</p>
+            <p>In the sandbox on macOS and Linux, <code>git worktree add</code>, <code>move</code> and <code>remove</code> now fail read-only, as do commits in a worktree the session was not started in or given. Write access granted through a symlink that leads elsewhere is ignored. And <code>--permission-mode auto</code> or <code>defaultMode: auto</code> now starts in Manual mode when auto mode is unavailable, where before it could start in a mode that allowed more.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These are security fixes and they are worth having on machines that hold client credentials. The cost is that a scheduled or background run which relied on a loose rule will now sit at a prompt nobody answers. After updating, start one interactive session in each repo you automate, read any start-up warning about allow rules, and rewrite the flagged rules as exact commands.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, Changed and bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Behavior change</span>
+            <span class="ver">2.1.323</span>
+            <h3>MCP: sign-in always confirms, approvals match exact names, v1 client removed</h3>
+          </div>
+          <div class="story-body">
+            <p>The tool Claude uses to finish an MCP server sign-in now asks you to confirm, even in bypass and auto modes; where nobody can be asked, such as <code>dontAsk</code> mode, the changelog says to use <code>/mcp</code>. Project <code>.mcp.json</code> server approvals now match the server's exact name, so an approval written in another spelling asks again. The v1 MCP client is removed; <code>MCP_SDK_GENERATION=v1</code> now runs the v2 client in a compatibility mode.</p>
+            <p>Smaller MCP items: <code>/mcp</code> shows how many of a server's tools were left out because the API would reject their input schema, MCP tool calls that hit an expired token now ask you to sign in again where they used to end in <code>TOKEN_EXPIRED</code>, and a server that needs authentication opens on "Reconnect" in <code>/mcp</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> An unattended run can no longer complete an MCP login by itself. Before relying on a connector in a scheduled task (Supabase, Vercel, Stripe, the Higgsfield servers), open <code>/mcp</code> in a live session and sign in there. If a project server suddenly asks for approval again after the update, the name in your approval entry differs from the one in <code>.mcp.json</code>; approve it once and move on.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, Changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Working from the phone and usage limits</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.323</span>
+            <h3>Remote Control: nine fixes to connection state and what the phone shows</h3>
+          </div>
+          <div class="story-body">
+            <p>Sessions no longer show as disconnected for a minute or more after switching Wi-Fi or reconnecting a VPN. <code>claude remote-control</code> restarted in the same folder more than 4 hours after it stopped used to reconnect as a new computer; it now keeps its identity for up to 30 days. Desktop app sessions no longer show as idle on the phone while background subagents are still running.</p>
+            <p>Three fixes are about prompts you could not see: the usage-credits question now also shows in the Claude app, a session waiting on a terminal-only permission prompt no longer reads as running, and phone notifications now say what Claude is asking permission for when <code>DISABLE_TELEMETRY</code> or <code>DO_NOT_TRACK</code> is set. There is also a Try again button on the error shown when the host computer is signed out.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> You answer decisions from your phone, so a session that looks "running" while it waits on a hidden prompt is lost time. Update both Macs and restart <code>claude remote-control</code> on each so the 30-day identity fix applies. If a session still looks stuck from the phone after this, it is more likely a real terminal-only prompt.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improve</span>
+            <span class="ver">2.1.323</span>
+            <h3>Fable limit and usage-credit messages now say when and what next</h3>
+          </div>
+          <div class="story-body">
+            <p>When a model needs usage credits that are off or used up, there is now an options menu: stop, switch to usage credits, or upgrade. Fable's weekly limit showed no reset time and no options menu in the terminal; fixed. The Fable limit message in <code>-p</code>, SDK, IDE and cloud sessions now says when the limit resets and how to continue. <code>/usage</code> keeps the session and weekly bars for setup tokens and <code>CLAUDE_CODE_OAUTH_TOKEN</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When a long build session hits the weekly Fable limit mid-task you will now see the reset time and can choose on the spot between waiting, paying, or dropping to another model. Decide ahead of time which client work is worth usage credits so the menu is a ten-second call.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog#2-1-323" target="_blank" rel="noopener">Changelog: 2.1.323, Added and bug fixes</a></div>
+        </article>
+      </div>
+
+      <!-- Minor items as quick hits -->
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Running <code>/compact</code> again, or after a command such as <code>/context</code>, no longer summarizes away a message Claude had not answered yet. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A setting saved in a running session no longer undoes a hand edit made to <code>settings.json</code> moments earlier, and a settings file deleted mid-session stays deleted. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A resumed session no longer joins your next message to an old interrupted one. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>.claude/settings.local.json</code> is now ignored globally even when the folder became a git repository later, or on a new machine. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Write and Edit could write to a path covered by a <code>Read</code> deny rule in one case; closed. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">WebFetch no longer drops empty table cells and shifts later values a column left. It is also faster on deeply nested pages. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">The artifact preview sometimes opened a different artifact than the one Claude just published; fixed. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Pressing Ctrl+C just as <code>claude update</code> finished could remove the <code>claude</code> command; fixed. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">An unrecognized model ID is now assumed to have a 1M context window, up from 200K. Set <code>CLAUDE_CODE_DISABLE_1M_CONTEXT=1</code> to keep 200K, which matters for other vendors' models behind a gateway. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Artifact updates ask first, even under an allow rule, when people outside your organization can see the artifact or Claude cannot check who can. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>/security-review</code> now asks before Claude runs it. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt"><code>/logout</code> in a background session now signs out every session on the computer and deletes stored MCP logins and plugin secrets. It used to do nothing. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">Claude Code's own ripgrep and most internal git commands run without most of its sign-in tokens and API keys, so a credential helper or hook under them no longer finds those. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Change</span><span class="txt">The <code>subagentStatusLine</code> setting is removed; settings files that still hold the key load as before. A plugin's <code>agent</code> setting is deprecated and warns at start-up. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>.docx</code> files are accepted in Artifact tool asset uploads. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>engines["claude-code"]</code> in <code>plugin.json</code>: a plugin outside its stated Claude Code version range is not installed, updated or loaded. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">VS Code: live output of a running Bash or PowerShell command shows under the command's card, and there is a trust prompt before the first session in an untrusted folder. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt">Code Review admin settings can export review costs per repository as CSV, by month, week or day. <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag new qh-tag">New</span><span class="txt"><code>CLAUDE_CODE_DISABLE_AGENT_PROGRESS_SUMMARIES=1</code> turns off subagent progress summaries and the requests that write them (available since 2.1.318, documented now). <span class="ver">2.1.323</span></span></li>
+            <li><span class="tag improve qh-tag">Carry-over</span><span class="txt">Still open from earlier briefings: Opus 4.8 fast mode removal on November 30, now 17 days out. See the <a href="2026-11-12.html">November 12 briefing</a>. <span class="ver">Nov 30</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
