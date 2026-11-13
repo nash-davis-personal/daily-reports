@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-13",
+    "title": "Home sales fall to the lowest since 2010, the 10-year yield reaches 5.10%, stocks slip as Nvidia's CEO resigns, oil jumps on tanker strikes, and the first freeze arrives Saturday",
+    "summary": "October existing-home sales fell 5.5% to a 3.75 million annual rate, the lowest since August 2010; the 10-year Treasury yield closed near 5.10%; the S&P 500 fell 0.35% to 7,592.40 as Nvidia's CEO resigned; jobless claims rose to 200,000; the 30-year mortgage rate eased to 7.11%; Brent crude rose more than $3 to about $96 after tanker strikes in the Strait of Hormuz; a nor'easter brings the Northeast's first snow and a freeze reaches the Deep South Saturday.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-13.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-13",
+    "title": "Google ships Gemini 4 Hydrogen at $1.50 per million input tokens, Nvidia's CEO resigns, OpenAI launches pen-testing agents, and four nonprofits sue to freeze frontier models",
+    "summary": "Google released Gemini 4 Hydrogen on Nov 12 as its fast everyday model at $1.50 per million input tokens and $7.50 output; Nvidia said Jensen Huang resigned and CFO Colette Kress is interim CEO; OpenAI opened early access to Daybreak Red Team agents that pen-test web apps; four nonprofits sued Anthropic, Google, Meta, OpenAI and SpaceX's AI unit to halt more capable models; Anthropic's IPO book is reported at about six times oversubscribed; Notion said a breach at its inference vendor exposed AI chat transcripts.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-13.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-13",
+    "title": "Sell a Shop Small kit before Nov 28, write the page that says where your clients' conversations are stored, and re-cost Front Desk on Gemini 4 Hydrogen",
+    "summary": "Six moves ranked by fit: a flat-fee Small Business Saturday kit for local shops while 88% of consumers say they will shop small, a data-map page and retention audit off the Notion and Fireworks breach, a cost-per-call test of Gemini 4 Hydrogen, a stay-put homeowner pitch to remodelers and HVAC shops with home sales at a 16-year low, a Built on Claude case study timed to Anthropic's IPO week, and capability-statement sites for small firms bidding on Charlotte's $2.1 billion airport program.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-13.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-13",
+    "title": "No new advisory on your stack: an Outlook zero-day is under attack, Notion's AI vendor leaked chat transcripts, Cisco posts 24% growth, and Starship tries its first ship catch today",
+    "summary": "Next.js (16.4.6), React (19.3.1), Tailwind (4.3.5) and Vite (8.3.8) have no new stable release or advisory since yesterday; CISA confirmed attacks on Outlook flaw CVE-2026-124194 with a Nov 24 deadline; N-able N-central zero-days are being exploited; Notion disclosed that a breach at Fireworks AI exposed AI chat transcripts; Nvidia's CEO resigned; Cisco reported revenue of $18.5 billion, up 24%; Applied Materials revenue rose 53%; Starship Flight 15 is targeted for 5:45 p.m. EST today pending FAA approval.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-13.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-12",
     "title": "Stocks close at 7,619 before Nvidia drops after hours, the 10-year sits at 5%, gas falls to $3.91, and the first hard freeze reaches the Carolinas this weekend",
     "summary": "The S&P 500 rose 1.31% to 7,619.38 on Veterans Day as CoreWeave gained 24.7%, then Nvidia fell about 8% after hours as its board met on its CEO; the 10-year Treasury yield reopened near 5%; regular gasoline averaged $3.908 and diesel $6.098; October retail spending grew 0.2%; a coastal storm soaks the Northeast and polar air follows, with Charlotte at 32 by Saturday night; measles cases passed 5,100 for the year.",
