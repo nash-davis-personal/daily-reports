@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-13",
+    "title": "TSD Daily — Friday, November 13, 2026",
+    "summary": "Google's Gemini 4 Hydrogen and what it costs, Nvidia's CEO resigns, the Notion and Fireworks transcript breach, home sales at a 16-year low with the 10-year at 5.10%, Starship's first ship catch attempt, and a Shop Small kit as today's best bet.",
+    "file": "audio/2026-11-13.mp3",
+    "durationSec": 339,
+    "bytes": 4069197
+  },
+  {
     "date": "2026-11-12",
     "title": "TSD Daily — Thursday, November 12, 2026",
     "summary": "Nvidia's board meets on its CEO, Google's ten-cent Decisions API, Node.js ships 16 security fixes, stocks and the first Carolina freeze, and a Black Friday sprint as today's best money move.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-28.mp3",
     "durationSec": 389,
     "bytes": 4666509
-  },
-  {
-    "date": "2026-07-27",
-    "title": "TSD Daily — Monday, July 27, 2026",
-    "summary": "Nvidia weighs a $250B guarantee behind OpenAI's Ohio campus, Kimi K3's open weights land, two Supabase deadlines hit the calendar, oil gives back last week's spike, and the best money move is selling the boring deadline as a retainer.",
-    "file": "audio/2026-07-27.mp3",
-    "durationSec": 366,
-    "bytes": 4393485
   }
 ]
