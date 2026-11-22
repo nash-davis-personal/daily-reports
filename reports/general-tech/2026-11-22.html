@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="report:source" content="general-tech" />              <meta name="report:source-label" content="Technology" />       <meta name="report:source-color" content="#2dd4bf" />       <meta name="report:date" content="2026-11-22" />
+  <meta name="report:title" content="Patch Next.js now: every client app should be on 16.4.5 or 15.5.29 or later" />
+  <meta name="report:summary" content="Next.js shipped seven security fixes on Nov 3 on top of two critical remote code execution fixes from October, a WordPress core flaw is under active attack, and chip stocks led a historic market drop." />
+  <meta name="report:highlights" content="6" />
+
+  <title>Patch Next.js now: every client app should be on 16.4.5 or 15.5.29 or later — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://nextjs.org/blog/november-2026-security-release" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Sunday, November 22, 2026</span>
+        <span>◆</span><span>Your stack first, then the wider industry</span>
+      </div>
+      <h1>Patch Next.js now: every client app should be on 16.4.5 or 15.5.29 or later</h1>
+      <p class="standfirst">This edition leads with patching because the fixes have stacked up across two releases, and public exploit code exists for the critical ones. Check the version that is actually deployed on every app.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 13 to Nov 22, 2026 (nine days since the last edition)</span>
+        <span>◆</span><a href="https://nextjs.org/blog/november-2026-security-release" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+        <div class="stats">
+      <div class="stat"><div class="num">16.4.5+</div><div class="lbl">Minimum Next.js 16 version</div></div>
+      <div class="stat"><div class="num">15.5.29+</div><div class="lbl">Minimum Next.js 15 version</div></div>
+      <div class="stat"><div class="num">9.5</div><div class="lbl">CVSS on the React Flight RCE</div></div>
+    </div>
+
+        <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Next.js: seven new fixes</h4><p>The Nov 3 release covers cache leaks across tenants and users, cookie exposure on Edge routes, and an image SVG bypass.</p></div>
+        <div class="signal"><div class="n">02</div><h4>React RCE now has a CVE</h4><p>CVE-2026-126187 was assigned Nov 10 to the flaw patched Oct 14. Fixed in React Flight 19.0.9, 19.1.10, 19.2.9 and 19.3.1.</p></div>
+        <div class="signal"><div class="n">03</div><h4>WordPress core is under attack</h4><p>CISA lists CVE-2026-119977 as exploited. The fix is 7.1.4.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Supabase removes adapters Dec 1</h4><p>Hono, H3, Elysia and NestJS adapters leave @supabase/server.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Chip stocks crash</h4><p>Nvidia, Broadcom, AMD and Micron each fell 13% to 14% on Friday.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Vulcan lost 38 Kuiper satellites</h4><p>ULA is investigating the Nov 15 failure.</p></div>
+      </div>
+    </section>
+
+        <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Patch list for your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Security</span>
+            <span class="ver">Nov 3</span>
+            <h3>Next.js ships seven security fixes in 16.4.5 and 15.5.29</h3>
+          </div>
+          <div class="story-body"><p>The top issue, rated High by Next.js, can serve one tenant's cached data to another when an app calls the same <code>use cache</code> function directly and through <code>unstable_cache</code>. Other fixes cover cross-user cache poisoning, HttpOnly cookie exposure on Edge routes, shell poisoning and response injection on self-hosted apps, and an SVG bypass in image optimization.</p><p>Most of the cache issues need Cache Components. A third-party report says npm's latest tag has since moved to 16.4.6, a bug-fix release.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: run <code>npm install next@latest</code> on 16.x apps, or <code>npm install next@15.5.29</code> on 15.5 apps, then redeploy. Confirm the deployed version on each client site, and prioritize anything multi-tenant or using Cache Components.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/november-2026-security-release" target="_blank" rel="noopener">Next.js security release</a> <a href="https://dev.to/vishall/nextjs-november-2026-security-release-are-you-affected-and-how-to-patch-1645-and-15529-4oo2" target="_blank" rel="noopener">Report on 16.4.6</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Critical</span>
+            <span class="ver">Oct 14, CVE Nov 10</span>
+            <h3>The critical React and Next.js RCEs now have public exploit code</h3>
+          </div>
+          <div class="story-body"><p>Next.js 16.4.1 and 15.5.28 fixed two unauthenticated remote code execution flaws on Oct 14: one in <code>use cache</code> functions returning typed arrays, and one in image optimization with SVG on glibc Linux. The related React flaw received CVE-2026-126187 on Nov 10, with a CVSS of 9.5.</p><p>As of a Nov 11 update, neither Vercel nor React had reported exploitation, and public proof-of-concept repositories existed for both Next.js flaws. React describes the trigger conditions as rare.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Patch instruction: after upgrading, run <code>npm ls sharp react-server-dom-webpack react-server-dom-turbopack</code>. You want sharp 0.35.5 or later and a patched React Flight build. A 15.5 lockfile can keep an old sharp, so check it directly.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026" target="_blank" rel="noopener">Next.js Oct 14 update</a> <a href="https://github.com/facebook/react/security/advisories/GHSA-xqc2-xf4c-x3h3" target="_blank" rel="noopener">React advisory</a> <a href="https://brandefense.io/security-news/next-js-rce-flaws-check-patch-landed/" target="_blank" rel="noopener">Patch verification guide</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">KEV Nov 3</span>
+            <h3>CISA confirms attacks on a WordPress core upgrade flaw</h3>
+          </div>
+          <div class="story-body"><p>CVE-2026-119977 is a race condition that can let an unauthenticated attacker run code while a full core upgrade is in progress. It affects WordPress 4.7 through 7.1.3, and version 7.1.4 fixes it. Patching does not undo a compromise that already happened.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> If you still manage any WordPress site, update it and run <code>wp core verify-checksums</code> today. Many of your prospects run WordPress, so this is also a timely reason to call them.</div>
+          <div class="refs"><a href="https://www.bleepingcomputer.com/news/security/cisa-flags-wordpress-rce-flaw-as-actively-exploited-in-attacks/amp/" target="_blank" rel="noopener">BleepingComputer</a> <a href="https://www.esecurityplanet.com/threats/news-cisa-wordpress-core-upgrade-flaw/" target="_blank" rel="noopener">eSecurity Planet</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and space</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Markets</span>
+            <span class="ver">Nov 20</span>
+            <h3>Chipmakers lead the Nasdaq's worst week in more than six years</h3>
+          </div>
+          <div class="story-body"><p>Nvidia fell about 14% on Friday, Broadcom more than 14%, AMD more than 13% and Micron almost 14%. The Nasdaq Composite lost about 10% on the week and erased its gain for 2026.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Your hosting and API bills do not move with chip stocks in the short run. Watch for AI startups cutting free tiers or shutting down if funding tightens.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC</a> <a href="https://www.upi.com/Top_News/US/2026/11/20/stocks-dow-jones-nasdaq-correction-territory/1061795214998/" target="_blank" rel="noopener">UPI</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Space</span>
+            <span class="ver">Nov 14 to 15</span>
+            <h3>Vulcan loses 38 Kuiper satellites a day after Starship's first ship catch</h3>
+          </div>
+          <div class="story-body"><p>A ULA Vulcan failed on Nov 15 with 38 Amazon Kuiper satellites aboard, and the cause is under investigation. SpaceX caught a Starship upper stage with the tower arms for the first time, with Ship 42 returning on Nov 14.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No action. A setback for Kuiper means Starlink stays the main satellite option for rural clients for longer.</div>
+          <div class="refs"><a href="https://keeptrack.space/week-in-review/week-in-review-2026-11-22" target="_blank" rel="noopener">KeepTrack week in review</a> <a href="https://space.com/space-exploration/launches-spacecraft/spacex-will-retire-1st-starship-upper-stage-ever-caught-by-chopsticks-elon-musk-says" target="_blank" rel="noopener">Space.com</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits"><ul>
+          <li><span class="tag breaking qh-tag">Supabase</span><span class="txt">Hono, H3, Elysia and NestJS adapters in @supabase/server are scheduled for removal on Dec 1. <a href="https://supabase.com/changelog?tags=breaking-change" target="_blank" rel="noopener">Changelog</a></span></li>
+          <li><span class="tag feature qh-tag">Supabase</span><span class="txt">CLI v3.0.0 became the default install on Nov 2, so pin the version in CI if a build depends on v2 behavior. <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Changelog</a></span></li>
+          <li><span class="tag fix qh-tag">Node.js</span><span class="txt">CISA added a Brotli flaw, CVE-2026-111497, to its exploited list on Oct 27. One report names fixes in 22.23.4, 24.22.1 and 26.12.1, so confirm against Node's own advisory. <a href="https://gcn.com/?p=23046" target="_blank" rel="noopener">Report</a></span></li>
+          <li><span class="tag new qh-tag">Next.js</span><span class="txt">The 16.5 line reached canary.60 on Nov 21. Stay on stable for client work. <a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Releases</a></span></li>
+          <li><span class="tag improve qh-tag">Tailwind, Vite</span><span class="txt">This scan found no new stable release or advisory for either in the window.</span></li>
+          <li><span class="tag new qh-tag">Hardware</span><span class="txt">Nvidia's RTX Spark desktops are on sale, with up to 128GB of unified memory for local models. <a href="https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/" target="_blank" rel="noopener">Nvidia</a></span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

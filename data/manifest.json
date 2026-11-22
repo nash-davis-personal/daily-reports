@@ -1,5 +1,15 @@
 [
   {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
+    "date": "2026-11-22",
+    "title": "Stocks post their worst week in years as the Fed moves toward a December rate hike",
+    "summary": "The S&P 500 fell 8.6% and entered a correction in the week ending Nov 20, Fed officials signaled a likely December hike, and AAA expects 81.5 million Thanksgiving travelers with gas on track for the priciest Thanksgiving on record.",
+    "highlights": 5,
+    "path": "reports/america/2026-11-22.html"
+  },
+  {
     "source": "claude-changelog",
     "sourceLabel": "Claude Code Changelog",
     "sourceColor": "#4cc4ff",
@@ -8,6 +18,36 @@
     "summary": "Claude Code 2.1.325 through 2.1.330 (November 13 to 20) change how scheduled tasks get permission and survive upgrades, extend recurring tasks to 30 days, narrow /code-review to bugs, and tighten unattended permissions across 701 bug fixes.",
     "highlights": 5,
     "path": "reports/claude-changelog/2026-11-22.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-22",
+    "title": "OpenAI ships GPT-6.2, Google ships Gemini 4 Neon, Anthropic goes public, and the AI trade breaks",
+    "summary": "OpenAI and Google both shipped new frontier models on Nov 17 and 18, Anthropic raised about $81.3 billion in its Nasdaq IPO, and Nvidia beat estimates before chip stocks led the worst Nasdaq week in more than six years.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-22.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-22",
+    "title": "Turn the WordPress attacks into a $149 safety check you can sell this week",
+    "summary": "Five moves ranked by fit, led by a flat-fee WordPress safety check for local businesses while a core flaw is under active attack, plus paid patching, AI visibility reports, a holiday Front Desk pilot and a model re-cost.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-11-22.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-22",
+    "title": "Patch Next.js now: every client app should be on 16.4.5 or 15.5.29 or later",
+    "summary": "Next.js shipped seven security fixes on Nov 3 on top of two critical remote code execution fixes from October, a WordPress core flaw is under active attack, and chip stocks led a historic market drop.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-22.html"
   },
   {
     "source": "america",
