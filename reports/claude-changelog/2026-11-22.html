@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-22" />
+  <meta name="report:title" content="Six releases through 2.1.330 can stall your scheduled tasks, so check them before you update" />
+  <meta name="report:summary" content="Claude Code 2.1.325 through 2.1.330 (November 13 to 20) change how scheduled tasks get permission and survive upgrades, extend recurring tasks to 30 days, narrow /code-review to bugs, and tighten unattended permissions across 701 bug fixes." />
+  <meta name="report:highlights" content="5" />
+
+  <title>Six releases through 2.1.330 can stall your scheduled tasks, so check them before you update — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Sunday, November 22, 2026</span>
+        <span>◆</span><span>2.1.325 to 2.1.330</span>
+      </div>
+      <h1>Six releases through 2.1.330 can stall your scheduled tasks, so check them before you update</h1>
+      <p class="standfirst">This Mac has 28 scheduled tasks saved, and this window changes how they get permission and whether saved ones carry over. The terminal <code>claude</code> on this Mac is still 2.1.316, so plan the update and check the Machine page right after it.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers November 13 to 20, everything after the 2.1.323 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">6</div><div class="lbl">Releases covered</div></div>
+      <div class="stat"><div class="num">701</div><div class="lbl">Bug fixes listed</div></div>
+      <div class="stat"><div class="num">30 days</div><div class="lbl">New recurring task limit</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Scheduled tasks can stop and wait</h4><p>Skills that declare tools or hooks now ask first, and most saved tasks need rescheduling in new signed-in sessions.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Recurring tasks run 30 days</h4><p>The limit was 7. Tasks created before 2.1.330 keep the old limit.</p></div>
+        <div class="signal"><div class="n">03</div><h4>/code-review now sticks to bugs</h4><p>It reports bugs and CLAUDE.md violations, ranks each finding, and reviews the whole branch by default.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Unattended permissions got stricter</h4><p>Sandboxed Bash no longer auto-approves by default, and auto mode ignores broad rules like <code>pnpm dlx *</code>.</p></div>
+        <div class="signal"><div class="n">05</div><h4>A .env deletion bug is fixed</h4><p>Stopping Remote Control in worktree mode could delete a running session's git-ignored files.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your automations</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.325 / 2.1.329</span>
+            <h3>Scheduled tasks can hang on a prompt or need scheduling again</h3>
+          </div>
+          <div class="story-body">
+            <p>Since 2.1.325, scheduled tasks and <code>/loop</code> ask before running a skill that declares <code>allowed-tools</code> or hooks. Adding <code>Skill(name)</code> to <code>permissions.allow</code> lets it run unattended. The same release narrowed "Always allow" in Desktop, IDE and SDK hosts, and the notes warn that a task relying on one of those rules can now wait for you.</p>
+            <p>2.1.329 adds a second catch: in new signed-in sessions, most scheduled tasks saved by earlier versions need scheduling again. Using <code>--resume</code> on their own session still runs them.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Of your personal skills, only <code>nano-banana</code> declares tools or hooks, and your settings have no <code>Skill()</code> rules. Add <code>Skill(nano-banana)</code> if a scheduled task calls it. After updating, compare the Nash OS Machine page against all 28 tasks and reschedule anything that stops logging.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.325 and 2.1.329</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.329 / 2.1.330</span>
+            <h3>Recurring tasks last 30 days and show up in /tasks</h3>
+          </div>
+          <div class="story-body">
+            <p>Recurring scheduled tasks and <code>/loop</code> now run up to 30 days while their session stays open, and they say when they end. Tasks made before 2.1.330 still end at 7 days. <code>/tasks</code> now lists the session's scheduled tasks, <code>/loop</code> wakeups, goal and forks, and <code>x</code> stops one after asking.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Recreate any session-based <code>/loop</code> you want running through a client launch so it picks up the 30-day limit. Use <code>/tasks</code> as the quick check for what a long session still has running.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.329 and 2.1.330</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Breaking</span>
+            <span class="ver">2.1.325 to 2.1.330</span>
+            <h3>More commands ask first, and where nobody can answer they are refused</h3>
+          </div>
+          <div class="story-body">
+            <p>Sandboxed Bash now follows the normal permission flow unless you set <code>sandbox.autoAllowBashIfSandboxed: true</code>. Auto mode ignores more allow rules that run any package, such as <code>Bash(pnpm dlx *)</code>, and leaves those calls to its safety check. Sandboxed commands lose write access to some sensitive home folders. More <code>rm</code> commands aimed at the root, home, a top-level folder or the working folder now need approval.</p>
+            <p>Hooks also changed. A hook's <code>"decision": "block"</code> holds in more cases, so a hook that always prints one may start blocking calls.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Unattended jobs that lean on <code>pnpm dlx</code> wildcards or broad <code>rm</code> can be refused after you update. Replace wildcard rules with exact commands for the jobs that matter, starting with the ones that push client sites.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.325, 2.1.326, 2.1.327 and 2.1.330</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Build quality and speed</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Improved</span>
+            <span class="ver">2.1.328 / 2.1.329</span>
+            <h3>/code-review reports bugs, ranks them, and covers the whole branch</h3>
+          </div>
+          <div class="story-body">
+            <p>On most models, <code>/code-review</code> now reports only bugs and CLAUDE.md violations, and <code>/simplify</code> handles reuse and efficiency cleanups. Findings are marked Important, Pre-existing or Nit, and each summary ends with a suggested fix. With no target, it reviews the whole branch against the default branch, and a bug that lost the diff on multi-commit branches is fixed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>/code-review</code> once before each client merge on Bisque, Studio C and Sonderwerks, and clear every Important finding. Pre-existing findings make a ready-made list for a paid cleanup conversation.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.328 and 2.1.329</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Feature</span>
+            <span class="ver">2.1.326 to 2.1.330</span>
+            <h3>Code Mode got faster and works with agent teams, with one hook change to watch</h3>
+          </div>
+          <div class="story-body">
+            <p>Code Mode now runs alongside agent teams, drops a 0.75 second pause after most scripts in auto and bypass modes, uses shorter tool descriptions, and caches prompts better when MCP servers are attached. It also runs dev servers as background tasks.</p>
+            <p>One safety change matters: a PreToolUse hook that errors no longer refuses a script's tool call. A hook that must block needs <code>"onFailure": "block"</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Try Code Mode on one multi-file Next.js job and compare tokens and time. Before using it near production, add <code>"onFailure": "block"</code> to any hook that guards deploys, including the Vercel scope guard if it runs as a hook.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.326, 2.1.328 and 2.1.329</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Phone and worktrees</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.326 to 2.1.330</span>
+            <h3>Worktrees stop losing files, and Remote Control streams replies to your phone</h3>
+          </div>
+          <div class="story-body">
+            <p>2.1.327 fixes Remote Control deleting a running session's git-ignored files, such as <code>.env</code>, when its server stopped in worktree mode. <code>ExitWorktree</code> now asks before removing a worktree that may hold unsaved work, and 2.1.330 stops it deleting one another running session is using. Since 2.1.326, replies from <code>claude remote-control</code>, Desktop and VS Code sessions stream to your phone or browser as they are written.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Until you update, keep client <code>.env</code> files recoverable from Vercel or Supabase and avoid stopping a Remote Control server in worktree mode while a session runs.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.326, 2.1.327 and 2.1.330</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">New</span><span class="txt">Easel, a built-in mod, draws charts on request and under MCP metrics results. Automatic charts can be turned off in <code>/config</code>. <span class="ver">2.1.330</span></span></li>
+            <li><span class="tag feature qh-tag">New</span><span class="txt"><code>claude mcp add-json &lt;name&gt; -</code> reads server JSON from stdin, which keeps tokens off the command line. <span class="ver">2.1.327</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt"><code>/status</code> now lists broken agents, skills and commands, an unavailable sandbox, ignored permission settings and hook matchers that never match. <span class="ver">2.1.327</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Claude in Chrome now refuses to upload some credential files, so attach those to the page yourself. <span class="ver">2.1.327</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt"><code>claude remote-control</code> exits with status 4 when it stops by itself and 69 when it can't register, so a service manager can restart it. <span class="ver">2.1.325</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Saving a scheduled task no longer deletes a task with a typo in the project's scheduled tasks file. <span class="ver">2.1.328</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt"><code>/export</code> now asks before overwriting an existing file. <span class="ver">2.1.327</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A security issue in how zstd-compressed responses are decoded is closed. <span class="ver">2.1.325</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
