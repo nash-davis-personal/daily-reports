@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-23.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-23",
+    "title": "Quiet day: 2.1.330 is still the newest Claude Code release, and Opus 4.8 fast mode ends in 7 days",
+    "summary": "No Claude Code release has landed since 2.1.330 on November 20, so this briefing carries two open chores: the Opus 4.8 fast mode removal on November 30 and the update of this Mac from 2.1.316.",
+    "highlights": 0,
+    "path": "reports/claude-changelog/2026-11-23.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
