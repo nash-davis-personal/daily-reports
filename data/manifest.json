@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-23",
+    "title": "Futures point to a rebound, storms line up for Thanksgiving travel, and a short week is packed with data",
+    "summary": "US stock futures rose 2% to 3% before Monday's open after last week's selloff, forecasters expect storms on both coasts during the holiday travel peak, and inflation and GDP figures arrive Wednesday before markets close Thursday.",
+    "highlights": 5,
+    "path": "reports/america/2026-11-23.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-23",
+    "title": "A quiet weekend: OpenAI's chief scientist proposes a yardstick for limits, Amazon circles Decart, and AI hardware bills climb",
+    "summary": "No frontier model shipped over the weekend; the news is a TechCrunch-reported OpenAI proposal to measure AI limits by perplexity, reported Amazon talks to buy Decart for about $7.5 billion, and reports that server makers are raising prices on signed AI orders.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-11-23.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-23",
+    "title": "A gift finder live by Small Business Saturday, and five more moves for a tight-budget holiday week",
+    "summary": "Six moves ranked by fit: a Concierge gift finder for an existing retail client before Nov 28, a paid AI office hours session for local owners, a holiday gift certificate page, a usage clause on retainers, a ChatGPT for Sales setup day, and a downtime fallback kit.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-23.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-23",
+    "title": "No new patches for your stack, Vercel lifts the upload cap, and CrowdStrike agrees to buy Zscaler",
+    "summary": "Next.js, React, Tailwind and Supabase posted no new advisory over the weekend, Vercel raised the function request body limit to 20MiB in beta, and CrowdStrike agreed to an all-stock deal valuing Zscaler near $43.9 billion.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-11-23.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-22",
     "title": "Stocks post their worst week in years as the Fed moves toward a December rate hike",
     "summary": "The S&P 500 fell 8.6% and entered a correction in the week ending Nov 20, Fed officials signaled a likely December hike, and AAA expects 81.5 million Thanksgiving travelers with gas on track for the priciest Thanksgiving on record.",

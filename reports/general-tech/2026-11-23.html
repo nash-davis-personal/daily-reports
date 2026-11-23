@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-23" />
+  <meta name="report:title" content="No new patches for your stack, Vercel lifts the upload cap, and CrowdStrike agrees to buy Zscaler" />
+  <meta name="report:summary" content="Next.js, React, Tailwind and Supabase posted no new advisory over the weekend, Vercel raised the function request body limit to 20MiB in beta, and CrowdStrike agreed to an all-stock deal valuing Zscaler near $43.9 billion." />
+  <meta name="report:highlights" content="5" />
+
+  <title>No new patches for your stack, Vercel lifts the upload cap, and CrowdStrike agrees to buy Zscaler — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://vercel.com/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Monday, November 23, 2026</span>
+        <span>◆</span><span>Stack, security and big-tech moves</span>
+      </div>
+      <h1>No new patches for your stack, Vercel lifts the upload cap, and CrowdStrike agrees to buy Zscaler</h1>
+      <p class="standfirst">The security desk is quiet for Next.js, React, Tailwind and Supabase, so last edition's patch instruction still stands and nothing new is added. The weekend's larger stories are a $43.9 billion security merger and a federal probe that now reaches Nvidia's former chief executive.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 20 to the morning of Nov 23, 2026</span>
+        <span>◆</span><a href="https://vercel.com/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">New advisories on Next.js, React, Tailwind or Supabase since Nov 20</div></div>
+      <div class="stat"><div class="num">20MiB</div><div class="lbl">New Vercel Functions request body limit (beta), up from 4.5MB</div></div>
+      <div class="stat"><div class="num">$43.9B</div><div class="lbl">Value of Zscaler in CrowdStrike's all-stock deal</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Nothing new to patch today</h4><p>Latest stable versions are unchanged: Next.js 16.4.6, React 19.3.1, Tailwind 4.3.5. The Nov 3 security release is still the one to be on.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Vercel Functions take 20MiB uploads</h4><p>Public beta, opt-in by environment variable, and it needs the 4GB memory setting.</p></div>
+        <div class="signal"><div class="n">03</div><h4>CrowdStrike is buying Zscaler</h4><p>Reuters reports an all-stock deal near $43.9 billion, the second big purchase by a security vendor in a week.</p></div>
+        <div class="signal"><div class="n">04</div><h4>The Nvidia probe widens</h4><p>The Director of National Intelligence confirmed an investigation tied to chip exports, and House interviews are set for Dec 1 and 2.</p></div>
+        <div class="signal"><div class="n">05</div><h4>GL.iNet routers were hit through its cloud</h4><p>Owners need the security firmware. Blocking the cloud path did not clean infected devices.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Checked Nov 23</span>
+            <h3>No new advisory for Next.js, React, Tailwind or Supabase over the weekend</h3>
+          </div>
+          <div class="story-body">
+            <p>I checked the Next.js releases page, the React and Tailwind release pages, the Supabase changelog and Vercel's security bulletins this morning. The newest stable Next.js is still 16.4.6 from Nov 9 to 10. React's newest is 19.3.1 from Oct 14, Tailwind's is 4.3.5 from Nov 6, and Supabase's latest changelog entry is custom OIDC providers on Nov 17. Vercel's newest bulletin is the Better Auth release from Nov 3.</p>
+            <p>One small flag: Vercel's Workflow kit 4.8.17, dated Nov 20, bumps undici to 7.30.2 and zod to 4.6.7 to pick up security fixes. No CVE numbers are listed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> If every client site is already on Next.js 16.4.5 or later, or 15.5.29 or later, you have nothing to do today. If any site still sits below those, patch it first, because public exploit code for the older React and Next.js flaws was reported last edition.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/releases" target="_blank" rel="noopener">Next.js releases</a> <a href="https://vercel.com/kb/bulletin" target="_blank" rel="noopener">Vercel security bulletins</a> <a href="https://github.com/vercel/workflow/releases/tag/workflow%404.8.17" target="_blank" rel="noopener">Workflow 4.8.17</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Nov 20</span>
+            <h3>Vercel Functions now accept request bodies up to 20MiB</h3>
+          </div>
+          <div class="story-body">
+            <p>The old ceiling was 4.5MB. The new limit is in public beta. You opt in with the environment variable <code>VERCEL_SUPPORT_LARGE_REQUEST_BODY=1</code>, and the project's functions must use the 4GB performance memory setting. It covers the Node.js, Python and Bun runtimes and Routing Middleware. The Edge runtime keeps the 4.5MB cap and returns a 413 error above it.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A quote form that takes a few phone photos can now post straight to a function with no signed-upload step. Keep direct-to-Supabase-Storage uploads for anything larger or for clients on small plans, since the 4GB setting costs more per invocation.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/vercel-functions-now-support-request-bodies-up-to-20mib" target="_blank" rel="noopener">Vercel changelog</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Vercel and Next.js</span>
+            <span class="ver">Nov 22 to 23</span>
+            <h3>A deploy check for missing feature flags, and a safer image optimizer in Next.js canary</h3>
+          </div>
+          <div class="story-body">
+            <p>Vercel added a Deployment Check on Nov 23 that fails a production deploy when a flag is declared in code and missing from the project. It needs <code>FLAGS_SECRET</code> set and is available on all plans. Next.js 16.5.0-canary.61, published Nov 22, adds experimental support for a package named <code>@next/safe-image-optimization</code> and recovers from an unreadable Turbopack cache at startup.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Skip the canary on client work. The flag check is worth turning on only for projects that already use Vercel Flags.</div>
+          <div class="refs"><a href="https://vercel.com/changelog/catch-missing-feature-flags-before-they-reach-production" target="_blank" rel="noopener">Vercel changelog</a> <a href="https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.61" target="_blank" rel="noopener">Next.js canary.61</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security and big tech</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">M&amp;A</span>
+            <span class="ver">Nov 23</span>
+            <h3>CrowdStrike agrees to buy Zscaler in an all-stock deal near $43.9 billion</h3>
+          </div>
+          <div class="story-body">
+            <p>Reuters reported the agreement this morning. It follows Palo Alto Networks' Nov 18 agreement to buy Applied Compute, a platform for running open-weight AI models, for $4.5 billion in stock. Security vendors are merging endpoint, network and AI tooling under fewer roofs.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Your SMB clients do not buy either product. The useful takeaway is that larger customers will soon ask any vendor, including a web studio, how its AI features are secured. Have a one-page answer.</div>
+          <div class="refs"><a href="https://whtc.com/2026/11/23/wall-street-futures-rebound-after-rough-week-for-ai-linked-shares/" target="_blank" rel="noopener">Reuters via WHTC</a> <a href="https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-to-acquire-applied-compute--bringing-secure-open-weight-ai-to-the-enterprise" target="_blank" rel="noopener">Palo Alto Networks release</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Chips</span>
+            <span class="ver">Nov 23</span>
+            <h3>US intelligence chief confirms an investigation tied to Nvidia chip exports</h3>
+          </div>
+          <div class="story-body">
+            <p>CNBC reports that Director of National Intelligence Jay Clayton said the US is investigating Megaspeed, a Singapore data center operator, and a former executive there. The Commerce and Justice departments said the probe began in 2024 over possible export-control violations. Megaspeed says it operates lawfully. No wrongdoing has been established.</p>
+            <p>House committees have scheduled closed-door interviews with Jensen Huang, whom CNBC describes as Nvidia's former chief executive, and general counsel Tim Teter for Dec 1 and 2. Reuters lists his abrupt departure among last week's pressures on the stock. Nvidia shares were up about 8.7% in premarket trading after a 14% drop on Friday.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No direct effect on your work. It is one more reason GPU supply and pricing may stay unsettled into 2027, which feeds the cost point in today's <a href="../general-ai/2026-11-23.html">AI brief</a>.</div>
+          <div class="refs"><a href="https://www.cnbc.com/2026/11/23/nvidia-megaspeed-chipmaker-us.html" target="_blank" rel="noopener">CNBC</a> <a href="https://whtc.com/2026/11/23/wall-street-futures-rebound-after-rough-week-for-ai-linked-shares/" target="_blank" rel="noopener">Reuters via WHTC</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Breach</span>
+            <span class="ver">Nov 20, updated Nov 23</span>
+            <h3>GL.iNet says attackers used its cloud management service to plant malware on routers and KVM devices</h3>
+          </div>
+          <div class="story-body">
+            <p>The company has blocked the cloud attack path, and it says that step does not clean devices already infected. Owners need the security firmware: 4.11.1 or later on models including the GL-MT3000 and GL-MT6000, and 1.10.3 or later on its KVM line. The notice gives a process string to look for, <code>crond -i /tmp/.log</code>.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> These travel routers are common with remote workers and small offices. If you or a client runs one, update the firmware today, then change any password that crossed it.</div>
+          <div class="refs"><a href="https://www.gl-inet.com/en-us/blogs/blog/glinet-security-notice-2026-11-20" target="_blank" rel="noopener">GL.iNet security notice</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag improve qh-tag">Outages</span><span class="txt">Officials said the recent FAA ground stop, a Microsoft Outlook outage and a JPMorgan disruption were technical faults from upgrades and that none was a cyberattack. The FAA blamed router upgrades that caused a flood of data. <a href="https://www.cnbc.com/2026/11/22/jay-clayton-tech-outages-faa-microsoft-thanksgiving.html" target="_blank" rel="noopener">CNBC</a> <span class="ver">Nov 22</span></span></li>
+            <li><span class="tag new qh-tag">Space</span><span class="txt">A Falcon 9 launched NROL-136 from Vandenberg on Nov 22, about 32 hours after USSF-317 left the same pad, a turnaround record for the site. <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-spy-satellite-launch-nrol-136-proliferated-architecture" target="_blank" rel="noopener">Space.com</a></span></li>
+            <li><span class="tag feature qh-tag">Research</span><span class="txt">A paper called CircumVolve used LLM code generation to find censorship-evasion methods at a median API cost under $1 per first success, tested against simulated censors. <a href="https://www.theregister.com/security/2026/11/23/1-of-gpt-51-tokens-finds-new-ways-around-chinas-great-firewall/5311532" target="_blank" rel="noopener">The Register</a> <span class="ver">Nov 23</span></span></li>
+            <li><span class="tag improve qh-tag">Chips</span><span class="txt">TSMC has reportedly paused shipments of 14nm and 16nm chips to Chinese designers after new US export rules flagged older nodes. Reported, with no primary rule linked. <a href="https://www.tomshardware.com/tech-industry/policy/tsmc-reportedly-pauses-shipments-to-chinese-designers-after-u-s-export-rules-flag-decade-old-16nm-and-14nm-nodes-new-bis-controls-threaten-smartphone-tv-and-automotive-chips" target="_blank" rel="noopener">Tom's Hardware</a></span></li>
+            <li><span class="tag new qh-tag">EVs</span><span class="txt">Aptera says it has shipped its first vehicle to a customer. <a href="https://aptera.us/first-vehicle-for-customer-delivery/" target="_blank" rel="noopener">Aptera</a></span></li>
+            <li><span class="tag improve qh-tag">Supabase</span><span class="txt">One security blog says Supabase plans to retire the legacy anon and service_role keys by the end of 2026. I did not confirm this on Supabase's own site, so check your dashboard before planning around it. <a href="https://www.guardlayer.io/blog/react2shell-nextjs-cve-2025-55182" target="_blank" rel="noopener">GuardLayer</a></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
