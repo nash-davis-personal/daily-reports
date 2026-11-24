@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-24",
+    "title": "TSD Daily — Tuesday, November 24, 2026",
+    "summary": "Anthropic's Claude Ship puts agents on pull requests, Nvidia takes Jensen Huang back as stocks post their best day since April 2025, a Supabase deadline lands Dec 1, and a Cyber Monday win-back page to sell this week.",
+    "file": "audio/2026-11-24.mp3",
+    "durationSec": 342,
+    "bytes": 4109517
+  },
+  {
     "date": "2026-11-23",
     "title": "TSD Daily — Monday, November 23, 2026",
     "summary": "Futures rebound after the worst week in years, reports of rising AI server prices, a quiet patch desk with a bigger Vercel upload limit, a stormy Thanksgiving week of data, and a gift finder you can ship by Small Business Saturday.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-07-31.mp3",
     "durationSec": 384,
     "bytes": 4610061
-  },
-  {
-    "date": "2026-07-30",
-    "title": "TSD Daily — Thursday, July 30, 2026",
-    "summary": "The frontier labs asked Washington to build a brake, the Hugging Face agent postmortem got worse, the Fed held with three officials voting to hike, and an FTC lawsuit turned into a compliance audit TSD can sell this week.",
-    "file": "audio/2026-07-30.mp3",
-    "durationSec": 405,
-    "bytes": 4860621
   }
 ]
