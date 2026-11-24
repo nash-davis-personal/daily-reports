@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-24",
+    "title": "Stocks post their best day since April 2025, and Wednesday packs inflation, GDP and jobless claims before the holiday",
+    "summary": "The S&P 500 rose 4.73% Monday after Nvidia reinstated its CEO, recovering just over half of last week's loss; consumer confidence comes out today, and Wednesday brings October PCE inflation, the second GDP estimate and early jobless claims before markets close for Thanksgiving.",
+    "highlights": 5,
+    "path": "reports/america/2026-11-24.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-24",
+    "title": "Anthropic ships Claude Ship for pull requests, Nvidia takes Huang back, and Google wires AI Mode into Drive and Wallet",
+    "summary": "Anthropic launched Claude Ship, a set of agents that review, fix and approve routine pull requests; Nvidia's board reinstated Jensen Huang and the stock rose about 31%; Google connected Drive, Wallet and the Gemini app to AI Mode; HPE raised its fiscal 2027 outlook on AI infrastructure.",
+    "highlights": 5,
+    "path": "reports/general-ai/2026-11-24.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-24",
+    "title": "A Cyber Monday win-back drop for one retail client, and four more moves for a tight-credit week",
+    "summary": "Best bet: a fixed-price Cyber Monday win-back page and email for an existing retail client, riding Adobe's $15.1 billion Cyber Monday forecast; plus a Next 14 upgrade sweep, a Front Desk pitch framed against a January hire, a Supabase adapter migration gig, and a post on running agent code review as a one-person studio.",
+    "highlights": 5,
+    "path": "reports/money-moves/2026-11-24.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-24",
+    "title": "No new patch for your stack, a Supabase removal lands Dec 1, and Nvidia's CEO reversal lifts chips",
+    "summary": "No new Next.js, React, Tailwind or Supabase advisory since the Nov 3 release; Supabase removes its Hono, H3, Elysia and NestJS server adapters on Dec 1; Anthropic's Claude Ship brings agent code review to GitHub; Nvidia reinstated Jensen Huang and chip stocks jumped; HPE raised its fiscal 2027 outlook.",
+    "highlights": 5,
+    "path": "reports/general-tech/2026-11-24.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-23",
     "title": "Futures point to a rebound, storms line up for Thanksgiving travel, and a short week is packed with data",
     "summary": "US stock futures rose 2% to 3% before Monday's open after last week's selloff, forecasters expect storms on both coasts during the holiday travel peak, and inflation and GDP figures arrive Wednesday before markets close Thursday.",
