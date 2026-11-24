@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-24" />
+  <meta name="report:title" content="2.1.331 fixes MCP hangs and push alerts that affect unattended runs, and this Mac is still on 2.1.316" />
+  <meta name="report:summary" content="Claude Code 2.1.331 landed November 23 with fixes for 30-minute MCP hangs, wrong push notices in headless runs and Code Mode output loss, plus a claude doctor API check; most of the rest is VS Code work this Mac doesn't use." />
+  <meta name="report:highlights" content="4" />
+
+  <title>2.1.331 fixes MCP hangs and push alerts that affect unattended runs, and this Mac is still on 2.1.316 — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Tuesday, November 24, 2026</span>
+        <span>◆</span><span>2.1.331</span>
+      </div>
+      <h1>2.1.331 fixes MCP hangs and push alerts that affect unattended runs, and this Mac is still on 2.1.316</h1>
+      <p class="standfirst">One release landed since yesterday's quiet-day briefing. The useful part for TSD is a handful of fixes for scheduled and long-running work; the bulk of the 95 fixes are for the VS Code extension, which isn't installed on this Mac.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.331 (November 23), the first release after the 2.1.330 briefings</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">95</div><div class="lbl">Bug fixes listed</div></div>
+      <div class="stat"><div class="num">2.1.316</div><div class="lbl">Version on this Mac</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>MCP calls stop hanging for 30 minutes</h4><p>Some malformed replies from a local or WebSocket MCP server could freeze a tool call for up to half an hour.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Headless runs get honest push notices</h4><p>PushNotification told scheduled runs the terminal was active in their first minute instead of reporting whether a push went out.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Code Mode keeps long script output</h4><p>The middle of a long output used to vanish; Claude now gets a path to the full text.</p></div>
+        <div class="signal"><div class="n">04</div><h4>claude doctor checks the API</h4><p>A new section reports whether the API is reachable, with the HTTP status or error.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your automations</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.331</span>
+            <h3>Four fixes aimed at work that runs with nobody watching</h3>
+          </div>
+          <div class="story-body">
+            <p>MCP tool calls no longer hang for up to 30 minutes on some malformed replies from a local or WebSocket server. PushNotification now tells a headless run, such as a scheduled one, whether a mobile push was requested, where before it claimed the terminal was active during the first minute. Auto mode no longer refuses Claude's call to stop a <code>/loop</code>, a bug that let the next wake-up fire anyway. A Workflow agent's background shells and MCP servers no longer get left running after it hands back its report.</p>
+            <p>Two related fixes: turns and subagents that went silent while thinking now retry once, and an interrupted plugin update no longer leaves a half-installed plugin that later loads with skills missing.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> All 28 scheduled tasks run headless and end with a Nash OS log line, and many of them push to your phone, so these fixes land directly on that fleet. Update the terminal <code>claude</code> from 2.1.316 this week, then check the Machine page the next morning for any task that stopped logging. If a task has gone missing pushes before, the PushNotification bug is a likely cause.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.331 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.331</span>
+            <h3><code>claude doctor</code> now says whether the API can be reached</h3>
+          </div>
+          <div class="story-body">
+            <p>An API connectivity section reports reachability with the HTTP status or the error, or says why it skipped the test.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> When an overnight task fails with no clear reason, run <code>claude doctor</code> first. It separates a network or auth problem from a bug in the task itself in one command.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.331 Added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Build sessions</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.331</span>
+            <h3>Code Mode, compaction and rewind stop dropping work</h3>
+          </div>
+          <div class="story-body">
+            <p>Code Mode used to lose the middle of a long script output; Claude now gets a path to the uncut text (<a href="https://github.com/anthropics/claude-code/issues/111373" target="_blank" rel="noopener">#111373</a>). Code Mode sessions resumed in a different permission mode no longer lose thinking and the prompt cache. <code>/compact</code> and auto-compact no longer drop part of the summary when it quotes certain XML tags. A rewind no longer deletes files after a restore has failed.</p>
+            <p>Also fixed: <code>@file#10-12</code> mentions attached the whole file instead of those lines.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A long <code>next build</code> or Vite log is the kind of output that could lose its middle, so a failing Bisque or Sonderwerks build may have been diagnosed from a partial log. After updating, use line-range mentions on large components to keep context lean.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.331 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.331</span>
+            <h3>VS Code gets one-click fixes for errors, failing tests and merge conflicts</h3>
+          </div>
+          <div class="story-body">
+            <p>The extension adds "Fix with Claude Code" as a quick fix on errors, warnings and failed tests, "Resolve Merge Conflicts" on conflicted files, "Add to Chat" on changed files in Source Control, and "Add Cell to Chat" for notebooks. Most of the release's improvements and about 60 of its fixes are for the extension.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The Claude Code extension isn't installed on this Mac, so none of this applies today. Skip it unless you start reviewing client diffs in VS Code.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.331 [VSCode] items</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Heads up</span><span class="txt">On or after November 30, plugin marketplaces in <em>managed</em> <code>extraKnownMarketplaces</code> auto-update by default; set <code>"autoUpdate": false</code> to opt one out. Your entries are in user settings, which the note doesn't cover. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag feature qh-tag">New</span><span class="txt">Plugin manifests can list <code>optionalDependencies</code> that install with the plugin and can be turned off on their own. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">A <code>PermissionDenied</code> hook's <code>retry: true</code> now tells Claude to retry only calls you asked for. None of your hooks use it. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Start-up no longer waits for the model list when a session starts soon after another, which helps back-to-back scheduled tasks. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Code Mode tool search shows more of an MCP tool's description, including limits, formats and defaults. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag feature qh-tag">New</span><span class="txt"><code>claude_code.llm_request</code> trace spans gain <code>gen_ai.usage.*</code> token counts, useful if you ever bill a client for agent usage from telemetry. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Stop hooks that read the transcript no longer miss the last reply in Claude Desktop. <span class="ver">2.1.331</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Esc and Stop no longer wait a minute or more when a network file Claude is reading stalls. <span class="ver">2.1.331</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

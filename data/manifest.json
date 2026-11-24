@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-24.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-24",
+    "title": "2.1.331 fixes MCP hangs and push alerts that affect unattended runs, and this Mac is still on 2.1.316",
+    "summary": "Claude Code 2.1.331 landed November 23 with fixes for 30-minute MCP hangs, wrong push notices in headless runs and Code Mode output loss, plus a claude doctor API check; most of the rest is VS Code work this Mac doesn't use.",
+    "highlights": 4,
+    "path": "reports/claude-changelog/2026-11-24.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
