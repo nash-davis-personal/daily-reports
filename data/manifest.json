@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-25",
+    "title": "The Dow closes above 50,000 as tech slips, and inflation and GDP land this morning before the holiday",
+    "summary": "The Dow closed above 50,000 for the first time while the Nasdaq fell 1.48% as chip stocks gave back Monday&#x27;s gains; consumer confidence came in well above forecast; October PCE inflation, revised Q3 GDP and jobless claims come out at 8:30 a.m. ET; record-scale Thanksgiving air travel meets storms on both coasts; an engineering firm plans 262 jobs in Mecklenburg County.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-25.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-25",
+    "title": "Claude&#x27;s MCP gets background tasks and skills, Google moves Workspace agents onto MCP, and OpenAI posts protein and math preprints",
+    "summary": "Anthropic made MCP Tasks and Elicitation generally available and put Skills over MCP in beta; Google made Workspace MCP servers GA and set a Feb 1, 2027 deadline for agents to leave REST; OpenAI posted a GPT-6 protein-design preprint with wet-lab results and an unreviewed matrix-multiplication proof; Dell&#x27;s AI server backlog reached $132.3 billion.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-25.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-25",
+    "title": "A Google MCP deadline to sell against, a Drupal hole to knock on, and four more moves",
+    "summary": "Google&#x27;s Feb 1, 2027 cutoff for Workspace agents on REST gives TSD a dated migration offer; an exploited Drupal flaw gives Grant and Bishop an urgent opener; Skills over MCP lets TSD put Front Desk and Booking Bridge inside a client&#x27;s Claude; Vercel&#x27;s Audited ZDR sets up a private-AI offer for regulated clients.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-25.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-25",
+    "title": "No new patch on your stack, a Drupal hole under attack, and Vercel makes AI providers prove they delete prompts",
+    "summary": "No new Next.js, React, Tailwind or Supabase advisory landed; a Drupal installer RCE found by Anthropic&#x27;s scanner is being exploited and has a Nov 27 federal deadline; Vercel announced Audited ZDR on AI Gateway; Supabase opened a knowledge base for coding agents; Microsoft declared an internal Code Red after its M365 outage; researchers took over Treasury subdomains for about $3 each.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-25.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-24",
     "title": "Stocks post their best day since April 2025, and Wednesday packs inflation, GDP and jobless claims before the holiday",
     "summary": "The S&P 500 rose 4.73% Monday after Nvidia reinstated its CEO, recovering just over half of last week's loss; consumer confidence comes out today, and Wednesday brings October PCE inflation, the second GDP estimate and early jobless claims before markets close for Thanksgiving.",

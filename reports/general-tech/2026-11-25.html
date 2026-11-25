@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-25" />
+  <meta name="report:title" content="No new patch on your stack, a Drupal hole under attack, and Vercel makes AI providers prove they delete prompts" />
+  <meta name="report:summary" content="No new Next.js, React, Tailwind or Supabase advisory landed; a Drupal installer RCE found by Anthropic&#x27;s scanner is being exploited and has a Nov 27 federal deadline; Vercel announced Audited ZDR on AI Gateway; Supabase opened a knowledge base for coding agents; Microsoft declared an internal Code Red after its M365 outage; researchers took over Treasury subdomains for about $3 each." />
+  <meta name="report:highlights" content="6" />
+
+  <title>No new patch on your stack, a Drupal hole under attack, and Vercel makes AI providers prove they delete prompts — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.securityweek.com/drupal-flaw-found-by-anthropic-scanner-exploited-in-attacks/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Wednesday, November 25, 2026</span>
+        <span>◆</span><span>Stack, security, hardware</span>
+      </div>
+      <h1>No new patch on your stack, a Drupal hole under attack, and Vercel makes AI providers prove they delete prompts</h1>
+      <p class="standfirst">Nothing new to patch on Next.js, React, Tailwind or Supabase today; the Nov 3 Next.js release is still the line to be on. The urgent item is a Drupal remote-code-execution bug that attackers have used since Nov 19, which matters for any prospect still running Drupal.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 24 to the morning of Nov 25, 2026</span>
+        <span>◆</span><a href="https://www.securityweek.com/drupal-flaw-found-by-anthropic-scanner-exploited-in-attacks/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">16.4.5 / 15.5.29</div><div class="lbl">Next.js versions to be on (Nov 3 release)</div></div><div class="stat"><div class="num">Nov 27</div><div class="lbl">CISA deadline for the Drupal RCE</div></div><div class="stat"><div class="num">~$3</div><div class="lbl">Cost per Treasury subdomain takeover</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Your stack: hold the line</h4><p>No new advisory for Next.js, React, Tailwind or Supabase. Stay on next@16.4.5 or 15.5.29.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Drupal RCE exploited</h4><p>CVE-2026-132165 in Drupal's installer is in CISA's KEV list; fixes are 11.4.13, 11.3.22 and 10.6.22.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Vercel's Audited ZDR</h4><p>AI Gateway will only label a provider zero-retention after an outside audit is published.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Supabase writes for agents</h4><p>A public-beta knowledge base of troubleshooting and migration guides aimed at coding agents.</p></div>
+        <div class="signal"><div class="n">05</div><h4>Microsoft's Code Red</h4><p>An internal overhaul of outage response after the Nov 12-13 Microsoft 365 failure.</p></div>
+        <div class="signal"><div class="n">06</div><h4>Dangling DNS is cheap to steal</h4><p>Researchers took five Treasury subdomains by claiming leftover AWS IPs.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Security first</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">No action</span>
+            <span class="ver">Nov 25</span>
+            <h3>No new advisory for Next.js, React, Tailwind or Supabase; the Nov 3 fixes are still the line</h3>
+          </div>
+          <div class="story-body"><p>The Next.js security release of Nov 3 fixed seven issues in 16.4.5 and 15.5.29, the worst a high-severity cross-tenant cache leak when unstable_cache and use cache are combined. Next.js 14 gets no fix. The React Server Components RCE (CVE-2026-126187) was patched Oct 14 and its record was last updated Nov 21. No new item for Tailwind or Supabase turned up in this window.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Run a quick check that every client repo reports next@16.4.5 or 15.5.29 or later. Anything still on 14.x is unpatched and is an upgrade to quote.</div>
+          <div class="refs"><a href="https://github.com/vercel/next.js/security/advisories" target="_blank" rel="noopener">Next.js advisories</a> <a href="https://www.netlify.com/changelog/2026-11-03-nextjs-security-vulnerabilities/" target="_blank" rel="noopener">Netlify summary</a> <a href="https://threatdefence.com/article/react-server-components-rce-ghsa-xqc2-xf4c-x3h3-patching-hunting" target="_blank" rel="noopener">RSC RCE notes</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Exploited</span>
+            <span class="ver">Nov 24</span>
+            <h3>A Drupal installer RCE found by Anthropic's scanner is under attack and has a Nov 27 federal deadline</h3>
+          </div>
+          <div class="story-body"><p>CVE-2026-132165 lets an unauthenticated attacker, under certain conditions, rerun Drupal's install.php over a live site and take it over. Drupal shipped fixes on Nov 18 in 11.4.13, 11.3.22 and 10.6.22 and says exploitation began on Nov 19. CISA added it to the Known Exploited Vulnerabilities list on Nov 24 with a Nov 27 deadline for federal agencies. Drupal's advice: patch, block access to the installer, and check logs for install.php requests since Nov 18. Victim counts are not public.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> TSD does not run Drupal, but SMB prospects do. A prospect site on unpatched Drupal is an urgent, easy opener: offer a same-day patch, or a rebuild onto Next.js that removes the class of problem.</div>
+          <div class="refs"><a href="https://www.securityweek.com/drupal-flaw-found-by-anthropic-scanner-exploited-in-attacks/" target="_blank" rel="noopener">SecurityWeek</a> <a href="https://www.rescana.com/post/drupal-core-installer-flaw-cve-2026-132165-exploited-and-in-cisa-kev-update-now" target="_blank" rel="noopener">Rescana</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Research</span>
+            <span class="ver">Nov 24</span>
+            <h3>Researchers take over five Treasury subdomains for about $3 each through dangling DNS records</h3>
+          </div>
+          <div class="story-body"><p>Intruder researchers cycled roughly 450,000 AWS Elastic IPs in 48 hours to catch addresses that old DNS records still pointed at. They claimed 28 such IPs across their targets, including five treasury.gov subdomains.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> When a client site moves to Vercel, delete the old A records that pointed at the previous host. Add a DNS cleanup line to TSD's launch checklist.</div>
+          <div class="refs"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Intruder (via AI Weekly)</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your platforms</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Vercel</span>
+            <span class="ver">Nov 24</span>
+            <h3>Vercel adds an Audited ZDR tier on AI Gateway; Baseten, Modal and Wafer are first in line</h3>
+          </div>
+          <div class="story-body"><p>A provider will carry the Audited ZDR label only after an independent firm tests its zero-retention claim against code, infrastructure and live traffic and publishes the report. Audits are under way; Vercel expects the first reports around Dec 8 or 9, and no provider qualifies until then. The move follows reports of prompts with planted credentials leaking from services that claimed no retention.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> For clients who worry about where their customer data goes (medical, legal, finance), this gives TSD a checkable answer. Once reports publish, route those clients' AI calls through audited providers and say so in the proposal.</div>
+          <div class="refs"><a href="https://vercel.com/blog/introducing-audited-zdr-on-ai-gateway" target="_blank" rel="noopener">Vercel blog</a> <a href="https://thenewstack.io/vercel-audited-zdr-inference/" target="_blank" rel="noopener">The New Stack</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Supabase</span>
+            <span class="ver">Nov 24</span>
+            <h3>Supabase opens a knowledge base written for developers and their coding agents</h3>
+          </div>
+          <div class="story-body"><p>The public beta holds 237 troubleshooting articles, 12 migration guides and 11 best-of-2026 rundowns, structured so agents can read and apply them. It lands a week before the Dec 1 removal of the Hono, H3, Elysia and NestJS adapters from @supabase/server.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Point Claude Code at it when doing the Dec 1 adapter migrations. Check every client repo for those four adapters before Monday.</div>
+          <div class="refs"><a href="https://news.sulat.com/2026/11/25/supabase-knowledge-base" target="_blank" rel="noopener">Sulat</a> <a href="https://supabase.com/changelog" target="_blank" rel="noopener">Supabase changelog</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Big tech and hardware</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Reliability</span>
+            <span class="ver">Nov 24</span>
+            <h3>Microsoft declares an internal Code Red after the Nov 12-13 Microsoft 365 outage</h3>
+          </div>
+          <div class="story-body"><p>Memos seen by Reuters say the outage traced to an undetected Windows scalability defect introduced in July and hit Exchange, Outlook, Teams and Copilot worldwide. The five-part plan covers load shedding, splitting traffic by region, faster recovery and AI agents to help diagnose failures, with a goal of one-hour global resolution.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> SMB clients felt that outage in their inboxes. It is a fair talking point for keeping a client's booking and lead capture on their own site, where one vendor's outage cannot take it down.</div>
+          <div class="refs"><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Claims Journal (Reuters)</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Hardware</span>
+            <span class="ver">Nov 24</span>
+            <h3>Dell doubles quarterly revenue to $54.9 billion on AI servers</h3>
+          </div>
+          <div class="story-body"><p>AI server revenue was $22.0 billion and the AI backlog reached $132.3 billion. Dell raised its full-year revenue outlook to $202 billion.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> No action. Cloud capacity keeps growing, which keeps hosted AI cheap for small builds.</div>
+          <div class="refs"><a href="https://investors.delltechnologies.com/news-events/press-releases/detail/1665/dell-technologies-delivers-third-quarter-fiscal-2027-financial-results" target="_blank" rel="noopener">Dell press release</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Business</span><span class="txt">The FT reports SpaceX and Tesla directors are negotiating an all-stock merger valued near $3.5 trillion; sources say a deal is not close. <span class="ver">Nov 24</span></span></li>
+            <li><span class="tag new qh-tag">Platform</span><span class="txt">Huawei says more than 100 million devices run Android-free HarmonyOS, with 12 million registered developers. <span class="ver">Nov 24</span></span></li>
+            <li><span class="tag new qh-tag">Chips</span><span class="txt">Huawei claims the first fully domestic Chinese chip-design tool chain, tested on a real chip project. <span class="ver">Nov 25</span></span></li>
+            <li><span class="tag improve qh-tag">Memory</span><span class="txt">Nikkei reports Samsung and SK Hynix will cross-license parts of YMTC's Xtacking 3D NAND design. <span class="ver">Nov 25</span></span></li>
+            <li><span class="tag new qh-tag">Robotics</span><span class="txt">XPeng showed its Iron humanoid, with 76 degrees of freedom and on-device AI, at its Nov 25 AI Day. <span class="ver">Nov 25</span></span></li>
+            <li><span class="tag feature qh-tag">Fintech</span><span class="txt">Versine launched an MCP server that lets ChatGPT and Claude send USDC payments, each approved by passkey. <span class="ver">Nov 24</span></span></li>
+            <li><span class="tag feature qh-tag">Vercel</span><span class="txt">Applications for Vercel X, a no-equity program offering more than $9M in credits to 40 early AI teams, close Nov 29. <span class="ver">Nov 18</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
