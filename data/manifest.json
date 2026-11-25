@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-25.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-25",
+    "title": "2.1.332 adds skills served from MCP servers and fixes the freezes that stall long sessions",
+    "summary": "Claude Code 2.1.332 shipped November 25 with MCP-served skills in beta, a PreSkillShellCommand hook, and fixes for compaction dead-ends, hook and MCP output floods, and false login success; this Mac is still on 2.1.316.",
+    "highlights": 5,
+    "path": "reports/claude-changelog/2026-11-25.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",

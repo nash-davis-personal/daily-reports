@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-25" />
+  <meta name="report:title" content="2.1.332 adds skills served from MCP servers and fixes the freezes that stall long sessions" />
+  <meta name="report:summary" content="Claude Code 2.1.332 shipped November 25 with MCP-served skills in beta, a PreSkillShellCommand hook, and fixes for compaction dead-ends, hook and MCP output floods, and false login success; this Mac is still on 2.1.316." />
+  <meta name="report:highlights" content="5" />
+
+  <title>2.1.332 adds skills served from MCP servers and fixes the freezes that stall long sessions — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Wednesday, November 25, 2026</span>
+        <span>◆</span><span>2.1.332</span>
+      </div>
+      <h1>2.1.332 adds skills served from MCP servers and fixes the freezes that stall long sessions</h1>
+      <p class="standfirst">One release landed today. The new piece worth your time is MCP servers shipping skills, and the fixes that matter are the ones that end long sessions in freezes or "Prompt is too long." The terminal <code>claude</code> on this Mac is still 2.1.316, so none of the last two releases' fixes reach your scheduled tasks yet.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers 2.1.332 (November 25), the first release after yesterday's 2.1.331 briefing</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">Release covered</div></div>
+      <div class="stat"><div class="num">93</div><div class="lbl">Bug fixes listed</div></div>
+      <div class="stat"><div class="num">2.1.316</div><div class="lbl">Version on this Mac</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>MCP servers can ship skills (beta)</h4><p>They show in the <code>/</code> menu as <code>server:skill</code>, so a skill can travel with the server that runs its tools.</p></div>
+        <div class="signal"><div class="n">02</div><h4>New hook can refuse a skill's shell commands</h4><p><code>PreSkillShellCommand</code> fires as a skill loads. Older versions open a dialog at start if settings name it.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Long sessions stop dying on compaction</h4><p>Repeated auto-compact failures and runaway summaries now get one more try or a shorter summary.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Floods from hooks and MCP servers no longer freeze the terminal</h4><p>Endless hook output, chatty local MCP servers and cut SSE streams were hanging sessions.</p></div>
+        <div class="signal"><div class="n">05</div><h4><code>claude auth login</code> stops lying</h4><p>It reported success when the login couldn't be saved. It now exits 1 and says what to check.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Skills and what you can package</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">New</span>
+            <span class="ver">2.1.332</span>
+            <h3>Skills can now come from MCP servers</h3>
+          </div>
+          <div class="story-body">
+            <p>In beta, an MCP server can offer skills alongside its tools. They appear in the <code>/</code> menu as <code>server:skill</code>; skills from other places keep their names.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The <code>tsd-portal</code> and <code>tsdpl</code> servers are yours, so the instructions for using them (the tsdpl skill today lives as a separate local file) could ship from the server itself and stay in sync on both Macs. Wait for this to leave beta before moving anything, but it is also the cleanest way to hand a client a "here's how to drive your site's admin" skill along with an MCP endpoint.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.332 Added</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">New</span>
+            <span class="ver">2.1.332</span>
+            <h3><code>PreSkillShellCommand</code> hook gates a skill's inline shell</h3>
+          </div>
+          <div class="story-body">
+            <p>The new hook event runs when a skill or command loads and can refuse its inline shell commands. The changelog warns that on 2.1.331 and older, a settings file that names the event opens a dialog at start.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Useful once you install third-party plugin skills you haven't read line by line. Don't add it to <code>~/.claude/settings.json</code> until the terminal <code>claude</code> is past 2.1.331: on 2.1.316 that start-up dialog would sit unanswered in front of every one of the 28 scheduled tasks.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.332 Added</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Long build sessions and unattended runs</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.332</span>
+            <h3>Compaction gets out of the dead ends that ended turns</h3>
+          </div>
+          <div class="story-body">
+            <p>Turns no longer end in "Prompt is too long" after repeated auto-compaction failures when one more compaction would have kept them going. A summary that keeps running past the output limit now gets a shorter-summary request after three cut-off tries. Sessions behind a proxy with a request size limit, where every message and <code>/compact</code> failed with a 413, now recover. CLAUDE.md and rules files are no longer sent twice, in most cases, after a session moves into a <code>.claude/worktrees</code> worktree.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> The multi-hour Bisque and commercial sessions are the ones that hit this wall, and the CLAUDE.md double-send burns context on every worktree agent. Both are reasons to update the terminal <code>claude</code> today.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.332 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Fix</span>
+            <span class="ver">2.1.332</span>
+            <h3>Freezes from hooks, MCP servers and secrets files</h3>
+          </div>
+          <div class="story-body">
+            <p>Fixed: freezes and runaway memory while a hook prints output without end; a freeze and context overflow when a hook blocks or fails with a very large log (text over about 50,000 characters is now shortened); the terminal freezing and ignoring Ctrl+C while a local MCP server floods standard output; SSE MCP servers hanging or refusing every call after their stream was cut until reconnected by hand; and Read, @-mentions and compaction hanging on a named pipe such as a <code>.env</code> mounted by a locked secrets manager, which now fails after 20 seconds.</p>
+            <p>Also: <code>claude auth login</code> now exits 1 instead of printing <code>Login successful.</code> when a claude.ai login couldn't be saved, and Remote Control no longer reports a usage limit as reached after it has reset, or shows a waiting desktop session as running.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A scheduled task that hangs never writes its Nash OS line, so it shows as missing on the Machine page with no error. With about a dozen local MCP servers loaded, the stdout-flood and SSE fixes are the most likely to matter. If a task has gone silent recently, update first and re-run it before debugging the task itself.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.332 bug fixes</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Changed</span>
+            <span class="ver">2.1.332</span>
+            <h3>Desktop Code tab: plan mode asks instead of refusing, and save failures are visible</h3>
+          </div>
+          <div class="story-body">
+            <p>Plan mode in the desktop Code tab and VS Code now asks for approval, instead of refusing, when no auto mode safety check can judge a command (for plans entered from Manual or Accept edits). The Code tab also warns when part of a session couldn't be saved and says how to save it with <code>/compact</code>, and notes when a resumed session's earlier messages weren't loaded.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Most of your build work runs in the desktop Code tab, so this ships with the app update and needs nothing from you. If you see the save warning, run <code>/compact</code> before closing the session or you lose that history.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.332 Added and Changed</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Fixes &amp; smaller changes</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag breaking qh-tag">Heads up</span><span class="txt">On Macs with computer use on, <code>computer-use</code> is now a reserved skill name and a skill or command of that name stops loading. You have none under that name. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag breaking qh-tag">Heads up</span><span class="txt">Computer use on macOS follows newer safety rules, so some actions are refused and typing can be slower. Expect it in browser-free Mac automation. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt">Desktop Code tab sessions now report OpenTelemetry as <code>claude-code-desktop</code>. No OTEL config on this Mac, so nothing to change. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag improve qh-tag">Changed</span><span class="txt"><code>--model default</code> now steps down to an older model when the default isn't available, instead of stopping with an error. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt"><code>/permissions</code> refuses a rule that would be skipped at the next start and says why. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag improve qh-tag">Improved</span><span class="txt">Lower memory use at startup with MCP servers that list many tools, and when resuming long conversations. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Code Mode subagents no longer fail with "Agent stalled" when a script runs more than 10 minutes, and resuming a paused workflow no longer waits minutes behind other background work. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Task ids are no longer reused, and deleted tasks no longer come back, when several tasks change at once. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">A PreToolUse hook's reason for asking now shows on terminal Read, Grep, Glob, Edit and Write prompts. <span class="ver">2.1.332</span></span></li>
+            <li><span class="tag fix qh-tag">Fix</span><span class="txt">Web searches no longer fail when the allowed or blocked domain list is empty or has duplicates. <span class="ver">2.1.332</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
