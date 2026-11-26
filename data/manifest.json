@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-26",
+    "title": "Growth is revised up to 4.3% as inflation runs hot, stocks recover from a steep morning drop, and a storm moves the Macy's parade for the first time",
+    "summary": "Q3 GDP was revised to 4.3% and October core PCE rose to 3.3%, jobless claims fell to 189,000, stocks recovered most of a sharp morning slide before the holiday, the US proposed Section 301 tariffs on 14 partners, and storms disrupted Thanksgiving travel.",
+    "highlights": 6,
+    "path": "reports/america/2026-11-26.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-26",
+    "title": "ChatGPT caps tighten after a GPT-6.2 billing fix, Anthropic moves its API to Rust with Claude, and the remote-chip rule starts to bite",
+    "summary": "OpenAI corrected a launch billing error that had discounted GPT-6.2 usage, Anthropic says Claude agents helped rewrite its Messages API in Rust for big CPU and memory savings, and Nvidia paused server shipments to four Southeast Asian countries under the new export licenses.",
+    "highlights": 6,
+    "path": "reports/general-ai/2026-11-26.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-26",
+    "title": "Make every Cloudflare-hosted client site searchable by agents before billing starts Dec 1",
+    "summary": "Six moves ranked by fit: an agent-search setup package riding Cloudflare's Dec 1 billing start, a tariff price-impact page for import retailers, a GitHub lockdown sweep after the 1Password breach, a hemp-deadline menu refresh for Charlotte sellers, a capped-cost AI pitch as ChatGPT limits tighten, and a shadow-mode migration post.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-26.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-26",
+    "title": "1Password's breach ran through one employee's GitHub account, Cloudflare gives every site a search endpoint for agents, and memory prices hit holiday gadgets",
+    "summary": "No new advisory on Next.js, React, Tailwind or Supabase; 1Password says an attacker used an employee's GitHub account to push code that pulled customer records; Cloudflare's Search for Agents is live on all plans with billing from Dec 1; memory shortages are raising device prices.",
+    "highlights": 6,
+    "path": "reports/general-tech/2026-11-26.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-25",
     "title": "The Dow closes above 50,000 as tech slips, and inflation and GDP land this morning before the holiday",
     "summary": "The Dow closed above 50,000 for the first time while the Nasdaq fell 1.48% as chip stocks gave back Monday&#x27;s gains; consumer confidence came in well above forecast; October PCE inflation, revised Q3 GDP and jobless claims come out at 8:30 a.m. ET; record-scale Thanksgiving air travel meets storms on both coasts; an engineering firm plans 262 jobs in Mecklenburg County.",
