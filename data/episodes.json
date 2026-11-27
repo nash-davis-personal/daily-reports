@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-27",
+    "title": "TSD Daily — Friday, November 27, 2026",
+    "summary": "Two AI labs claim an unverified VP≠VNP proof, Claude artifacts become desktop apps, no new patch on the stack, Artex reaches US intelligence systems, a half-day Black Friday market, and a pre-Cyber Monday checkout sprint as today's best money move.",
+    "file": "audio/2026-11-27.mp3",
+    "durationSec": 322,
+    "bytes": 3867309
+  },
+  {
     "date": "2026-11-26",
     "title": "TSD Daily — Thursday, November 26, 2026",
     "summary": "Tighter ChatGPT limits, Anthropic's Rust rewrite, the 1Password GitHub breach, Cloudflare's agent search, a 4.3% GDP revision with hot inflation, new tariff proposals, and today's best money move.",
@@ -470,13 +478,5 @@
     "file": "audio/2026-08-03.mp3",
     "durationSec": 378,
     "bytes": 4538925
-  },
-  {
-    "date": "2026-08-02",
-    "title": "TSD Daily — Sunday, August 2, 2026",
-    "summary": "EU and California AI disclosure rules go live the same day, an autonomous agent runs a 460-target attack campaign, a heat dome bakes the West as a lettuce-borne outbreak passes 18,000 cases, and the AI trade reprices in credit and hedge funds.",
-    "file": "audio/2026-08-02.mp3",
-    "durationSec": 434,
-    "bytes": 5211405
   }
 ]
