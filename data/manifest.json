@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-27",
+    "title": "Markets reopen for a half day with futures higher, Black Friday is forecast at $12.9 billion online, and December rate-hike odds stay above 90%",
+    "summary": "US stocks trade until 1 p.m. ET after Thanksgiving with futures pointing higher, Adobe forecasts $12.9 billion in Black Friday online sales after a strong start to November, and markets still price a December Fed rate hike after October core PCE came in at 3.3%.",
+    "highlights": 4,
+    "path": "reports/america/2026-11-27.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-27",
+    "title": "Anthropic and OpenAI post rival VP≠VNP proofs no human has checked, Claude artifacts install as desktop apps, and Nvidia ships a fine-tuning kit for its document parser",
+    "summary": "Anthropic and OpenAI each posted a claimed VP≠VNP proof that no mathematician has verified, Claude can now install artifacts as desktop apps in beta, Nvidia published a fine-tuning recipe for Nemotron 3.5 Parse, and an Opus 5.6 A/B test is rumored but unconfirmed.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-11-27.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-27",
+    "title": "Fix your clients&#x27; phone checkouts before Cyber Monday&#x27;s $15 billion day",
+    "summary": "Six moves ranked by fit: a pre-Cyber Monday mobile checkout sprint for client stores, an Artex-era account lockdown for SMB email, holiday gift-card pages, PDF loading for Concierge with Nvidia&#x27;s open parser, installable Claude artifacts as a cheap tool tier, and a post on machine-checked AI output.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-27.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-27",
+    "title": "No new patch on your stack, the Artex AI attack kit is reported inside US intelligence systems, and Adobe expects $12.9 billion online today",
+    "summary": "Next.js, React, Tailwind and Supabase have no new advisory; reports tie the Artex AI pentest kit to a breach of a CIA analysis system; Adobe forecasts $12.9 billion in US online sales for Black Friday with phones carrying most of it; and a slow Ubuntu kernel patch cycle drew criticism.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-11-27.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-26",
     "title": "Growth is revised up to 4.3% as inflation runs hot, stocks recover from a steep morning drop, and a storm moves the Macy's parade for the first time",
     "summary": "Q3 GDP was revised to 4.3% and October core PCE rose to 3.3%, jobless claims fell to 189,000, stocks recovered most of a sharp morning slide before the holiday, the US proposed Section 301 tariffs on 14 partners, and storms disrupted Thanksgiving travel.",

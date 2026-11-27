@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-ai" />
+  <meta name="report:source-label" content="General AI" />
+  <meta name="report:source-color" content="#a78bfa" />
+  <meta name="report:date" content="2026-11-27" />
+  <meta name="report:title" content="Anthropic and OpenAI post rival VP≠VNP proofs no human has checked, Claude artifacts install as desktop apps, and Nvidia ships a fine-tuning kit for its document parser" />
+  <meta name="report:summary" content="Anthropic and OpenAI each posted a claimed VP≠VNP proof that no mathematician has verified, Claude can now install artifacts as desktop apps in beta, Nvidia published a fine-tuning recipe for Nemotron 3.5 Parse, and an Opus 5.6 A/B test is rumored but unconfirmed." />
+  <meta name="report:highlights" content="4" />
+
+  <title>Anthropic and OpenAI post rival VP≠VNP proofs no human has checked, Claude artifacts install as desktop apps, and Nvidia ships a fine-tuning kit for its document parser — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://www.notebookcheck.net/Anthropic-and-OpenAI-claim-breakthroughs-on-a-47-year-old-fundamental-math-problem.1459160.0.html" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#a78bfa"><span class="dot"></span>General AI</span>
+        <span>◆</span><span>Friday, November 27, 2026</span>
+        <span>◆</span><span>Holiday edition</span>
+      </div>
+      <h1>Two labs claim a 47-year-old math result, Claude artifacts become desktop apps, and a small open parser gets a fine-tuning kit</h1>
+      <p class="standfirst">A quiet holiday stretch for launches and a loud one for claims. The biggest item is two competing proofs of a famous complexity conjecture, both machine-checked in parts and neither checked by a human yet; the most useful one for TSD is a beta that turns Claude artifacts into installable apps.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 23–27 items not in the Nov 26 edition</span>
+        <span>◆</span><a href="https://www.notebookcheck.net/Anthropic-and-OpenAI-claim-breakthroughs-on-a-47-year-old-fundamental-math-problem.1459160.0.html" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="lbl">labs claiming VP≠VNP</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">human checks of either proof so far</div></div>
+      <div class="stat"><div class="num">631M</div><div class="lbl">params in Nemotron 3.5 Parse</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Rival VP≠VNP proofs</h4><p>Anthropic posted a Claude-authored proof with a Lean 4 formalization; OpenAI posted its own the same day. No mathematician has signed off on either.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Artifacts as desktop apps</h4><p>Claude for Mac and Windows has an "Install as app" beta that turns an artifact into an app you can run and share.</p></div>
+        <div class="signal"><div class="n">03</div><h4>Open document parsing gets cheaper to tune</h4><p>Nvidia published synthetic chart and table data plus a fine-tuning recipe for its 631M-parameter Nemotron 3.5 Parse.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Opus 5.6 is a rumor</h4><p>Testers report an A/B test of a possible Claude Opus 5.6. Anthropic has said nothing; treat it as noise until it ships.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Research claims</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Claim</span>
+            <span class="ver">Nov 23</span>
+            <h3>Anthropic and OpenAI each post a proof that VP ≠ VNP, and neither has been checked by a person</h3>
+          </div>
+          <div class="story-body">
+            <p>VP versus VNP is the algebraic cousin of P versus NP, open since Leslie Valiant posed it in 1979. Anthropic's GitHub repository <code>formal-math/vp-vnp</code> holds a 70-page paper credited to Claude as sole author and a Lean 4 formalization spread over 324 files. OpenAI published its own paper on the same problem later that day; coverage says the two arguments differ in important ways.</p><p>The repository itself says no human mathematician has checked the proof. Lean confirms the formal steps, but whether the formal statement says what the paper claims was judged only by AI readers. That gap is exactly where past "AI solved it" claims have fallen apart.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Keep it out of sales copy until mathematicians weigh in. The part worth stealing is the method: make agents hand back something a machine can check (tests, type checks, a schema) instead of prose you have to trust. That is how TSD should frame AI work for skeptical clients.</div>
+          <div class="refs"><a href="https://www.notebookcheck.net/Anthropic-and-OpenAI-claim-breakthroughs-on-a-47-year-old-fundamental-math-problem.1459160.0.html" target="_blank" rel="noopener">Notebookcheck ↗</a> <a href="https://www.datacamp.com/blog/claude-claims-proof-of-valiants-conjecture-vp-vs-vnp" target="_blank" rel="noopener">DataCamp explainer ↗</a> <a href="https://casrai.org/news/anthropic-claude-authored-vp-vnp-proof-unverified-lean-2026" target="_blank" rel="noopener">CASRAI on the verification gap ↗</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Builder tools</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag feature">Beta</span>
+            <span class="ver">Nov 24</span>
+            <h3>Claude can install an artifact as a desktop app on Mac and Windows</h3>
+          </div>
+          <div class="story-body">
+            <p>Anthropic is rolling out "Install as app" in beta in the Claude desktop apps. An artifact (the small interactive tools Claude builds in chat) can be installed, run and shared as its own desktop app. Coverage so far is light on limits such as offline use, data storage and who can open a shared app, so check those before promising anything.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> A cheap new deliverable: a quote calculator, an intake checklist or a price lookup built as an artifact and installed on the client's front-desk machine. Test one internally first and write down what breaks before Kirk quotes it.</div>
+          <div class="refs"><a href="https://9to5mac.com/2026/11/24/anthropic-just-gave-claude-users-a-new-way-to-make-mac-apps/" target="_blank" rel="noopener">9to5Mac ↗</a> <a href="https://mezha.net/eng/news/mezha-6dfdbe5c35873a75dd2342c6_anthropic_adds_beta/" target="_blank" rel="noopener">Mezha ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Open model</span>
+            <span class="ver">Nov 27</span>
+            <h3>Nvidia publishes training data and a fine-tuning recipe for Nemotron 3.5 Parse</h3>
+          </div>
+          <div class="story-body">
+            <p>Nemotron 3.5 Parse turns page images into structured text with layout classes, bounding boxes and reading order. Nvidia lists it at about 631 million parameters, a ParseBench score of 69.05 against 64.46 for Parse 2.0, and 14.21 pages per second in BF16, all its own numbers. A new Hugging Face post adds synthetic chart and table datasets, a fine-tuning recipe and a speculative-decoding helper.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Concierge lives or dies on clean source documents. A small parser that reads tables and reading order could take the manual cleanup out of loading a client's PDF menus, price sheets and spec sheets. Worth one afternoon test on the import retail client's catalog PDFs.</div>
+          <div class="refs"><a href="https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin" target="_blank" rel="noopener">Hugging Face post ↗</a> <a href="https://build.nvidia.com/nvidia/nemotron-3.5-parse/modelcard" target="_blank" rel="noopener">Model card ↗</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Rumor</span>
+            <span class="ver">this week</span>
+            <h3>Testers report an A/B test of a possible Claude Opus 5.6</h3>
+          </div>
+          <div class="story-body">
+            <p>TestingCatalog reports early outputs that testers attribute to an unreleased Claude Opus 5.6 in A/B tests. Anthropic has not announced a model, and nothing here is confirmed.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> No action. Keep model IDs in config on Front Desk and Concierge so a new model is a one-line change when one actually ships.</div>
+          <div class="refs"><a href="https://www.testingcatalog.com/testers-share-early-results-possible-claude-opus-5-6/" target="_blank" rel="noopener">TestingCatalog ↗</a></div>
+        </article>
+      </div>
+
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Quick hits and things we could not confirm</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag feature qh-tag">Tool</span><span class="txt">Hub, an open-source dispatcher, runs several Claude Code or Codex sessions at once and takes goals from a browser or Telegram. <a href="https://www.producthunt.com/products/hub-20" target="_blank" rel="noopener">source ↗</a> <span class="ver">Nov 27</span></span></li>
+            <li><span class="tag improve qh-tag">Price</span><span class="txt">Moat offers unlimited access to full-weight open models such as GLM-5.3 and DeepSeek V4.1 for $5 a month. New service; check limits and terms before relying on it. <a href="https://commandcode.ai/moat" target="_blank" rel="noopener">source ↗</a> <span class="ver">Nov 27</span></span></li>
+            <li><span class="tag improve qh-tag">Local</span><span class="txt">An AMD-specific llama.cpp fork reports token generation rising from about 35 to 55 tokens a second on a Radeon R9700. <a href="https://devnull.land/amd-specific-llama-cpp" target="_blank" rel="noopener">source ↗</a> <span class="ver">Nov 27</span></span></li>
+            <li><span class="tag fix qh-tag">Unverified</span><span class="txt">Digests are circulating a Volvo humanoid-robot deal, a GLM-5.5 delay, a $1B Canadian compute fund and an AI proof of the Riemann hypothesis. None could be matched to a primary source today, so they are left out. <span class="ver">Nov 26–27</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>
