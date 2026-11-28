@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="general-tech" />
+  <meta name="report:source-label" content="Technology" />
+  <meta name="report:source-color" content="#2dd4bf" />
+  <meta name="report:date" content="2026-11-28" />
+  <meta name="report:title" content="Nvidia pauses server shipments to four Southeast Asian countries; your stack has no new patch" />
+  <meta name="report:summary" content="Nvidia reportedly told partners to stop shipping servers to Malaysia, Singapore, Thailand and Indonesia under a new US rule, GnuPG patched a critical GPGME flaw, and Next.js, React, Tailwind and Supabase posted no new advisories." />
+  <meta name="report:highlights" content="4" />
+  <title>Nvidia pauses server shipments to four Southeast Asian countries; your stack has no new patch — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#2dd4bf"><span class="dot"></span>Technology</span>
+        <span>◆</span><span>Saturday, November 28, 2026</span>
+        <span>◆</span><span>Holiday-window edition</span>
+      </div>
+      <h1>Nvidia pauses server shipments to four Southeast Asian countries. Your stack has no new patch.</h1>
+      <p class="standfirst">The biggest hardware story of the holiday is a supply pause. Nvidia told Dell and Super Micro to stop shipping its servers to four Southeast Asian countries while it checks compliance with a new US rule. On your own stack it was quiet: the Nov 3 Next.js release is still the one to be on.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Covers Nov 26 to the morning of Nov 28</span>
+        <span>◆</span><a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">countries in Nvidia's server pause</div></div>
+      <div class="stat"><div class="num">16.4.5+</div><div class="lbl">Next.js floor since the Nov 3 release</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">new advisories on your stack this window</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>Stack check: nothing new</h4><p>No new Next.js, React, Tailwind or Supabase advisory since the Nov 3 Next.js release. Sites on 16.4.5 or 15.5.29 or later are current.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Nvidia pauses Southeast Asia</h4><p>Partners were told to halt server shipments to Malaysia, Singapore, Thailand and Indonesia, for an unspecified period.</p></div>
+        <div class="signal"><div class="n">03</div><h4>GnuPG patches GPGME</h4><p>A critical double free in GPGME could expose app data through a malicious OpenPGP key. Update if a server uses it.</p></div>
+        <div class="signal"><div class="n">04</div><h4>Containers in a browser tab</h4><p>tabc runs Docker containers in Chromium tabs using a Linux kernel compiled to WebAssembly, with no VM.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Your stack</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Security</span>
+            <span class="ver">Checked Nov 28</span>
+            <h3>No new advisory for Next.js, React, Tailwind or Supabase</h3>
+          </div>
+          <div class="story-body"><p>Searches of the Next.js blog, Vercel bulletins and Supabase changelog found nothing new after the Nov 3 Next.js security release. That release fixed seven issues, including cache leaks and poisoning in <code>use cache</code> and an HttpOnly cookie exposure on Edge routes, in 16.4.5 and 15.5.29. A later 16.4.6 compresses route handler responses and fixes a Turbopack dev memory issue. Vercel's bulletin page also lists Better Auth fixes for 12 advisories in 1.7.16 and 1.8.0-beta.5.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Run <code>npm ls next better-auth</code> on every client repo today. Anything below Next 16.4.5 (or 15.5.29) or Better Auth 1.7.16 gets bumped and pushed before Cyber Monday traffic.</div>
+          <div class="refs"><a href="https://nextjs.org/blog/november-2026-security-release" target="_blank" rel="noopener">Next.js Nov 2026 security release</a> <a href="https://vercel.com/kb/bulletin/" target="_blank" rel="noopener">Vercel security bulletins</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Chips and security</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Supply</span>
+            <span class="ver">Reported Nov 26</span>
+            <h3>Nvidia tells partners to stop shipping servers to Malaysia, Singapore, Thailand and Indonesia</h3>
+          </div>
+          <div class="story-body"><p>The Financial Times reported, and TechCrunch, Forbes and Reuters followed, that Nvidia told manufacturing partners including Dell and Super Micro to halt shipments of servers carrying its chips to the four countries. The pause has no stated end. It follows a US Commerce Department rule that requires licenses for advanced chips and servers going to those countries and closes a gap that let Chinese companies rent Nvidia computing from data centers there. Reuters linked the move to scrutiny of Megaspeed, a Singapore-based partner.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Nothing you rent sits in those regions. The thing to watch is GPU prices: less capacity in Asia can push up cloud GPU and inference prices in the US. Quote AI retainers with a pass-through clause for model costs.</div>
+          <div class="refs"><a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/" target="_blank" rel="noopener">TechCrunch</a> <a href="https://www.forbes.com/sites/siladityaray/2026/11/26/nvidia-reportedly-halts-ai-chip-shipments-to-southeast-asia-as-us-tightens-china-curbs/" target="_blank" rel="noopener">Forbes</a> <a href="https://investing.com/news/stock-market-news/nvidia-halts-server-shipments-to-four-southeast-asian-countries-ft-reports-5053574" target="_blank" rel="noopener">Reuters via Investing.com</a></div>
+        </article>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag fix">Patch</span>
+            <span class="ver">Nov 2026</span>
+            <h3>GnuPG warns of a critical GPGME double free reachable through a malicious OpenPGP key</h3>
+          </div>
+          <div class="story-body"><p>GnuPG disclosed and patched a double free in GPGME's <code>read_status()</code> and <code>read_colon_line()</code> functions. A crafted OpenPGP key could crash an app or expose its data. GPGME is the library that mail clients, package tools and some backend services use to call GnuPG.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Probably none of your Vercel projects use it. Run updates on any self-hosted box or Mac mini that runs mail, backups or signing scripts.</div>
+          <div class="refs"><a href="https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html" target="_blank" rel="noopener">The Hacker News</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Cool builds</h2>
+        <article class="story">
+          <div class="story-head">
+            <span class="tag new">Dev tools</span>
+            <span class="ver">Nov 25</span>
+            <h3>tabc runs Docker containers in a browser tab with no Linux VM</h3>
+          </div>
+          <div class="story-body"><p>Farid Zakaria published tabc, which runs container images inside Chromium tabs using a Linux kernel compiled to WebAssembly. It is an experiment and not production tooling, but it shows that real Linux workloads can run on the client.</p></div>
+          <div class="so-what"><b>So what for TSD:</b> Worth watching for demos. A prospect could click a link and run a working copy of their new back office in a tab without any server cost. File it for later.</div>
+          <div class="refs"><a href="https://fzakaria.com/2026/11/25/browser-tabs-as-a-container-runtime" target="_blank" rel="noopener">fzakaria.com</a></div>
+        </article>
+      </div>
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Smaller items</h2>
+        <div class="quickhits">
+          <ul>
+            <li><span class="tag new qh-tag">Widget</span><span class="txt">OpenChat launched an open-source live-chat widget of about 2 KB that runs on Cloudflare. It is another free option next to Concierge, so sell Concierge on answers and bookings. <span class="ver">Product Hunt</span></span></li>
+            <li><span class="tag improve qh-tag">Storage</span><span class="txt">Garage 2.6.0, a self-hosted S3-compatible store, adds a web admin UI and a Helm chart and marks 1.x end-of-life. <span class="ver">garagehq</span></span></li>
+            <li><span class="tag fix qh-tag">Ops</span><span class="txt">Ansible Core 2.22.0 fixes failed sudo password prompts on Ubuntu 26.04, which were caused by sudo-rs output. <span class="ver">jeffgeerling.com</span></span></li>
+            <li><span class="tag fix qh-tag">Unconfirmed</span><span class="txt">Digests said SAP's own GitHub was breached with stolen employee tokens. The only verified SAP incident found is the April npm package compromise. <span class="ver">not counted</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

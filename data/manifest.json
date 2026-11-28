@@ -3,6 +3,46 @@
     "source": "america",
     "sourceLabel": "America",
     "sourceColor": "#f59e0b",
+    "date": "2026-11-28",
+    "title": "Stocks finish their best week since April 2025 as Black Friday online sales head for a record",
+    "summary": "The S&P 500 rose 1.6% in Friday&#x27;s half session for a 5.6% week, Adobe counted $9.7 billion in Black Friday online sales by evening, a Sunday storm threatens the busiest return-travel day, and North Carolina&#x27;s 41-cent gas tax returns after Nov 30.",
+    "highlights": 4,
+    "path": "reports/america/2026-11-28.html"
+  },
+  {
+    "source": "general-ai",
+    "sourceLabel": "General AI",
+    "sourceColor": "#a78bfa",
+    "date": "2026-11-28",
+    "title": "OpenAI countersues Apple, and Anthropic stock climbs back above its IPO price",
+    "summary": "A quiet holiday window: OpenAI filed a trade-secrets countersuit against Apple, Anthropic shares recovered past the $83 IPO price as bond buyers braced for a junk rating, and an open-source dispatcher for Claude Code and Codex sessions launched.",
+    "highlights": 4,
+    "path": "reports/general-ai/2026-11-28.html"
+  },
+  {
+    "source": "money-moves",
+    "sourceLabel": "Money Moves",
+    "sourceColor": "#22c55e",
+    "date": "2026-11-28",
+    "title": "Sweep every client repo for patches this weekend and turn the report into a care plan",
+    "summary": "Six moves ranked by fit: a weekend patch sweep that sells a monthly care plan, gas-tax-driven route booking for mobile trades, a January win-back flow for retail clients, outcome pricing for Concierge as free chat widgets spread, a plain-English post on Anthropic going public, and a vendor-cost clause for every AI retainer.",
+    "highlights": 6,
+    "path": "reports/money-moves/2026-11-28.html"
+  },
+  {
+    "source": "general-tech",
+    "sourceLabel": "Technology",
+    "sourceColor": "#2dd4bf",
+    "date": "2026-11-28",
+    "title": "Nvidia pauses server shipments to four Southeast Asian countries; your stack has no new patch",
+    "summary": "Nvidia reportedly told partners to stop shipping servers to Malaysia, Singapore, Thailand and Indonesia under a new US rule, GnuPG patched a critical GPGME flaw, and Next.js, React, Tailwind and Supabase posted no new advisories.",
+    "highlights": 4,
+    "path": "reports/general-tech/2026-11-28.html"
+  },
+  {
+    "source": "america",
+    "sourceLabel": "America",
+    "sourceColor": "#f59e0b",
     "date": "2026-11-27",
     "title": "Markets reopen for a half day with futures higher, Black Friday is forecast at $12.9 billion online, and December rate-hike odds stay above 90%",
     "summary": "US stocks trade until 1 p.m. ET after Thanksgiving with futures pointing higher, Adobe forecasts $12.9 billion in Black Friday online sales after a strong start to November, and markets still price a December Fed rate hike after October core PCE came in at 3.3%.",
