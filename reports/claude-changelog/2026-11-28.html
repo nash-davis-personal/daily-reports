@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="report:source" content="claude-changelog" />
+  <meta name="report:source-label" content="Claude Code Changelog" />
+  <meta name="report:source-color" content="#4cc4ff" />
+  <meta name="report:date" content="2026-11-28" />
+  <meta name="report:title" content="Third quiet day: no Claude Code release after 2.1.332, this Mac still on 2.1.316, marketplace change lands Monday" />
+  <meta name="report:summary" content="No Claude Code release shipped after 2.1.332 (November 25) for a third day running; the open items are still updating this Mac from 2.1.316 and the November 30 marketplace auto-update change, now two days out." />
+  <meta name="report:highlights" content="2" />
+
+  <title>Third quiet day: no Claude Code release after 2.1.332, this Mac still on 2.1.316, marketplace change lands Monday — TSD Daily Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234cc4ff'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%2304111f' font-family='Arial' font-weight='bold'>◆</text></svg>" />
+  <link rel="stylesheet" href="../../assets/theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="../../">
+        <span class="mark"><span>◆</span></span>
+        <span>TSD Daily Reports<small>Charlotte Metro ◆ Web + AI Studio</small></span>
+      </a>
+      <nav>
+        <a href="../../">All briefings</a>
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Source ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap report">
+    <div class="masthead">
+      <div class="kicker">
+        <span class="badge-source" style="--src:#4cc4ff"><span class="dot"></span>Claude Code Changelog</span>
+        <span>◆</span><span>Saturday, November 28, 2026</span>
+        <span>◆</span><span>Quiet window</span>
+      </div>
+      <h1>Third quiet day: no Claude Code release after 2.1.332, this Mac still on 2.1.316, marketplace change lands Monday</h1>
+      <p class="standfirst">Nothing new on the changelog. The top entry is still 2.1.332 from November 25, covered in the <a href="2026-11-25.html">November 25 briefing</a>. Third day with no release, which fits the holiday week.</p>
+      <div class="byline">
+        <span>Filed by the TSD scout agent</span>
+        <span>◆</span><span>Checked for releases after 2.1.332 (November 25); none found</span>
+        <span>◆</span><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Read the source ↗</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0</div><div class="lbl">New releases</div></div>
+      <div class="stat"><div class="num">2.1.332</div><div class="lbl">Latest on the changelog</div></div>
+      <div class="stat"><div class="num">2.1.316</div><div class="lbl">Version on this Mac</div></div>
+    </div>
+
+    <section class="signals">
+      <div class="signals-label">◆ Top signals — read these first</div>
+      <div class="signal-grid">
+        <div class="signal"><div class="n">01</div><h4>The update still hasn't happened</h4><p>The terminal <code>claude</code> on this Mac reported 2.1.316 again during this run. This is the fourth briefing in a row to flag it.</p></div>
+        <div class="signal"><div class="n">02</div><h4>Marketplace auto-update flips Monday</h4><p>The 2.1.331 change to managed plugin marketplaces takes effect on or after November 30, two days from now.</p></div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <div class="story-group">
+        <h2><span class="diamond">◆</span> Carry-overs worth acting on</h2>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag improve">Action</span>
+            <span class="ver">2.1.316 → 2.1.332</span>
+            <h3>Run the CLI update before Monday</h3>
+          </div>
+          <div class="story-body">
+            <p>The fixes from 2.1.331 and 2.1.332 that matter for unattended runs (MCP calls hanging up to 30 minutes, false push notices in headless sessions, turns dying on "Prompt is too long" after failed auto-compaction, freezes when a hook or local MCP server floods output) are all still missing on this machine. Details are in the <a href="2026-11-24.html">November 24</a> and <a href="2026-11-25.html">November 25</a> briefings.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Run the update this weekend, while the changelog is quiet. Doing it before Monday means the marketplace change and the version jump don't land on the same day, so if a scheduled task breaks you'll know which one caused it. After updating, check the Nash OS Machine page on Sunday to confirm every scheduled task still logged a run.</div>
+          <div class="refs"><a href="2026-11-25.html">November 25 briefing (2.1.332)</a> · <a href="2026-11-24.html">November 24 briefing (2.1.331)</a></div>
+        </article>
+
+        <article class="story">
+          <div class="story-head">
+            <span class="tag breaking">Heads up</span>
+            <span class="ver">2.1.331</span>
+            <h3>Managed marketplaces auto-update by default from November 30</h3>
+          </div>
+          <div class="story-body">
+            <p>Per the 2.1.331 notes, marketplaces in <em>managed</em> <code>extraKnownMarketplaces</code> auto-update unless set to <code>"autoUpdate": false</code>. Marketplaces in user settings aren't mentioned.</p>
+          </div>
+          <div class="so-what"><b>So what for TSD:</b> Likely no action. If a plugin or skill acts differently next week, check whether its marketplace updated before debugging the skill.</div>
+          <div class="refs"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Changelog: 2.1.331</a></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="byline" style="margin-top:40px">
+      <span>◆ End of briefing</span><span>◆</span>
+      <span>Sources are linked inline. Verify anything load-bearing before acting.</span>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span><a href="../../">← All briefings</a></span>
+      <span>Scouted &amp; written by the TSD agent ◆ Built to own</span>
+    </div>
+  </footer>
+</body>
+</html>

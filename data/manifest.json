@@ -10,6 +10,16 @@
     "path": "reports/america/2026-11-28.html"
   },
   {
+    "source": "claude-changelog",
+    "sourceLabel": "Claude Code Changelog",
+    "sourceColor": "#4cc4ff",
+    "date": "2026-11-28",
+    "title": "Third quiet day: no Claude Code release after 2.1.332, this Mac still on 2.1.316, marketplace change lands Monday",
+    "summary": "No Claude Code release shipped after 2.1.332 (November 25) for a third day running; the open items are still updating this Mac from 2.1.316 and the November 30 marketplace auto-update change, now two days out.",
+    "highlights": 2,
+    "path": "reports/claude-changelog/2026-11-28.html"
+  },
+  {
     "source": "general-ai",
     "sourceLabel": "General AI",
     "sourceColor": "#a78bfa",
